@@ -1,12 +1,120 @@
 [
-  {"ccn": "14345", "loading": 310, "factor": 1.0, "ntg": 1.0, "loading_label": "PN_MIL"},
-  {"ccn": "21451", "loading": 84, "factor": 1.0, "ntg": 1.2, "loading_label": "Vehicle count"},
-  {"ccn": "21455", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Vehicle count"},
-  {"ccn": "61072", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Admin billets"},
-  {"ccn": "14312", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Vehicle count"},
-  {"ccn": "14326", "loading": 13, "factor": 1.0, "ntg": 1.0, "loading_label": "EOD billets"},
-  {"ccn": "21710", "loading": 99, "factor": 1.0, "ntg": 1.0, "loading_label": "Comm Maint billets"},
-  {"ccn": "21730", "loading": 99, "factor": 1.0, "ntg": 1.0, "loading_label": "Field Maint billets"},
-  {"ccn": "44112", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Org storage"},
-  {"ccn": "45110", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Open storage"}
+  {
+    "ccn": "14345",
+    "pattern": "primary_items",
+    "pattern_data": {
+      "row7_label": "Sensitive Item Category (Primary Items, all four companies)",
+      "v_label": "GSF / Item",
+      "y_label": "Count",
+      "ab_label": "GSF",
+      "items": [
+        {"label": "Night Vision Devices (AN/PVS-14, AN/PVS-31D)", "sf_per": 1.25, "count": 237},
+        {"label": "Machine Guns (M240B, MK19 MOD 3)", "sf_per": 1.25, "count": 14},
+        {"label": "Rifles, Carbines, and Shotguns", "sf_per": 1.25, "count": 19},
+        {"label": "Grenade Launchers (M320A1)", "sf_per": 1.25, "count": 4},
+        {"label": "Thermal Sights (AN/PAS-13D)", "sf_per": 1.25, "count": 4},
+        {"label": "Other Sensitive Items (Optics, Accessories, Spares)", "sf_per": 1.25, "count": 52}
+      ],
+      "subtotal_label": "Total Sensitive Items, Total NSF",
+      "roundup_label": "Required GSF = ROUNDUP(Total NSF, 0)"
+    }
+  },
+  {
+    "ccn": "21451",
+    "pattern": "shop_with_bays",
+    "pattern_data": {
+      "officers": {"label": "Officers, Private Offices (Platoon Commanders)", "sf_per": 120, "count": 2},
+      "snco": {"label": "SNCOs and Staff, Cubicles", "sf_per": 60, "count": 11},
+      "vehicles": [
+        {"label": "Light Utility Vehicles (JLTV-class M1280, M1279)", "qty": 33},
+        {"label": "Medium / Heavy Cargo (AMK23A1, AMK27A1)", "qty": 23},
+        {"label": "Wrecker / Recovery (AMK36)", "qty": 3}
+      ],
+      "sf_per_bay": 420,
+      "bays_per_n_vehicles": 30,
+      "ntg": 1.33
+    }
+  },
+  {
+    "ccn": "21455",
+    "loading": 84,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Vehicle wash spaces"
+  },
+  {
+    "ccn": "61072",
+    "pattern": "admin",
+    "pattern_data": {
+      "excluded_billets": [
+        "Medical / BAS billets (34), medical facility CCN required",
+        "EOD Section billets (13), EOD facility CCN required",
+        "Specialist shop billets (99), maintenance shop CCN(s) required",
+        "Ordnance repair billets (10), ordnance shop CCN required"
+      ],
+      "officers": {"label": "Private Offices (CO, XO, CSE, Chaplain, S-Staff Officers)", "sf_per": 120, "count": 21},
+      "enlisted": {"label": "Cubicles (S-Staff NCOs, Company Admin, Supply, Ops)", "sf_per": 60, "count": 63},
+      "ntg": 1.33,
+      "calc_label": "Space Type"
+    }
+  },
+  {
+    "ccn": "14312",
+    "loading": 84,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Vehicle laydown areas"
+  },
+  {
+    "ccn": "14326",
+    "pattern": "admin",
+    "pattern_data": {
+      "officers": {"label": "EOD Officers, Private Offices", "sf_per": 120, "count": 2},
+      "enlisted": {"label": "EOD Enlisted, Workspace", "sf_per": 60, "count": 11},
+      "ntg": 1.33,
+      "calc_label": "EOD Personnel Space"
+    }
+  },
+  {
+    "ccn": "21710",
+    "pattern": "shop_with_bays",
+    "pattern_data": {
+      "officers": {"label": "Comm Maint Officers", "sf_per": 120, "count": 2},
+      "snco": {"label": "Comm Maint Enlisted", "sf_per": 60, "count": 30},
+      "vehicles": [
+        {"label": "Comm vehicles (radio shelters)", "qty": 12}
+      ],
+      "sf_per_bay": 420,
+      "bays_per_n_vehicles": 15,
+      "ntg": 1.33
+    }
+  },
+  {
+    "ccn": "21730",
+    "pattern": "shop_with_bays",
+    "pattern_data": {
+      "officers": {"label": "Field Maint Officers", "sf_per": 120, "count": 2},
+      "snco": {"label": "Field Maint Enlisted", "sf_per": 60, "count": 33},
+      "vehicles": [
+        {"label": "Field maintenance vehicles", "qty": 18}
+      ],
+      "sf_per_bay": 420,
+      "bays_per_n_vehicles": 15,
+      "ntg": 1.33
+    }
+  },
+  {
+    "ccn": "44112",
+    "loading": 84,
+    "factor": 60,
+    "ntg": 1.33,
+    "loading_label": "Storage personnel"
+  },
+  {
+    "ccn": "45110",
+    "loading": 84,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Open storage area"
+  }
 ]

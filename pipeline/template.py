@@ -130,6 +130,8 @@ class CcnSpec:
     notes: str = ""
     facility_name: Optional[str] = None
     uom: Optional[str] = None
+    pattern: str = "default"
+    pattern_data: dict = field(default_factory=dict)
 
 
 def load_vocabulary() -> dict:
@@ -250,18 +252,33 @@ def banner_block(ws, profile: UnitProfile, ccn_display: str,
                                       wrap_text=True))
 
 
-def column_headers(ws, label_a7: str, header_v7: str, header_y7: str,
-                   header_ab7: str):
-    merge_and_set(ws, "A7:U7", value=label_a7,
+def column_headers(ws, label_a7: str = "", header_v7: str = "",
+                   header_y7: str = "", header_ab7: str = "",
+                   row: int = 7,
+                   label_a: Optional[str] = None,
+                   header_v: Optional[str] = None,
+                   header_y: Optional[str] = None,
+                   header_ab: Optional[str] = None):
+    """Place a four-block column header row (A:U, V:X, Y:AA, AB:AF).
+
+    Backwards compatibility: callers may pass label_a7/header_v7/header_y7/
+    header_ab7 (default row=7). New callers can pass row=N and the same
+    label arguments without the "7" suffix.
+    """
+    la = label_a if label_a is not None else label_a7
+    hv = header_v if header_v is not None else header_v7
+    hy = header_y if header_y is not None else header_y7
+    hab = header_ab if header_ab is not None else header_ab7
+    merge_and_set(ws, f"A{row}:U{row}", value=la,
                   font=SECTION_FONT, fill=SUBHEAD_FILL,
                   alignment=LEFT_WRAP, border=BOX)
-    merge_and_set(ws, "V7:X7", value=header_v7,
+    merge_and_set(ws, f"V{row}:X{row}", value=hv,
                   font=COLHEAD_FONT, fill=SUBHEAD_FILL,
                   alignment=CENTER_WRAP, border=BOX)
-    merge_and_set(ws, "Y7:AA7", value=header_y7,
+    merge_and_set(ws, f"Y{row}:AA{row}", value=hy,
                   font=COLHEAD_FONT, fill=SUBHEAD_FILL,
                   alignment=CENTER_WRAP, border=BOX)
-    merge_and_set(ws, "AB7:AF7", value=header_ab7,
+    merge_and_set(ws, f"AB{row}:AF{row}", value=hab,
                   font=COLHEAD_FONT, fill=SUBHEAD_FILL,
                   alignment=CENTER_WRAP, border=BOX)
 
@@ -306,45 +323,304 @@ def total_requirement_row(ws, row: int, value_formula: str, uom_label: str):
                                                          vertical="center"))
 
 
-def make_ccn_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
+def section_banner(ws, row: int, text: str):
+    merge_and_set(ws, f"A{row}:AF{row}", value=text,
+                  font=SECTION_FONT, fill=BANNER_FILL,
+                  alignment=Alignment(horizontal="left", vertical="center",
+                                      wrap_text=True))
+
+
+def common_setup(ws, profile: UnitProfile, spec: CcnSpec):
     ccn_display = f"{spec.ccn[:3]} {spec.ccn[3:]}"
-    ws = wb.create_sheet(spec.ccn)
     set_col_widths(ws)
     set_row_heights(ws)
     apply_page_setup(ws)
     ws.print_area = "A1:AF37"
-
     banner_block(ws, profile, ccn_display, spec.facility_name or "")
+    return ccn_display
 
+
+def make_default_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
+    ws = wb.create_sheet(spec.ccn)
+    common_setup(ws, profile, spec)
     column_headers(
         ws,
-        label_a7=f"{spec.facility_name or spec.ccn}  (Loading driver: "
+        label_a7=f"{spec.facility_name or spec.ccn} (Loading driver: "
                  f"{spec.loading_label})",
         header_v7="Factor",
         header_y7="Count",
         header_ab7=gsf_or_gsy(spec.uom or ""),
     )
-
-    data_row(ws, 8,
-             label=f"Primary loading row",
-             factor_val=spec.factor,
-             count_val=spec.loading,
-             total_formula=f"=V8*Y8*{spec.ntg}",
-             count_role="input")
+    data_row(ws, 8, label="Primary loading row",
+             factor_val=spec.factor, count_val=spec.loading,
+             total_formula=f"=V8*Y8*{spec.ntg}")
     for r in range(9, 14):
         data_row(ws, r, label="", factor_val="", count_val="",
-                 total_formula=f"=V{r}*Y{r}*{spec.ntg}",
-                 count_role="input")
-
-    subtotal_row(ws, 15, "Subtotal NSF",
-                 f"=SUM(AB8:AF13)")
+                 total_formula=f"=V{r}*Y{r}*{spec.ntg}")
+    subtotal_row(ws, 15, "Subtotal NSF", "=SUM(AB8:AF13)")
     subtotal_row(ws, 16, f"Net to Gross multiplier (NTG = {spec.ntg})",
-                 f"=AB15*1")
-
-    total_requirement_row(ws, 37,
-                          value_formula=f"=AB16",
+                 "=AB15*1")
+    total_requirement_row(ws, 37, value_formula="=AB16",
                           uom_label=spec.uom or "")
     return ws
+
+
+def make_primary_items_sheet(wb: Workbook, profile: UnitProfile,
+                             spec: CcnSpec):
+    """Pattern: primary_items. CLB-4 14345 (Armory) layout.
+
+    pattern_data:
+      row7_label : str (e.g. "Sensitive Item Category")
+      v_label    : str (e.g. "GSF / Item")
+      y_label    : str (e.g. "Count")
+      ab_label   : str (e.g. "GSF")
+      items      : list of {label, sf_per, count}, up to 6 entries
+      subtotal_label : str (e.g. "Total Sensitive Items | Total NSF")
+      roundup_label  : str (e.g. "Required GSF = ROUNDUP(...)")
+    """
+    pd = spec.pattern_data
+    ws = wb.create_sheet(spec.ccn)
+    common_setup(ws, profile, spec)
+    column_headers(ws,
+                   label_a7=pd.get("row7_label", "Item Category"),
+                   header_v7=pd.get("v_label", "GSF / Item"),
+                   header_y7=pd.get("y_label", "Count"),
+                   header_ab7=pd.get("ab_label",
+                                     gsf_or_gsy(spec.uom or "")))
+    items = pd.get("items", [])[:6]
+    for i, it in enumerate(items):
+        r = 8 + i
+        data_row(ws, r,
+                 label=it.get("label", ""),
+                 factor_val=it.get("sf_per", ""),
+                 count_val=it.get("count", ""),
+                 total_formula=f"=V{r}*Y{r}")
+    for r in range(8 + len(items), 14):
+        data_row(ws, r, label="", factor_val="", count_val="",
+                 total_formula=f"=V{r}*Y{r}")
+    subtotal_row(ws, 15,
+                 pd.get("subtotal_label", "Subtotal NSF"),
+                 "=SUM(AB8:AB13)")
+    subtotal_row(ws, 16,
+                 pd.get("roundup_label", "Required GSF = ROUNDUP(NSF, 0)"),
+                 "=ROUNDUP(AB15,0)")
+    total_requirement_row(ws, 37, value_formula="=AB16",
+                          uom_label=spec.uom or "")
+    return ws
+
+
+def make_admin_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
+    """Pattern: admin. CLB-4 61072 (BN HQ Admin) layout.
+
+    pattern_data:
+      excluded_billets : list of strings (rows 8 plus, optional)
+      officers   : {label, sf_per, count}  (default 120 SF/person)
+      enlisted   : {label, sf_per, count}  (default 60 SF/person)
+      ntg        : float (default 1.33)
+    """
+    pd = spec.pattern_data
+    ws = wb.create_sheet(spec.ccn)
+    common_setup(ws, profile, spec)
+
+    excluded = pd.get("excluded_billets") or []
+    if excluded:
+        section_banner(ws, 7,
+                       "BILLETS EXCLUDED FROM THIS CCN "
+                       "(require separate facility CCNs)")
+        for i, line in enumerate(excluded[:5]):
+            r = 8 + i
+            merge_and_set(ws, f"A{r}:AF{r}", value=line, font=BODY_FONT,
+                          alignment=LEFT_WRAP, border=BOX)
+        calc_banner_row = 13
+    else:
+        calc_banner_row = 7
+
+    section_banner(ws, calc_banner_row, "ADMINISTRATIVE SPACE CALCULATION")
+    hdr = calc_banner_row + 1
+    column_headers(ws, row=hdr,
+                   label_a=pd.get("calc_label", "Space Type"),
+                   header_v="SF / Person",
+                   header_y="Count",
+                   header_ab="NSF")
+    officers = pd.get("officers") or {"label": "Private Offices",
+                                       "sf_per": 120, "count": 0}
+    enlisted = pd.get("enlisted") or {"label": "Cubicles",
+                                       "sf_per": 60, "count": 0}
+    r_off = hdr + 1
+    r_enl = hdr + 2
+    data_row(ws, r_off, label=officers.get("label", "Private Offices"),
+             factor_val=officers.get("sf_per", 120),
+             count_val=officers.get("count", 0),
+             total_formula=f"=V{r_off}*Y{r_off}")
+    data_row(ws, r_enl, label=enlisted.get("label", "Cubicles"),
+             factor_val=enlisted.get("sf_per", 60),
+             count_val=enlisted.get("count", 0),
+             total_formula=f"=V{r_enl}*Y{r_enl}")
+    r_sub = hdr + 3
+    subtotal_row(ws, r_sub, "Total NSF",
+                 f"=SUM(AB{r_off}:AB{r_enl})")
+    ntg = pd.get("ntg", 1.33)
+    r_total_banner = r_sub + 2
+    section_banner(ws, r_total_banner, "TOTAL SPACE REQUIREMENT")
+    r_round = r_total_banner + 1
+    merge_and_set(ws, f"A{r_round}:U{r_round}",
+                  value=f"NTG Factor = {ntg}, Required GSF = "
+                        f"ROUNDUP(NSF * NTG, 0)",
+                  font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, f"V{r_round}:X{r_round}", value=ntg,
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=INPUT_FILL)
+    merge_and_set(ws, f"Y{r_round}:AA{r_round}", value="",
+                  font=BODY_FONT, alignment=CENTER, border=BOX)
+    merge_and_set(ws, f"AB{r_round}:AF{r_round}",
+                  value=f"=ROUNDUP(AB{r_sub}*V{r_round},0)",
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=CALC_FILL)
+    total_requirement_row(ws, 37, value_formula=f"=AB{r_round}",
+                          uom_label=spec.uom or "")
+    return ws
+
+
+def make_shop_with_bays_sheet(wb: Workbook, profile: UnitProfile,
+                              spec: CcnSpec):
+    """Pattern: shop_with_bays. CLB-4 21451 (Auto Org Shop) layout.
+
+    pattern_data:
+      officers   : {label, sf_per, count}  (default sf_per=120)
+      snco       : {label, sf_per, count}  (default sf_per=60)
+      vehicles   : list of {label, qty}, up to 3 entries
+      bays_per_n_vehicles : int (default 30, i.e. 1 bay per 30 vehicles)
+      sf_per_bay : float (default 420)
+      ntg        : float (default 1.33)
+    """
+    pd = spec.pattern_data
+    ws = wb.create_sheet(spec.ccn)
+    common_setup(ws, profile, spec)
+
+    section_banner(ws, 7, "SECTION 1 - ADMINISTRATIVE SPACE")
+    merge_and_set(ws, "A8:U8", value="Personnel Category",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, "V8:X8", value="SF / Person",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    merge_and_set(ws, "Y8:AA8", value="Count",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    merge_and_set(ws, "AB8:AF8", value="NSF",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    officers = pd.get("officers") or {"label": "Officers - Private Offices",
+                                       "sf_per": 120, "count": 0}
+    snco = pd.get("snco") or {"label": "SNCO/Staff - Cubicles",
+                              "sf_per": 60, "count": 0}
+    data_row(ws, 9, label=officers.get("label", "Officers"),
+             factor_val=officers.get("sf_per", 120),
+             count_val=officers.get("count", 0),
+             total_formula="=V9*Y9")
+    data_row(ws, 10, label=snco.get("label", "SNCO/Staff"),
+             factor_val=snco.get("sf_per", 60),
+             count_val=snco.get("count", 0),
+             total_formula="=V10*Y10")
+    subtotal_row(ws, 11, "Administrative Subtotal", "=SUM(AB9:AB10)")
+
+    section_banner(ws, 13, "SECTION 2 - MAINTENANCE BAYS")
+    merge_and_set(ws, "A14:U14", value="Vehicle Category",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, "V14:X14", value="SF / Bay",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    merge_and_set(ws, "Y14:AA14", value="Qty",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    merge_and_set(ws, "AB14:AF14", value="NSF",
+                  font=COLHEAD_FONT, fill=SUBHEAD_FILL,
+                  alignment=CENTER_WRAP, border=BOX)
+    sf_per_bay = pd.get("sf_per_bay", 420)
+    vehicles = pd.get("vehicles", [])[:3]
+    for i, v in enumerate(vehicles):
+        r = 15 + i
+        merge_and_set(ws, f"A{r}:U{r}",
+                      value=v.get("label", ""),
+                      font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+        merge_and_set(ws, f"V{r}:X{r}", value=sf_per_bay,
+                      font=BODY_FONT, alignment=CENTER, border=BOX)
+        merge_and_set(ws, f"Y{r}:AA{r}", value=v.get("qty", 0),
+                      font=BODY_FONT, alignment=CENTER, border=BOX,
+                      fill=INPUT_FILL)
+        merge_and_set(ws, f"AB{r}:AF{r}", value="",
+                      font=BODY_FONT, alignment=CENTER, border=BOX)
+    for i in range(len(vehicles), 3):
+        r = 15 + i
+        merge_and_set(ws, f"A{r}:U{r}", value="",
+                      font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+        merge_and_set(ws, f"V{r}:X{r}", value="",
+                      font=BODY_FONT, alignment=CENTER, border=BOX)
+        merge_and_set(ws, f"Y{r}:AA{r}", value=0,
+                      font=BODY_FONT, alignment=CENTER, border=BOX,
+                      fill=INPUT_FILL)
+        merge_and_set(ws, f"AB{r}:AF{r}", value="",
+                      font=BODY_FONT, alignment=CENTER, border=BOX)
+    bays_n = pd.get("bays_per_n_vehicles", 30)
+    merge_and_set(ws, "A18:U18",
+                  value=f"Total Self-Propelled Vehicles | "
+                        f"CEILING(total / {bays_n}) bays",
+                  font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, "V18:X18", value="",
+                  font=BODY_FONT, alignment=CENTER, border=BOX)
+    merge_and_set(ws, "Y18:AA18", value="=SUM(Y15:Y17)",
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=CALC_FILL)
+    merge_and_set(ws, "AB18:AF18", value="",
+                  font=BODY_FONT, alignment=CENTER, border=BOX)
+    merge_and_set(ws, "A19:U19",
+                  value=f"Maintenance Bays (CEILING bays per "
+                        f"{bays_n} vehicles)",
+                  font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, "V19:X19", value=sf_per_bay,
+                  font=BODY_FONT, alignment=CENTER, border=BOX)
+    merge_and_set(ws, "Y19:AA19", value=f"=CEILING(Y18/{bays_n},1)",
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=CALC_FILL)
+    merge_and_set(ws, "AB19:AF19", value="=V19*Y19",
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=CALC_FILL)
+    subtotal_row(ws, 20, "Maintenance Bays Subtotal", "=AB19")
+
+    section_banner(ws, 22, "TOTAL SPACE REQUIREMENT")
+    subtotal_row(ws, 23, "Total NSF (Administrative + Maintenance Bays)",
+                 "=AB11+AB20")
+    ntg = pd.get("ntg", 1.33)
+    merge_and_set(ws, "A24:U24",
+                  value=f"NTG Factor = {ntg}, Required GSF = "
+                        f"ROUNDUP(NSF * NTG, 0)",
+                  font=BODY_FONT, alignment=LEFT_WRAP, border=BOX)
+    merge_and_set(ws, "V24:X24", value=ntg,
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=INPUT_FILL)
+    merge_and_set(ws, "Y24:AA24", value="",
+                  font=BODY_FONT, alignment=CENTER, border=BOX)
+    merge_and_set(ws, "AB24:AF24",
+                  value=f"=ROUNDUP(AB23*V24,0)",
+                  font=BODY_FONT, alignment=CENTER, border=BOX,
+                  fill=CALC_FILL)
+    total_requirement_row(ws, 37, value_formula="=AB24",
+                          uom_label=spec.uom or "")
+    return ws
+
+
+PATTERN_DISPATCH = {
+    "default": make_default_sheet,
+    "primary_items": make_primary_items_sheet,
+    "admin": make_admin_sheet,
+    "shop_with_bays": make_shop_with_bays_sheet,
+}
+
+
+def make_ccn_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
+    handler = PATTERN_DISPATCH.get(spec.pattern, make_default_sheet)
+    return handler(wb, profile, spec)
 
 
 def make_to_sheet(wb: Workbook, profile: UnitProfile):
@@ -475,6 +751,8 @@ def hydrate_ccns(raw_specs: list, vocab: dict) -> List[CcnSpec]:
             notes=s.get("notes", ""),
             facility_name=s.get("facility_name") or v.get("title") or ccn,
             uom=s.get("uom") or vocab_uom(v),
+            pattern=s.get("pattern", "default"),
+            pattern_data=s.get("pattern_data", {}),
         )
         out.append(spec)
     return out

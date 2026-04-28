@@ -32,15 +32,15 @@ CHECK: 6. Roll-up integrity         PASS
   - workbook CCN sheets: ['14312', '14326', '14345', '21451', '21455', '21710', '21730', '44112', '45110', '61072']
   - rollup-listed CCNs: ['14312', '14326', '14345', '21451', '21455', '21710', '21730', '44112', '45110', '61072']
   -   sheet '14312': TOTAL at H37 = '=AB16'
-  -   sheet '14326': TOTAL at H37 = '=AB16'
+  -   sheet '14326': TOTAL at H37 = '=AB14'
   -   sheet '14345': TOTAL at H37 = '=AB16'
-  -   sheet '21451': TOTAL at H37 = '=AB16'
+  -   sheet '21451': TOTAL at H37 = '=AB24'
   -   sheet '21455': TOTAL at H37 = '=AB16'
-  -   sheet '21710': TOTAL at H37 = '=AB16'
-  -   sheet '21730': TOTAL at H37 = '=AB16'
+  -   sheet '21710': TOTAL at H37 = '=AB24'
+  -   sheet '21730': TOTAL at H37 = '=AB24'
   -   sheet '44112': TOTAL at H37 = '=AB16'
   -   sheet '45110': TOTAL at H37 = '=AB16'
-  -   sheet '61072': TOTAL at H37 = '=AB16'
+  -   sheet '61072': TOTAL at H37 = '=AB20'
 
 ----------------------------------------------------------------
 OVERALL: 6 PASS / 0 FAIL

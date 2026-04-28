@@ -240,30 +240,42 @@ unit; the order is the recommended build sequence.
   error tokens via Python `formulas` package; LibreOffice headless is
   non-functional in this sandbox so `fullCalcOnLoad=True` is set on
   the workbook). Commit `0817a1c`.
+- **Track C — Layer 6 validation harness.** `pipeline/validate.py`
+  implements the six Layer-6 checks from `audit/PIPELINE.md` (schema,
+  NOTE coverage, NOTE<->CCN consistency, vocabulary against
+  `audit/CCN_VOCABULARY.json`, cell-error scan, roll-up integrity).
+  Unit-agnostic; auto-detects TO/TE header rows, CCN sheets, and
+  UNIT_ROLLUP. Run against CLB-4 SW BFR as the worked example
+  (`audit/reports/16_validate_clb4_sw.txt`): 3 PASS / 3 FAIL,
+  surfacing the round-1 findings deterministically — empty NOTE
+  column, 10,577 #REF! tokens in hidden CCN sheets, and 6 hidden CCN
+  sheets absent from UNIT_ROLLUP. Commit `95ea12a`.
 
 ### NEXT (in this order)
 
-1. **Track C — Layer 6 validation harness**  *(deterministic QA, run
-   against existing artifacts before generating anything new)*.
-   `pipeline/validate.py` covering: schema check, NOTE coverage, NOTE↔
-   CCN consistency, vocabulary check against `audit/CCN_VOCABULARY.json`,
-   roll-up integrity, billet accounting, equipment accounting.
-   Pass/fail report format. First target: run against CLB-4 SW BFR as
-   the worked example, surfacing the round-1 findings in deterministic
-   form.
-2. **Track B — Layer 4 canonical BFR template generator**.
+1. **Track B — Layer 4 canonical BFR template generator**.
    `pipeline/template.py` produces a Format-B BFR using `openpyxl` +
    `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.json`
    + a unit profile. Reproduces the CLB-4 banner block (rows 1–7) on
    each CCN sheet. Recalc-ready (no IFERROR masking at top level, no
    restricted ranges, named-range constants). Per-unit row counts —
    the methodology workbook's fixed 14-slot `BFR_Calculator` does not
-   constrain generated workbooks.
-3. **Track D — PDF ingestion prototype**  *(only when a Format-D
+   constrain generated workbooks. Every output gated by
+   `pipeline/validate.py` before release.
+2. **Track D — PDF ingestion prototype**  *(only when a Format-D
    source actually arrives; independent of the rest)*. Extracts
    billet/equipment rows from TFSMS / ASR / authoritative PDF →
    canonical Format A schema, with per-row page+table citation. Use
    `pdfplumber` first; OCR only for scanned PDFs.
+
+### DEFERRED (covered by Track C foundation)
+
+- **Layer 6 advanced checks** — billet accounting (TO row count =
+  sum of billets across CCN sheets) and equipment accounting (TE
+  row referenced by exactly one CCN sheet) are not yet in
+  `pipeline/validate.py`. They require Track B to be in place so
+  generator-driven test fixtures exist; will be added when Track B
+  produces its first sample workbook.
 
 ### PARALLEL (doctrine work, can start any time)
 

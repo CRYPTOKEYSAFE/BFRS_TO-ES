@@ -1,0 +1,354 @@
+FILE: FO_M29030_CLB 4_FINAL BFR.xlsx
+PATH: /home/user/BFRS_TO-ES/FO_M29030_CLB 4_FINAL BFR.xlsx
+SIZE: 1,694,666 bytes
+
+SHEETS (18):
+  [00] 'Header '  state=hidden  dim=A1:B6  max_row=6  max_col=2
+  [01] 'UNIT_ROLLUP'  state=visible  dim=A1:XFD43  max_row=43  max_col=16384
+  [02] 'Mission Statement'  state=visible  dim=A1:D194  max_row=194  max_col=4
+  [03] 'TO'  state=visible  dim=B4:AT309  max_row=309  max_col=46
+  [04] 'TE'  state=visible  dim=B4:V604  max_row=604  max_col=22
+  [05] '14312'  state=hidden  dim=A1:AF181  max_row=181  max_col=32
+  [06] '14326'  state=hidden  dim=A1:AF130  max_row=130  max_col=32
+  [07] '14345'  state=visible  dim=A1:XFD46  max_row=46  max_col=16384
+  [08] '21451'  state=visible  dim=A1:XFD46  max_row=46  max_col=16384
+  [09] '21710'  state=hidden  dim=A1:AF84  max_row=84  max_col=32
+  [10] '21730'  state=hidden  dim=A1:AF84  max_row=84  max_col=32
+  [11] '44112'  state=hidden  dim=A1:AF84  max_row=84  max_col=32
+  [12] '45110'  state=hidden  dim=A1:AF90  max_row=90  max_col=32
+  [13] '21455'  state=visible  dim=A1:XFD70  max_row=70  max_col=16384
+  [14] '61072'  state=visible  dim=A1:XFD43  max_row=43  max_col=16384
+  [15] 'TAMCN Info'  state=hidden  dim=A1:S5830  max_row=5830  max_col=19
+  [16] 'TAMCN & CCN'  state=hidden  dim=A1:Q5223  max_row=5223  max_col=17
+  [17] 'CCN & Description'  state=hidden  dim=A1:B1071  max_row=1071  max_col=2
+
+DEFINED NAMES (30):
+  '_Order1'  ->  '255'
+  'a'  ->  '#REF!'
+  'Comment'  ->  '#REF!'
+  'CostCode'  ->  '#REF!'
+  'd'  ->  '#REF!'
+  'DDD'  ->  '#REF!'
+  'delete1'  ->  '#REF!'
+  'EWC'  ->  '"M00873"'
+  'GDSGSDG'  ->  '#REF!'
+  'ghhghg'  ->  '#REF!'
+  'gsg'  ->  '#REF!'
+  'Hello'  ->  '#REF!'
+  'HELLO1'  ->  '#REF!'
+  'heloo'  ->  '#REF!'
+  'HQ'  ->  '"M00871"'
+  'M12301_'  ->  'UIC_HQ'
+  'new'  ->  '#REF!'
+  'oc'  ->  '#REF!'
+  'Ordnance'  ->  '#REF!'
+  'Recover'  ->  '[1]Macro1!$A$206'
+  'sds'  ->  '#N/A'
+  'TableName'  ->  '"Dummy"'
+  'TAOC'  ->  '"M00872"'
+  'TE_2'  ->  '#REF!'
+  'TE_3'  ->  '#REF!'
+  'TE_orignial'  ->  '#REF!'
+  'te_table'  ->  '#REF!'
+  'UIC_HQ'  ->  "'14312'!#REF!"
+  'UIC_HS'  ->  "'14312'!$C$52"
+  'x'  ->  '#REF!'
+
+EXTERNAL LINKS (3):
+  target='file:///\\\\naeanrfkfs43\\BULK_Storage_4\\Users\\p0047813\\AppData\\Local\\Microsoft\\Windows\\Temporary%20Internet%20Files\\Content.Outlook\\L7YX691S\\Master%20Asset%20(2).xls'
+  target='https://mysites.eis.usmc.mil/MCICOM_IR_OPT/Standard%20BFRs/2%20LAAD/M00146-MS-M19885-20161222.xlsx'
+  target='https://tidewaterplanning.sharepoint.com/MCICOM_IR_OPT/Standard%20BFRs/2%20LAAD/M00146-MS-M19885-20161222.xlsx'
+
+PER-SHEET DETAIL
+============================================================
+
+[Sheet: 'Header ']
+  state         : hidden
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 2  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'UNIT_ROLLUP']
+  state         : visible
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 2084
+  print_area    : 'UNIT_ROLLUP'!$A$1:$AF$43
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 5  (with ext refs: 0)
+  ccn-like rows : 4  (showing first 12)
+      row   10  CCN~14345  :: 14345 | ARMORY | 0
+      row   11  CCN~21451  :: 21451 | AUTO ORGANIZATION SHOP | 0
+      row   12  CCN~21455  :: 21455 | VEHICLE WASH PLATFORM | 0
+      row   13  CCN~61072  :: 61072 | BATTALION SQUADRON HEADQUARTERS, MARINE CORPS | 0
+
+[Sheet: 'Mission Statement']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 14
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 2  (showing first 12)
+      row    8  CCN~38440  :: UNIT 38440 | Unit Type Code: | 9VCBF
+      row  107  CCN~38420  :: UNIT 38420 | Unit Type Code: | UWLAB
+
+[Sheet: 'TO']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 11
+  print_area    : 'TO'!$D$4:$O$6
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 264  (showing first 12)
+      row    8  CCN~61072  :: 2 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100126 | COMMANDING OFFICER | LTCOL
+      row    9  CCN~61072  :: 3 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100127 | EXECUTIVE OFFICER | MAJ
+      row   10  CCN~61072  :: 4 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100124 | COMMAND SENIOR ENLISTED LEADER | SGTMAJ
+      row   11  CCN~21710  :: 5 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | E | M2903100125 | TRANSMISSIONS SYSTEMS OPERATOR | CPL
+      row   13  CCN~61072  :: 7 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100211 | COMPANY COMMANDER | CAPT
+      row   14  CCN~61072  :: 8 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100212 | EXECUTIVE OFFICER | 1STLT
+      row   15  CCN~61072  :: 9 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100208 | UNIT SENIOR ENLISTED LEADER | 1STSGT
+      row   16  CCN~61072  :: 10 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100209 | COMPANY GUNNERY SERGEANT | GYSGT
+      row   17  CCN~61072  :: 11 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100224 | TAC CHAPLAIN | LT
+      row   18  CCN~61072  :: 12 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100225 | RP SPECIALIST | RPSN
+      row   20  CCN~61072  :: 14 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100131 | ADJUTANT | 1STLT
+      row   21  CCN~61072  :: 15 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M29031 | E | M2903100129 | ADMIN CHIEF | GYSGT
+
+[Sheet: 'TE']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : A5
+  merged_cells  : 0
+  print_area    : 'TE'!$B$4:$V$408
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 403  (with ext refs: 0)
+  ccn-like rows : 321  (showing first 12)
+      row    4  CCN~21451  :: ROW | NOTE | CCN | CCN Description | CCN 21451 Equipment Type (if applicable) | UIC | TAMCN
+Short | TAMCN
+      row    5  CCN~21710  :: 1 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0022 | A00227G | COMPUTER SYSTEM,DIG - 16007A0000 | IS
+      row    6  CCN~44112  :: =1+B5 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M29031 | A0047 | A00477B | SHELTER,EXPANDABLE - 09021A0000 | IS
+      row    7  CCN~21710  :: =1+B6 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0061 | A00617G | MAST SECTION - TEAMS TRAILER | IS
+      row    8  CCN~21710  :: =1+B7 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0067 | A00677G | RADIO SET - AN/MRC-148A | IS
+      row    9  CCN~21710  :: =1+B8 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0073 | A00732B | CHARGER,BATTERY - BTC-70100 | IS
+      row   10  CCN~21710  :: =1+B9 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0097 | A00977G | RADIO SET - AN/VRC-110 | DP
+      row   11  CCN~21710  :: =1+B10 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0117 | A01177G | MARINE ELECTROMAGNETIC WARFARE GROUND FAMILY OF 
+      row   12  CCN~21710  :: =1+B11 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0118 | A01187G | RADIO SET - AN/PRC-153(V)1 | DP
+      row   13  CCN~21710  :: =1+B12 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0126 | A01267G | MULTI-BAND FREQUENC - AN/VRC-103(V)2 | DP
+      row   14  CCN~21710  :: =1+B13 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0139 | A01397G | RADIO SET - AN/TRC-209A(C)V1 | IS
+      row   15  CCN~21710  :: =1+B14 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M29031 | A0162 | A01627G | MEGFOS-BACKPACK, USER -  | PL
+
+[Sheet: '14312']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 748
+  print_area    : '14312'!$A$1:$AF$181
+  data_validns  : 0
+  cond_formats  : 8
+  formulas      : 696  (with ext refs: 0)
+  ccn-like rows : 116  (showing first 12)
+      row    5  CCN~14312  :: CCN: | 14312 | Nomenclature: | Operational Vehicle Laydown Area
+      row   17  CCN~14312  :: UFC 2-000-05N (P-80) CCN 14312
+
+
+      row   49  CCN~14312  :: Operational Vehicle Laydown Area per P-80 Table 14312-1
+      row   53  CCN~14312  :: A0255 | =IFERROR(INDEX(#REF!,MATCH(C53,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C53,#REF!,0)),INDEX(#REF!,MATCH('14312'!C53,#R
+      row   54  CCN~14312  :: A0457 | =IFERROR(INDEX(#REF!,MATCH(C54,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C54,#REF!,0)),INDEX(#REF!,MATCH('14312'!C54,#R
+      row   55  CCN~14312  :: A0458 | =IFERROR(INDEX(#REF!,MATCH(C55,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C55,#REF!,0)),INDEX(#REF!,MATCH('14312'!C55,#R
+      row   56  CCN~14312  :: A2335 | =IFERROR(INDEX(#REF!,MATCH(C56,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C56,#REF!,0)),INDEX(#REF!,MATCH('14312'!C56,#R
+      row   57  CCN~14312  :: A2336 | =IFERROR(INDEX(#REF!,MATCH(C57,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C57,#REF!,0)),INDEX(#REF!,MATCH('14312'!C57,#R
+      row   58  CCN~14312  :: B0036 | =IFERROR(INDEX(#REF!,MATCH(C58,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C58,#REF!,0)),INDEX(#REF!,MATCH('14312'!C58,#R
+      row   59  CCN~14312  :: B0037 | =IFERROR(INDEX(#REF!,MATCH(C59,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C59,#REF!,0)),INDEX(#REF!,MATCH('14312'!C59,#R
+      row   60  CCN~14312  :: B0040 | =IFERROR(INDEX(#REF!,MATCH(C60,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C60,#REF!,0)),INDEX(#REF!,MATCH('14312'!C60,#R
+      row   61  CCN~14312  :: B0043 | =IFERROR(INDEX(#REF!,MATCH(C61,#REF!,0)),"") | =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C61,#REF!,0)),INDEX(#REF!,MATCH('14312'!C61,#R
+
+[Sheet: '14326']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 244
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 9
+  formulas      : 73  (with ext refs: 0)
+  ccn-like rows : 4  (showing first 12)
+      row    5  CCN~14326  :: CCN: | 14326 | Nomenclature: | MC Explosive Ordnance Disposal Platoon Facility
+      row   86  CCN~21420  :: Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2, & 3
+      row  105  CCN~414.36  :: =V102*((W105*W106)+W104)*W107 | =414.36*V102^0.854 | =IF(V102<=14,347.32*V102+1128.6,22.616*V102+5706.1) | =SUM(B105:M105) | Bay Length3 | 3
+      row  110  CCN~21420  :: 1 Support space requirements based on UFC 2-000-05N, Table 21420-4 (Space Requirements for Automotive Vehicle Maintenance Facility) and thes
+
+[Sheet: '14345']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 21
+  print_area    : '14345'!$A$1:$AF$46
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 1  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~14345  :: CCN: | 14345 | Nomenclature: | ARMORY
+
+[Sheet: '21451']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 19
+  print_area    : '21451'!$A$1:$AF$46
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 4  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~21451  :: CCN: | 21451 | Nomenclature: | AUTO ORGANIZATION SHOP
+
+[Sheet: '21710']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 109
+  print_area    : '21710'!$A$1:$AF$84
+  data_validns  : 0
+  cond_formats  : 11
+  formulas      : 43  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~21710  :: CCN: | 21710 | Nomenclature: | Electronic/Communications Maintenance Shop
+
+[Sheet: '21730']
+  state         : hidden
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 109
+  print_area    : '21730'!$A$1:$AF$84
+  data_validns  : 0
+  cond_formats  : 11
+  formulas      : 43  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~21730  :: CCN: | 21730 | Nomenclature: | Field Maintenance Shop (Comms/Elecs)
+
+[Sheet: '44112']
+  state         : hidden
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 158
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 17
+  formulas      : 59  (with ext refs: 0)
+  ccn-like rows : 2  (showing first 12)
+      row    5  CCN~44112  :: CCN: | 44112 | Nomenclature: | Storage of Air or Ground Organic Units - USMC
+      row   54  CCN~44112  :: 1Each TAMCN on the TO tab with a 44112 in the CCN column is calculated in this table. The net volume was calculated using the organizational
+
+[Sheet: '45110']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 139
+  print_area    : '45110'!$A$1:$AF$90
+  data_validns  : 0
+  cond_formats  : 13
+  formulas      : 27  (with ext refs: 0)
+  ccn-like rows : 3  (showing first 12)
+      row    5  CCN~45110  :: CCN: | 45110 | Nomenclature: | Open Storage Area
+      row   25  CCN~11111  :: =R54*0.11111 | =AA71*0.11111 | =SUM(B25:K25)
+      row   48  CCN~45110  :: CCN: | 45110 | Nomenclature: | Open Storage Area
+
+[Sheet: '21455']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 19
+  print_area    : '21455'!$A$1:$AF$46
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 4  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~21455  :: CCN: | 21455 | Nomenclature: | VEHICLE WASH PLATFORM
+
+[Sheet: '61072']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 19
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 2
+  formulas      : 5  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~61072  :: CCN: | 61072 | Nomenclature: | BATTALION SQUADRON HEADQUARTERS, MARINE CORPS
+
+[Sheet: 'TAMCN Info']
+  state         : hidden
+  tab_color     : 0
+  freeze_panes  : A2
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 3999  (with ext refs: 0)
+  ccn-like rows : 6  (showing first 12)
+      row 2327  CCN~00004  :: =LEFT(B2327,5) | C00752B | METEOROLOGICAL MEAS - 0845NV | 5.00004 | 1.7999999999999998 | 1.092
+      row 2328  CCN~00004  :: =LEFT(B2328,5) | C00752B | METEOROLOGICAL MEAS - 0845NV | 1.092 | 5.00004 | 1.7999999999999998
+      row 3151  CCN~44194  :: =LEFT(B3151,5) | C12802F | BODY ARMOR,FRAGMENT - MIL-B-44194 | 0 | 0 | 0
+      row 3152  CCN~44194  :: =LEFT(B3152,5) | C12802F | BODY ARMOR,FRAGMENT - MIL-B-44194 | 0 | 0 | 0
+      row 3803  CCN~28673  :: =LEFT(B3803,5) | C49002E | TRESTLE,HOIST,PORTA - MIL-G-28673 | 0 | 0 | 0
+      row 3804  CCN~28673  :: =LEFT(B3804,5) | C49002E | TRESTLE,HOIST,PORTA - MIL-G-28673 | 0 | 0 | 0
+
+[Sheet: 'TAMCN & CCN']
+  state         : hidden
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 11997  (with ext refs: 3999)
+  ccn-like rows : 1241  (showing first 12)
+      row    3  CCN~21710  :: 21710 | =IF(A3="CSP","Consolidated Supply Program(IIF)",IF(A3<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A3,5)),'CCN & Desc
+      row    9  CCN~10141  :: =IF(A9="CSP","Consolidated Supply Program(IIF)",IF(A9<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A9,5)),'CCN & Description'
+      row   15  CCN~63782  :: =IF(A15="CSP","Consolidated Supply Program(IIF)",IF(A15<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A15,5)),'CCN & Descripti
+      row   17  CCN~21710  :: 21710 | =IF(A17="CSP","Consolidated Supply Program(IIF)",IF(A17<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A17,5)),'CCN & D
+      row   18  CCN~21710  :: 21710 | =IF(A18="CSP","Consolidated Supply Program(IIF)",IF(A18<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A18,5)),'CCN & D
+      row   19  CCN~21710  :: 21710 | =IF(A19="CSP","Consolidated Supply Program(IIF)",IF(A19<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A19,5)),'CCN & D
+      row   20  CCN~21710  :: 21710 | =IF(A20="CSP","Consolidated Supply Program(IIF)",IF(A20<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A20,5)),'CCN & D
+      row   26  CCN~21710  :: 21710 | =IF(A26="CSP","Consolidated Supply Program(IIF)",IF(A26<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A26,5)),'CCN & D
+      row   27  CCN~21710  :: 21710 | =IF(A27="CSP","Consolidated Supply Program(IIF)",IF(A27<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A27,5)),'CCN & D
+      row   28  CCN~21710  :: 21710 | =IF(A28="CSP","Consolidated Supply Program(IIF)",IF(A28<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A28,5)),'CCN & D
+      row   37  CCN~21710  :: 21710 | =IF(A37="CSP","Consolidated Supply Program(IIF)",IF(A37<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A37,5)),'CCN & D
+      row   51  CCN~21710  :: 21710 | =IF(A51="CSP","Consolidated Supply Program(IIF)",IF(A51<>"",INDEX('CCN & Description'!$B$2:$B$1071,MATCH(VALUE(LEFT(A51,5)),'CCN & D
+
+[Sheet: 'CCN & Description']
+  state         : hidden
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 1070  (showing first 12)
+      row    2  CCN~11110  :: 11110 | FIXED-WING RUNWAY, SURFACED
+      row    3  CCN~11112  :: 11112 | RUNWAY, UNSURFACED
+      row    4  CCN~11115  :: 11115 | ROTARY-WING LANDING AREA, SURFACED
+      row    5  CCN~11120  :: 11120 | ROTARY-WING LANDING AREA, SURFACED
+      row    6  CCN~11125  :: 11125 | FIXED-WING RUNWAY, SURFACED
+      row    7  CCN~11130  :: 11130 | RUNWAY OVERRUN AREA, SURFACED
+      row    8  CCN~11210  :: 11210 | TAXIWAY, SURFACED
+      row    9  CCN~11320  :: 11320 | AIRCRAFT APRON, SURFACED
+      row   10  CCN~11340  :: 11340 | AIRCRAFT APRON, SURFACED
+      row   11  CCN~11610  :: 11610 | AIRCRAFT WASHING PAD, SURFACED
+      row   12  CCN~11612  :: 11612 | AIRCRAFT PAVEMENT SHOULDER
+      row   13  CCN~11615  :: 11615 | AIRCRAFT RINSE FACILITY
+
+########################################################################
+

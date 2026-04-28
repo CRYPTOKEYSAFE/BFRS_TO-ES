@@ -1,0 +1,491 @@
+
+## M29111_HQ_CO_CLB-4.xlsx  ::  sheet='TO'  (max_row~304, max_col~46)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Billet Organization
+  row  4 score=  1 : M29111 - HQ CO CLB 4 CLR 3 3D MLG
+  row  5 score= 20 : Rec CD | BIC | Billet Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | ... (20 total)
+  row  6 score= 13 : M | Marine Active | Marine Reserve | Civ | Other Active | Other Reserve | Marine Active | Marine Reserve | ... (13 total)
+  row  7 score= 22 : O | Off | Enl | Off | Enl | Off | Enl | Off | ... (22 total)  <-- best
+  row  8 score=  1 : S
+  row  9 score=-16 : C | M2911100001 | COMMAND ELEMENT | 0 | 0 | 0 | 0 | 0 | ... (22 total)
+  row 12 score=-10 : E | M2911100002 | COMMANDING OFFICER | LTCOL | 0402 | 0402 | M | O | ... (34 total)
+  row 15 score=-10 : E | M2911100003 | EXECUTIVE OFFICER | MAJ | 1302 | 1302 | M | O | ... (34 total)
+
+  best header row 7 full column list:
+     1. O
+     2. Off
+     3. Enl
+     4. Off
+     5. Enl
+     6. Off
+     7. Enl
+     8. Off
+     9. Enl
+    10. Off
+    11. Enl
+    12. Off
+    13. Enl
+    14. NC
+    15. T/T
+    16. Off
+    17. Enl
+    18. Off
+    19. Enl
+    20. MT/MF
+    21. UIC
+    22. C
+
+## M29112_CLC_A_CLB-4.xlsx  ::  sheet='TO'  (max_row~201, max_col~46)
+  row  3 score=  1 : Billet Organization
+  row  4 score=  1 : M29112 - CLC A CLB 4 CLR 3 3D MLG
+  row  5 score= 20 : Rec CD | BIC | Billet Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | ... (20 total)
+  row  6 score= 13 : M | Marine Active | Marine Reserve | Civ | Other Active | Other Reserve | Marine Active | Marine Reserve | ... (13 total)
+  row  7 score= 22 : O | Off | Enl | Off | Enl | Off | Enl | Off | ... (22 total)  <-- best
+  row  8 score=  1 : S
+  row  9 score=-16 : C | M2911200001 | COMPANY HEADQUARTERS | 0 | 0 | 0 | 0 | 0 | ... (22 total)
+  row 12 score=-10 : E | M2911200126 | COMPANY COMMANDER | CAPT | 0402 | 0402 | M | O | ... (34 total)
+  row 15 score=-10 : E | M2911200127 | EXECUTIVE OFFICER | 1STLT | 1302 | 1302 | M | O | ... (34 total)
+
+  best header row 7 full column list:
+     1. O
+     2. Off
+     3. Enl
+     4. Off
+     5. Enl
+     6. Off
+     7. Enl
+     8. Off
+     9. Enl
+    10. Off
+    11. Enl
+    12. Off
+    13. Enl
+    14. NC
+    15. T/T
+    16. Off
+    17. Enl
+    18. Off
+    19. Enl
+    20. MT/MF
+    21. UIC
+    22. C
+
+## M29113_CLC_B_CLB-4.xlsx  ::  sheet='TO'  (max_row~203, max_col~46)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Billet Organization
+  row  4 score=  1 : M29113 - CLC B CLB 4 CLR 3 3D MLG
+  row  5 score= 20 : Rec CD | BIC | Billet Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | ... (20 total)
+  row  6 score= 13 : M | Marine Active | Marine Reserve | Civ | Other Active | Other Reserve | Marine Active | Marine Reserve | ... (13 total)
+  row  7 score= 22 : O | Off | Enl | Off | Enl | Off | Enl | Off | ... (22 total)  <-- best
+  row  8 score=  1 : S
+  row  9 score=-16 : C | M2911300001 | COMPANY HEADQUARTERS | 0 | 0 | 0 | 0 | 0 | ... (22 total)
+  row 12 score=-10 : E | M2911300126 | COMPANY COMMANDER | CAPT | 0402 | 0402 | M | O | ... (34 total)
+  row 15 score=-10 : E | M2911300127 | EXECUTIVE OFFICER | 1STLT | 1302 | 1302 | M | O | ... (34 total)
+
+  best header row 7 full column list:
+     1. O
+     2. Off
+     3. Enl
+     4. Off
+     5. Enl
+     6. Off
+     7. Enl
+     8. Off
+     9. Enl
+    10. Off
+    11. Enl
+    12. Off
+    13. Enl
+    14. NC
+    15. T/T
+    16. Off
+    17. Enl
+    18. Off
+    19. Enl
+    20. MT/MF
+    21. UIC
+    22. C
+
+## M29114_GS_CO_CLB-4.xlsx  ::  sheet='TO'  (max_row~415, max_col~46)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Billet Organization
+  row  4 score=  1 : M29114 - GS CO CLB 4 CLR 3 3D MLG
+  row  5 score= 20 : Rec CD | BIC | Billet Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | ... (20 total)
+  row  6 score= 13 : M | Marine Active | Marine Reserve | Civ | Other Active | Other Reserve | Marine Active | Marine Reserve | ... (13 total)
+  row  7 score= 22 : O | Off | Enl | Off | Enl | Off | Enl | Off | ... (22 total)  <-- best
+  row  8 score=  1 : S
+  row  9 score=-16 : C | M2911400001 | COMPANY HEADQUARTERS SECTION | 0 | 0 | 0 | 0 | 0 | ... (22 total)
+  row 12 score=-10 : E | M2911400014 | COMPANY COMMANDER | MAJ | 3002 | 3002 | M | O | ... (34 total)
+  row 15 score=-10 : E | M2911400015 | UNIT SENIOR ENLISTED LEADER | 1STSGT | 8999 | 8999 | M | E | ... (34 total)
+
+  best header row 7 full column list:
+     1. O
+     2. Off
+     3. Enl
+     4. Off
+     5. Enl
+     6. Off
+     7. Enl
+     8. Off
+     9. Enl
+    10. Off
+    11. Enl
+    12. Off
+    13. Enl
+    14. NC
+    15. T/T
+    16. Off
+    17. Enl
+    18. Off
+    19. Enl
+    20. MT/MF
+    21. UIC
+    22. C
+
+## M67400-FO-M13020 3D MED BN-22NOV2024.xlsx  ::  sheet='TO'  (max_row~2957, max_col~46)
+  row  1 score=  2 : CHARGEABLE | NON-CHARGEABLE
+  row  2 score= 13 : Has a Desk? | MC Act | MC Res | Civ | Other  Active | Other  Reserve | MC Act | MC Res | ... (13 total)
+  row  3 score= 41 : LINE | NOTE | CCN | CCN Decription | UIC | Rec CD | BIC | Billet Description | ... (41 total)  <-- best
+  row  4 score=-19 : 1 | M28261 | C | M2826101021 | HEADQUARTERS COMMAND STAFF | 0 | 0 | 0 | ... (24 total)
+  row  5 score=-14 : 2 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101022 | COMMANDING OFFICER | CAPT | ... (38 total)
+  row  6 score=-14 : 3 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101023 | EXECUTIVE OFFICER | CDR | ... (38 total)
+  row  7 score=-13 : 4 | 44112o | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | E | M2826101531 | SUPPLY OFFICER | ... (39 total)
+  row  8 score=-13 : 5 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101024 | DIRECTOR HEALTH SERVICES/PROGRAM | CAPT | ... (39 total)
+  row  9 score=-10 : 6 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101025 | COMMAND MASTER CHIEF | CMDCM | ... (38 total)
+  row 10 score=-10 : 7 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101026 | FLD MED TECH | HN | ... (38 total)
+  row 11 score=-19 : 8 | M28261 | C | M2826101027 | COMPANY HEADQUARTERS SECTION | 0 | 0 | 0 | ... (24 total)
+  row 12 score=-14 : 9 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101423 | COMPANY COMMANDER | CAPT | ... (38 total)
+  row 13 score=-14 : 10 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101425 | ADMIN CLERK | LCPL | ... (38 total)
+  row 14 score=-10 : 11 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101491 | FLD MED TECH | HMCS | ... (38 total)
+  row 15 score=-10 : 12 | 61072 | BATTALION SQUADRON HEADQUARTERS - CMC ONLY | M28261 | E | M2826101029 | FLD MED TECH | HM3 | ... (38 total)
+
+  best header row 3 full column list:
+     1. LINE
+     2. NOTE
+     3. CCN
+     4. CCN Decription
+     5. UIC
+     6. Rec CD
+     7. BIC
+     8. Billet Description
+     9. Alpha Grade
+    10. BMOS
+    11. PMOS
+    12. B R N
+    13. T Y P
+    14. S T A
+    15. M P R
+    16. Res Typ
+    17. S C
+    18. W P N
+    19. Billet SPN
+    20. Off
+    21. Enl
+    22. Off
+    23. Enl
+    24. Off
+    25. Enl
+    26. Off
+    27. Enl
+    28. Off
+    29. Enl
+    30. Off
+    31. Enl
+    32. NC
+    33. T/T
+    34. Off
+    35. Enl
+    36. Off
+    37. Enl
+    38. A S R
+    39. IH/CA
+    40. MCC
+    41. F T N
+
+## 2031 Master TO&E v1.1 - 20250411.xlsx  ::  sheet='TO_2'  (max_row~24299, max_col~51)
+  row  1 score= 51 : CCN | CCN DESCRIPTION | UIC | Rec CD | BIC | Billet Description | Alpha Grade | BMOS | ... (51 total)  <-- best
+  row  2 score= -1 : M00102 | C | M0010200001 | HEADQUARTERS | 2031 | 3065
+  row  3 score= -9 : M00102 | E | M0010200002 | WING CDR | MAJGEN | 8003 | 8003 | M | ... (46 total)
+  row  4 score=-11 : M00102 | E | M0010200003 | AIDE-DE-CAMP | CAPT | 7506 | 0 | M | ... (44 total)
+  row  5 score= -9 : M00102 | E | M0010201069 | AIDE-DE-CAMP | 1STLT | 7506 | 0 | M | ... (44 total)
+  row  6 score=-11 : M00102 | E | M0010200005 | COMMAND SENIOR ENLISTED LEADER | SGTMAJ | 8999 | 8999 | M | ... (44 total)
+  row  7 score= -9 : M00102 | E | M0010201021 | SENIOR ENLISTED ADVISOR | MGYSGT | 8014 | 0 | M | ... (44 total)
+  row  8 score=-13 : M00102 | E | MS513400722 | SUPERVISORY EOA | GS12 | 343 | 343 | A | ... (44 total)
+  row  9 score=-11 : M00102 | E | M0010200006 | EQUAL OPPORTUNITY ADVISOR | GYSGT | 147 | 0 | M | ... (44 total)
+  row 10 score=-16 : M00102 | E | M2012901061 | SEXUAL ASSAULT RESPONSE COORDINATOR (SARC) | NF 4 | 101 | 101 | O | ... (45 total)
+  row 11 score=-13 : M00102 | E | MS513400319 | SAPR VICTIM ADVOCATE | GS11 | 101 | 101 | A | ... (44 total)
+  row 12 score=-11 : M00102 | E | M0010200007 | CLERK/DRIVER | CPL | 111 | 111 | M | ... (44 total)
+  row 13 score= -7 : M00102 | E | M0010200008 | FLAG CMC | CMDCM | 8CMC | 8CMC | N | ... (44 total)
+  row 14 score= -9 : M00102 | E | M0010200010 | ASSISTANT WING COMMANDER | BGEN | 8003 | 8003 | M | ... (46 total)
+  row 15 score=-11 : M00102 | E | M0010200011 | CLERK/DRIVER | CPL | 111 | 111 | M | ... (44 total)
+
+  best header row 1 full column list:
+     1. CCN
+     2. CCN DESCRIPTION
+     3. UIC
+     4. Rec CD
+     5. BIC
+     6. Billet Description
+     7. Alpha Grade
+     8. BMOS
+     9. PMOS
+    10. BRN
+    11. TYP
+    12. STA
+    13. MPR
+    14. Res Typ
+    15. SC
+    16. WPN
+    17. Billet SPN
+    18. Marine Active Chargeable Officer
+    19. CHARG ACT MAR ENLST
+    20. Chargeable Marine Res Officer
+    21. Chargeable Marine Res Enlisted
+    22. CHARG CIVIL
+    23. CHARG ACT OTHR OFFCR
+    24. CHARG ACT OTHR ENLST
+    25. Navy SELRES Officer
+    26. Navy SELRES Enlisted
+    27. Non-Chargeable Marine Active Officer
+    28. Non-Chargeable Marine Active Enlisted
+    29. Non-Chargeable Marine Res Officer
+    30. Non-Chargeable Marine Res Enlisted
+    31. Non-chargeable Civil
+    32. Non-chargeable Civilian Temp/Term
+    33. Non-Chargeable Other Active Officer
+    34. Non-Chargeable Other Active Enlisted
+    35. NAV MED AUG OFFCR
+    36. NAV MED AUG ENLST
+    37. MT/MF
+    38. Mapped UIC
+    39. ASR
+    40. IH/CA
+    41. MCC
+    42. Footnote
+    43. Fiscal Year
+    44. Billet Current FY
+    45. Hierarchy Order Number
+    46. Pay Grade
+    47. Geolocation Name
+    48. Installation Name/City
+    49. Chargeable Category
+    50. UIC - Unit Name
+    51. Grade Type
+
+## M29111_HQ_CO_CLB-4.xlsx  ::  sheet='Primary Only'  (max_row~600, max_col~37)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Equipment Organization
+  row  4 score=  1 : M29111 - HQ CO CLB 4 CLR 3 3D MLG
+  row  6 score=  1 : Type I TAMCNs
+  row  7 score=  1 : Primary TAMCNs
+  row  8 score= 13 : TAMCN | Nomenclature (Name - Model) | TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | ... (13 total)
+  row  9 score= -1 : Rpt | T/E | Shpd | LTS | Spl | 2026 | 2027 | 2028 | ... (13 total)
+  row 10 score= 17 : Qty | Qty | Qty | Unf | Pln | Unf | Pln | Unf | ... (17 total)  <-- best
+  row 12 score=-13 : A01357G | RADIO SET - AN/VRC-112 | DP | EA | N | 0 | 0 | 0 | ... (29 total)
+  row 13 score=  3 : Used By | D00477K | TRUCK,UTILITY - M1281A1
+  row 14 score=  3 : Used By | D00467K | TRUCK,UTILITY - M1278A1
+  row 15 score=  3 : Used By | D00487K | TRUCK,UTILITY - M1279A1
+
+  best header row 10 full column list:
+     1. Qty
+     2. Qty
+     3. Qty
+     4. Unf
+     5. Pln
+     6. Unf
+     7. Pln
+     8. Unf
+     9. Pln
+    10. Unf
+    11. Pln
+    12. Unf
+    13. Pln
+    14. Unf
+    15. Pln
+    16. Unf
+    17. Pln
+
+## M29112_CLC_A_CLB-4.xlsx  ::  sheet='Primary Only'  (max_row~477, max_col~37)
+  row  3 score=  1 : Equipment Organization
+  row  4 score=  1 : M29112 - CLC A CLB 4 CLR 3 3D MLG
+  row  6 score=  1 : Type I TAMCNs
+  row  7 score=  1 : Primary TAMCNs
+  row  8 score= 13 : TAMCN | Nomenclature (Name - Model) | TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | ... (13 total)
+  row  9 score= -1 : Rpt | T/E | Shpd | LTS | Spl | 2026 | 2027 | 2028 | ... (13 total)
+  row 10 score= 17 : Qty | Qty | Qty | Unf | Pln | Unf | Pln | Unf | ... (17 total)  <-- best
+  row 12 score=-13 : A00677G | RADIO SET - AN/MRC-148A | IS | EA | M | 0 | 1 | 1 | ... (29 total)
+  row 13 score=  3 : Used With | A02727G | RADIO SET CONTROL G - RF-9800R-RC110
+  row 14 score=  3 : Replacement For | A19357G | RADIO SET - AN/MRC138B(V)
+  row 15 score=  3 : Consists Of | D11587KK | TRUCK,UTILITY - M1123
+
+  best header row 10 full column list:
+     1. Qty
+     2. Qty
+     3. Qty
+     4. Unf
+     5. Pln
+     6. Unf
+     7. Pln
+     8. Unf
+     9. Pln
+    10. Unf
+    11. Pln
+    12. Unf
+    13. Pln
+    14. Unf
+    15. Pln
+    16. Unf
+    17. Pln
+
+## M29113_CLC_B_CLB-4.xlsx  ::  sheet='Primary Only'  (max_row~479, max_col~37)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Equipment Organization
+  row  4 score=  1 : M29113 - CLC B CLB 4 CLR 3 3D MLG
+  row  6 score=  1 : Type I TAMCNs
+  row  7 score=  1 : Primary TAMCNs
+  row  8 score= 13 : TAMCN | Nomenclature (Name - Model) | TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | ... (13 total)
+  row  9 score= -1 : Rpt | T/E | Shpd | LTS | Spl | 2026 | 2027 | 2028 | ... (13 total)
+  row 10 score= 17 : Qty | Qty | Qty | Unf | Pln | Unf | Pln | Unf | ... (17 total)  <-- best
+  row 12 score=-13 : A00677G | RADIO SET - AN/MRC-148A | IS | EA | M | 0 | 1 | 1 | ... (29 total)
+  row 13 score=  3 : Used With | A02727G | RADIO SET CONTROL G - RF-9800R-RC110
+  row 14 score=  3 : Replacement For | A19357G | RADIO SET - AN/MRC138B(V)
+  row 15 score=  3 : Consists Of | D11587KK | TRUCK,UTILITY - M1123
+
+  best header row 10 full column list:
+     1. Qty
+     2. Qty
+     3. Qty
+     4. Unf
+     5. Pln
+     6. Unf
+     7. Pln
+     8. Unf
+     9. Pln
+    10. Unf
+    11. Pln
+    12. Unf
+    13. Pln
+    14. Unf
+    15. Pln
+    16. Unf
+    17. Pln
+
+## M29114_GS_CO_CLB-4.xlsx  ::  sheet='Primary Only'  (max_row~661, max_col~37)
+  row  1 score=  1 : CUI
+  row  3 score=  1 : Equipment Organization
+  row  4 score=  1 : M29114 - GS CO CLB 4 CLR 3 3D MLG
+  row  6 score=  1 : Type I TAMCNs
+  row  7 score=  1 : Primary TAMCNs
+  row  8 score= 13 : TAMCN | Nomenclature (Name - Model) | TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | ... (13 total)
+  row  9 score= -1 : Rpt | T/E | Shpd | LTS | Spl | 2026 | 2027 | 2028 | ... (13 total)
+  row 10 score= 17 : Qty | Qty | Qty | Unf | Pln | Unf | Pln | Unf | ... (17 total)  <-- best
+  row 12 score=-13 : A00477B | SHELTER,EXPANDABLE - 09021A0000 | IS | EA | N | 0 | 1 | 1 | ... (29 total)
+  row 13 score=  3 : Consists Of | B00087BB | AIR CONDITIONER - GL0583ZAADWYX11
+  row 14 score=-13 : A00977G | RADIO SET - AN/VRC-110 | DP | EA | N | 0 | 0 | 0 | ... (29 total)
+  row 15 score=  3 : Replacement For | A21707G | RADIO SET - AN/VRC91A
+
+  best header row 10 full column list:
+     1. Qty
+     2. Qty
+     3. Qty
+     4. Unf
+     5. Pln
+     6. Unf
+     7. Pln
+     8. Unf
+     9. Pln
+    10. Unf
+    11. Pln
+    12. Unf
+    13. Pln
+    14. Unf
+    15. Pln
+    16. Unf
+    17. Pln
+
+## M67400-FO-M13020 3D MED BN-22NOV2024.xlsx  ::  sheet='TE'  (max_row~2251, max_col~22)
+  row  1 score= 20 : ROW | NOTE | CCN | CCN Description | CCN 21451 Equipment Type (if applicable) | UIC | TAMCN
+Short | TAMCN | ... (20 total)  <-- best
+  row  2 score=  5 : 3 | 14345 | ARMORY | M28261 | E0030 | E00302M | PISTOL,9 MILLIMETER-M18 | IS | ... (18 total)
+  row  3 score=  4 : 4 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | K0001 | K00012B | CHARGER,BATTERY-PCWV+ | IS | ... (18 total)
+  row  4 score=  4 : 5 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M28261 | A2042 | A20427G | RADIO SET-AN/PRC-150 (C) | DP | ... (18 total)
+  row  5 score=  4 : 11 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | C3020 | C30202E | INSERTS,ENHANCED SM- CO/PD 04-10 | IS | ... (18 total)
+  row  6 score=  4 : 12 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | C3423 | C34232E | STAND,CANTEEN CUP-MIL-S-44221 | IS | ... (18 total)
+  row  7 score=  3 : 16 | 14345 | ARMORY | M28261 | E0190 | E01902M | CARBINE,5.56 MILLIM-M4A1 | IS | ... (18 total)
+  row  8 score=  3 : 19 | 14345 | ARMORY | M28261 | E2829 | E28292E | TOOL KIT,ORGANIZATI- | IS | ... (18 total)
+  row  9 score= -6 : 20 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | K4128 | K41282E | CAN,MILITARY- | IS | ... (18 total)
+  row 10 score=  2 : 21 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | K4236 | K42362E | COT,FOLDING-2-5-72 | IS | ... (18 total)
+  row 11 score=  2 : 23 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | K4959 | K49592E | TABLE,FOLDING LEGS- MILT3338 | IS | ... (18 total)
+  row 12 score=  4 : 30 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | C7911 | C79112B | SHOP EQUIPMENT,UTIL-USMC24-1000 | IS | ... (18 total)
+  row 13 score=  0 : 34 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | C1120 | C11202F | GLOVE INSERTS,COLD-70113 | IS | ... (18 total)
+  row 14 score=  4 : 37 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | C0115 | C01152F | DRAWERS,COLD WEATHE-FRDRCW | IS | ... (18 total)
+  row 15 score=  2 : 38 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | K0025 | K00252B | CHARGER,BATTERY-HD PALLET CHARGE | IS | ... (18 total)
+
+  best header row 1 full column list:
+     1. ROW
+     2. NOTE
+     3. CCN
+     4. CCN Description
+     5. CCN 21451 Equipment Type (if applicable)
+     6. UIC
+     7. TAMCN
+Short
+     8. TAMCN
+     9. Nomenclature (Name - Model)
+    10. TAM Stat
+    11. U/I
+    12. Rdy
+    13. Ind Qty
+    14. Org Qty
+    15. Unit T/E
+    16. L, Ft
+    17. W, Ft
+    18. H, Ft
+    19. Volume Ea, ft3
+    20. Volume Total, ft3
+
+## 2031 Master TO&E v1.1 - 20250411.xlsx  ::  sheet='TE_3'  (max_row~19002, max_col~27)
+  row  1 score= 27 : FY | CCN | CCN Description | 21xxx Designator | UIC | Equipment Type | TAM Category | TAMCN Short | ... (27 total)  <-- best
+  row  2 score= -2 : 2031 | M00102 | 1 | A | A00357G | WORKSTATION,PORTABL | 7010016916616 | IS | ... (13 total)
+  row  3 score= -2 : 2031 | M00102 | 1 | A | A00647G | TELECONFERENCE SYST - 1801A0004-02 | 5820016899881 | IS | ... (13 total)
+  row  4 score= -2 : 2031 | M00102 | 1 | A | A00957G | LOCAL AREA NETWORK - 1801A0005 | 7025016758139 | IS | ... (13 total)
+  row  5 score= -2 : 2031 | M00102 | 1 | A | A01097G | WORKSTATION,PORTABL | 7010016916897 | IS | ... (13 total)
+  row  6 score= -2 : 2031 | M00102 | 1 | A | A01207G | SWITCHING GROUP,DIG | 5895016922704 | IS | ... (13 total)
+  row  7 score= -2 : 2031 | M00102 | 1 | A | A01287G | NETWORK MANAGEMENT - 1801A0007 | 5895016762775 | IS | ... (13 total)
+  row  8 score= -2 : 2031 | M00102 | 1 | A | A01437G | COMPUTER SYSTEM,DIG - 1801A0008 | 7010016758141 | IS | ... (13 total)
+  row  9 score= -1 : 2031 | M00102 | 1 | A | A01447G | WORKSTATION,GEOSPAT - AN/TSQ-312 | 7010016963562 | IS | ... (16 total)
+  row 10 score= -2 : 2031 | M00102 | 1 | A | A01597G | WORKSTATION,PORTABL | 7010016918536 | IS | ... (13 total)
+  row 11 score= -2 : 2031 | M00102 | 1 | A | A01607G | CONTAINERIZED JOINT WORLDWIDE INTELLIGENCE COMMUNICATION (CJWICS) | PL | O | ... (12 total)
+  row 12 score= -2 : 2031 | M00102 | 1 | A | A01617G | TELECONFERENCE SYST - 1801A0009 | 5820016758140 | IS | ... (13 total)
+  row 13 score=  2 : 2031 | M00102 | 1 | A | A01637G | ANTENNA - GODLEY | 5985017030831 | IS | ... (19 total)
+  row 14 score= -1 : 2031 | M00102 | 1 | A | A01687G | MEGFOS-BACKPACK, ADVANCED USER | PL | O | ... (12 total)
+  row 15 score= -2 : 2031 | M00102 | 1 | A | A02017G | CAMERA SET,STILL PI - 16015A1100-1 | 6780016821292 | IS | ... (13 total)
+
+  best header row 1 full column list:
+     1. FY
+     2. CCN
+     3. CCN Description
+     4. 21xxx Designator
+     5. UIC
+     6. Equipment Type
+     7. TAM Category
+     8. TAMCN Short
+     9. TAMCN
+    10. Nomenclature
+    11. National Stock Number
+    12. TAM Status
+    13. Type Allowance Code
+    14. Ind Qty
+    15. Org Qty
+    16. Unit T/E
+    17. L, Ft
+    18. W, Ft
+    19. H, Ft
+    20. Volume EA, ft3
+    21. Volume Total, ft3
+    22. Space Factor
+    23. Type Code
+    24. NSY
+    25. NTG Factor
+    26. Cost Code
+    27. Primary/Component

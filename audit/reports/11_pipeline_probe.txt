@@ -1,0 +1,64 @@
+
+## M29111_HQ_CO_CLB-4.xlsx  ::  TO
+  rows scanned: 304
+  no CCN+suffix tags found
+
+## M29112_CLC_A_CLB-4.xlsx  ::  TO
+  rows scanned: 201
+  no CCN+suffix tags found
+
+## M29113_CLC_B_CLB-4.xlsx  ::  TO
+  rows scanned: 203
+  no CCN+suffix tags found
+
+## M29114_GS_CO_CLB-4.xlsx  ::  TO
+  rows scanned: 415
+  no CCN+suffix tags found
+
+## M29111_HQ_CO_CLB-4.xlsx  ::  Primary Only
+  rows scanned: 600
+  no CCN+suffix tags found
+
+## M29112_CLC_A_CLB-4.xlsx  ::  Primary Only
+  rows scanned: 477
+  no CCN+suffix tags found
+
+## SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx  ::  TO
+  rows scanned: 891
+  no CCN+suffix tags found
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col D (idx 4): 264 hits, 6 distinct  e.g. [('21451', 160), ('61072', 50), ('21710', 29), ('61073', 12), ('44112', 11), ('14345', 2)]
+
+## SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx  ::  TE
+  rows scanned: 604
+  no CCN+suffix tags found
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col D (idx 4): 305 hits, 5 distinct  e.g. [('21710', 101), ('44112', 80), ('14345', 73), ('21451', 42), ('21820', 9)]
+    col U (idx 21): 1 hits, 1 distinct  e.g. [('10240', 1)]
+
+## M67400-FO-M13020 3D MED BN-22NOV2024.xlsx  ::  TO
+  rows scanned: 2957
+  CCN+SUFFIX hits by column:
+    col C (idx 3): 9 hits, 4 distinct  e.g. [('44112w', 5), ('44112o', 2), ('14345o', 1), ('14345a', 1)]
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col D (idx 4): 145 hits, 6 distinct  e.g. [('21451', 55), ('61072', 52), ('61073', 25), ('44112', 7), ('21710', 4), ('14345', 2)]
+
+## M67400-FO-M13020 3D MED BN-22NOV2024.xlsx  ::  TE
+  rows scanned: 2251
+  no CCN+suffix tags found
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col D (idx 4): 368 hits, 5 distinct  e.g. [('14345', 110), ('44112', 101), ('21710', 75), ('21451', 46), ('21820', 36)]
+
+## 2031 Master TO&E v1.1 - 20250411.xlsx  ::  TO_2
+  rows scanned: 24299
+  no CCN+suffix tags found
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col AS (idx 45): 442 hits, 442 distinct  e.g. [('10821', 1), ('10822', 1), ('10823', 1), ('10824', 1), ('10825', 1), ('10826', 1)]
+
+## 2031 Master TO&E v1.1 - 20250411.xlsx  ::  TE_3
+  rows scanned: 19002
+  no CCN+suffix tags found
+  BARE 5-digit CCN hits by column (top 3 cols only):
+    col P (idx 16): 306 hits, 46 distinct  e.g. [('11928', 37), ('14280', 33), ('37527', 24), ('12138', 22), ('11214', 12), ('17052', 11)]
+    col N (idx 14): 279 hits, 24 distinct  e.g. [('11928', 37), ('14280', 33), ('37527', 27), ('12138', 22), ('11214', 12), ('17052', 11)]
+    col U (idx 21): 116 hits, 34 distinct  e.g. [('26880', 29), ('80640', 10), ('53760', 9), ('13440', 7), ('13104', 5), ('34944', 5)]

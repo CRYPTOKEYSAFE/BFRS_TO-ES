@@ -1,0 +1,11 @@
+FC 2-000-05N Planning Factors Extraction Summary
+========================================================
+Series 100 PDF : fc_2_000_05n_100series_02_11_2026.pdf
+Series 200 PDF : fc_2_000_05n_200series_05_16_2025.pdf
+Total records  : 339
+From Series 100: 127
+From Series 200: 212
+
+Distinct CCNs referenced:
+  count=58
+  sample (first 20): ['11110', '11130', '11320', '11645', '11660', '13115', '13120', '13124', '13135', '13140', '13150', '13374', '14112', '14140', '14311', '14312', '14324', '14335', '14345', '14346']

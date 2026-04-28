@@ -151,6 +151,24 @@ Open these four sheets in Excel to ground-truth the visual:
   CCN" call-out block (which the generator must reproduce when the
   parent CCN sheet has carve-outs)
 
+## Apex Omega cell-role palette (overlay on CLB-4 theme styling)
+
+Per Apex Omega rule §8 (Output conventions, item 7), cells in any
+generated workbook must be filled by **role** with the following hex
+colors. This is in addition to the CLB-4 theme tints used for banners
+and headers above; the role palette colors **data cells** specifically.
+
+| Role | Fill | When to use |
+|---|---|---|
+| **INPUT** | `#FFF8DC` (cream) | User-editable cells: TFSMS personnel counts, vehicle counts, override flags, project metadata (UIC, planner, FY, building no.). |
+| **CALC** | `#EAF3F4` (light teal) | Intermediate computed cells: NSF subtotals, factor multiplications, lookup results. |
+| **OUTPUT** | `#DCE7C8` (light green) | Final result cells: per-CCN GSF total, `UNIT_ROLLUP` H-column cells, `TOTAL REQUIREMENT` value. |
+| **WARNING / REVIEW** | `#F8E2D6` (light orange) | TFSMS-unreconciled flag, missing-loading flag, override-active flag, any cell that means "human must look at this before release". |
+
+Font: Calibri or Arial (no display fonts in body text). The cell-role
+palette overrides the CLB-4 "no fill" body cells where role is
+applicable; banners and headers retain the CLB-4 theme tints.
+
 ## What NOT to do
 
 - **No bright tab colors** — these sheets all have `tab_color=None`.

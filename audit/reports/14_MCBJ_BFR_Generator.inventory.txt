@@ -1,0 +1,222 @@
+FILE: MCBJ_BFR_Generator_FC2-000-05N.xlsx
+PATH: /home/user/BFRS_TO-ES/MCBJ_BFR_Generator_FC2-000-05N.xlsx
+SIZE: 38,645 bytes
+
+SHEETS (8):
+  [00] 'Cover'  state=visible  dim=B2:G42  max_row=42  max_col=7
+  [01] 'TFSMS_Loading'  state=visible  dim=B2:S24  max_row=24  max_col=19
+  [02] 'Personnel'  state=visible  dim=B2:I41  max_row=41  max_col=9
+  [03] 'BFR_Calculator'  state=visible  dim=B2:J33  max_row=33  max_col=10
+  [04] 'Inventory'  state=visible  dim=B2:J20  max_row=20  max_col=10
+  [05] 'Okinawa_Adj'  state=visible  dim=B2:E27  max_row=27  max_col=5
+  [06] 'BFR_Summary'  state=visible  dim=B2:J75  max_row=75  max_col=10
+  [07] 'CCN_Library'  state=visible  dim=B2:I39  max_row=39  max_col=9
+
+DEFINED NAMES (43):
+  'BFR_CCN'  ->  'BFR_Calculator!$B$7:$B$20'
+  'BFR_NAME'  ->  'BFR_Calculator!$C$7:$C$20'
+  'BFR_NOTE'  ->  'BFR_Calculator!$J$7:$J$20'
+  'BFR_OVR'  ->  'BFR_Calculator!$I$7:$I$20'
+  'BFR_REQ'  ->  'BFR_Calculator!$H$7:$H$20'
+  'BFR_UM'  ->  'BFR_Calculator!$D$7:$D$20'
+  'BLDG_NO'  ->  'Cover!$D$8'
+  'CCN_TABLE'  ->  'CCN_Library!$C$6:$I$28'
+  'Contingency'  ->  'Okinawa_Adj!$C$10'
+  'DD1391'  ->  'Cover!$D$15'
+  'Esc_Factor'  ->  'Okinawa_Adj!$C$9'
+  'HF'  ->  'Okinawa_Adj!$C$13'
+  'INSTALLATION'  ->  'Cover!$D$7'
+  'Okinawa_Navy_ACF'  ->  'Okinawa_Adj!$C$7'
+  'Okinawa_Sust_ACF'  ->  'Okinawa_Adj!$C$8'
+  'PD_Factor'  ->  'Okinawa_Adj!$C$12'
+  'PLANNER'  ->  'Cover!$D$12'
+  'PN_CIV'  ->  'Personnel!$C$30'
+  'PN_CTR'  ->  'Personnel!$C$31'
+  'PN_ENL'  ->  'Personnel!$C$29'
+  'PN_MIL'  ->  'Personnel!$C$33'
+  'PN_OFF'  ->  'Personnel!$C$28'
+  'PN_TOTAL'  ->  'Personnel!$C$32'
+  'PROG_FY'  ->  'Cover!$D$14'
+  'PROJ_DATE'  ->  'Cover!$D$13'
+  'PROJ_TITLE'  ->  'Cover!$D$6'
+  'REGION'  ->  'Cover!$D$9'
+  'SIOH'  ->  'Okinawa_Adj!$C$11'
+  'TENANT_UNIT'  ->  'Cover!$D$10'
+  'TFSMS_CIV'  ->  'TFSMS_Loading!$L$17'
+  'TFSMS_CTR'  ->  'TFSMS_Loading!$M$17'
+  'TFSMS_MAR_ENL'  ->  'TFSMS_Loading!$E$17'
+  'TFSMS_MAR_OFF'  ->  'TFSMS_Loading!$D$17'
+  'TFSMS_NAV_ENL'  ->  'TFSMS_Loading!$G$17'
+  'TFSMS_NAV_OFF'  ->  'TFSMS_Loading!$F$17'
+  'TFSMS_NC'  ->  'TFSMS_Loading!$N$17'
+  'TFSMS_OS_ENL'  ->  'TFSMS_Loading!$I$17'
+  'TFSMS_OS_OFF'  ->  'TFSMS_Loading!$H$17'
+  'TFSMS_RES_ENL'  ->  'TFSMS_Loading!$K$17'
+  'TFSMS_RES_OFF'  ->  'TFSMS_Loading!$J$17'
+  'TFSMS_TOTAL'  ->  'TFSMS_Loading!$O$17'
+  'TFSMS_UNRECONCILED'  ->  'TFSMS_Loading!$D$19'
+  'UIC'  ->  'Cover!$D$11'
+
+EXTERNAL LINKS (0):
+
+PER-SHEET DETAIL
+============================================================
+
+[Sheet: 'Cover']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 37
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 7  (showing first 12)
+      row   19  CCN~61010  :: 2. Go to the Personnel sheet and enter unit personnel loading (officers, enlisted, civilians, contractors). The Authorized Strength Report (
+      row   22  CCN~010-01  :: 5. Open the Okinawa Adjustments sheet. Confirm the MILCON Area Cost Factor (Okinawa Navy ACF), ATFP setbacks (UFC 4-010-01), seismic/typhoon
+      row   36  CCN~11000  :: • MCO 11000.12 — Real Property Facilities Manual, Facilities Planning and Programming
+      row   38  CCN~010-01  :: • UFC 4-010-01 — DoD Minimum Antiterrorism Standards for Buildings
+      row   39  CCN~020-01  :: • UFC 4-020-01 — DoD Security Engineering Facilities Planning Manual
+      row   40  CCN~701-01  :: • UFS 3-701-01 — DoD Facilities Pricing Guide (ACFs in Table 4-1)
+      row   41  CCN~730-01  :: • UFS 3-730-01 — Programming Cost Estimates for Military Construction
+
+[Sheet: 'TFSMS_Loading']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : C8
+  merged_cells  : 20
+  print_area    : 
+  data_validns  : 1
+  cond_formats  : 2
+  formulas      : 20  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'Personnel']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 10
+  print_area    : 
+  data_validns  : 1
+  cond_formats  : 0
+  formulas      : 50  (with ext refs: 0)
+  ccn-like rows : 3  (showing first 12)
+      row    3  CCN~61010  :: Per FC 2-000-05N §61010-3 — Personnel loading must come from an official source (ASR / TFSD).
+      row   20  CCN~61010  :: Personnel Loading (PN) for BFR (FC §61010-3) | =G15 | All military, civilian, and other personnel associated with the organization.
+      row   24  CCN~61010  :: Authoritative source for personnel loading per FC 2-000-05N §61010-3: Authorized Strength Report (ASR) validated by Total Force Structure Di
+
+[Sheet: 'BFR_Calculator']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 6
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 1
+  formulas      : 63  (with ext refs: 0)
+  ccn-like rows : 16  (showing first 12)
+      row    7  CCN~143 10  :: 143 10 | =IFERROR(VLOOKUP(B7,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B7,CCN_TABLE,3,FALSE()),"") | 0 | 1 | =IFERROR(E7*F7*G7,0) | Emerge
+      row    8  CCN~143 11  :: 143 11 | =IFERROR(VLOOKUP(B8,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B8,CCN_TABLE,3,FALSE()),"") | 1 | =BFR_Calculator!G33 | 1.2 | =IFER
+      row    9  CCN~143 12  :: 143 12 | =IFERROR(VLOOKUP(B9,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B9,CCN_TABLE,3,FALSE()),"") | 1 | =BFR_Calculator!H33 | 1 | =IFERRO
+      row   10  CCN~143 24  :: 143 24 | =IFERROR(VLOOKUP(B10,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B10,CCN_TABLE,3,FALSE()),"") | 1 | 7204 | 1 | =IFERROR(E10*F10*G10
+      row   11  CCN~143 45  :: 143 45 | =IFERROR(VLOOKUP(B11,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B11,CCN_TABLE,3,FALSE()),"") | =PN_MIL | 1 | =IFERROR(E11*F11*G11,
+      row   12  CCN~143 46  :: 143 46 | =IFERROR(VLOOKUP(B12,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B12,CCN_TABLE,3,FALSE()),"") | 0 | 1 | =IFERROR(E12*F12*G12,0) | M
+      row   13  CCN~171 10  :: 171 10 | =IFERROR(VLOOKUP(B13,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B13,CCN_TABLE,3,FALSE()),"") | 0 | 45 | 1.33 | =IFERROR(E13*F13*G1
+      row   14  CCN~171 20  :: 171 20 | =IFERROR(VLOOKUP(B14,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B14,CCN_TABLE,3,FALSE()),"") | 0 | 150 | 1.25 | =IFERROR(E14*F14*G
+      row   15  CCN~171 50  :: 171 50 | =IFERROR(VLOOKUP(B15,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B15,CCN_TABLE,3,FALSE()),"") | 0 | 1 | =IFERROR(E15*F15*G15,0) | I
+      row   16  CCN~173 10  :: 173 10 | =IFERROR(VLOOKUP(B16,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B16,CCN_TABLE,3,FALSE()),"") | 0 | 1 | =IFERROR(E16*F16*G16,0) | R
+      row   17  CCN~173 11  :: 173 11 | =IFERROR(VLOOKUP(B17,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B17,CCN_TABLE,3,FALSE()),"") | 0 | 1 | =IFERROR(E17*F17*G17,0) | R
+      row   18  CCN~179 60  :: 179 60 | =IFERROR(VLOOKUP(B18,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B18,CCN_TABLE,3,FALSE()),"") | =PN_TOTAL | =1/125 | 1 | =IFERROR(E
+
+[Sheet: 'Inventory']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 3
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 2
+  formulas      : 84  (with ext refs: 0)
+  ccn-like rows : 14  (showing first 12)
+      row    7  CCN~143 10  :: 143 10 | =IFERROR(VLOOKUP(B7,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B7,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I7="",BFR_Calculat
+      row    8  CCN~143 11  :: 143 11 | =IFERROR(VLOOKUP(B8,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B8,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I8="",BFR_Calculat
+      row    9  CCN~143 12  :: 143 12 | =IFERROR(VLOOKUP(B9,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B9,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I9="",BFR_Calculat
+      row   10  CCN~143 24  :: 143 24 | =IFERROR(VLOOKUP(B10,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B10,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I10="",BFR_Calcu
+      row   11  CCN~143 45  :: 143 45 | =IFERROR(VLOOKUP(B11,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B11,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I11="",BFR_Calcu
+      row   12  CCN~143 46  :: 143 46 | =IFERROR(VLOOKUP(B12,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B12,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I12="",BFR_Calcu
+      row   13  CCN~171 10  :: 171 10 | =IFERROR(VLOOKUP(B13,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B13,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I13="",BFR_Calcu
+      row   14  CCN~171 20  :: 171 20 | =IFERROR(VLOOKUP(B14,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B14,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I14="",BFR_Calcu
+      row   15  CCN~171 50  :: 171 50 | =IFERROR(VLOOKUP(B15,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B15,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I15="",BFR_Calcu
+      row   16  CCN~173 10  :: 173 10 | =IFERROR(VLOOKUP(B16,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B16,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I16="",BFR_Calcu
+      row   17  CCN~173 11  :: 173 11 | =IFERROR(VLOOKUP(B17,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B17,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I17="",BFR_Calcu
+      row   18  CCN~179 60  :: 179 60 | =IFERROR(VLOOKUP(B18,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B18,CCN_TABLE,3,FALSE()),"") | =IF(BFR_Calculator!I18="",BFR_Calcu
+
+[Sheet: 'Okinawa_Adj']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 22
+  print_area    : 
+  data_validns  : 1
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 10  (showing first 12)
+      row    5  CCN~701-01  :: MILCON Cost Adjustment Factors (UFS 3-701-01 Table 4-1 / PAX Newsletter 3.2.1)
+      row    8  CCN~701-01  :: Sustainment Area Cost Factor (Okinawa) | 2.1 | Sustainment ACF — used for SR per UFS 3-701-01 §3-3.
+      row    9  CCN~730-01  :: Programmed Escalation Factor | 1 | Set per program FY (UFS 3-730-01 Table 2). Update each FY.
+      row   10  CCN~730-01  :: Contingency Factor | 1.05 | OCONUS contingency (UFS 3-730-01).
+      row   12  CCN~701-01  :: Planning & Design Factor | 1.09 | 1.09 standard / 1.13 medical (UFS 3-701-01 Eq 3-1).
+      row   18  CCN~010-01  :: TBD | UFC 4-010-01 minimum standoff distances met (controlled perimeter ≥18 ft; ≥12 ft within controlled perimeter).
+      row   19  CCN~020-01  :: TBD | UFC 4-020-01 Design Basis Threat (DBT) and Level Of Protection (LOP) determined for the project.
+      row   20  CCN~010-01  :: TBD | Mass notification system included (UFC 4-010-01 Standard 21).
+      row   21  CCN~023-03  :: TBD | Progressive collapse mitigation per UFC 4-023-03.
+      row   25  CCN~11000  :: TBD | Encroachment Control Plan (ECP) and IMP land-use checked (MCO 11000.12).
+
+[Sheet: 'BFR_Summary']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 36
+  print_area    : 'BFR_Summary'!$B$2:$J$76
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 214  (with ext refs: 0)
+  ccn-like rows : 29  (showing first 12)
+      row   25  CCN~143 10  :: 143 10 | =IFERROR(VLOOKUP(B25,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B25,CCN_TABLE,3,FALSE()),"") | =Inventory!E7 | =Inventory!F7 | =In
+      row   26  CCN~143 11  :: 143 11 | =IFERROR(VLOOKUP(B26,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B26,CCN_TABLE,3,FALSE()),"") | =Inventory!E8 | =Inventory!F8 | =In
+      row   27  CCN~143 12  :: 143 12 | =IFERROR(VLOOKUP(B27,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B27,CCN_TABLE,3,FALSE()),"") | =Inventory!E9 | =Inventory!F9 | =In
+      row   28  CCN~143 24  :: 143 24 | =IFERROR(VLOOKUP(B28,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B28,CCN_TABLE,3,FALSE()),"") | =Inventory!E10 | =Inventory!F10 | =
+      row   29  CCN~143 45  :: 143 45 | =IFERROR(VLOOKUP(B29,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B29,CCN_TABLE,3,FALSE()),"") | =Inventory!E11 | =Inventory!F11 | =
+      row   30  CCN~143 46  :: 143 46 | =IFERROR(VLOOKUP(B30,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B30,CCN_TABLE,3,FALSE()),"") | =Inventory!E12 | =Inventory!F12 | =
+      row   31  CCN~171 10  :: 171 10 | =IFERROR(VLOOKUP(B31,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B31,CCN_TABLE,3,FALSE()),"") | =Inventory!E13 | =Inventory!F13 | =
+      row   32  CCN~171 20  :: 171 20 | =IFERROR(VLOOKUP(B32,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B32,CCN_TABLE,3,FALSE()),"") | =Inventory!E14 | =Inventory!F14 | =
+      row   33  CCN~171 50  :: 171 50 | =IFERROR(VLOOKUP(B33,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B33,CCN_TABLE,3,FALSE()),"") | =Inventory!E15 | =Inventory!F15 | =
+      row   34  CCN~173 10  :: 173 10 | =IFERROR(VLOOKUP(B34,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B34,CCN_TABLE,3,FALSE()),"") | =Inventory!E16 | =Inventory!F16 | =
+      row   35  CCN~173 11  :: 173 11 | =IFERROR(VLOOKUP(B35,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B35,CCN_TABLE,3,FALSE()),"") | =Inventory!E17 | =Inventory!F17 | =
+      row   36  CCN~179 60  :: 179 60 | =IFERROR(VLOOKUP(B36,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B36,CCN_TABLE,3,FALSE()),"") | =Inventory!E18 | =Inventory!F18 | =
+
+[Sheet: 'CCN_Library']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : B6
+  merged_cells  : 3
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 25  (showing first 12)
+      row    6  CCN~141 70  :: 141 70 | Air Traffic Control Tower | SF | 2956 | Standard 6-floor tower & cab; add levels for height. | 1.1 | Each tower
+      row    7  CCN~143 10  :: 143 10 | Emergency Vehicle Garage | SF | see notes | Vehicle area + 3 ft clearance/side × NTG 1.05. | 1.05 | Sum of vehicle plan-areas
+      row    8  CCN~143 11  :: 143 11 | Operational Vehicle Garage | SF | see notes | Per Table 14311-1 (Type A 108 NSF … Type G 888 NSF) + 250 SF mech rm. | 1.2 | # of ve
+      row    9  CCN~143 12  :: 143 12 | Operational Vehicle Laydown Area | SY | see notes | Per Table 14312-1 (Type A 19 GSY … Type G 99 GSY). | 1 | # of vehicles by Type 
+      row   10  CCN~143 13  :: 143 13 | Operational Vehicle/Equipment Canopy | SF | see notes | Vehicle/equip area + circulation (drip line). | 1 | Sum of vehicle plan-are
+      row   11  CCN~143 24  :: 143 24 | Marine Corps EOD Facility | SF | 7000 | 7,000 GSF EOD bldg + 204 GSF Haz/Flam + magazines as required. | 1 | Each EOD facility
+      row   12  CCN~143 26  :: 143 26 | Marine Corps EOD Company Facility | SF | see notes | NSF per function × NTG 1.40 (Admin 1,910 SF; classrooms via 171 10). | 1.4 | E
+      row   13  CCN~143 45  :: 143 45 | Armory | SF | see notes | Per Table 14345-1 (1–2K strength: 576 GSF; >10K: +0.1 SF/PN). | 1 | Military strength + weapons
+      row   14  CCN~143 46  :: 143 46 | Marine Barracks - General Purpose | SF | see notes | Per Table 14346-1 (1–50: 75 GSF/PN; 201+: +30 GSF/PN). | 1 | # of personnel ba
+      row   15  CCN~143 47  :: 143 47 | Alert Force Building | SF | see notes | Engineering analysis (barracks + messing + duty + weapons stg). | 1 | Alert force size
+      row   16  CCN~171 10  :: 171 10 | Academic Instruction Building | SF | 45 | Per Table 17110-1 (broad: 45 GSF/student station, 75 GSF if modified). NTG 1.33. | 1.33 |
+      row   17  CCN~171 15  :: 171 15 | Navy/Marine Corps Reserve Training | SF | see notes | Via NOSC Space Program Spreadsheet (Tables 17115-1…9). | 1.3 | Reserve unit c
+
+########################################################################
+

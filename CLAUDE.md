@@ -2,23 +2,64 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Apex Omega — binding methodology
+
+Every output in this session operates under **Apex Omega** rules.
+The full briefing is `APEX_OMEGA.pdf` (root). Read it first. The
+non-negotiables are also restated below; if they conflict with anything
+else in this file, Apex Omega wins.
+
+1. **Facts only.** No assumptions, speculation, or AI jargon.
+2. **Verify line by line, block by block, reference by reference.**
+   Confirm publication status (date, change page, supersession) of every
+   reference before producing a report.
+3. **Use only current authoritative sources.** Older PDFs are never
+   treated as current authority without re-verification.
+4. **If something cannot be verified, omit it or mark `TBD — pending
+   [source/action]`.** Never guess to fill a gap.
+5. **Time-stamp external data at the point of citation**
+   (e.g. *"UFS 3-701-01, current as of 2026-03-27"*).
+6. **Three-bucket fact separation:** (a) regulatory facts, (b)
+   program-practice facts, (c) external benchmarks. Do not blend.
+7. **Numbers must be traceable.** Only use numbers explicitly stated in
+   a cited source or a user-supplied file.
+8. **Plain prose only.** Lead with the answer. No "let's", no
+   "I'll help you", no preamble, no marketing tone, no emojis or
+   decorative content.
+
+### Anti-patterns (banned)
+
+- Speculation or invented numbers.
+- Stale citations.
+- **Treating TFSMS exports as authoritative without ASR reconciliation.**
+- Conflating ERC (Economic Replacement Cost) with PRV (Plant Replacement Value).
+- AI-style hedging ("widely believed", "in general", "may be approximately").
+- Decorative content in technical deliverables.
+
+### Quality-check rituals (before any deliverable is "done")
+
+1. Back-test against prior signed estimates / actuals where available.
+2. Pressure-test current estimates: re-derive from inputs.
+3. Confirm publication status of every cited document.
+4. Verify references against primary sources, not secondary citations.
+5. Recalculate spreadsheets after any change (LibreOffice headless via
+   `scripts/recalc.py` or equivalent). **Zero `#REF!`, `#DIV/0!`,
+   `#NAME?`, `#VALUE!` after recalc — required.**
+6. **Reconciliation gate:** TFSMS RecapMCC personnel data must be
+   reconciled against the unit's authoritative ASR / T/O&E before any
+   BFR can be released.
+
 ## What this repository is
 
-This is **not a software project**. It is the working repository for a USMC
-**Basic Facility Requirements (BFR)** audit and pipeline development effort.
-The deliverable is an airtight, unit-agnostic, doctrinally-sound data pipeline
-that ingests T/O&E source data and produces compliant BFRL workbooks per
-**FC 2-000-05N** (the NAVFAC facility planning criteria, formerly UFC
-2-000-05N / NAVFAC P-80, last updated Feb 2026).
+The working repository for a USMC **Basic Facility Requirements (BFR)**
+audit and pipeline development effort. The deliverable is an airtight,
+unit-agnostic, doctrinally-sound data pipeline that ingests TFSMS / ASR
+T/O&E source data and produces compliant BFR workbooks per
+**FC 2-000-05N (Series 100, 11 Feb 2026)** — Marine Corps Basic Facility
+Requirements (formerly UFC 2-000-05N / NAVFAC P-80).
 
-CLB-4 (UIC `M29030`, 3d MLG, MCB Camp Butler / Okinawa) is the **worked
-example** — the first unit being driven through the pipeline. It is **not**
-the only unit and the tooling must be unit-agnostic.
-
-The user has explicitly stated: **zero assumptions, zero gap-filling**. If a
-formula is wrong, flag it. If a CCN doesn't fit the unit's mission, flag it.
-If a personnel-loading source is ambiguous, ask before proceeding. Never
-guess.
+CLB-4 (UIC `M29030`, 3d MLG, MCB Camp Butler / Okinawa) is the worked
+example. It is **not** the only unit; tooling must be unit-agnostic.
 
 ## Authoritative documents
 
@@ -34,17 +75,30 @@ guess.
 
 | File | Format | Role |
 |---|---|---|
-| `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` | B (BFR-embedded TO/TE) | **Authoritative CLB-4 BFR**, Feb 2026 |
+| `APEX_OMEGA.pdf` | — | **Binding methodology briefing.** Always read first. |
+| `MCBJ_BFR_Generator_FC2-000-05N.xlsx` | — | **Apex Omega methodology reference workbook** for BFR work. Implements TFSMS-to-ASR reconciliation gate, `CCN_Library`, Okinawa ACF/SIOH/PD/Contingency adjustments, and named-range API (`PN_OFF`, `PN_ENL`, `PN_TOTAL`, `Okinawa_Navy_ACF`, etc.). |
+| `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` | B (BFR-embedded TO/TE) | **Authoritative CLB-4 BFR**, Feb 2026. Cosmetic + structural reference. |
 | `SW_M29030_CLB4_BFR_2026.xlsx` | B | Earlier sibling, ignore unless diffing |
 | `FO_M29030_CLB 4_FINAL BFR.xlsx` | B | **STALE** (May 2025), do not use |
-| `M29111_HQ_CO_CLB-4.xlsx` | A (per-co T/O export) | CLB-4 HQ Co billet+TE roster |
-| `M29112_CLC_A_CLB-4.xlsx` | A | CLC A Co roster |
-| `M29113_CLC_B_CLB-4.xlsx` | A | CLC B Co roster — **openpyxl-touched** on upload day; data preserved but flagged |
-| `M29114_GS_CO_CLB-4.xlsx` | A | GS Co roster — **openpyxl-touched**, same caveat |
-| `M67400-FO-M13020 3D MED BN-22NOV2024.xlsx` | B | 3d Med Bn benchmark (also problematic) |
-| `2031 Master TO&E v1.1 - 20250411.xlsx` | C (Master MEF) | Does **not** cover CLB-4; covers a different MEF/MLG |
+| `M29111_HQ_CO_CLB-4.xlsx` | A (TFSMS export, per-co) | CLB-4 HQ Co billet+TE roster |
+| `M29112_CLC_A_CLB-4.xlsx` | A (TFSMS export, per-co) | CLC A Co roster |
+| `M29113_CLC_B_CLB-4.xlsx` | A (TFSMS export, per-co) | CLC B Co roster — **openpyxl-touched** on upload day; data preserved but flagged |
+| `M29114_GS_CO_CLB-4.xlsx` | A (TFSMS export, per-co) | GS Co roster — **openpyxl-touched**, same caveat |
+| `M67400-FO-M13020 3D MED BN-22NOV2024.xlsx` | B | 3d Med Bn benchmark (also problematic; not a clean reference) |
+| `2031 Master TO&E v1.1 - 20250411.xlsx` | C (Master MEF, TFSMS-style) | Does **not** cover CLB-4; covers a different MEF/MLG |
 | `E_BFR_F_PRC_BU26-5836R_POM26_20260228_2_OF_2.pdf` | — | POM26 package "2 of 2"; "1 of 2" is missing |
 | `Sch1024_Worklist for Unit Brief.xlsx` | — | Unit briefing worklist |
+
+**Reference hierarchy when generating BFR output:**
+
+- **Methodology + math:** `MCBJ_BFR_Generator_FC2-000-05N.xlsx` (named-range
+  API, CCN library, TFSMS reconciliation gate, Okinawa adjustments).
+- **Cosmetic + structural breakout:** the four rebuilt clean CCN sheets in
+  `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (`14345`, `21451`,
+  `21455`, `61072`) — see `audit/STYLE_GUIDE.md`.
+- **Cell-role palette:** Apex Omega 4-color (input/calc/output/warning)
+  overlaid on CLB-4 theme styling — see `audit/STYLE_GUIDE.md` §"Apex
+  Omega cell-role palette".
 
 ## The data pipeline contract (read `audit/PIPELINE.md` for the full spec)
 

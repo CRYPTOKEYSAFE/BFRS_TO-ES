@@ -1,0 +1,12 @@
+[
+  {"ccn": "14345", "loading": 310, "factor": 1.0, "ntg": 1.0, "loading_label": "PN_MIL"},
+  {"ccn": "21451", "loading": 84, "factor": 1.0, "ntg": 1.2, "loading_label": "Vehicle count"},
+  {"ccn": "21455", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Vehicle count"},
+  {"ccn": "61072", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Admin billets"},
+  {"ccn": "14312", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Vehicle count"},
+  {"ccn": "14326", "loading": 13, "factor": 1.0, "ntg": 1.0, "loading_label": "EOD billets"},
+  {"ccn": "21710", "loading": 99, "factor": 1.0, "ntg": 1.0, "loading_label": "Comm Maint billets"},
+  {"ccn": "21730", "loading": 99, "factor": 1.0, "ntg": 1.0, "loading_label": "Field Maint billets"},
+  {"ccn": "44112", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Org storage"},
+  {"ccn": "45110", "loading": 84, "factor": 1.0, "ntg": 1.0, "loading_label": "Open storage"}
+]

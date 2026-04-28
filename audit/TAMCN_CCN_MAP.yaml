@@ -58,7 +58,7 @@ tamcn_validator: "^[A-Z][0-9]{4,5}[A-Z0-9]{0,3}$"
 # flag the row as an unknown-CCN reference.
 rules:
 
-  # ----- E-prefix: Weapons, Optics, EOD ---------------------------------
+  # E-prefix: Weapons, Optics, EOD
 
   - id: weapons_small_arms
     description: "M-class items: rifles, carbines, pistols, shotguns,
@@ -127,7 +127,7 @@ rules:
         date: "TBD pending FC 2-000-05N Series 100 EOD facility CCN
                ratification"
 
-  # ----- D-prefix: Motor Transport tactical vehicles ------------------
+  # D-prefix: Motor Transport tactical vehicles
 
   - id: motor_t_tactical_vehicles
     description: "K-class items in the D commodity: tactical wheeled
@@ -163,7 +163,7 @@ rules:
       - source: "Observed CLB-4 SW BFR 21451 Auto Org Shop"
         date: "2026-02"
 
-  # ----- A-prefix: Communications and Electronics ---------------------
+  # A-prefix: Communications and Electronics
 
   - id: comm_crypto_comsec
     description: "A8xxxG class items: encryption/decryption sets
@@ -220,7 +220,7 @@ rules:
                  (assignment is doctrine-dependent)"
         date: "TBD pending FC 2-000-05N Series 100/200 ratification"
 
-  # ----- B-prefix: Engineer, Utility, Heavy Equipment ----------------
+  # B-prefix: Engineer, Utility, Heavy Equipment
 
   - id: engineer_heavy_equipment
     description: "B-class items in the B commodity: tractors, loaders,
@@ -262,7 +262,7 @@ rules:
         section: "CCN 217 10, vehicle storage applies to trailers"
         date: "TBD pending FC 2-000-05N Series 200 ratification"
 
-  # ----- C-prefix: Individual Equipment, Shop Sets, Personal --------
+  # C-prefix: Individual Equipment, Shop Sets, Personal
 
   - id: individual_equipment_personal
     description: "F-class items in the C commodity: individual
@@ -341,7 +341,7 @@ rules:
         date: "TBD pending FC 2-000-05N Series 500 medical CCN
                ratification (54010 dental clinic, 54035, 54040, etc.)"
 
-  # ----- H-prefix: Test and Measurement Instrumentation ---------------
+  # H-prefix: Test and Measurement Instrumentation
 
   - id: test_measurement_motor_t
     description: "B-class items in the H commodity: multimeters,
@@ -369,7 +369,7 @@ rules:
                  portable test instruments)"
         date: "TBD pending FC 2-000-05N ratification"
 
-  # ----- J / K / M-prefix: Misc commodity ----------------------------
+  # J / K / M-prefix: Misc commodity
 
   - id: misc_solar_repair_kits
     description: "B-class items in the J commodity: solar cell panels,

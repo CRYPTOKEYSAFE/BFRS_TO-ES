@@ -255,6 +255,13 @@ def main():
     unit_ctx = {}
     if args.unit_context:
         unit_ctx = json.loads(args.unit_context.read_text())
+    # Track 6: thread unit_type from the unit profile into unit_ctx
+    # so the classifier can resolve per-unit-type defaults from
+    # audit/UNIT_TYPE_DEFAULTS.yaml. Explicit --unit-context overrides
+    # win.
+    profile_raw = json.loads(args.profile.read_text())
+    if "unit_type" in profile_raw and "unit_type" not in unit_ctx:
+        unit_ctx["unit_type"] = profile_raw["unit_type"]
 
     tamcn_map: Optional[TamcnMap] = None
     if not args.no_tamcn_map and args.tamcn_ccn_map:

@@ -1,6 +1,7 @@
 {
   "uic": "M29030",
   "tenant_unit": "CLB 4",
+  "unit_type": "CLB",
   "installation": "MCB CAMP BUTLER",
   "installation_uic": "M67400",
   "region": "Okinawa, Japan",

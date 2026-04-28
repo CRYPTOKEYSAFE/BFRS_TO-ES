@@ -245,8 +245,11 @@ typography, colors, header banding, and page framing.
   directory.
 - All audit artifacts are committed. Evidence trail matters; don't
   rewrite history of `audit/reports/`.
-- Branch policy: all development on `claude/usmc-bfr-pipeline-jZb5F`.
-  Push there; never to `main` without explicit instruction.
+- Branch policy: development branch is set per session by the
+  Claude Code harness (the session-suffixed branch name appears in
+  the harness instructions at session start). Push there. Never
+  push to `main` without explicit instruction. Do not name a
+  specific session-suffix in this file; it goes stale instantly.
 - Stop hook in this environment requires committing and pushing
   before stop. Plan accordingly.
 - Cosmetic fidelity is not optional. When generating workbooks, match

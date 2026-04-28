@@ -18,8 +18,16 @@ provenance:
   schema_version: "0.1"
 
 defaults:
-  admin_ccn: "61072"  # USMC BN/squadron HQ admin; other unit types
-                       # have different defaults per FC 2-000-05N
+  # Backward-compat fallback only. As of Track 6 (commit fb92ad7
+  # plus follow-on classifier wiring), per-unit-type admin_ccn lives
+  # in audit/UNIT_TYPE_DEFAULTS.yaml and overrides this value when
+  # the classifier finds a row matching the profile's unit_type.
+  # When UNIT_TYPE_DEFAULTS.yaml is absent (legacy callers), the
+  # value below applies. When unit_type is declared but unknown to
+  # UNIT_TYPE_DEFAULTS.yaml, the fallback there marks admin_ccn as
+  # TBD and the classifier surfaces affected billets as orphans
+  # rather than silently inheriting 61072.
+  admin_ccn: "61072"
 
 # General-pattern rules. Apply to every unit unless overridden by a
 # BMOS section-residency rule or per-unit override.

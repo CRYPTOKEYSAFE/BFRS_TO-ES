@@ -155,7 +155,7 @@ def extract(path: Path, sheet: str) -> str:
         sorted(seen_styles.items(), key=lambda kv: -len(kv[1]))
     ):
         out.append(f"")
-        out.append(f"  --- style #{i+1}  used by {len(cells)} cells ---")
+        out.append(f"   style #{i+1}  used by {len(cells)} cells ")
         # Print key parts on separate lines for readability
         for part in key.split("|"):
             out.append(f"    {part}")

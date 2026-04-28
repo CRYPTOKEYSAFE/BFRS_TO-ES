@@ -10,7 +10,7 @@ airtight. The CLB-4 SW BFR currently fails at Layer 3 (the CCN+suffix
 tagging is missing from the in-workbook TO/TE), which is why the legacy
 CCN calculation sheets all resolve to `#REF!` or zero.
 
----
+
 
 ## Layer 1, Three TO&E source formats coexist in this domain
 
@@ -114,7 +114,7 @@ data with citation-grade fidelity. Ingestion requirements:
   is `LtCol`, not `LTCOL`. Normalization happens in a separate
   documented step that emits a diff log.
 
----
+
 
 ## Operational modes
 
@@ -153,7 +153,7 @@ CLB-4 SW lives in `audit/FINDINGS.md`) plus a repair plan listing each
 broken sheet, the failure mode, and the recommended fix path
 (rebuild vs. surgical repair).
 
----
+
 
 ## Layer 2, The CCN+Suffix Tagging Mechanism (the Pipeline Spine)
 
@@ -215,7 +215,7 @@ sidestep this entirely by hardcoding personnel and equipment counts.
 That works for one-off authoring, but it can't be reproduced for new
 units without manual re-classification each time. It is not a pipeline.
 
----
+
 
 ## Layer 3, The Classification Step (Currently Manual & Implicit)
 
@@ -248,7 +248,7 @@ physically reside where. It is the single most important deliverable
 for an airtight pipeline. Without it, classification is whatever the
 last analyst decided, and BFRs are not reproducible.
 
----
+
 
 ## Layer 4, In-Workbook TO/TE Tabs (Format B) Must Be Self-Contained
 
@@ -297,7 +297,7 @@ Required columns, header on row 1:
 | 19 | Volume Ea, ft³ | `=LxWxH` |
 | 20 | Volume Total, ft³ | `=Volume Ea x Unit T/E` |
 
----
+
 
 ## Layer 5, CCN Calculation Sheets Use Stable Lookup Contracts
 
@@ -328,7 +328,7 @@ Each CCN sheet must use lookup formulas that:
 4. Trace cleanly to one rolled-up cell per sheet that flows into
    `UNIT_ROLLUP`, typically `H40` or `H46` (`TOTAL REQUIREMENT`).
 
----
+
 
 ## Layer 6, Validation Harness (Pipeline Self-Test)
 
@@ -360,7 +360,7 @@ zero failures across:
 This harness should be a single tool, run on commit, that emits a
 pass/fail report. That is what "airtight" looks like in practice.
 
----
+
 
 ## Definition of done, binding for every deliverable
 

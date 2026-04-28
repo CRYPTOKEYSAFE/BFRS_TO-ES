@@ -2192,7 +2192,7 @@ MERGED RANGES (2081):
 CELL STYLES (non-empty cells only):
   distinct style fingerprints: 27
 
-  --- style #1  used by 1024 cells ---
+   style #1  used by 1024 cells 
     name='Calibri' sz=11.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2200,7 +2200,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['AD42', 'AE42', 'BJ42', 'BK42', 'CP42', 'CQ42', 'DV42', 'DW42'] ...
 
-  --- style #2  used by 512 cells ---
+   style #2  used by 512 cells 
     name='Calibri' sz=11.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2208,7 +2208,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['A42', 'AG42', 'BM42', 'CS42', 'DY42', 'FE42', 'GK42', 'HQ42'] ...
 
-  --- style #3  used by 512 cells ---
+   style #3  used by 512 cells 
     name='Calibri' sz=12.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2216,7 +2216,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0
     e.g. ['H42', 'AN42', 'BT42', 'CZ42', 'EF42', 'FL42', 'GR42', 'HX42'] ...
 
-  --- style #4  used by 512 cells ---
+   style #4  used by 512 cells 
     name='Calibri' sz=11.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2224,7 +2224,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['L42', 'AR42', 'BX42', 'DD42', 'EJ42', 'FP42', 'GV42', 'IB42'] ...
 
-  --- style #5  used by 512 cells ---
+   style #5  used by 512 cells 
     name='Calibri' sz=11.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2232,7 +2232,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['AC42', 'BI42', 'CO42', 'DU42', 'FA42', 'GG42', 'HM42', 'IS42'] ...
 
-  --- style #6  used by 512 cells ---
+   style #6  used by 512 cells 
     name='Calibri' sz=11.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2240,7 +2240,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0
     e.g. ['AF42', 'BL42', 'CR42', 'DX42', 'FD42', 'GJ42', 'HP42', 'IV42'] ...
 
-  --- style #7  used by 4 cells ---
+   style #7  used by 4 cells 
     name='Calibri' sz=11.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2248,7 +2248,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['A3', 'M3', 'A4', 'M4']
 
-  --- style #8  used by 3 cells ---
+   style #8  used by 3 cells 
     name='Arial' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=None
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2256,7 +2256,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['R3', 'F4', 'R4']
 
-  --- style #9  used by 3 cells ---
+   style #9  used by 3 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=style=thin color={type=auto,value=True,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} R=- T=- B=-
@@ -2264,7 +2264,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['C11', 'C12', 'C13']
 
-  --- style #10  used by 3 cells ---
+   style #10  used by 3 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} T=- B=-
@@ -2272,7 +2272,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0\ "GSF"
     e.g. ['U11', 'U12', 'U13']
 
-  --- style #11  used by 2 cells ---
+   style #11  used by 2 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2280,7 +2280,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['F11', 'F12']
 
-  --- style #12  used by 1 cells ---
+   style #12  used by 1 cells 
     name='Calibri' sz=16.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2288,7 +2288,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['A1']
 
-  --- style #13  used by 1 cells ---
+   style #13  used by 1 cells 
     name='Arial' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=None
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2296,7 +2296,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['F3']
 
-  --- style #14  used by 1 cells ---
+   style #14  used by 1 cells 
     name='Calibri' sz=11.0 bold=True italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2304,7 +2304,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['Y4']
 
-  --- style #15  used by 1 cells ---
+   style #15  used by 1 cells 
     name='Calibri' sz=11.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2312,7 +2312,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['AE4']
 
-  --- style #16  used by 1 cells ---
+   style #16  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2320,7 +2320,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['C8']
 
-  --- style #17  used by 1 cells ---
+   style #17  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=solid fg={type=theme,tint=-0.1499984740745262,indexed=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} bg={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>}
     L=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2328,7 +2328,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['C9']
 
-  --- style #18  used by 1 cells ---
+   style #18  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=solid fg={type=theme,tint=-0.1499984740745262,indexed=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} bg={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2336,7 +2336,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['F9']
 
-  --- style #19  used by 1 cells ---
+   style #19  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=solid fg={type=theme,tint=-0.1499984740745262,indexed=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} bg={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>}
     L=- R=style=thin color={type=auto,value=True,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2344,7 +2344,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['U9']
 
-  --- style #20  used by 1 cells ---
+   style #20  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2352,7 +2352,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['C10']
 
-  --- style #21  used by 1 cells ---
+   style #21  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2360,7 +2360,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['F10']
 
-  --- style #22  used by 1 cells ---
+   style #22  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=style=thin color={type=auto,value=True,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} T=style=thin color={type=indexed,value=64,indexed=64,theme=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} B=-
@@ -2368,7 +2368,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0\ "GSF"
     e.g. ['U10']
 
-  --- style #23  used by 1 cells ---
+   style #23  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2376,7 +2376,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['F13']
 
-  --- style #24  used by 1 cells ---
+   style #24  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2384,7 +2384,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0
     e.g. ['P15']
 
-  --- style #25  used by 1 cells ---
+   style #25  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2392,7 +2392,7 @@ CELL STYLES (non-empty cells only):
     nfmt=#,##0\ "GSF"
     e.g. ['U15']
 
-  --- style #26  used by 1 cells ---
+   style #26  used by 1 cells 
     name='Arial' sz=10.0 bold=False italic=False underline=None color=- family=2.0 scheme=None
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-
@@ -2400,7 +2400,7 @@ CELL STYLES (non-empty cells only):
     nfmt=General
     e.g. ['A17']
 
-  --- style #27  used by 1 cells ---
+   style #27  used by 1 cells 
     name='Calibri' sz=10.0 bold=False italic=False underline=None color={type=theme,indexed=Values must be of type <class 'int'>,rgb=Values must be of type <class 'str'>} family=2.0 scheme=minor
     pattern=None fg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000} bg={type=rgb,value=00000000,indexed=Values must be of type <class 'int'>,theme=Values must be of type <class 'int'>,rgb=00000000}
     L=- R=- T=- B=-

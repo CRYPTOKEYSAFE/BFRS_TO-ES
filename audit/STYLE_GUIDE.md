@@ -9,7 +9,7 @@ the pipeline. It is extracted from the four rebuilt clean CCN sheets in
 The output must reproduce this look. No theme drift, no "openpyxl default"
 artifacts, no arbitrary palette choices.
 
----
+
 
 ## Sheet canvas
 

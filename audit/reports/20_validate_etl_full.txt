@@ -51,6 +51,6 @@ CHECK: 8. Equipment accounting      FAIL
   - TE data rows=885, attributed=0, orphans=885, distinct attributed CCNs=0
   -   orphan sample (row, NOTE, CCN): [(5, 'None', 'None'), (6, 'None', 'None'), (7, 'None', 'None'), (8, 'None', 'None'), (9, 'None', 'None')]
 
-----------------------------------------------------------------
+
 OVERALL: 5 PASS / 3 FAIL
-----------------------------------------------------------------
+

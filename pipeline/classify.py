@@ -46,6 +46,7 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RULES_PATH = REPO_ROOT / "audit" / "CLASSIFICATION_RULES.yaml"
+UNIT_TYPE_DEFAULTS_PATH = REPO_ROOT / "audit" / "UNIT_TYPE_DEFAULTS.yaml"
 
 
 PAY_GRADE = {}
@@ -252,7 +253,8 @@ def _resolve_template(template, context):
 
 class Classifier:
 
-    def __init__(self, rules_path=RULES_PATH):
+    def __init__(self, rules_path=RULES_PATH,
+                 unit_type_defaults_path=UNIT_TYPE_DEFAULTS_PATH):
         if not rules_path.exists():
             raise FileNotFoundError(rules_path)
         with rules_path.open() as f:
@@ -262,11 +264,54 @@ class Classifier:
         self.unclassified = (
             self.rules_doc.get("unclassified_disposition", {}) or {}
         )
+        # Layer 5 / Track 6: per-unit-type defaults. Loaded if present;
+        # absent file is non-fatal (legacy callers without unit_type
+        # still work, falling back to rule-table defaults).
+        self.unit_type_defaults = {}
+        self.unit_type_default_fallback = {}
+        if unit_type_defaults_path.exists():
+            with unit_type_defaults_path.open() as f:
+                doc = yaml.safe_load(f) or {}
+            self.unit_type_defaults = doc.get("unit_types", {}) or {}
+            self.unit_type_default_fallback = doc.get("default", {}) or {}
+
+    def _resolve_unit_type_defaults(self, unit_type):
+        """Return the dict of defaults for the given unit_type, or the
+        fallback dict if unit_type is None or not in the table. Apex
+        Omega rule 4: when unit_type is unknown the fallback's
+        admin_ccn is "TBD"; the classifier surfaces affected billets
+        as orphans rather than substituting a guess."""
+        if not unit_type:
+            return dict(self.unit_type_default_fallback)
+        row = self.unit_type_defaults.get(unit_type)
+        if row is None:
+            return dict(self.unit_type_default_fallback)
+        return dict(row)
 
     def classify(self, billet, unit_context=None):
+        # Precedence (lowest to highest):
+        #   self.defaults                     (rule-table defaults)
+        #   per-unit-type row from UNIT_TYPE_DEFAULTS.yaml
+        #   explicit unit_context overrides   (highest)
         ctx = dict(self.defaults)
+        unit_type = (unit_context or {}).get("unit_type")
+        ut_row = self._resolve_unit_type_defaults(unit_type)
+        # Only carry through fields the classifier knows how to use;
+        # admin_ccn drops through to the rule template substitution.
+        if "admin_ccn" in ut_row and ut_row["admin_ccn"] != "TBD":
+            ctx["admin_ccn"] = ut_row["admin_ccn"]
+        elif "admin_ccn" in ut_row and ut_row["admin_ccn"] == "TBD":
+            # Apex Omega rule 4: do not silently inherit the
+            # rule-table default 61072 when the unit_type's
+            # admin_ccn is explicitly TBD. Mark it so the rule
+            # template substitution leaves a placeholder, which
+            # surfaces the billet as unclassified.
+            ctx["admin_ccn"] = "{admin_ccn_TBD}"
         if unit_context:
             ctx.update(unit_context)
+        # unit_type itself is a context-only key, not a template var;
+        # remove it before template substitution to avoid noise.
+        ctx.pop("unit_type", None)
         section = infer_section(billet.billet_description)
         if "section" not in ctx:
             ctx["section"] = section

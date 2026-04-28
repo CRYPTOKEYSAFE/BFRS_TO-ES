@@ -74,10 +74,33 @@ LSQUO = "‘"
 RSQUO = "’"
 
 BOLD_RE = re.compile(r"\*\*([^*]+?)\*\*")
+# Three or more consecutive ASCII hyphens used as an inline visual
+# separator inside a line of content. Apex Omega bans dash separators
+# used for emphasis (decorative comment dividers like
+# "# ----- text -----", em-dash substitutes like "word --- word").
+# Preserved by design:
+#   Identifier hyphens (FC 2-000-05N, NAVFAC P-72, MCB Camp Butler);
+#     these are single hyphens, never three in a row.
+#   Markdown table separators (|---|---|); the pipe-adjacent
+#     negative lookarounds keep them.
+#   Standalone dash-only lines (YAML frontmatter delimiters and
+#     markdown horizontal rules); the line-aware loop in transform()
+#     skips any line whose stripped content is composed entirely of
+#     ASCII hyphens. YAML frontmatter is structural; destroying it
+#     breaks the skill loader.
+DASH_SEPARATOR_RE = re.compile(r"(?<!\|)-{3,}(?!\|)")
 
 
 def transform(text):
     text = BOLD_RE.sub(r"\1", text)
+    out_lines = []
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if stripped and all(c == "-" for c in stripped):
+            out_lines.append(line)
+        else:
+            out_lines.append(DASH_SEPARATOR_RE.sub("", line))
+    text = "\n".join(out_lines)
     pairs = [
         (" " + EMDASH + " ", ", "),
         (EMDASH, ", "),

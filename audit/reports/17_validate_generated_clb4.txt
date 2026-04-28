@@ -48,6 +48,6 @@ CHECK: 7. Billet accounting         PASS
 CHECK: 8. Equipment accounting      PASS
   - TE data rows=0, attributed=0, orphans=0, distinct attributed CCNs=0
 
-----------------------------------------------------------------
+
 OVERALL: 8 PASS / 0 FAIL
-----------------------------------------------------------------
+

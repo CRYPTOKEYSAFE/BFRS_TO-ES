@@ -12,7 +12,7 @@ single example unit.
 
 Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 
----
+
 
 ## Sheet roster
 
@@ -27,7 +27,7 @@ Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 | 6 | `BFR_Summary` | Final per-CCN summary. Pulls Loading/Factor/Required from `Inventory`, applies Okinawa adjustments, emits the final SF (or SY) by CCN. |
 | 7 | `CCN_Library` | The canonical CCN dictionary. Columns: CCN, Facility Name, UoM, Default Factor, Factor Notes, NTG, Driver Description. Expanded 2026-04-28 (Layer 5) to 1,060 entries, 1,059 from the FC 2-000-05N Appendix A canonical extract (`audit/CCN_VOCABULARY.json`, source date 2019-06-27) merged with the 23 originally curated rows; one curated CCN ("143 13 Operational Vehicle/Equipment Canopy") is preserved as net-new since it is not present in the 2019 generation of the catalog. Curated planning factors (Default Factor, Factor Notes, NTG, Driver Description) overlay the canonical title where both exist. |
 
----
+
 
 ## Named-range API (the contract surface)
 
@@ -106,7 +106,7 @@ These flow into `BFR_Calculator` Loading column (col E). Sample:
 | `BFR_NOTE` | `BFR_Calculator!$J$7:$J$20` | Per-row note / justification |
 | `CCN_TABLE` | `CCN_Library!$C$6:$I$1100` | The lookup library, expanded 2026-04-28 (Layer 5) to cover the 1,060-CCN merged dictionary plus headroom |
 
----
+
 
 ## CCN Library (FC 2-000-05N keyed dictionary, observed entries)
 
@@ -139,7 +139,7 @@ handle both.
 will be added when the canonical FC 2-000-05N CCN vocabulary is
 extracted in the next round.)
 
----
+
 
 ## Reconciliation gate (the most important methodology element)
 
@@ -156,7 +156,7 @@ This is the operational implementation of Apex Omega Sec.5.6:
 *"TFSMS RecapMCC personnel data must be reconciled against the unit's
 authoritative ASR / T/O&E before a BFR can be released."*
 
----
+
 
 ## Synthesis, how this maps to the unit-agnostic pipeline
 

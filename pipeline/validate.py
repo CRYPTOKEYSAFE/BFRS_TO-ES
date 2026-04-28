@@ -137,7 +137,7 @@ def load_vocabulary():
     return {v["ccn"] for v in data["ccns"]}
 
 
-# ---------- Checks ---------------------------------------------------
+#  Checks 
 
 def check_schema(wb):
     r = CheckResult("1. Schema (TO/TE columns)", True)
@@ -575,7 +575,7 @@ def check_equipment_accounting(wb, te_meta):
     return r
 
 
-# ---------- Driver ---------------------------------------------------
+#  Driver 
 
 def run(workbook_path: Path, report_path: Optional[Path]):
     wb = openpyxl.load_workbook(workbook_path, data_only=False)

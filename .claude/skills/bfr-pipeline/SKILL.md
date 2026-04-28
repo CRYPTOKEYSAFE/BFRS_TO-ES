@@ -27,7 +27,11 @@ session does not re-derive them or drift.
    "COMMARCORBASESJAPAN" as a place/org term.
 5. `audit/STYLE_GUIDE.md`, binding cosmetic specification (CLB-4 theme
    styling + Apex Omega 4-color cell-role palette).
-6. `audit/FINDINGS.md`, Round-1 forensic findings on CLB-4.
+6. `audit/FINDINGS.md`, Round-1 forensic findings on CLB-4 plus
+   Round-3 finding 9 (TFSMS_UNRECONCILED gate at TFSMS_Loading!$D$19
+   is structurally broken: the cell is part of merged range B19:O19
+   so it cannot hold a value at its named-range coordinate; defect
+   surfaced for methodology-owner direction, not silently fixed).
 
 ## Project mental model
 
@@ -87,10 +91,12 @@ The end-state is a unit-agnostic ETL + generator that:
   warning `#F8E2D6`). No "default openpyxl" output.
 - Source files are read-only. Inputs in repo root are never edited.
   Outputs go under `audit/` or a clearly-named output directory.
-- Branch: development branch is set per session by the harness
-  (current: `claude/resume-bfr-pipeline-Uf9Td`). Never push to `main`
+- Branch: development branch is set per session by the Claude Code
+  harness; the session-suffixed branch name appears in the harness
+  instructions at session start. Push there. Never push to `main`
   without explicit instruction. Commit and push at meaningful
-  milestones (the stop hook enforces this).
+  milestones (the stop hook enforces this). Do not name a specific
+  session-suffix in this skill; it goes stale instantly.
 
 ## Input contract (accept any format the unit hands us)
 
@@ -209,6 +215,27 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 - Source PDF for the CCN dictionary: `fc_2_000_05n_appendixa.pdf`
   (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
   FC 2-000-05N Appendix A to NAVFAC P-72 (DON Facility Category Codes).
+- Per-unit-type defaults (Track 6):
+  `audit/UNIT_TYPE_DEFAULTS.yaml`. Maps each USMC unit_type
+  identifier (CLB, MLG_HQ, MEF_HQ, MEU_CE, MAG_HQ, MWHS,
+  AVIATION_SQUADRON, RECRUIT_DEPOT, SCHOOLHOUSE, TRAINING_COMMAND,
+  DEPOT, INSTALLATION_HQ, plus a `default` fallback) to a dict of
+  defaults consumed by `pipeline/classify.py`. Currently the only
+  field is `admin_ccn`; schema is intentionally a per-type dict so
+  more fields can be added (default Okinawa ACF, default NTG, etc.)
+  without breaking existing rows. CLB is confidence high
+  (admin_ccn 61072, cited from observed CLB-4 SW BFR plus NAVFAC
+  P-72 Category 610). Every other unit type is admin_ccn TBD,
+  confidence low, pending FC 2-000-05N Series 100 ratification.
+  Apex Omega rule 4: TBD or unknown unit_type causes the
+  classifier to inject `{admin_ccn_TBD}` into the rule template,
+  which leaves an unresolved placeholder and surfaces affected
+  billets as orphans in validator Check 7. Loaded by
+  `Classifier.__init__`; precedence is rule-table defaults
+  (lowest, backward-compat fallback) < per-unit-type row <
+  explicit unit_context overrides (highest). Unit profile must
+  declare `unit_type` for the per-type row to apply (see
+  `samples/clb4_profile.json` for the worked example).
 - TAMCN to facility CCN doctrine table (Layer 5):
   `audit/TAMCN_CCN_MAP.yaml`. Maps each USMC TAMCN to its facility
   CCN via ordered regex rules. Schema mirrors
@@ -423,6 +450,33 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 6, per-unit-type defaults (Layer 5).
+  `audit/UNIT_TYPE_DEFAULTS.yaml` authored with the CLB row at
+  confidence high (admin_ccn 61072, cited from CLB-4 SW BFR plus
+  NAVFAC P-72 Category 610) and 11 other unit-type slots
+  (MLG_HQ, MEF_HQ, MEU_CE, MAG_HQ, MWHS, AVIATION_SQUADRON,
+  RECRUIT_DEPOT, SCHOOLHOUSE, TRAINING_COMMAND, DEPOT,
+  INSTALLATION_HQ) at admin_ccn TBD pending FC 2-000-05N
+  Series 100 ratification, plus a default fallback at admin_ccn
+  TBD with fallback_behavior orphan. `pipeline/classify.py`
+  loads the YAML in `Classifier.__init__`, resolves admin_ccn
+  via the per-unit-type row when the unit profile declares
+  `unit_type`, and substitutes `{admin_ccn_TBD}` into the rule
+  template when admin_ccn is TBD or unknown so the validator's
+  Check 7 surfaces affected billets as orphans. Sample profile
+  updated: `samples/clb4_profile.json` now declares
+  `unit_type: CLB`. `pipeline/etl.py` threads `profile["unit_type"]`
+  into `unit_ctx` automatically (explicit `--unit-context`
+  overrides win). Smoke test: same billet (CAPT, S-1 ADJUTANT,
+  M29030) classifies to `61072o` when unit_type=CLB; classifies
+  to unclassified ("template has unresolved placeholder") when
+  unit_type is omitted or unknown. End-to-end re-run on CLB-4:
+  175/359 billets classified (unchanged), validator overall
+  5 PASS / 3 FAIL (no regression), report at
+  `audit/reports/22_validate_clb4_full_track6.txt`.
+  `audit/CLASSIFICATION_RULES.yaml` defaults block now documents
+  that admin_ccn there is a backward-compat fallback only;
+  per-unit-type lookup wins.
 - Track 5, Layer 5 TAMCN to facility CCN doctrine table.
   `audit/TAMCN_CCN_MAP.yaml` authored against the observed CLB-4
   TAMCN inventory (885 data rows / 412 unique TAMCNs across
@@ -480,18 +534,8 @@ GitHub MCP and run the extractor.
    genuinely cross-billet special cases.
 
 NOT BLOCKED, can start any time. Track numbers below match the
-original 2026-04-28 handoff (Track 5 TAMCN map shipped at fb16a50
-and is in DONE; remaining tracks keep their original numbers).
-
-Track 6. Per-unit-type admin_ccn defaults at
-   `audit/UNIT_TYPE_DEFAULTS.yaml`. The classifier's admin_ccn
-   default is hardcoded to 61072 (USMC BN/squadron HQ convention).
-   Aviation squadrons, MEU command elements, depots, schoolhouses,
-   recruit depots, and training commands have different admin
-   facility CCNs. Track 5 (TAMCN to CCN map) is portable across
-   unit types because TAMCN doctrine is commodity-driven, not
-   unit-type-driven; this track addresses the per-unit-type admin
-   CCN selection only.
+original 2026-04-28 handoff (Tracks 5 and 6 are now in DONE;
+remaining tracks keep their original numbers).
 
 Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
    to cover the 27 orphan TAMCNs left after the round-1 build.
@@ -501,6 +545,17 @@ Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
    machine, E02207X expeditionary disassembly tool, E08567K AAV
    (vehicle storage 21710 is doctrinally clear). Each addition
    requires a citation; do not chase the orphan count by guessing.
+
+Track 8 (HIGH PRIORITY, methodology-owner direction required).
+   Wire the TFSMS_UNRECONCILED reconciliation gate per
+   `audit/FINDINGS.md` Finding 9. Today the named range resolves to
+   `TFSMS_Loading!$D$19` which is part of merged range `$B$19:$O$19`
+   and structurally cannot hold a value. Definition of Done item 6
+   ("TFSMS_UNRECONCILED = FALSE") cannot be honestly satisfied for
+   any unit until this is fixed. Repair options are documented in
+   Finding 9 (Option A unmerge, Option B relocate the named range).
+   Choice between them is a methodology-owner decision; not a guess
+   for this pipeline to make.
 
 Track 7. Format-D PDF ingestion prototype
    (`pipeline/pdf_ingest.py`). Builds against a real TFSMS or ASR

@@ -4,7 +4,7 @@ Audit date: 2026-04-28
 Files audited: all `.xlsx` in repository root
 Method: structural inventory via openpyxl (`audit/inventory.py`, `audit/sheet_dump.py`, `audit/file_metadata.py`); no workbook has been modified.
 
----
+
 
 ## 1. Authoritative file determination
 
@@ -128,3 +128,63 @@ In the order I'd run them, pending direction from you:
 6. Decide on the openpyxl-touched company files. If known-clean original copies of `M29113` and `M29114` exist somewhere, swap them in. Otherwise document the touched state and proceed.
 
 No workbook has been edited. All evidence is in `audit/reports/`.
+
+## 9. TFSMS_UNRECONCILED gate is structurally broken (Round 3 finding)
+
+Audit date: 2026-04-28. Surfaced during baseline-audit pass on the
+methodology workbook BFR_Generator_FC2-000-05N.xlsx.
+
+Apex Omega Sec.5.6 and CLAUDE.md both treat the TFSMS_UNRECONCILED
+flag as the operational reconciliation gate; "must read FALSE before
+any BFR is releasable; never bypass." The skill and CLAUDE.md both
+locate the flag at TFSMS_Loading!$D$19.
+
+The named range TFSMS_UNRECONCILED resolves to TFSMS_Loading!$D$19
+correctly. The cell at $D$19 holds no value and no formula. It
+cannot hold a value at its current coordinate because the entire
+row $B$19:$O$19 is a single merged range, the only writable cell of
+which is $B$19. $B$19 holds the label string "Reconciliation Gate".
+
+Consequences:
+1. The gate never reads FALSE, so per the binding semantic ("must
+   read FALSE before releasable") no BFR generated against this
+   methodology workbook can be released today. Definition of Done
+   item 6 in CLAUDE.md is failing for every unit.
+2. The gate also never reads TRUE, so it does not actually GATE
+   anything; downstream sheets that reference it see a blank, which
+   in Excel is treated as FALSE in boolean contexts. The system
+   silently passes when it should be loudly failing.
+3. The named range was authored pointing at a coordinate that is
+   structurally incapable of holding a value, suggesting either the
+   merge was added after the named range, or the named range was
+   added without verifying the target cell's mergeability.
+
+Repair options for the methodology owner. This audit does not
+choose between them; per Apex Omega rule 4, the structural change
+to the methodology workbook requires methodology-owner direction.
+
+Option A. Unmerge B19:O19. Restore the label "Reconciliation Gate"
+in B19. Author the gate formula in D19 (e.g.,
+`=IF(AND(TFSMS_TOTAL>0, SUM(<ASR-PN-named-ranges>)>0,
+TFSMS_TOTAL=<ASR-PN-total>), FALSE, TRUE)` or similar; the formula
+must compare TFSMS personnel totals (named range TFSMS_TOTAL at
+TFSMS_Loading!$O$17) against the unit's ASR-reconciled personnel
+totals. Add explicit row-level breakdown cells (E19, F19, G19...)
+showing per-bucket reconciliation status if desired.
+
+Option B. Leave the merge in place. Move the named range
+TFSMS_UNRECONCILED to a different unmerged cell on the sheet
+(e.g., a new row 25 with a labeled value cell). Author the gate
+formula there. Update CLAUDE.md and the skill to reflect the new
+coordinate.
+
+In either option, the formula's exact comparison logic depends on
+which PN_* named ranges represent the ASR-reconciled personnel
+totals for the unit; the BFR_Generator_FC2-000-05N.xlsx sheet
+inventory does not currently expose those named ranges, only the
+TFSMS_* family at TFSMS_Loading!$D$17:$O$17. The methodology owner
+must specify the ASR-side named ranges before the gate formula can
+be authored without speculation.
+
+This audit does NOT silently fix the workbook. The defect is
+documented here and surfaced for methodology-owner direction.

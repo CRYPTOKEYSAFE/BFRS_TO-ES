@@ -53,6 +53,17 @@ CHECK: 6. Roll-up integrity         FAIL
   -   sheet '45110': TOTAL at H47 = '=M25'
   -   sheet '61072': TOTAL at H34 = '=AB20'
 
+CHECK: 7. Billet accounting         FAIL
+  - TO data rows=303, attributed=0, orphans=303, distinct attributed CCNs=0
+  -   orphan sample (row, BIC or NOTE): [(7, 'M2903100007'), (8, 'M2903100126'), (9, 'M2903100127'), (10, 'M2903100124'), (11, 'M2903100125')]
+
+CHECK: 8. Equipment accounting      FAIL
+  - TE data rows=404, attributed=305, orphans=99, distinct attributed CCNs=5
+  -   per-CCN counts (top 6): [('21710', 101), ('44112', 80), ('14345', 73), ('21451', 42), ('21820', 9)]
+  -   orphan sample (row, NOTE, CCN): [(21, 'None', '#N/A'), (53, 'None', '#N/A'), (55, 'None', '#N/A'), (75, 'None', '#N/A'), (76, 'None', 'CSP')]
+  -   TE references 1 CCN(s) with no sheet in this workbook: ['21820']
+  -   unknown sample (row, CCN): [(74, '21820'), (234, '21820'), (235, '21820'), (236, '21820'), (267, '21820')]
+
 ----------------------------------------------------------------
-OVERALL: 3 PASS / 3 FAIL
+OVERALL: 3 PASS / 5 FAIL
 ----------------------------------------------------------------

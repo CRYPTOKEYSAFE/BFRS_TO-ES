@@ -42,6 +42,12 @@ CHECK: 6. Roll-up integrity         PASS
   -   sheet '45110': TOTAL at H37 = '=AB16'
   -   sheet '61072': TOTAL at H37 = '=AB20'
 
+CHECK: 7. Billet accounting         PASS
+  - TO data rows=0, attributed=0, orphans=0, distinct attributed CCNs=0
+
+CHECK: 8. Equipment accounting      PASS
+  - TE data rows=0, attributed=0, orphans=0, distinct attributed CCNs=0
+
 ----------------------------------------------------------------
-OVERALL: 6 PASS / 0 FAIL
+OVERALL: 8 PASS / 0 FAIL
 ----------------------------------------------------------------

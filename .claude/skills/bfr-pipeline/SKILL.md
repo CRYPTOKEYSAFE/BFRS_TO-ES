@@ -313,6 +313,27 @@ unit; the order is the recommended build sequence.
   factors / NTG values against FC 2-000-05N planning factor tables.
   CLB-4 is one observed example, not a gold standard. Commit
   `b9ab701`.
+- Layer 6 advanced checks added to `pipeline/validate.py`. Check 7
+  Billet accounting (TO data row count, attributed via NOTE column,
+  orphans, distinct attributed CCNs, unknown-CCN references) and
+  Check 8 Equipment accounting (TE data row count, attributed via
+  NOTE or CCN column, orphans, distinct attributed CCNs,
+  unknown-CCN references). Validator now runs 8 checks. Real CLB-4
+  SW BFR drops from 3 PASS / 3 FAIL to 3 PASS / 5 FAIL surfacing
+  303 TO billet orphans (NOTE column empty) and 99 TE equipment
+  orphans plus 5 attributed CCNs. Generated CLB-4 sample stays
+  8 PASS / 0 FAIL.
+- Planning-factors extractor scaffold at
+  `audit/extract_planning_factors.py`. Reads
+  `fc_2_000_05n_100series_*.pdf` and `fc_2_000_05n_200series_*.pdf`
+  when supplied, walks every page, finds Table NNNNN-N references,
+  emits per-CCN records into `audit/PLANNING_FACTORS.{yaml,json}`
+  with source PDF + version date provenance. First-pass extraction
+  marks loading_driver / factor_value / ntg as
+  "TBD pending manual ratification" since regex-on-PDF-text cannot
+  reliably parse multi-column tables; manual ratification is the
+  authoritative step. Script exits non-zero with instructions when
+  the Series PDFs are missing.
 
 ### NEXT (in this order)
 

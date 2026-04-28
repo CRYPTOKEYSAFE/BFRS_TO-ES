@@ -24,6 +24,12 @@ mandated by audit/PIPELINE.md Layer 6:
   6. Roll-up    , UNIT_ROLLUP (or named variant) lists every CCN
                    sheet present, and each row's pulled total matches
                    the CCN sheet's TOTAL REQUIREMENT cell.
+  7. Billet     , every TO data row attributes its billet to a CCN
+                   sheet via the NOTE column; orphans (no NOTE) and
+                   unknown-CCN references are failures.
+  8. Equipment  , every TE data row attributes its TAMCN to a CCN
+                   sheet via NOTE or CCN column; orphans and
+                   unknown-CCN references are failures.
 
 Exit code 0 if all checks pass; 1 otherwise.
 
@@ -414,6 +420,161 @@ def check_rollup(wb, vocab):
     return r
 
 
+def check_billet_accounting(wb, to_meta):
+    """Check 7. Every TO data row attributes its billet to exactly one
+    CCN sheet via the NOTE column. Orphans (TO rows with no NOTE) and
+    NOTE-tag CCNs that have no corresponding sheet are failures."""
+    r = CheckResult("7. Billet accounting", True)
+    if not to_meta:
+        r.passed = False
+        r.findings.append("skipped: schema check failed")
+        return r
+    hdr_row, cols = to_meta
+    note_col = cols.get("NOTE")
+    bic_col = cols.get("BIC")
+    ws = wb["TO"]
+
+    ccn_sheets = set(discover_ccn_sheets(wb))
+    total = 0
+    attributed = 0
+    orphans = 0
+    by_ccn = {}
+    unknown_ccns = {}
+    sample_orphans = []
+    sample_unknown = []
+
+    for rr in range(hdr_row + 1, ws.max_row + 1):
+        bic_v = ws.cell(row=rr, column=bic_col).value if bic_col else None
+        # Treat a row as a billet only if it has any non-empty cell in the
+        # row (not just BIC, since some rows may use a placeholder)
+        any_non_empty = any(
+            ws.cell(row=rr, column=c).value not in (None, "")
+            for c in range(1, ws.max_column + 1)
+        )
+        if not any_non_empty:
+            continue
+        total += 1
+        note_v = ws.cell(row=rr, column=note_col).value
+        if note_v is None or str(note_v).strip() == "":
+            orphans += 1
+            if len(sample_orphans) < 5:
+                sample_orphans.append((rr, str(bic_v) if bic_v else ""))
+            continue
+        m = re.match(r"^(\d{4,5})", str(note_v).strip())
+        if not m:
+            orphans += 1
+            if len(sample_orphans) < 5:
+                sample_orphans.append((rr, str(note_v)))
+            continue
+        ccn = m.group(1)
+        attributed += 1
+        by_ccn[ccn] = by_ccn.get(ccn, 0) + 1
+        if ccn not in ccn_sheets:
+            unknown_ccns[ccn] = unknown_ccns.get(ccn, 0) + 1
+            if len(sample_unknown) < 5:
+                sample_unknown.append((rr, ccn))
+
+    r.findings.append(
+        f"TO data rows={total}, attributed={attributed}, orphans={orphans}, "
+        f"distinct attributed CCNs={len(by_ccn)}"
+    )
+    if by_ccn:
+        top = sorted(by_ccn.items(), key=lambda x: -x[1])[:6]
+        r.findings.append(f"  per-CCN counts (top 6): {top}")
+    if orphans > 0:
+        r.passed = False
+        r.findings.append(
+            f"  orphan sample (row, BIC or NOTE): {sample_orphans}"
+        )
+    if unknown_ccns:
+        r.passed = False
+        r.findings.append(
+            f"  TO NOTE references {len(unknown_ccns)} CCN(s) with no sheet "
+            f"in this workbook: {sorted(unknown_ccns.keys())}"
+        )
+        r.findings.append(
+            f"  unknown sample (row, CCN): {sample_unknown}"
+        )
+    return r
+
+
+def check_equipment_accounting(wb, te_meta):
+    """Check 8. Every TE data row attributes its TAMCN to a CCN via the
+    NOTE or CCN column. Orphans and unknown-CCN references are failures."""
+    r = CheckResult("8. Equipment accounting", True)
+    if not te_meta:
+        r.passed = False
+        r.findings.append("skipped: schema check failed")
+        return r
+    hdr_row, cols = te_meta
+    note_col = cols.get("NOTE")
+    ccn_col = cols.get("CCN")
+    ws = wb["TE"]
+
+    ccn_sheets = set(discover_ccn_sheets(wb))
+    total = 0
+    attributed = 0
+    orphans = 0
+    by_ccn = {}
+    unknown_ccns = {}
+    sample_orphans = []
+    sample_unknown = []
+
+    for rr in range(hdr_row + 1, ws.max_row + 1):
+        any_non_empty = any(
+            ws.cell(row=rr, column=c).value not in (None, "")
+            for c in range(1, ws.max_column + 1)
+        )
+        if not any_non_empty:
+            continue
+        total += 1
+        note_v = ws.cell(row=rr, column=note_col).value
+        ccn_v = ws.cell(row=rr, column=ccn_col).value
+        ref = None
+        for v in (note_v, ccn_v):
+            if v is None:
+                continue
+            s = str(v).strip().replace(" ", "")
+            m = re.match(r"^(\d{4,5})", s)
+            if m:
+                ref = m.group(1)
+                break
+        if ref is None:
+            orphans += 1
+            if len(sample_orphans) < 5:
+                sample_orphans.append((rr, str(note_v), str(ccn_v)))
+            continue
+        attributed += 1
+        by_ccn[ref] = by_ccn.get(ref, 0) + 1
+        if ref not in ccn_sheets:
+            unknown_ccns[ref] = unknown_ccns.get(ref, 0) + 1
+            if len(sample_unknown) < 5:
+                sample_unknown.append((rr, ref))
+
+    r.findings.append(
+        f"TE data rows={total}, attributed={attributed}, orphans={orphans}, "
+        f"distinct attributed CCNs={len(by_ccn)}"
+    )
+    if by_ccn:
+        top = sorted(by_ccn.items(), key=lambda x: -x[1])[:6]
+        r.findings.append(f"  per-CCN counts (top 6): {top}")
+    if orphans > 0:
+        r.passed = False
+        r.findings.append(
+            f"  orphan sample (row, NOTE, CCN): {sample_orphans}"
+        )
+    if unknown_ccns:
+        r.passed = False
+        r.findings.append(
+            f"  TE references {len(unknown_ccns)} CCN(s) with no sheet "
+            f"in this workbook: {sorted(unknown_ccns.keys())}"
+        )
+        r.findings.append(
+            f"  unknown sample (row, CCN): {sample_unknown}"
+        )
+    return r
+
+
 # ---------- Driver ---------------------------------------------------
 
 def run(workbook_path: Path, report_path: Optional[Path]):
@@ -426,8 +587,10 @@ def run(workbook_path: Path, report_path: Optional[Path]):
     v = check_vocabulary(wb, to_meta, te_meta, vocab)
     e = check_cell_errors(workbook_path)
     u = check_rollup(wb, vocab)
+    b = check_billet_accounting(wb, to_meta)
+    q = check_equipment_accounting(wb, te_meta)
 
-    results = [s, n, c, v, e, u]
+    results = [s, n, c, v, e, u, b, q]
     pass_count = sum(1 for x in results if x.passed)
     fail_count = len(results) - pass_count
 

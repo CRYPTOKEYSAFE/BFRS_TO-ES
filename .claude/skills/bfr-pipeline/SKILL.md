@@ -316,26 +316,44 @@ unit; the order is the recommended build sequence.
 
 ### NEXT (in this order)
 
-1. Layer 5 pattern ratification against FC 2-000-05N (commit b9ab701
-   shipped three observed shapes from CLB-4: primary_items, admin,
-   shop_with_bays, but those are NOT canonical; CLB-4 is one example,
-   not a gold standard). Pull each pattern's row layout, SF/person,
-   SF/bay, NTG, ROUNDUP convention from FC 2-000-05N Series 100/200
-   tables and unit-type doctrine. Update pattern_data defaults and
-   docstrings accordingly. Add patterns for unit types not yet seen
-   (aviation maintenance, MEU embarkation, depot, training command,
-   recruit depot, schoolhouse, range complex, ammo/ordnance, fuel
-   farm, comm/data center, medical/dental, port, etc.).
-2. Layer 3 classification rules. Author
+1. Pull FC 2-000-05N Series 100 (file
+   `fc_2_000_05n_100series_12_10_2025.pdf`, version
+   `100.20251210`, 10 Dec 2025) and Series 200 (file
+   `fc_2_000_05n_200series_05_16_2025.pdf`, version
+   `200.20250516`, 16 May 2025) into the repo (the Appendix A PDF is
+   already at `fc_2_000_05n_appendixa.pdf`). Both Series PDFs are
+   public WBDG documents but cannot be retrieved from this sandbox
+   (egress allowlist blocks wbdg.org). User must supply the same way
+   the Appendix A PDF was supplied (drop into a commit on `main`,
+   pull from GitHub MCP, then `git checkout origin/main, file`).
+2. Extract planning factor tables from Series 100 and Series 200 into
+   `audit/PLANNING_FACTORS.yaml` (per-CCN: row layout, loading driver,
+   SF/person or SF/bay, NTG, ROUNDUP convention, source page +
+   table reference). Re-extractor script lives at
+   `audit/extract_planning_factors.py`, similar pattern to
+   `audit/extract_ccn_appendix_a.py`. Apex Omega timestamp every
+   record with the source PDF's printed version date.
+3. Layer 5 pattern ratification. Compare the three observed shapes
+   from `pipeline/template.py` (primary_items, admin, shop_with_bays,
+   commit `b9ab701`) against the per-CCN planning factors from step
+   2. Update pattern_data defaults and docstrings to cite source +
+   section + date inline. Add new pattern variants where the actual
+   FC 2-000-05N table calls for a different shape (aviation
+   maintenance, MEU embarkation, depot, training command, recruit
+   depot, schoolhouse, range complex, ammo/ordnance, fuel farm,
+   comm/data center, medical/dental, port, etc.). Drop any defaults
+   that cannot be verified against the current FC 2-000-05N edition;
+   mark such fields TBD per Apex Omega rule 4.
+4. Layer 3 classification rules. Author
    `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table mapping
    `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) -> NOTE
    tag`. Required to populate the NOTE column in TO/TE so the
    generator can place each billet on the right CCN sheet.
-3. Track D, PDF ingestion prototype (only when a Format-D source
+5. Track D, PDF ingestion prototype (only when a Format-D source
    actually arrives). Extracts billet/equipment rows from TFSMS / ASR
    / authoritative PDF into canonical Format A schema with per-row
    page+table citation. `pdfplumber` first; OCR only for scanned PDFs.
-4. Layer 6 advanced checks. Billet accounting (TO row count equals
+6. Layer 6 advanced checks. Billet accounting (TO row count equals
    sum across CCN sheets, no orphans, no double counts) and equipment
    accounting (every TAMCN row in TE referenced by exactly one CCN
    sheet). Add to `pipeline/validate.py` once specialized templates

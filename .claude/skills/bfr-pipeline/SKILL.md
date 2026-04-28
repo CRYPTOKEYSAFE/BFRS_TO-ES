@@ -202,12 +202,28 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 - Source PDF for the CCN dictionary: `fc_2_000_05n_appendixa.pdf`
   (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
   FC 2-000-05N Appendix A → NAVFAC P-72 (DON Facility Category Codes).
+- Pipeline package: `pipeline/`
+  - `pipeline/template.py`, Layer 4 BFR generator. Produces a
+    Format-B BFR for any unit profile + CCN list.
+  - `pipeline/validate.py`, Layer 6 validator. Six-check pass/fail
+    report against any Format-B BFR workbook.
+- Sample inputs: `samples/clb4_profile.json`,
+  `samples/clb4_ccns.json`. Worked-example unit profile and CCN list
+  for CLB-4.
+- Sample output: `out/CLB4_BFR_sample.xlsx`. Generator output for
+  CLB-4 (10 CCNs). Validator report at
+  `audit/reports/17_validate_generated_clb4.txt` (6 PASS / 0 FAIL).
+- Typography sweeper: `audit/strip_dashes_and_bold.py`. One-shot tool
+  that removes em dashes, en dashes, and markdown bold from every
+  text file in the repo. Re-run if any new content sneaks them back
+  in.
 
-## Standard tooling (`audit/*.py`)
+## Standard tooling
 
+Install once: `pip install openpyxl pdfplumber pypdfium2 formulas`.
+
+Audit (read-only inspection):
 ```bash
-pip install openpyxl   # once
-
 python3 audit/inventory.py "<file.xlsx>"
 python3 audit/sheet_dump.py "<file.xlsx>" "<sheet>" [max_row]
 python3 audit/schema_map.py
@@ -215,8 +231,17 @@ python3 audit/pipeline_probe.py
 python3 audit/style_extract.py "<file.xlsx>" "<sheet>" [<sheet>...]
 ```
 
-Capture output into `audit/reports/<NN>_<name>.txt` and commit. The
-report numbering convention is sequential (`01_…`, `02_…`, …), keep it.
+Pipeline (write):
+```bash
+python3 audit/extract_ccn_appendix_a.py
+python3 audit/expand_ccn_library.py
+python3 pipeline/template.py --profile <profile.json> --ccns <ccns.json> --output <path.xlsx>
+python3 pipeline/validate.py <workbook.xlsx> [--report <path>]
+```
+
+Capture audit output into `audit/reports/<NN>_<name>.txt` and commit.
+The report numbering convention is sequential (`01_`, `02_`, ...),
+keep it.
 
 ## Work tracks, recommended order
 

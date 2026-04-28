@@ -33,10 +33,13 @@ session does not re-derive them or drift.
 
 The end-state is a unit-agnostic ETL + generator that:
 
-1. **Ingests** TO&E source data in any of the three observed formats:
+1. **Ingests** TO&E source data in any of four observed formats:
    - Format A (per-company MCTOFD-style export — no CCN tagging)
    - Format B (BFR-embedded TO/TE — CCN+suffix in NOTE column)
    - Format C (Master MEF/MTOMS-T-style — rich data, CCN header empty)
+   - Format D (TFSMS / ASR / authoritative PDF — extract via pdfplumber
+     with per-row page+table citation; low-confidence values marked
+     `TBD — pending [page reference]`)
 2. **Classifies** every billet to a `<CCN><suffix>` NOTE tag using a
    documented rule set (FC 2-000-05N planning factors + unit doctrine).
 3. **Emits** a Format-B-compliant in-workbook TO and TE.
@@ -78,8 +81,10 @@ The end-state is a unit-agnostic ETL + generator that:
   warning `#F8E2D6`). No "default openpyxl" output.
 - **Source files are read-only.** Inputs in repo root are never edited.
   Outputs go under `audit/` or a clearly-named output directory.
-- **Branch:** all development on `claude/usmc-bfr-pipeline-jZb5F`.
-  Commit and push at meaningful milestones (the stop hook enforces this).
+- **Branch:** development branch is set per session by the harness
+  (current: `claude/resume-bfr-pipeline-Uf9Td`). Never push to `main`
+  without explicit instruction. Commit and push at meaningful
+  milestones (the stop hook enforces this).
 
 ## Input contract (accept any format the unit hands us)
 
@@ -87,7 +92,7 @@ The end-state is a unit-agnostic ETL + generator that:
 |---|---|
 | T/O&E source data | Excel (TFSMS per-co; Master MEF / TFSMS-style), **PDF** (TFSMS printable, ASR PDF, other authoritative printout) |
 | Existing BFR for the unit | Excel (Format B; may be stale, partial, or mid-edit) |
-| Project metadata | Manual (UIC, building no., planner, programmed FY, DD1391, region) |
+| Project metadata | Manual (UIC, building no., planner, programmed FY, region) — **no DD 1391 field; DD 1391 is a downstream MILCON document, not a BFR field** |
 
 **PDF ingestion:** every extracted record carries source filename + page
 + table/row reference. Low-confidence extractions are marked
@@ -182,6 +187,14 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 - **Master TO&E (Format C, TFSMS-style):**
   `2031 Master TO&E v1.1 - 20250411.xlsx` — does **not** cover CLB-4
   (covers a different MEF/MLG; M29030/M29111-14 absent).
+- **Canonical CCN dictionary (Layer 2):**
+  `audit/CCN_VOCABULARY.yaml` / `.csv` / `.json` — 1,059 distinct CCNs
+  extracted from `fc_2_000_05n_appendixa.pdf` (WBDG, dated 2019-06-27).
+  Provenance block in YAML records source URL, document date,
+  extraction date. Re-extractor: `audit/extract_ccn_appendix_a.py`.
+- **Source PDF for the CCN dictionary:** `fc_2_000_05n_appendixa.pdf`
+  (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
+  FC 2-000-05N Appendix A → NAVFAC P-72 (DON Facility Category Codes).
 
 ## Standard tooling (`audit/*.py`)
 
@@ -198,29 +211,57 @@ python3 audit/style_extract.py "<file.xlsx>" "<sheet>" [<sheet>...]
 Capture output into `audit/reports/<NN>_<name>.txt` and commit. The
 report numbering convention is sequential (`01_…`, `02_…`, …) — keep it.
 
-## Outstanding work tracks (round 3+)
+## Work tracks — recommended order
 
-Pick from these. Each is independent enough to commit to as a unit.
+Authored 2026-04-28. Each track is independent enough to commit as a
+unit; the order is the recommended build sequence.
 
-- **Layer 2 vocabulary lock.** Extract the canonical CCN+suffix tag
-  list from FC 2-000-05N (WBDG public PDFs) per CCN. Output:
-  `audit/CCN_VOCABULARY.yaml`.
-- **Layer 3 classification rules.** Document the
-  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) → tag`
-  function. Output: `audit/CLASSIFICATION_RULES.md` + a YAML/TOML
-  rule table.
-- **Layer 4 ETL.** Format-A-or-C reader → classifier → Format-B writer.
-  Output: `pipeline/etl.py` + tests.
-- **Layer 4 canonical BFR template.** Cosmetic-faithful CCN sheet
-  generator using `openpyxl` + the `STYLE_GUIDE.md` spec. Output:
-  `pipeline/template.py` + a generated sample to compare against
-  CLB-4 SW visually.
-- **Layer 5 stable-lookup CCN sheet patterns.** One per CCN type
-  (admin, shop+bay, warehouse, laydown, etc.). Output:
-  `pipeline/ccn_sheets/`.
-- **Layer 6 validation harness.** Schema + NOTE coverage + roll-up +
-  billet/equipment accounting. Output: `pipeline/validate.py` +
-  pass/fail report format.
+### DONE
+
+- **Layer 2 — CCN vocabulary lock.** Extracted 1,059 canonical CCNs
+  from FC 2-000-05N Appendix A. Outputs: `audit/CCN_VOCABULARY.yaml`,
+  `.csv`, `.json`; report `audit/reports/15_ccn_vocabulary_extraction.txt`;
+  re-extractor `audit/extract_ccn_appendix_a.py`. Commit `c328a36`.
+- **Documentation hygiene.** Dropped DD 1391 field from BFR docs and
+  the methodology workbook; purged "MCBJ" and "COMMARCORBASESJAPAN"
+  legacy terminology from cells; renamed workbook
+  `MCBJ_BFR_Generator_FC2-000-05N.xlsx` →
+  `BFR_Generator_FC2-000-05N.xlsx`. Commits `0a2c8cc`, `1a61265`.
+
+### NEXT (in this order)
+
+1. **Layer 5 — extensible CCN_Library + dynamic ranges**  *(small,
+   foundation for everything else)*. Repopulate
+   `BFR_Generator_FC2-000-05N.xlsx`'s `CCN_Library` sheet from
+   `audit/CCN_VOCABULARY.yaml` (all 1,059 entries). Replace
+   fixed `BFR_Calculator!$B$7:$B$20` named ranges with
+   full-column or dynamic refs so the workbook scales to any unit
+   type and any CCN count. Recalc + verify zero formula errors.
+2. **Track C — Layer 6 validation harness**  *(deterministic QA, run
+   against existing artifacts before generating anything new)*.
+   `pipeline/validate.py` covering: schema check, NOTE coverage, NOTE↔
+   CCN consistency, vocabulary check (against CCN_VOCABULARY), roll-up
+   integrity, billet accounting, equipment accounting. Pass/fail report
+   format. Run against CLB-4 SW BFR as the worked example.
+3. **Track B — Layer 4 canonical BFR template generator**.
+   `pipeline/template.py` produces a Format-B BFR using `openpyxl` +
+   `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.yaml`
+   + a unit profile. Reproduces the CLB-4 banner-block (rows 1–7) on
+   each CCN sheet. Recalc-ready (no IFERROR masking, no restricted
+   ranges, named-range constants).
+4. **Track D — PDF ingestion prototype**  *(only when a Format-D source
+   actually arrives; independent of the rest)*. Extracts billet/
+   equipment rows from TFSMS / ASR / authoritative PDF → canonical
+   Format A schema, with per-row page+table citation. Use
+   `pdfplumber` first; OCR only for scanned PDFs.
+
+### PARALLEL (doctrine work, can start any time)
+
+- **Layer 3 — classification rules.** Document the
+  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) → NOTE-tag`
+  function as `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table.
+  Required for Track B to be fully unit-agnostic; Track B can stub
+  with an externally-supplied rule list until this is authored.
 
 ## Hand-off protocol (APEX OMEGA)
 

@@ -18,7 +18,7 @@ Round-2 schema map (`audit/reports/10_schema_map.txt`) confirms three
 distinct source formats. Any pipeline tool must handle all three, or
 explicitly reject what it can't ingest.
 
-### Format A — Per-Company T/O Export (MCTOFD-style)
+### Format A — Per-Company TFSMS Export (Excel)
 
 **Files in this repo:** `M29111_HQ_CO_CLB-4`, `M29112_CLC_A_CLB-4`,
 `M29113_CLC_B_CLB-4`, `M29114_GS_CO_CLB-4`.
@@ -62,7 +62,7 @@ COUNTIFS / SUMIFS / INDEX-MATCH lookup in the legacy hidden CCN tabs
 expects to find data in Format B layout, with the NOTE column carrying
 CCN+suffix tags.
 
-### Format C — Master MEF / Wide TO&E (MTOMS-T-style)
+### Format C — Master MEF / Wide TFSMS Export (Excel)
 
 **Files in this repo:** `2031 Master TO&E v1.1 - 20250411.xlsx` —
 `TO_2` (24,299 rows × 51 cols), `TE_3` (19,002 rows × 27 cols).
@@ -85,6 +85,73 @@ data rows show `None` in that column).
 M29031 / M29111-14` (CLB-4). It is for a different MEF/MLG. Whether
 3d MLG has a corresponding Master TO&E is unknown to me; if it exists,
 it should be obtained and added to this repo.
+
+### Format D — TFSMS / ASR / Authoritative PDF
+
+**Files in this repo:** none yet observed. Real engagements will supply
+TFSMS printable PDFs, ASR PDFs, or other authoritative T/O&E printouts.
+
+The pipeline must accept these and extract tabular billet and equipment
+data with citation-grade fidelity. Ingestion requirements:
+
+- **Per-row citation** — every extracted record carries the source PDF
+  filename, page number, and table/row reference. This satisfies Apex
+  Omega §5.4 (verify against primary source) and §8.1 (cite source +
+  section + date inline).
+- **Confidence threshold** — if a value cannot be extracted with high
+  confidence (low-confidence OCR, ambiguous column boundary,
+  illegible scan), mark it `TBD — pending [page reference]` per
+  Apex Omega §6 / §8.3. Never invent a value to fill a gap.
+- **Schema target** — the extractor's output is the canonical Format A
+  schema (one row per billet, one row per TAMCN). After extraction,
+  PDF-sourced data flows through the same downstream stages as
+  Excel-sourced data.
+- **Tooling options** (to be selected in implementation):
+  `pdfplumber`, `camelot-py`, `tabula-py`, or text-mode extraction
+  with hand-coded column splits. OCR (`tesseract`, `paddleocr`) only
+  for scanned PDFs; native-text PDFs use direct extraction.
+- **No silent corrections.** If a PDF says `LtCol`, the extracted value
+  is `LtCol`, not `LTCOL`. Normalization happens in a separate
+  documented step that emits a diff log.
+
+---
+
+## Operational modes
+
+The pipeline runs in one of three modes. Each mode declares its inputs
+and its output contract. The same internal stages (Layers 1–6 below) are
+used; the modes differ in whether the existing-BFR input exists and
+whether the output is a new workbook or an updated one.
+
+### Update-existing (the common case)
+
+**Inputs:** existing BFR workbook (Format B, possibly stale or partially
+correct) + new T/O&E source data (Format A, C, or D).
+
+**Output:** the BFR workbook with refreshed loading data, recomputed
+CCN totals, regenerated summary tabs (`UNIT_ROLLUP`, `RecapMCC`-style,
+`Billet Summary`-style, equipment-by-CCN), and repaired lookup contracts
+(broken `#REF!` / restricted-range formulas rewritten to full-column
+references). Output is paired with a **diff report** enumerating every
+cell that changed, with before/after values and traceable cause.
+
+### Generate-new
+
+**Inputs:** T/O&E source data only (Format A, C, or D) + project
+metadata (UIC, building number, planner, programmed FY, region).
+
+**Output:** a fresh BFR workbook built against the canonical template,
+cosmetic per `STYLE_GUIDE.md`, with all CCN sheets populated from the
+T/O&E data via the documented classification rule set (Layer 3).
+
+### Audit-existing
+
+**Inputs:** existing BFR workbook only.
+
+**Output:** a forensic findings report (the work product of round 1 on
+CLB-4 SW lives in `audit/FINDINGS.md`) plus a repair plan listing each
+broken sheet, the failure mode, and the recommended fix path
+(rebuild vs. surgical repair).
 
 ---
 
@@ -294,6 +361,40 @@ This harness should be a single tool, run on commit, that emits a
 pass/fail report. That is what "airtight" looks like in practice.
 
 ---
+
+## Definition of done — binding for every deliverable
+
+A BFR produced by any operational mode is **not** done until **all** of
+these acceptance tests hold. (Restated from `CLAUDE.md` so the contract
+spec is self-contained.)
+
+1. **Cosmetic** — matches `STYLE_GUIDE.md` (CLB-4 theme + Apex Omega
+   4-color cell-role palette).
+2. **Recalc clean** — zero `#REF!`, `#DIV/0!`, `#NAME?`, `#VALUE!`,
+   `#N/A` after LibreOffice headless recalc (the recalc step is
+   mandatory; openpyxl alone does not compute formulas).
+3. **Every CCN sheet computes** — `TOTAL REQUIREMENT` evaluates to a
+   real number traceable to a TFSMS/ASR input or FC 2-000-05N
+   planning factor.
+4. **Roll-up integrity** — every CCN's total flows to `UNIT_ROLLUP`
+   exactly once. No dropped CCNs (the round-1 finding where 6 hidden
+   CCN sheets were excluded from the 14,299 GSF roll-up cannot
+   recur). No double counts.
+5. **All cross-references resolve** — named ranges, sheet refs, and
+   lookups all point at populated cells. No external links. No
+   `#REF!` or `#N/A` in the defined-names list.
+6. **TFSMS reconciliation gate green** — `TFSMS_UNRECONCILED = FALSE`;
+   ASR-reconciled `PN_*` named ranges populated.
+7. **Personnel summaries** populated and accurate — billet
+   breakdowns by rank, by MOS, by MCC. Numbers tie to source TFSMS.
+8. **Equipment summaries by CCN** populated and accurate — every
+   TAMCN line maps to a CCN; counts tie to source T/E.
+9. **GSF / GSY totals consistent** across detail tabs and roll-up.
+10. **Audit-traceable** — every regulatory or numeric claim cited
+    inline with source + section + date.
+
+A deliverable that fails any one of these is `TBD — pending <failing
+item>` per Apex Omega rule 4. Never silently release.
 
 ## Where this leaves us
 

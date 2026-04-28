@@ -79,6 +79,49 @@ The end-state is a unit-agnostic ETL + generator that:
 - **Branch:** all development on `claude/usmc-bfr-pipeline-jZb5F`.
   Commit and push at meaningful milestones (the stop hook enforces this).
 
+## Input contract (accept any format the unit hands us)
+
+| Input | Possible formats |
+|---|---|
+| T/O&E source data | Excel (TFSMS per-co; Master MEF / TFSMS-style), **PDF** (TFSMS printable, ASR PDF, other authoritative printout) |
+| Existing BFR for the unit | Excel (Format B; may be stale, partial, or mid-edit) |
+| Project metadata | Manual (UIC, building no., planner, programmed FY, DD1391, region) |
+
+**PDF ingestion:** every extracted record carries source filename + page
++ table/row reference. Low-confidence extractions are marked
+`TBD — pending [page reference]`. Tooling: `pdfplumber`, `camelot`,
+`tabula-py`, or text-mode with hand-coded splits; OCR only for scanned
+PDFs.
+
+## Operational modes
+
+- **Update-existing** (common case): existing BFR + new T/O&E →
+  refreshed BFR + diff report.
+- **Generate-new**: T/O&E only → fresh BFR built against canonical
+  template.
+- **Audit-existing**: existing BFR only → forensic findings + repair
+  plan.
+
+## Definition of done — binding acceptance test
+
+(Full text in `CLAUDE.md` and `audit/PIPELINE.md`. Summary here:)
+
+1. Cosmetic match to CLB-4 + Apex Omega palette.
+2. Zero `#REF!`/`#DIV/0!`/`#NAME?`/`#VALUE!`/`#N/A` after LibreOffice
+   headless recalc.
+3. Every CCN sheet's TOTAL REQUIREMENT computes a real, traceable number.
+4. Roll-up integrity — every CCN flows to UNIT_ROLLUP once, no drops,
+   no double counts.
+5. All cross-references resolve. No external links. No #REF!/#N/A
+   defined names.
+6. `TFSMS_UNRECONCILED = FALSE`; `PN_*` named ranges populated.
+7. Personnel summaries (by rank/MOS/MCC) accurate.
+8. Equipment summaries by CCN accurate.
+9. GSF/GSY totals consistent across all sheets.
+10. Inline citations for every regulatory or numeric claim.
+
+A deliverable failing any one of these is `TBD — pending <failing item>`.
+
 ## Authoritative references (Apex Omega §3) — confirm currency at use
 
 | Reference | Use |

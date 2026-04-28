@@ -53,14 +53,82 @@ else in this file, Apex Omega wins.
 
 The working repository for a USMC **Basic Facility Requirements (BFR)**
 audit and pipeline development effort. The deliverable is an airtight,
-unit-agnostic, doctrinally-sound data pipeline that ingests TFSMS / ASR
-T/O&E source data and produces compliant BFR workbooks per
-**FC 2-000-05N (Series 100, 11 Feb 2026)** — Marine Corps Basic Facility
-Requirements (formerly UFC 2-000-05N / NAVFAC P-80).
+unit-agnostic, format-agnostic, state-agnostic data pipeline that ingests
+TFSMS / ASR T/O&E source data — **in whatever format the unit supplies
+it** — together with **the unit's existing BFR (if any)**, and produces
+a compliant updated BFR workbook per **FC 2-000-05N (Series 100,
+11 Feb 2026)** — Marine Corps Basic Facility Requirements (formerly
+UFC 2-000-05N / NAVFAC P-80).
 
 CLB-4 (UIC `M29030`, 3d MLG, MCIPAC, MCB Camp Butler / Okinawa) is
 the worked example. It is **not** the only unit; tooling must be
 unit-agnostic.
+
+## Input contract — accept any format the unit hands us
+
+A real engagement supplies any combination of:
+
+| Input | Possible formats | Notes |
+|---|---|---|
+| T/O&E source data | Excel (TFSMS per-company export, Master MEF / TFSMS-style), **PDF** (TFSMS printable, ASR PDF, other authoritative printout) | Must be ASR-reconciled before driving a BFR (Apex Omega §5.6). PDF ingestion must extract tabular billet/equipment data with citation-grade fidelity (page, table, row). If extraction confidence is low, mark `TBD — pending [page reference]`; never guess values. |
+| Existing BFR for the unit | Excel (Format B, BFR-embedded TO/TE) | May be stale, partially correct, or mid-edit. May contain hidden / broken sheets (the CLB-4 SW BFR is the worked example of this state). |
+| Project metadata | Manual input (UIC, building number, planner, programmed FY, DD1391, region) | Goes to the `Cover` sheet via the named-range API. |
+
+## Operational modes the pipeline must support
+
+- **Update-existing** (the common case). Inputs: existing BFR + new
+  T/O&E. Output: same BFR with refreshed loading, recalculated
+  CCN totals, regenerated summary tabs, repaired lookup contracts,
+  and a diff report enumerating every cell that changed (with
+  before/after values and traceable cause).
+- **Generate-new**. Inputs: T/O&E only. Output: fresh BFR built
+  against the canonical template, cosmetic per `STYLE_GUIDE.md`.
+- **Audit-existing**. Inputs: existing BFR only. Output: forensic
+  report (the work product of round 1 on CLB-4 SW lives in
+  `audit/FINDINGS.md`) plus a repair plan.
+
+## Definition of done — binding for every deliverable
+
+An updated/generated BFR is **not** done until **all** of the following
+hold. This is the acceptance test.
+
+1. **Cosmetic** — matches the CLB-4 four rebuilt clean CCN sheets per
+   `audit/STYLE_GUIDE.md` (theme tints, Calibri/Arial fonts, thin
+   black borders, merged-cell skeleton, page setup, footer text)
+   plus the Apex Omega cell-role palette (input `#FFF8DC`, calc
+   `#EAF3F4`, output `#DCE7C8`, warning `#F8E2D6`).
+2. **Recalc clean** — after LibreOffice headless recalc, **zero**
+   `#REF!`, `#DIV/0!`, `#NAME?`, `#VALUE!`, `#N/A` (except where
+   `#N/A` is the documented intentional empty-lookup result).
+3. **Every CCN sheet computes** — every CCN sheet's `TOTAL
+   REQUIREMENT` cell evaluates to a real number traceable through
+   the formula chain back to a TFSMS/ASR input cell or a documented
+   FC 2-000-05N planning factor.
+4. **Roll-up integrity** — every CCN's total flows to `UNIT_ROLLUP`
+   exactly once. No dropped CCNs (the round-1 finding where 6 hidden
+   CCN sheets were excluded from the 14,299 GSF roll-up cannot
+   recur). No double counts.
+5. **All cross-references resolve** — named ranges, sheet refs, and
+   lookups all point at populated cells. No external links. No
+   `#REF!` or `#N/A` in the defined-names list.
+6. **TFSMS reconciliation gate green** — `TFSMS_UNRECONCILED` flag
+   is `FALSE`; ASR-reconciled `PN_*` named ranges populated.
+7. **Personnel summaries** populated and accurate — billet
+   breakdowns by rank, by MOS, by MCC (the `RecapMCC` / `RecapMOS` /
+   `Billet Summary` equivalents). Numbers tie out to source TFSMS
+   and to the BFR's own loading inputs.
+8. **Equipment summaries by CCN** populated and accurate — every
+   TAMCN line maps to a CCN; counts tie out to source T/E and to
+   the CCN sheets that consume them.
+9. **GSF / GSY totals consistent** — every numeric value displayed
+   in summary form ties to its detail-tab origin.
+10. **Audit-traceable** — every regulatory or numeric claim cited
+    inline with source + section + date (Apex Omega §8.1). Every
+    derived number reproducible from inputs visible in the same
+    artifact (Apex Omega §8.4).
+
+A deliverable that fails any one of these is `TBD — pending
+<failing item>` per Apex Omega rule 4. Never silently release.
 
 **Terminology — current correct nomenclature.** The installation is
 **MCB Camp Butler**; the Echelon II command is **MCIPAC** (Marine Corps

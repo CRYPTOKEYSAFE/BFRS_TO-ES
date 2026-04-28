@@ -22,7 +22,7 @@ Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 | 4 | `Inventory` | Inventory-vs-required comparison (gap analysis), keyed off `BFR_Calculator` row indices. |
 | 5 | `Okinawa_Adj` | Okinawa-specific adjustments: MILCON ACF, Sustainment ACF, Escalation, Contingency, SIOH, PD Factor, ATFP / seismic / typhoon checklist (with `TBD` placeholders for unverified items per Apex Omega rule 4). |
 | 6 | `BFR_Summary` | Final per-CCN summary. Pulls Loading/Factor/Required from `Inventory`, applies Okinawa adjustments, emits the final SF (or SY) by CCN. |
-| 7 | `CCN_Library` | The canonical CCN dictionary keyed off FC 2-000-05N Series 100. Columns: CCN, Name, UoM, Default factor, Description, NTG, Loading basis. |
+| 7 | `CCN_Library` | The canonical CCN dictionary. Columns: CCN, Facility Name, UoM, Default Factor, Factor Notes, NTG, Driver Description. **Expanded 2026-04-28 (Layer 5) to 1,060 entries** — 1,059 from the FC 2-000-05N Appendix A canonical extract (`audit/CCN_VOCABULARY.json`, source date 2019-06-27) merged with the 23 originally curated rows; one curated CCN ("143 13 Operational Vehicle/Equipment Canopy") is preserved as net-new since it is not present in the 2019 generation of the catalog. Curated planning factors (Default Factor, Factor Notes, NTG, Driver Description) overlay the canonical title where both exist. |
 
 ---
 
@@ -95,13 +95,13 @@ These flow into `BFR_Calculator` Loading column (col E). Sample:
 
 | Name | Range | Meaning |
 |---|---|---|
-| `BFR_CCN` | `BFR_Calculator!$B$7:$B$20` | CCN identifier per row (format `143 11`, `171 10`, etc.) |
+| `BFR_CCN` | `BFR_Calculator!$B$7:$B$20` | CCN identifier per row (format `143 11`, `171 10`, etc.) — current cap is 14 active rows; per-unit projects with more CCNs use the Track B template generator instead |
 | `BFR_NAME` | `BFR_Calculator!$C$7:$C$20` | Looked up from `CCN_TABLE` |
 | `BFR_UM` | `BFR_Calculator!$D$7:$D$20` | Unit of measure (SF / SY) |
 | `BFR_REQ` | `BFR_Calculator!$H$7:$H$20` | Computed required quantity |
 | `BFR_OVR` | `BFR_Calculator!$I$7:$I$20` | Override (if planner overrides the calc) |
 | `BFR_NOTE` | `BFR_Calculator!$J$7:$J$20` | Per-row note / justification |
-| `CCN_TABLE` | `CCN_Library!$C$6:$I$28` | The lookup library |
+| `CCN_TABLE` | `CCN_Library!$C$6:$I$1100` | The lookup library — **expanded 2026-04-28 (Layer 5)** to cover the 1,060-CCN merged dictionary plus headroom |
 
 ---
 

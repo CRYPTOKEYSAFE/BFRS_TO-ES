@@ -1,6 +1,6 @@
 FILE: BFR_Generator_FC2-000-05N.xlsx
 PATH: /home/user/BFRS_TO-ES/BFR_Generator_FC2-000-05N.xlsx
-SIZE: 32,045 bytes
+SIZE: 129,895 bytes
 
 SHEETS (8):
   [00] 'Cover'  state=visible  dim=B2:G42  max_row=42  max_col=7
@@ -10,7 +10,7 @@ SHEETS (8):
   [04] 'Inventory'  state=visible  dim=B2:J20  max_row=20  max_col=10
   [05] 'Okinawa_Adj'  state=visible  dim=B2:E27  max_row=27  max_col=5
   [06] 'BFR_Summary'  state=visible  dim=B2:J75  max_row=75  max_col=10
-  [07] 'CCN_Library'  state=visible  dim=B2:I39  max_row=39  max_col=9
+  [07] 'CCN_Library'  state=visible  dim=B2:I1065  max_row=1065  max_col=9
 
 DEFINED NAMES (42):
   'BFR_CCN'  ->  'BFR_Calculator!$B$7:$B$20'
@@ -20,7 +20,6 @@ DEFINED NAMES (42):
   'BFR_REQ'  ->  'BFR_Calculator!$H$7:$H$20'
   'BFR_UM'  ->  'BFR_Calculator!$D$7:$D$20'
   'BLDG_NO'  ->  'Cover!$D$8'
-  'CCN_TABLE'  ->  'CCN_Library!$C$6:$I$28'
   'Contingency'  ->  'Okinawa_Adj!$C$10'
   'Esc_Factor'  ->  'Okinawa_Adj!$C$9'
   'HF'  ->  'Okinawa_Adj!$C$13'
@@ -55,6 +54,7 @@ DEFINED NAMES (42):
   'TFSMS_TOTAL'  ->  'TFSMS_Loading!$O$17'
   'TFSMS_UNRECONCILED'  ->  'TFSMS_Loading!$D$19'
   'UIC'  ->  'Cover!$D$11'
+  'CCN_TABLE'  ->  'CCN_Library!$C$6:$I$1100'
 
 EXTERNAL LINKS (0):
 
@@ -198,24 +198,24 @@ PER-SHEET DETAIL
   state         : visible
   tab_color     : None
   freeze_panes  : B6
-  merged_cells  : 3
+  merged_cells  : 2
   print_area    : 
   data_validns  : 0
   cond_formats  : 0
   formulas      : 0  (with ext refs: 0)
-  ccn-like rows : 25  (showing first 12)
-      row    6  CCN~141 70  :: 141 70 | Air Traffic Control Tower | SF | 2956 | Standard 6-floor tower & cab; add levels for height. | 1.1 | Each tower
-      row    7  CCN~143 10  :: 143 10 | Emergency Vehicle Garage | SF | see notes | Vehicle area + 3 ft clearance/side × NTG 1.05. | 1.05 | Sum of vehicle plan-areas
-      row    8  CCN~143 11  :: 143 11 | Operational Vehicle Garage | SF | see notes | Per Table 14311-1 (Type A 108 NSF … Type G 888 NSF) + 250 SF mech rm. | 1.2 | # of ve
-      row    9  CCN~143 12  :: 143 12 | Operational Vehicle Laydown Area | SY | see notes | Per Table 14312-1 (Type A 19 GSY … Type G 99 GSY). | 1 | # of vehicles by Type 
-      row   10  CCN~143 13  :: 143 13 | Operational Vehicle/Equipment Canopy | SF | see notes | Vehicle/equip area + circulation (drip line). | 1 | Sum of vehicle plan-are
-      row   11  CCN~143 24  :: 143 24 | Marine Corps EOD Facility | SF | 7000 | 7,000 GSF EOD bldg + 204 GSF Haz/Flam + magazines as required. | 1 | Each EOD facility
-      row   12  CCN~143 26  :: 143 26 | Marine Corps EOD Company Facility | SF | see notes | NSF per function × NTG 1.40 (Admin 1,910 SF; classrooms via 171 10). | 1.4 | E
-      row   13  CCN~143 45  :: 143 45 | Armory | SF | see notes | Per Table 14345-1 (1–2K strength: 576 GSF; >10K: +0.1 SF/PN). | 1 | Military strength + weapons
-      row   14  CCN~143 46  :: 143 46 | Marine Barracks - General Purpose | SF | see notes | Per Table 14346-1 (1–50: 75 GSF/PN; 201+: +30 GSF/PN). | 1 | # of personnel ba
-      row   15  CCN~143 47  :: 143 47 | Alert Force Building | SF | see notes | Engineering analysis (barracks + messing + duty + weapons stg). | 1 | Alert force size
-      row   16  CCN~171 10  :: 171 10 | Academic Instruction Building | SF | 45 | Per Table 17110-1 (broad: 45 GSF/student station, 75 GSF if modified). NTG 1.33. | 1.33 |
-      row   17  CCN~171 15  :: 171 15 | Navy/Marine Corps Reserve Training | SF | see notes | Via NOSC Space Program Spreadsheet (Tables 17115-1…9). | 1.3 | Reserve unit c
+  ccn-like rows : 1060  (showing first 12)
+      row    6  CCN~111 10  :: 111 10 | RUNWAY / FW | SY | PREPARED SURFACES FOR THE LANDING AND TAKEOFF OF AIRCRAFT.
+      row    7  CCN~111 12  :: 111 12 | RUNWAY/FIXED- WING-UNSURFAC | SY | RUNWAYS FOR ROTARY WING AIRCRAFT THAT DO NOT CONSIST OF A PAVEMENT OR HARDSTAND SURFACE.
+      row    8  CCN~111 15  :: 111 15 | RUNWAY / ROTARY WING | SY | PREPARED SURFACES FOR THE LANDING AND TAKEOFF OF HELICOPTERS.
+      row    9  CCN~111 20  :: 111 20 | HELICOPTER LANDING PAD | SY | PREPARED AREA FOR THE HOVERING, VERTICAL TAKEOFF AND LANDING (VTOL) OF HELICOPTERS AND OTHER VTOL AIR
+      row   10  CCN~111 25  :: 111 25 | FW A/C (VTOL) LANDING PAD | SY | A LANDING/TAKEOFF PAD FOR VTOL AIRCRAFT SUCH AS THE HARRIER AND JOINT STRIKE FIGHTER.
+      row   11  CCN~111 30  :: 111 30 | RUNWAY OVERRUN - PAVED | SY | AREAS EXTENDING AT EACH END OF A RUNWAY. THE RUNWAY OVERRUN AREAS ARE REQUIRED TO REDUCE SERIOUS DAMA
+      row   12  CCN~112 10  :: 112 10 | TAXIWAY | SY | TAXIWAYS ARE PAVED SURFACES ON WHICH AIRCRAFT, BOTH FIXED AND ROTARY WING, MOVE UNDER THEIR OWN POWER TO AND FROM LA
+      row   13  CCN~113 20  :: 113 20 | AIRCRAFT PARKING APRON | SY | PARKING APRONS ARE REQUIRED FOR LOADING, UNLOADING AND SERVICING OF AIRCRAFT AND PROVIDING PARKING SP
+      row   14  CCN~113 40  :: 113 40 | AIRCRAFT ACCESS APRON | SY | AIRCRAFT ACCESS APRONS PROVIDE ACCESS TO AIRCRAFT MAINTENANCE HANGARS FROM THE AIRCRAFT PARKING APRON.
+      row   15  CCN~116 10  :: 116 10 | AIRCRAFT WASHRACK PAVEMENT | SY | AIRCRAFT WASHRACKS ARE PROVIDED AT ALL AIR INSTALLATIONS FOR CLEANING OF AIRCRAFT.
+      row   16  CCN~116 12  :: 116 12 | AIRCRAFT PAVEMENT SHOULDER | SY | THE AREA EXTENDING LATERALLY FROM THE EDGE OF THE RUNWAY PAVEMENT.
+      row   17  CCN~116 15  :: 116 15 | AIRCRAFT RINSE FACILITY | SY | AN AIRCRAFT RINSE FACILITY PROVIDES AN UNATTENDED TAXI- THROUGH, TREADLE OPERATED, FRESHWATER DELUGE
 
 ########################################################################
 

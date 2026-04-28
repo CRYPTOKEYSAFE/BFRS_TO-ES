@@ -1,0 +1,221 @@
+# Per-unit-type default values for the BFR pipeline.
+#
+# Loaded by pipeline/classify.py to resolve unit-type-dependent
+# defaults (currently admin_ccn). The classifier merges in this
+# order: rule-table defaults (lowest precedence) <- this file's
+# unit_types[<type>] entry <- the unit profile's explicit
+# unit_context fields (highest precedence). Apex Omega rule 4
+# applies: when a unit_type's admin_ccn is "TBD", the classifier
+# emits unclassified for the affected billets so the validator's
+# Check 7 surfaces them, instead of substituting a guessed CCN.
+#
+# Authority: FC 2-000-05N (Marine Corps BFR), NAVFAC P-72 Category
+# 610 series (Administrative Facilities). The 610 series carries
+# multiple admin sub-categories that vary with the echelon and
+# mission of the occupying organization (operational forces vs.
+# higher headquarters vs. base support, etc.). Until FC 2-000-05N
+# Series 100 is ratified in this repo, only the CLB observation is
+# at confidence high; every other unit type is confidence low and
+# its admin_ccn is TBD.
+#
+# Status: STARTER. CLB confidence high (observed in CLB-4 SW BFR);
+# every other unit-type slot is TBD pending FC 2-000-05N Series 100
+# ratification. Add a row when a new unit type comes through; do
+# not extrapolate from CLB.
+
+provenance:
+  authority: "FC 2-000-05N (Marine Corps BFR), NAVFAC P-72
+              Category 610 (Administrative Facilities)"
+  ratified_against: "TBD pending FC 2-000-05N Series 100
+                     (fc_2_000_05n_100series_12_10_2025.pdf,
+                     version 100.20251210, 10 Dec 2025) PDF
+                     extraction via audit/extract_planning_factors.py"
+  source_date: "TBD"
+  schema_version: "0.1"
+
+# Default fallback when a unit profile does not declare unit_type
+# or declares one not in this table. Surfaces the affected billets
+# as orphans rather than substituting a guess (Apex Omega rule 4).
+default:
+  admin_ccn: "TBD"
+  fallback_behavior: orphan
+  message: "unit_type not declared in unit profile or unknown to
+            UNIT_TYPE_DEFAULTS.yaml; declare unit_type and add a
+            row here before generating a BFR for this unit"
+
+# Per-unit-type defaults. Add a row when a new unit type is
+# encountered. Each row carries citations.
+unit_types:
+
+  CLB:
+    description: "Combat Logistics Battalion (e.g., CLB-4, CLB-5)
+                  in MLG / MEF structure"
+    admin_ccn: "61072"
+    confidence: high
+    citations:
+      - source: "Observed CLB-4 SW BFR (M29030, 3d MLG, MCIPAC,
+                 MCB Camp Butler), 61072 BN HQ Admin clean rebuild
+                 sheet"
+        section: "61072 sheet, rebuilt clean per audit/STYLE_GUIDE.md"
+        date: "2026-02"
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 610 72 Administrative Office (per NAVFAC P-72
+                 Category 610 series)"
+        date: "2019-06-27"
+
+  MLG_HQ:
+    description: "Marine Logistics Group HQ (e.g., 3d MLG, 1st MLG)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; MLG HQ is a
+                 higher headquarters echelon than BN/squadron and
+                 likely uses a different 610 sub-category"
+        date: "TBD"
+
+  MEF_HQ:
+    description: "Marine Expeditionary Force HQ (e.g., I MEF, III MEF)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; MEF HQ is the
+                 highest operational echelon below MARFOR"
+        date: "TBD"
+
+  MEU_CE:
+    description: "Marine Expeditionary Unit Command Element (e.g.,
+                  31st MEU)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; MEU CEs are
+                 forward-deployable command echelons with
+                 administrative requirements distinct from a
+                 garrison BN"
+        date: "TBD"
+
+  MAG_HQ:
+    description: "Marine Aircraft Group HQ (e.g., MAG-12, MAG-36)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; aviation
+                 unit admin facility CCN may differ from ground
+                 BN-equivalent"
+        date: "TBD"
+
+  MWHS:
+    description: "Marine Wing Headquarters Squadron (e.g., MWHS-1,
+                  MWHS-3)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification"
+        date: "TBD"
+
+  AVIATION_SQUADRON:
+    description: "Marine Aircraft Wing flying squadron (VMFA, VMM,
+                  VMA, HMLA, HMH, etc.)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; aviation
+                 squadron admin space is typically integrated with
+                 the hangar (NAVFAC P-72 Category 211 series), not
+                 stood up as a standalone Category 610 facility"
+        date: "TBD"
+
+  RECRUIT_DEPOT:
+    description: "Marine Corps Recruit Depot HQ (MCRD San Diego,
+                  MCRD Parris Island)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; recruit
+                 depot admin requirements include training-cadre
+                 office space distinct from a tactical BN"
+        date: "TBD"
+
+  SCHOOLHOUSE:
+    description: "Formal training command (e.g., TBS, IOC, MCU,
+                  Marine Combat Training)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; schoolhouse
+                 admin is sometimes co-located with classroom space
+                 (NAVFAC P-72 Category 171 series) rather than
+                 standing up Category 610 separately"
+        date: "TBD"
+
+  TRAINING_COMMAND:
+    description: "Higher-echelon training command (e.g., TECOM,
+                  MAGTFTC)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification"
+        date: "TBD"
+
+  DEPOT:
+    description: "Marine Corps Logistics Base depot (e.g., MCLB
+                  Albany, MCLB Barstow)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; depot admin
+                 may use base-support 610 sub-category rather than
+                 operational-forces sub-category"
+        date: "TBD"
+
+  INSTALLATION_HQ:
+    description: "Marine Corps installation command (e.g., MCB Camp
+                  Butler HQ, MCAS Iwakuni HQ)"
+    admin_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Series 100 admin facility table"
+        section: "TBD pending Series 100 ratification; installation
+                 HQ is base-support, not operational forces, and
+                 likely maps to a different 610 sub-category than
+                 the tenant tactical units it supports"
+        date: "TBD"
+
+# Notes for SMEs filling out this table:
+#
+# 1. Apex Omega rule 4: when admin_ccn is "TBD", the classifier
+#    must emit unclassified for affected billets and let the
+#    validator surface them. Do not substitute 61072 or any other
+#    guess. The whole point of this file is to stop pipeline output
+#    from silently inheriting the CLB observation.
+#
+# 2. NAVFAC P-72 Category 610 has multiple sub-categories; the
+#    correct sub-category depends on (a) operational forces vs.
+#    base support vs. higher headquarters echelon, (b) tenant vs.
+#    host, and (c) any special-occupancy rules in FC 2-000-05N
+#    Series 100. Confidence high requires a Series 100 citation,
+#    not analogy from CLB.
+#
+# 3. When adding a unit_type row, also consider whether the unit
+#    has admin space integrated with another facility category
+#    (aviation squadrons -> hangar; schoolhouse -> classroom).
+#    In those cases the row should still declare admin_ccn but
+#    the BFR generator may roll the admin loading into the
+#    primary facility's CCN sheet rather than a standalone
+#    Category 610 sheet.
+#
+# 4. Per-unit-type defaults can extend beyond admin_ccn over time
+#    (default Okinawa ACF for OCONUS units, default NTG for the
+#    primary facility category, default planning factor variants).
+#    The schema is intentionally a dict per unit type so new
+#    fields can be added without breaking existing rows.

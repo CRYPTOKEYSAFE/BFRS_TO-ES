@@ -479,9 +479,11 @@ GitHub MCP and run the extractor.
    coverage to climb from 49% toward 100% with orphans only on
    genuinely cross-billet special cases.
 
-NOT BLOCKED, can start any time.
+NOT BLOCKED, can start any time. Track numbers below match the
+original 2026-04-28 handoff (Track 5 TAMCN map shipped at fb16a50
+and is in DONE; remaining tracks keep their original numbers).
 
-5. Per-unit-type admin_ccn defaults at
+Track 6. Per-unit-type admin_ccn defaults at
    `audit/UNIT_TYPE_DEFAULTS.yaml`. The classifier's admin_ccn
    default is hardcoded to 61072 (USMC BN/squadron HQ convention).
    Aviation squadrons, MEU command elements, depots, schoolhouses,
@@ -490,17 +492,19 @@ NOT BLOCKED, can start any time.
    unit types because TAMCN doctrine is commodity-driven, not
    unit-type-driven; this track addresses the per-unit-type admin
    CCN selection only.
-6. Extend `audit/TAMCN_CCN_MAP.yaml` to cover the 27 orphan TAMCNs
-   left after the round-1 build. Categories needing rules: A9-series
-   computer systems (need a comm/data center CCN choice), A79xxxE
-   electronics tool kits, B00727GA reconnaissance instrument set,
-   C49602TA grinding machine, E02207X expeditionary disassembly tool,
-   E08567K AAV (vehicle storage 21710 is doctrinally clear). Each
-   addition requires a citation; do not chase the orphan count by
-   guessing.
-7. Track D PDF ingestion prototype (`pipeline/pdf_ingest.py`).
-   Builds against a real TFSMS or ASR PDF when one arrives. Held
-   until then.
+
+Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
+   to cover the 27 orphan TAMCNs left after the round-1 build.
+   Categories needing rules: A9-series computer systems (need a
+   comm/data center CCN choice), A79xxxE electronics tool kits,
+   B00727GA reconnaissance instrument set, C49602TA grinding
+   machine, E02207X expeditionary disassembly tool, E08567K AAV
+   (vehicle storage 21710 is doctrinally clear). Each addition
+   requires a citation; do not chase the orphan count by guessing.
+
+Track 7. Format-D PDF ingestion prototype
+   (`pipeline/pdf_ingest.py`). Builds against a real TFSMS or ASR
+   PDF when one arrives. Held until then.
 
 ## Hand-off protocol (APEX OMEGA)
 

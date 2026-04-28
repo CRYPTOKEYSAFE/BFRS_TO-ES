@@ -211,15 +211,34 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
   FC 2-000-05N Appendix A to NAVFAC P-72 (DON Facility Category Codes).
 - Pipeline package: `pipeline/`
   - `pipeline/template.py`, Layer 4 BFR generator. Produces a
-    Format-B BFR for any unit profile + CCN list.
-  - `pipeline/validate.py`, Layer 6 validator. Six-check pass/fail
-    report against any Format-B BFR workbook.
+    Format-B BFR for any unit profile + CCN list. Three pattern
+    variants (primary_items, admin, shop_with_bays) plus default
+    fallback.
+  - `pipeline/validate.py`, Layer 6 validator. Eight-check pass/fail
+    report against any Format-B BFR workbook (schema, NOTE
+    coverage, NOTE-CCN consistency, vocabulary, cell errors,
+    roll-up integrity, billet accounting, equipment accounting).
+  - `pipeline/classify.py`, Layer 3 classifier. Maps a billet
+    record to a NOTE tag using `audit/CLASSIFICATION_RULES.yaml`.
+    Honors Apex Omega rule 4 (TBD rules emit unclassified, never
+    a guessed tag).
+  - `pipeline/etl.py`, end-to-end orchestrator. Reads Format-A
+    T/O&E files, classifies via classify.py, populates TO and TE
+    via template.py, emits run report.
 - Sample inputs: `samples/clb4_profile.json`,
   `samples/clb4_ccns.json`. Worked-example unit profile and CCN list
   for CLB-4.
-- Sample output: `out/CLB4_BFR_sample.xlsx`. Generator output for
-  CLB-4 (10 CCNs). Validator report at
-  `audit/reports/17_validate_generated_clb4.txt` (6 PASS / 0 FAIL).
+- Sample outputs:
+  `out/CLB4_BFR_sample.xlsx` (template-only, 10 CCNs, validator
+   8 PASS / 0 FAIL because TO and TE empty).
+  `out/CLB4_BFR_full.xlsx` (full ETL, 359 billets and 885
+   equipment rows from four company files; validator 5 PASS /
+   3 FAIL with the FAILs surfacing 184 unclassified billets and
+   885 unmapped equipment rows pending rule-table ratification
+   plus TAMCN-to-CCN doctrine table).
+- Validator reports at `audit/reports/16` (CLB-4 SW BFR),
+  `audit/reports/17` (template-only sample), `audit/reports/20`
+  (full ETL sample). ETL run report at `audit/reports/19`.
 - Typography sweeper: `audit/strip_dashes_and_bold.py`. One-shot tool
   that removes em dashes, en dashes, and markdown bold from every
   text file in the repo. Re-run if any new content sneaks them back
@@ -242,8 +261,24 @@ Pipeline (write):
 ```bash
 python3 audit/extract_ccn_appendix_a.py
 python3 audit/expand_ccn_library.py
+python3 audit/extract_planning_factors.py
+python3 pipeline/classify.py --to <Format-A.xlsx> --out <classified.csv>
 python3 pipeline/template.py --profile <profile.json> --ccns <ccns.json> --output <path.xlsx>
+python3 pipeline/etl.py --profile <profile.json> --ccns <ccns.json> \
+    --to-files <co1.xlsx> <co2.xlsx> ... --output <path.xlsx>
 python3 pipeline/validate.py <workbook.xlsx> [--report <path>]
+```
+
+Single-shot end-to-end for any unit (once the BMOS rules and
+TAMCN-to-CCN doctrine tables are ratified):
+```bash
+python3 pipeline/etl.py \
+    --profile samples/<unit>_profile.json \
+    --ccns samples/<unit>_ccns.json \
+    --to-files <co1.xlsx> <co2.xlsx> <co3.xlsx> ... \
+    --output out/<unit>_BFR_full.xlsx
+python3 pipeline/validate.py out/<unit>_BFR_full.xlsx \
+    --report audit/reports/NN_validate_<unit>.txt
 ```
 
 Capture audit output into `audit/reports/<NN>_<name>.txt` and commit.
@@ -349,61 +384,77 @@ unit; the order is the recommended build sequence.
   confidence=low with TBD citations pending FC 2-000-05N Series
   100/200 ratification. unclassified_disposition is "orphan, do not
   silently drop" so the validator surfaces unmapped billets in
-  Check 7. No `pipeline/classify.py` yet; rule schema is stable
-  enough to build against without churn.
+  Check 7. Commit `16caec1`.
+- Layer 3 classifier at `pipeline/classify.py`. Loads
+  `audit/CLASSIFICATION_RULES.yaml`, takes a billet record and unit
+  context, returns NOTE tag plus rule_id and citation, or
+  unclassified with reason. Pay-grade parser handles USMC ranks
+  (LTCOL, GYSGT, SGTMAJ, etc.), Navy officer abbreviations (ENS, LT,
+  LCDR), and Navy enlisted rate codes (HM1, RP3, MAC, HMCS, HMCM).
+  Section inference reads keyword patterns from Billet Description
+  (admin_or_hq, auto_org_shop, comm_shop, data_shop, medical, eod,
+  ordnance, supply, engineer, mp, field_maint). Apex Omega rule 4
+  honored: rules with TBD tag_template emit unclassified, never a
+  guessed tag. Smoke test on M29111 HQ Co (96 billets): 57
+  classified, 39 unclassified. Commit `de3891c`.
+- End-to-end ETL at `pipeline/etl.py`. Reads one or more Format-A
+  T/O&E files, classifies every billet via pipeline/classify.py,
+  extracts every TAMCN row, populates the generated BFR's TO and TE
+  sheets via pipeline/template.py. Emits run report with per-file
+  counts, classified/unclassified totals, per-CCN breakdown.
+  End-to-end run on the four CLB-4 company TFSMS exports (M29111,
+  M29112, M29113, M29114): 359 billets and 885 equipment lines read,
+  175 billets classified (49%), 184 surfaced as orphans for SME
+  review. Per-CCN top: 21451 (43), 61072 (39), 21730 (34), 21710
+  (28), 14326 (18), 44112 (13). Generated workbook at
+  `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
+  expected, NOTE coverage and accounting orphans waiting on rule-table
+  ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
 
-### NEXT (in this order)
+### NEXT (in priority order)
 
-1. Pull FC 2-000-05N Series 100 (file
-   `fc_2_000_05n_100series_12_10_2025.pdf`, version
-   `100.20251210`, 10 Dec 2025) and Series 200 (file
-   `fc_2_000_05n_200series_05_16_2025.pdf`, version
-   `200.20250516`, 16 May 2025) into the repo (the Appendix A PDF is
-   already at `fc_2_000_05n_appendixa.pdf`). Both Series PDFs are
-   public WBDG documents but cannot be retrieved from this sandbox
-   (egress allowlist blocks wbdg.org). User must supply the same way
-   the Appendix A PDF was supplied (drop into a commit on `main`,
-   pull from GitHub MCP, then `git checkout origin/main, file`).
-2. Extract planning factor tables from Series 100 and Series 200 into
-   `audit/PLANNING_FACTORS.yaml` (per-CCN: row layout, loading driver,
-   SF/person or SF/bay, NTG, ROUNDUP convention, source page +
-   table reference). Re-extractor script lives at
-   `audit/extract_planning_factors.py`, similar pattern to
-   `audit/extract_ccn_appendix_a.py`. Apex Omega timestamp every
-   record with the source PDF's printed version date.
-3. Layer 5 pattern ratification. Compare the three observed shapes
-   from `pipeline/template.py` (primary_items, admin, shop_with_bays,
-   commit `b9ab701`) against the per-CCN planning factors from step
-   2. Update pattern_data defaults and docstrings to cite source +
-   section + date inline. Add new pattern variants where the actual
-   FC 2-000-05N table calls for a different shape (aviation
-   maintenance, MEU embarkation, depot, training command, recruit
-   depot, schoolhouse, range complex, ammo/ordnance, fuel farm,
-   comm/data center, medical/dental, port, etc.). Drop any defaults
-   that cannot be verified against the current FC 2-000-05N edition;
-   mark such fields TBD per Apex Omega rule 4.
-4. Layer 3 classification rules. Author
-   `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table mapping
-   `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) -> NOTE
-   tag`. Required to populate the NOTE column in TO/TE so the
-   generator can place each billet on the right CCN sheet.
-5. Track D, PDF ingestion prototype (only when a Format-D source
-   actually arrives). Extracts billet/equipment rows from TFSMS / ASR
-   / authoritative PDF into canonical Format A schema with per-row
-   page+table citation. `pdfplumber` first; OCR only for scanned PDFs.
-6. Layer 6 advanced checks. Billet accounting (TO row count equals
-   sum across CCN sheets, no orphans, no double counts) and equipment
-   accounting (every TAMCN row in TE referenced by exactly one CCN
-   sheet). Add to `pipeline/validate.py` once specialized templates
-   produce billet-bearing test fixtures.
+BLOCKED on user-supplied files (sandbox cannot fetch from wbdg.org).
+Drop the PDFs into a commit on `main`; this side will pull via the
+GitHub MCP and run the extractor.
 
-### PARALLEL (doctrine work, can start any time)
+1. Pull FC 2-000-05N Series 100
+   (`fc_2_000_05n_100series_12_10_2025.pdf`, version `100.20251210`,
+   10 Dec 2025) and Series 200
+   (`fc_2_000_05n_200series_05_16_2025.pdf`, version `200.20250516`,
+   16 May 2025) into repo root.
+2. Run `audit/extract_planning_factors.py` (already scaffolded). Emits
+   `audit/PLANNING_FACTORS.{yaml,json}` and a summary report.
+3. Ratify Layer 5 pattern shapes against the extracted factor table.
+   Replace CLB-4-extracted defaults in `pipeline/template.py`
+   (SF/person 120 and 60, SF/bay 420, bays-per-N-vehicles 30,
+   NTG 1.33) with FC 2-000-05N-cited values. Add pattern variants for
+   unit types not yet seen (aviation maintenance, MEU embarkation,
+   depot, training command, recruit depot, schoolhouse, range complex,
+   ammo/ordnance, fuel farm, comm/data center, medical/dental, port).
+4. Ratify Layer 3 BMOS rules in `audit/CLASSIFICATION_RULES.yaml`.
+   The 14 BMOS prefix rules carry confidence=low and TBD citations
+   today. Replace each with a confidence=high rule cited against
+   FC 2-000-05N planning factor tables and MCO 1200.18 (MOS Manual).
+   Re-run `pipeline/etl.py` after ratification; expect classified
+   coverage to climb from 49% toward 100% with orphans only on
+   genuinely cross-billet special cases.
 
-- Layer 3, classification rules. Document the
-  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) to NOTE-tag`
-  function as `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table.
-  Required for Track B to be fully unit-agnostic; Track B can stub
-  with an externally-supplied rule list until this is authored.
+NOT BLOCKED, can start any time.
+
+5. Author the TAMCN to facility CCN doctrine table at
+   `audit/TAMCN_CCN_MAP.yaml`. Source: FC 2-000-05N TAMCN
+   dimensional table plus T/E doctrine. The pipeline's TE side
+   currently emits NOTE blank for every equipment row (885 orphans
+   in the CLB-4 ETL run). Map closes Check 8 of the validator.
+6. Per-unit-type admin_ccn defaults at
+   `audit/UNIT_TYPE_DEFAULTS.yaml`. The classifier's admin_ccn
+   default is hardcoded to 61072 (USMC BN/squadron HQ convention).
+   Aviation squadrons, MEU command elements, depots, schoolhouses,
+   recruit depots, and training commands have different admin
+   facility CCNs.
+7. Track D PDF ingestion prototype (`pipeline/pdf_ingest.py`).
+   Builds against a real TFSMS or ASR PDF when one arrives. Held
+   until then.
 
 ## Hand-off protocol (APEX OMEGA)
 

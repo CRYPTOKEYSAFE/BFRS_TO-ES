@@ -1,0 +1,63 @@
+FILE: 2031 Master TO&E v1.1 - 20250411.xlsx
+PATH: /home/user/BFRS_TO-ES/2031 Master TO&E v1.1 - 20250411.xlsx
+SIZE: 7,943,337 bytes
+
+SHEETS (2):
+  [00] 'TO_2'  state=visible  dim=A1:AY24299  max_row=24299  max_col=51
+  [01] 'TE_3'  state=visible  dim=A1:AA19002  max_row=19002  max_col=27
+
+DEFINED NAMES (0):
+
+EXTERNAL LINKS (0):
+
+PER-SHEET DETAIL
+============================================================
+
+[Sheet: 'TO_2']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 28  (showing first 12)
+      row  512  CCN~10821  :: M00105 | C | M0010500001 | SPECIAL INTELLIGENCE COMMUNICATIONS | 2031 | 10821
+      row  524  CCN~10833  :: M00105 | C | M0010500014 | TOP SECRET DATA COMMUNICATIONS | 2031 | 10833
+      row  529  CCN~13830  :: M00109 | C | M0010900001 | HEADQUARTERS | 2031 | 13830
+      row  534  CCN~13835  :: M00109 | C | M0010900002 | HEADQUARTERS AND SERVICE COMPANY | 2031 | 13835
+      row  539  CCN~13840  :: M00109 | D | M0010900008 | S-1 | 2031 | 13840
+      row  545  CCN~13846  :: M00109 | C | M0010900003 | S-3 | 2031 | 13846
+      row  570  CCN~13871  :: M00109 | C | M0010900017 | S-4 | 2031 | 13871
+      row  579  CCN~13880  :: M00109 | D | M0010900026 | SUPPLY | 2031 | 13880
+      row  592  CCN~13893  :: M00109 | C | M0010900072 | MAINTENANCE | 2031 | 13893
+      row  625  CCN~13926  :: M00109 | D | M0010900106 | RADIO REPAIR | 2031 | 13926
+      row  629  CCN~13930  :: M00109 | D | M0010900119 | TELEPHONE REPAIR | 2031 | 13930
+      row  639  CCN~13940  :: M00109 | D | M0010900108 | TELETYPE REPAIR | 2031 | 13940
+
+[Sheet: 'TE_3']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 0
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 293  (showing first 12)
+      row   46  CCN~95662  :: 2031 | M00102 | 1 | C | C00152E | INSERT,SMALL ARMS P - 95662 | 0 | IS
+      row   51  CCN~14032  :: 2031 | M00102 | 1 | C | C00742E | FLASHLIGHT - 14032 | 6230015711331 | IS
+      row   71  CCN~55247  :: 2031 | M00102 | 1 | C | C02602F | GAITER,NECK - A-A-55247 | 8440013878509 | IS
+      row   72  CCN~44265  :: 2031 | M00102 | 1 | C | C10232F | HOOD,COMBAT VEHICLE - MIL-H-44265 | 8415011111159 | IS
+      row   75  CCN~81188  :: 2031 | M00102 | 1 | C | C11052F | GLOVES,FLYERS' - MIL-G-81188 | 0 | IS
+      row   77  CCN~70113  :: 2031 | M00102 | 1 | C | C11202F | GLOVE INSERTS,COLD - 70113 | 0 | IS
+      row   85  CCN~43103  :: 2031 | M00102 | 1 | C | C30602E | CANTEEN,WATER - MIL-C-43103 | 8465011150026 | IS
+      row   88  CCN~73761  :: 2031 | M00102 | 1 | C | C31402E | CUP,WATER CANTEEN - MIL-C-73761 | 8465001656838 | IS
+      row   91  CCN~05940  :: 2031 | M00102 | 1 | C | C32302E | INTRENCHING TOOL,HA - 05940 | 5120014767556 | IS
+      row   92  CCN~20277  :: 2031 | M00102 | 1 | C | C32502E | KNIFE,COMBAT - MIL-K-20277 | 1095003924102 | IS
+      row   95  CCN~44221  :: 2031 | M00102 | 1 | C | C34232E | STAND,CANTEEN CUP - MIL-S-44221 | 8465012503632 | IS
+      row  160  CCN~95662  :: 2031 | M00105 | 1 | C | C00152E | INSERT,SMALL ARMS P - 95662 | 0 | IS
+
+########################################################################
+

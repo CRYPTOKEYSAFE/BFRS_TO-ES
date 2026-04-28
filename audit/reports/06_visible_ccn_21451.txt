@@ -1,0 +1,72 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '21451'
+
+DIMS : 37 rows x 32 cols  (state=visible)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       H&S BN MCIPAC MCB CP BUTLER JA                                         | H&S BN MCIPAC MCB CP BUTLER JA
+M3       Tenant:                                                                | Tenant:
+R3       CLB 4                                                                  | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       M67400                                                                 | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       M29030                                                                 | M29030
+Y4       Planning Area: SW                                                      | Planning Area: SW
+A5       CCN:                                                                   | CCN:
+C5       21451                                                                  | 21451
+M5       Nomenclature:                                                          | Nomenclature:
+R5       AUTO ORGANIZATION SHOP                                                 | AUTO ORGANIZATION SHOP
+A6       SPACE REQUIREMENT ANALYSIS  ·  CCN 21451  ·  UFC 2-000-05N / UFC 21... | SPACE REQUIREMENT ANALYSIS ...
+A7       SECTION 1 - ADMINISTRATIVE SPACE  (UFC 2-000-05N Chapter 21)           | SECTION 1 - ADMINISTRATIVE ...
+A8       Personnel Category                                                     | Personnel Category
+V8       SF / Person                                                            | SF / Person
+Y8       Count                                                                  | Count
+AB8      NSF                                                                    | NSF
+A9       Officers - Private Offices  (1STLT Platoon Commanders)                 | Officers - Private Offices ...
+V9       120                                                                    | 120
+Y9       2                                                                      | 2
+AB9      =V9*Y9                                                                 | 240
+A10      SNCOs and Staff - Cubicles  (GYSGTs, SSGTs, Senior Enlisted)           | SNCOs and Staff - Cubicles ...
+V10      60                                                                     | 60
+Y10      11                                                                     | 11
+AB10     =V10*Y10                                                               | 660
+A11      Administrative Subtotal                                                | Administrative Subtotal
+AB11     =SUM(AB9:AB10)                                                         | 900
+A13      SECTION 2 - MAINTENANCE BAYS  (UFC 21440-1.1  |  1 Bay per 30 Self-... | SECTION 2 - MAINTENANCE BAY...
+A14      Vehicle Category  (Self-Propelled Only - Trailers and Ambulances Ex... | Vehicle Category  (Self-Pro...
+V14      SF / Bay                                                               | SF / Bay
+Y14      Qty                                                                    | Qty
+AB14     NSF                                                                    | NSF
+A15      Light Utility Vehicles  (JLTV-class: M1280, M1279, M1278, M1123)       | Light Utility Vehicles  (JL...
+V15      420                                                                    | 420
+Y15      33                                                                     | 33
+A16      Medium / Heavy Cargo  (AMK23A1, AMK27A1)                               | Medium / Heavy Cargo  (AMK2...
+V16      420                                                                    | 420
+Y16      23                                                                     | 23
+A17      Wrecker / Recovery  (AMK36)                                            | Wrecker / Recovery  (AMK36)
+V17      420                                                                    | 420
+Y17      3                                                                      | 3
+A18      Total Self-Propelled Vehicles = 59  |  CEILING(59 / 30) = 2 Bays       | Total Self-Propelled Vehicl...
+AB18     =SUM(Y15:Y17)                                                          | 59
+A19      Maintenance Bays  (2 Bays × 420 SF per bay per UFC 21440-1.1)          | Maintenance Bays  (2 Bays ×...
+V19      420                                                                    | 420
+Y19      2                                                                      | 2
+AB19     =V19*Y19                                                               | 840
+A20      Maintenance Bays Subtotal                                              | Maintenance Bays Subtotal
+AB20     =AB19                                                                  | 840
+A22      TOTAL SPACE REQUIREMENT                                                | TOTAL SPACE REQUIREMENT
+A23      Total NSF  (Administrative + Maintenance Bays)                         | Total NSF  (Administrative ...
+AB23     =AB11+AB20                                                             | 1740
+A24      NTG Factor = 1.33  |  Required GSF  =  ROUNDUP(1,740 × 1.33, 0)  = ... | NTG Factor = 1.33  |  Requi...
+V24      1.33                                                                   | 1.33
+AB24     =ROUNDUP(AB23*V24,0)                                                   | 2315
+A37      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H37      =AB24                                                                  | 2315
+L37      GSF                                                                    | GSF
+Z37      Page 1 of 1                                                            | Page 1 of 1
+AF37     1                                                                      | 1
+
+TOTAL non-empty cells emitted: 63

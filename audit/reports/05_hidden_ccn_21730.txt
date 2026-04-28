@@ -1,0 +1,143 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '21730'
+
+DIMS : 84 rows x 32 cols  (state=hidden)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       =UNIT_ROLLUP!F3                                                        | H&S BN MCIPAC MCB CP BUTLER JA
+M3       Tenant:                                                                | Tenant:
+R3       =UNIT_ROLLUP!R3                                                        | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       =UNIT_ROLLUP!F4                                                        | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       =UNIT_ROLLUP!R4                                                        | M29030
+Y4       Planning Area:                                                         | Planning Area:
+AE4      =UNIT_ROLLUP!AE4                                                       | SW
+A5       CCN:                                                                   | CCN:
+C5       21730                                                                  | 21730
+M5       Nomenclature:                                                          | Nomenclature:
+R5       Field Maintenance Shop (Comms/Elecs)                                   | Field Maintenance Shop (Com...
+A6       LOADING ANALYSIS / JUSTIFICATION OF REQUIREMENT                        | LOADING ANALYSIS / JUSTIFIC...
+A7       Description:                                                           | Description:
+B8       Mission: This Mission Statement defines the unit's role and respons... | Mission: This Mission State...
+A17      Planning Criteria:                                                     | Planning Criteria:
+B18      FC 2-000-05N (P-80)
+
+                                                  | FC 2-000-05N (P-80)
+
+
+A20      Loading:                                                               | Loading:
+B21      FY2029 Table of Organization / Equipment (attached)                    | FY2029 Table of Organizatio...
+A23      Analysis:                                                              | Analysis:
+B24      Total Space Requirement                                                | Total Space Requirement
+B25      Subordinate Unit                                                       | Subordinate Unit
+M25      Admin                                                                  | Admin
+P25      Storage                                                                | Storage
+T25      Shop Space                                                             | Shop Space
+X25      Maint Bays                                                             | Maint Bays
+AB25     Total                                                                  | Total
+B26      ='Header '!A6                                                          | M29030
+E26      ='Header '!B6                                                          | CLB 4
+M26      =S32                                                                   | #REF!
+P26      =INDEX($Y$52:$Y$52,MATCH(B26,$B$52:$B$52,0))                           | #REF!
+T26      =AD61-X26                                                              | #REF!
+X26      =Y61*$Y$60*$AD$58                                                      | 638.4000000000001
+AB26     =SUM(M26:AA26)                                                         | #REF!
+AA27     Total =                                                                | Total =
+AB27     =SUM(AB26:AE26)                                                        | #REF!
+B29      Admin Space see attached TO for billet breakdown                       | Admin Space see attached TO...
+B30      Subordinate Unit                                                       | Subordinate Unit
+M30      Off & ≥ E61                                                            | Off & ≥ E61
+P30      ≤ E52                                                                  | ≤ E52
+S30      Total                                                                  | Total
+M31      120                                                                    | 120
+P31      60                                                                     | 60
+B32      =B26                                                                   | M29030
+E32      =E26                                                                   | CLB 4
+M32      =COUNTIFS(#REF!,"21710o",#REF!,B32)                                    | #REF!
+P32      =COUNTIFS(#REF!,"21710c",#REF!,B32)                                    | #REF!
+S32      =M32*M$31+P32*P$31                                                     | #REF!
+L33      Totals =                                                               | Totals =
+M33      =SUM(M32:O32)*M31                                                      | #REF!
+P33      =SUM(P32:R32)*P31                                                      | #REF!
+S33      =SUM(S32:V32)                                                          | #REF!
+B34      1Shown as 21710o (o = office) in TO.  120GSF = 90 NSF * 1.33 NTG       | 1Shown as 21710o (o = offic...
+B35      2Shown as 21710c (c = cubicle) in TO.  60 GSF = 45 NSF * 1.33 NTG. ... | 2Shown as 21710c (c = cubic...
+A46      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H46      =AB27                                                                  | #REF!
+L46      GSF                                                                    | GSF
+AC46     Page                                                                   | Page 
+AD46     1                                                                      | 1
+AE46     of                                                                     | of
+AF46     2                                                                      | 2
+A47      CCN:                                                                   | CCN:
+C47      =C5                                                                    | 21730
+M47      Nomenclature:                                                          | Nomenclature:
+R47      =R5                                                                    | Field Maintenance Shop (Com...
+B49      Storage Space (4-Step Method of P-80 Section 440-2.2), see attached... | Storage Space (4-Step Metho...
+B50      Subordinate Unit                                                       | Subordinate Unit
+M50      Net Volume                                                             | Net Volume
+Q50      Packed Vol (1.96)                                                      | Packed Vol (1.96)
+U50      NSF w/ 7ft1 SH                                                         | NSF w/ 7ft1 SH 
+Y50      Gross SF                                                               | Gross SF
+Y51      2.5                                                                    | 2.5
+B52      =B26                                                                   | M29030
+E52      =E26                                                                   | CLB 4
+M52      =SUMIFS(#REF!,#REF!,$C$5,#REF!,B52)                                    | #REF!
+Q52      =1.96*M52                                                              | #REF!
+U52      =Q52/7                                                                 | #REF!
+Y52      =U52*$Y$51                                                             | #REF!
+X53      Total =                                                                | Total =
+Y53      =SUM(Y52:AB52)                                                         | #REF!
+B54      1 A 7ft stack height (a standard 6ft shelf with 1ft of storage abov... | 1 A 7ft stack height (a sta...
+B57      Shop Spaces                                                            | Shop Spaces
+B58      Subordinate Unit                                                       | Subordinate Unit
+M58      Section1                                                               | Section1
+Y58      Maint Bay2                                                             | Maint Bay2
+AA58     Total 
+NSF                                                             | Total 
+NSF
+AD58     1.33                                                                   | 1.33
+M59      Radio                                                                  | Radio
+O59      Comm                                                                   | Comm
+Q59      Data                                                                   | Data
+S59      Wire                                                                   | Wire
+U59      SHF                                                                    | SHF
+W59      Maint                                                                  | Maint
+AD59     Total 
+GSF                                                             | Total 
+GSF
+M60      600                                                                    | 600
+O60      600                                                                    | 600
+Q60      600                                                                    | 600
+S60      600                                                                    | 600
+U60      600                                                                    | 600
+W60      950                                                                    | 950
+Y60      =F63*F64                                                               | 480
+B61      =B26                                                                   | M29030
+E61      =E26                                                                   | CLB 4
+M61      =ROUNDUP(COUNTIFS(#REF!,"21710rs",#REF!,$B$61)/15,0)                   | #REF!
+O61      =ROUNDUP(COUNTIFS(#REF!,"21710cs",#REF!,B61)/15,0)                     | #REF!
+Q61      =ROUNDUP(COUNTIFS(#REF!,"21710ds",#REF!,B61)/15,0)                     | #REF!
+S61      =ROUNDUP(COUNTIFS(#REF!,"21710ws",#REF!,B61)/15,0)                     | #REF!
+U61      =ROUNDUP(COUNTIFS(#REF!,"21710shf",#REF!,B61)/15,0)                    | #REF!
+W61      =ROUNDUP(COUNTIFS(#REF!,"21710ms",#REF!,B61)/15,0)                     | #REF!
+Y61      1                                                                      | 1
+AA61     =M61*$M$60+O61*$O$60+Q61*$Q$60+S61*$S$60+U61*U60+W61*$W$60+Y61*$Y$60   | #REF!
+AD61     =AA61*$AD$58                                                           | #REF!
+AA62     Total =                                                                | Total =
+AD62     =SUM(AD61:AF61)                                                        | #REF!
+B63      Bay Length2                                                            | Bay Length2
+F63      30                                                                     | 30
+B64      Bay Width2                                                             | Bay Width2
+F64      16                                                                     | 16
+B66      1 All Sections will have a 600 NSF space allowance unless it is a M... | 1 All Sections will have a ...
+AC84     Page                                                                   | Page 
+AD84     2                                                                      | 2
+AE84     of                                                                     | of
+AF84     2                                                                      | 2
+
+TOTAL non-empty cells emitted: 126

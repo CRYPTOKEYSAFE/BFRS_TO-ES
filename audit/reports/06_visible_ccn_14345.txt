@@ -1,0 +1,60 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '14345'
+
+DIMS : 37 rows x 32 cols  (state=visible)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       H&S BN MCIPAC MCB CP BUTLER JA                                         | H&S BN MCIPAC MCB CP BUTLER JA
+M3       Tenant:                                                                | Tenant:
+R3       CLB 4                                                                  | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       M67400                                                                 | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       M29030                                                                 | M29030
+Y4       Planning Area: SW                                                      | Planning Area: SW
+A5       CCN:                                                                   | CCN:
+C5       14345                                                                  | 14345
+M5       Nomenclature:                                                          | Nomenclature:
+R5       ARMORY                                                                 | ARMORY
+A6       SPACE REQUIREMENT ANALYSIS  ·  CCN 14345  ·  UFC 2-000-05N, TABLE 2... | SPACE REQUIREMENT ANALYSIS ...
+A7       Sensitive Item Category  (Primary Items - All Four Companies)          | Sensitive Item Category  (P...
+V7       GSF / Item                                                             | GSF / Item
+Y7       Count                                                                  | Count
+AB7      GSF                                                                    | GSF
+A8       Night Vision Devices  (AN/PVS-14, AN/PVS-31D)                          | Night Vision Devices  (AN/P...
+V8       1.25                                                                   | 1.25
+Y8       237                                                                    | 237
+AB8      =V8*Y8                                                                 | 296.25
+A9       Machine Guns  (M240B, MK19 MOD 3)                                      | Machine Guns  (M240B, MK19 ...
+V9       1.25                                                                   | 1.25
+Y9       14                                                                     | 14
+AB9      =V9*Y9                                                                 | 17.5
+A10      Rifles, Carbines, and Shotguns                                         | Rifles, Carbines, and Shotguns
+V10      1.25                                                                   | 1.25
+Y10      19                                                                     | 19
+AB10     =V10*Y10                                                               | 23.75
+A11      Grenade Launchers  (M320A1)                                            | Grenade Launchers  (M320A1)
+V11      1.25                                                                   | 1.25
+Y11      4                                                                      | 4
+AB11     =V11*Y11                                                               | 5
+A12      Thermal Sights  (AN/PAS-13D)                                           | Thermal Sights  (AN/PAS-13D)
+V12      1.25                                                                   | 1.25
+Y12      4                                                                      | 4
+AB12     =V12*Y12                                                               | 5
+A13      Other Sensitive Items  (Optics, Accessories, Spare Barrels)            | Other Sensitive Items  (Opt...
+V13      1.25                                                                   | 1.25
+Y13      52                                                                     | 52
+AB13     =V13*Y13                                                               | 65
+A15      Total Sensitive Items = 330  |  Total NSF                              | Total Sensitive Items = 330...
+AB15     =SUM(AB8:AB13)                                                         | 412.5
+A16      Required GSF  =  ROUNDUP(Total NSF, 0)  =  413 GSF                     | Required GSF  =  ROUNDUP(To...
+AB16     =ROUNDUP(AB15,0)                                                       | 413
+A37      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H37      =AB16                                                                  | 413
+L37      GSF                                                                    | GSF
+AB37     Page 1 of 1                                                            | Page 1 of 1
+
+TOTAL non-empty cells emitted: 51

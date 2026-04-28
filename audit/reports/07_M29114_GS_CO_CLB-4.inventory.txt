@@ -1,0 +1,147 @@
+FILE: M29114_GS_CO_CLB-4.xlsx
+PATH: /home/user/BFRS_TO-ES/M29114_GS_CO_CLB-4.xlsx
+SIZE: 199,474 bytes
+
+SHEETS (10):
+  [00] 'Header'  state=visible  dim=A1:D19  max_row=19  max_col=4
+  [01] 'TO'  state=visible  dim=A1:AT415  max_row=415  max_col=46
+  [02] 'Billet Summary'  state=visible  dim=A1:M51  max_row=51  max_col=13
+  [03] 'RecapMOS'  state=visible  dim=A1:W55  max_row=55  max_col=23
+  [04] 'RecapMCC'  state=visible  dim=A1:U12  max_row=12  max_col=21
+  [05] 'Footnotes'  state=visible  dim=A1:C11  max_row=11  max_col=3
+  [06] 'Primary Only'  state=visible  dim=A1:AK661  max_row=661  max_col=37
+  [07] 'X-78'  state=visible  dim=A1:K8  max_row=8  max_col=11
+  [08] 'COE'  state=visible  dim=A1:L379  max_row=379  max_col=12
+  [09] 'Task Organized T_E'  state=visible  dim=A1:C9  max_row=9  max_col=3
+
+DEFINED NAMES (0):
+
+EXTERNAL LINKS (0):
+
+PER-SHEET DETAIL
+============================================================
+
+[Sheet: 'Header']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 6
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'TO']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 4211
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'Billet Summary']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 166
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'RecapMOS']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 19
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'RecapMCC']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 18
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'Footnotes']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 5
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'Primary Only']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 2733
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 22  (showing first 12)
+      row   31  CCN~12200  :: A01987G | RADIO SET - 12200-1823-01 | IS | EA | N | 0 | 2 | 2
+      row  113  CCN~44200  :: Replacement For | B06967B | TESTER,FLASH POINT - 44200
+      row  121  CCN~00010  :: Used By | B00417B | MOBILE INTEGRATED - 892-00010
+      row  167  CCN~95662  :: C00152E | INSERT,SMALL ARMS P - 95662 | IS | EA | N | 212 | 0 | 212
+      row  188  CCN~14032  :: C00742E | FLASHLIGHT - 14032 | IS | EA | N | 106 | 0 | 106
+      row  213  CCN~55247  :: C02602F | GAITER,NECK - A-A-55247 | IS | EA | N | 106 | 0 | 106
+      row  214  CCN~44265  :: C10232F | HOOD,COMBAT VEHICLE - MIL-H-44265 | IS | N | 0 | 0 | 0 | 0
+      row  217  CCN~70113  :: C11202F | GLOVE INSERTS,COLD - 70113 | IS | PR | N | 212 | 0 | 212
+      row  225  CCN~43103  :: C30602E | CANTEEN,WATER - MIL-C-43103 | IS | EA | N | 212 | 0 | 212
+      row  228  CCN~73761  :: C31402E | CUP,WATER CANTEEN - MIL-C-73761 | IS | EA | N | 106 | 0 | 106
+      row  231  CCN~05940  :: C32302E | INTRENCHING TOOL,HA - 05940 | IS | EA | N | 106 | 0 | 106
+      row  232  CCN~20277  :: C32502E | KNIFE,COMBAT - MIL-K-20277 | IS | EA | N | 0 | 2 | 2
+
+[Sheet: 'X-78']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 6
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'COE']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 1120
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+[Sheet: 'Task Organized T_E']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 2
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 0  (showing first 12)
+
+########################################################################
+

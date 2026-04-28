@@ -1,0 +1,237 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '14326'
+
+DIMS : 144 rows x 32 cols  (state=hidden)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       ='Header '!B2                                                          | MCB Camp Butler
+M3       Tenant:                                                                | Tenant:
+R3       ='Header '!B4                                                          | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       ='Header '!A2                                                          | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       ='Header '!A4                                                          | M29030
+Y4       Planning Area:                                                         | Planning Area:
+AE4      =UNIT_ROLLUP!AE4                                                       | SW
+A5       CCN:                                                                   | CCN:
+C5       14326                                                                  | 14326
+M5       Nomenclature:                                                          | Nomenclature:
+R5       MC Explosive Ordnance Disposal Platoon Facility                        | MC Explosive Ordnance Dispo...
+A6       LOADING ANALYSIS / JUSTIFICATION OF REQUIREMENT                        | LOADING ANALYSIS / JUSTIFIC...
+A7       Description:                                                           | Description:
+B8       Mission: The Engineering Support BN provides general engineering su... | Mission: The Engineering Su...
+A16      Planning Criteria:                                                     | Planning Criteria:
+B17      UFC 2-000-05N                                                          | UFC 2-000-05N
+A18      Loading:                                                               | Loading:
+B19      FY2025 Table of Organization and Equipment                             | FY2025 Table of Organizatio...
+A20      Analysis:                                                              | Analysis:
+B21      Unit                                                                   | Unit
+M21      Area                                                                   | Area
+B22      ='Header '!A6                                                          | M29030
+E22      ='Header '!B6                                                          | CLB 4
+M22      =AB73                                                                  | #REF!
+B23      Total =                                                                | Total =
+M23      =SUM(M22:P22)                                                          | #REF!
+K42      SEE THE ATTACHED PAGES FOR CALCULATIONS                                | SEE THE ATTACHED PAGES FOR ...
+A43      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H43      =M23                                                                   | #REF!
+L43      GSF                                                                    | GSF
+AC43     Page                                                                   | Page 
+AD43     1                                                                      | 1
+AE43     of                                                                     | of
+AF43     3                                                                      | 3
+A44      CCN:                                                                   | CCN:
+C44      =C5                                                                    | 14326
+M44      Nomenclature:                                                          | Nomenclature:
+R44      =R5                                                                    | MC Explosive Ordnance Dispo...
+B47      =B22                                                                   | M29030
+E47      =E22                                                                   | CLB 4
+B48      Area                                                                   | Area
+T48      SF per Unit                                                            | SF per Unit
+X48      PN or
+Qty                                                              | PN or
+Qty
+AB48     NSF                                                                    | NSF
+B50      Company Headquarters Administration                                    | Company Headquarters Admini...
+AB50     =T50*X50                                                               | 0
+C51      Offices                                                                | Offices
+T51      90                                                                     | 90
+X51      =COUNTIF(#REF!,"14326o")                                               | #REF!
+AB51     =T51*X51                                                               | #REF!
+C52      Cubicles                                                               | Cubicles
+T52      45                                                                     | 45
+X52      =COUNTIF(#REF!,"14326c")                                               | #REF!
+AB52     =T52*X52                                                               | #REF!
+AB53     =T53*X53                                                               | 0
+B54      Classified Publications Vault                                          | Classified Publications Vault
+T54      811                                                                    | 811
+X54      1                                                                      | 1
+AB54     =T54*X54                                                               | 811
+B55      Bathroom/Shower (Male)                                                 | Bathroom/Shower (Male)
+AB55     =T55*X55                                                               | 0
+C56      Water Closet                                                           | Water Closet
+T56      15                                                                     | 15
+X56      1                                                                      | 1
+AB56     =T56*X56                                                               | 15
+C57      Urinal                                                                 | Urinal
+T57      6                                                                      | 6
+X57      2                                                                      | 2
+AB57     =T57*X57                                                               | 12
+C58      Lavatory                                                               | Lavatory
+T58      3                                                                      | 3
+X58      1                                                                      | 1
+AB58     =T58*X58                                                               | 3
+C59      Shower                                                                 | Shower
+T59      20                                                                     | 20
+X59      2                                                                      | 2
+AB59     =T59*X59                                                               | 40
+B60      Bathroom/Shower (Female)                                               | Bathroom/Shower (Female)
+T60      200                                                                    | 200
+X60      0                                                                      | 0
+AB60     =T60*X60                                                               | 0
+B61      Personnel Lockers                                                      | Personnel Lockers
+T61      18                                                                     | 18
+X61      5                                                                      | 5
+AB61     =T61*X61                                                               | 90
+B62      Multi-Purpose/Conference Room                                          | Multi-Purpose/Conference Room
+T62      16                                                                     | 16
+X62      0                                                                      | 0
+AB62     =T62*X62                                                               | 0
+B63      Training Aids Library                                                  | Training Aids Library
+T63      2000                                                                   | 2000
+X63      0                                                                      | 0
+AB63     =T63*X63                                                               | 0
+B64      Break Area                                                             | Break Area
+T64      811                                                                    | 811
+X64      0                                                                      | 0
+AB64     =T64*X64                                                               | 0
+B65      Material and equipment work area                                       | Material and equipment work...
+T65      2000                                                                   | 2000
+X65      0                                                                      | 0
+AB65     =T65*X65                                                               | 0
+AB66     =W117                                                                  | 0
+B67      Vehicle Maintenance Bay (see following worksheet)                      | Vehicle Maintenance Bay (se...
+AB67     =N105                                                                  | #REF!
+B68      Combat Service Support Teams (from Combat Logistics Battalion)         | Combat Service Support Team...
+C69      Administration                                                         | Administration
+T69      1200                                                                   | 1200
+X69      0                                                                      | 0
+AB69     =T69*X69                                                               | 0
+C70      Material, equipment, and storage                                       | Material, equipment, and st...
+T70      1000                                                                   | 1000
+X70      0                                                                      | 0
+AB70     =T70*X70                                                               | 0
+Y72      Subtotal =                                                             | Subtotal =
+AB72     =SUM(AB50:AD70)                                                        | #REF!
+P73      Net to Gross Factor                                                    | Net to Gross Factor
+Q73      1.33                                                                   | 1.33
+Y73      Total =                                                                | Total =
+AB73     =AB72*Q73                                                              | #REF!
+AC84     Page                                                                   | Page 
+AD84     2                                                                      | 2
+AE84     of                                                                     | of
+AF84     3                                                                      | 3
+A85      CCN:                                                                   | CCN:
+C85      =C44                                                                   | 14326
+M85      Nomenclature:                                                          | Nomenclature:
+R85      =R44                                                                   | MC Explosive Ordnance Dispo...
+B86      Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2... | Maintenance Bay Calculation...
+B87      =B47                                                                   | M29030
+E87      =E47                                                                   | CLB 4
+B88      Type of Equipment                                                      | Type of Equipment
+N88      Number                                                                 | Number
+R88      Space Factor                                                           | Space Factor
+V88      Repair Bays                                                            | Repair Bays
+B89      Automotive                                                             | Automotive
+C89      0061-0099                                                              | 0061-0099
+G89      Buses                                                                  | Buses
+N89      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G89)                                   | #REF!
+R89      0.063                                                                  | 0.063
+V89      =N89*R89                                                               | #REF!
+C90      0102-0299                                                              | 0102-0299
+G90      Sedans, ambulances                                                     | Sedans, ambulances
+N90      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G90)                                   | #REF!
+R90      0.015                                                                  | 0.015
+V90      =N90*R90                                                               | #REF!
+C91      0300-0745                                                              | 0300-0745
+G91      Trucks                                                                 | Trucks
+N91      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G91)                                   | #REF!
+R91      0.023                                                                  | 0.023
+V91      =N91*R91                                                               | #REF!
+C92      0800-0897                                                              | 0800-0897
+G92      Trailers                                                               | Trailers
+N92      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G92)                                   | #REF!
+R92      0.016                                                                  | 0.016
+V92      =N92*R92                                                               | #REF!
+C93      0900-0905                                                              | 0900-0905
+G93      Motorcycles                                                            | Motorcycles
+N93      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G93)                                   | #REF!
+R93      0.004                                                                  | 0.004
+V93      =N93*R93                                                               | #REF!
+B94      MH                                                                     | MH
+C94      1100-1900                                                              | 1100-1900
+G94      Tractors, forklifts                                                    | Tractors, forklifts
+N94      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G94)                                   | #REF!
+R94      0.02                                                                   | 0.02
+V94      =N94*R94                                                               | #REF!
+B95      Construction/other                                                     | Construction/other
+C95      2300-2840                                                              | 2300-2840
+G95      Crushing, mixing                                                       | Crushing, mixing
+N95      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G95)                                   | #REF!
+R95      0.016                                                                  | 0.016
+V95      =N95*R95                                                               | #REF!
+C96      3100-3720                                                              | 3100-3720
+G96      Drilling, driving                                                      | Drilling, driving
+N96      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G96)                                   | #REF!
+R96      0.025                                                                  | 0.025
+V96      =N96*R96                                                               | #REF!
+C97      4210-4952                                                              | 4210-4952
+G97      Excavating, Grading                                                    | Excavating, Grading
+N97      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G97)                                   | #REF!
+R97      0.02                                                                   | 0.02
+V97      =N97*R97                                                               | #REF!
+C98      5110-5930                                                              | 5110-5930
+G98      Generators, mowers                                                     | Generators, mowers
+N98      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G98)                                   | #REF!
+R98      0.016                                                                  | 0.016
+V98      =N98*R98                                                               | #REF!
+C99      7100-7501                                                              | 7100-7501
+G99      Firefighting                                                           | Firefighting
+N99      =SUMIFS(#REF!,#REF!,$B$87,#REF!,G99)                                   | #REF!
+R99      0.03                                                                   | 0.03
+V99      =N99*R99                                                               | #REF!
+C100     8120-8800                                                              | 8120-8800
+G100     Weight handling                                                        | Weight handling
+N100     =SUMIFS(#REF!,#REF!,$B$87,#REF!,G100)                                  | #REF!
+R100     0.092                                                                  | 0.092
+V100     =N100*R100                                                             | #REF!
+U101     Total =                                                                | Total =
+V101     =SUM(V89:Y100)                                                         | #REF!
+Q102     Rounded Total4 =                                                       | Rounded Total4 =
+V102     =ROUNDUP(V101,0)                                                       | #REF!
+B104     Maint Bays                                                             | Maint Bays
+F104     Admin Sppt1                                                            | Admin Sppt1
+J104     Direct Sppt1                                                           | Direct Sppt1
+N104     Total                                                                  | Total
+S104     SL3 Storage2                                                           | SL3 Storage2
+W104     =W105*W106/2                                                           | 240
+B105     =V102*((W105*W106)+W104)*W107                                          | #REF!
+F105     =414.36*V102^0.854                                                     | #REF!
+J105     =IF(V102<=14,347.32*V102+1128.6,22.616*V102+5706.1)                    | #REF!
+N105     =SUM(B105:M105)                                                        | #REF!
+S105     Bay Length3                                                            | Bay Length3
+W105     30                                                                     | 30
+S106     Bay Width3                                                             | Bay Width3
+W106     16                                                                     | 16
+S107     Bay NTG                                                                | Bay NTG
+W107     1.33                                                                   | 1.33
+B110     1 Support space requirements based on UFC 2-000-05N, Table 21420-4 ... | 1 Support space requirement...
+AC130    Page                                                                   | Page 
+AD130    3                                                                      | 3
+AE130    of                                                                     | of
+AF130    3                                                                      | 3
+
+TOTAL non-empty cells emitted: 226

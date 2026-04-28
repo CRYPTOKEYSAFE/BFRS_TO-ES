@@ -1,0 +1,849 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '14312'
+
+DIMS : 181 rows x 32 cols  (state=hidden)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       =UNIT_ROLLUP!F3                                                        | H&S BN MCIPAC MCB CP BUTLER JA
+M3       Tenant:                                                                | Tenant:
+R3       =UNIT_ROLLUP!R3                                                        | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       =UNIT_ROLLUP!F4                                                        | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       =UNIT_ROLLUP!R4                                                        | M29030
+Y4       Planning Area:                                                         | Planning Area:
+AE4      =UNIT_ROLLUP!AE4                                                       | SW
+A5       CCN:                                                                   | CCN:
+C5       14312                                                                  | 14312
+M5       Nomenclature:                                                          | Nomenclature:
+R5       Operational Vehicle Laydown Area                                       | Operational Vehicle Laydown...
+A6       LOADING ANALYSIS / JUSTIFICATION OF REQUIREMENT                        | LOADING ANALYSIS / JUSTIFIC...
+A7       Description:                                                           | Description:
+B8       Mission:  This Mission Statement prescribes the organizational stru... | Mission:  This Mission Stat...
+A16      Planning Criteria:                                                     | Planning Criteria:
+B17      UFC 2-000-05N (P-80) CCN 14312
+
+                                       | UFC 2-000-05N (P-80) CCN 14...
+A18      Loading:                                                               | Loading:
+B19      FY2025 Table of Equipment (attached)                                   | FY2025 Table of Equipment (...
+A20      Analysis:                                                              | Analysis:
+B21      Subordinate Unit                                                       | Subordinate Unit
+M21      Area                                                                   | Area
+B22      ='Header '!A$6                                                         | M29030
+E22      ='Header '!B$6                                                         | CLB 4
+M22      =AC90+AC135-M24                                                        | 0
+B23      ='Header '!A$6                                                         | M29030
+E23      EOD Requirement                                                        | EOD Requirement
+M23      =AC180                                                                 | 0
+B24      ='Header '!A$6                                                         | M29030
+E24      COMM Laydown                                                           | COMM Laydown
+M24      =SUM(AC53:AE57,AC121,)                                                 | 0
+E25      Totals =                                                               | Totals =
+M25      =SUM(M22:P23)                                                          | 0
+A46      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H46      =M25                                                                   | 0
+L46      GSY                                                                    | GSY
+AC46     Page                                                                   | Page 
+AD46     1                                                                      | 1
+AE46     of                                                                     | of
+AF46     5                                                                      | 5
+A47      CCN:                                                                   | CCN:
+C47      =C5                                                                    | 14312
+M47      Nomenclature:                                                          | Nomenclature:
+R47      =R5                                                                    | Operational Vehicle Laydown...
+C49      Operational Vehicle Laydown Area per P-80 Table 14312-1                | Operational Vehicle Laydown...
+C50      =B22                                                                   | M29030
+F50      =E22                                                                   | CLB 4
+C51      TAMCN                                                                  | TAMCN
+G51      Description                                                            | Description
+U51      L, ft                                                                  | L, ft
+W51      No.                                                                    | No.
+Y51      Area (NSY)                                                             | Area (NSY)
+AA51     NTG                                                                    | NTG
+AC51     GSY                                                                    | GSY
+C53      A0255                                                                  | A0255
+G53      =IFERROR(INDEX(#REF!,MATCH(C53,#REF!,0)),"")                           | 
+U53      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C53,#REF!,0)),INDEX(#REF!,MA... | 
+W53      =IF(U53<>"",IF(C53="C4431",SUMIFS(#REF!,#REF!,C53,#REF!,$C$50)/2,SU... | 
+Y53      =IF(U53<>"",IF(C53="C4431",4*4*2/9,IF($U53<10,15,IF($U53<20,25,IF($... | 
+AA53     =IF(U53<>"",IF($U53<10,1.5,IF($U53<30,1.75,2)),"")                     | 
+AC53     =IFERROR(W53*Y53*AA53,"")                                              | 
+C54      A0457                                                                  | A0457
+G54      =IFERROR(INDEX(#REF!,MATCH(C54,#REF!,0)),"")                           | 
+U54      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C54,#REF!,0)),INDEX(#REF!,MA... | 
+W54      =IF(U54<>"",IF(C54="C4431",SUMIFS(#REF!,#REF!,C54,#REF!,$C$50)/2,SU... | 
+Y54      =IF(U54<>"",IF(C54="C4431",4*4*2/9,IF($U54<10,15,IF($U54<20,25,IF($... | 
+AA54     =IF(U54<>"",IF($U54<10,1.5,IF($U54<30,1.75,2)),"")                     | 
+AC54     =IFERROR(W54*Y54*AA54,"")                                              | 
+C55      A0458                                                                  | A0458
+G55      =IFERROR(INDEX(#REF!,MATCH(C55,#REF!,0)),"")                           | 
+U55      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C55,#REF!,0)),INDEX(#REF!,MA... | 
+W55      =IF(U55<>"",IF(C55="C4431",SUMIFS(#REF!,#REF!,C55,#REF!,$C$50)/2,SU... | 
+Y55      =IF(U55<>"",IF(C55="C4431",4*4*2/9,IF($U55<10,15,IF($U55<20,25,IF($... | 
+AA55     =IF(U55<>"",IF($U55<10,1.5,IF($U55<30,1.75,2)),"")                     | 
+AC55     =IFERROR(W55*Y55*AA55,"")                                              | 
+C56      A2335                                                                  | A2335
+G56      =IFERROR(INDEX(#REF!,MATCH(C56,#REF!,0)),"")                           | 
+U56      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C56,#REF!,0)),INDEX(#REF!,MA... | 
+W56      =IF(U56<>"",IF(C56="C4431",SUMIFS(#REF!,#REF!,C56,#REF!,$C$50)/2,SU... | 
+Y56      =IF(U56<>"",IF(C56="C4431",4*4*2/9,IF($U56<10,15,IF($U56<20,25,IF($... | 
+AA56     =IF(U56<>"",IF($U56<10,1.5,IF($U56<30,1.75,2)),"")                     | 
+AC56     =IFERROR(W56*Y56*AA56,"")                                              | 
+C57      A2336                                                                  | A2336
+G57      =IFERROR(INDEX(#REF!,MATCH(C57,#REF!,0)),"")                           | 
+U57      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C57,#REF!,0)),INDEX(#REF!,MA... | 
+W57      =IF(U57<>"",IF(C57="C4431",SUMIFS(#REF!,#REF!,C57,#REF!,$C$50)/2,SU... | 
+Y57      =IF(U57<>"",IF(C57="C4431",4*4*2/9,IF($U57<10,15,IF($U57<20,25,IF($... | 
+AA57     =IF(U57<>"",IF($U57<10,1.5,IF($U57<30,1.75,2)),"")                     | 
+AC57     =IFERROR(W57*Y57*AA57,"")                                              | 
+C58      B0036                                                                  | B0036
+G58      =IFERROR(INDEX(#REF!,MATCH(C58,#REF!,0)),"")                           | 
+U58      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C58,#REF!,0)),INDEX(#REF!,MA... | 
+W58      =IF(U58<>"",IF(C58="C4431",SUMIFS(#REF!,#REF!,C58,#REF!,$C$50)/2,SU... | 
+Y58      =IF(U58<>"",IF(C58="C4431",4*4*2/9,IF($U58<10,15,IF($U58<20,25,IF($... | 
+AA58     =IF(U58<>"",IF($U58<10,1.5,IF($U58<30,1.75,2)),"")                     | 
+AC58     =IFERROR(W58*Y58*AA58,"")                                              | 
+C59      B0037                                                                  | B0037
+G59      =IFERROR(INDEX(#REF!,MATCH(C59,#REF!,0)),"")                           | 
+U59      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C59,#REF!,0)),INDEX(#REF!,MA... | 
+W59      =IF(U59<>"",IF(C59="C4431",SUMIFS(#REF!,#REF!,C59,#REF!,$C$50)/2,SU... | 
+Y59      =IF(U59<>"",IF(C59="C4431",4*4*2/9,IF($U59<10,15,IF($U59<20,25,IF($... | 
+AA59     =IF(U59<>"",IF($U59<10,1.5,IF($U59<30,1.75,2)),"")                     | 
+AC59     =IFERROR(W59*Y59*AA59,"")                                              | 
+C60      B0040                                                                  | B0040
+G60      =IFERROR(INDEX(#REF!,MATCH(C60,#REF!,0)),"")                           | 
+U60      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C60,#REF!,0)),INDEX(#REF!,MA... | 
+W60      =IF(U60<>"",IF(C60="C4431",SUMIFS(#REF!,#REF!,C60,#REF!,$C$50)/2,SU... | 
+Y60      =IF(U60<>"",IF(C60="C4431",4*4*2/9,IF($U60<10,15,IF($U60<20,25,IF($... | 
+AA60     =IF(U60<>"",IF($U60<10,1.5,IF($U60<30,1.75,2)),"")                     | 
+AC60     =IFERROR(W60*Y60*AA60,"")                                              | 
+C61      B0043                                                                  | B0043
+G61      =IFERROR(INDEX(#REF!,MATCH(C61,#REF!,0)),"")                           | 
+U61      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C61,#REF!,0)),INDEX(#REF!,MA... | 
+W61      =IF(U61<>"",IF(C61="C4431",SUMIFS(#REF!,#REF!,C61,#REF!,$C$50)/2,SU... | 
+Y61      =IF(U61<>"",IF(C61="C4431",4*4*2/9,IF($U61<10,15,IF($U61<20,25,IF($... | 
+AA61     =IF(U61<>"",IF($U61<10,1.5,IF($U61<30,1.75,2)),"")                     | 
+AC61     =IFERROR(W61*Y61*AA61,"")                                              | 
+C62      B0063                                                                  | B0063
+G62      =IFERROR(INDEX(#REF!,MATCH(C62,#REF!,0)),"")                           | 
+U62      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C62,#REF!,0)),INDEX(#REF!,MA... | 
+W62      =IF(U62<>"",IF(C62="C4431",SUMIFS(#REF!,#REF!,C62,#REF!,$C$50)/2,SU... | 
+Y62      =IF(U62<>"",IF(C62="C4431",4*4*2/9,IF($U62<10,15,IF($U62<20,25,IF($... | 
+AA62     =IF(U62<>"",IF($U62<10,1.5,IF($U62<30,1.75,2)),"")                     | 
+AC62     =IFERROR(W62*Y62*AA62,"")                                              | 
+C63      B0071                                                                  | B0071
+G63      =IFERROR(INDEX(#REF!,MATCH(C63,#REF!,0)),"")                           | 
+U63      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C63,#REF!,0)),INDEX(#REF!,MA... | 
+W63      =IF(U63<>"",IF(C63="C4431",SUMIFS(#REF!,#REF!,C63,#REF!,$C$50)/2,SU... | 
+Y63      =IF(U63<>"",IF(C63="C4431",4*4*2/9,IF($U63<10,15,IF($U63<20,25,IF($... | 
+AA63     =IF(U63<>"",IF($U63<10,1.5,IF($U63<30,1.75,2)),"")                     | 
+AC63     =IFERROR(W63*Y63*AA63,"")                                              | 
+C64      B0076                                                                  | B0076
+G64      =IFERROR(INDEX(#REF!,MATCH(C64,#REF!,0)),"")                           | 
+U64      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C64,#REF!,0)),INDEX(#REF!,MA... | 
+W64      =IF(U64<>"",IF(C64="C4431",SUMIFS(#REF!,#REF!,C64,#REF!,$C$50)/2,SU... | 
+Y64      =IF(U64<>"",IF(C64="C4431",4*4*2/9,IF($U64<10,15,IF($U64<20,25,IF($... | 
+AA64     =IF(U64<>"",IF($U64<10,1.5,IF($U64<30,1.75,2)),"")                     | 
+AC64     =IFERROR(W64*Y64*AA64,"")                                              | 
+C65      B0077                                                                  | B0077
+G65      =IFERROR(INDEX(#REF!,MATCH(C65,#REF!,0)),"")                           | 
+U65      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C65,#REF!,0)),INDEX(#REF!,MA... | 
+W65      =IF(U65<>"",IF(C65="C4431",SUMIFS(#REF!,#REF!,C65,#REF!,$C$50)/2,SU... | 
+Y65      =IF(U65<>"",IF(C65="C4431",4*4*2/9,IF($U65<10,15,IF($U65<20,25,IF($... | 
+AA65     =IF(U65<>"",IF($U65<10,1.5,IF($U65<30,1.75,2)),"")                     | 
+AC65     =IFERROR(W65*Y65*AA65,"")                                              | 
+C66      B0103                                                                  | B0103
+G66      =IFERROR(INDEX(#REF!,MATCH(C66,#REF!,0)),"")                           | 
+U66      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C66,#REF!,0)),INDEX(#REF!,MA... | 
+W66      =IF(U66<>"",IF(C66="C4431",SUMIFS(#REF!,#REF!,C66,#REF!,$C$50)/2,SU... | 
+Y66      =IF(U66<>"",IF(C66="C4431",4*4*2/9,IF($U66<10,15,IF($U66<20,25,IF($... | 
+AA66     =IF(U66<>"",IF($U66<10,1.5,IF($U66<30,1.75,2)),"")                     | 
+AC66     =IFERROR(W66*Y66*AA66,"")                                              | 
+C67      B0395                                                                  | B0395
+G67      =IFERROR(INDEX(#REF!,MATCH(C67,#REF!,0)),"")                           | 
+U67      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C67,#REF!,0)),INDEX(#REF!,MA... | 
+W67      =IF(U67<>"",IF(C67="C4431",SUMIFS(#REF!,#REF!,C67,#REF!,$C$50)/2,SU... | 
+Y67      =IF(U67<>"",IF(C67="C4431",4*4*2/9,IF($U67<10,15,IF($U67<20,25,IF($... | 
+AA67     =IF(U67<>"",IF($U67<10,1.5,IF($U67<30,1.75,2)),"")                     | 
+AC67     =IFERROR(W67*Y67*AA67,"")                                              | 
+C68      B0570                                                                  | B0570
+G68      =IFERROR(INDEX(#REF!,MATCH(C68,#REF!,0)),"")                           | 
+U68      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C68,#REF!,0)),INDEX(#REF!,MA... | 
+W68      =IF(U68<>"",IF(C68="C4431",SUMIFS(#REF!,#REF!,C68,#REF!,$C$50)/2,SU... | 
+Y68      =IF(U68<>"",IF(C68="C4431",4*4*2/9,IF($U68<10,15,IF($U68<20,25,IF($... | 
+AA68     =IF(U68<>"",IF($U68<10,1.5,IF($U68<30,1.75,2)),"")                     | 
+AC68     =IFERROR(W68*Y68*AA68,"")                                              | 
+C69      B0573                                                                  | B0573
+G69      =IFERROR(INDEX(#REF!,MATCH(C69,#REF!,0)),"")                           | 
+U69      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C69,#REF!,0)),INDEX(#REF!,MA... | 
+W69      =IF(U69<>"",IF(C69="C4431",SUMIFS(#REF!,#REF!,C69,#REF!,$C$50)/2,SU... | 
+Y69      =IF(U69<>"",IF(C69="C4431",4*4*2/9,IF($U69<10,15,IF($U69<20,25,IF($... | 
+AA69     =IF(U69<>"",IF($U69<10,1.5,IF($U69<30,1.75,2)),"")                     | 
+AC69     =IFERROR(W69*Y69*AA69,"")                                              | 
+C70      B0579                                                                  | B0579
+G70      =IFERROR(INDEX(#REF!,MATCH(C70,#REF!,0)),"")                           | 
+U70      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C70,#REF!,0)),INDEX(#REF!,MA... | 
+W70      =IF(U70<>"",IF(C70="C4431",SUMIFS(#REF!,#REF!,C70,#REF!,$C$50)/2,SU... | 
+Y70      =IF(U70<>"",IF(C70="C4431",4*4*2/9,IF($U70<10,15,IF($U70<20,25,IF($... | 
+AA70     =IF(U70<>"",IF($U70<10,1.5,IF($U70<30,1.75,2)),"")                     | 
+AC70     =IFERROR(W70*Y70*AA70,"")                                              | 
+C71      B0626                                                                  | B0626
+G71      =IFERROR(INDEX(#REF!,MATCH(C71,#REF!,0)),"")                           | 
+U71      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C71,#REF!,0)),INDEX(#REF!,MA... | 
+W71      =IF(U71<>"",IF(C71="C4431",SUMIFS(#REF!,#REF!,C71,#REF!,$C$50)/2,SU... | 
+Y71      =IF(U71<>"",IF(C71="C4431",4*4*2/9,IF($U71<10,15,IF($U71<20,25,IF($... | 
+AA71     =IF(U71<>"",IF($U71<10,1.5,IF($U71<30,1.75,2)),"")                     | 
+AC71     =IFERROR(W71*Y71*AA71,"")                                              | 
+C72      B0640                                                                  | B0640
+G72      =IFERROR(INDEX(#REF!,MATCH(C72,#REF!,0)),"")                           | 
+U72      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C72,#REF!,0)),INDEX(#REF!,MA... | 
+W72      =IF(U72<>"",IF(C72="C4431",SUMIFS(#REF!,#REF!,C72,#REF!,$C$50)/2,SU... | 
+Y72      =IF(U72<>"",IF(C72="C4431",4*4*2/9,IF($U72<10,15,IF($U72<20,25,IF($... | 
+AA72     =IF(U72<>"",IF($U72<10,1.5,IF($U72<30,1.75,2)),"")                     | 
+AC72     =IFERROR(W72*Y72*AA72,"")                                              | 
+C73      B0676                                                                  | B0676
+G73      =IFERROR(INDEX(#REF!,MATCH(C73,#REF!,0)),"")                           | 
+U73      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C73,#REF!,0)),INDEX(#REF!,MA... | 
+W73      =IF(U73<>"",IF(C73="C4431",SUMIFS(#REF!,#REF!,C73,#REF!,$C$50)/2,SU... | 
+Y73      =IF(U73<>"",IF(C73="C4431",4*4*2/9,IF($U73<10,15,IF($U73<20,25,IF($... | 
+AA73     =IF(U73<>"",IF($U73<10,1.5,IF($U73<30,1.75,2)),"")                     | 
+AC73     =IFERROR(W73*Y73*AA73,"")                                              | 
+C74      B0953                                                                  | B0953
+G74      =IFERROR(INDEX(#REF!,MATCH(C74,#REF!,0)),"")                           | 
+U74      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C74,#REF!,0)),INDEX(#REF!,MA... | 
+W74      =IF(U74<>"",IF(C74="C4431",SUMIFS(#REF!,#REF!,C74,#REF!,$C$50)/2,SU... | 
+Y74      =IF(U74<>"",IF(C74="C4431",4*4*2/9,IF($U74<10,15,IF($U74<20,25,IF($... | 
+AA74     =IF(U74<>"",IF($U74<10,1.5,IF($U74<30,1.75,2)),"")                     | 
+AC74     =IFERROR(W74*Y74*AA74,"")                                              | 
+C75      B1021                                                                  | B1021
+G75      =IFERROR(INDEX(#REF!,MATCH(C75,#REF!,0)),"")                           | 
+U75      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C75,#REF!,0)),INDEX(#REF!,MA... | 
+W75      =IF(U75<>"",IF(C75="C4431",SUMIFS(#REF!,#REF!,C75,#REF!,$C$50)/2,SU... | 
+Y75      =IF(U75<>"",IF(C75="C4431",4*4*2/9,IF($U75<10,15,IF($U75<20,25,IF($... | 
+AA75     =IF(U75<>"",IF($U75<10,1.5,IF($U75<30,1.75,2)),"")                     | 
+AC75     =IFERROR(W75*Y75*AA75,"")                                              | 
+C76      B1570                                                                  | B1570
+G76      =IFERROR(INDEX(#REF!,MATCH(C76,#REF!,0)),"")                           | 
+U76      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C76,#REF!,0)),INDEX(#REF!,MA... | 
+W76      =IF(U76<>"",IF(C76="C4431",SUMIFS(#REF!,#REF!,C76,#REF!,$C$50)/2,SU... | 
+Y76      =IF(U76<>"",IF(C76="C4431",4*4*2/9,IF($U76<10,15,IF($U76<20,25,IF($... | 
+AA76     =IF(U76<>"",IF($U76<10,1.5,IF($U76<30,1.75,2)),"")                     | 
+AC76     =IFERROR(W76*Y76*AA76,"")                                              | 
+C77      B1580                                                                  | B1580
+G77      =IFERROR(INDEX(#REF!,MATCH(C77,#REF!,0)),"")                           | 
+U77      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C77,#REF!,0)),INDEX(#REF!,MA... | 
+W77      =IF(U77<>"",IF(C77="C4431",SUMIFS(#REF!,#REF!,C77,#REF!,$C$50)/2,SU... | 
+Y77      =IF(U77<>"",IF(C77="C4431",4*4*2/9,IF($U77<10,15,IF($U77<20,25,IF($... | 
+AA77     =IF(U77<>"",IF($U77<10,1.5,IF($U77<30,1.75,2)),"")                     | 
+AC77     =IFERROR(W77*Y77*AA77,"")                                              | 
+C78      B1620                                                                  | B1620
+G78      =IFERROR(INDEX(#REF!,MATCH(C78,#REF!,0)),"")                           | 
+U78      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C78,#REF!,0)),INDEX(#REF!,MA... | 
+W78      =IF(U78<>"",IF(C78="C4431",SUMIFS(#REF!,#REF!,C78,#REF!,$C$50)/2,SU... | 
+Y78      =IF(U78<>"",IF(C78="C4431",4*4*2/9,IF($U78<10,15,IF($U78<20,25,IF($... | 
+AA78     =IF(U78<>"",IF($U78<10,1.5,IF($U78<30,1.75,2)),"")                     | 
+AC78     =IFERROR(W78*Y78*AA78,"")                                              | 
+C79      B2085                                                                  | B2085
+G79      =IFERROR(INDEX(#REF!,MATCH(C79,#REF!,0)),"")                           | 
+U79      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C79,#REF!,0)),INDEX(#REF!,MA... | 
+W79      =IF(U79<>"",IF(C79="C4431",SUMIFS(#REF!,#REF!,C79,#REF!,$C$50)/2,SU... | 
+Y79      =IF(U79<>"",IF(C79="C4431",4*4*2/9,IF($U79<10,15,IF($U79<20,25,IF($... | 
+AA79     =IF(U79<>"",IF($U79<10,1.5,IF($U79<30,1.75,2)),"")                     | 
+AC79     =IFERROR(W79*Y79*AA79,"")                                              | 
+C80      B2086                                                                  | B2086
+G80      =IFERROR(INDEX(#REF!,MATCH(C80,#REF!,0)),"")                           | 
+U80      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C80,#REF!,0)),INDEX(#REF!,MA... | 
+W80      =IF(U80<>"",IF(C80="C4431",SUMIFS(#REF!,#REF!,C80,#REF!,$C$50)/2,SU... | 
+Y80      =IF(U80<>"",IF(C80="C4431",4*4*2/9,IF($U80<10,15,IF($U80<20,25,IF($... | 
+AA80     =IF(U80<>"",IF($U80<10,1.5,IF($U80<30,1.75,2)),"")                     | 
+AC80     =IFERROR(W80*Y80*AA80,"")                                              | 
+C81      B2130                                                                  | B2130
+G81      =IFERROR(INDEX(#REF!,MATCH(C81,#REF!,0)),"")                           | 
+U81      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C81,#REF!,0)),INDEX(#REF!,MA... | 
+W81      =IF(U81<>"",IF(C81="C4431",SUMIFS(#REF!,#REF!,C81,#REF!,$C$50)/2,SU... | 
+Y81      =IF(U81<>"",IF(C81="C4431",4*4*2/9,IF($U81<10,15,IF($U81<20,25,IF($... | 
+AA81     =IF(U81<>"",IF($U81<10,1.5,IF($U81<30,1.75,2)),"")                     | 
+AC81     =IFERROR(W81*Y81*AA81,"")                                              | 
+C82      B2460                                                                  | B2460
+G82      =IFERROR(INDEX(#REF!,MATCH(C82,#REF!,0)),"")                           | 
+U82      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C82,#REF!,0)),INDEX(#REF!,MA... | 
+W82      =IF(U82<>"",IF(C82="C4431",SUMIFS(#REF!,#REF!,C82,#REF!,$C$50)/2,SU... | 
+Y82      =IF(U82<>"",IF(C82="C4431",4*4*2/9,IF($U82<10,15,IF($U82<20,25,IF($... | 
+AA82     =IF(U82<>"",IF($U82<10,1.5,IF($U82<30,1.75,2)),"")                     | 
+AC82     =IFERROR(W82*Y82*AA82,"")                                              | 
+C83      B2483                                                                  | B2483
+G83      =IFERROR(INDEX(#REF!,MATCH(C83,#REF!,0)),"")                           | 
+U83      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C83,#REF!,0)),INDEX(#REF!,MA... | 
+W83      =IF(U83<>"",IF(C83="C4431",SUMIFS(#REF!,#REF!,C83,#REF!,$C$50)/2,SU... | 
+Y83      =IF(U83<>"",IF(C83="C4431",4*4*2/9,IF($U83<10,15,IF($U83<20,25,IF($... | 
+AA83     =IF(U83<>"",IF($U83<10,1.5,IF($U83<30,1.75,2)),"")                     | 
+AC83     =IFERROR(W83*Y83*AA83,"")                                              | 
+C84      B2561                                                                  | B2561
+G84      =IFERROR(INDEX(#REF!,MATCH(C84,#REF!,0)),"")                           | 
+U84      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C84,#REF!,0)),INDEX(#REF!,MA... | 
+W84      =IF(U84<>"",IF(C84="C4431",SUMIFS(#REF!,#REF!,C84,#REF!,$C$50)/2,SU... | 
+Y84      =IF(U84<>"",IF(C84="C4431",4*4*2/9,IF($U84<10,15,IF($U84<20,25,IF($... | 
+AA84     =IF(U84<>"",IF($U84<10,1.5,IF($U84<30,1.75,2)),"")                     | 
+AC84     =IFERROR(W84*Y84*AA84,"")                                              | 
+C85      B2565                                                                  | B2565
+G85      =IFERROR(INDEX(#REF!,MATCH(C85,#REF!,0)),"")                           | 
+U85      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C85,#REF!,0)),INDEX(#REF!,MA... | 
+W85      =IF(U85<>"",IF(C85="C4431",SUMIFS(#REF!,#REF!,C85,#REF!,$C$50)/2,SU... | 
+Y85      =IF(U85<>"",IF(C85="C4431",4*4*2/9,IF($U85<10,15,IF($U85<20,25,IF($... | 
+AA85     =IF(U85<>"",IF($U85<10,1.5,IF($U85<30,1.75,2)),"")                     | 
+AC85     =IFERROR(W85*Y85*AA85,"")                                              | 
+C86      B2566                                                                  | B2566
+G86      =IFERROR(INDEX(#REF!,MATCH(C86,#REF!,0)),"")                           | 
+U86      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C86,#REF!,0)),INDEX(#REF!,MA... | 
+W86      =IF(U86<>"",IF(C86="C4431",SUMIFS(#REF!,#REF!,C86,#REF!,$C$50)/2,SU... | 
+Y86      =IF(U86<>"",IF(C86="C4431",4*4*2/9,IF($U86<10,15,IF($U86<20,25,IF($... | 
+AA86     =IF(U86<>"",IF($U86<10,1.5,IF($U86<30,1.75,2)),"")                     | 
+AC86     =IFERROR(W86*Y86*AA86,"")                                              | 
+C87      B2685                                                                  | B2685
+G87      =IFERROR(INDEX(#REF!,MATCH(C87,#REF!,0)),"")                           | 
+U87      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C87,#REF!,0)),INDEX(#REF!,MA... | 
+W87      =IF(U87<>"",IF(C87="C4431",SUMIFS(#REF!,#REF!,C87,#REF!,$C$50)/2,SU... | 
+Y87      =IF(U87<>"",IF(C87="C4431",4*4*2/9,IF($U87<10,15,IF($U87<20,25,IF($... | 
+AA87     =IF(U87<>"",IF($U87<10,1.5,IF($U87<30,1.75,2)),"")                     | 
+AC87     =IFERROR(W87*Y87*AA87,"")                                              | 
+C88      B7900                                                                  | B7900
+G88      =IFERROR(INDEX(#REF!,MATCH(C88,#REF!,0)),"")                           | 
+U88      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C88,#REF!,0)),INDEX(#REF!,MA... | 
+W88      =IF(U88<>"",IF(C88="C4431",SUMIFS(#REF!,#REF!,C88,#REF!,$C$50)/2,SU... | 
+Y88      =IF(U88<>"",IF(C88="C4431",4*4*2/9,IF($U88<10,15,IF($U88<20,25,IF($... | 
+AA88     =IF(U88<>"",IF($U88<10,1.5,IF($U88<30,1.75,2)),"")                     | 
+AC88     =IFERROR(W88*Y88*AA88,"")                                              | 
+C89      C0187                                                                  | C0187
+G89      =IFERROR(INDEX(#REF!,MATCH(C89,#REF!,0)),"")                           | 
+U89      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C89,#REF!,0)),INDEX(#REF!,MA... | 
+W89      =IF(U89<>"",IF(C89="C4431",SUMIFS(#REF!,#REF!,C89,#REF!,$C$50)/2,SU... | 
+Y89      =IF(U89<>"",IF(C89="C4431",4*4*2/9,IF($U89<10,15,IF($U89<20,25,IF($... | 
+AA89     =IF(U89<>"",IF($U89<10,1.5,IF($U89<30,1.75,2)),"")                     | 
+AC89     =IFERROR(W89*Y89*AA89,"")                                              | 
+AB90     Total =                                                                | Total =
+AC90     =SUM(AC53:AE89)                                                        | 0
+AC91     Page                                                                   | Page 
+AD91     =AD46+1                                                                | 2
+AE91     of                                                                     | of
+AF91     4                                                                      | 4
+A92      CCN:                                                                   | CCN:
+C92      =C47                                                                   | 14312
+M92      Nomenclature:                                                          | Nomenclature:
+R92      =R47                                                                   | Operational Vehicle Laydown...
+C94      Operational Vehicle Laydown Area per P-80 Table 14312-1                | Operational Vehicle Laydown...
+C95      =C50                                                                   | M29030
+F95      =F50                                                                   | CLB 4
+C96      TAMCN                                                                  | TAMCN
+G96      Description                                                            | Description
+U96      L, ft                                                                  | L, ft
+W96      No.                                                                    | No.
+Y96      Area (NSY)                                                             | Area (NSY)
+AA96     NTG                                                                    | NTG
+AC96     GSY                                                                    | GSY
+C98      C7905                                                                  | C7905
+G98      =IFERROR(INDEX(#REF!,MATCH(C98,#REF!,0)),"")                           | 
+U98      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C98,#REF!,0)),INDEX(#REF!,MA... | 
+W98      =IF(U98<>"",IF(C98="C4431",SUMIFS(#REF!,#REF!,C98,#REF!,$C$95)/2,SU... | 
+Y98      =IF(U98<>"",IF(C98="C4431",4*4*2/9,IF($U98<10,15,IF($U98<20,25,IF($... | 
+AA98     =IF(U98<>"",IF($U98<10,1.5,IF($U98<30,1.75,2)),"")                     | 
+AC98     =IFERROR(W98*Y98*AA98,"")                                              | 
+C99      C7908                                                                  | C7908
+G99      =IFERROR(INDEX(#REF!,MATCH(C99,#REF!,0)),"")                           | 
+U99      =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C99,#REF!,0)),INDEX(#REF!,MA... | 
+W99      =IF(U99<>"",IF(C99="C4431",SUMIFS(#REF!,#REF!,C99,#REF!,$C$95)/2,SU... | 
+Y99      =IF(U99<>"",IF(C99="C4431",4*4*2/9,IF($U99<10,15,IF($U99<20,25,IF($... | 
+AA99     =IF(U99<>"",IF($U99<10,1.5,IF($U99<30,1.75,2)),"")                     | 
+AC99     =IFERROR(W99*Y99*AA99,"")                                              | 
+C100     C7911                                                                  | C7911
+G100     =IFERROR(INDEX(#REF!,MATCH(C100,#REF!,0)),"")                          | 
+U100     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C100,#REF!,0)),INDEX(#REF!,M... | 
+W100     =IF(U100<>"",IF(C100="C4431",SUMIFS(#REF!,#REF!,C100,#REF!,$C$95)/2... | 
+Y100     =IF(U100<>"",IF(C100="C4431",4*4*2/9,IF($U100<10,15,IF($U100<20,25,... | 
+AA100    =IF(U100<>"",IF($U100<10,1.5,IF($U100<30,1.75,2)),"")                  | 
+AC100    =IFERROR(W100*Y100*AA100,"")                                           | 
+C101     C7913                                                                  | C7913
+G101     =IFERROR(INDEX(#REF!,MATCH(C101,#REF!,0)),"")                          | 
+U101     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C101,#REF!,0)),INDEX(#REF!,M... | 
+W101     =IF(U101<>"",IF(C101="C4431",SUMIFS(#REF!,#REF!,C101,#REF!,$C$95)/2... | 
+Y101     =IF(U101<>"",IF(C101="C4431",4*4*2/9,IF($U101<10,15,IF($U101<20,25,... | 
+AA101    =IF(U101<>"",IF($U101<10,1.5,IF($U101<30,1.75,2)),"")                  | 
+AC101    =IFERROR(W101*Y101*AA101,"")                                           | 
+C102     D0003                                                                  | D0003
+G102     =IFERROR(INDEX(#REF!,MATCH(C102,#REF!,0)),"")                          | 
+U102     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C102,#REF!,0)),INDEX(#REF!,M... | 
+W102     =IF(U102<>"",IF(C102="C4431",SUMIFS(#REF!,#REF!,C102,#REF!,$C$95)/2... | 
+Y102     =IF(U102<>"",IF(C102="C4431",4*4*2/9,IF($U102<10,15,IF($U102<20,25,... | 
+AA102    =IF(U102<>"",IF($U102<10,1.5,IF($U102<30,1.75,2)),"")                  | 
+AC102    =IFERROR(W102*Y102*AA102,"")                                           | 
+C103     D0005                                                                  | D0005
+G103     =IFERROR(INDEX(#REF!,MATCH(C103,#REF!,0)),"")                          | 
+U103     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C103,#REF!,0)),INDEX(#REF!,M... | 
+W103     =IF(U103<>"",IF(C103="C4431",SUMIFS(#REF!,#REF!,C103,#REF!,$C$95)/2... | 
+Y103     =IF(U103<>"",IF(C103="C4431",4*4*2/9,IF($U103<10,15,IF($U103<20,25,... | 
+AA103    =IF(U103<>"",IF($U103<10,1.5,IF($U103<30,1.75,2)),"")                  | 
+AC103    =IFERROR(W103*Y103*AA103,"")                                           | 
+C104     D0015                                                                  | D0015
+G104     =IFERROR(INDEX(#REF!,MATCH(C104,#REF!,0)),"")                          | 
+U104     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C104,#REF!,0)),INDEX(#REF!,M... | 
+W104     =IF(U104<>"",IF(C104="C4431",SUMIFS(#REF!,#REF!,C104,#REF!,$C$95)/2... | 
+Y104     =IF(U104<>"",IF(C104="C4431",4*4*2/9,IF($U104<10,15,IF($U104<20,25,... | 
+AA104    =IF(U104<>"",IF($U104<10,1.5,IF($U104<30,1.75,2)),"")                  | 
+AC104    =IFERROR(W104*Y104*AA104,"")                                           | 
+C105     D0016                                                                  | D0016
+G105     =IFERROR(INDEX(#REF!,MATCH(C105,#REF!,0)),"")                          | 
+U105     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C105,#REF!,0)),INDEX(#REF!,M... | 
+W105     =IF(U105<>"",IF(C105="C4431",SUMIFS(#REF!,#REF!,C105,#REF!,$C$95)/2... | 
+Y105     =IF(U105<>"",IF(C105="C4431",4*4*2/9,IF($U105<10,15,IF($U105<20,25,... | 
+AA105    =IF(U105<>"",IF($U105<10,1.5,IF($U105<30,1.75,2)),"")                  | 
+AC105    =IFERROR(W105*Y105*AA105,"")                                           | 
+C106     D0022                                                                  | D0022
+G106     =IFERROR(INDEX(#REF!,MATCH(C106,#REF!,0)),"")                          | 
+U106     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C106,#REF!,0)),INDEX(#REF!,M... | 
+W106     4                                                                      | 4
+Y106     =IF(U106<>"",IF(C106="C4431",4*4*2/9,IF($U106<10,15,IF($U106<20,25,... | 
+AA106    =IF(U106<>"",IF($U106<10,1.5,IF($U106<30,1.75,2)),"")                  | 
+AC106    =IFERROR(W106*Y106*AA106,"")                                           | 
+C107     D0030                                                                  | D0030
+G107     =IFERROR(INDEX(#REF!,MATCH(C107,#REF!,0)),"")                          | 
+U107     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C107,#REF!,0)),INDEX(#REF!,M... | 
+W107     =IF(U107<>"",IF(C107="C4431",SUMIFS(#REF!,#REF!,C107,#REF!,$C$95)/2... | 
+Y107     =IF(U107<>"",IF(C107="C4431",4*4*2/9,IF($U107<10,15,IF($U107<20,25,... | 
+AA107    =IF(U107<>"",IF($U107<10,1.5,IF($U107<30,1.75,2)),"")                  | 
+AC107    =IFERROR(W107*Y107*AA107,"")                                           | 
+C108     D0031                                                                  | D0031
+G108     =IFERROR(INDEX(#REF!,MATCH(C108,#REF!,0)),"")                          | 
+U108     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C108,#REF!,0)),INDEX(#REF!,M... | 
+W108     =IF(U108<>"",IF(C108="C4431",SUMIFS(#REF!,#REF!,C108,#REF!,$C$95)/2... | 
+Y108     =IF(U108<>"",IF(C108="C4431",4*4*2/9,IF($U108<10,15,IF($U108<20,25,... | 
+AA108    =IF(U108<>"",IF($U108<10,1.5,IF($U108<30,1.75,2)),"")                  | 
+AC108    =IFERROR(W108*Y108*AA108,"")                                           | 
+C109     D0033                                                                  | D0033
+G109     =IFERROR(INDEX(#REF!,MATCH(C109,#REF!,0)),"")                          | 
+U109     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C109,#REF!,0)),INDEX(#REF!,M... | 
+W109     =IF(U109<>"",IF(C109="C4431",SUMIFS(#REF!,#REF!,C109,#REF!,$C$95)/2... | 
+Y109     =IF(U109<>"",IF(C109="C4431",4*4*2/9,IF($U109<10,15,IF($U109<20,25,... | 
+AA109    =IF(U109<>"",IF($U109<10,1.5,IF($U109<30,1.75,2)),"")                  | 
+AC109    =IFERROR(W109*Y109*AA109,"")                                           | 
+C110     D0034                                                                  | D0034
+G110     =IFERROR(INDEX(#REF!,MATCH(C110,#REF!,0)),"")                          | 
+U110     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C110,#REF!,0)),INDEX(#REF!,M... | 
+W110     =IF(U110<>"",IF(C110="C4431",SUMIFS(#REF!,#REF!,C110,#REF!,$C$95)/2... | 
+Y110     =IF(U110<>"",IF(C110="C4431",4*4*2/9,IF($U110<10,15,IF($U110<20,25,... | 
+AA110    =IF(U110<>"",IF($U110<10,1.5,IF($U110<30,1.75,2)),"")                  | 
+AC110    =IFERROR(W110*Y110*AA110,"")                                           | 
+C111     D0045                                                                  | D0045
+G111     =IFERROR(INDEX(#REF!,MATCH(C111,#REF!,0)),"")                          | 
+U111     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C111,#REF!,0)),INDEX(#REF!,M... | 
+W111     =IF(U111<>"",IF(C111="C4431",SUMIFS(#REF!,#REF!,C111,#REF!,$C$95)/2... | 
+Y111     =IF(U111<>"",IF(C111="C4431",4*4*2/9,IF($U111<10,15,IF($U111<20,25,... | 
+AA111    =IF(U111<>"",IF($U111<10,1.5,IF($U111<30,1.75,2)),"")                  | 
+AC111    =IFERROR(W111*Y111*AA111,"")                                           | 
+C112     D0046                                                                  | D0046
+G112     =IFERROR(INDEX(#REF!,MATCH(C112,#REF!,0)),"")                          | 
+U112     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C112,#REF!,0)),INDEX(#REF!,M... | 
+W112     =IF(U112<>"",IF(C112="C4431",SUMIFS(#REF!,#REF!,C112,#REF!,$C$95)/2... | 
+Y112     =IF(U112<>"",IF(C112="C4431",4*4*2/9,IF($U112<10,15,IF($U112<20,25,... | 
+AA112    =IF(U112<>"",IF($U112<10,1.5,IF($U112<30,1.75,2)),"")                  | 
+AC112    =IFERROR(W112*Y112*AA112,"")                                           | 
+C113     D0048                                                                  | D0048
+G113     =IFERROR(INDEX(#REF!,MATCH(C113,#REF!,0)),"")                          | 
+U113     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C113,#REF!,0)),INDEX(#REF!,M... | 
+W113     =IF(U113<>"",IF(C113="C4431",SUMIFS(#REF!,#REF!,C113,#REF!,$C$95)/2... | 
+Y113     =IF(U113<>"",IF(C113="C4431",4*4*2/9,IF($U113<10,15,IF($U113<20,25,... | 
+AA113    =IF(U113<>"",IF($U113<10,1.5,IF($U113<30,1.75,2)),"")                  | 
+AC113    =IFERROR(W113*Y113*AA113,"")                                           | 
+C114     D0058                                                                  | D0058
+G114     =IFERROR(INDEX(#REF!,MATCH(C114,#REF!,0)),"")                          | 
+U114     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C114,#REF!,0)),INDEX(#REF!,M... | 
+W114     =IF(U114<>"",IF(C114="C4431",SUMIFS(#REF!,#REF!,C114,#REF!,$C$95)/2... | 
+Y114     =IF(U114<>"",IF(C114="C4431",4*4*2/9,IF($U114<10,15,IF($U114<20,25,... | 
+AA114    =IF(U114<>"",IF($U114<10,1.5,IF($U114<30,1.75,2)),"")                  | 
+AC114    =IFERROR(W114*Y114*AA114,"")                                           | 
+C115     D0862                                                                  | D0862
+G115     =IFERROR(INDEX(#REF!,MATCH(C115,#REF!,0)),"")                          | 
+U115     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C115,#REF!,0)),INDEX(#REF!,M... | 
+W115     =IF(U115<>"",IF(C115="C4431",SUMIFS(#REF!,#REF!,C115,#REF!,$C$95)/2... | 
+Y115     =IF(U115<>"",IF(C115="C4431",4*4*2/9,IF($U115<10,15,IF($U115<20,25,... | 
+AA115    =IF(U115<>"",IF($U115<10,1.5,IF($U115<30,1.75,2)),"")                  | 
+AC115    =IFERROR(W115*Y115*AA115,"")                                           | 
+C116     D0880                                                                  | D0880
+G116     =IFERROR(INDEX(#REF!,MATCH(C116,#REF!,0)),"")                          | 
+U116     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C116,#REF!,0)),INDEX(#REF!,M... | 
+W116     =IF(U116<>"",IF(C116="C4431",SUMIFS(#REF!,#REF!,C116,#REF!,$C$95)/2... | 
+Y116     =IF(U116<>"",IF(C116="C4431",4*4*2/9,IF($U116<10,15,IF($U116<20,25,... | 
+AA116    =IF(U116<>"",IF($U116<10,1.5,IF($U116<30,1.75,2)),"")                  | 
+AC116    =IFERROR(W116*Y116*AA116,"")                                           | 
+C117     D1001                                                                  | D1001
+G117     =IFERROR(INDEX(#REF!,MATCH(C117,#REF!,0)),"")                          | 
+U117     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C117,#REF!,0)),INDEX(#REF!,M... | 
+W117     =IF(U117<>"",IF(C117="C4431",SUMIFS(#REF!,#REF!,C117,#REF!,$C$95)/2... | 
+Y117     =IF(U117<>"",IF(C117="C4431",4*4*2/9,IF($U117<10,15,IF($U117<20,25,... | 
+AA117    =IF(U117<>"",IF($U117<10,1.5,IF($U117<30,1.75,2)),"")                  | 
+AC117    =IFERROR(W117*Y117*AA117,"")                                           | 
+C118     D1002                                                                  | D1002
+G118     =IFERROR(INDEX(#REF!,MATCH(C118,#REF!,0)),"")                          | 
+U118     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C118,#REF!,0)),INDEX(#REF!,M... | 
+W118     =IF(U118<>"",IF(C118="C4431",SUMIFS(#REF!,#REF!,C118,#REF!,$C$95)/2... | 
+Y118     =IF(U118<>"",IF(C118="C4431",4*4*2/9,IF($U118<10,15,IF($U118<20,25,... | 
+AA118    =IF(U118<>"",IF($U118<10,1.5,IF($U118<30,1.75,2)),"")                  | 
+AC118    =IFERROR(W118*Y118*AA118,"")                                           | 
+C119     E0856                                                                  | E0856
+G119     =IFERROR(INDEX(#REF!,MATCH(C119,#REF!,0)),"")                          | 
+U119     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C119,#REF!,0)),INDEX(#REF!,M... | 
+W119     =IF(U119<>"",IF(C119="C4431",SUMIFS(#REF!,#REF!,C119,#REF!,$C$95)/2... | 
+Y119     =IF(U119<>"",IF(C119="C4431",4*4*2/9,IF($U119<10,15,IF($U119<20,25,... | 
+AA119    =IF(U119<>"",IF($U119<10,1.5,IF($U119<30,1.75,2)),"")                  | 
+AC119    =IFERROR(W119*Y119*AA119,"")                                           | 
+C120     E1378                                                                  | E1378
+G120     =IFERROR(INDEX(#REF!,MATCH(C120,#REF!,0)),"")                          | 
+U120     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C120,#REF!,0)),INDEX(#REF!,M... | 
+W120     =IF(U120<>"",IF(C120="C4431",SUMIFS(#REF!,#REF!,C120,#REF!,$C$95)/2... | 
+Y120     =IF(U120<>"",IF(C120="C4431",4*4*2/9,IF($U120<10,15,IF($U120<20,25,... | 
+AA120    =IF(U120<>"",IF($U120<10,1.5,IF($U120<30,1.75,2)),"")                  | 
+AC120    =IFERROR(W120*Y120*AA120,"")                                           | 
+C121     A2337                                                                  | A2337
+G121     =IFERROR(INDEX(#REF!,MATCH(C121,#REF!,0)),"")                          | 
+U121     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C121,#REF!,0)),INDEX(#REF!,M... | 
+W121     =IF(U121<>"",IF(C121="C4431",SUMIFS(#REF!,#REF!,C121,#REF!,$C$95)/2... | 
+Y121     =IF(U121<>"",IF(C121="C4431",4*4*2/9,IF($U121<10,15,IF($U121<20,25,... | 
+AA121    =IF(U121<>"",IF($U121<10,1.5,IF($U121<30,1.75,2)),"")                  | 
+AC121    =IFERROR(W121*Y121*AA121,"")                                           | 
+C122     B0571                                                                  | B0571
+G122     =IFERROR(INDEX(#REF!,MATCH(C122,#REF!,0)),"")                          | 
+U122     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C122,#REF!,0)),INDEX(#REF!,M... | 
+W122     =IF(U122<>"",IF(C122="C4431",SUMIFS(#REF!,#REF!,C122,#REF!,$C$95)/2... | 
+Y122     =IF(U122<>"",IF(C122="C4431",4*4*2/9,IF($U122<10,15,IF($U122<20,25,... | 
+AA122    =IF(U122<>"",IF($U122<10,1.5,IF($U122<30,1.75,2)),"")                  | 
+AC122    =IFERROR(W122*Y122*AA122,"")                                           | 
+G123     =IFERROR(INDEX(#REF!,MATCH(C123,#REF!,0)),"")                          | 
+U123     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C123,#REF!,0)),INDEX(#REF!,M... | 
+W123     =IF(U123<>"",IF(C123="C4431",SUMIFS(#REF!,#REF!,C123,#REF!,$C$95)/2... | 
+Y123     =IF(U123<>"",IF(C123="C4431",4*4*2/9,IF($U123<10,15,IF($U123<20,25,... | 
+AA123    =IF(U123<>"",IF($U123<10,1.5,IF($U123<30,1.75,2)),"")                  | 
+AC123    =IFERROR(W123*Y123*AA123,"")                                           | 
+C124     B0647                                                                  | B0647
+G124     =IFERROR(INDEX(#REF!,MATCH(C124,#REF!,0)),"")                          | 
+U124     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C124,#REF!,0)),INDEX(#REF!,M... | 
+W124     =IF(U124<>"",IF(C124="C4431",SUMIFS(#REF!,#REF!,C124,#REF!,$C$95)/2... | 
+Y124     =IF(U124<>"",IF(C124="C4431",4*4*2/9,IF($U124<10,15,IF($U124<20,25,... | 
+AA124    =IF(U124<>"",IF($U124<10,1.5,IF($U124<30,1.75,2)),"")                  | 
+AC124    =IFERROR(W124*Y124*AA124,"")                                           | 
+C125     B2130                                                                  | B2130
+G125     =IFERROR(INDEX(#REF!,MATCH(C125,#REF!,0)),"")                          | 
+U125     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C125,#REF!,0)),INDEX(#REF!,M... | 
+W125     =IF(U125<>"",IF(C125="C4431",SUMIFS(#REF!,#REF!,C125,#REF!,$C$95)/2... | 
+Y125     =IF(U125<>"",IF(C125="C4431",4*4*2/9,IF($U125<10,15,IF($U125<20,25,... | 
+AA125    =IF(U125<>"",IF($U125<10,1.5,IF($U125<30,1.75,2)),"")                  | 
+AC125    =IFERROR(W125*Y125*AA125,"")                                           | 
+G126     =IFERROR(INDEX(#REF!,MATCH(C126,#REF!,0)),"")                          | 
+U126     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C126,#REF!,0)),INDEX(#REF!,M... | 
+W126     =IF(U126<>"",IF(C126="C4431",SUMIFS(#REF!,#REF!,C126,#REF!,$C$95)/2... | 
+Y126     =IF(U126<>"",IF(C126="C4431",4*4*2/9,IF($U126<10,15,IF($U126<20,25,... | 
+AA126    =IF(U126<>"",IF($U126<10,1.5,IF($U126<30,1.75,2)),"")                  | 
+AC126    =IFERROR(W126*Y126*AA126,"")                                           | 
+G127     =IFERROR(INDEX(#REF!,MATCH(C127,#REF!,0)),"")                          | 
+U127     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C127,#REF!,0)),INDEX(#REF!,M... | 
+W127     =IF(U127<>"",IF(C127="C4431",SUMIFS(#REF!,#REF!,C127,#REF!,$C$95)/2... | 
+Y127     =IF(U127<>"",IF(C127="C4431",4*4*2/9,IF($U127<10,15,IF($U127<20,25,... | 
+AA127    =IF(U127<>"",IF($U127<10,1.5,IF($U127<30,1.75,2)),"")                  | 
+AC127    =IFERROR(W127*Y127*AA127,"")                                           | 
+G128     =IFERROR(INDEX(#REF!,MATCH(C128,#REF!,0)),"")                          | 
+U128     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C128,#REF!,0)),INDEX(#REF!,M... | 
+W128     =IF(U128<>"",IF(C128="C4431",SUMIFS(#REF!,#REF!,C128,#REF!,$C$95)/2... | 
+Y128     =IF(U128<>"",IF(C128="C4431",4*4*2/9,IF($U128<10,15,IF($U128<20,25,... | 
+AA128    =IF(U128<>"",IF($U128<10,1.5,IF($U128<30,1.75,2)),"")                  | 
+AC128    =IFERROR(W128*Y128*AA128,"")                                           | 
+G129     =IFERROR(INDEX(#REF!,MATCH(C129,#REF!,0)),"")                          | 
+U129     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C129,#REF!,0)),INDEX(#REF!,M... | 
+W129     =IF(U129<>"",IF(C129="C4431",SUMIFS(#REF!,#REF!,C129,#REF!,$C$95)/2... | 
+Y129     =IF(U129<>"",IF(C129="C4431",4*4*2/9,IF($U129<10,15,IF($U129<20,25,... | 
+AA129    =IF(U129<>"",IF($U129<10,1.5,IF($U129<30,1.75,2)),"")                  | 
+AC129    =IFERROR(W129*Y129*AA129,"")                                           | 
+G130     =IFERROR(INDEX(#REF!,MATCH(C130,#REF!,0)),"")                          | 
+U130     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C130,#REF!,0)),INDEX(#REF!,M... | 
+W130     =IF(U130<>"",IF(C130="C4431",SUMIFS(#REF!,#REF!,C130,#REF!,$C$95)/2... | 
+Y130     =IF(U130<>"",IF(C130="C4431",4*4*2/9,IF($U130<10,15,IF($U130<20,25,... | 
+AA130    =IF(U130<>"",IF($U130<10,1.5,IF($U130<30,1.75,2)),"")                  | 
+AC130    =IFERROR(W130*Y130*AA130,"")                                           | 
+G131     =IFERROR(INDEX(#REF!,MATCH(C131,#REF!,0)),"")                          | 
+U131     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C131,#REF!,0)),INDEX(#REF!,M... | 
+W131     =IF(U131<>"",IF(C131="C4431",SUMIFS(#REF!,#REF!,C131,#REF!,$C$95)/2... | 
+Y131     =IF(U131<>"",IF(C131="C4431",4*4*2/9,IF($U131<10,15,IF($U131<20,25,... | 
+AA131    =IF(U131<>"",IF($U131<10,1.5,IF($U131<30,1.75,2)),"")                  | 
+AC131    =IFERROR(W131*Y131*AA131,"")                                           | 
+G132     =IFERROR(INDEX(#REF!,MATCH(C132,#REF!,0)),"")                          | 
+U132     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C132,#REF!,0)),INDEX(#REF!,M... | 
+W132     =IF(U132<>"",IF(C132="C4431",SUMIFS(#REF!,#REF!,C132,#REF!,$C$95)/2... | 
+Y132     =IF(U132<>"",IF(C132="C4431",4*4*2/9,IF($U132<10,15,IF($U132<20,25,... | 
+AA132    =IF(U132<>"",IF($U132<10,1.5,IF($U132<30,1.75,2)),"")                  | 
+AC132    =IFERROR(W132*Y132*AA132,"")                                           | 
+G133     =IFERROR(INDEX(#REF!,MATCH(C133,#REF!,0)),"")                          | 
+U133     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C133,#REF!,0)),INDEX(#REF!,M... | 
+W133     =IF(U133<>"",IF(C133="C4431",SUMIFS(#REF!,#REF!,C133,#REF!,$C$95)/2... | 
+Y133     =IF(U133<>"",IF(C133="C4431",4*4*2/9,IF($U133<10,15,IF($U133<20,25,... | 
+AA133    =IF(U133<>"",IF($U133<10,1.5,IF($U133<30,1.75,2)),"")                  | 
+AC133    =IFERROR(W133*Y133*AA133,"")                                           | 
+G134     =IFERROR(INDEX(#REF!,MATCH(C134,#REF!,0)),"")                          | 
+U134     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C134,#REF!,0)),INDEX(#REF!,M... | 
+W134     =IF(U134<>"",IF(C134="C4431",SUMIFS(#REF!,#REF!,C134,#REF!,$C$95)/2... | 
+Y134     =IF(U134<>"",IF(C134="C4431",4*4*2/9,IF($U134<10,15,IF($U134<20,25,... | 
+AA134    =IF(U134<>"",IF($U134<10,1.5,IF($U134<30,1.75,2)),"")                  | 
+AC134    =IFERROR(W134*Y134*AA134,"")                                           | 
+AB135    Total =                                                                | Total =
+AC135    =SUM(AC98:AE134)                                                       | 0
+AC136    Page                                                                   | Page 
+AD136    =AD91+1                                                                | 3
+AE136    of                                                                     | of
+AF136    4                                                                      | 4
+A137     CCN:                                                                   | CCN:
+C137     =C92                                                                   | 14312
+M137     Nomenclature:                                                          | Nomenclature:
+R137     =R92                                                                   | Operational Vehicle Laydown...
+C139     Operational Vehicle Laydown Area per P-80 Table 14312-1                | Operational Vehicle Laydown...
+C140     =B23                                                                   | M29030
+F140     =E23                                                                   | EOD Requirement
+C141     TAMCN                                                                  | TAMCN
+G141     Description                                                            | Description
+U141     L, ft                                                                  | L, ft
+W141     No.                                                                    | No.
+Y141     Area (NSY)                                                             | Area (NSY)
+AA141    NTG                                                                    | NTG
+AC141    GSY                                                                    | GSY
+C143     D0022                                                                  | D0022
+G143     =IFERROR(INDEX(#REF!,MATCH(C143,#REF!,0)),"")                          | 
+U143     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C143,#REF!,0)),INDEX(#REF!,M... | 
+W143     4                                                                      | 4
+Y143     =IF(U143<>"",IF(C143="C4431",4*4*2/9,IF($U143<10,15,IF($U143<20,25,... | 
+AA143    =IF(U143<>"",IF($U143<10,1.5,IF($U143<30,1.75,2)),"")                  | 
+AC143    =IFERROR(W143*Y143*AA143,"")                                           | 
+C144     D0187                                                                  | D0187
+G144     =IFERROR(INDEX(#REF!,MATCH(C144,#REF!,0)),"")                          | 
+U144     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C144,#REF!,0)),INDEX(#REF!,M... | 
+W144     =IF(U144<>"",IF(C144="C4431",SUMIFS(#REF!,#REF!,C144,#REF!,$C$140)/... | 
+Y144     =IF(U144<>"",IF(C144="C4431",4*4*2/9,IF($U144<10,15,IF($U144<20,25,... | 
+AA144    =IF(U144<>"",IF($U144<10,1.5,IF($U144<30,1.75,2)),"")                  | 
+AC144    =IFERROR(W144*Y144*AA144,"")                                           | 
+C145     D1158                                                                  | D1158
+G145     =IFERROR(INDEX(#REF!,MATCH(C145,#REF!,0)),"")                          | 
+U145     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C145,#REF!,0)),INDEX(#REF!,M... | 
+W145     =IF(U145<>"",IF(C145="C4431",SUMIFS(#REF!,#REF!,C145,#REF!,$C$140)/... | 
+Y145     =IF(U145<>"",IF(C145="C4431",4*4*2/9,IF($U145<10,15,IF($U145<20,25,... | 
+AA145    =IF(U145<>"",IF($U145<10,1.5,IF($U145<30,1.75,2)),"")                  | 
+AC145    =IFERROR(W145*Y145*AA145,"")                                           | 
+C146     E0070                                                                  | E0070
+G146     =IFERROR(INDEX(#REF!,MATCH(C146,#REF!,0)),"")                          | 
+U146     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C146,#REF!,0)),INDEX(#REF!,M... | 
+W146     =IF(U146<>"",IF(C146="C4431",SUMIFS(#REF!,#REF!,C146,#REF!,$C$140)/... | 
+Y146     =IF(U146<>"",IF(C146="C4431",4*4*2/9,IF($U146<10,15,IF($U146<20,25,... | 
+AA146    =IF(U146<>"",IF($U146<10,1.5,IF($U146<30,1.75,2)),"")                  | 
+AC146    =IFERROR(W146*Y146*AA146,"")                                           | 
+C147     E0070                                                                  | E0070
+G147     =IFERROR(INDEX(#REF!,MATCH(C147,#REF!,0)),"")                          | 
+U147     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C147,#REF!,0)),INDEX(#REF!,M... | 
+W147     =IF(U147<>"",IF(C147="C4431",SUMIFS(#REF!,#REF!,C147,#REF!,$C$140)/... | 
+Y147     =IF(U147<>"",IF(C147="C4431",4*4*2/9,IF($U147<10,15,IF($U147<20,25,... | 
+AA147    =IF(U147<>"",IF($U147<10,1.5,IF($U147<30,1.75,2)),"")                  | 
+AC147    =IFERROR(W147*Y147*AA147,"")                                           | 
+G148     =IFERROR(INDEX(#REF!,MATCH(C148,#REF!,0)),"")                          | 
+U148     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C148,#REF!,0)),INDEX(#REF!,M... | 
+W148     =IF(U148<>"",IF(C148="C4431",SUMIFS(#REF!,#REF!,C148,#REF!,$C$140)/... | 
+Y148     =IF(U148<>"",IF(C148="C4431",4*4*2/9,IF($U148<10,15,IF($U148<20,25,... | 
+AA148    =IF(U148<>"",IF($U148<10,1.5,IF($U148<30,1.75,2)),"")                  | 
+AC148    =IFERROR(W148*Y148*AA148,"")                                           | 
+G149     =IFERROR(INDEX(#REF!,MATCH(C149,#REF!,0)),"")                          | 
+U149     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C149,#REF!,0)),INDEX(#REF!,M... | 
+W149     =IF(U149<>"",IF(C149="C4431",SUMIFS(#REF!,#REF!,C149,#REF!,$C$140)/... | 
+Y149     =IF(U149<>"",IF(C149="C4431",4*4*2/9,IF($U149<10,15,IF($U149<20,25,... | 
+AA149    =IF(U149<>"",IF($U149<10,1.5,IF($U149<30,1.75,2)),"")                  | 
+AC149    =IFERROR(W149*Y149*AA149,"")                                           | 
+G150     =IFERROR(INDEX(#REF!,MATCH(C150,#REF!,0)),"")                          | 
+U150     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C150,#REF!,0)),INDEX(#REF!,M... | 
+W150     =IF(U150<>"",IF(C150="C4431",SUMIFS(#REF!,#REF!,C150,#REF!,$C$140)/... | 
+Y150     =IF(U150<>"",IF(C150="C4431",4*4*2/9,IF($U150<10,15,IF($U150<20,25,... | 
+AA150    =IF(U150<>"",IF($U150<10,1.5,IF($U150<30,1.75,2)),"")                  | 
+AC150    =IFERROR(W150*Y150*AA150,"")                                           | 
+G151     =IFERROR(INDEX(#REF!,MATCH(C151,#REF!,0)),"")                          | 
+U151     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C151,#REF!,0)),INDEX(#REF!,M... | 
+W151     =IF(U151<>"",IF(C151="C4431",SUMIFS(#REF!,#REF!,C151,#REF!,$C$140)/... | 
+Y151     =IF(U151<>"",IF(C151="C4431",4*4*2/9,IF($U151<10,15,IF($U151<20,25,... | 
+AA151    =IF(U151<>"",IF($U151<10,1.5,IF($U151<30,1.75,2)),"")                  | 
+AC151    =IFERROR(W151*Y151*AA151,"")                                           | 
+G152     =IFERROR(INDEX(#REF!,MATCH(C152,#REF!,0)),"")                          | 
+U152     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C152,#REF!,0)),INDEX(#REF!,M... | 
+W152     =IF(U152<>"",IF(C152="C4431",SUMIFS(#REF!,#REF!,C152,#REF!,$C$140)/... | 
+Y152     =IF(U152<>"",IF(C152="C4431",4*4*2/9,IF($U152<10,15,IF($U152<20,25,... | 
+AA152    =IF(U152<>"",IF($U152<10,1.5,IF($U152<30,1.75,2)),"")                  | 
+AC152    =IFERROR(W152*Y152*AA152,"")                                           | 
+G153     =IFERROR(INDEX(#REF!,MATCH(C153,#REF!,0)),"")                          | 
+U153     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C153,#REF!,0)),INDEX(#REF!,M... | 
+W153     =IF(U153<>"",IF(C153="C4431",SUMIFS(#REF!,#REF!,C153,#REF!,$C$140)/... | 
+Y153     =IF(U153<>"",IF(C153="C4431",4*4*2/9,IF($U153<10,15,IF($U153<20,25,... | 
+AA153    =IF(U153<>"",IF($U153<10,1.5,IF($U153<30,1.75,2)),"")                  | 
+AC153    =IFERROR(W153*Y153*AA153,"")                                           | 
+G154     =IFERROR(INDEX(#REF!,MATCH(C154,#REF!,0)),"")                          | 
+U154     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C154,#REF!,0)),INDEX(#REF!,M... | 
+W154     =IF(U154<>"",IF(C154="C4431",SUMIFS(#REF!,#REF!,C154,#REF!,$C$140)/... | 
+Y154     =IF(U154<>"",IF(C154="C4431",4*4*2/9,IF($U154<10,15,IF($U154<20,25,... | 
+AA154    =IF(U154<>"",IF($U154<10,1.5,IF($U154<30,1.75,2)),"")                  | 
+AC154    =IFERROR(W154*Y154*AA154,"")                                           | 
+G155     =IFERROR(INDEX(#REF!,MATCH(C155,#REF!,0)),"")                          | 
+U155     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C155,#REF!,0)),INDEX(#REF!,M... | 
+W155     =IF(U155<>"",IF(C155="C4431",SUMIFS(#REF!,#REF!,C155,#REF!,$C$140)/... | 
+Y155     =IF(U155<>"",IF(C155="C4431",4*4*2/9,IF($U155<10,15,IF($U155<20,25,... | 
+AA155    =IF(U155<>"",IF($U155<10,1.5,IF($U155<30,1.75,2)),"")                  | 
+AC155    =IFERROR(W155*Y155*AA155,"")                                           | 
+G156     =IFERROR(INDEX(#REF!,MATCH(C156,#REF!,0)),"")                          | 
+U156     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C156,#REF!,0)),INDEX(#REF!,M... | 
+W156     =IF(U156<>"",IF(C156="C4431",SUMIFS(#REF!,#REF!,C156,#REF!,$C$140)/... | 
+Y156     =IF(U156<>"",IF(C156="C4431",4*4*2/9,IF($U156<10,15,IF($U156<20,25,... | 
+AA156    =IF(U156<>"",IF($U156<10,1.5,IF($U156<30,1.75,2)),"")                  | 
+AC156    =IFERROR(W156*Y156*AA156,"")                                           | 
+G157     =IFERROR(INDEX(#REF!,MATCH(C157,#REF!,0)),"")                          | 
+U157     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C157,#REF!,0)),INDEX(#REF!,M... | 
+W157     =IF(U157<>"",IF(C157="C4431",SUMIFS(#REF!,#REF!,C157,#REF!,$C$140)/... | 
+Y157     =IF(U157<>"",IF(C157="C4431",4*4*2/9,IF($U157<10,15,IF($U157<20,25,... | 
+AA157    =IF(U157<>"",IF($U157<10,1.5,IF($U157<30,1.75,2)),"")                  | 
+AC157    =IFERROR(W157*Y157*AA157,"")                                           | 
+G158     =IFERROR(INDEX(#REF!,MATCH(C158,#REF!,0)),"")                          | 
+U158     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C158,#REF!,0)),INDEX(#REF!,M... | 
+W158     =IF(U158<>"",IF(C158="C4431",SUMIFS(#REF!,#REF!,C158,#REF!,$C$140)/... | 
+Y158     =IF(U158<>"",IF(C158="C4431",4*4*2/9,IF($U158<10,15,IF($U158<20,25,... | 
+AA158    =IF(U158<>"",IF($U158<10,1.5,IF($U158<30,1.75,2)),"")                  | 
+AC158    =IFERROR(W158*Y158*AA158,"")                                           | 
+G159     =IFERROR(INDEX(#REF!,MATCH(C159,#REF!,0)),"")                          | 
+U159     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C159,#REF!,0)),INDEX(#REF!,M... | 
+W159     =IF(U159<>"",IF(C159="C4431",SUMIFS(#REF!,#REF!,C159,#REF!,$C$140)/... | 
+Y159     =IF(U159<>"",IF(C159="C4431",4*4*2/9,IF($U159<10,15,IF($U159<20,25,... | 
+AA159    =IF(U159<>"",IF($U159<10,1.5,IF($U159<30,1.75,2)),"")                  | 
+AC159    =IFERROR(W159*Y159*AA159,"")                                           | 
+G160     =IFERROR(INDEX(#REF!,MATCH(C160,#REF!,0)),"")                          | 
+U160     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C160,#REF!,0)),INDEX(#REF!,M... | 
+W160     =IF(U160<>"",IF(C160="C4431",SUMIFS(#REF!,#REF!,C160,#REF!,$C$140)/... | 
+Y160     =IF(U160<>"",IF(C160="C4431",4*4*2/9,IF($U160<10,15,IF($U160<20,25,... | 
+AA160    =IF(U160<>"",IF($U160<10,1.5,IF($U160<30,1.75,2)),"")                  | 
+AC160    =IFERROR(W160*Y160*AA160,"")                                           | 
+G161     =IFERROR(INDEX(#REF!,MATCH(C161,#REF!,0)),"")                          | 
+U161     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C161,#REF!,0)),INDEX(#REF!,M... | 
+W161     =IF(U161<>"",IF(C161="C4431",SUMIFS(#REF!,#REF!,C161,#REF!,$C$140)/... | 
+Y161     =IF(U161<>"",IF(C161="C4431",4*4*2/9,IF($U161<10,15,IF($U161<20,25,... | 
+AA161    =IF(U161<>"",IF($U161<10,1.5,IF($U161<30,1.75,2)),"")                  | 
+AC161    =IFERROR(W161*Y161*AA161,"")                                           | 
+G162     =IFERROR(INDEX(#REF!,MATCH(C162,#REF!,0)),"")                          | 
+U162     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C162,#REF!,0)),INDEX(#REF!,M... | 
+W162     =IF(U162<>"",IF(C162="C4431",SUMIFS(#REF!,#REF!,C162,#REF!,$C$140)/... | 
+Y162     =IF(U162<>"",IF(C162="C4431",4*4*2/9,IF($U162<10,15,IF($U162<20,25,... | 
+AA162    =IF(U162<>"",IF($U162<10,1.5,IF($U162<30,1.75,2)),"")                  | 
+AC162    =IFERROR(W162*Y162*AA162,"")                                           | 
+G163     =IFERROR(INDEX(#REF!,MATCH(C163,#REF!,0)),"")                          | 
+U163     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C163,#REF!,0)),INDEX(#REF!,M... | 
+W163     =IF(U163<>"",IF(C163="C4431",SUMIFS(#REF!,#REF!,C163,#REF!,$C$140)/... | 
+Y163     =IF(U163<>"",IF(C163="C4431",4*4*2/9,IF($U163<10,15,IF($U163<20,25,... | 
+AA163    =IF(U163<>"",IF($U163<10,1.5,IF($U163<30,1.75,2)),"")                  | 
+AC163    =IFERROR(W163*Y163*AA163,"")                                           | 
+G164     =IFERROR(INDEX(#REF!,MATCH(C164,#REF!,0)),"")                          | 
+U164     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C164,#REF!,0)),INDEX(#REF!,M... | 
+W164     =IF(U164<>"",IF(C164="C4431",SUMIFS(#REF!,#REF!,C164,#REF!,$C$140)/... | 
+Y164     =IF(U164<>"",IF(C164="C4431",4*4*2/9,IF($U164<10,15,IF($U164<20,25,... | 
+AA164    =IF(U164<>"",IF($U164<10,1.5,IF($U164<30,1.75,2)),"")                  | 
+AC164    =IFERROR(W164*Y164*AA164,"")                                           | 
+G165     =IFERROR(INDEX(#REF!,MATCH(C165,#REF!,0)),"")                          | 
+U165     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C165,#REF!,0)),INDEX(#REF!,M... | 
+W165     =IF(U165<>"",IF(C165="C4431",SUMIFS(#REF!,#REF!,C165,#REF!,$C$140)/... | 
+Y165     =IF(U165<>"",IF(C165="C4431",4*4*2/9,IF($U165<10,15,IF($U165<20,25,... | 
+AA165    =IF(U165<>"",IF($U165<10,1.5,IF($U165<30,1.75,2)),"")                  | 
+AC165    =IFERROR(W165*Y165*AA165,"")                                           | 
+G166     =IFERROR(INDEX(#REF!,MATCH(C166,#REF!,0)),"")                          | 
+U166     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C166,#REF!,0)),INDEX(#REF!,M... | 
+W166     =IF(U166<>"",IF(C166="C4431",SUMIFS(#REF!,#REF!,C166,#REF!,$C$140)/... | 
+Y166     =IF(U166<>"",IF(C166="C4431",4*4*2/9,IF($U166<10,15,IF($U166<20,25,... | 
+AA166    =IF(U166<>"",IF($U166<10,1.5,IF($U166<30,1.75,2)),"")                  | 
+AC166    =IFERROR(W166*Y166*AA166,"")                                           | 
+G167     =IFERROR(INDEX(#REF!,MATCH(C167,#REF!,0)),"")                          | 
+U167     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C167,#REF!,0)),INDEX(#REF!,M... | 
+W167     =IF(U167<>"",IF(C167="C4431",SUMIFS(#REF!,#REF!,C167,#REF!,$C$140)/... | 
+Y167     =IF(U167<>"",IF(C167="C4431",4*4*2/9,IF($U167<10,15,IF($U167<20,25,... | 
+AA167    =IF(U167<>"",IF($U167<10,1.5,IF($U167<30,1.75,2)),"")                  | 
+AC167    =IFERROR(W167*Y167*AA167,"")                                           | 
+G168     =IFERROR(INDEX(#REF!,MATCH(C168,#REF!,0)),"")                          | 
+U168     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C168,#REF!,0)),INDEX(#REF!,M... | 
+W168     =IF(U168<>"",IF(C168="C4431",SUMIFS(#REF!,#REF!,C168,#REF!,$C$140)/... | 
+Y168     =IF(U168<>"",IF(C168="C4431",4*4*2/9,IF($U168<10,15,IF($U168<20,25,... | 
+AA168    =IF(U168<>"",IF($U168<10,1.5,IF($U168<30,1.75,2)),"")                  | 
+AC168    =IFERROR(W168*Y168*AA168,"")                                           | 
+G169     =IFERROR(INDEX(#REF!,MATCH(C169,#REF!,0)),"")                          | 
+U169     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C169,#REF!,0)),INDEX(#REF!,M... | 
+W169     =IF(U169<>"",IF(C169="C4431",SUMIFS(#REF!,#REF!,C169,#REF!,$C$140)/... | 
+Y169     =IF(U169<>"",IF(C169="C4431",4*4*2/9,IF($U169<10,15,IF($U169<20,25,... | 
+AA169    =IF(U169<>"",IF($U169<10,1.5,IF($U169<30,1.75,2)),"")                  | 
+AC169    =IFERROR(W169*Y169*AA169,"")                                           | 
+G170     =IFERROR(INDEX(#REF!,MATCH(C170,#REF!,0)),"")                          | 
+U170     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C170,#REF!,0)),INDEX(#REF!,M... | 
+W170     =IF(U170<>"",IF(C170="C4431",SUMIFS(#REF!,#REF!,C170,#REF!,$C$140)/... | 
+Y170     =IF(U170<>"",IF(C170="C4431",4*4*2/9,IF($U170<10,15,IF($U170<20,25,... | 
+AA170    =IF(U170<>"",IF($U170<10,1.5,IF($U170<30,1.75,2)),"")                  | 
+AC170    =IFERROR(W170*Y170*AA170,"")                                           | 
+G171     =IFERROR(INDEX(#REF!,MATCH(C171,#REF!,0)),"")                          | 
+U171     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C171,#REF!,0)),INDEX(#REF!,M... | 
+W171     =IF(U171<>"",IF(C171="C4431",SUMIFS(#REF!,#REF!,C171,#REF!,$C$140)/... | 
+Y171     =IF(U171<>"",IF(C171="C4431",4*4*2/9,IF($U171<10,15,IF($U171<20,25,... | 
+AA171    =IF(U171<>"",IF($U171<10,1.5,IF($U171<30,1.75,2)),"")                  | 
+AC171    =IFERROR(W171*Y171*AA171,"")                                           | 
+G172     =IFERROR(INDEX(#REF!,MATCH(C172,#REF!,0)),"")                          | 
+U172     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C172,#REF!,0)),INDEX(#REF!,M... | 
+W172     =IF(U172<>"",IF(C172="C4431",SUMIFS(#REF!,#REF!,C172,#REF!,$C$140)/... | 
+Y172     =IF(U172<>"",IF(C172="C4431",4*4*2/9,IF($U172<10,15,IF($U172<20,25,... | 
+AA172    =IF(U172<>"",IF($U172<10,1.5,IF($U172<30,1.75,2)),"")                  | 
+AC172    =IFERROR(W172*Y172*AA172,"")                                           | 
+G173     =IFERROR(INDEX(#REF!,MATCH(C173,#REF!,0)),"")                          | 
+U173     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C173,#REF!,0)),INDEX(#REF!,M... | 
+W173     =IF(U173<>"",IF(C173="C4431",SUMIFS(#REF!,#REF!,C173,#REF!,$C$140)/... | 
+Y173     =IF(U173<>"",IF(C173="C4431",4*4*2/9,IF($U173<10,15,IF($U173<20,25,... | 
+AA173    =IF(U173<>"",IF($U173<10,1.5,IF($U173<30,1.75,2)),"")                  | 
+AC173    =IFERROR(W173*Y173*AA173,"")                                           | 
+G174     =IFERROR(INDEX(#REF!,MATCH(C174,#REF!,0)),"")                          | 
+U174     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C174,#REF!,0)),INDEX(#REF!,M... | 
+W174     =IF(U174<>"",IF(C174="C4431",SUMIFS(#REF!,#REF!,C174,#REF!,$C$140)/... | 
+Y174     =IF(U174<>"",IF(C174="C4431",4*4*2/9,IF($U174<10,15,IF($U174<20,25,... | 
+AA174    =IF(U174<>"",IF($U174<10,1.5,IF($U174<30,1.75,2)),"")                  | 
+AC174    =IFERROR(W174*Y174*AA174,"")                                           | 
+G175     =IFERROR(INDEX(#REF!,MATCH(C175,#REF!,0)),"")                          | 
+U175     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C175,#REF!,0)),INDEX(#REF!,M... | 
+W175     =IF(U175<>"",IF(C175="C4431",SUMIFS(#REF!,#REF!,C175,#REF!,$C$140)/... | 
+Y175     =IF(U175<>"",IF(C175="C4431",4*4*2/9,IF($U175<10,15,IF($U175<20,25,... | 
+AA175    =IF(U175<>"",IF($U175<10,1.5,IF($U175<30,1.75,2)),"")                  | 
+AC175    =IFERROR(W175*Y175*AA175,"")                                           | 
+G176     =IFERROR(INDEX(#REF!,MATCH(C176,#REF!,0)),"")                          | 
+U176     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C176,#REF!,0)),INDEX(#REF!,M... | 
+W176     =IF(U176<>"",IF(C176="C4431",SUMIFS(#REF!,#REF!,C176,#REF!,$C$140)/... | 
+Y176     =IF(U176<>"",IF(C176="C4431",4*4*2/9,IF($U176<10,15,IF($U176<20,25,... | 
+AA176    =IF(U176<>"",IF($U176<10,1.5,IF($U176<30,1.75,2)),"")                  | 
+AC176    =IFERROR(W176*Y176*AA176,"")                                           | 
+G177     =IFERROR(INDEX(#REF!,MATCH(C177,#REF!,0)),"")                          | 
+U177     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C177,#REF!,0)),INDEX(#REF!,M... | 
+W177     =IF(U177<>"",IF(C177="C4431",SUMIFS(#REF!,#REF!,C177,#REF!,$C$140)/... | 
+Y177     =IF(U177<>"",IF(C177="C4431",4*4*2/9,IF($U177<10,15,IF($U177<20,25,... | 
+AA177    =IF(U177<>"",IF($U177<10,1.5,IF($U177<30,1.75,2)),"")                  | 
+AC177    =IFERROR(W177*Y177*AA177,"")                                           | 
+G178     =IFERROR(INDEX(#REF!,MATCH(C178,#REF!,0)),"")                          | 
+U178     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C178,#REF!,0)),INDEX(#REF!,M... | 
+W178     =IF(U178<>"",IF(C178="C4431",SUMIFS(#REF!,#REF!,C178,#REF!,$C$140)/... | 
+Y178     =IF(U178<>"",IF(C178="C4431",4*4*2/9,IF($U178<10,15,IF($U178<20,25,... | 
+AA178    =IF(U178<>"",IF($U178<10,1.5,IF($U178<30,1.75,2)),"")                  | 
+AC178    =IFERROR(W178*Y178*AA178,"")                                           | 
+G179     =IFERROR(INDEX(#REF!,MATCH(C179,#REF!,0)),"")                          | 
+U179     =IFERROR(MAX(INDEX(#REF!,MATCH('14312'!C179,#REF!,0)),INDEX(#REF!,M... | 
+W179     =IF(U179<>"",IF(C179="C4431",SUMIFS(#REF!,#REF!,C179,#REF!,$C$140)/... | 
+Y179     =IF(U179<>"",IF(C179="C4431",4*4*2/9,IF($U179<10,15,IF($U179<20,25,... | 
+AA179    =IF(U179<>"",IF($U179<10,1.5,IF($U179<30,1.75,2)),"")                  | 
+AC179    =IFERROR(W179*Y179*AA179,"")                                           | 
+AB180    Total =                                                                | Total =
+AC180    =SUM(AC143:AE179)                                                      | 0
+AC181    Page                                                                   | Page 
+AD181    =AD136+1                                                               | 4
+AE181    of                                                                     | of
+AF181    4                                                                      | 4
+
+TOTAL non-empty cells emitted: 838

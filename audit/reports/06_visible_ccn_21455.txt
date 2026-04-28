@@ -1,0 +1,62 @@
+FILE : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
+SHEET: '21455'
+
+DIMS : 37 rows x 32 cols  (state=visible)
+
+CELL     FORMULA / CONTENT                                                      | CACHED VALUE
+----------------------------------------------------------------------------------------------------
+A1       BASIC FACILITY REQUIREMENTS WORKSHEET                                  | BASIC FACILITY REQUIREMENTS...
+A3       Installation:                                                          | Installation:
+F3       H&S BN MCIPAC MCB CP BUTLER JA                                         | H&S BN MCIPAC MCB CP BUTLER JA
+M3       Tenant:                                                                | Tenant:
+R3       CLB 4                                                                  | CLB 4
+A4       Installation UIC:                                                      | Installation UIC:
+F4       M67400                                                                 | M67400
+M4       Tenant UIC:                                                            | Tenant UIC:
+R4       M29030                                                                 | M29030
+Y4       Planning Area: SW                                                      | Planning Area: SW
+A5       CCN:                                                                   | CCN:
+C5       21455                                                                  | 21455
+M5       Nomenclature:                                                          | Nomenclature:
+R5       VEHICLE WASH PLATFORM                                                  | VEHICLE WASH PLATFORM
+A6       SPACE REQUIREMENT ANALYSIS  ·  CCN 21455  ·  UFC 2-000-05N / UFC 21... | SPACE REQUIREMENT ANALYSIS ...
+A7       NOTE: UFC 2-000-05N does not require a BFR for Vehicle Wash Platfor... | NOTE: UFC 2-000-05N does no...
+A9       VEHICLE COUNT  —  Self-Propelled Only  (Trailers excluded per UFC 2... | VEHICLE COUNT  —  Self-Prop...
+A10      Company / Unit                                                         | Company / Unit
+V10      UFC Factor  (1 Space / 50 Vehicles)                                    | UFC Factor  (1 Space / 50 V...
+Y10      Vehicle Count                                                          | Vehicle Count
+AB10                                                                            | 
+A11      HQ CO  (M29111)                                                        | HQ CO  (M29111)
+Y11      9                                                                      | 9
+A12      CLC A  (M29112)                                                        | CLC A  (M29112)
+Y12      19                                                                     | 19
+A13      CLC B  (M29113)                                                        | CLC B  (M29113)
+Y13      19                                                                     | 19
+A14      GS CO  (M29114)                                                        | GS CO  (M29114)
+Y14      15                                                                     | 15
+A15      Total Self-Propelled Vehicles                                          | Total Self-Propelled Vehicles
+AB15     =SUM(Y11:Y14)                                                          | 62
+A17      WASH SPACE CALCULATION  —  UFC 21455-1: 1 Space per 50 Vehicles  | ... | WASH SPACE CALCULATION  —  ...
+A18      Criterion                                                              | Criterion
+V18      SF / Space                                                             | SF / Space
+Y18      Spaces Required                                                        | Spaces Required
+AB18     NSF                                                                    | NSF
+A19      Wash Spaces:  CEILING(62 / 50) = 2  (wash bay, sediment basin, oil/... | Wash Spaces:  CEILING(62 / ...
+V19      1200                                                                   | 1200
+Y19      2                                                                      | 2
+AB19     =V19*Y19                                                               | 2400
+A20      Total NSF                                                              | Total NSF
+AB20     =AB19                                                                  | 2400
+A22      TOTAL SPACE REQUIREMENT                                                | TOTAL SPACE REQUIREMENT
+A23      NTG Factor = 1.33  |  Required GSF  =  ROUNDUP(2,400 × 1.33, 0)  = ... | NTG Factor = 1.33  |  Requi...
+V23      1.33                                                                   | 1.33
+AB23     =ROUNDUP(AB20*V23,0)                                                   | 3192
+A34      TOTAL REQUIREMENT:                                                     | TOTAL REQUIREMENT:
+H34      =AB23                                                                  | 3192
+L34      GSF                                                                    | GSF
+AC34     Page                                                                   | Page 
+AD34     1                                                                      | 1
+AE34     of                                                                     | of
+AF34     1                                                                      | 1
+
+TOTAL non-empty cells emitted: 53

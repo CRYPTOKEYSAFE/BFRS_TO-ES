@@ -334,6 +334,23 @@ unit; the order is the recommended build sequence.
   reliably parse multi-column tables; manual ratification is the
   authoritative step. Script exits non-zero with instructions when
   the Series PDFs are missing.
+- Layer 3 classification rules starter at
+  `audit/CLASSIFICATION_RULES.md` (doctrine doc, schema and
+  general-pattern rules) and `audit/CLASSIFICATION_RULES.yaml`
+  (machine-readable rule table). Maps each billet to a NOTE tag of
+  the form CCN+suffix using the function
+  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) -> tag`.
+  General-pattern rules (officer/SNCO/warrant -> office, junior
+  enlisted -> cubicle) are tagged confidence=high; BMOS-specific
+  rules covering 0600 comm, 0800 artillery, 1300 engineer, 1800
+  armor, 2300 EOD, 2800 data/cyber, 3000 supply, 3500 motor T, 5800
+  MP, 5900 electronic maintenance, 6000 aviation maintenance, 6500
+  aviation ordnance, 7200 ATC, and 8000 medical are tagged
+  confidence=low with TBD citations pending FC 2-000-05N Series
+  100/200 ratification. unclassified_disposition is "orphan, do not
+  silently drop" so the validator surfaces unmapped billets in
+  Check 7. No `pipeline/classify.py` yet; rule schema is stable
+  enough to build against without churn.
 
 ### NEXT (in this order)
 

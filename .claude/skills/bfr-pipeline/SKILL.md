@@ -12,76 +12,82 @@ session does not re-derive them or drift.
 
 ## Read-first artifacts (always, in this order)
 
-1. **`APEX_OMEGA.pdf`** — binding methodology briefing. Non-negotiable
+1. `APEX_OMEGA.pdf`, binding methodology briefing. Non-negotiable
    rules in §2; anti-patterns in §6; QC rituals in §5; output
    conventions in §8.
-2. `CLAUDE.md` — repository overview + Apex Omega rules restated +
+2. `CLAUDE.md`, repository overview + Apex Omega rules restated +
    working conventions.
-3. `audit/PIPELINE.md` — six-layer unit-agnostic data pipeline contract.
-4. `audit/BFR_GENERATOR_NOTES.md` — annotated tour of the
+3. `audit/PIPELINE.md`, six-layer unit-agnostic data pipeline contract.
+4. `audit/BFR_GENERATOR_NOTES.md`, annotated tour of the
    `BFR_Generator_FC2-000-05N.xlsx` (methodology + math reference). The
    workbook was originally supplied as `MCBJ_BFR_Generator_FC2-000-05N.xlsx`
    and renamed in this repo per the no-MCBJ rule. Current correct
-   nomenclature is **MCIPAC** (Marine Corps Installations Pacific) and
-   **MCB Camp Butler**. Do not use "MCBJ", "MCBB", or
+   nomenclature is MCIPAC (Marine Corps Installations Pacific) and
+   MCB Camp Butler. Do not use "MCBJ", "MCBB", or
    "COMMARCORBASESJAPAN" as a place/org term.
-5. `audit/STYLE_GUIDE.md` — binding cosmetic specification (CLB-4 theme
+5. `audit/STYLE_GUIDE.md`, binding cosmetic specification (CLB-4 theme
    styling + Apex Omega 4-color cell-role palette).
-6. `audit/FINDINGS.md` — Round-1 forensic findings on CLB-4.
+6. `audit/FINDINGS.md`, Round-1 forensic findings on CLB-4.
 
 ## Project mental model
 
 The end-state is a unit-agnostic ETL + generator that:
 
-1. **Ingests** TO&E source data in any of four observed formats:
-   - Format A (per-company MCTOFD-style export — no CCN tagging)
-   - Format B (BFR-embedded TO/TE — CCN+suffix in NOTE column)
-   - Format C (Master MEF/MTOMS-T-style — rich data, CCN header empty)
-   - Format D (TFSMS / ASR / authoritative PDF — extract via pdfplumber
+1. Ingests TO&E source data in any of four observed formats:
+   - Format A (per-company MCTOFD-style export, no CCN tagging)
+   - Format B (BFR-embedded TO/TE, CCN+suffix in NOTE column)
+   - Format C (Master MEF/MTOMS-T-style, rich data, CCN header empty)
+   - Format D (TFSMS / ASR / authoritative PDF, extract via pdfplumber
      with per-row page+table citation; low-confidence values marked
-     `TBD — pending [page reference]`)
-2. **Classifies** every billet to a `<CCN><suffix>` NOTE tag using a
+     `TBD, pending [page reference]`)
+2. Classifies every billet to a `<CCN><suffix>` NOTE tag using a
    documented rule set (FC 2-000-05N planning factors + unit doctrine).
-3. **Emits** a Format-B-compliant in-workbook TO and TE.
-4. **Generates** CCN calculation sheets that reproduce the CLB-4
+3. Emits a Format-B-compliant in-workbook TO and TE.
+4. Generates CCN calculation sheets that reproduce the CLB-4
    rebuilt look exactly (per `STYLE_GUIDE.md`) and use stable lookup
    contracts (full-column refs, no IFERROR masking).
-5. **Validates** the output against a deterministic harness (Layer 6).
-6. **Rolls up** to a `UNIT_ROLLUP` sheet that traces every cell back
+5. Validates the output against a deterministic harness (Layer 6).
+6. Rolls up to a `UNIT_ROLLUP` sheet that traces every cell back
    to a CCN sheet's TOTAL REQUIREMENT cell.
 
 ## Hard rules (Apex Omega override defaults)
 
-- **Facts only.** No assumptions, speculation, AI jargon. Ask if unclear.
-- **Cite source + section + date inline** for every regulatory or
+- Facts only. No assumptions, speculation, AI jargon. Ask if unclear.
+- Cite source + section + date inline for every regulatory or
   numeric claim. Format: *"FC 2-000-05N §61010-3, current as of
   2026-02-11"*.
-- **Three-bucket separation:** regulatory / program-practice / external
+- Three-bucket separation: regulatory / program-practice / external
   benchmark. Never blend.
-- **Mark unverified items as `TBD — pending [source/action]`.** Never
+- Mark unverified items as `TBD, pending [source/action]`. Never
   silently fill.
-- **Show the math.** Every derived number reproducible from inputs in
+- Show the math. Every derived number reproducible from inputs in
   the same artifact (formulas in Excel, equations in Markdown).
-- **Plain prose.** Lead with the answer. No "let's", no "I'll help you",
+- Plain prose. Lead with the answer. No "let's", no "I'll help you",
   no preamble, no marketing tone, no emojis.
-- **Reconciliation gate.** TFSMS RecapMCC must be reconciled against
+- Typography. No em dashes (U+2014). No en dashes (U+2013). No double
+  hyphen used as em dash. No markdown asterisk bold. No dash separators
+  used for emphasis. Hyphens within identifiers and compound words
+  (FC 2-000-05N, MCB Camp Butler, NAVFAC P-72, unit-agnostic) stay.
+  Markdown list bullets at line start are allowed as functional
+  markers. Emphasis via sentence structure or ALL CAPS, sparingly.
+- Reconciliation gate. TFSMS RecapMCC must be reconciled against
   ASR / T/O&E before any BFR is releasable. The
   `TFSMS_UNRECONCILED` flag in the BFR Generator at
   `TFSMS_Loading!$D$19` is the
   operational implementation. Never bypass.
-- **Recalc requirement.** Every openpyxl-generated workbook must be
+- Recalc requirement. Every openpyxl-generated workbook must be
   recalculated by LibreOffice headless before delivery. Zero `#REF!`,
   `#DIV/0!`, `#NAME?`, `#VALUE!` after recalc.
-- **Unit-agnostic.** CLB-4 is the worked example. Tools take a unit
+- Unit-agnostic. CLB-4 is the worked example. Tools take a unit
   identifier or path as input.
-- **Cosmetic fidelity.** Generated workbooks reproduce the CLB-4
+- Cosmetic fidelity. Generated workbooks reproduce the CLB-4
   rebuilt-clean-CCN look (theme tints, fonts, fills, borders, merged
-  cells, page setup, footer text) **plus** the Apex Omega 4-color
+  cells, page setup, footer text) plus the Apex Omega 4-color
   cell-role palette (input `#FFF8DC`, calc `#EAF3F4`, output `#DCE7C8`,
   warning `#F8E2D6`). No "default openpyxl" output.
-- **Source files are read-only.** Inputs in repo root are never edited.
+- Source files are read-only. Inputs in repo root are never edited.
   Outputs go under `audit/` or a clearly-named output directory.
-- **Branch:** development branch is set per session by the harness
+- Branch: development branch is set per session by the harness
   (current: `claude/resume-bfr-pipeline-Uf9Td`). Never push to `main`
   without explicit instruction. Commit and push at meaningful
   milestones (the stop hook enforces this).
@@ -90,26 +96,26 @@ The end-state is a unit-agnostic ETL + generator that:
 
 | Input | Possible formats |
 |---|---|
-| T/O&E source data | Excel (TFSMS per-co; Master MEF / TFSMS-style), **PDF** (TFSMS printable, ASR PDF, other authoritative printout) |
+| T/O&E source data | Excel (TFSMS per-co; Master MEF / TFSMS-style), PDF (TFSMS printable, ASR PDF, other authoritative printout) |
 | Existing BFR for the unit | Excel (Format B; may be stale, partial, or mid-edit) |
-| Project metadata | Manual (UIC, building no., planner, programmed FY, region) — **no DD 1391 field; DD 1391 is a downstream MILCON document, not a BFR field** |
+| Project metadata | Manual (UIC, building no., planner, programmed FY, region), no DD 1391 field; DD 1391 is a downstream MILCON document, not a BFR field |
 
-**PDF ingestion:** every extracted record carries source filename + page
+PDF ingestion: every extracted record carries source filename + page
 + table/row reference. Low-confidence extractions are marked
-`TBD — pending [page reference]`. Tooling: `pdfplumber`, `camelot`,
+`TBD, pending [page reference]`. Tooling: `pdfplumber`, `camelot`,
 `tabula-py`, or text-mode with hand-coded splits; OCR only for scanned
 PDFs.
 
 ## Operational modes
 
-- **Update-existing** (common case): existing BFR + new T/O&E →
+- Update-existing (common case): existing BFR + new T/O&E →
   refreshed BFR + diff report.
-- **Generate-new**: T/O&E only → fresh BFR built against canonical
+- Generate-new: T/O&E only → fresh BFR built against canonical
   template.
-- **Audit-existing**: existing BFR only → forensic findings + repair
+- Audit-existing: existing BFR only → forensic findings + repair
   plan.
 
-## Definition of done — binding acceptance test
+## Definition of done, binding acceptance test
 
 (Full text in `CLAUDE.md` and `audit/PIPELINE.md`. Summary here:)
 
@@ -117,7 +123,7 @@ PDFs.
 2. Zero `#REF!`/`#DIV/0!`/`#NAME?`/`#VALUE!`/`#N/A` after LibreOffice
    headless recalc.
 3. Every CCN sheet's TOTAL REQUIREMENT computes a real, traceable number.
-4. Roll-up integrity — every CCN flows to UNIT_ROLLUP once, no drops,
+4. Roll-up integrity, every CCN flows to UNIT_ROLLUP once, no drops,
    no double counts.
 5. All cross-references resolve. No external links. No #REF!/#N/A
    defined names.
@@ -127,13 +133,13 @@ PDFs.
 9. GSF/GSY totals consistent across all sheets.
 10. Inline citations for every regulatory or numeric claim.
 
-A deliverable failing any one of these is `TBD — pending <failing item>`.
+A deliverable failing any one of these is `TBD, pending <failing item>`.
 
-## Authoritative references (Apex Omega §3) — confirm currency at use
+## Authoritative references (Apex Omega §3), confirm currency at use
 
 | Reference | Use |
 |---|---|
-| **FC 2-000-05N (Series 100, 11 Feb 2026)** | Marine Corps BFR (primary for this work) |
+| FC 2-000-05N (Series 100, 11 Feb 2026) | Marine Corps BFR (primary for this work) |
 | MCO 11000.12 | Real Property Facilities Manual |
 | UFS 3-701-01 | DoD Facilities Pricing Guide / ACF (Okinawa Navy ACF FY26 = 2.34) |
 | UFS 3-730-01 | Economic analysis / ERC |
@@ -148,52 +154,52 @@ A deliverable failing any one of these is `TBD — pending <failing item>`.
 ## Pipeline-spine quick reference
 
 The `NOTE` column in the BFR workbook's `TO` sheet carries tags of the
-form `<CCN><suffix>`. Observed suffix vocabulary (not yet canonical —
+form `<CCN><suffix>`. Observed suffix vocabulary (not yet canonical , 
 must be ratified against FC 2-000-05N):
 
 | Suffix | Meaning |
 |---|---|
-| `o` | Office (≥ E-6 / officer) — 120 GSF/person |
-| `c` | Cubicle (≤ E-5) — 60 GSF/person |
-| `w` | Warehouse worker — 60 GSF/person, ÷3 ratio |
-| `rs`/`cs`/`ds`/`ws`/`shf`/`ms` | Maintenance shop sections (radio/comm/data/wire/SHF/maint) — counted ÷15 → bays |
+| `o` | Office (≥ E-6 / officer), 120 GSF/person |
+| `c` | Cubicle (≤ E-5), 60 GSF/person |
+| `w` | Warehouse worker, 60 GSF/person, ÷3 ratio |
+| `rs`/`cs`/`ds`/`ws`/`shf`/`ms` | Maintenance shop sections (radio/comm/data/wire/SHF/maint), counted ÷15 → bays |
 | `a` | Armory work-area / personnel |
 | (bare CCN) | Equipment record's primary facility CCN (TE rows) |
-| `1` | Personal Effects entitlement — 1 per chargeable person |
+| `1` | Personal Effects entitlement, 1 per chargeable person |
 
 CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
-'TO'!$E:$E, $B$32)` etc. — `'TO'!$B:$B` is the NOTE column,
+'TO'!$E:$E, $B$32)` etc., `'TO'!$B:$B` is the NOTE column,
 `'TO'!$E:$E` is the UIC column (per Format B schema).
 
 ## File inventory (as of round 3 merge from main)
 
-- **Apex Omega briefing:** `APEX_OMEGA.pdf` (root). Read first.
-- **Methodology + math reference:** `BFR_Generator_FC2-000-05N.xlsx`
+- Apex Omega briefing: `APEX_OMEGA.pdf` (root). Read first.
+- Methodology + math reference: `BFR_Generator_FC2-000-05N.xlsx`
   (root). Implements TFSMS reconciliation gate, CCN library
-  (1,060 entries — Layer 5 done), Okinawa adjustments, named-range
+  (1,060 entries, Layer 5 done), Okinawa adjustments, named-range
   API. See `audit/BFR_GENERATOR_NOTES.md`.
-- **Authoritative CLB-4 BFR (cosmetic + structural reference):**
+- Authoritative CLB-4 BFR (cosmetic + structural reference):
   `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (Feb 2026). Roll-up =
   14,299 GSF across 4 visible CCN sheets.
-- **Stale, do not use:** `FO_M29030_CLB 4_FINAL BFR.xlsx` (May 2025).
-- **Cosmetic reference sheets (clean):** `14345`, `21451`, `21455`,
+- Stale, do not use: `FO_M29030_CLB 4_FINAL BFR.xlsx` (May 2025).
+- Cosmetic reference sheets (clean): `14345`, `21451`, `21455`,
   `61072` inside the SW file.
-- **Hidden broken sheets:** `14312`, `14326`, `21710`, `21730`, `44112`,
-  `45110` — same workbook. Lookup ranges all `#REF!`. Do not extend
+- Hidden broken sheets: `14312`, `14326`, `21710`, `21730`, `44112`,
+  `45110`, same workbook. Lookup ranges all `#REF!`. Do not extend
   these; rebuild against the contract.
-- **TFSMS exports (Format A, per company):**
+- TFSMS exports (Format A, per company):
   `M29111_HQ_CO_CLB-4.xlsx`, `M29112_CLC_A_CLB-4.xlsx`,
   `M29113_CLC_B_CLB-4.xlsx` (openpyxl-touched),
   `M29114_GS_CO_CLB-4.xlsx` (openpyxl-touched).
-- **Master TO&E (Format C, TFSMS-style):**
-  `2031 Master TO&E v1.1 - 20250411.xlsx` — does **not** cover CLB-4
+- Master TO&E (Format C, TFSMS-style):
+  `2031 Master TO&E v1.1 - 20250411.xlsx`, does not cover CLB-4
   (covers a different MEF/MLG; M29030/M29111-14 absent).
-- **Canonical CCN dictionary (Layer 2):**
-  `audit/CCN_VOCABULARY.yaml` / `.csv` / `.json` — 1,059 distinct CCNs
+- Canonical CCN dictionary (Layer 2):
+  `audit/CCN_VOCABULARY.yaml` / `.csv` / `.json`, 1,059 distinct CCNs
   extracted from `fc_2_000_05n_appendixa.pdf` (WBDG, dated 2019-06-27).
   Provenance block in YAML records source URL, document date,
   extraction date. Re-extractor: `audit/extract_ccn_appendix_a.py`.
-- **Source PDF for the CCN dictionary:** `fc_2_000_05n_appendixa.pdf`
+- Source PDF for the CCN dictionary: `fc_2_000_05n_appendixa.pdf`
   (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
   FC 2-000-05N Appendix A → NAVFAC P-72 (DON Facility Category Codes).
 
@@ -210,29 +216,29 @@ python3 audit/style_extract.py "<file.xlsx>" "<sheet>" [<sheet>...]
 ```
 
 Capture output into `audit/reports/<NN>_<name>.txt` and commit. The
-report numbering convention is sequential (`01_…`, `02_…`, …) — keep it.
+report numbering convention is sequential (`01_…`, `02_…`, …), keep it.
 
-## Work tracks — recommended order
+## Work tracks, recommended order
 
 Authored 2026-04-28. Each track is independent enough to commit as a
 unit; the order is the recommended build sequence.
 
 ### DONE
 
-- **Layer 2 — CCN vocabulary lock.** Extracted 1,059 canonical CCNs
+- Layer 2, CCN vocabulary lock. Extracted 1,059 canonical CCNs
   from FC 2-000-05N Appendix A. Outputs: `audit/CCN_VOCABULARY.yaml`,
   `.csv`, `.json`; report `audit/reports/15_ccn_vocabulary_extraction.txt`;
   re-extractor `audit/extract_ccn_appendix_a.py`. Commit `c328a36`.
-- **Documentation hygiene.** Dropped DD 1391 field from BFR docs and
+- Documentation hygiene. Dropped DD 1391 field from BFR docs and
   the methodology workbook; purged "MCBJ" and "COMMARCORBASESJAPAN"
   legacy terminology from cells; renamed workbook
   `MCBJ_BFR_Generator_FC2-000-05N.xlsx` →
   `BFR_Generator_FC2-000-05N.xlsx`. Commits `0a2c8cc`, `1a61265`.
-- **Layer 5 — CCN_Library expanded to 1,060 entries.** Repopulated
+- Layer 5, CCN_Library expanded to 1,060 entries. Repopulated
   `BFR_Generator_FC2-000-05N.xlsx`'s `CCN_Library` sheet from
   `audit/CCN_VOCABULARY.json` (1,059 canonical) merged with the 23
   originally curated rows (planning-factor data preserved). One
-  curated CCN — `143 13 Operational Vehicle/Equipment Canopy` — is
+  curated CCN, `143 13 Operational Vehicle/Equipment Canopy`, is
   net-new vs. the 2019 canonical generation; flagged for verification
   against any newer NAVFAC P-72 release. `CCN_TABLE` named range
   expanded to `CCN_Library!$C$6:$I$1100`. Build script:
@@ -240,29 +246,29 @@ unit; the order is the recommended build sequence.
   error tokens via Python `formulas` package; LibreOffice headless is
   non-functional in this sandbox so `fullCalcOnLoad=True` is set on
   the workbook). Commit `0817a1c`.
-- **Track C — Layer 6 validation harness.** `pipeline/validate.py`
+- Track C, Layer 6 validation harness. `pipeline/validate.py`
   implements the six Layer-6 checks from `audit/PIPELINE.md` (schema,
   NOTE coverage, NOTE<->CCN consistency, vocabulary against
   `audit/CCN_VOCABULARY.json`, cell-error scan, roll-up integrity).
   Unit-agnostic; auto-detects TO/TE header rows, CCN sheets, and
   UNIT_ROLLUP. Run against CLB-4 SW BFR as the worked example
   (`audit/reports/16_validate_clb4_sw.txt`): 3 PASS / 3 FAIL,
-  surfacing the round-1 findings deterministically — empty NOTE
+  surfacing the round-1 findings deterministically, empty NOTE
   column, 10,577 #REF! tokens in hidden CCN sheets, and 6 hidden CCN
   sheets absent from UNIT_ROLLUP. Commit `95ea12a`.
 
 ### NEXT (in this order)
 
-1. **Track B — Layer 4 canonical BFR template generator**.
+1. Track B, Layer 4 canonical BFR template generator.
    `pipeline/template.py` produces a Format-B BFR using `openpyxl` +
    `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.json`
-   + a unit profile. Reproduces the CLB-4 banner block (rows 1–7) on
+   + a unit profile. Reproduces the CLB-4 banner block (rows 1, 7) on
    each CCN sheet. Recalc-ready (no IFERROR masking at top level, no
-   restricted ranges, named-range constants). Per-unit row counts —
+   restricted ranges, named-range constants). Per-unit row counts , 
    the methodology workbook's fixed 14-slot `BFR_Calculator` does not
    constrain generated workbooks. Every output gated by
    `pipeline/validate.py` before release.
-2. **Track D — PDF ingestion prototype**  *(only when a Format-D
+2. Track D, PDF ingestion prototype  *(only when a Format-D
    source actually arrives; independent of the rest)*. Extracts
    billet/equipment rows from TFSMS / ASR / authoritative PDF →
    canonical Format A schema, with per-row page+table citation. Use
@@ -270,7 +276,7 @@ unit; the order is the recommended build sequence.
 
 ### DEFERRED (covered by Track C foundation)
 
-- **Layer 6 advanced checks** — billet accounting (TO row count =
+- Layer 6 advanced checks, billet accounting (TO row count =
   sum of billets across CCN sheets) and equipment accounting (TE
   row referenced by exactly one CCN sheet) are not yet in
   `pipeline/validate.py`. They require Track B to be in place so
@@ -279,7 +285,7 @@ unit; the order is the recommended build sequence.
 
 ### PARALLEL (doctrine work, can start any time)
 
-- **Layer 3 — classification rules.** Document the
+- Layer 3, classification rules. Document the
   `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) → NOTE-tag`
   function as `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table.
   Required for Track B to be fully unit-agnostic; Track B can stub
@@ -288,11 +294,11 @@ unit; the order is the recommended build sequence.
 ## Hand-off protocol (APEX OMEGA)
 
 The user has flagged that when context approaches the limit, they will
-request an "APEX OMEGA" handoff prompt — a structured dense summary that
+request an "APEX OMEGA" handoff prompt, a structured dense summary that
 lets the next session resume without losing context.
 
-**When asked for an APEX OMEGA handoff, produce a single document
-containing:**
+When asked for an APEX OMEGA handoff, produce a single document
+containing:
 
 1. Project state snapshot (commit hash, branch, files modified this session).
 2. The six pipeline layers and which are done/in-progress/outstanding.

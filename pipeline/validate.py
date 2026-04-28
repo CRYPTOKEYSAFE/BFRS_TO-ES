@@ -1,5 +1,5 @@
 """
-Layer 6 — BFR validation harness (Apex Omega).
+Layer 6, BFR validation harness (Apex Omega).
 
 Run:
   python3 pipeline/validate.py <workbook.xlsx> [--report <path>]
@@ -7,21 +7,21 @@ Run:
 Emits a deterministic pass/fail report covering the six checks
 mandated by audit/PIPELINE.md Layer 6:
 
-  1. Schema      — TO/TE sheets present with the Format-B column
+  1. Schema     , TO/TE sheets present with the Format-B column
                    contract; header row auto-detected.
-  2. NOTE        — every TO row carries a NOTE matching
+  2. NOTE       , every TO row carries a NOTE matching
                    ^\\d{4,5}[a-z]{0,4}$; every TE row carries a bare-
                    CCN NOTE matching ^\\d{4,5}$.
-  3. NOTE<->CCN  — for every row, the CCN portion of NOTE equals the
+  3. NOTE<->CCN , for every row, the CCN portion of NOTE equals the
                    CCN column value.
-  4. Vocabulary  — every 5-digit CCN sheet name and every CCN seen in
+  4. Vocabulary , every 5-digit CCN sheet name and every CCN seen in
                    TO/TE/NOTE appears in audit/CCN_VOCABULARY.json
                    (1,059 canonical CCNs from FC 2-000-05N Appendix A,
                    2019-06-27 generation; commit c328a36).
-  5. Cell errors — no #REF! / #DIV/0! / #NAME? / #VALUE! / #NULL! /
+  5. Cell errors, no #REF! / #DIV/0! / #NAME? / #VALUE! / #NULL! /
                    #NUM! tokens in any cached cell value across the
                    whole workbook.
-  6. Roll-up     — UNIT_ROLLUP (or named variant) lists every CCN
+  6. Roll-up    , UNIT_ROLLUP (or named variant) lists every CCN
                    sheet present, and each row's pulled total matches
                    the CCN sheet's TOTAL REQUIREMENT cell.
 
@@ -50,7 +50,7 @@ import openpyxl
 REPO_ROOT = Path(__file__).resolve().parent.parent
 VOCAB_PATH = REPO_ROOT / "audit" / "CCN_VOCABULARY.json"
 
-# Format-B contract — columns we require on the TO sheet header row.
+# Format-B contract, columns we require on the TO sheet header row.
 # Order does not matter for the check; presence does.
 TO_REQUIRED = [
     "LINE", "NOTE", "CCN", "UIC", "Rec CD", "BIC",
@@ -433,7 +433,7 @@ def run(workbook_path: Path, report_path: Optional[Path]):
 
     lines = []
     lines.append("=" * 64)
-    lines.append("BFR Validation Report — Layer 6 Pipeline Harness")
+    lines.append("BFR Validation Report, Layer 6 Pipeline Harness")
     lines.append("=" * 64)
     lines.append(f"Source workbook : {workbook_path}")
     lines.append(f"Sheet count     : {len(wb.sheetnames)}")

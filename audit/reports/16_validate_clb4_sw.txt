@@ -1,5 +1,5 @@
 ================================================================
-BFR Validation Report — Layer 6 Pipeline Harness
+BFR Validation Report, Layer 6 Pipeline Harness
 ================================================================
 Source workbook : SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx
 Sheet count     : 18

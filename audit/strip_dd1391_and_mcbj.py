@@ -78,13 +78,13 @@ def main():
 
     cell_subs = [
         ("Cover", "B3",
-         "FC 2-000-05N · Series 100 — Operational & Training "
+         "FC 2-000-05N · Series 100, Operational & Training "
          "Facilities · MCBJ / MCIPAC · Okinawa, Japan",
-         "FC 2-000-05N · Series 100 — Operational & Training "
+         "FC 2-000-05N · Series 100, Operational & Training "
          "Facilities · MCIPAC · Okinawa, Japan"),
         ("Cover", "D9",
-         "MCIPAC / MCBJ (COMMARCORBASESJAPAN) — 3d MLG / CLR-3",
-         "MCIPAC — 3d MLG / CLR-3"),
+         "MCIPAC / MCBJ (COMMARCORBASESJAPAN), 3d MLG / CLR-3",
+         "MCIPAC, 3d MLG / CLR-3"),
         ("Okinawa_Adj", "B2",
          "Okinawa / MCBJ Adjustments",
          "Okinawa / MCIPAC Adjustments"),

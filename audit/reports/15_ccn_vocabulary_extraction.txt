@@ -1,4 +1,4 @@
-FC 2-000-05N Appendix A — CCN Vocabulary Extraction Summary
+FC 2-000-05N Appendix A, CCN Vocabulary Extraction Summary
 ============================================================
 Source PDF:       fc_2_000_05n_appendixa.pdf
 Source date:      2019-06-27 08:33:51 (printed on every page header)

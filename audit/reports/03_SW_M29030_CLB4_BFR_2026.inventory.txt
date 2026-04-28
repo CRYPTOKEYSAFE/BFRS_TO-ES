@@ -276,8 +276,8 @@ Short | TAMCN
       row    5  CCN~21455  :: CCN: | 21455 | Nomenclature: | VEHICLE WASH PLATFORM
       row    6  CCN~21455  :: SPACE REQUIREMENT ANALYSIS  ·  CCN 21455  ·  UFC 2-000-05N / UFC 21455-1  |  Net to Gross Factor: 1.33
       row    7  CCN~21451  :: NOTE: UFC 2-000-05N does not require a BFR for Vehicle Wash Platforms. This analysis is provided for planning purposes only. No billets assi
-      row    9  CCN~21455  :: VEHICLE COUNT  —  Self-Propelled Only  (Trailers excluded per UFC 21455-1  |  SABAR not present)
-      row   17  CCN~21455  :: WASH SPACE CALCULATION  —  UFC 21455-1: 1 Space per 50 Vehicles  |  1,200 SF per Space  |  All wash racks on single pad (UFC 21455-2)
+      row    9  CCN~21455  :: VEHICLE COUNT ,  Self-Propelled Only  (Trailers excluded per UFC 21455-1  |  SABAR not present)
+      row   17  CCN~21455  :: WASH SPACE CALCULATION ,  UFC 21455-1: 1 Space per 50 Vehicles  |  1,200 SF per Space  |  All wash racks on single pad (UFC 21455-2)
 
 [Sheet: '61072']
   state         : visible

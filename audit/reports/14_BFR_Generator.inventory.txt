@@ -73,11 +73,11 @@ PER-SHEET DETAIL
   ccn-like rows : 7  (showing first 12)
       row   19  CCN~61010  :: 2. Go to the Personnel sheet and enter unit personnel loading (officers, enlisted, civilians, contractors). The Authorized Strength Report (
       row   22  CCN~010-01  :: 5. Open the Okinawa Adjustments sheet. Confirm the MILCON Area Cost Factor (Okinawa Navy ACF), ATFP setbacks (UFC 4-010-01), seismic/typhoon
-      row   36  CCN~11000  :: • MCO 11000.12 — Real Property Facilities Manual, Facilities Planning and Programming
-      row   38  CCN~010-01  :: • UFC 4-010-01 — DoD Minimum Antiterrorism Standards for Buildings
-      row   39  CCN~020-01  :: • UFC 4-020-01 — DoD Security Engineering Facilities Planning Manual
-      row   40  CCN~701-01  :: • UFS 3-701-01 — DoD Facilities Pricing Guide (ACFs in Table 4-1)
-      row   41  CCN~730-01  :: • UFS 3-730-01 — Programming Cost Estimates for Military Construction
+      row   36  CCN~11000  :: • MCO 11000.12, Real Property Facilities Manual, Facilities Planning and Programming
+      row   38  CCN~010-01  :: • UFC 4-010-01, DoD Minimum Antiterrorism Standards for Buildings
+      row   39  CCN~020-01  :: • UFC 4-020-01, DoD Security Engineering Facilities Planning Manual
+      row   40  CCN~701-01  :: • UFS 3-701-01, DoD Facilities Pricing Guide (ACFs in Table 4-1)
+      row   41  CCN~730-01  :: • UFS 3-730-01, Programming Cost Estimates for Military Construction
 
 [Sheet: 'TFSMS_Loading']
   state         : visible
@@ -100,7 +100,7 @@ PER-SHEET DETAIL
   cond_formats  : 0
   formulas      : 50  (with ext refs: 0)
   ccn-like rows : 3  (showing first 12)
-      row    3  CCN~61010  :: Per FC 2-000-05N §61010-3 — Personnel loading must come from an official source (ASR / TFSD).
+      row    3  CCN~61010  :: Per FC 2-000-05N §61010-3, Personnel loading must come from an official source (ASR / TFSD).
       row   20  CCN~61010  :: Personnel Loading (PN) for BFR (FC §61010-3) | =G15 | All military, civilian, and other personnel associated with the organization.
       row   24  CCN~61010  :: Authoritative source for personnel loading per FC 2-000-05N §61010-3: Authorized Strength Report (ASR) validated by Total Force Structure Di
 
@@ -161,7 +161,7 @@ PER-SHEET DETAIL
   formulas      : 0  (with ext refs: 0)
   ccn-like rows : 10  (showing first 12)
       row    5  CCN~701-01  :: MILCON Cost Adjustment Factors (UFS 3-701-01 Table 4-1 / PAX Newsletter 3.2.1)
-      row    8  CCN~701-01  :: Sustainment Area Cost Factor (Okinawa) | 2.1 | Sustainment ACF — used for SR per UFS 3-701-01 §3-3.
+      row    8  CCN~701-01  :: Sustainment Area Cost Factor (Okinawa) | 2.1 | Sustainment ACF, used for SR per UFS 3-701-01 §3-3.
       row    9  CCN~730-01  :: Programmed Escalation Factor | 1 | Set per program FY (UFS 3-730-01 Table 2). Update each FY.
       row   10  CCN~730-01  :: Contingency Factor | 1.05 | OCONUS contingency (UFS 3-730-01).
       row   12  CCN~701-01  :: Planning & Design Factor | 1.09 | 1.09 standard / 1.13 medical (UFS 3-701-01 Eq 3-1).

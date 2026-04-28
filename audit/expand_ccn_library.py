@@ -1,5 +1,5 @@
 """
-Layer 5 step — repopulate the CCN_Library sheet of
+Layer 5 step, repopulate the CCN_Library sheet of
 BFR_Generator_FC2-000-05N.xlsx with all 1,059 CCNs from
 audit/CCN_VOCABULARY.json (extracted from FC 2-000-05N Appendix A,
 2019-06-27).
@@ -75,7 +75,7 @@ def main():
     wb = openpyxl.load_workbook(WB_PATH)
     lib = wb["CCN_Library"]
 
-    # 1. Snapshot existing curated entries — only rows whose column C
+    # 1. Snapshot existing curated entries, only rows whose column C
     #    matches a CCN pattern (3-digit + optional space + 2-digit).
     #    The original sheet had non-CCN data (e.g., Vehicle Sub-Schedule
     #    Type A..G rows) further down that must NOT enter the dictionary.

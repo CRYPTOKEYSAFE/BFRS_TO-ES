@@ -164,7 +164,7 @@ def yaml_escape(s):
 
 
 def emit_yaml(records, provenance, path):
-    lines = ["# FC 2-000-05N Appendix A — Canonical CCN Vocabulary",
+    lines = ["# FC 2-000-05N Appendix A, Canonical CCN Vocabulary",
              "# Apex Omega Sec. 5.5 timestamping: every entry inherits the source",
              "# document's printed report date; consumers must treat this as the",
              "# 'as-of' date for the underlying NAVFAC P-72 / Real Property",
@@ -255,7 +255,7 @@ def main():
     emit_json(records, provenance, JSON_OUT)
 
     summary_lines = [
-        "FC 2-000-05N Appendix A — CCN Vocabulary Extraction Summary",
+        "FC 2-000-05N Appendix A, CCN Vocabulary Extraction Summary",
         "=" * 60,
         f"Source PDF:       fc_2_000_05n_appendixa.pdf",
         f"Source date:      2019-06-27 08:33:51 (printed on every page header)",

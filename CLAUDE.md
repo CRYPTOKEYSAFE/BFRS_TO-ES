@@ -58,8 +58,18 @@ T/O&E source data and produces compliant BFR workbooks per
 **FC 2-000-05N (Series 100, 11 Feb 2026)** — Marine Corps Basic Facility
 Requirements (formerly UFC 2-000-05N / NAVFAC P-80).
 
-CLB-4 (UIC `M29030`, 3d MLG, MCB Camp Butler / Okinawa) is the worked
-example. It is **not** the only unit; tooling must be unit-agnostic.
+CLB-4 (UIC `M29030`, 3d MLG, MCIPAC, MCB Camp Butler / Okinawa) is
+the worked example. It is **not** the only unit; tooling must be
+unit-agnostic.
+
+**Terminology — current correct nomenclature.** The installation is
+**MCB Camp Butler**; the Echelon II command is **MCIPAC** (Marine Corps
+Installations Pacific). Do **not** use "MCBJ" (Marine Corps Base Japan)
+or "MCBB" (Marine Corps Base Butler) as place or organization terms —
+those are legacy / pre-MCIPAC and are technically incorrect. The
+filename `MCBJ_BFR_Generator_FC2-000-05N.xlsx` retains the legacy
+prefix as supplied; references to the file itself use that filename
+verbatim, but no project documentation uses "MCBJ" as a term.
 
 ## Authoritative documents
 

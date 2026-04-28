@@ -158,27 +158,27 @@ authoritative ASR / T/O&E before a BFR can be released."*
 
 ## Synthesis — how this maps to the unit-agnostic pipeline
 
-| Layer (per `PIPELINE.md`) | MCBJ generator implementation |
+| Layer (per `PIPELINE.md`) | BFR Generator implementation |
 |---|---|
 | 1. Source format awareness | `TFSMS_Loading` accepts Format A/C raw counts directly |
-| 2. CCN+suffix tagging | **Bypassed** — MCBJ uses row-per-CCN with `Loading` from named ranges, not COUNTIFS-on-NOTE. This is the cleaner approach for top-level summary. |
+| 2. CCN+suffix tagging | **Bypassed** — the BFR Generator uses row-per-CCN with `Loading` from named ranges, not COUNTIFS-on-NOTE. This is the cleaner approach for top-level summary. |
 | 3. Classification rules | Embedded in the `Loading` formula per CCN row (e.g. `=PN_MIL` for armory; `=PN_TOTAL/125` for one-stall-per-125-PN heads) |
-| 4. In-workbook TO/TE schema | **Not present** — MCBJ summarizes; it does not carry the TO/TE roster. The pipeline will need to attach Format-B TO/TE if the user wants per-billet traceability beyond the named-range loading. |
+| 4. In-workbook TO/TE schema | **Not present** — the BFR Generator summarizes; it does not carry the TO/TE roster. The pipeline will need to attach Format-B TO/TE if the user wants per-billet traceability beyond the named-range loading. |
 | 5. Stable lookup contracts | **Compliant** — uses `VLOOKUP` against `CCN_TABLE` named range, no restricted ranges. `IFERROR(…,"")` is used but only on the lookup's "name" column, not on the math; the math itself surfaces `#REF!` / `#DIV/0!` if inputs are missing. |
 | 6. Validation harness | **Partial** — `TFSMS_UNRECONCILED` flag is the seed; full harness (schema check, NOTE coverage, roll-up integrity) still to build. |
 
 The two reference workbooks are complementary, not redundant:
 
-- **MCBJ** = methodology, math, named-range API, Okinawa adjustments,
-  reconciliation gate.
+- **BFR Generator** = methodology, math, named-range API, Okinawa
+  adjustments, reconciliation gate.
 - **CLB-4 SW** = cosmetic, multi-section CCN-tab structure with
   per-billet traceability via TO/TE.
 
 A merged generator should produce, per BFR project:
 
-1. A **summary workbook** in MCBJ form (cover + TFSMS + Personnel +
-   BFR_Calculator + Okinawa_Adj + BFR_Summary + CCN_Library) — for
-   high-level deliverable.
+1. A **summary workbook** in BFR Generator form (Cover + TFSMS_Loading +
+   Personnel + BFR_Calculator + Okinawa_Adj + BFR_Summary + CCN_Library)
+   — for high-level deliverable.
 2. A **detail workbook** (or detail tabs in the same workbook) in
    CLB-4-SW form (one CCN tab per CCN with multi-section calc and
    per-billet TO/TE backing) — for audit traceability.

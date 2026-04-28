@@ -1,6 +1,6 @@
 ---
 name: bfr-pipeline
-description: USMC Basic Facility Requirements (BFR) audit and workbook generation for the BFRS_TO-ES repository, under Apex Omega methodology. Use whenever the user asks about BFR worksheets, BFRL, FC 2-000-05N planning factors, TFSMS / ASR / T/O&E ingestion, CCN classifications, the data pipeline between T/O&E source data and BFR output, the cosmetic style of generated workbooks, or any operation on the .xlsx files in this repo. Triggers include words like BFR, BFRL, CCN, TFSMS, ASR, T/O&E, FC 2-000-05N, UFC 2-000-05N, P-80, INFADS, NTG factor, GSF/GSY/NSY, ACF, SIOH, MILCON, Okinawa, MCBJ, MCIPAC, MLG/MEF/CLB unit names, Apex Omega.
+description: USMC Basic Facility Requirements (BFR) audit and workbook generation for the BFRS_TO-ES repository, under Apex Omega methodology. Use whenever the user asks about BFR worksheets, BFRL, FC 2-000-05N planning factors, TFSMS / ASR / T/O&E ingestion, CCN classifications, the data pipeline between T/O&E source data and BFR output, the cosmetic style of generated workbooks, or any operation on the .xlsx files in this repo. Triggers include words like BFR, BFRL, CCN, TFSMS, ASR, T/O&E, FC 2-000-05N, UFC 2-000-05N, P-80, INFADS, NTG factor, GSF/GSY/NSY, ACF, SIOH, MILCON, Okinawa, MCIPAC, MCB Camp Butler, MLG/MEF/CLB unit names, Apex Omega.
 ---
 
 # BFR Pipeline Skill (project-local)
@@ -18,8 +18,11 @@ session does not re-derive them or drift.
 2. `CLAUDE.md` — repository overview + Apex Omega rules restated +
    working conventions.
 3. `audit/PIPELINE.md` — six-layer unit-agnostic data pipeline contract.
-4. `audit/MCBJ_GENERATOR_NOTES.md` — annotated tour of the
+4. `audit/BFR_GENERATOR_NOTES.md` — annotated tour of the
    `MCBJ_BFR_Generator_FC2-000-05N.xlsx` (methodology + math reference).
+   The "MCBJ" prefix in the filename is legacy; current correct
+   nomenclature is **MCIPAC** (Marine Corps Installations Pacific) and
+   **MCB Camp Butler**. Do not use "MCBJ" or "MCBB" as a place/org term.
 5. `audit/STYLE_GUIDE.md` — binding cosmetic specification (CLB-4 theme
    styling + Apex Omega 4-color cell-role palette).
 6. `audit/FINDINGS.md` — Round-1 forensic findings on CLB-4.
@@ -58,7 +61,8 @@ The end-state is a unit-agnostic ETL + generator that:
   no preamble, no marketing tone, no emojis.
 - **Reconciliation gate.** TFSMS RecapMCC must be reconciled against
   ASR / T/O&E before any BFR is releasable. The
-  `TFSMS_UNRECONCILED` flag in MCBJ at `TFSMS_Loading!$D$19` is the
+  `TFSMS_UNRECONCILED` flag in the BFR Generator at
+  `TFSMS_Loading!$D$19` is the
   operational implementation. Never bypass.
 - **Recalc requirement.** Every openpyxl-generated workbook must be
   recalculated by LibreOffice headless before delivery. Zero `#REF!`,
@@ -116,7 +120,7 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 - **Apex Omega briefing:** `APEX_OMEGA.pdf` (root). Read first.
 - **Methodology + math reference:** `MCBJ_BFR_Generator_FC2-000-05N.xlsx`
   (root). Implements TFSMS reconciliation gate, CCN library, Okinawa
-  adjustments, named-range API. See `audit/MCBJ_GENERATOR_NOTES.md`.
+  adjustments, named-range API. See `audit/BFR_GENERATOR_NOTES.md`.
 - **Authoritative CLB-4 BFR (cosmetic + structural reference):**
   `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (Feb 2026). Roll-up =
   14,299 GSF across 4 visible CCN sheets.

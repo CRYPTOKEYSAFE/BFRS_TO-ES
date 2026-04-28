@@ -1,0 +1,32 @@
+BFR ETL Run Report
+========================================================
+Output workbook : out/CLB4_BFR_full.xlsx
+Profile         : clb4_profile.json
+CCN list        : clb4_ccns.json
+Source TO files : 4
+  M29111_HQ_CO_CLB-4.xlsx  billets=96  equipment=231
+  M29112_CLC_A_CLB-4.xlsx  billets=62  equipment=200
+  M29113_CLC_B_CLB-4.xlsx  billets=62  equipment=201
+  M29114_GS_CO_CLB-4.xlsx  billets=139  equipment=253
+
+TO populated rows : 359
+TE populated rows : 885
+Classified billets: 175
+Unclassified      : 184
+
+Classified billets by NOTE tag (top 12):
+  21451  43
+  21730  34
+  61072o  21
+  61072c  18
+  14326  18
+  21710ds  16
+  44112w  13
+  21710  8
+  21710shf  4
+
+Unclassified billets by reason:
+  179  no rule matched
+  5  rule bmos_8000_medical matched but tag_template is TBD
+
+Apex Omega note: TAMCN to facility CCN mapping not yet supplied; TE NOTE column is intentionally blank, validator Check 8 will report orphans pending FC 2-000-05N TAMCN dimensional table extraction.

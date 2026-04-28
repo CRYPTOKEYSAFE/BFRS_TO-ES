@@ -1,0 +1,194 @@
+FC 2-000-05N Appendix A — CCN Vocabulary Extraction Summary
+============================================================
+Source PDF:       fc_2_000_05n_appendixa.pdf
+Source date:      2019-06-27 08:33:51 (printed on every page header)
+Pages processed:  196
+CCNs extracted:   1059
+Unique CCNs:      1059
+Duplicates found: 0
+
+By 3-digit series prefix:
+  111xx     6
+  112xx     1
+  113xx     2
+  116xx    13
+  121xx     4
+  122xx     3
+  123xx     7
+  125xx     5
+  126xx     4
+  131xx    15
+  132xx     3
+  133xx    13
+  134xx    17
+  135xx     2
+  136xx    10
+  137xx     1
+  138xx     3
+  141xx    16
+  142xx     3
+  143xx    27
+  148xx     9
+  149xx     8
+  151xx     9
+  152xx     9
+  153xx     1
+  154xx     3
+  155xx     5
+  156xx     2
+  159xx     7
+  161xx     2
+  162xx     1
+  163xx     3
+  164xx     3
+  169xx     1
+  171xx    13
+  172xx     1
+  173xx     4
+  174xx     8
+  175xx    17
+  176xx    14
+  177xx    12
+  178xx     4
+  179xx    45
+  211xx    79
+  212xx     6
+  213xx    34
+  214xx     8
+  215xx     6
+  216xx     9
+  217xx     6
+  218xx    21
+  219xx     7
+  221xx     3
+  222xx     2
+  223xx     2
+  224xx     2
+  225xx     6
+  226xx    22
+  227xx     4
+  228xx     4
+  229xx     6
+  310xx    16
+  311xx     6
+  312xx     4
+  313xx     3
+  314xx     1
+  315xx     5
+  316xx     1
+  317xx     4
+  318xx     2
+  319xx     7
+  320xx     2
+  321xx     1
+  371xx    11
+  390xx    11
+  411xx    19
+  412xx     6
+  421xx     7
+  423xx     2
+  424xx     1
+  425xx     4
+  431xx     1
+  441xx    13
+  451xx     2
+  510xx     7
+  530xx     9
+  540xx     1
+  550xx     3
+  610xx    10
+  620xx     2
+  690xx     4
+  711xx    11
+  713xx     1
+  714xx     7
+  721xx     9
+  722xx     4
+  723xx     7
+  724xx     2
+  725xx     2
+  730xx    24
+  740xx    60
+  750xx    22
+  751xx     1
+  752xx     1
+  760xx     3
+  811xx     8
+  812xx     5
+  813xx     4
+  821xx     8
+  822xx     6
+  823xx     4
+  824xx     1
+  826xx     2
+  827xx     2
+  831xx    14
+  832xx     7
+  833xx     7
+  841xx    10
+  842xx     3
+  843xx     6
+  844xx     5
+  845xx     1
+  851xx     8
+  852xx     7
+  853xx     1
+  860xx     5
+  871xx    10
+  872xx     5
+  880xx     4
+  890xx    16
+  892xx     1
+  893xx     1
+  911xx     5
+  912xx     3
+  913xx     2
+  914xx     2
+  921xx     5
+  922xx     3
+  923xx     6
+
+
+First 20 records (sanity check):
+  11110  fac=1111    rpa=LS   uom=[SY]    RUNWAY / FW
+  11112  fac=1114    rpa=LS   uom=[SY]    RUNWAY/FIXED- WING-UNSURFAC
+  11115  fac=1112    rpa=LS   uom=[SY]    RUNWAY / ROTARY WING
+  11120  fac=1112    rpa=LS   uom=[SY]    HELICOPTER LANDING PAD
+  11125  fac=1111    rpa=LS   uom=[SY]    FW A/C (VTOL) LANDING PAD
+  11130  fac=1113    rpa=LS   uom=[SY]    RUNWAY OVERRUN - PAVED
+  11210  fac=1121    rpa=LS   uom=[SY]    TAXIWAY
+  11320  fac=1131    rpa=LS   uom=[SY]    AIRCRAFT PARKING APRON
+  11340  fac=1131    rpa=LS   uom=[SY]    AIRCRAFT ACCESS APRON
+  11610  fac=1163    rpa=LS   uom=[SY]    AIRCRAFT WASHRACK PAVEMENT
+  11612  fac=1165    rpa=LS   uom=[SY]    AIRCRAFT PAVEMENT SHOULDER
+  11615  fac=1167    rpa=LS   uom=[SY]    AIRCRAFT RINSE FACILITY
+  11620  fac=1161    rpa=LS   uom=[SY]    ACFT COMPASS CALIBRATE PAD
+  11635  fac=1131    rpa=LS   uom=[SY]    ARMING & DE- ARMING PAD
+  11640  fac=1164    rpa=LS   uom=[SY]    PREC APPR RADAR PAD
+  11642  fac=1164    rpa=LS   uom=[SY]    BLAST PROTECTIVE PAVEMENT
+  11645  fac=1164    rpa=LS   uom=[SY]    LINE VEHICLE PARKING
+  11650  fac=1131    rpa=LS   uom=[SY]    TOWWAY
+  11655  fac=1131    rpa=LS   uom=[SY]    ORDNANCE HANDLING PAD
+  11656  fac=1131    rpa=LS   uom=[SY]    CMBT A/C LOADING AREA
+
+Last 20 records (sanity check):
+  91215  fac=9111    rpa=L    uom=[AC]    LAND - SET ASIDE- HAWAII
+  91220  fac=9120    rpa=L    uom=[AC]    LAND-PUB DOMAIN,TEMPORY
+  91310  fac=9130    rpa=L    uom=[AC]    LAND-TEMP USE,LIC,PMT,AGMT
+  91320  fac=9130    rpa=L    uom=[AC]    LAND-PUB DOMAIN -TEMP/PMT
+  91410  fac=9140    rpa=L    uom=[AC]    LAND-PUBLIC- TEMPO/LNG TERM
+  91420  fac=9140    rpa=L    uom=[AC]    LAND-PUBLIC-TEMP PERMIT
+  92110  fac=9210    rpa=L    uom=[AC]    LND-AVTN EASEMENT- PURCHASE
+  92120  fac=9210    rpa=L    uom=[AC]    LND-AVTN EASEMT- CONDEMN
+  92130  fac=9210    rpa=L    uom=[AC]    LAND-OTH EASEMENT- PURCHASE
+  92140  fac=9210    rpa=L    uom=[AC]    LAND-OTH EASEMENT- CONDEMNA
+  92150  fac=9210    rpa=L    uom=[AC]    LAND-OTH EASEMENT- EXCHANGE
+  92210  fac=9220    rpa=L    uom=[AC]    LAND-IN-LEASE- PRIV ENTERPR
+  92220  fac=9220    rpa=L    uom=[AC]    LAND- IN-LEASE- STAT&LOC
+  92230  fac=9220    rpa=L    uom=[AC]    LAND-IN LEASE- LONG TERM
+  92310  fac=9230    rpa=L    uom=[AC]    LAND-FOREIGN 99 YR LEASE
+  92320  fac=9230    rpa=L    uom=[AC]    LAND-FOREIGN, BASE RIGHTS
+  92330  fac=9230    rpa=L    uom=[AC]    LAND-FOREIGN RECIP AID
+  92340  fac=9230    rpa=L    uom=[AC]    LAND - FOREIGN, OCC AREA
+  92350  fac=9230    rpa=L    uom=[AC]    LAND-FOREIGN, IN-LEASE
+  92360  fac=9230    rpa=L    uom=[AC]    LAND- FOREIGN,MISC

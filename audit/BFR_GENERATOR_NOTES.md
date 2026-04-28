@@ -4,8 +4,11 @@ This document is a structural reference for the methodology workbook
 `BFR_Generator_FC2-000-05N.xlsx` (uploaded by the owner on
 2026-04-28). It applies Apex Omega via TFSMS-to-ASR reconciliation gates
 and FC 2-000-05N Series 100 enforcement. It is the methodology +
-math reference. The cosmetic/structural reference is the CLB-4 SW BFR
-(see `STYLE_GUIDE.md`).
+math reference. CLB-4 SW BFR is one observed example unit (there is
+no gold standard in this domain); see `STYLE_GUIDE.md` for the cosmetic
+typography extracted from it. Structural patterns derive from
+FC 2-000-05N planning factor tables plus unit doctrine, not from any
+single example unit.
 
 Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 

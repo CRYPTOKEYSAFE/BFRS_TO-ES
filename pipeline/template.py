@@ -1,11 +1,21 @@
 """
-Layer 4 canonical BFR template generator (Apex Omega).
+Layer 4 BFR template generator (Apex Omega).
 
-Produces a Format-B BFR workbook for any unit, matching the CLB-4 SW
-clean-CCN cosmetic spec from audit/STYLE_GUIDE.md plus the Apex Omega
-four-color cell-role palette (FFF8DC input, EAF3F4 calc, DCE7C8 output,
-F8E2D6 warning). Output is recalc-clean (full-column lookups, no
-IFERROR masking) and validator-clean per pipeline/validate.py.
+Produces a Format-B BFR workbook for any unit. Cosmetic typography
+follows audit/STYLE_GUIDE.md (extracted from one CLB-4 SW example
+unit; the typography is the NAVFAC convention used across DoD BFRs)
+plus the Apex Omega four-color cell-role palette (FFF8DC input,
+EAF3F4 calc, DCE7C8 output, F8E2D6 warning). Output is recalc-clean
+(full-column lookups, no IFERROR masking) and validator-clean per
+pipeline/validate.py.
+
+Per-pattern row layouts in this module are observed shapes from one
+example CLB-4 unit, not canonical Layer 5 patterns.
+TBD, pending: ratify pattern definitions against FC 2-000-05N
+planning factor tables (Series 100/200/etc.) plus unit-type doctrine
+for the unit being generated. CLB-4 is an example, not a gold
+standard. Different unit types (CLB, MAG, MWHS, MEU, depot, training
+command, etc.) can have different shapes, factors, and CCN selections.
 
 Run:
   python3 pipeline/template.py \\
@@ -367,7 +377,12 @@ def make_default_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
 
 def make_primary_items_sheet(wb: Workbook, profile: UnitProfile,
                              spec: CcnSpec):
-    """Pattern: primary_items. CLB-4 14345 (Armory) layout.
+    """Pattern: primary_items.
+
+    Shape observed in one example unit (CLB-4 14345 Armory). Not a
+    canonical Layer 5 pattern; ratify against FC 2-000-05N before
+    relying on it for any new unit type. Different facility CCNs may
+    use entirely different row shapes.
 
     pattern_data:
       row7_label : str (e.g. "Sensitive Item Category")
@@ -410,13 +425,20 @@ def make_primary_items_sheet(wb: Workbook, profile: UnitProfile,
 
 
 def make_admin_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
-    """Pattern: admin. CLB-4 61072 (BN HQ Admin) layout.
+    """Pattern: admin.
+
+    Shape observed in one example unit (CLB-4 61072 BN HQ Admin).
+    Not a canonical Layer 5 pattern; ratify against FC 2-000-05N
+    Series 100 admin facility tables before relying on it. SF/person
+    defaults (120 for officers, 60 for enlisted cubicles) are
+    extracted from CLB-4 SW and must be checked against the current
+    FC 2-000-05N edition for the unit type at hand.
 
     pattern_data:
       excluded_billets : list of strings (rows 8 plus, optional)
-      officers   : {label, sf_per, count}  (default 120 SF/person)
-      enlisted   : {label, sf_per, count}  (default 60 SF/person)
-      ntg        : float (default 1.33)
+      officers   : {label, sf_per, count}
+      enlisted   : {label, sf_per, count}
+      ntg        : float
     """
     pd = spec.pattern_data
     ws = wb.create_sheet(spec.ccn)
@@ -483,15 +505,25 @@ def make_admin_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
 
 def make_shop_with_bays_sheet(wb: Workbook, profile: UnitProfile,
                               spec: CcnSpec):
-    """Pattern: shop_with_bays. CLB-4 21451 (Auto Org Shop) layout.
+    """Pattern: shop_with_bays.
+
+    Shape observed in one example unit (CLB-4 21451 Auto Org Shop).
+    Not a canonical Layer 5 pattern; ratify against FC 2-000-05N
+    Series 200 maintenance facility tables before relying on it.
+    SF/bay (420) and bays-per-N-vehicles (30) numbers come from the
+    CLB-4 example and must be verified against the current
+    FC 2-000-05N edition for the maintenance facility type and unit
+    in question. Aviation maintenance shops, ammo shops, comm shops,
+    EOD shops, and field maintenance shops likely have different
+    factors.
 
     pattern_data:
-      officers   : {label, sf_per, count}  (default sf_per=120)
-      snco       : {label, sf_per, count}  (default sf_per=60)
+      officers   : {label, sf_per, count}
+      snco       : {label, sf_per, count}
       vehicles   : list of {label, qty}, up to 3 entries
-      bays_per_n_vehicles : int (default 30, i.e. 1 bay per 30 vehicles)
-      sf_per_bay : float (default 420)
-      ntg        : float (default 1.33)
+      bays_per_n_vehicles : int
+      sf_per_bay : float
+      ntg        : float
     """
     pd = spec.pattern_data
     ws = wb.create_sheet(spec.ccn)

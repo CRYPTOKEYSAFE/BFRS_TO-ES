@@ -164,7 +164,7 @@ appears only in commit history.
 |---|---|---|
 | `APEX_OMEGA.pdf` |, | Binding methodology briefing. Always read first. |
 | `BFR_Generator_FC2-000-05N.xlsx` |, | Apex Omega methodology reference workbook for BFR work. Implements TFSMS-to-ASR reconciliation gate, `CCN_Library`, Okinawa ACF/SIOH/PD/Contingency adjustments, and named-range API (`PN_OFF`, `PN_ENL`, `PN_TOTAL`, `Okinawa_Navy_ACF`, etc.). |
-| `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` | B (BFR-embedded TO/TE) | Authoritative CLB-4 BFR, Feb 2026. Cosmetic + structural reference. |
+| `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` | B (BFR-embedded TO/TE) | Authoritative CLB-4 BFR, Feb 2026. One observed example unit (there is no gold standard); cosmetic typography is extracted to `STYLE_GUIDE.md`, structural patterns derive from FC 2-000-05N, not from this file. |
 | `SW_M29030_CLB4_BFR_2026.xlsx` | B | Earlier sibling, ignore unless diffing |
 | `FO_M29030_CLB 4_FINAL BFR.xlsx` | B | STALE (May 2025), do not use |
 | `M29111_HQ_CO_CLB-4.xlsx` | A (TFSMS export, per-co) | CLB-4 HQ Co billet+TE roster |
@@ -220,13 +220,20 @@ specifically the four rebuilt clean CCN sheets:
 - `21455` (Vehicle Wash Platform)
 - `61072` (BN HQ Admin)
 
-These are the visual + structural reference. The hidden broken sheets
-(`14312`, `14326`, `21710`, `21730`, `44112`, `45110`) are not the
-reference, they're the legacy template the rebuilds replaced.
+These four are the only clean rebuilds in CLB-4 SW. They are useful
+as a cosmetic example (typography is the NAVFAC convention used across
+DoD BFRs) but are not a gold standard for structural patterns; there
+is no gold standard. Structural / row-level patterns derive from
+FC 2-000-05N planning factor tables plus unit doctrine for the unit
+type at hand (CLB, MAG, MWHS, MEU, depot, training command, etc.),
+not from these four CLB-4 sheets. The hidden broken sheets in the
+same workbook (`14312`, `14326`, `21710`, `21730`, `44112`, `45110`)
+are 2017 NAVFAC MIDLANT template residue and not a reference at all.
 
-If `audit/STYLE_GUIDE.md` exists, it captures the extracted fills, fonts,
-borders, merge patterns, column widths, and page setup of those four
-sheets. Treat it as binding.
+If `audit/STYLE_GUIDE.md` exists, it captures the extracted fills,
+fonts, borders, merge patterns, column widths, and page setup of the
+four CLB-4 rebuild sheets. The cosmetic/typography spec is binding;
+the row-by-row structural shape is illustrative only.
 
 The output must not look "robotic" or arbitrary, match the CLB-4
 typography, colors, header banding, and page framing.

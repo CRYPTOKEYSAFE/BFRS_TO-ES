@@ -178,12 +178,19 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
   (root). Implements TFSMS reconciliation gate, CCN library
   (1,060 entries, Layer 5 done), Okinawa adjustments, named-range
   API. See `audit/BFR_GENERATOR_NOTES.md`.
-- Authoritative CLB-4 BFR (cosmetic + structural reference):
-  `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (Feb 2026). Roll-up =
-  14,299 GSF across 4 visible CCN sheets.
+- One observed CLB-4 BFR example (NOT a gold standard, no gold
+  standard exists): `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx`
+  (Feb 2026). Roll-up = 14,299 GSF across 4 visible CCN sheets;
+  materially incomplete per audit/FINDINGS.md. Useful for cosmetic
+  typography (extracted to STYLE_GUIDE.md) and as one illustration of
+  how a CLB-shaped BFR is laid out. Structural / row-level patterns
+  derive from FC 2-000-05N, not from this file. Per-unit-type patterns
+  (MAG, MWHS, MEU, depot, training command, etc.) are different and
+  must be derived from FC 2-000-05N and doctrine for that unit type.
 - Stale, do not use: `FO_M29030_CLB 4_FINAL BFR.xlsx` (May 2025).
-- Cosmetic reference sheets (clean): `14345`, `21451`, `21455`,
-  `61072` inside the SW file.
+- Clean rebuild sheets in the CLB-4 SW file (use only as a cosmetic
+  example, not a structural template): `14345`, `21451`, `21455`,
+  `61072`.
 - Hidden broken sheets: `14312`, `14326`, `21710`, `21730`, `44112`,
   `45110`, same workbook. Lookup ranges all `#REF!`. Do not extend
   these; rebuild against the contract.
@@ -294,16 +301,31 @@ unit; the order is the recommended build sequence.
   `audit/reports/17_validate_generated_clb4.txt` shows 6 PASS / 0 FAIL.
   Sample inputs at `samples/clb4_profile.json` and
   `samples/clb4_ccns.json`. Commit `6369ff6`.
+- Layer 5 pattern templates (observed shapes, not canonical). Three
+  per-CCN-sheet pattern builders added to `pipeline/template.py`:
+  `primary_items` (shape from CLB-4 14345 Armory), `admin` (shape from
+  CLB-4 61072 BN HQ Admin, with optional excluded-billets header),
+  and `shop_with_bays` (shape from CLB-4 21451 Auto Org Shop). Also a
+  `default` fallback for any CCN without pattern_data. PATTERN_DISPATCH
+  table dispatches by `spec.pattern` string. CcnSpec gained
+  `pattern: str` and `pattern_data: dict` fields. Sample updated to
+  exercise three patterns. TBD, pending: ratify pattern shapes /
+  factors / NTG values against FC 2-000-05N planning factor tables.
+  CLB-4 is one observed example, not a gold standard. Commit
+  `b9ab701`.
 
 ### NEXT (in this order)
 
-1. Layer 5 specialized CCN sheet patterns. The current
-   `pipeline/template.py` uses one generic per-CCN sheet shape. CLB-4
-   SW shows three distinct patterns in production: admin-only (61072),
-   shop+bay (21451, with multi-section bay-and-admin breakdown),
-   warehouse (44112), laydown (14312, area-yards instead of GSF).
-   Add per-pattern template variants and a CCN-to-pattern mapping
-   informed by FC 2-000-05N tables.
+1. Layer 5 pattern ratification against FC 2-000-05N (commit b9ab701
+   shipped three observed shapes from CLB-4: primary_items, admin,
+   shop_with_bays, but those are NOT canonical; CLB-4 is one example,
+   not a gold standard). Pull each pattern's row layout, SF/person,
+   SF/bay, NTG, ROUNDUP convention from FC 2-000-05N Series 100/200
+   tables and unit-type doctrine. Update pattern_data defaults and
+   docstrings accordingly. Add patterns for unit types not yet seen
+   (aviation maintenance, MEU embarkation, depot, training command,
+   recruit depot, schoolhouse, range complex, ammo/ordnance, fuel
+   farm, comm/data center, medical/dental, port, etc.).
 2. Layer 3 classification rules. Author
    `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table mapping
    `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) -> NOTE

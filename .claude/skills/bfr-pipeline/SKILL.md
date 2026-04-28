@@ -169,8 +169,9 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 
 - **Apex Omega briefing:** `APEX_OMEGA.pdf` (root). Read first.
 - **Methodology + math reference:** `BFR_Generator_FC2-000-05N.xlsx`
-  (root). Implements TFSMS reconciliation gate, CCN library, Okinawa
-  adjustments, named-range API. See `audit/BFR_GENERATOR_NOTES.md`.
+  (root). Implements TFSMS reconciliation gate, CCN library
+  (1,060 entries — Layer 5 done), Okinawa adjustments, named-range
+  API. See `audit/BFR_GENERATOR_NOTES.md`.
 - **Authoritative CLB-4 BFR (cosmetic + structural reference):**
   `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (Feb 2026). Roll-up =
   14,299 GSF across 4 visible CCN sheets.
@@ -227,32 +228,41 @@ unit; the order is the recommended build sequence.
   legacy terminology from cells; renamed workbook
   `MCBJ_BFR_Generator_FC2-000-05N.xlsx` →
   `BFR_Generator_FC2-000-05N.xlsx`. Commits `0a2c8cc`, `1a61265`.
+- **Layer 5 — CCN_Library expanded to 1,060 entries.** Repopulated
+  `BFR_Generator_FC2-000-05N.xlsx`'s `CCN_Library` sheet from
+  `audit/CCN_VOCABULARY.json` (1,059 canonical) merged with the 23
+  originally curated rows (planning-factor data preserved). One
+  curated CCN — `143 13 Operational Vehicle/Equipment Canopy` — is
+  net-new vs. the 2019 canonical generation; flagged for verification
+  against any newer NAVFAC P-72 release. `CCN_TABLE` named range
+  expanded to `CCN_Library!$C$6:$I$1100`. Build script:
+  `audit/expand_ccn_library.py`. Recalc-clean (5,424 nodes, zero
+  error tokens via Python `formulas` package; LibreOffice headless is
+  non-functional in this sandbox so `fullCalcOnLoad=True` is set on
+  the workbook). Commit `0817a1c`.
 
 ### NEXT (in this order)
 
-1. **Layer 5 — extensible CCN_Library + dynamic ranges**  *(small,
-   foundation for everything else)*. Repopulate
-   `BFR_Generator_FC2-000-05N.xlsx`'s `CCN_Library` sheet from
-   `audit/CCN_VOCABULARY.yaml` (all 1,059 entries). Replace
-   fixed `BFR_Calculator!$B$7:$B$20` named ranges with
-   full-column or dynamic refs so the workbook scales to any unit
-   type and any CCN count. Recalc + verify zero formula errors.
-2. **Track C — Layer 6 validation harness**  *(deterministic QA, run
+1. **Track C — Layer 6 validation harness**  *(deterministic QA, run
    against existing artifacts before generating anything new)*.
    `pipeline/validate.py` covering: schema check, NOTE coverage, NOTE↔
-   CCN consistency, vocabulary check (against CCN_VOCABULARY), roll-up
-   integrity, billet accounting, equipment accounting. Pass/fail report
-   format. Run against CLB-4 SW BFR as the worked example.
-3. **Track B — Layer 4 canonical BFR template generator**.
+   CCN consistency, vocabulary check against `audit/CCN_VOCABULARY.json`,
+   roll-up integrity, billet accounting, equipment accounting.
+   Pass/fail report format. First target: run against CLB-4 SW BFR as
+   the worked example, surfacing the round-1 findings in deterministic
+   form.
+2. **Track B — Layer 4 canonical BFR template generator**.
    `pipeline/template.py` produces a Format-B BFR using `openpyxl` +
-   `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.yaml`
-   + a unit profile. Reproduces the CLB-4 banner-block (rows 1–7) on
-   each CCN sheet. Recalc-ready (no IFERROR masking, no restricted
-   ranges, named-range constants).
-4. **Track D — PDF ingestion prototype**  *(only when a Format-D source
-   actually arrives; independent of the rest)*. Extracts billet/
-   equipment rows from TFSMS / ASR / authoritative PDF → canonical
-   Format A schema, with per-row page+table citation. Use
+   `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.json`
+   + a unit profile. Reproduces the CLB-4 banner block (rows 1–7) on
+   each CCN sheet. Recalc-ready (no IFERROR masking at top level, no
+   restricted ranges, named-range constants). Per-unit row counts —
+   the methodology workbook's fixed 14-slot `BFR_Calculator` does not
+   constrain generated workbooks.
+3. **Track D — PDF ingestion prototype**  *(only when a Format-D
+   source actually arrives; independent of the rest)*. Extracts
+   billet/equipment rows from TFSMS / ASR / authoritative PDF →
+   canonical Format A schema, with per-row page+table citation. Use
    `pdfplumber` first; OCR only for scanned PDFs.
 
 ### PARALLEL (doctrine work, can start any time)

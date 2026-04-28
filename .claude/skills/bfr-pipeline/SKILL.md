@@ -256,32 +256,43 @@ unit; the order is the recommended build sequence.
   surfacing the round-1 findings deterministically, empty NOTE
   column, 10,577 #REF! tokens in hidden CCN sheets, and 6 hidden CCN
   sheets absent from UNIT_ROLLUP. Commit `95ea12a`.
+- Typography sweep. Em dashes, en dashes, and asterisk bold stripped
+  from every text file. Rule encoded in `CLAUDE.md` and this skill.
+  Sweeper: `audit/strip_dashes_and_bold.py`. Commit `adcf5c9`.
+- Track B, Layer 4 canonical BFR template generator.
+  `pipeline/template.py` produces a Format-B BFR for any unit profile
+  + CCN list. Banner block (rows 1-7), data rows 8-13, subtotal rows
+  15-16, TOTAL REQUIREMENT at H37. UNIT_ROLLUP with per-CCN totals.
+  TO and TE sheets with Format-B headers (rows 6 and 4). Apex Omega
+  four-color cell-role palette applied. Sample run for CLB-4 (10 CCNs)
+  at `out/CLB4_BFR_sample.xlsx`; validator report at
+  `audit/reports/17_validate_generated_clb4.txt` shows 6 PASS / 0 FAIL.
+  Sample inputs at `samples/clb4_profile.json` and
+  `samples/clb4_ccns.json`. Commit `6369ff6`.
 
 ### NEXT (in this order)
 
-1. Track B, Layer 4 canonical BFR template generator.
-   `pipeline/template.py` produces a Format-B BFR using `openpyxl` +
-   `audit/STYLE_GUIDE.md` cosmetic spec + `audit/CCN_VOCABULARY.json`
-   + a unit profile. Reproduces the CLB-4 banner block (rows 1, 7) on
-   each CCN sheet. Recalc-ready (no IFERROR masking at top level, no
-   restricted ranges, named-range constants). Per-unit row counts , 
-   the methodology workbook's fixed 14-slot `BFR_Calculator` does not
-   constrain generated workbooks. Every output gated by
-   `pipeline/validate.py` before release.
-2. Track D, PDF ingestion prototype  *(only when a Format-D
-   source actually arrives; independent of the rest)*. Extracts
-   billet/equipment rows from TFSMS / ASR / authoritative PDF →
-   canonical Format A schema, with per-row page+table citation. Use
-   `pdfplumber` first; OCR only for scanned PDFs.
-
-### DEFERRED (covered by Track C foundation)
-
-- Layer 6 advanced checks, billet accounting (TO row count =
-  sum of billets across CCN sheets) and equipment accounting (TE
-  row referenced by exactly one CCN sheet) are not yet in
-  `pipeline/validate.py`. They require Track B to be in place so
-  generator-driven test fixtures exist; will be added when Track B
-  produces its first sample workbook.
+1. Layer 5 specialized CCN sheet patterns. The current
+   `pipeline/template.py` uses one generic per-CCN sheet shape. CLB-4
+   SW shows three distinct patterns in production: admin-only (61072),
+   shop+bay (21451, with multi-section bay-and-admin breakdown),
+   warehouse (44112), laydown (14312, area-yards instead of GSF).
+   Add per-pattern template variants and a CCN-to-pattern mapping
+   informed by FC 2-000-05N tables.
+2. Layer 3 classification rules. Author
+   `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table mapping
+   `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) -> NOTE
+   tag`. Required to populate the NOTE column in TO/TE so the
+   generator can place each billet on the right CCN sheet.
+3. Track D, PDF ingestion prototype (only when a Format-D source
+   actually arrives). Extracts billet/equipment rows from TFSMS / ASR
+   / authoritative PDF into canonical Format A schema with per-row
+   page+table citation. `pdfplumber` first; OCR only for scanned PDFs.
+4. Layer 6 advanced checks. Billet accounting (TO row count equals
+   sum across CCN sheets, no orphans, no double counts) and equipment
+   accounting (every TAMCN row in TE referenced by exactly one CCN
+   sheet). Add to `pipeline/validate.py` once specialized templates
+   produce billet-bearing test fixtures.
 
 ### PARALLEL (doctrine work, can start any time)
 

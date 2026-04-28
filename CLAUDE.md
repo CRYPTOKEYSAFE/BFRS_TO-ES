@@ -132,12 +132,13 @@ A deliverable that fails any one of these is `TBD — pending
 
 **Terminology — current correct nomenclature.** The installation is
 **MCB Camp Butler**; the Echelon II command is **MCIPAC** (Marine Corps
-Installations Pacific). Do **not** use "MCBJ" (Marine Corps Base Japan)
-or "MCBB" (Marine Corps Base Butler) as place or organization terms —
-those are legacy / pre-MCIPAC and are technically incorrect. The
-filename `MCBJ_BFR_Generator_FC2-000-05N.xlsx` retains the legacy
-prefix as supplied; references to the file itself use that filename
-verbatim, but no project documentation uses "MCBJ" as a term.
+Installations Pacific). Do **not** use "MCBJ" (Marine Corps Base Japan),
+"MCBB" (Marine Corps Base Butler), or "COMMARCORBASESJAPAN" as place or
+organization terms — those are legacy / pre-MCIPAC and are technically
+incorrect. The methodology workbook was originally supplied as
+`BFR_Generator_FC2-000-05N.xlsx` and renamed in this repo to
+`BFR_Generator_FC2-000-05N.xlsx` per the no-MCBJ rule; the legacy name
+appears only in commit history.
 
 ## Authoritative documents
 
@@ -154,7 +155,7 @@ verbatim, but no project documentation uses "MCBJ" as a term.
 | File | Format | Role |
 |---|---|---|
 | `APEX_OMEGA.pdf` | — | **Binding methodology briefing.** Always read first. |
-| `MCBJ_BFR_Generator_FC2-000-05N.xlsx` | — | **Apex Omega methodology reference workbook** for BFR work. Implements TFSMS-to-ASR reconciliation gate, `CCN_Library`, Okinawa ACF/SIOH/PD/Contingency adjustments, and named-range API (`PN_OFF`, `PN_ENL`, `PN_TOTAL`, `Okinawa_Navy_ACF`, etc.). |
+| `BFR_Generator_FC2-000-05N.xlsx` | — | **Apex Omega methodology reference workbook** for BFR work. Implements TFSMS-to-ASR reconciliation gate, `CCN_Library`, Okinawa ACF/SIOH/PD/Contingency adjustments, and named-range API (`PN_OFF`, `PN_ENL`, `PN_TOTAL`, `Okinawa_Navy_ACF`, etc.). |
 | `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` | B (BFR-embedded TO/TE) | **Authoritative CLB-4 BFR**, Feb 2026. Cosmetic + structural reference. |
 | `SW_M29030_CLB4_BFR_2026.xlsx` | B | Earlier sibling, ignore unless diffing |
 | `FO_M29030_CLB 4_FINAL BFR.xlsx` | B | **STALE** (May 2025), do not use |
@@ -169,7 +170,7 @@ verbatim, but no project documentation uses "MCBJ" as a term.
 
 **Reference hierarchy when generating BFR output:**
 
-- **Methodology + math:** `MCBJ_BFR_Generator_FC2-000-05N.xlsx` (named-range
+- **Methodology + math:** `BFR_Generator_FC2-000-05N.xlsx` (named-range
   API, CCN library, TFSMS reconciliation gate, Okinawa adjustments).
 - **Cosmetic + structural breakout:** the four rebuilt clean CCN sheets in
   `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (`14345`, `21451`,

@@ -19,10 +19,12 @@ session does not re-derive them or drift.
    working conventions.
 3. `audit/PIPELINE.md` — six-layer unit-agnostic data pipeline contract.
 4. `audit/BFR_GENERATOR_NOTES.md` — annotated tour of the
-   `MCBJ_BFR_Generator_FC2-000-05N.xlsx` (methodology + math reference).
-   The "MCBJ" prefix in the filename is legacy; current correct
+   `BFR_Generator_FC2-000-05N.xlsx` (methodology + math reference). The
+   workbook was originally supplied as `MCBJ_BFR_Generator_FC2-000-05N.xlsx`
+   and renamed in this repo per the no-MCBJ rule. Current correct
    nomenclature is **MCIPAC** (Marine Corps Installations Pacific) and
-   **MCB Camp Butler**. Do not use "MCBJ" or "MCBB" as a place/org term.
+   **MCB Camp Butler**. Do not use "MCBJ", "MCBB", or
+   "COMMARCORBASESJAPAN" as a place/org term.
 5. `audit/STYLE_GUIDE.md` — binding cosmetic specification (CLB-4 theme
    styling + Apex Omega 4-color cell-role palette).
 6. `audit/FINDINGS.md` — Round-1 forensic findings on CLB-4.
@@ -161,7 +163,7 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 ## File inventory (as of round 3 merge from main)
 
 - **Apex Omega briefing:** `APEX_OMEGA.pdf` (root). Read first.
-- **Methodology + math reference:** `MCBJ_BFR_Generator_FC2-000-05N.xlsx`
+- **Methodology + math reference:** `BFR_Generator_FC2-000-05N.xlsx`
   (root). Implements TFSMS reconciliation gate, CCN library, Okinawa
   adjustments, named-range API. See `audit/BFR_GENERATOR_NOTES.md`.
 - **Authoritative CLB-4 BFR (cosmetic + structural reference):**

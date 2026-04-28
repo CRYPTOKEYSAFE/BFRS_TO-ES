@@ -1,13 +1,13 @@
-# MCBJ_BFR_Generator_FC2-000-05N.xlsx — Annotated Tour
+# BFR_Generator_FC2-000-05N.xlsx — Annotated Tour
 
 This document is a structural reference for the methodology workbook
-`MCBJ_BFR_Generator_FC2-000-05N.xlsx` (uploaded by the owner on
+`BFR_Generator_FC2-000-05N.xlsx` (uploaded by the owner on
 2026-04-28). It applies Apex Omega via TFSMS-to-ASR reconciliation gates
 and FC 2-000-05N Series 100 enforcement. It is the **methodology +
 math** reference. The cosmetic/structural reference is the CLB-4 SW BFR
 (see `STYLE_GUIDE.md`).
 
-Source evidence: `audit/reports/14_MCBJ_BFR_Generator.inventory.txt`.
+Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 
 ---
 

@@ -1,6 +1,6 @@
-FILE: MCBJ_BFR_Generator_FC2-000-05N.xlsx
-PATH: /home/user/BFRS_TO-ES/MCBJ_BFR_Generator_FC2-000-05N.xlsx
-SIZE: 38,645 bytes
+FILE: BFR_Generator_FC2-000-05N.xlsx
+PATH: /home/user/BFRS_TO-ES/BFR_Generator_FC2-000-05N.xlsx
+SIZE: 32,045 bytes
 
 SHEETS (8):
   [00] 'Cover'  state=visible  dim=B2:G42  max_row=42  max_col=7
@@ -12,7 +12,7 @@ SHEETS (8):
   [06] 'BFR_Summary'  state=visible  dim=B2:J75  max_row=75  max_col=10
   [07] 'CCN_Library'  state=visible  dim=B2:I39  max_row=39  max_col=9
 
-DEFINED NAMES (43):
+DEFINED NAMES (42):
   'BFR_CCN'  ->  'BFR_Calculator!$B$7:$B$20'
   'BFR_NAME'  ->  'BFR_Calculator!$C$7:$C$20'
   'BFR_NOTE'  ->  'BFR_Calculator!$J$7:$J$20'
@@ -22,7 +22,6 @@ DEFINED NAMES (43):
   'BLDG_NO'  ->  'Cover!$D$8'
   'CCN_TABLE'  ->  'CCN_Library!$C$6:$I$28'
   'Contingency'  ->  'Okinawa_Adj!$C$10'
-  'DD1391'  ->  'Cover!$D$15'
   'Esc_Factor'  ->  'Okinawa_Adj!$C$9'
   'HF'  ->  'Okinawa_Adj!$C$13'
   'INSTALLATION'  ->  'Cover!$D$7'
@@ -180,7 +179,7 @@ PER-SHEET DETAIL
   print_area    : 'BFR_Summary'!$B$2:$J$76
   data_validns  : 0
   cond_formats  : 0
-  formulas      : 214  (with ext refs: 0)
+  formulas      : 213  (with ext refs: 0)
   ccn-like rows : 29  (showing first 12)
       row   25  CCN~143 10  :: 143 10 | =IFERROR(VLOOKUP(B25,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B25,CCN_TABLE,3,FALSE()),"") | =Inventory!E7 | =Inventory!F7 | =In
       row   26  CCN~143 11  :: 143 11 | =IFERROR(VLOOKUP(B26,CCN_TABLE,2,FALSE()),"") | =IFERROR(VLOOKUP(B26,CCN_TABLE,3,FALSE()),"") | =Inventory!E8 | =Inventory!F8 | =In

@@ -1,5 +1,5 @@
 """
-Surgical edit of MCBJ_BFR_Generator_FC2-000-05N.xlsx, authorized by user
+Surgical edit of BFR_Generator_FC2-000-05N.xlsx, authorized by user
 on 2026-04-28:
 
   1. Drop the `DD1391` defined name and any cells that reference it.
@@ -26,7 +26,7 @@ import openpyxl
 from openpyxl.workbook.defined_name import DefinedName
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-WB_PATH = REPO_ROOT / "MCBJ_BFR_Generator_FC2-000-05N.xlsx"
+WB_PATH = REPO_ROOT / "BFR_Generator_FC2-000-05N.xlsx"
 
 NEW_B61 = (
     '=("This Basic Facility Requirement supports "&TENANT_UNIT&" at "'

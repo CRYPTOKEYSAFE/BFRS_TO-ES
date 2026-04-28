@@ -1,0 +1,449 @@
+# Layer 5 doctrine table, TAMCN to facility CCN map.
+# Loaded by pipeline/etl.py to populate the TE NOTE and CCN columns.
+# Closes pipeline/validate.py Check 8 (Equipment accounting) for any
+# TAMCN that matches a rule; unmatched TAMCNs surface as orphans.
+#
+# Authority: FC 2-000-05N (Marine Corps BFR), Series 100 and 200
+# facility category tables; USMC TAMCN dimensional table (T/E
+# doctrine); NAVFAC P-72 Category Codes (DON Facility Category Codes,
+# the parent dictionary FC 2-000-05N Appendix A draws from); the
+# observed CCN inventory in the CLB-4 SW BFR (one example, not a
+# gold standard).
+#
+# Status: STARTER. Rules are organized by TAMCN commodity letter
+# (position 1) and class indicator (typically position 7). Confidence
+# levels reflect doctrinal certainty:
+#   high   = TAMCN family is unambiguously a single facility category
+#            (e.g., M-class small arms must live in an armory).
+#   medium = inferred from observed CLB-4 inventory plus commodity
+#            convention; TBD pending FC 2-000-05N Series 200
+#            ratification.
+#   low    = best-fit; flagged for SME review.
+# Apex Omega rule 4 applies. TBD rule rows (facility_ccn: TBD) are
+# not silently filled with a guess; the matcher skips them and the
+# TAMCN surfaces as an orphan in pipeline/validate.py Check 8.
+#
+# Apex Omega rule 7 applies. Every TAMCN that lands on a CCN here
+# can be traced back to (a) the rule id and (b) the rule's citation
+# block in this file.
+
+provenance:
+  authority: "FC 2-000-05N (Marine Corps BFR), Series 100 and 200
+              facility category tables; USMC TAMCN dimensional table;
+              NAVFAC P-72 Category Codes (DON Facility Category Codes)"
+  ratified_against: "TBD pending FC 2-000-05N Series 100
+                     (fc_2_000_05n_100series_12_10_2025.pdf,
+                     version 100.20251210, 10 Dec 2025) and Series 200
+                     (fc_2_000_05n_200series_05_16_2025.pdf,
+                     version 200.20250516, 16 May 2025) PDF
+                     extraction via audit/extract_planning_factors.py"
+  source_date: "TBD"
+  schema_version: "0.1"
+  observed_inventory: "885 TAMCN data rows across 412 unique TAMCNs
+                       in four CLB-4 company TFSMS exports (M29111,
+                       M29112, M29113, M29114). Commodity prefixes
+                       observed: A (110), B (137), C (307), D (61),
+                       E (219), H (12), J (6), K (14), M (3), T (12)."
+
+# TAMCN syntactic guard. Matched first; rows that fail this regex
+# are not equipment rows and are not eligible for CCN attribution.
+# USMC TAMCN format is one commodity letter, four or five digits,
+# zero or more class/sub-class letters. Length range 6 to 9.
+tamcn_validator: "^[A-Z][0-9]{4,5}[A-Z0-9]{0,3}$"
+
+# Rule list. Evaluated top-to-bottom; first regex match wins. The
+# regex is anchored against the TAMCN string after upper-casing and
+# stripping whitespace. facility_ccn must be a CCN that appears in
+# the unit's CCN list, otherwise pipeline/validate.py Check 8 will
+# flag the row as an unknown-CCN reference.
+rules:
+
+  # ----- E-prefix: Weapons, Optics, EOD ---------------------------------
+
+  - id: weapons_small_arms
+    description: "M-class items: rifles, carbines, pistols, shotguns,
+                  machine guns, grenade launchers, suppressors. All
+                  small arms and crew-served weapons must be stowed
+                  in an armory under MCO 5530.14A (Marine Corps
+                  Physical Security Program)."
+    pattern: "^E[0-9]{4,5}M[A-Z0-9]?$"
+    facility_ccn: "14345"
+    confidence: high
+    citations:
+      - source: "FC 2-000-05N Appendix A (NAVFAC P-72 / DON Facility
+                 Category Codes)"
+        section: "CCN 143 45, Armory"
+        date: "2019-06-27 (Appendix A extraction date)"
+      - source: "MCO 5530.14A (Marine Corps Physical Security Program)"
+        section: "Arms, Ammunition, and Explosives storage"
+        date: "TBD pending current change-page verification"
+
+  - id: weapons_optics_sights
+    description: "B-class items in the E commodity: telescopes,
+                  reflex sights, bore optics, fire control optics,
+                  thermal sights, night vision sights mounted on
+                  weapons. Stored with their host weapons in the
+                  armory."
+    pattern: "^E[0-9]{4,5}B[A-Z0-9]?$"
+    facility_ccn: "14345"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 143 45, Armory (sensitive item storage)"
+        date: "2019-06-27"
+      - source: "Observed CLB-4 SW BFR 14345 sheet"
+        section: "Sensitive Items roll-up includes optics line"
+        date: "2026-02"
+
+  - id: weapons_night_vision_g_class
+    description: "G-class items in the E commodity: AN/PVS-14,
+                  AN/PVS-31D night vision viewers, AN/PAS-13D
+                  thermal sights, illuminators. Sensitive items
+                  stowed in the armory."
+    pattern: "^E[0-9]{4,5}G[A-Z0-9]?$"
+    facility_ccn: "14345"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 143 45, Armory"
+        date: "2019-06-27"
+      - source: "Observed CLB-4 SW BFR 14345 Sensitive Items list
+                 (Night Vision Devices line, count 237)"
+        date: "2026-02"
+
+  - id: weapons_eod_tools
+    description: "E-class items in the E commodity: EOD tool kits,
+                  disassembly kits, fuze tools, demolition kits,
+                  borescopes used for ordnance inspection. Stored in
+                  the EOD facility, mapped to CCN 143 26 in CLB-4
+                  per the existing classifier rule for BMOS 23xx."
+    pattern: "^E[0-9]{4,5}E[A-Z0-9]?$"
+    facility_ccn: "14326"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 143 26 (CLB-4 doctrine for EOD tools per
+                  bmos_2300_eod rule in CLASSIFICATION_RULES.yaml)"
+        date: "TBD pending FC 2-000-05N Series 100 EOD facility CCN
+               ratification"
+
+  # ----- D-prefix: Motor Transport tactical vehicles ------------------
+
+  - id: motor_t_tactical_vehicles
+    description: "K-class items in the D commodity: tactical wheeled
+                  vehicles (M1152, M1280, M1278, M1279, AMK23A1,
+                  AMK27A1, AMK36, M997 ambulance, etc.) and trailers.
+                  These require organizational vehicle parking."
+    pattern: "^D[0-9]{4,5}K[A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 217 10, Vehicle Operations / Maintenance
+                 Facility (organizational), per NAVFAC P-72
+                 Category 217 series"
+        date: "2019-06-27"
+      - source: "Observed CLB-4 SW BFR 21710 (hidden/broken sheet,
+                 round-1 finding) and bmos_3500_motor_t rule template
+                 in CLASSIFICATION_RULES.yaml"
+        date: "2026-02"
+
+  - id: motor_t_vehicle_tool_kits
+    description: "B-class and E-class items in the D commodity:
+                  vehicle tool kits, accessory kits. Maintained in
+                  the auto org shop, not stored separately."
+    pattern: "^D[0-9]{4,5}[BE][A-Z0-9]?$"
+    facility_ccn: "21451"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 214 51, Motor Vehicle Maintenance Shop
+                 (organizational)"
+        date: "2019-06-27"
+      - source: "Observed CLB-4 SW BFR 21451 Auto Org Shop"
+        date: "2026-02"
+
+  # ----- A-prefix: Communications and Electronics ---------------------
+
+  - id: comm_crypto_comsec
+    description: "A8xxxG class items: encryption/decryption sets
+                  (KGV-72, KG-250XS, KIV-7M, KG-175D), crypto
+                  transfer units (AN/PYQ-10), decoder-receivers.
+                  COMSEC material under MCO 2281.1 must be stowed
+                  in an armory or dedicated CMS vault. CLB-4 stows
+                  COMSEC in the armory per the 14345 sensitive-item
+                  roll-up convention."
+    pattern: "^A8[0-9]{3,4}G[A-Z0-9]?$"
+    facility_ccn: "14345"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 143 45, Armory (extends to COMSEC vault when
+                 not separately stood up)"
+        date: "2019-06-27"
+      - source: "MCO 2281.1 (COMSEC Material System policy)"
+        section: "COMSEC storage requirements"
+        date: "TBD pending current change-page verification"
+
+  - id: comm_radio_sets_and_shelters
+    description: "A0xxx and A2xxx series radio sets, shelters,
+                  satellite communications, antennas, switching sets,
+                  modems, computer systems for ground communications.
+                  Maintained in the comm/electronics maintenance
+                  shop; CLB-4 routes comm-shop billets to 21710 per
+                  the bmos_0600_comm rule template, so equipment
+                  follows."
+    pattern: "^A[0-2][0-9]{3,4}[BG][A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: low
+    citations:
+      - source: "Observed CLB-4 SW BFR 21710 (hidden/broken sheet)
+                 plus bmos_0600_comm rule template tagging comm
+                 billets to 21710"
+        date: "2026-02"
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 217 10 vs CCN 143 26, comm/elec maintenance
+                 facility CCN choice is unit-doctrine dependent"
+        date: "TBD pending FC 2-000-05N Series 200 comm/elec
+               maintenance shop table ratification"
+
+  - id: comm_test_and_instrumentation
+    description: "A7xxx series test sets, analyzers, oscilloscopes,
+                  power meters, sweep generators, test stations.
+                  These belong in the electronics maintenance shop."
+    pattern: "^A7[0-9]{3,4}[GH][A-Z0-9]?$"
+    facility_ccn: "14326"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 143 26, electronics maintenance bench
+                 (assignment is doctrine-dependent)"
+        date: "TBD pending FC 2-000-05N Series 100/200 ratification"
+
+  # ----- B-prefix: Engineer, Utility, Heavy Equipment ----------------
+
+  - id: engineer_heavy_equipment
+    description: "B-class items in the B commodity: tractors, loaders,
+                  scoop loaders, multi-terrain loaders, backhoes,
+                  full-tracked tractors, fork lifts. Mobile heavy
+                  equipment that needs vehicle parking and engineer
+                  field maintenance."
+    pattern: "^B[0-9]{4,5}B[A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 217 10 (vehicle storage) / CCN 217 30 (field
+                 maintenance shop)"
+        date: "TBD pending FC 2-000-05N Series 200 engineer
+               equipment table ratification"
+
+  - id: engineer_field_maint_tool_kits
+    description: "E-class items in the B commodity: cooling/refrigeration
+                  tool kits, lineman tool kits, medium crawler tractor
+                  tool kits, demolition kits, mine field marking
+                  systems, pioneer kits, carpenter tool kits."
+    pattern: "^B[0-9]{4,5}E[A-Z0-9]?$"
+    facility_ccn: "21730"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 217 30, Field Maintenance Shop (engineer)"
+        date: "TBD pending FC 2-000-05N Series 200 ratification"
+
+  - id: engineer_storage_consumables
+    description: "K-class items in the B commodity: trailers (flat-bed
+                  trailers GTTU202-30-20). Stored in vehicle park."
+    pattern: "^B[0-9]{4,5}K[A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 217 10, vehicle storage applies to trailers"
+        date: "TBD pending FC 2-000-05N Series 200 ratification"
+
+  # ----- C-prefix: Individual Equipment, Shop Sets, Personal --------
+
+  - id: individual_equipment_personal
+    description: "F-class items in the C commodity: individual
+                  protective equipment (helmets, body armor, plate
+                  carriers, drawers, undershirts, boots, gloves,
+                  packs). Stored in the supply warehouse."
+    pattern: "^C[0-9]{4,5}F[A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse"
+        date: "2019-06-27"
+      - source: "Observed CLB-4 SW BFR 44112 (hidden sheet)"
+        date: "2026-02"
+
+  - id: individual_equipment_shop_set_misc
+    description: "E-class items in the C commodity: shop equipment
+                  (auto contact, electronic shop, tool kits), kneepads,
+                  flashlights, JMICs, helmets (ECH), strap cutters,
+                  mask systems, tools. Stored in the warehouse or
+                  the auto org shop depending on use; default to
+                  warehouse."
+    pattern: "^C[0-9]{4,5}E[A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse (default for
+                 unspecified consumable shop sets)"
+        date: "2019-06-27"
+
+  - id: individual_equipment_chem_bio
+    description: "B-class and Z-class items in the C commodity:
+                  chemical agent paper, decontamination kits, gas
+                  detectors, chemical protective masks (M50),
+                  helicopter support team kits. Stored in the
+                  warehouse or a CBRN locker; default to warehouse."
+    pattern: "^C[0-9]{4,5}[BZ][A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse"
+        date: "TBD pending FC 2-000-05N CBRN-specific facility CCN
+               ratification"
+
+  - id: shop_set_auto_motor_t_diagnostic
+    description: "B-class items in the C7xxxx range: diagnostic
+                  testers, oil condition test kits, hydraulic test
+                  kits, shop equipment for contact maintenance,
+                  shop equipment for general maintenance, lubricating
+                  units, air conditioning service kits. Located in
+                  the auto org shop."
+    pattern: "^C7[0-9]{3,4}[B][A-Z0-9]?$"
+    facility_ccn: "21451"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 214 51, Motor Vehicle Maintenance Shop
+                 (organizational)"
+        date: "2019-06-27"
+
+  - id: medical_amal_kits
+    description: "A-class items in the C8xxxx range: AMAL surgical /
+                  preventive medicine / medical logistics test kits.
+                  Stored in the medical/dental clinic."
+    pattern: "^C8[0-9]{3,4}A[A-Z0-9]?$"
+    facility_ccn: "TBD"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 540 series (medical/dental clinic) per
+                 CLASSIFICATION_RULES.yaml bmos_8000_medical
+                 rule template"
+        date: "TBD pending FC 2-000-05N Series 500 medical CCN
+               ratification (54010 dental clinic, 54035, 54040, etc.)"
+
+  # ----- H-prefix: Test and Measurement Instrumentation ---------------
+
+  - id: test_measurement_motor_t
+    description: "B-class items in the H commodity: multimeters,
+                  ground kits, phase sequence indicators,
+                  intercommunication, work station kits. Located in
+                  the auto org shop where vehicle electrical work
+                  happens."
+    pattern: "^H[0-9]{4,5}B[A-Z0-9]?$"
+    facility_ccn: "21451"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 214 51, Motor Vehicle Maintenance Shop"
+        date: "TBD pending FC 2-000-05N ratification"
+
+  - id: test_measurement_general
+    description: "E-class and G-class items in the H commodity:
+                  general-purpose multimeters, sensors, thermometers."
+    pattern: "^H[0-9]{4,5}[EG][A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse (default for
+                 portable test instruments)"
+        date: "TBD pending FC 2-000-05N ratification"
+
+  # ----- J / K / M-prefix: Misc commodity ----------------------------
+
+  - id: misc_solar_repair_kits
+    description: "B-class items in the J commodity: solar cell panels,
+                  puncture repair kits."
+    pattern: "^J[0-9]{4,5}B[A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse"
+        date: "TBD pending FC 2-000-05N ratification"
+
+  - id: misc_batteries_cans_tools
+    description: "B-class, E-class, and T-class items in the K
+                  commodity: battery analyzer chargers, military cans,
+                  pneumatic impact wrenches, vehicle tool kits. Mix
+                  of warehouse and shop storage; default warehouse."
+    pattern: "^K[0-9]{4,5}[BET][A-Z0-9]?$"
+    facility_ccn: "44112"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 441 12, General Warehouse (default)"
+        date: "TBD pending FC 2-000-05N ratification"
+
+  - id: misc_tow_bars
+    description: "E-class items in the M commodity: tow bars, motor
+                  vehicle accessories. Located in the auto org shop."
+    pattern: "^M[0-9]{4,5}E[A-Z0-9]?$"
+    facility_ccn: "21451"
+    confidence: low
+    citations:
+      - source: "FC 2-000-05N Appendix A"
+        section: "CCN 214 51, Motor Vehicle Maintenance Shop"
+        date: "TBD pending FC 2-000-05N ratification"
+
+unmapped_disposition:
+  emit: orphan
+  message: "TAMCN does not match any rule pattern; SME review
+            required to author a new rule or to mark the equipment
+            as exempt from facility loading"
+  do_not_silently_drop: true
+
+# Notes for SMEs filling out this table:
+#
+# 1. Each rule's regex matches the full TAMCN string after upper-casing
+#    and stripping whitespace. The patterns use the USMC TAMCN
+#    convention: position 1 is the commodity letter, positions 2 to 6
+#    are digits (the item identifier), position 7 is the class
+#    indicator, and positions 8 to 9 (when present) are sub-class
+#    variants.
+#
+# 2. Confidence levels: "high" rules have explicit doctrinal authority
+#    (e.g., armory storage of weapons under MCO 5530.14A). "medium"
+#    rules are inferred from CLB-4 SW BFR observed inventory plus
+#    commodity convention. "low" rules are best-fit and must be
+#    ratified against FC 2-000-05N Series 100/200 before a downstream
+#    BFR is releasable.
+#
+# 3. facility_ccn = "TBD" rule rows are intentional. The matcher must
+#    not substitute a guess; the TAMCN surfaces as an orphan in the
+#    validator's Check 8.
+#
+# 4. The default admin/HQ CCN (61072 in CLB-4) is unit-type dependent.
+#    Aviation squadrons, MEU command elements, depots, schoolhouses,
+#    and recruit depots have different admin CCNs. The TAMCN-to-CCN
+#    rules above do not depend on admin CCN, so this map is
+#    portable across unit types; per-unit-type variation lives in
+#    audit/UNIT_TYPE_DEFAULTS.yaml (Track 6).
+#
+# 5. The CLB-4 SW BFR's hidden/broken CCN sheets (14312, 14326, 21710,
+#    21730, 44112, 45110, round-1 finding) target the same six CCNs
+#    that this rule table maps equipment into. That is not a
+#    coincidence; CLB-4 doctrine assumes those facilities exist even
+#    though the corresponding sheets were never repaired. A generated
+#    BFR that maps equipment into these CCNs will have non-empty
+#    sheets and Check 8 will pass.

@@ -209,6 +209,19 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
 - Source PDF for the CCN dictionary: `fc_2_000_05n_appendixa.pdf`
   (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
   FC 2-000-05N Appendix A to NAVFAC P-72 (DON Facility Category Codes).
+- TAMCN to facility CCN doctrine table (Layer 5):
+  `audit/TAMCN_CCN_MAP.yaml`. Maps each USMC TAMCN to its facility
+  CCN via ordered regex rules. Schema mirrors
+  `audit/CLASSIFICATION_RULES.yaml`: ordered `rules` list, each rule
+  has `id` / `description` / `pattern` (regex on the upper-cased
+  TAMCN) / `facility_ccn` / `confidence` (high / medium / low) /
+  `citations`. Apex Omega rule 4: rules with `facility_ccn: TBD`
+  are intentional and the matcher must skip them so the TAMCN
+  surfaces as an orphan in `pipeline/validate.py` Check 8 instead
+  of receiving a guessed CCN. A `tamcn_validator` regex at the top
+  filters out non-equipment rows that leak through Format-A
+  ingestion (header rows, footnote rows, date strings).
+  `unmapped_disposition.do_not_silently_drop: true`.
 - Pipeline package: `pipeline/`
   - `pipeline/template.py`, Layer 4 BFR generator. Produces a
     Format-B BFR for any unit profile + CCN list. Three pattern
@@ -410,6 +423,33 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 5, Layer 5 TAMCN to facility CCN doctrine table.
+  `audit/TAMCN_CCN_MAP.yaml` authored against the observed CLB-4
+  TAMCN inventory (885 data rows / 412 unique TAMCNs across
+  commodity prefixes A, B, C, D, E, H, J, K, M, T). Rule organization
+  is by commodity letter plus class indicator (USMC TAMCN position 7);
+  evaluated top-to-bottom, first regex match wins. 22 rules total:
+  high-confidence (weapons E-class to armory 14345, cited MCO 5530.14A),
+  medium-confidence (weapons optics, NVGs, COMSEC, motor T vehicles
+  and tool kits, individual equipment, auto-shop diagnostics), and
+  low-confidence (comm sets, engineer heavy equipment, test
+  instrumentation, miscellaneous; TBD pending FC 2-000-05N Series
+  100/200 ratification). One rule (`medical_amal_kits`) carries
+  `facility_ccn: TBD`; the matcher skips it so the AMAL TAMCNs
+  surface as orphans pending Series 500 ratification. ETL wired:
+  `pipeline/etl.py` loads the YAML via `TamcnMap.from_yaml`,
+  applies the `tamcn_validator` regex to drop non-data rows
+  (header, footer, section-label, date strings; 31 such rows
+  removed from the CLB-4 set), and resolves each TAMCN to a
+  facility CCN. End-to-end re-run on CLB-4: 854 TE rows (down from
+  885 raw, 31 non-data filtered), 827 attributed (96.8%), 27 orphans
+  surfaced for SME review (A9-series computer systems, A79022E,
+  B00727GA, C49602TA, AMAL kits, E02207X, E08567K AAV). Per-CCN
+  attribution: 44112 (314), 21710 (223), 14345 (184), 14326 (68),
+  21451 (29), 21730 (9). Validator: still 5 PASS / 3 FAIL because
+  the 27 orphans correctly fail Check 8; the FAIL is the right
+  answer per Apex Omega rule 4. Re-run report at
+  `audit/reports/21_validate_clb4_full_with_tamcn_map.txt`.
 
 ### NEXT (in priority order)
 
@@ -441,17 +481,23 @@ GitHub MCP and run the extractor.
 
 NOT BLOCKED, can start any time.
 
-5. Author the TAMCN to facility CCN doctrine table at
-   `audit/TAMCN_CCN_MAP.yaml`. Source: FC 2-000-05N TAMCN
-   dimensional table plus T/E doctrine. The pipeline's TE side
-   currently emits NOTE blank for every equipment row (885 orphans
-   in the CLB-4 ETL run). Map closes Check 8 of the validator.
-6. Per-unit-type admin_ccn defaults at
+5. Per-unit-type admin_ccn defaults at
    `audit/UNIT_TYPE_DEFAULTS.yaml`. The classifier's admin_ccn
    default is hardcoded to 61072 (USMC BN/squadron HQ convention).
    Aviation squadrons, MEU command elements, depots, schoolhouses,
    recruit depots, and training commands have different admin
-   facility CCNs.
+   facility CCNs. Track 5 (TAMCN to CCN map) is portable across
+   unit types because TAMCN doctrine is commodity-driven, not
+   unit-type-driven; this track addresses the per-unit-type admin
+   CCN selection only.
+6. Extend `audit/TAMCN_CCN_MAP.yaml` to cover the 27 orphan TAMCNs
+   left after the round-1 build. Categories needing rules: A9-series
+   computer systems (need a comm/data center CCN choice), A79xxxE
+   electronics tool kits, B00727GA reconnaissance instrument set,
+   C49602TA grinding machine, E02207X expeditionary disassembly tool,
+   E08567K AAV (vehicle storage 21710 is doctrinally clear). Each
+   addition requires a citation; do not chase the orphan count by
+   guessing.
 7. Track D PDF ingestion prototype (`pipeline/pdf_ingest.py`).
    Builds against a real TFSMS or ASR PDF when one arrives. Held
    until then.

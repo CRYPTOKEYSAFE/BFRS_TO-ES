@@ -32,13 +32,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Optional
+from typing import Callable, List, Optional, Tuple
 
 import openpyxl
+import yaml
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
@@ -49,6 +51,8 @@ from pipeline.classify import (
     read_format_a_to,
 )
 from pipeline import template as tpl
+
+DEFAULT_TAMCN_MAP = REPO_ROOT / "audit" / "TAMCN_CCN_MAP.yaml"
 
 
 @dataclass
@@ -65,8 +69,69 @@ class EquipmentRecord:
     uic: str = ""
 
 
-def read_format_a_te(workbook_path: Path):
-    """Yield EquipmentRecord per data row from the Primary Only sheet."""
+@dataclass
+class TamcnRule:
+    rule_id: str
+    pattern: re.Pattern
+    facility_ccn: str
+    confidence: str
+    description: str = ""
+
+
+@dataclass
+class TamcnMap:
+    """Loaded TAMCN to facility CCN doctrine table.
+
+    The validator regex filters non-equipment rows (header, footer,
+    section labels). Rules are evaluated top-to-bottom; first match
+    wins. Apex Omega rule 4: rules with facility_ccn == "TBD" are
+    skipped at load time so unmapped TAMCNs surface as orphans in
+    pipeline/validate.py Check 8 instead of receiving a guessed CCN.
+    """
+    validator: re.Pattern
+    rules: List[TamcnRule] = field(default_factory=list)
+    skipped_tbd_rule_ids: List[str] = field(default_factory=list)
+
+    @classmethod
+    def from_yaml(cls, path: Path) -> "TamcnMap":
+        data = yaml.safe_load(path.read_text())
+        validator = re.compile(data["tamcn_validator"])
+        rules: List[TamcnRule] = []
+        skipped: List[str] = []
+        for raw in data.get("rules", []):
+            ccn = raw.get("facility_ccn")
+            if ccn in (None, "", "TBD"):
+                skipped.append(raw.get("id", "<unnamed>"))
+                continue
+            rules.append(TamcnRule(
+                rule_id=raw["id"],
+                pattern=re.compile(raw["pattern"]),
+                facility_ccn=str(ccn),
+                confidence=str(raw.get("confidence", "")),
+                description=str(raw.get("description", "")),
+            ))
+        return cls(validator=validator, rules=rules, skipped_tbd_rule_ids=skipped)
+
+    def is_valid_tamcn(self, value: str) -> bool:
+        return bool(self.validator.match(value))
+
+    def resolve(self, tamcn: str) -> Tuple[Optional[str], Optional[str]]:
+        """Return (facility_ccn, rule_id) or (None, None) if no match."""
+        for rule in self.rules:
+            if rule.pattern.match(tamcn):
+                return rule.facility_ccn, rule.rule_id
+        return None, None
+
+
+def read_format_a_te(workbook_path: Path, tamcn_map: Optional[TamcnMap] = None):
+    """Yield EquipmentRecord per data row from the Primary Only sheet.
+
+    When a tamcn_map is supplied, rows whose first-column value does
+    not match tamcn_map.validator are filtered out. This drops the
+    header, footnote, and section-label rows that leak through TFSMS
+    exports (e.g., "TAMCN", "CUI", "Component TAMCNs",
+    "All EDL Requirement Quantities ...", date strings).
+    """
     wb = openpyxl.load_workbook(workbook_path, data_only=True)
     if "Primary Only" not in wb.sheetnames:
         return
@@ -75,8 +140,11 @@ def read_format_a_te(workbook_path: Path):
         tamcn = ws.cell(row=r, column=1).value
         if not tamcn:
             continue
+        tamcn_str = str(tamcn).strip().upper()
+        if tamcn_map is not None and not tamcn_map.is_valid_tamcn(tamcn_str):
+            continue
         yield EquipmentRecord(
-            tamcn=str(tamcn).strip(),
+            tamcn=tamcn_str,
             nomenclature=str(ws.cell(row=r, column=3).value or "").strip(),
             tam_stat=str(ws.cell(row=r, column=8).value or "").strip(),
             ui=str(ws.cell(row=r, column=9).value or "").strip(),
@@ -116,17 +184,31 @@ def populate_to_sheet(ws, classified_billets, hdr_row=6):
     return next_row - hdr_row - 1
 
 
-def populate_te_sheet(ws, equipment, tamcn_ccn_map=None, hdr_row=4):
+def populate_te_sheet(ws, equipment, tamcn_map: Optional[TamcnMap] = None,
+                      hdr_row: int = 4):
     """Write equipment rows into the generated TE sheet. NOTE column is
-    column C; CCN column is column D. tamcn_ccn_map is optional;
-    when absent, NOTE and CCN are blank and Check 8 will surface the
-    rows as orphans (correct behavior pending TAMCN-to-CCN doctrine
-    table)."""
+    column C; CCN column is column D. tamcn_map (TamcnMap instance)
+    is optional; when supplied, the matcher resolves each TAMCN to a
+    facility CCN via the YAML rule list. Unmatched TAMCNs leave the
+    NOTE and CCN columns blank, which surfaces the row as an orphan
+    in pipeline/validate.py Check 8 per Apex Omega rule 4. Returns
+    (rows_written, attribution_counter) where attribution_counter
+    maps facility_ccn to attributed-row count."""
     next_row = hdr_row + 1
+    attributed: Counter = Counter()
+    rule_hits: Counter = Counter()
+    orphans = 0
     for row_num, e in enumerate(equipment, start=1):
         ccn = ""
-        if tamcn_ccn_map:
-            ccn = tamcn_ccn_map.get(e.tamcn, "") or ""
+        rule_id = None
+        if tamcn_map is not None:
+            ccn_match, rule_id = tamcn_map.resolve(e.tamcn)
+            if ccn_match:
+                ccn = ccn_match
+                attributed[ccn] += 1
+                rule_hits[rule_id] += 1
+            else:
+                orphans += 1
         ws.cell(row=next_row, column=2, value=row_num)
         ws.cell(row=next_row, column=3, value=ccn)
         ws.cell(row=next_row, column=4, value=ccn)
@@ -141,7 +223,7 @@ def populate_te_sheet(ws, equipment, tamcn_ccn_map=None, hdr_row=4):
         ws.cell(row=next_row, column=15, value=e.org_qty)
         ws.cell(row=next_row, column=16, value=e.unit_te)
         next_row += 1
-    return next_row - hdr_row - 1
+    return next_row - hdr_row - 1, attributed, rule_hits, orphans
 
 
 def main():
@@ -153,8 +235,14 @@ def main():
                     help="One or more Format-A T/O&E xlsx paths")
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--unit-context", type=Path, default=None)
-    ap.add_argument("--tamcn-ccn-map", type=Path, default=None,
-                    help="Optional JSON mapping TAMCN to facility CCN")
+    ap.add_argument("--tamcn-ccn-map", type=Path, default=DEFAULT_TAMCN_MAP,
+                    help="YAML rule table mapping TAMCN to facility CCN. "
+                         "Defaults to audit/TAMCN_CCN_MAP.yaml. Pass "
+                         "an empty path or --no-tamcn-map to disable.")
+    ap.add_argument("--no-tamcn-map", action="store_true",
+                    help="Disable TAMCN to CCN attribution; TE NOTE/CCN "
+                         "columns stay blank and Check 8 surfaces every "
+                         "row as an orphan")
     ap.add_argument("--report", type=Path,
                     default=REPO_ROOT / "audit" / "reports" / "19_etl_run.txt")
     args = ap.parse_args()
@@ -168,9 +256,11 @@ def main():
     if args.unit_context:
         unit_ctx = json.loads(args.unit_context.read_text())
 
-    tamcn_ccn_map = {}
-    if args.tamcn_ccn_map:
-        tamcn_ccn_map = json.loads(args.tamcn_ccn_map.read_text())
+    tamcn_map: Optional[TamcnMap] = None
+    if not args.no_tamcn_map and args.tamcn_ccn_map:
+        if not args.tamcn_ccn_map.exists():
+            sys.exit(f"FATAL: TAMCN map not found at {args.tamcn_ccn_map}")
+        tamcn_map = TamcnMap.from_yaml(args.tamcn_ccn_map)
 
     classifier = Classifier()
     classified = []
@@ -180,7 +270,7 @@ def main():
         if not to_path.exists():
             sys.exit(f"FATAL: missing {to_path}")
         billets = list(read_format_a_to(to_path))
-        equip = list(read_format_a_te(to_path))
+        equip = list(read_format_a_te(to_path, tamcn_map))
         per_file[to_path.name] = {
             "billets": len(billets),
             "equipment": len(equip),
@@ -192,7 +282,9 @@ def main():
 
     wb = tpl.build(profile, ccn_specs)
     n_to = populate_to_sheet(wb["TO"], classified, hdr_row=6)
-    n_te = populate_te_sheet(wb["TE"], equipment, tamcn_ccn_map, hdr_row=4)
+    n_te, te_attributed, te_rule_hits, te_orphans = populate_te_sheet(
+        wb["TE"], equipment, tamcn_map, hdr_row=4
+    )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     wb.save(args.output)
@@ -229,10 +321,30 @@ def main():
     for reason, count in by_unclass.most_common():
         lines.append(f"  {count}  {reason}")
     lines.append("")
-    lines.append("Apex Omega note: TAMCN to facility CCN mapping not "
-                 "yet supplied; TE NOTE column is intentionally blank, "
-                 "validator Check 8 will report orphans pending FC "
-                 "2-000-05N TAMCN dimensional table extraction.")
+    lines.append("TE attribution (Layer 5 TAMCN to facility CCN map):")
+    if tamcn_map is None:
+        lines.append("  TAMCN map disabled; every TE row is an orphan")
+    else:
+        lines.append(f"  Rule table   : {args.tamcn_ccn_map}")
+        lines.append(f"  Active rules : {len(tamcn_map.rules)}")
+        lines.append(
+            f"  Skipped (TBD): {len(tamcn_map.skipped_tbd_rule_ids)}  "
+            f"(rules: {tamcn_map.skipped_tbd_rule_ids})"
+        )
+        lines.append(f"  TE rows      : {n_te}")
+        lines.append(f"  Attributed   : {sum(te_attributed.values())}")
+        lines.append(f"  Orphans      : {te_orphans}")
+        lines.append("  Per-CCN attribution:")
+        for ccn, count in te_attributed.most_common():
+            lines.append(f"    {ccn}  {count}")
+        lines.append("  Top rule hits:")
+        for rule_id, count in te_rule_hits.most_common(8):
+            lines.append(f"    {rule_id}  {count}")
+    lines.append("")
+    lines.append("Apex Omega note: TAMCN orphans are surfaced, not "
+                 "silently dropped, per audit/TAMCN_CCN_MAP.yaml "
+                 "unmapped_disposition.do_not_silently_drop. SME "
+                 "review extends the rule table; do not guess CCNs.")
     args.report.write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

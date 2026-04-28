@@ -4,13 +4,13 @@ Output workbook : out/CLB4_BFR_full.xlsx
 Profile         : clb4_profile.json
 CCN list        : clb4_ccns.json
 Source TO files : 4
-  M29111_HQ_CO_CLB-4.xlsx  billets=96  equipment=231
-  M29112_CLC_A_CLB-4.xlsx  billets=62  equipment=200
-  M29113_CLC_B_CLB-4.xlsx  billets=62  equipment=201
-  M29114_GS_CO_CLB-4.xlsx  billets=139  equipment=253
+  M29111_HQ_CO_CLB-4.xlsx  billets=96  equipment=223
+  M29112_CLC_A_CLB-4.xlsx  billets=62  equipment=193
+  M29113_CLC_B_CLB-4.xlsx  billets=62  equipment=193
+  M29114_GS_CO_CLB-4.xlsx  billets=139  equipment=245
 
 TO populated rows : 359
-TE populated rows : 885
+TE populated rows : 854
 Classified billets: 175
 Unclassified      : 184
 
@@ -29,4 +29,28 @@ Unclassified billets by reason:
   179  no rule matched
   5  rule bmos_8000_medical matched but tag_template is TBD
 
-Apex Omega note: TAMCN to facility CCN mapping not yet supplied; TE NOTE column is intentionally blank, validator Check 8 will report orphans pending FC 2-000-05N TAMCN dimensional table extraction.
+TE attribution (Layer 5 TAMCN to facility CCN map):
+  Rule table   : /home/user/BFRS_TO-ES/audit/TAMCN_CCN_MAP.yaml
+  Active rules : 21
+  Skipped (TBD): 1  (rules: ['medical_amal_kits'])
+  TE rows      : 854
+  Attributed   : 827
+  Orphans      : 27
+  Per-CCN attribution:
+    44112  314
+    21710  223
+    14345  184
+    14326  68
+    21451  29
+    21730  9
+  Top rule hits:
+    individual_equipment_personal  135
+    engineer_heavy_equipment  123
+    individual_equipment_shop_set_misc  112
+    weapons_optics_sights  96
+    comm_radio_sets_and_shelters  55
+    weapons_small_arms  51
+    individual_equipment_chem_bio  42
+    motor_t_tactical_vehicles  42
+
+Apex Omega note: TAMCN orphans are surfaced, not silently dropped, per audit/TAMCN_CCN_MAP.yaml unmapped_disposition.do_not_silently_drop. SME review extends the rule table; do not guess CCNs.

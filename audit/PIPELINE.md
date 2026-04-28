@@ -29,13 +29,13 @@ Sheets: `Header`, `TO`, `Billet Summary`, `RecapMOS`, `RecapMCC`,
 
 TO header layout: multi-row merged header at rows 5, 7 spanning 46
 columns. Row 5 carries the primary labels (`Rec CD | BIC | Billet
-Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | …`);
+Description | Alpha Grade | BMOS ASD1 ASD2 | P | B R N | T Y P | ...`);
 rows 6 and 7 carry chargeability sub-labels for the Off/Enl pair columns.
 
 TE header layout (`Primary Only`): multi-row header at rows 8, 10
 spanning 37 columns. Row 8 carries primary labels (`TAMCN | Nomenclature
-| TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | …`); rows 9, 10 carry
-year sub-labels (`2026 | 2027 | 2028 | …` × `Unf | Pln`).
+| TAM Stat | U/I | Rdy | Ind Qty | Org Qty | Unit | ...`); rows 9, 10 carry
+year sub-labels (`2026 | 2027 | 2028 | ...` x `Unf | Pln`).
 
 CRITICAL: Format A carries no `CCN` column and no `NOTE`/suffix
 column. It is pure billet-and-equipment roster data with zero facility
@@ -50,7 +50,7 @@ workbooks (`SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx`,
 
 Header layout: single-row header at row 3 (3D Med Bn) or row 4
 (CLB-4 SW), 41 columns. First six columns are the spine:
-`LINE | NOTE | CCN | CCN Description | UIC | Rec CD | BIC | Billet Description | …`.
+`LINE | NOTE | CCN | CCN Description | UIC | Rec CD | BIC | Billet Description | ...`.
 
 TE-side header: single-row at row 1, 20 columns:
 `ROW | NOTE | CCN | CCN Description | CCN 21451 Equipment Type (if applicable)
@@ -65,12 +65,12 @@ CCN+suffix tags.
 ### Format C, Master MEF / Wide TFSMS Export (Excel)
 
 Files in this repo: `2031 Master TO&E v1.1 - 20250411.xlsx` , 
-`TO_2` (24,299 rows × 51 cols), `TE_3` (19,002 rows × 27 cols).
+`TO_2` (24,299 rows x 51 cols), `TE_3` (19,002 rows x 27 cols).
 
 Header layout: single-row at row 1. Rich chargeability breakdown:
 `Marine Active Chargeable Officer | CHARG ACT MAR ENLST |
-Chargeable Marine Res Officer | … | Non-Chargeable Marine Active Officer |
-…` (16 chargeability columns), plus `MCC`, `Footnote`, `Fiscal Year`,
+Chargeable Marine Res Officer | ... | Non-Chargeable Marine Active Officer |
+...` (16 chargeability columns), plus `MCC`, `Footnote`, `Fiscal Year`,
 `Hierarchy Order Number`, `Pay Grade`, `Geolocation Name`, `Installation
 Name/City`, `Chargeable Category`, `UIC - Unit Name`, `Grade Type`.
 
@@ -81,7 +81,7 @@ CCN tag in the actual data rows (the `CCN` column header exists but
 data rows show `None` in that column).
 
 Coverage: the file in this repo covers UICs `M00102`, `M00105`,
-`M00109` … `M29003-M29494` (selected). It does not cover `M29030 /
+`M00109` ... `M29003-M29494` (selected). It does not cover `M29030 /
 M29031 / M29111-14` (CLB-4). It is for a different MEF/MLG. Whether
 3d MLG has a corresponding Master TO&E is unknown to me; if it exists,
 it should be obtained and added to this repo.
@@ -96,12 +96,12 @@ data with citation-grade fidelity. Ingestion requirements:
 
 - Per-row citation, every extracted record carries the source PDF
   filename, page number, and table/row reference. This satisfies Apex
-  Omega §5.4 (verify against primary source) and §8.1 (cite source +
+  Omega Sec.5.4 (verify against primary source) and Sec.8.1 (cite source +
   section + date inline).
 - Confidence threshold, if a value cannot be extracted with high
   confidence (low-confidence OCR, ambiguous column boundary,
   illegible scan), mark it `TBD, pending [page reference]` per
-  Apex Omega §6 / §8.3. Never invent a value to fill a gap.
+  Apex Omega Sec.6 / Sec.8.3. Never invent a value to fill a gap.
 - Schema target, the extractor's output is the canonical Format A
   schema (one row per billet, one row per TAMCN). After extraction,
   PDF-sourced data flows through the same downstream stages as
@@ -169,10 +169,10 @@ following observed suffix vocabulary used by the legacy CCN sheets:
 
 | Suffix | Meaning | Used by sheet |
 |---|---|---|
-| `o` | Office (private, ≥E-6 / officer), 120 GSF/person | 14345, 21710, 21730, 44112 |
-| `c` | Cubicle (≤E-5), 60 GSF/person | 14345, 21710, 21730, 44112 |
-| `w` | Warehouse worker (clerk), 60 GSF/person, ÷3 ratio | 44112 |
-| `rs` | Radio section staffing, counted ÷15 → bays | 21710, 21730 |
+| `o` | Office (private, >=E-6 / officer), 120 GSF/person | 14345, 21710, 21730, 44112 |
+| `c` | Cubicle (<=E-5), 60 GSF/person | 14345, 21710, 21730, 44112 |
+| `w` | Warehouse worker (clerk), 60 GSF/person, /3 ratio | 44112 |
+| `rs` | Radio section staffing, counted /15 to bays | 21710, 21730 |
 | `cs` | Comm section | 21710, 21730 |
 | `ds` | Data section | 21710, 21730 |
 | `ws` | Wire section | 21710, 21730 |
@@ -193,11 +193,11 @@ repo for strings matching `^\d{4,5}[a-z]{1,4}$`. Findings:
 
 | Workbook | Sheet | CCN+suffix hits | Bare CCN hits (Col D) |
 |---|---|---:|---:|
-| 4 × CLB-4 company files (Format A) | TO | 0 | 0 |
-| 2 × CLB-4 company files (Format A) | Primary Only | 0 | 0 |
+| 4 x CLB-4 company files (Format A) | TO | 0 | 0 |
+| 2 x CLB-4 company files (Format A) | Primary Only | 0 | 0 |
 | CLB-4 SW (Format B) | TO | 0 | 264 (6 distinct CCNs) |
 | CLB-4 SW (Format B) | TE | 0 | 305 (5 distinct CCNs) |
-| 3D Med Bn (Format B) | TO | 9 (`44112w` × 5, `44112o` × 2, `14345o` × 1, `14345a` × 1) | 145 (6 distinct) |
+| 3D Med Bn (Format B) | TO | 9 (`44112w` x 5, `44112o` x 2, `14345o` x 1, `14345a` x 1) | 145 (6 distinct) |
 | 3D Med Bn (Format B) | TE | 0 | 368 (5 distinct) |
 | Master TO&E (Format C) | TO_2 | 0 | 0 (CCN header present but data column empty) |
 
@@ -226,20 +226,20 @@ classification rule set is not documented in any file in this repo.
 
 The rules that *should* be made explicit:
 
-1. Officer / SNCO billets (Alpha Grade ≥ E-6 or O-1+) of a section
-   whose primary work is in CCN X → tag `Xo` (private office).
-2. Junior enlisted billets (Alpha Grade ≤ E-5) of that section →
+1. Officer / SNCO billets (Alpha Grade >= E-6 or O-1+) of a section
+   whose primary work is in CCN X to tag `Xo` (private office).
+2. Junior enlisted billets (Alpha Grade <= E-5) of that section  to 
    tag `Xc` (cubicle), unless the section's mission inherently puts
    them in a shop bay or warehouse.
 3. Specialist billets that physically work in a maintenance shop or
-   warehouse → tag `Xws`, `Xrs`, `Xw` etc., per FC 2-000-05N planning
+   warehouse to tag `Xws`, `Xrs`, `Xw` etc., per FC 2-000-05N planning
    factor tables for that CCN.
-4. Excluded billets (medical, EOD, ordnance repair) → tag with their
+4. Excluded billets (medical, EOD, ordnance repair) to tag with their
    own facility CCN (e.g. `541 series` for medical, `21420` for
    maintenance-with-bays, etc.) and let the matching CCN sheet pick them
    up.
-5. Equipment items → tag with the primary CCN whose facility stores
-   or maintains them. E.g. an LMTV truck → `21451` (auto org shop)
+5. Equipment items to tag with the primary CCN whose facility stores
+   or maintains them. E.g. an LMTV truck to `21451` (auto org shop)
    or `44112` (organic storage) depending on stowage doctrine.
 
 This rule set must come from FC 2-000-05N (specifically: per-CCN
@@ -294,8 +294,8 @@ Required columns, header on row 1:
 | 14 | Org Qty | organizational quantity |
 | 15 | Unit T/E | sum |
 | 16, 18 | L, W, H (Ft) | from FC 2-000-05N TAMCN dim table or from Format C TE_3 |
-| 19 | Volume Ea, ft³ | `=L×W×H` |
-| 20 | Volume Total, ft³ | `=Volume Ea × Unit T/E` |
+| 19 | Volume Ea, ft³ | `=LxWxH` |
+| 20 | Volume Total, ft³ | `=Volume Ea x Unit T/E` |
 
 ---
 
@@ -320,7 +320,7 @@ Each CCN sheet must use lookup formulas that:
    constants. E.g. `NTG = 1.33`, `NSF_PER_OFFICE = 120`,
    `NSF_PER_CUBICLE = 60`, declared once on a `Constants` sheet.
 
-3. Have no `IFERROR` masking of broken lookups. `IFERROR(…,"")` is
+3. Have no `IFERROR` masking of broken lookups. `IFERROR(...,"")` is
    forbidden as a top-level formula wrapper. If a formula can't resolve,
    the sheet must say so loudly. Use `IFERROR` only for genuinely
    optional reverse-lookups (e.g. nomenclature lookup that might miss).

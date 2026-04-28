@@ -1,22 +1,41 @@
 """
-Strip em dashes, en dashes, and markdown bold from text files.
+Strip every decorative Unicode character from text files.
 
-Per user direction 2026-04-28: no AI jargon typography. Em dashes,
-en dashes, and asterisk bold are forbidden everywhere in this repo.
+Per user direction 2026-04-28: no AI typography. Banned everywhere
+in this repo:
+  Em dash (U+2014), en dash (U+2013).
+  Markdown asterisk bold (double-asterisk content double-asterisk).
+  Right arrow (U+2192) and other arrows.
+  Section sign (U+00A7).
+  Divide sign (U+00F7), multiply sign (U+00D7), approximately (U+2248).
+  Less or equal (U+2264), greater or equal (U+2265).
+  Middle dot (U+00B7), horizontal ellipsis (U+2026).
+  Checkmark (U+2713), cross (U+2717).
+  Curly quotes (U+201C, U+201D, U+2018, U+2019).
 
 Substitutions, single character or single regex, never touches
-whitespace or line structure:
-  Em dash U+2014 to comma plus space.
-  En dash U+2013 to comma plus space.
-  Markdown bold double asterisk content double asterisk to bare content.
+whitespace or line structure (so Python indentation is preserved):
+  Em / en dash to comma plus space.
+  Markdown bold to bare content.
+  Section sign to "Sec.".
+  Divide to "/".
+  Multiply to "x".
+  Approximately to "~".
+  Less or equal, greater or equal to "<=", ">=".
+  Right arrow to " to ".
+  Middle dot to ", ".
+  Ellipsis to "...".
+  Checkmark to "[ok]". Cross to "[no]".
+  Curly quotes to straight ASCII quotes.
 
-Safe for Python source files because:
-  Em and en dash characters never appear in Python syntax.
-  The bold regex requires two asterisks then content then two asterisks,
-  which does not match Python power operator (single asterisk pairs)
-  or keyword expansion (single double-asterisk prefix).
+Safe for Python source because:
+  None of these characters appear in Python syntax.
+  The bold regex requires content sandwiched between two asterisks on
+  each side; never matches Python power operator or kwargs prefix.
+  No whitespace is touched.
 
-The script skips itself by file path so its own constants stay intact.
+The script skips itself by absolute path so its own constant strings
+remain intact.
 
 Run: python3 audit/strip_dashes_and_bold.py
 """
@@ -38,15 +57,57 @@ SKIP_PATHS = {
 
 EMDASH = "—"
 ENDASH = "–"
+SECTION = "§"
+DIVIDE = "÷"
+MULTIPLY = "×"
+APPROX = "≈"
+LE = "≤"
+GE = "≥"
+RARROW = "→"
+MIDDOT = "·"
+ELLIPSIS = "…"
+CHECK = "✓"
+CROSS = "✗"
+LDQUO = "“"
+RDQUO = "”"
+LSQUO = "‘"
+RSQUO = "’"
+
 BOLD_RE = re.compile(r"\*\*([^*]+?)\*\*")
 
 
 def transform(text):
     text = BOLD_RE.sub(r"\1", text)
-    text = text.replace(" " + EMDASH + " ", ", ")
-    text = text.replace(EMDASH, ", ")
-    text = text.replace(" " + ENDASH + " ", ", ")
-    text = text.replace(ENDASH, ", ")
+    pairs = [
+        (" " + EMDASH + " ", ", "),
+        (EMDASH, ", "),
+        (" " + ENDASH + " ", ", "),
+        (ENDASH, ", "),
+        (" " + RARROW + " ", " to "),
+        (RARROW, " to "),
+        (" " + DIVIDE + " ", " / "),
+        (DIVIDE, "/"),
+        (" " + MULTIPLY + " ", " x "),
+        (MULTIPLY, "x"),
+        (" " + APPROX + " ", " ~ "),
+        (APPROX, "~"),
+        (" " + LE + " ", " <= "),
+        (LE, "<="),
+        (" " + GE + " ", " >= "),
+        (GE, ">="),
+        (" " + MIDDOT + " ", ", "),
+        (MIDDOT, ", "),
+        (ELLIPSIS, "..."),
+        (CHECK, "[ok]"),
+        (CROSS, "[no]"),
+        (SECTION, "Sec."),
+        (LDQUO, '"'),
+        (RDQUO, '"'),
+        (LSQUO, "'"),
+        (RSQUO, "'"),
+    ]
+    for old, new in pairs:
+        text = text.replace(old, new)
     return text
 
 

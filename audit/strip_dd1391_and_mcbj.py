@@ -37,7 +37,7 @@ NEW_B61 = (
     'allowance to identify deficits; programmed cost reflects the Okinawa '
     'MILCON Area Cost Factor of "&TEXT(Okinawa_Navy_ACF,"0.00")'
     '&" per UFS 3-701-01 Table 4-1. ATFP (UFC 4-010-01), seismic design '
-    '(Okinawa moderate seismic / typhoon Vult ≈ 170 mph), and '
+    '(Okinawa moderate seismic / typhoon Vult ~ 170 mph), and '
     'host-nation siting requirements have been reviewed in the Okinawa_Adj '
     'checklist.")'
 )
@@ -78,10 +78,10 @@ def main():
 
     cell_subs = [
         ("Cover", "B3",
-         "FC 2-000-05N · Series 100, Operational & Training "
-         "Facilities · MCBJ / MCIPAC · Okinawa, Japan",
-         "FC 2-000-05N · Series 100, Operational & Training "
-         "Facilities · MCIPAC · Okinawa, Japan"),
+         "FC 2-000-05N, Series 100, Operational & Training "
+         "Facilities, MCBJ / MCIPAC, Okinawa, Japan",
+         "FC 2-000-05N, Series 100, Operational & Training "
+         "Facilities, MCIPAC, Okinawa, Japan"),
         ("Cover", "D9",
          "MCIPAC / MCBJ (COMMARCORBASESJAPAN), 3d MLG / CLR-3",
          "MCIPAC, 3d MLG / CLR-3"),

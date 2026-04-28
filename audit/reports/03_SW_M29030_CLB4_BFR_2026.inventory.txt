@@ -195,7 +195,7 @@ Short | TAMCN
   formulas      : 9  (with ext refs: 0)
   ccn-like rows : 2  (showing first 12)
       row    5  CCN~14345  :: CCN: | 14345 | Nomenclature: | ARMORY
-      row    6  CCN~14345  :: SPACE REQUIREMENT ANALYSIS  ·  CCN 14345  ·  UFC 2-000-05N, TABLE 21510-1  |  Planning Factor: 1.25 GSF per Sensitive Item
+      row    6  CCN~14345  :: SPACE REQUIREMENT ANALYSIS ,  CCN 14345 ,  UFC 2-000-05N, TABLE 21510-1  |  Planning Factor: 1.25 GSF per Sensitive Item
 
 [Sheet: '21451']
   state         : visible
@@ -208,9 +208,9 @@ Short | TAMCN
   formulas      : 9  (with ext refs: 0)
   ccn-like rows : 4  (showing first 12)
       row    5  CCN~21451  :: CCN: | 21451 | Nomenclature: | AUTO ORGANIZATION SHOP
-      row    6  CCN~21451  :: SPACE REQUIREMENT ANALYSIS  ·  CCN 21451  ·  UFC 2-000-05N / UFC 21440-1.1  |  Net to Gross Factor: 1.33
+      row    6  CCN~21451  :: SPACE REQUIREMENT ANALYSIS ,  CCN 21451 ,  UFC 2-000-05N / UFC 21440-1.1  |  Net to Gross Factor: 1.33
       row   13  CCN~21440  :: SECTION 2 - MAINTENANCE BAYS  (UFC 21440-1.1  |  1 Bay per 30 Self-Propelled Vehicles  |  420 SF per Bay)
-      row   19  CCN~21440  :: Maintenance Bays  (2 Bays × 420 SF per bay per UFC 21440-1.1) | 420 | 2 | =V19*Y19
+      row   19  CCN~21440  :: Maintenance Bays  (2 Bays x 420 SF per bay per UFC 21440-1.1) | 420 | 2 | =V19*Y19
 
 [Sheet: '21710']
   state         : hidden
@@ -274,7 +274,7 @@ Short | TAMCN
   formulas      : 5  (with ext refs: 0)
   ccn-like rows : 5  (showing first 12)
       row    5  CCN~21455  :: CCN: | 21455 | Nomenclature: | VEHICLE WASH PLATFORM
-      row    6  CCN~21455  :: SPACE REQUIREMENT ANALYSIS  ·  CCN 21455  ·  UFC 2-000-05N / UFC 21455-1  |  Net to Gross Factor: 1.33
+      row    6  CCN~21455  :: SPACE REQUIREMENT ANALYSIS ,  CCN 21455 ,  UFC 2-000-05N / UFC 21455-1  |  Net to Gross Factor: 1.33
       row    7  CCN~21451  :: NOTE: UFC 2-000-05N does not require a BFR for Vehicle Wash Platforms. This analysis is provided for planning purposes only. No billets assi
       row    9  CCN~21455  :: VEHICLE COUNT ,  Self-Propelled Only  (Trailers excluded per UFC 21455-1  |  SABAR not present)
       row   17  CCN~21455  :: WASH SPACE CALCULATION ,  UFC 21455-1: 1 Space per 50 Vehicles  |  1,200 SF per Space  |  All wash racks on single pad (UFC 21455-2)
@@ -290,7 +290,7 @@ Short | TAMCN
   formulas      : 5  (with ext refs: 0)
   ccn-like rows : 2  (showing first 12)
       row    5  CCN~61072  :: CCN: | 61072 | Nomenclature: | BATTALION SQUADRON HEADQUARTERS, MARINE CORPS
-      row    6  CCN~61072  :: SPACE REQUIREMENT ANALYSIS  ·  CCN 61072  ·  UFC 2-000-05N Chapter 61 (Administrative)  |  Net to Gross Factor: 1.33
+      row    6  CCN~61072  :: SPACE REQUIREMENT ANALYSIS ,  CCN 61072 ,  UFC 2-000-05N Chapter 61 (Administrative)  |  Net to Gross Factor: 1.33
 
 [Sheet: 'TAMCN Info']
   state         : hidden

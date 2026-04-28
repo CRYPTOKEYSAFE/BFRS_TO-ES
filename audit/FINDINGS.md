@@ -74,7 +74,7 @@ External links, `FO_` (stale) and `3D MED BN` both reach outside the workbook. T
 | Workbook | External link targets |
 |---|---|
 | `FO_M29030 ... FINAL BFR` | `\\naeanrfkfs43\BULK_Storage_4\...` (UNC), 2 SharePoint URLs to `M00146-MS-M19885-20161222.xlsx` (a 2 LAAD template) |
-| `SW_M29030 ... NWPCW167400L021` | (none) ✓ |
+| `SW_M29030 ... NWPCW167400L021` | (none) [ok] |
 | `M67400 3D MED BN` | same UNC; `C:\Users\renel.douyon\Desktop\Copy of 19Marine Air Support Squadron_advocate review (002).xlsx` (someone's local desktop); `\\mcuspndlfs44\CPEN_GF\...\1ST MED BN M11020_BFR UNIT EDIT_04MAY2018.xlsx` (Camp Pendleton 1st Med Bn 2018 BFR); 2 LAAD SharePoint URL; one legitimate-looking flankspeed link to `M13020 2029 TO E CUT.xlsx` |
 
 Wrong-unit residue in mission statements:
@@ -86,8 +86,8 @@ Wrong-unit residue in mission statements:
 
 | File | Last modified | By |
 |---|---|---|
-| `M29111_HQ_CO_CLB-4.xlsx` | 2026-02-26 08:11:04 | `Potter CTR Anthony L` ✓ |
-| `M29112_CLC_A_CLB-4.xlsx` | 2026-02-26 08:18:11 | `Potter CTR Anthony L` ✓ |
+| `M29111_HQ_CO_CLB-4.xlsx` | 2026-02-26 08:11:04 | `Potter CTR Anthony L` [ok] |
+| `M29112_CLC_A_CLB-4.xlsx` | 2026-02-26 08:18:11 | `Potter CTR Anthony L` [ok] |
 | `M29113_CLC_B_CLB-4.xlsx` | 2026-04-28 08:00:16 (upload day) | `creator: openpyxl` ⚠ |
 | `M29114_GS_CO_CLB-4.xlsx` | 2026-04-28 08:00:16 (upload day) | `creator: openpyxl` ⚠ |
 

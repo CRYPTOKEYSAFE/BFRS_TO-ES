@@ -58,9 +58,9 @@ default Office theme (Calibri / "minor" scheme). Recurring fills:
 | Use | Fill spec |
 |---|---|
 | Title banner (A1:AF2) | no fill (white) |
-| Section header banner (A6:AF6) | `theme=1, tint=-0.1499984740745262` (≈ light grey, 15 % darker than white) |
+| Section header banner (A6:AF6) | `theme=1, tint=-0.1499984740745262` (~ light grey, 15 % darker than white) |
 | Sub-header / label cells (A7, A15, AB15, AB16) | `theme=1, tint=-0.1499984740745262` solid |
-| Column-header cells (V7, Y7, AB7) | `theme=1, tint=-0.0499893185216834` solid (≈ very light grey, 5 %) |
+| Column-header cells (V7, Y7, AB7) | `theme=1, tint=-0.0499893185216834` solid (~ very light grey, 5 %) |
 | Body cells | no fill |
 
 All borders are thin, color indexed=64 (auto/black). The body data
@@ -76,8 +76,8 @@ the same.
 | Sub-headers (A3, A4, A5, M3, M4, M5) | Calibri 11 bold |
 | Right-side labels (R3, F4, R4), populated unit data | Arial 10 (this looks like a paste-in convention; preserve it) |
 | Column headers (V7, Y7, AB7) | Calibri 10 bold, h=center |
-| Body labels (A8, A9, …) | Calibri 10, h=left, wrap=True |
-| Body values (V8, Y8, AB8, …) | Calibri 10, h=center |
+| Body labels (A8, A9, ...) | Calibri 10, h=left, wrap=True |
+| Body values (V8, Y8, AB8, ...) | Calibri 10, h=center |
 | TOTAL REQUIREMENT label (A37) | Calibri 11 bold, top border thin |
 | TOTAL REQUIREMENT value (H37) | Calibri 10, h=center, v=center, wrap |
 | Unit label after total (L37) | Calibri 11 bold, top border thin |
@@ -110,10 +110,10 @@ A5:B5     , "CCN:" label
 C5:L5     , CCN value
 M5:Q5     , "Nomenclature:" label
 R5:AF5    , CCN nomenclature
-A6:AF6    , section banner ("SPACE REQUIREMENT ANALYSIS · CCN xxxxx · UFC 2-000-05N …")
+A6:AF6    , section banner ("SPACE REQUIREMENT ANALYSIS, CCN xxxxx, UFC 2-000-05N ...")
 A7:U7     , sub-banner / column-block header
 V7:X7, Y7:AA7, AB7:AF7  , three numeric column headers (e.g. "SF/Person", "Count", "NSF")
-A8:U8, A9:U9, …         , per-row label spans (each row uses one merged label cell A:U)
+A8:U8, A9:U9, ...         , per-row label spans (each row uses one merged label cell A:U)
 A15:AA15  , subtotal row
 A16:U16   , total NSF label
 AB15:AF15, AB16:AF16    , value cells
@@ -153,7 +153,7 @@ Open these four sheets in Excel to ground-truth the visual:
 
 ## Apex Omega cell-role palette (overlay on CLB-4 theme styling)
 
-Per Apex Omega rule §8 (Output conventions, item 7), cells in any
+Per Apex Omega rule Sec.8 (Output conventions, item 7), cells in any
 generated workbook must be filled by role with the following hex
 colors. This is in addition to the CLB-4 theme tints used for banners
 and headers above; the role palette colors data cells specifically.
@@ -174,7 +174,7 @@ applicable; banners and headers retain the CLB-4 theme tints.
 - No bright tab colors, these sheets all have `tab_color=None`.
   The hidden broken sheets use `FFFF0000` (bright red); never adopt that
   pattern in output.
-- No `IFERROR(…,"")` masking of formulas. Errors must surface, not
+- No `IFERROR(...,"")` masking of formulas. Errors must surface, not
   hide. Round-1 audit confirmed this is how the broken hidden sheets
   silently failed for years.
 - No restricted-range lookups (e.g. `'TO'!$B$5:$B$309`). Use full

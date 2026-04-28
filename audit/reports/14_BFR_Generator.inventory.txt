@@ -100,9 +100,9 @@ PER-SHEET DETAIL
   cond_formats  : 0
   formulas      : 50  (with ext refs: 0)
   ccn-like rows : 3  (showing first 12)
-      row    3  CCN~61010  :: Per FC 2-000-05N §61010-3, Personnel loading must come from an official source (ASR / TFSD).
-      row   20  CCN~61010  :: Personnel Loading (PN) for BFR (FC §61010-3) | =G15 | All military, civilian, and other personnel associated with the organization.
-      row   24  CCN~61010  :: Authoritative source for personnel loading per FC 2-000-05N §61010-3: Authorized Strength Report (ASR) validated by Total Force Structure Di
+      row    3  CCN~61010  :: Per FC 2-000-05N Sec.61010-3, Personnel loading must come from an official source (ASR / TFSD).
+      row   20  CCN~61010  :: Personnel Loading (PN) for BFR (FC Sec.61010-3) | =G15 | All military, civilian, and other personnel associated with the organization.
+      row   24  CCN~61010  :: Authoritative source for personnel loading per FC 2-000-05N Sec.61010-3: Authorized Strength Report (ASR) validated by Total Force Structure Di
 
 [Sheet: 'BFR_Calculator']
   state         : visible
@@ -161,11 +161,11 @@ PER-SHEET DETAIL
   formulas      : 0  (with ext refs: 0)
   ccn-like rows : 10  (showing first 12)
       row    5  CCN~701-01  :: MILCON Cost Adjustment Factors (UFS 3-701-01 Table 4-1 / PAX Newsletter 3.2.1)
-      row    8  CCN~701-01  :: Sustainment Area Cost Factor (Okinawa) | 2.1 | Sustainment ACF, used for SR per UFS 3-701-01 §3-3.
+      row    8  CCN~701-01  :: Sustainment Area Cost Factor (Okinawa) | 2.1 | Sustainment ACF, used for SR per UFS 3-701-01 Sec.3-3.
       row    9  CCN~730-01  :: Programmed Escalation Factor | 1 | Set per program FY (UFS 3-730-01 Table 2). Update each FY.
       row   10  CCN~730-01  :: Contingency Factor | 1.05 | OCONUS contingency (UFS 3-730-01).
       row   12  CCN~701-01  :: Planning & Design Factor | 1.09 | 1.09 standard / 1.13 medical (UFS 3-701-01 Eq 3-1).
-      row   18  CCN~010-01  :: TBD | UFC 4-010-01 minimum standoff distances met (controlled perimeter ≥18 ft; ≥12 ft within controlled perimeter).
+      row   18  CCN~010-01  :: TBD | UFC 4-010-01 minimum standoff distances met (controlled perimeter >=18 ft; >=12 ft within controlled perimeter).
       row   19  CCN~020-01  :: TBD | UFC 4-020-01 Design Basis Threat (DBT) and Level Of Protection (LOP) determined for the project.
       row   20  CCN~010-01  :: TBD | Mass notification system included (UFC 4-010-01 Standard 21).
       row   21  CCN~023-03  :: TBD | Progressive collapse mitigation per UFC 4-023-03.

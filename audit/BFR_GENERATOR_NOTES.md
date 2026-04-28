@@ -17,7 +17,7 @@ Source evidence: `audit/reports/14_BFR_Generator.inventory.txt`.
 |---|---|---|
 | 0 | `Cover` | Project metadata: title, UIC, building no., installation, region, tenant unit, planner, project date, programmed FY. Authority list (FC, MCO, UFC, UFS) cited in references block. (No DD 1391 field, DD 1391s are downstream MILCON project documents informed by the BFR but not part of it.) |
 | 1 | `TFSMS_Loading` | TFSMS RecapMCC raw input, by personnel category. Carries the `TFSMS_UNRECONCILED` flag at `D19`, the gate. |
-| 2 | `Personnel` | ASR-reconciled personnel loading. Final `PN_*` named ranges flow from this sheet. References *FC 2-000-05N §61010-3* (personnel loading authority). |
+| 2 | `Personnel` | ASR-reconciled personnel loading. Final `PN_*` named ranges flow from this sheet. References *FC 2-000-05N Sec.61010-3* (personnel loading authority). |
 | 3 | `BFR_Calculator` | Per-CCN row-driven BFR. One row per CCN; columns: CCN, Description, UoM, Loading, Factor, Required, Override, NOTE. Vectorized via `BFR_*` named ranges. |
 | 4 | `Inventory` | Inventory-vs-required comparison (gap analysis), keyed off `BFR_Calculator` row indices. |
 | 5 | `Okinawa_Adj` | Okinawa-specific adjustments: MILCON ACF, Sustainment ACF, Escalation, Contingency, SIOH, PD Factor, ATFP / seismic / typhoon checklist (with `TBD` placeholders for unverified items per Apex Omega rule 4). |
@@ -62,7 +62,7 @@ work. They are the public API.
 | `TFSMS_CTR` | `TFSMS_Loading!$M$17` | Contractor billets |
 | `TFSMS_NC` | `TFSMS_Loading!$N$17` | Non-chargeable billets |
 | `TFSMS_TOTAL` | `TFSMS_Loading!$O$17` | TFSMS row total |
-| `TFSMS_UNRECONCILED` | `TFSMS_Loading!$D$19` | Reconciliation gate flag. When `TRUE`, the BFR is not releasable. Apex Omega §6 anti-pattern: never treat TFSMS as authoritative without ASR reconciliation. |
+| `TFSMS_UNRECONCILED` | `TFSMS_Loading!$D$19` | Reconciliation gate flag. When `TRUE`, the BFR is not releasable. Apex Omega Sec.6 anti-pattern: never treat TFSMS as authoritative without ASR reconciliation. |
 
 ### ASR-reconciled personnel (Personnel sheet)
 
@@ -84,7 +84,7 @@ These flow into `BFR_Calculator` Loading column (col E). Sample:
 | Name | Cell | Default | Source |
 |---|---|---|---|
 | `Okinawa_Navy_ACF` | `Okinawa_Adj!$C$7` | (per FY) | UFS 3-701-01 Table 4-1 (FY26 = 2.34 per Apex Omega briefing) |
-| `Okinawa_Sust_ACF` | `Okinawa_Adj!$C$8` | 2.1 | UFS 3-701-01 §3-3 (Sustainment ACF) |
+| `Okinawa_Sust_ACF` | `Okinawa_Adj!$C$8` | 2.1 | UFS 3-701-01 Sec.3-3 (Sustainment ACF) |
 | `Esc_Factor` | `Okinawa_Adj!$C$9` | 1.0 | UFS 3-730-01 Table 2, set per program FY |
 | `Contingency` | `Okinawa_Adj!$C$10` | 1.05 | UFS 3-730-01 OCONUS contingency |
 | `SIOH` | `Okinawa_Adj!$C$11` | (per FY) | Supervision, Inspection, and Overhead |
@@ -116,16 +116,16 @@ handle both.
 |---|---|---|---|---|
 | `141 70` | Air Traffic Control Tower | SF | 2956 SF base, NTG 1.1 | Each tower |
 | `143 10` | Emergency Vehicle Garage | SF | NTG 1.05 | Sum of vehicle plan-areas + 3 ft clearance/side |
-| `143 11` | Operational Vehicle Garage | SF | NTG 1.2 | Per Table 14311-1 (Type A 108 NSF … Type G 888 NSF) + 250 SF mech rm |
-| `143 12` | Operational Vehicle Laydown Area | SY | NTG 1.0 | Per Table 14312-1 (Type A 19 GSY … Type G 99 GSY) |
+| `143 11` | Operational Vehicle Garage | SF | NTG 1.2 | Per Table 14311-1 (Type A 108 NSF ... Type G 888 NSF) + 250 SF mech rm |
+| `143 12` | Operational Vehicle Laydown Area | SY | NTG 1.0 | Per Table 14312-1 (Type A 19 GSY ... Type G 99 GSY) |
 | `143 13` | Operational Vehicle/Equipment Canopy | SF | NTG 1.0 | Vehicle/equip area + circulation (drip line) |
 | `143 24` | Marine Corps EOD Facility | SF | 7000 SF + 204 SF Haz/Flam, NTG 1.0 | Each EOD facility |
-| `143 26` | Marine Corps EOD Company Facility | SF | NTG 1.4 | NSF per function × NTG (Admin 1,910 SF; classrooms via 171 10) |
+| `143 26` | Marine Corps EOD Company Facility | SF | NTG 1.4 | NSF per function x NTG (Admin 1,910 SF; classrooms via 171 10) |
 | `143 45` | Armory | SF | NTG 1.0 | Per Table 14345-1 (1, 2K strength: 576 GSF; >10K: +0.1 SF/PN). Loading = `PN_MIL` |
 | `143 46` | Marine Barracks - General Purpose | SF | NTG 1.0 | Per Table 14346-1 (1, 50: 75 GSF/PN; 201+: +30 GSF/PN) |
 | `143 47` | Alert Force Building | SF | NTG 1.0 | Engineering analysis |
 | `171 10` | Academic Instruction Building | SF | 45 GSF/student, NTG 1.33 | Per Table 17110-1 |
-| `171 15` | Navy/Marine Corps Reserve Training | SF | NTG 1.3 | NOSC Space Program Spreadsheet (Tables 17115-1…9) |
+| `171 15` | Navy/Marine Corps Reserve Training | SF | NTG 1.3 | NOSC Space Program Spreadsheet (Tables 17115-1...9) |
 | `171 20` | (continues, full dump in inventory report) | | | |
 | `171 50` | | | | |
 | `173 10` | | | | |
@@ -149,7 +149,7 @@ generator should:
    `TFSMS_UNRECONCILED = TRUE`, instead, show
    `"TBD, pending ASR reconciliation"` per Apex Omega rule 4.
 
-This is the operational implementation of Apex Omega §5.6:
+This is the operational implementation of Apex Omega Sec.5.6:
 *"TFSMS RecapMCC personnel data must be reconciled against the unit's
 authoritative ASR / T/O&E before a BFR can be released."*
 
@@ -163,7 +163,7 @@ authoritative ASR / T/O&E before a BFR can be released."*
 | 2. CCN+suffix tagging | Bypassed, the BFR Generator uses row-per-CCN with `Loading` from named ranges, not COUNTIFS-on-NOTE. This is the cleaner approach for top-level summary. |
 | 3. Classification rules | Embedded in the `Loading` formula per CCN row (e.g. `=PN_MIL` for armory; `=PN_TOTAL/125` for one-stall-per-125-PN heads) |
 | 4. In-workbook TO/TE schema | Not present, the BFR Generator summarizes; it does not carry the TO/TE roster. The pipeline will need to attach Format-B TO/TE if the user wants per-billet traceability beyond the named-range loading. |
-| 5. Stable lookup contracts | Compliant, uses `VLOOKUP` against `CCN_TABLE` named range, no restricted ranges. `IFERROR(…,"")` is used but only on the lookup's "name" column, not on the math; the math itself surfaces `#REF!` / `#DIV/0!` if inputs are missing. |
+| 5. Stable lookup contracts | Compliant, uses `VLOOKUP` against `CCN_TABLE` named range, no restricted ranges. `IFERROR(...,"")` is used but only on the lookup's "name" column, not on the math; the math itself surfaces `#REF!` / `#DIV/0!` if inputs are missing. |
 | 6. Validation harness | Partial, `TFSMS_UNRECONCILED` flag is the seed; full harness (schema check, NOTE coverage, roll-up integrity) still to build. |
 
 The two reference workbooks are complementary, not redundant:

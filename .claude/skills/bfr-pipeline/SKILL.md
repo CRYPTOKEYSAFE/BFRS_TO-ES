@@ -13,8 +13,8 @@ session does not re-derive them or drift.
 ## Read-first artifacts (always, in this order)
 
 1. `APEX_OMEGA.pdf`, binding methodology briefing. Non-negotiable
-   rules in §2; anti-patterns in §6; QC rituals in §5; output
-   conventions in §8.
+   rules in Sec.2; anti-patterns in Sec.6; QC rituals in Sec.5; output
+   conventions in Sec.8.
 2. `CLAUDE.md`, repository overview + Apex Omega rules restated +
    working conventions.
 3. `audit/PIPELINE.md`, six-layer unit-agnostic data pipeline contract.
@@ -54,7 +54,7 @@ The end-state is a unit-agnostic ETL + generator that:
 
 - Facts only. No assumptions, speculation, AI jargon. Ask if unclear.
 - Cite source + section + date inline for every regulatory or
-  numeric claim. Format: *"FC 2-000-05N §61010-3, current as of
+  numeric claim. Format: *"FC 2-000-05N Sec.61010-3, current as of
   2026-02-11"*.
 - Three-bucket separation: regulatory / program-practice / external
   benchmark. Never blend.
@@ -108,11 +108,11 @@ PDFs.
 
 ## Operational modes
 
-- Update-existing (common case): existing BFR + new T/O&E →
+- Update-existing (common case): existing BFR + new T/O&E  to 
   refreshed BFR + diff report.
-- Generate-new: T/O&E only → fresh BFR built against canonical
+- Generate-new: T/O&E only to fresh BFR built against canonical
   template.
-- Audit-existing: existing BFR only → forensic findings + repair
+- Audit-existing: existing BFR only to forensic findings + repair
   plan.
 
 ## Definition of done, binding acceptance test
@@ -135,7 +135,7 @@ PDFs.
 
 A deliverable failing any one of these is `TBD, pending <failing item>`.
 
-## Authoritative references (Apex Omega §3), confirm currency at use
+## Authoritative references (Apex Omega Sec.3), confirm currency at use
 
 | Reference | Use |
 |---|---|
@@ -159,10 +159,10 @@ must be ratified against FC 2-000-05N):
 
 | Suffix | Meaning |
 |---|---|
-| `o` | Office (≥ E-6 / officer), 120 GSF/person |
-| `c` | Cubicle (≤ E-5), 60 GSF/person |
-| `w` | Warehouse worker, 60 GSF/person, ÷3 ratio |
-| `rs`/`cs`/`ds`/`ws`/`shf`/`ms` | Maintenance shop sections (radio/comm/data/wire/SHF/maint), counted ÷15 → bays |
+| `o` | Office (>= E-6 / officer), 120 GSF/person |
+| `c` | Cubicle (<= E-5), 60 GSF/person |
+| `w` | Warehouse worker, 60 GSF/person, /3 ratio |
+| `rs`/`cs`/`ds`/`ws`/`shf`/`ms` | Maintenance shop sections (radio/comm/data/wire/SHF/maint), counted /15 to bays |
 | `a` | Armory work-area / personnel |
 | (bare CCN) | Equipment record's primary facility CCN (TE rows) |
 | `1` | Personal Effects entitlement, 1 per chargeable person |
@@ -201,7 +201,7 @@ CCN calculation sheets count via `COUNTIFS('TO'!$B:$B, "21710o",
   extraction date. Re-extractor: `audit/extract_ccn_appendix_a.py`.
 - Source PDF for the CCN dictionary: `fc_2_000_05n_appendixa.pdf`
   (root). Time-stamp at citation: 27-JUN-2019. Authority chain:
-  FC 2-000-05N Appendix A → NAVFAC P-72 (DON Facility Category Codes).
+  FC 2-000-05N Appendix A to NAVFAC P-72 (DON Facility Category Codes).
 - Pipeline package: `pipeline/`
   - `pipeline/template.py`, Layer 4 BFR generator. Produces a
     Format-B BFR for any unit profile + CCN list.
@@ -257,7 +257,7 @@ unit; the order is the recommended build sequence.
 - Documentation hygiene. Dropped DD 1391 field from BFR docs and
   the methodology workbook; purged "MCBJ" and "COMMARCORBASESJAPAN"
   legacy terminology from cells; renamed workbook
-  `MCBJ_BFR_Generator_FC2-000-05N.xlsx` →
+  `MCBJ_BFR_Generator_FC2-000-05N.xlsx`  to 
   `BFR_Generator_FC2-000-05N.xlsx`. Commits `0a2c8cc`, `1a61265`.
 - Layer 5, CCN_Library expanded to 1,060 entries. Repopulated
   `BFR_Generator_FC2-000-05N.xlsx`'s `CCN_Library` sheet from
@@ -322,7 +322,7 @@ unit; the order is the recommended build sequence.
 ### PARALLEL (doctrine work, can start any time)
 
 - Layer 3, classification rules. Document the
-  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) → NOTE-tag`
+  `(BIC, Billet Description, Alpha Grade, BMOS, PMOS, MCC) to NOTE-tag`
   function as `audit/CLASSIFICATION_RULES.md` + YAML/TOML rule table.
   Required for Track B to be fully unit-agnostic; Track B can stub
   with an externally-supplied rule list until this is authored.

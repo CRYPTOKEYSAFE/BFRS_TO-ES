@@ -50,8 +50,8 @@ AA27     Total =                                                                
 AB27     =SUM(AB26:AE26)                                                        | #REF!
 B29      Admin Space see attached TO for billet breakdown                       | Admin Space see attached TO...
 B30      Subordinate Unit                                                       | Subordinate Unit
-M30      Off & ≥ E61                                                            | Off & ≥ E61
-P30      ≤ E52                                                                  | ≤ E52
+M30      Off & >= E61                                                            | Off & >= E61
+P30      <= E52                                                                  | <= E52
 S30      Total                                                                  | Total
 M31      120                                                                    | 120
 P31      60                                                                     | 60

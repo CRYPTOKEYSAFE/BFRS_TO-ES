@@ -51,8 +51,8 @@ AA27     Total =                                                                
 AB27     =SUM(AB26:AE26)                                                        | #REF!
 B28      Warehouse  Admin Space see attached TO for billet breakdown            | Warehouse  Admin Space see ...
 B29      Subordinate Unit                                                       | Subordinate Unit
-M29      Off & ≥ E61                                                            | Off & ≥ E61
-P29      ≤ E52                                                                  | ≤ E52
+M29      Off & >= E61                                                            | Off & >= E61
+P29      <= E52                                                                  | <= E52
 S29      Clerks3                                                                | Clerks3
 V29      Total                                                                  | Total
 M30      120                                                                    | 120

@@ -78,7 +78,7 @@ A real engagement supplies any combination of:
 
 | Input | Possible formats | Notes |
 |---|---|---|
-| T/O&E source data | Excel (TFSMS per-company export, Master MEF / TFSMS-style), PDF (TFSMS printable, ASR PDF, other authoritative printout) | Must be ASR-reconciled before driving a BFR (Apex Omega §5.6). PDF ingestion must extract tabular billet/equipment data with citation-grade fidelity (page, table, row). If extraction confidence is low, mark `TBD, pending [page reference]`; never guess values. |
+| T/O&E source data | Excel (TFSMS per-company export, Master MEF / TFSMS-style), PDF (TFSMS printable, ASR PDF, other authoritative printout) | Must be ASR-reconciled before driving a BFR (Apex Omega Sec.5.6). PDF ingestion must extract tabular billet/equipment data with citation-grade fidelity (page, table, row). If extraction confidence is low, mark `TBD, pending [page reference]`; never guess values. |
 | Existing BFR for the unit | Excel (Format B, BFR-embedded TO/TE) | May be stale, partially correct, or mid-edit. May contain hidden / broken sheets (the CLB-4 SW BFR is the worked example of this state). |
 | Project metadata | Manual input (UIC, building number, planner, programmed FY, region) | Goes to the `Cover` sheet via the named-range API. BFRs do not carry a DD 1391; the 1391 is a downstream MILCON project document that may be informed by the BFR's gap analysis but is not part of the BFR itself. |
 
@@ -131,9 +131,9 @@ hold. This is the acceptance test.
 9. GSF / GSY totals consistent, every numeric value displayed
    in summary form ties to its detail-tab origin.
 10. Audit-traceable, every regulatory or numeric claim cited
-    inline with source + section + date (Apex Omega §8.1). Every
+    inline with source + section + date (Apex Omega Sec.8.1). Every
     derived number reproducible from inputs visible in the same
-    artifact (Apex Omega §8.4).
+    artifact (Apex Omega Sec.8.4).
 
 A deliverable that fails any one of these is `TBD, pending
 <failing item>` per Apex Omega rule 4. Never silently release.
@@ -184,7 +184,7 @@ Reference hierarchy when generating BFR output:
   `SW_M29030_CLB4_BFR_2026-NWPCW167400L021.xlsx` (`14345`, `21451`,
   `21455`, `61072`), see `audit/STYLE_GUIDE.md`.
 - Cell-role palette: Apex Omega 4-color (input/calc/output/warning)
-  overlaid on CLB-4 theme styling, see `audit/STYLE_GUIDE.md` §"Apex
+  overlaid on CLB-4 theme styling, see `audit/STYLE_GUIDE.md` Sec."Apex
   Omega cell-role palette".
 
 ## The data pipeline contract (read `audit/PIPELINE.md` for the full spec)
@@ -201,7 +201,7 @@ Six layers, every one must hold:
    Currently undocumented; needs FC 2-000-05N + unit doctrine input.
 4. In-workbook TO/TE schema, Format B layout (TO has `LINE | NOTE | CCN
    | CCN Description | UIC | Rec CD | BIC | Billet Description | Alpha Grade
-   | BMOS | PMOS | …`; TE has `ROW | NOTE | CCN | … | TAMCN | … | L,Ft |
+   | BMOS | PMOS | ...`; TE has `ROW | NOTE | CCN | ... | TAMCN | ... | L,Ft |
    W,Ft | H,Ft | Volume Ea | Volume Total`).
 5. Stable lookup contracts in CCN sheets, full-column refs
    (`'TO'!$B:$B`), no `IFERROR` masking, named-range constants. Legacy CCN
@@ -246,7 +246,7 @@ typography, colors, header banding, and page framing.
   the CLB-4 style exactly (see `audit/STYLE_GUIDE.md` if present).
 - Math must be airtight. Every formula must be verifiable against
   FC 2-000-05N planning factor tables. Every roll-up must trace.
-  No `IFERROR(…,"")` masking allowed at the top level.
+  No `IFERROR(...,"")` masking allowed at the top level.
 - Unit-agnostic. Tools that take a unit identifier or workbook path
   as a parameter, not hardcoded. CLB-4 is one example, not the universe.
 
@@ -309,8 +309,8 @@ short version:
 
 - Layer 2 vocabulary, canonical CCN+suffix tag list per CCN, sourced
   from FC 2-000-05N. Doctrine work; needs SME or PDF extraction.
-- Layer 3 classification rules, billet → tag function. Doctrine work.
-- Layer 4 ETL tool, Format A/C → Format B. Engineering work.
+- Layer 3 classification rules, billet to tag function. Doctrine work.
+- Layer 4 ETL tool, Format A/C to Format B. Engineering work.
 - Layer 4 canonical BFR template, unit-agnostic, cosmetically matching
   CLB-4. Engineering work.
 - Layer 5 stable-lookup CCN sheet templates, one per CCN type.

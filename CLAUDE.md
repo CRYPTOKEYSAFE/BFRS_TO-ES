@@ -72,7 +72,7 @@ A real engagement supplies any combination of:
 |---|---|---|
 | T/O&E source data | Excel (TFSMS per-company export, Master MEF / TFSMS-style), **PDF** (TFSMS printable, ASR PDF, other authoritative printout) | Must be ASR-reconciled before driving a BFR (Apex Omega §5.6). PDF ingestion must extract tabular billet/equipment data with citation-grade fidelity (page, table, row). If extraction confidence is low, mark `TBD — pending [page reference]`; never guess values. |
 | Existing BFR for the unit | Excel (Format B, BFR-embedded TO/TE) | May be stale, partially correct, or mid-edit. May contain hidden / broken sheets (the CLB-4 SW BFR is the worked example of this state). |
-| Project metadata | Manual input (UIC, building number, planner, programmed FY, DD1391, region) | Goes to the `Cover` sheet via the named-range API. |
+| Project metadata | Manual input (UIC, building number, planner, programmed FY, region) | Goes to the `Cover` sheet via the named-range API. BFRs do not carry a DD 1391; the 1391 is a downstream MILCON project document that may be informed by the BFR's gap analysis but is not part of the BFR itself. |
 
 ## Operational modes the pipeline must support
 

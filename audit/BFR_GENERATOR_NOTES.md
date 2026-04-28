@@ -15,7 +15,7 @@ Source evidence: `audit/reports/14_MCBJ_BFR_Generator.inventory.txt`.
 
 | # | Sheet | Purpose |
 |---|---|---|
-| 0 | `Cover` | Project metadata: title, UIC, building no., installation, region, tenant unit, planner, project date, programmed FY, DD1391. Authority list (FC, MCO, UFC, UFS) cited in references block. |
+| 0 | `Cover` | Project metadata: title, UIC, building no., installation, region, tenant unit, planner, project date, programmed FY. Authority list (FC, MCO, UFC, UFS) cited in references block. (No DD 1391 field — DD 1391s are downstream MILCON project documents informed by the BFR but not part of it.) |
 | 1 | `TFSMS_Loading` | TFSMS RecapMCC raw input, by personnel category. Carries the **`TFSMS_UNRECONCILED`** flag at `D19` — the gate. |
 | 2 | `Personnel` | ASR-reconciled personnel loading. Final `PN_*` named ranges flow from this sheet. References *FC 2-000-05N §61010-3* (personnel loading authority). |
 | 3 | `BFR_Calculator` | Per-CCN row-driven BFR. One row per CCN; columns: CCN, Description, UoM, Loading, Factor, Required, Override, NOTE. Vectorized via `BFR_*` named ranges. |
@@ -45,7 +45,6 @@ work. They are the public API.
 | `PLANNER` | `Cover!$D$12` | Planner |
 | `PROJ_DATE` | `Cover!$D$13` | Project date |
 | `PROG_FY` | `Cover!$D$14` | Programmed FY |
-| `DD1391` | `Cover!$D$15` | DD Form 1391 reference |
 
 ### TFSMS raw inputs (per personnel category)
 

@@ -450,6 +450,52 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 1, FC 2-000-05N Series PDFs landed (commit 357981b
+  merged origin/main into the dev branch). Series 100 supplied as
+  `fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
+  11 Feb 2026). Series 200 supplied as
+  `fc_2_000_05n_200series_05_16_2025.pdf` (version 200.20250516,
+  16 May 2025). Both at repo root. `pdfplumber` and `cryptography`
+  installed in this sandbox; `pdfplumber.extract_tables()`
+  validated against page 205 of Series 100 (CCN 14345 Armory
+  step-function table extracts cleanly).
+- Planning factors first-pass extraction (commit 357981b).
+  Initial scaffold output. SUPERSEDED by Track 1b authoritative
+  tabular extraction; entry retained for git-history reference.
+- Track 1b, authoritative tabular planning factors extraction.
+  `audit/extract_planning_factors.py` rewritten to use
+  `pdfplumber.extract_tables()` per page with each table anchored
+  to the most recent CCN heading at-or-above the table's top edge
+  (bounding-box comparison). Heading regex relaxed to allow
+  optional UoM in parens; false-positive guard requires "FAC: NNNN"
+  within 5 lines of the candidate heading. Vocabulary-backfill of
+  facility_name and UoM where the body-page heading omits them
+  (with `uom_source` provenance string). Per-CCN `narrative_sections`
+  capture for every `<ccn>-<section>` body marker, so engineering-
+  study CCNs ("Conduct an engineering study to determine
+  requirements", "No specific criteria are provided") carry their
+  doctrinal text instead of being dropped. Output:
+  `audit/PLANNING_FACTORS.{yaml,json}` overwrites the first-pass
+  scaffold; `audit/reports/18_planning_factors_extraction.txt`
+  refreshed.
+  Coverage: 533 distinct CCN records (350 Series 100, 183 Series
+  200), 59 with factor tables (267 tables total), 400 captured as
+  engineering-study with narrative sections preserved. 47/267
+  loading drivers inferred from header text; the other 220 are
+  `TBD pending review` per Apex Omega rule 4.
+  CLB-4 worked-example coverage:
+    factor-table CCNs:        14312 (3 tables), 14345 (1 table).
+    engineering-study CCNs:   14326 (24 sections), 21451 (3),
+                              21455 (1), 21710 (1), 21730 (1).
+    absent from supplied PDFs: 44112, 45110, 61072 (likely in
+                              Series 400 or 600, not supplied).
+  Validation: pdfplumber's table extraction is deterministic; the
+  14345 Armory step function (576 SF up to 2,000 personnel scaling
+  to 0.1 SF/person above 10,000) is preserved verbatim with
+  `loading_driver: "Installation Military Strength"`, `caption:
+  "Armory"`, `table_id: "Table 14345-1"`, source PDF + page + date.
+  Validator: no regression on either generated artifact (full BFR
+  5 PASS / 3 FAIL, sample 8 PASS / 0 FAIL).
 - Track 6, per-unit-type defaults (Layer 5).
   `audit/UNIT_TYPE_DEFAULTS.yaml` authored with the CLB row at
   confidence high (admin_ccn 61072, cited from CLB-4 SW BFR plus
@@ -507,35 +553,78 @@ unit; the order is the recommended build sequence.
 
 ### NEXT (in priority order)
 
-BLOCKED on user-supplied files (sandbox cannot fetch from wbdg.org).
-Drop the PDFs into a commit on `main`; this side will pull via the
-GitHub MCP and run the extractor.
+Track 1 PDFs landed at commit 357981b. Series 100 supplied is
+`fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
+11 Feb 2026; one minor version newer than the 100.20251210 named
+in the prior handoff). Series 200 supplied is
+`fc_2_000_05n_200series_05_16_2025.pdf` (version 200.20250516,
+16 May 2025).
 
-1. Pull FC 2-000-05N Series 100
-   (`fc_2_000_05n_100series_12_10_2025.pdf`, version `100.20251210`,
-   10 Dec 2025) and Series 200
-   (`fc_2_000_05n_200series_05_16_2025.pdf`, version `200.20250516`,
-   16 May 2025) into repo root.
-2. Run `audit/extract_planning_factors.py` (already scaffolded). Emits
-   `audit/PLANNING_FACTORS.{yaml,json}` and a summary report.
-3. Ratify Layer 5 pattern shapes against the extracted factor table.
+Planning factors first-pass extraction shipped at commit 357981b.
+`audit/extract_planning_factors.py` walked both PDFs and produced
+`audit/PLANNING_FACTORS.{yaml,json}` with 339 records across 58
+distinct CCNs (127 from Series 100, 212 from Series 200). Every
+record carries source PDF, page, table id, and printed version
+date. Apex Omega rule 4: every record's `loading_driver`,
+`factor_value`, and `ntg` are uniformly `TBD pending manual
+ratification`; the text-mode regex cannot reliably parse
+multi-column factor tables. Coverage of CLB-4 worked-example
+CCNs is partial: 14345 and 14312 hit; 14326, 21451, 21455, 21710,
+21730, 44112, 45110, 61072 missed. The misses are limits of the
+"Table NNNNN-N" regex, not absences from the PDFs; direct
+inspection of CCN 14345 page 205 confirms `pdfplumber.extract_tables()`
+recovers the actual factor table verbatim (Armory: step function on
+installation military strength, 576 SF up to 2,000 personnel
+scaling to 0.1 SF/person above 10,000).
+
+Track 1b shipped. Authoritative tabular extraction is now in DONE.
+Downstream ratification work lives in Tracks 1c and 1d below.
+
+Track 1c (HIGHEST LEVERAGE next). Ratify Layer 5 pattern shapes
+   against the extracted factor table at `audit/PLANNING_FACTORS.yaml`.
    Replace CLB-4-extracted defaults in `pipeline/template.py`
    (SF/person 120 and 60, SF/bay 420, bays-per-N-vehicles 30,
-   NTG 1.33) with FC 2-000-05N-cited values. Add pattern variants for
-   unit types not yet seen (aviation maintenance, MEU embarkation,
-   depot, training command, recruit depot, schoolhouse, range complex,
-   ammo/ordnance, fuel farm, comm/data center, medical/dental, port).
-4. Ratify Layer 3 BMOS rules in `audit/CLASSIFICATION_RULES.yaml`.
-   The 14 BMOS prefix rules carry confidence=low and TBD citations
-   today. Replace each with a confidence=high rule cited against
-   FC 2-000-05N planning factor tables and MCO 1200.18 (MOS Manual).
-   Re-run `pipeline/etl.py` after ratification; expect classified
-   coverage to climb from 49% toward 100% with orphans only on
-   genuinely cross-billet special cases.
+   NTG 1.33) with FC 2-000-05N-cited values per CCN. The 14345
+   Armory factor (step function on installation military strength)
+   is the cleanest worked example available now. Add pattern
+   variants for the engineering-study CCNs (21451, 21455, 21710,
+   21730) using their captured `narrative_sections` (e.g., 14326
+   captures 24 sub-allowances like "Secure Waiting Area, 120 SF;
+   Classified Publications Vault, 811 SF").
+
+Track 1d (HIGHEST LEVERAGE next, parallel to 1c). Ratify Layer 3
+   BMOS rules in `audit/CLASSIFICATION_RULES.yaml`. The 14 BMOS
+   prefix rules carry confidence=low and TBD citations today.
+   Replace each with a confidence=high rule cited against
+   FC 2-000-05N planning factor tables (now extracted) and
+   MCO 1200.18 (MOS Manual). Re-run `pipeline/etl.py` after
+   ratification; expect classified coverage to climb from 49%
+   toward 100% with orphans only on genuinely cross-billet
+   special cases.
+
+Track 1e (follow-on, lower priority). Ratify the 11 TBD slots in
+   `audit/UNIT_TYPE_DEFAULTS.yaml` (MLG_HQ, MEF_HQ, MEU_CE,
+   MAG_HQ, MWHS, AVIATION_SQUADRON, RECRUIT_DEPOT, SCHOOLHOUSE,
+   TRAINING_COMMAND, DEPOT, INSTALLATION_HQ) by mapping each to
+   the correct NAVFAC P-72 Category 610 sub-category. Note: the
+   admin-facility CCNs in question (61071, 61072, 61073, 61074)
+   are NOT in the supplied Series 100 / Series 200 PDFs; they
+   would be in Series 600. Pending Series 600 supply.
+
+Track 1f (lower priority, blocked on user-supplied files). Drop
+   FC 2-000-05N Series 300, 400, 500, 600 PDFs into a commit on
+   `main` to bring the remaining CCN families into the planning
+   factors extraction. Currently three of the ten CLB-4 worked-
+   example CCNs (44112 General Warehouse, 45110 Open Storage Area,
+   61072 Battalion HQ Admin) are absent from the supplied Series
+   100 / Series 200 only. Other Series PDFs needed for full
+   coverage and would also unblock Track 1e (61072 ratification)
+   and full ratification of `audit/UNIT_TYPE_DEFAULTS.yaml`.
 
 NOT BLOCKED, can start any time. Track numbers below match the
-original 2026-04-28 handoff (Tracks 5 and 6 are now in DONE;
-remaining tracks keep their original numbers).
+original 2026-04-28 handoff (Tracks 5 and 6 are in DONE; Track 1
+files landed; Tracks 1b/1c/1d are new follow-ons; remaining tracks
+keep their original numbers).
 
 Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
    to cover the 27 orphan TAMCNs left after the round-1 build.

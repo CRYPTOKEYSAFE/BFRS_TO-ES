@@ -1,11 +1,26 @@
 FC 2-000-05N Planning Factors Extraction Summary
-========================================================
-Series 100 PDF : fc_2_000_05n_100series_02_11_2026.pdf
-Series 200 PDF : fc_2_000_05n_200series_05_16_2025.pdf
-Total records  : 339
-From Series 100: 127
-From Series 200: 212
+(authoritative tabular pass)
 
-Distinct CCNs referenced:
-  count=58
-  sample (first 20): ['11110', '11130', '11320', '11645', '11660', '13115', '13120', '13124', '13135', '13140', '13150', '13374', '14112', '14140', '14311', '14312', '14324', '14335', '14345', '14346']
+Series 100 PDF        : fc_2_000_05n_100series_02_11_2026.pdf
+Series 200 PDF        : fc_2_000_05n_200series_05_16_2025.pdf
+Total CCN records     : 533
+  from Series 100     : 350
+  from Series 200     : 183
+CCNs with factor table: 59
+CCNs engineering-study: 400 (narrative captured, no factor table per NAVFAC doctrine)
+Total factor tables   : 267
+Loading drivers inferred (vs TBD) : 47 / 267
+Distinct CCNs         : 533
+  sample (first 20)   : ['11110', '11112', '11115', '11120', '11125', '11210', '11320', '11340', '11610', '11612', '11615', '11620', '11635', '11640', '11641', '11642', '11645', '11650', '11655', '11656']
+
+CLB-4 worked-example CCN coverage:
+  14312: OPERATIONAL VEHICLE LAYDOWN AR  kind=factor-table  tables=3  narrative_sections=3  pages=[189, 190]
+  14326: MARINE CORPS EXPLOSIVE ORDNANC  kind=engineering-study  tables=0  narrative_sections=24  pages=[200, 201, 202, 203]
+  14345: ARMORY                          kind=factor-table  tables=1  narrative_sections=5  pages=[205]
+  21451: AUTOMOTIVE ORGANIZATIONAL SHOP  kind=engineering-study  tables=0  narrative_sections=3  pages=[188]
+  21455: VEHICLE WASH PLATFORM           kind=engineering-study  tables=0  narrative_sections=1  pages=[188]
+  21710: ELECTRONICS/COMMUNICATIONS MAI  kind=engineering-study  tables=0  narrative_sections=1  pages=[195]
+  21730: FIELD MAINTENANCE SHOP (COMMUN  kind=engineering-study  tables=0  narrative_sections=1  pages=[196]
+  44112: ABSENT from supplied PDFs (likely in Series 400 or 600, not yet supplied)
+  45110: ABSENT from supplied PDFs (likely in Series 400 or 600, not yet supplied)
+  61072: ABSENT from supplied PDFs (likely in Series 400 or 600, not yet supplied)

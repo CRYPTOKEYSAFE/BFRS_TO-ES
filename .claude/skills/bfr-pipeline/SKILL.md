@@ -450,6 +450,56 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 1d-extended, Layer 3 BMOS rule coverage expansion plus
+  parser and section-inference improvements.
+  `audit/CLASSIFICATION_RULES.yaml` extended with 11 new rules:
+  bmos_0100_personnel, bmos_0200_intelligence, bmos_0400_logistics,
+  bmos_1100_utilities, bmos_2100_ordnance_maint,
+  bmos_2200_navy_dental, bmos_2900_navy_nurse, bmos_3100_distribution,
+  bmos_3300_food_service, bmos_8900_senior_enlisted, plus three
+  Navy NEC L-prefix rules (navy_nec_l0_corpsman, navy_nec_l1_idc,
+  navy_nec_l3_dental). Each rule cites either FC 2-000-05N
+  narrative_section (where the facility is in supplied Series 100/200,
+  e.g. bmos_2100 cites Section 14345-1 for armory small-arms
+  maintenance) or FC 2-000-05N Appendix A vocabulary plus the
+  unsupplied Series PDF needed for full ratification. Apex Omega
+  rule 4 honored: rules with TBD tag_template do not produce a
+  guessed NOTE tag.
+  `pipeline/classify.py` updated:
+    1. read_format_a_to filter generalized to drop ANY TFSMS row
+       with empty alpha_grade AND empty bmos. These are
+       organizational divider rows ("S-1", "EOD SECTION",
+       "MAINTENANCE PLATOON", "DISTRIBUTION PLATOON", "COMPANY
+       HEADQUARTERS"), not real billets.
+    2. SECTION_KEYWORDS expanded: "utilities" section added
+       (electrician, water support, utilities systems, HVAC,
+       refrigeration, POL, fuel); "food_service" section added;
+       "admin_or_hq" expanded with manpower, intelligence,
+       first-sergeant, sergeant-major, senior-enlisted, unit-leader;
+       "ordnance" expanded with small-arms-repair, armorer;
+       "supply" expanded with distribution, mobility, materiel;
+       "medical" expanded with FLD MED, FIELD MED, NURSE, NRS,
+       TRAUMA, IDC.
+  End-to-end re-run on CLB-4 (audit/reports/19_etl_run.txt,
+  audit/reports/24_validate_clb4_full_track1d_extended.txt):
+    TO data rows         : 359 raw -> 310 (49 TFSMS section-headers
+                            and placeholders filtered)
+    Classified billets   : 268 / 310 = 86.5%
+    Unclassified         : 42 / 310 = 13.5% (ALL Apex Omega rule 4
+                            TBD holds; ZERO "no rule matched")
+      navy_nec_l0_corpsman: 23 (Series 500 needed)
+      bmos_3300_food_service:  8 (Series 700 needed)
+      bmos_8000_medical:    4 (Series 500 needed)
+      navy_nec_l1_idc:      2 (Series 500 needed)
+      navy_nec_l3_dental:   2 (Series 500 needed)
+      bmos_2900_navy_nurse: 2 (Series 500 needed)
+      bmos_2200_navy_dental: 1 (Series 500 needed)
+    Per-CCN attribution (Classified billets by NOTE tag):
+      44112w: 63, 21730: 49, 21451: 43, 61072o: 27, 61072c: 20,
+      14345: 20, 14326: 18, 21710ds: 16, 21710: 8, 21710shf: 4.
+    Validator: 5 PASS / 3 FAIL (no regression). Check 7 (billet
+    accounting) still surfaces the 42 TBD-held billets as orphans
+    deterministically per Apex Omega rule 4.
 - Track 1d, Layer 3 BMOS rule ratification (citation lift).
   `audit/CLASSIFICATION_RULES.yaml` rewritten: provenance block
   cites the actual FC 2-000-05N Series 100 / Series 200 PDFs
@@ -619,31 +669,7 @@ all CLB-4 BMOS prefixes; the rule ratification work was about
 citation lift, not coverage expansion. Coverage expansion is
 Track 1d-extended below.
 
-Track 1d-extended (HIGHEST LEVERAGE next). Add BMOS rules for
-the prefixes that appear in CLB-4 data but are absent from the
-current rule set. Diagnostic counts (audit/reports/19_etl_run.txt
-plus inline diagnostics on the Track 1d commit):
-  04xx (Admin):              46 unclassified billets
-  NONE (Navy / no BMOS):     40 unclassified billets
-  L-prefix (parse error):    27 unclassified billets
-  21xx (Ordnance Maint):     20 unclassified billets
-  11xx (Utilities):          15 unclassified billets
-  33xx (Logistics):           8 unclassified billets
-  01-03 (Pers/Intel/Inf):    10 unclassified billets
-  80xx (Medical):             5 (rule exists, tag TBD per Track 1d)
-  other:                     13 unclassified
-Approach: add bmos_0100 / bmos_0200 / bmos_0300 / bmos_0400 /
-bmos_1100 / bmos_2100 / bmos_3300 rules with FC 2-000-05N or
-NAVFAC P-72 facility CCN citations. Fix the L-prefix parse error
-(BMOS field sometimes contains line-number residue like "L0001"
-which my parser mistakes for a BMOS prefix). Add Navy-billet
-handling that uses the Alpha Grade / NEC code path instead of
-BMOS. Improve `pipeline/classify.py` section inference to catch
-more shop / specialty billets (138 of 359 currently land in
-"unknown" section). Re-run `pipeline/etl.py` after each rule
-addition; Apex Omega rule 4 applies (do not guess CCN choices).
-
-Track 1c (after 1d-extended). Ratify Layer 5 pattern shapes
+Track 1c (next). Ratify Layer 5 pattern shapes
    against the extracted factor table at
    `audit/PLANNING_FACTORS.yaml`.
    Replace CLB-4-extracted defaults in `pipeline/template.py`

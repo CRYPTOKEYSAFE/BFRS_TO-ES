@@ -119,10 +119,12 @@ SECTION_KEYWORDS = [
         "S-2", "S2 ", "S-3", "S3 ", "S-4", "S4 ", "S-5", "S5 ",
         "ADMIN", "TAC CHAPLAIN", "RP SPECIALIST", "STAFF",
         "PERSONNEL", "OPS", "OPERATIONS", "PLANS", "TRAINING",
-        "BILLETING", "POSTAL"]),
+        "BILLETING", "POSTAL", "MANPOWER", "INTELLIGENCE",
+        "INTEL ", "FIRST SERGEANT", "SERGEANT MAJOR",
+        "SENIOR ENLISTED", "UNIT LEADER"]),
     ("auto_org_shop", [
         "MOTOR T", "MOTOR TRANSPORT", "VEHICLE MAINT",
-        "AUTO ORG", "AUTOMOTIVE"]),
+        "AUTO ORG", "AUTOMOTIVE", "DISPATCHER"]),
     ("comm_shop", [
         "COMMUNICATIONS", "COMM SECTION", "RADIO", "ANTENNA",
         "TELEPHONE", "WIRE", "SHF", "SATELLITE COMM"]),
@@ -130,20 +132,31 @@ SECTION_KEYWORDS = [
         "DATA SYSTEMS", "S-6", "S6 ", "CYBER", "NETWORK",
         "INFORMATION SYSTEMS"]),
     ("medical", [
-        "MEDIC", "CORPSMAN", "DENTAL", "BAS ", "BATT AID",
-        "HOSPITAL", "MEDICAL"]),
+        "MEDIC", "CORPSMAN", "DENTAL", "DENT ", "DENT GP", "BAS ",
+        "BATT AID", "HOSPITAL", "MEDICAL", "FLD MED", "FIELD MED",
+        "NURSE", "NRS ", "TRAUMA", "IDC", "INDEPENDENT DUTY"]),
     ("eod", [
         "EOD", "EXPLOSIVE ORDNANCE DISP"]),
     ("ordnance", [
-        "ORDNANCE", "AMMO", "AMMUNITION", "WEAPONS"]),
+        "ORDNANCE", "AMMO", "AMMUNITION", "WEAPONS",
+        "SMALL ARMS REPAIR", "ARMORER"]),
     ("supply", [
-        "SUPPLY", "WAREHOUSE", "STORE", "LOGISTICS"]),
+        "SUPPLY", "WAREHOUSE", "STORE", "LOGISTICS",
+        "DISTRIBUTION", "MOBILITY", "MATERIEL"]),
     ("engineer", [
         "ENGINEER", "CONST", "CONSTRUCTION"]),
+    ("utilities", [
+        "ELECTRICIAN", "WATER SUPPORT", "UTILITIES SYSTEMS",
+        "REFRIGERATION", "HVAC", "POWER GENERATION",
+        "WASTEWATER", "POL ", "FUEL "]),
     ("mp", [
         "MILITARY POLICE", " MP ", "CORRECTIONS", "BRIG"]),
     ("field_maint", [
-        "FIELD MAINT", "MAINTENANCE BAY", "RECOVERY"]),
+        "FIELD MAINT", "MAINTENANCE BAY", "RECOVERY",
+        "MAINTENANCE TECHNICIAN", "MAINTENANCE CHIEF",
+        "MAINTENANCE SNCOIC"]),
+    ("food_service", [
+        "FOOD SERVICE", "MESS", "GALLEY", "DINING", "COOK"]),
 ]
 
 
@@ -372,7 +385,15 @@ class Classifier:
 
 
 def read_format_a_to(workbook_path):
-    """Read a Format-A T/O&E TO sheet, yield BilletRecord per data row."""
+    """Read a Format-A T/O&E TO sheet, yield BilletRecord per data row.
+
+    Filters TFSMS section-header rows and placeholder rows that appear
+    in some Format-A exports (e.g., rows where the company structure
+    is denoted by a description like "S-1", "COMMAND ELEMENT", or
+    "EOD SECTION" with no Alpha Grade and no BMOS, or vacant-billet
+    placeholder rows where every field except a coded BMOS suffix is
+    empty). These are not real billets and would otherwise land as
+    Apex Omega rule 4 orphans noisily."""
     import openpyxl
     wb = openpyxl.load_workbook(workbook_path, data_only=True)
     if "TO" not in wb.sheetnames:
@@ -386,6 +407,23 @@ def read_format_a_to(workbook_path):
         pmos = ws.cell(row=r, column=12).value
         if not (bic or alpha or bmos):
             continue
+        # Filter TFSMS organizational divider rows: a real billet
+        # always carries either a pay grade (filled or "VACANT") or
+        # an MOS code. Rows where both are empty are section /
+        # platoon / team / company-HQ headers in the export
+        # (e.g., "S-1", "EOD SECTION", "MAINTENANCE PLATOON",
+        # "DISTRIBUTION PLATOON", "COMPANY HEADQUARTERS"), not
+        # billets, and would otherwise land as Apex Omega rule 4
+        # orphans noisily.
+        desc_str = (str(billet_desc).strip().upper() if billet_desc else "")
+        if (not alpha) and (not bmos):
+            continue
+        # Filter placeholder rows where everything except a coded
+        # BMOS suffix (e.g. "0113N", "8057D") is empty.
+        if (not alpha) and (not desc_str) and bmos:
+            bmos_str = str(bmos).strip()
+            if re.match(r"^\d{3,4}[A-Z]$", bmos_str):
+                continue
         yield BilletRecord(
             bic=str(bic) if bic else "",
             billet_description=str(billet_desc) if billet_desc else "",

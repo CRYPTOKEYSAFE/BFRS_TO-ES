@@ -303,6 +303,209 @@ rules:
                Omega rule 4: leave unclassified pending Series 500/600
                supply or methodology-owner direction."
 
+  # Track 1d-extended additions: BMOS prefixes that appear in CLB-4
+  # data but were absent from the prior rule set. Each rule cites the
+  # FC 2-000-05N narrative_section that grounds the BMOS-to-CCN
+  # choice where available; otherwise cites Appendix A vocabulary
+  # plus the unsupplied Series PDF needed for full ratification.
+
+  - id: bmos_0100_personnel
+    description: "Personnel / Manpower BMOS (01xx), admin facility"
+    when:
+      bmos_prefix: "01"
+    tag_template: "{admin_ccn}o"
+    confidence: high
+    citation: "BMOS 01xx (Personnel and Administration) per
+               MCO 1200.18 (USMC MOS Manual, current edition TBD).
+               Personnel/manpower work occupies the unit's admin
+               facility. CLB-4 routes via 61072 BN HQ Admin per
+               audit/UNIT_TYPE_DEFAULTS.yaml. Conservative default
+               is office-class (120 GSF/person); junior enlisted
+               personnel clerks may be cubicled in practice but
+               the current rule schema does not introspect grade
+               under a BMOS-driven match."
+
+  - id: bmos_0200_intelligence
+    description: "Intelligence BMOS (02xx), admin facility (no
+                  dedicated SCIF in CLB-shaped units)"
+    when:
+      bmos_prefix: "02"
+    tag_template: "{admin_ccn}o"
+    confidence: medium
+    citation: "BMOS 02xx (Intelligence) per MCO 1200.18 (current
+               edition TBD). Dedicated SCIF facility CCN exists in
+               NAVFAC P-72 Category 610 sub-series for higher
+               echelons; CLB-shaped units typically house intel
+               billets in the admin facility per CLB-4 SW BFR
+               observed practice. Apex Omega rule 4 caveat: when
+               a unit profile declares a SCIF requirement, this
+               rule should be overridden via unit_context."
+
+  - id: bmos_0400_logistics
+    description: "Logistics BMOS (04xx), warehouse worker
+                  (Logistics Officer / Specialist / Chief)"
+    when:
+      bmos_prefix: "04"
+    tag_template: "44112w"
+    confidence: medium
+    citation: "BMOS 04xx (Logistics, including 0402 Logistics
+               Officer, 0430 Mobility Officer, 0441 Logistics
+               Specialist, 0491 Logistics Chief) per MCO 1200.18
+               (current edition TBD). FC 2-000-05N Appendix A
+               (extracted 27 Jun 2019) CCN 441 12 STORAGE OF
+               AIR/GROUND ORGANIC UNITS MARCOR (SF). Series 400
+               PDF not supplied; full FC 2-000-05N Series 400
+               ratification TBD. The 'w' (warehouse worker) suffix
+               routes 04xx via the same destination as bmos_3000
+               supply per CLB-4 observed BFR convention."
+
+  - id: bmos_1100_utilities
+    description: "Utilities BMOS (11xx), field maintenance shop
+                  (Electrician / Water Support / Utilities Systems
+                  Technician)"
+    when:
+      bmos_prefix: "11"
+    tag_template: "21730"
+    confidence: medium
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21730-1 page 196: field maintenance
+               shop scope covers utilities and engineer equipment
+               maintenance. BMOS 11xx (Utilities, including 1141
+               Electrician, 1164 Utilities Systems Technician,
+               1171 Water Support) per MCO 1200.18 (current edition
+               TBD). Confidence medium because the 21730 narrative
+               does not explicitly enumerate the 11xx series; the
+               mapping is by adjacency to the 13xx engineer rule."
+
+  - id: bmos_2100_ordnance_maint
+    description: "Ordnance Maintenance BMOS (21xx), armory area
+                  (Small Arms Repairer / Maintenance Technician /
+                  Ordnance Maintenance Chief)"
+    when:
+      bmos_prefix: "21"
+    tag_template: "14345"
+    confidence: high
+    citation: "FC 2-000-05N Series 100 (version 100.20260211, 11 Feb
+               2026), Section 14345-1 page 205: 'A Navy installation
+               armory provides space for storage and routine
+               maintenance of small arms.' BMOS 21xx (Ordnance,
+               including 2111 Small Arms Repairer, 2161 Ordnance
+               Repairer, 2181 Senior Ordnance Maintenance Chief)
+               per MCO 1200.18 (current edition TBD)."
+
+  - id: bmos_3100_distribution
+    description: "Distribution Management BMOS (31xx), warehouse
+                  (Distribution Management Specialist / Chief)"
+    when:
+      bmos_prefix: "31"
+    tag_template: "44112w"
+    confidence: medium
+    citation: "BMOS 31xx (Distribution Management, including 3152
+               Distribution Management Specialist) per MCO 1200.18
+               (current edition TBD). Distribution work routes to
+               the same supply storage facility as bmos_3000 and
+               bmos_0400 logistics; FC 2-000-05N Appendix A CCN
+               441 12. Series 400 PDF not supplied; full Series 400
+               ratification TBD."
+
+  - id: bmos_3300_food_service
+    description: "Food Service BMOS (33xx), dining facility"
+    when:
+      bmos_prefix: "33"
+    tag_template: "TBD"
+    confidence: low
+    citation: "BMOS 33xx (Food Service, including 3381 Food Service
+               Specialist / Chief) per MCO 1200.18 (current edition
+               TBD). Dining facility CCN is in NAVFAC P-72 Category
+               740 series (Subsistence). Series 700 PDF not supplied;
+               leave at TBD per Apex Omega rule 4 until Series 700
+               supply or methodology-owner direction."
+
+  - id: bmos_8900_senior_enlisted
+    description: "Unit Senior Enlisted Leader BMOS (89xx), admin
+                  facility"
+    when:
+      bmos_prefix: "89"
+    tag_template: "{admin_ccn}o"
+    confidence: high
+    citation: "BMOS 89xx (8999 Unit Senior Enlisted Leader, First
+               Sergeant, Sergeant Major) per MCO 1200.18 (current
+               edition TBD). Senior enlisted advisors occupy the
+               unit's admin facility command suite. CLB-4 routes
+               via 61072 BN HQ Admin per
+               audit/UNIT_TYPE_DEFAULTS.yaml."
+
+  - id: bmos_2200_navy_dental
+    description: "Navy Dental Officer BMOS (22xx), dental clinic"
+    when:
+      bmos_prefix: "22"
+    tag_template: "TBD"
+    confidence: low
+    citation: "Navy Officer designator 22xx (Dental Corps).
+               FC 2-000-05N Appendix A CCN 540 10 DENTAL CLINIC.
+               Series 500 PDF not supplied; Apex Omega rule 4:
+               leave unclassified pending Series 500 supply."
+
+  - id: bmos_2900_navy_nurse
+    description: "Navy Nurse Corps BMOS (29xx), medical clinic"
+    when:
+      bmos_prefix: "29"
+    tag_template: "TBD"
+    confidence: low
+    citation: "Navy Officer designator 29xx (Nurse Corps; observed
+               2900 Emergency-Trauma Nurse, Critical Care Nurse).
+               FC 2-000-05N Appendix A candidate CCNs: 510 10
+               HOSPITAL, 530 10 DISPENSARY, 550 10 PRIMARY CARE
+               CLINIC. Series 500 PDF not supplied; Apex Omega rule
+               4: leave unclassified pending Series 500 supply."
+
+  # Navy NEC L-prefix rules. Format-A T/O&E exports for joint
+  # USMC/Navy units (e.g., CLB-4 BAS personnel) put Navy NECs in
+  # the BMOS field with an L-prefix (L01A, L03A, L10A, L33A, etc.).
+  # These are not USMC BMOS prefixes; they map to Navy facility
+  # destinations. Pending Series 500 (medical) and Series 600
+  # (admin) PDF supply, all three rules stay at confidence=low.
+
+  - id: navy_nec_l0_corpsman
+    description: "Navy NEC L0xx (general Hospital Corpsman, e.g.,
+                  L03A Field Med Tech), garrison aid station or
+                  dispensary"
+    when:
+      bmos_prefix: "L0"
+    tag_template: "TBD"
+    confidence: low
+    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
+               Manual, current edition TBD pending verification).
+               L01A / L03A NECs identify Hospital Corpsmen with
+               operational medicine training. Facility CCN is in
+               NAVFAC P-72 Category 530 / 540 / 610 74 (Garrison
+               Aid Station, MARCOR). Series 500 / 600 PDFs not
+               supplied; Apex Omega rule 4: leave unclassified."
+
+  - id: navy_nec_l1_idc
+    description: "Navy NEC L1xx (Independent Duty Corpsman, e.g.,
+                  L10A Surface IDC)"
+    when:
+      bmos_prefix: "L1"
+    tag_template: "TBD"
+    confidence: low
+    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
+               Manual). IDC NECs identify Corpsmen qualified for
+               independent operational medicine. Same facility
+               family as L0xx pending Series 500 / 600 supply."
+
+  - id: navy_nec_l3_dental
+    description: "Navy NEC L3xx (Dental Tech, e.g., L33A Dental
+                  Assistant)"
+    when:
+      bmos_prefix: "L3"
+    tag_template: "TBD"
+    confidence: low
+    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
+               Manual). L33A and related Dental Tech NECs route to
+               NAVFAC P-72 CCN 540 10 DENTAL CLINIC. Series 500 PDF
+               not supplied; Apex Omega rule 4: leave unclassified."
+
 unclassified_disposition:
   emit: orphan
   message: "billet does not match any rule; SME review required"

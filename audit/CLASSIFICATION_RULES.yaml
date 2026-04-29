@@ -1,29 +1,35 @@
 # Layer 3 Classification Rules, machine-readable rule table.
-# Loaded by a future pipeline/classify.py to map each billet in a
-# T/O&E to a NOTE tag of the form CCN+suffix.
+# Loaded by pipeline/classify.py to map each billet in a T/O&E to a
+# NOTE tag of the form CCN+suffix.
 #
-# Status: STARTER. General-pattern rules are present and tagged
-# confidence=high based on observed CLB-4 / 3d Med Bn vocabulary.
-# BMOS-specific rules are confidence=low and need ratification
-# against FC 2-000-05N Series 100/200 plus MCO 1200.18 (MOS Manual).
-# Apex Omega rule 4 applies: TBD-marked rule rows must not be
-# silently filled.
+# Status: BMOS rules ratified against FC 2-000-05N Series 100/200
+# (Track 1d). 8 rules at confidence=high with FC narrative citation;
+# 6 rules at confidence=low or medium where the facility CCN is in
+# Series 400/500/600/700 (not yet supplied) or unit-doctrine
+# dependent. Apex Omega rule 4 honored: rules with tag_template
+# "TBD" emit unclassified rather than a guessed NOTE tag.
 
 provenance:
-  authority: "FC 2-000-05N (Marine Corps BFR), MCO 1200.18 (MOS Manual),
-              unit-type doctrine"
-  ratified_against: "TBD pending FC 2-000-05N Series 100 / 200 PDF
-                     extraction via audit/extract_planning_factors.py"
-  source_date: "TBD"
-  schema_version: "0.1"
+  authority: "FC 2-000-05N (Marine Corps Basic Facility Requirements);
+              MCO 1200.18 (USMC MOS Manual)"
+  ratified_against: "FC 2-000-05N Series 100 (version 100.20260211,
+                     11 Feb 2026), Series 200 (version 200.20250516,
+                     16 May 2025) via audit/extract_planning_factors.py
+                     into audit/PLANNING_FACTORS.{yaml,json}; CCN
+                     dictionary cross-referenced against
+                     audit/CCN_VOCABULARY.json (FC 2-000-05N Appendix A,
+                     27 Jun 2019). MCO 1200.18 cited for BMOS prefix
+                     definitions; current edition date TBD pending
+                     verification."
+  source_date: "2026-04-29 (rule ratification date)"
+  schema_version: "0.2"
 
 defaults:
-  # Backward-compat fallback only. As of Track 6 (commit fb92ad7
-  # plus follow-on classifier wiring), per-unit-type admin_ccn lives
-  # in audit/UNIT_TYPE_DEFAULTS.yaml and overrides this value when
-  # the classifier finds a row matching the profile's unit_type.
-  # When UNIT_TYPE_DEFAULTS.yaml is absent (legacy callers), the
-  # value below applies. When unit_type is declared but unknown to
+  # Backward-compat fallback only. As of Track 6, per-unit-type
+  # admin_ccn lives in audit/UNIT_TYPE_DEFAULTS.yaml and overrides
+  # this value when the classifier finds a row matching the profile's
+  # unit_type. When UNIT_TYPE_DEFAULTS.yaml is absent (legacy callers),
+  # the value below applies. When unit_type is declared but unknown to
   # UNIT_TYPE_DEFAULTS.yaml, the fallback there marks admin_ccn as
   # TBD and the classifier surfaces affected billets as orphans
   # rather than silently inheriting 61072.
@@ -40,8 +46,10 @@ rules:
       section: "admin_or_hq"
     tag_template: "{admin_ccn}o"
     confidence: high
-    citation: "Observed in CLB-4 SW BFR 61072 ($120 GSF/person);
-               ratify against FC 2-000-05N admin facility table"
+    citation: "Observed in CLB-4 SW BFR 61072 (120 GSF/person);
+               admin facility per FC 2-000-05N Appendix A CCN 610 72
+               BATTLN/SQUADRN HQ (MARCOR), full Series 600 ratification
+               TBD pending PDF supply"
 
   - id: snco_admin_default
     description: "SNCO (E-6 to E-9) of an admin or HQ section"
@@ -72,122 +80,228 @@ rules:
     confidence: high
     citation: "Observed in CLB-4 SW BFR 61072 (60 GSF/person)"
 
-  # BMOS section-residency rules. confidence=low and TBD on every row.
+  # BMOS section-residency rules (Track 1d ratified).
 
   - id: bmos_0600_comm
-    description: "Comm BMOS, comm/electronics maintenance shop"
+    description: "Communications BMOS (0600), comm/electronics
+                  maintenance shop occupant"
     when:
       bmos_prefix: "06"
     tag_template: "21710{comm_section_suffix}"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 comm/elec
-               maintenance shop table"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21710-1 page 195: 'Electronics
+               maintenance shops at Naval and Marine Corps activities
+               provide work areas for organizational-level maintenance
+               for communications and electronics equipment.' BMOS
+               06xx (Communications) per MCO 1200.18 (USMC MOS Manual,
+               current edition date TBD pending verification)."
 
   - id: bmos_0800_artillery
-    description: "Field Artillery BMOS"
+    description: "Field Artillery BMOS (0800). NAVFAC FC 2-000-05N
+                  has no dedicated artillery battery facility CCN;
+                  artillery is housed in the unit's organizational
+                  shop (CCN 21451 area for gun systems) plus armory
+                  (CCN 14345 for sensitive items). Specific tag
+                  depends on unit doctrine (battery vs. brigade
+                  battalion fire-support coordination)."
     when:
       bmos_prefix: "08"
     tag_template: "TBD"
     confidence: low
-    citation: "TBD pending FC 2-000-05N artillery facility CCN"
+    citation: "FC 2-000-05N Series 100/200 contain no dedicated
+               artillery battery facility heading; only ranges (CCN
+               176 50 / 176 71 / 176 81) for live-fire training. The
+               artillery battery's working spaces map to existing
+               motor-pool CCN 21451 and armory CCN 14345 plus per-unit
+               admin CCN. Unit doctrine for artillery battalion
+               required to specify the correct tag; do not guess
+               (Apex Omega rule 4)."
 
   - id: bmos_1300_engineer
-    description: "Engineer BMOS, field maintenance shop"
+    description: "Engineer BMOS (1300), field maintenance shop"
     when:
       bmos_prefix: "13"
     tag_template: "21730"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 field maintenance"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21730-1 page 196: 'This field
+               maintenance shop provides specialized work areas for
+               organizational and intermediate maintenance of
+               engineer equipment.' BMOS 13xx (Combat Engineer /
+               Construction Engineer / Utilities) per MCO 1200.18
+               (current edition TBD)."
 
   - id: bmos_1800_armor
-    description: "Tank or AAV BMOS, field maintenance shop"
+    description: "Tank or AAV BMOS (1800), field maintenance shop
+                  (heavy combat vehicle)"
     when:
       bmos_prefix: "18"
     tag_template: "21730"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 field maintenance
-               (heavy combat vehicle)"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21730-1 page 196: field maintenance
+               shop scope explicitly includes heavy combat vehicle
+               maintenance. BMOS 18xx (Tank / AAV / LAV) per MCO
+               1200.18 (current edition TBD)."
 
   - id: bmos_2300_eod
-    description: "EOD BMOS, EOD facility"
+    description: "EOD BMOS (2300), Marine Corps EOD Disposal Company
+                  Facility"
     when:
       bmos_prefix: "23"
     tag_template: "14326"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 100 EOD table"
+    confidence: high
+    citation: "FC 2-000-05N Series 100 (version 100.20260211, 11 Feb
+               2026), Section 14326-1 page 201: 'This facility is
+               necessary for manning, equipping, and training for
+               EOD operations in support of Fleet Marine Forces
+               (FMF). The facility organization components below are
+               scaled to match the EOD Company (10 Officers, 99
+               Enlisted)...' BMOS 23xx (Explosive Ordnance Disposal)
+               per MCO 1200.18 (current edition TBD)."
 
   - id: bmos_2800_data_comm
-    description: "Data systems / cyber BMOS, data section"
+    description: "Data systems / cyber BMOS (2800), data section of
+                  comm/electronics maintenance shop"
     when:
       bmos_prefix: "28"
     tag_template: "21710ds"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N data section sub-class"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21710-1 page 195: electronics
+               maintenance shop scope includes data systems
+               maintenance. The 'ds' (data section) suffix routes
+               billets to the data sub-section per CLB-4 observed
+               BFR convention. BMOS 28xx (Data Systems / Cyber) per
+               MCO 1200.18 (current edition TBD)."
 
   - id: bmos_3000_supply
-    description: "Supply BMOS, warehouse worker"
+    description: "Supply BMOS (3000), warehouse worker"
     when:
       bmos_prefix: "30"
     tag_template: "44112w"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 400 supply storage"
+    confidence: medium
+    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019) CCN
+               441 12 STORAGE OF AIR/GROUND ORGANIC UNITS MARCOR (SF).
+               Series 400 PDF not supplied; full FC 2-000-05N Series
+               400 ratification TBD. The 'w' (warehouse worker)
+               suffix routes BMOS 3000 (Supply Administration and
+               Operations) per MCO 1200.18 (current edition TBD) into
+               the storage facility per CLB-4 observed BFR convention."
 
   - id: bmos_3500_motor_t
-    description: "Motor T BMOS, auto org shop"
+    description: "Motor T BMOS (3500), automotive organizational shop"
     when:
       bmos_prefix: "35"
     tag_template: "21451"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 motor maintenance"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21451-1 page 188: 'This facility
+               provides work areas for Fleet Marine Force (FMF) units
+               to perform maintenance on items of organizational
+               equipment. The shop space includes administrative and
+               dispatching areas as well as storage for OEM equipment,
+               tools, and parts.' BMOS 35xx (Motor Transport) per
+               MCO 1200.18 (current edition TBD)."
 
   - id: bmos_5800_mp
-    description: "MP / Corrections BMOS, MP facility"
+    description: "MP / Corrections BMOS (5800), military police
+                  facility / brig"
     when:
       bmos_prefix: "58"
     tag_template: "TBD"
     confidence: low
-    citation: "TBD pending FC 2-000-05N MP facility CCN"
+    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019) CCN
+               730 15 BRIG and CCN 730 10 FIRE STATION (MP/security
+               coverage adjunct) are in Series 700 / facility group
+               not yet supplied. The exact CCN depends on whether the
+               MP billet is brig-assigned (730 15) or general
+               security force (730 series admin). Apex Omega rule 4:
+               do not guess; flag for SME review until Series 700
+               ratification possible."
 
   - id: bmos_5900_elec_maint
-    description: "Electronic maintenance BMOS, comm/elec shop"
+    description: "Electronic maintenance BMOS (5900), comm/electronics
+                  shop"
     when:
       bmos_prefix: "59"
     tag_template: "21710{comm_section_suffix}"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 comm/elec table"
+    confidence: high
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), Section 21710-1 page 195: electronics
+               maintenance shop scope explicitly covers electronic
+               maintenance billets. BMOS 59xx (Electronic Maintenance)
+               per MCO 1200.18 (current edition TBD)."
 
   - id: bmos_6000_aviation_maint
-    description: "Aviation airframe / power plant BMOS, hangar/shop"
+    description: "Aviation airframe / power plant BMOS (6000),
+                  squadron hangar / aviation maintenance shop"
     when:
       bmos_prefix: "60"
     tag_template: "TBD"
     confidence: low
-    citation: "TBD pending FC 2-000-05N Series 200 aviation CCNs"
+    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019)
+               candidate CCNs include 211 05 MAINT HANGAR-O/H SPACE,
+               211 06 MAINT HANGAR-01 SPACE, 211 07 MAINT HANGAR-02
+               SPACE, 211 21 ENGINE MAINTENANCE SHOP, 211 27 TURBINE
+               ENGINE OVERHAUL SHOP. Series 200 supplied PDF only
+               documents 211-XX NAVAIR DEPOT-level shops, not the
+               organizational-level squadron hangar that BMOS 60xx
+               personnel occupy. Per-aircraft-type doctrine selects
+               the correct hangar variant; unit profile must specify.
+               Apex Omega rule 4: leave unclassified pending
+               aviation-doctrine input."
 
   - id: bmos_6500_aviation_ord
-    description: "Aviation ordnance BMOS"
+    description: "Aviation ordnance BMOS (6500), aviation armament
+                  shop"
     when:
       bmos_prefix: "65"
     tag_template: "TBD"
     confidence: low
-    citation: "TBD pending FC 2-000-05N aviation ordnance CCN"
+    citation: "FC 2-000-05N Series 100 (version 100.20260211, 11 Feb
+               2026), CCN 14321 AMMUNITION SEGREGATION FACILITY page
+               192 covers ammunition handling. FC 2-000-05N Series
+               200 CCN 211 54 AIRCRAFT ARMAMENT SYSTEM SHOP
+               (NON-NAVAIR DEPOT) covers aviation armament
+               maintenance at squadron level. Choice between 14321
+               (loadout segregation) and 21154 (armament shop)
+               depends on whether the BMOS 65xx billet is
+               assembly/segregation (14321) or maintenance (21154);
+               unit doctrine required."
 
   - id: bmos_7200_atc
-    description: "Air Traffic Control BMOS, ATC tower"
+    description: "Air Traffic Control BMOS (7200), control tower"
     when:
       bmos_prefix: "72"
     tag_template: "14170"
-    confidence: low
-    citation: "TBD pending FC 2-000-05N Series 100 (Table 14170-1)"
+    confidence: high
+    citation: "FC 2-000-05N Series 100 (version 100.20260211, 11 Feb
+               2026), Section 14170-1 page 182: 'DEFINITION. A
+               control tower provides space for equipment and
+               personnel to control aircraft movement on and around
+               the airfield.' BMOS 72xx (Air Control / Air Support)
+               per MCO 1200.18 (current edition TBD)."
 
   - id: bmos_8000_medical
-    description: "Medical / dental BMOS, clinic / hospital"
+    description: "Medical / dental BMOS (8000), garrison aid station
+                  or clinic"
     when:
       bmos_prefix: "80"
     tag_template: "TBD"
     confidence: low
-    citation: "TBD pending FC 2-000-05N Series 500 medical/dental
-               CCNs (54010 dental clinic, 54035, 54040, etc.)"
+    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019)
+               candidate CCNs: 510 10 HOSPITAL, 530 10 DISPENSARY /
+               OUT PATIENT CLINIC, 540 10 DENTAL CLINIC, 550 10
+               PRIMARY CARE CLINIC, 610 74 GARRISON AID STATION
+               (MARCOR). Series 500 PDF not supplied. For unit-organic
+               BAS billets (the CLB-4 case, 34 medical billets per
+               audit/FINDINGS.md item 2), the closest dedicated
+               MARCOR facility is 610 74 GARRISON AID STATION (MARCOR)
+               but Series 600 PDF supply is needed to confirm. Apex
+               Omega rule 4: leave unclassified pending Series 500/600
+               supply or methodology-owner direction."
 
 unclassified_disposition:
   emit: orphan
@@ -199,25 +313,31 @@ unclassified_disposition:
 # 1. The "section" field on a billet is not a T/O&E column. It is
 #    inferred from the unit's organizational structure and the
 #    Billet Description field (e.g., "S-1 ADJUTANT" -> admin section,
-#    "MOTOR T MAINT CHIEF" -> auto org shop section). The classifier
-#    will need a section-inference helper that reads keyword patterns
-#    out of Billet Description.
+#    "MOTOR T MAINT CHIEF" -> auto org shop section). The classifier's
+#    section-inference helper reads keyword patterns out of Billet
+#    Description (pipeline/classify.py infer_section).
 #
-# 2. The {admin_ccn} placeholder defaults to 61072 (Marine BN/squadron
-#    HQ admin) but per-unit-type defaults differ:
-#      Aviation squadrons: 61071 or unit-specific
-#      Logistics group HQ: TBD
-#      Recruit depot:      TBD
-#      Schoolhouse:        TBD
-#      MEU command element: TBD
-#    Each unit profile must supply its own admin_ccn default.
+# 2. The {admin_ccn} placeholder is resolved from
+#    audit/UNIT_TYPE_DEFAULTS.yaml (Track 6) based on the unit
+#    profile's unit_type field. Per-unit-type values for non-CLB
+#    units are mostly TBD pending Series 600 supply.
 #
 # 3. "comm_section_suffix" is one of rs / cs / ds / ws / shf / ms
-#    based on which sub-section the billet belongs to. The classifier
-#    will need a sub-section-inference helper (probably keyword match
-#    on Billet Description).
+#    based on which sub-section the billet belongs to. The
+#    classifier's pipeline/classify.py infer_comm_section_suffix
+#    helper reads keyword patterns on Billet Description.
 #
 # 4. Every "TBD" tag_template above is a hard stop. The classifier
-#    must not emit a TBD as a real NOTE tag; instead it must emit
+#    must not emit a TBD as a real NOTE tag; instead it emits
 #    "unclassified" plus the rule id and citation so the SME can
 #    fill the actual tag.
+#
+# 5. Track 1d ratification (this commit) lifted 8 of the 14 BMOS
+#    rules to confidence=high using FC 2-000-05N Series 100/200
+#    extracted narrative_sections (audit/PLANNING_FACTORS.yaml).
+#    The remaining 6 rules (artillery, supply, MP, aviation maint,
+#    aviation ord, medical) are at confidence=low or medium because
+#    their facility CCNs are in Series 400/500/600/700 not yet
+#    supplied OR are unit-doctrine dependent. Track 1f (drop those
+#    Series PDFs) and per-unit-type doctrine input are needed for
+#    full ratification.

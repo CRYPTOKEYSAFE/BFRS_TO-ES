@@ -52,6 +52,13 @@ SKIP_PATHS = {
     REPO_ROOT / ".git",
     REPO_ROOT / "audit" / "CCN_VOCABULARY.csv",
     REPO_ROOT / "audit" / "CCN_VOCABULARY.json",
+    # Regulatory-data files that quote PDF source verbatim. The
+    # Apex Omega typography rules apply to OUR documents (markdown,
+    # source code, audit prose), not to extracted regulatory text;
+    # em-dashes inside NAVFAC table rows are source-faithful content
+    # and must not be substituted away.
+    REPO_ROOT / "audit" / "PLANNING_FACTORS.yaml",
+    REPO_ROOT / "audit" / "PLANNING_FACTORS.json",
     SELF,
 }
 

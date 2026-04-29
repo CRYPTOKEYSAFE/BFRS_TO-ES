@@ -71,7 +71,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from pathlib import Path
 from typing import List, Optional
 
@@ -123,11 +123,18 @@ class UnitProfile:
     planner: str
     fy: str
     project_date: str
+    # Track 6: unit_type drives per-unit-type defaults via
+    # audit/UNIT_TYPE_DEFAULTS.yaml. Optional; classifier handles
+    # absent/unknown values per Apex Omega rule 4.
+    unit_type: str = ""
 
     @classmethod
     def from_json(cls, path: Path) -> "UnitProfile":
         d = json.loads(path.read_text())
-        return cls(**d)
+        # Drop fields the dataclass does not declare; future profile
+        # additions can land in JSON without breaking older code.
+        known = {f.name for f in fields(cls)}
+        return cls(**{k: v for k, v in d.items() if k in known})
 
 
 @dataclass

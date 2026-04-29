@@ -450,6 +450,32 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 1c-citation, Layer 5 FC 2-000-05N citation rendering on
+  every CCN sheet of every generated BFR. `pipeline/template.py`
+  gained `fc_citation_lookup(ccn)` and `render_fc_citation_footer`
+  helpers that read `audit/PLANNING_FACTORS.json` and write a
+  styled footer block (Apex Omega "calc" palette #EAF3F4) at
+  row 40 of each CCN sheet. Citation includes Series, printed
+  version date, source PDF filename, page numbers, table id (or
+  narrative-section count for engineering-study CCNs), and
+  loading driver. CCNs absent from supplied Series 100/200 (CLB-4
+  CCNs 44112, 45110, 61072 in this case) get an explicit "TBD
+  pending Series N" citation that names the missing Series PDF
+  rather than silently inheriting CLB-4 values per Apex Omega
+  rule 4. `make_ccn_sheet` calls the renderer after the per-pattern
+  handler, so all four pattern variants (default, primary_items,
+  admin, shop_with_bays) produce citation-bearing sheets without
+  per-handler changes. Verified on `out/CLB4_BFR_full.xlsx` and
+  `out/CLB4_BFR_sample.xlsx`: 14345 Armory sheet cites Series 100
+  v100.20260211 page 205 Table 14345-1 with loading driver
+  "Installation Military Strength"; 14326 EOD sheet cites 24
+  narrative sections from pages 200-203 plus the UoM-from-vocab
+  provenance line; 21710 cites the engineering-study narrative
+  section verbatim ("Electronics maintenance shops at Naval and
+  Marine Corps activities"); 44112/45110/61072 sheets carry the
+  "TBD pending Series 400/500/600" citations. Validator: 5 PASS /
+  3 FAIL on full BFR, 8 PASS / 0 FAIL on template-only sample
+  (no regression).
 - Track 1d-extended, Layer 3 BMOS rule coverage expansion plus
   parser and section-inference improvements.
   `audit/CLASSIFICATION_RULES.yaml` extended with 11 new rules:
@@ -669,7 +695,7 @@ all CLB-4 BMOS prefixes; the rule ratification work was about
 citation lift, not coverage expansion. Coverage expansion is
 Track 1d-extended below.
 
-Track 1c (next). Ratify Layer 5 pattern shapes
+Track 1c-factor (next sub-step of Layer 5 ratification). Replace
    against the extracted factor table at
    `audit/PLANNING_FACTORS.yaml`.
    Replace CLB-4-extracted defaults in `pipeline/template.py`

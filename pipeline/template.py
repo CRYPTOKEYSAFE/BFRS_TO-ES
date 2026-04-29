@@ -84,6 +84,129 @@ from openpyxl.worksheet.page import PageMargins, PrintOptions
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 VOCAB_PATH = REPO_ROOT / "audit" / "CCN_VOCABULARY.json"
+PLANNING_FACTORS_PATH = REPO_ROOT / "audit" / "PLANNING_FACTORS.json"
+
+# Cached at first call so repeat lookups across many CCNs in one
+# build don't reread the file.
+_PF_CACHE: dict | None = None
+
+
+def _load_planning_factors() -> dict:
+    """Return the parsed PLANNING_FACTORS.json keyed by CCN. Returns
+    empty dict if the file is missing (caller falls back to a TBD
+    citation rather than crashing)."""
+    global _PF_CACHE
+    if _PF_CACHE is not None:
+        return _PF_CACHE
+    if not PLANNING_FACTORS_PATH.exists():
+        _PF_CACHE = {}
+        return _PF_CACHE
+    data = json.loads(PLANNING_FACTORS_PATH.read_text())
+    _PF_CACHE = {r["ccn"]: r for r in data.get("ccns", [])}
+    return _PF_CACHE
+
+
+def fc_citation_lookup(ccn: str) -> list[str]:
+    """Return a list of human-readable citation lines for a CCN.
+
+    Apex Omega Sec.5.5: time-stamp external data at the point of
+    citation. Each line carries (when applicable) source PDF
+    filename, printed version date, page numbers, table id, and
+    loading driver. CCNs absent from PLANNING_FACTORS.json (e.g.,
+    44112 General Warehouse, 45110 Open Storage Area, 61072
+    Battalion HQ Admin in CLB-4 because Series 400/500/600 are not
+    yet supplied) get a TBD citation that explicitly names the
+    missing Series PDF rather than silently inheriting a CLB-4
+    observation.
+    """
+    pf = _load_planning_factors()
+    rec = pf.get(ccn)
+    if rec is None:
+        # Try to identify which Series PDF would carry this CCN.
+        # NAVFAC P-72 series mapping: 100s/200s supplied; 300s
+        # ranges, 400s storage, 500s medical, 600s admin/community,
+        # 700s base support, 800s utilities & ground improvements.
+        if not ccn:
+            return ["FC 2-000-05N citation: CCN not specified"]
+        head = ccn[:1]
+        series_for_head = {
+            "1": "Series 100 (already supplied)",
+            "2": "Series 200 (already supplied)",
+            "3": "Series 300 (Training; not yet supplied)",
+            "4": "Series 400 (Maintenance & Production; not yet supplied)",
+            "5": "Series 500 (Medical; not yet supplied)",
+            "6": "Series 600 (Administrative; not yet supplied)",
+            "7": "Series 700 (Housing & Community; not yet supplied)",
+            "8": "Series 800 (Utilities & Ground; not yet supplied)",
+        }
+        series_label = series_for_head.get(head, "Series TBD")
+        return [
+            f"FC 2-000-05N citation: TBD pending {series_label}",
+            f"CCN {ccn[:3]} {ccn[3:]} not in supplied Series 100/200 PDFs",
+            "Apex Omega rule 4: do not silently inherit CLB-4 values",
+        ]
+    lines = []
+    lines.append(
+        f"FC 2-000-05N {rec.get('series', '?')} Series; "
+        f"version date {rec.get('source_date', 'unknown')}"
+    )
+    lines.append(
+        f"Source PDF: {rec.get('source_pdf', '?')}"
+    )
+    pages = rec.get("pages") or []
+    if pages:
+        lines.append(f"Pages: {pages}")
+    tables = rec.get("tables") or []
+    if tables:
+        for t in tables[:3]:
+            tid = t.get("table_id", "?")
+            cap = t.get("caption", "")
+            ld = t.get("loading_driver", "TBD")
+            lines.append(
+                f"  {tid} ({cap}); loading driver: {ld}"
+            )
+    else:
+        # Engineering-study CCN: cite the narrative section count
+        narr = rec.get("narrative_sections") or []
+        if narr:
+            lines.append(
+                f"Engineering-study CCN per NAVFAC doctrine; "
+                f"{len(narr)} narrative section(s) captured"
+            )
+            sample = narr[0]
+            lines.append(
+                f"  e.g. {sample.get('section_id')}: "
+                f"{sample.get('first_line', '')[:80]}"
+            )
+    if rec.get("uom_source"):
+        lines.append(f"UoM source: {rec['uom_source']}")
+    return lines
+
+
+def render_fc_citation_footer(ws, ccn: str, start_row: int = 40):
+    """Write the FC 2-000-05N citation block as a styled footer on
+    a CCN sheet starting at the given row. Uses the Apex Omega
+    'calc' palette color (#EAF3F4) and a light border to set the
+    block apart from the worksheet body without disturbing the
+    cosmetic style of the four CLB-4 reference sheets."""
+    lines = fc_citation_lookup(ccn)
+    title_cell = ws.cell(row=start_row, column=2,
+                         value="FC 2-000-05N Citation (Apex Omega Sec.5.5)")
+    title_cell.font = SECTION_FONT
+    title_cell.fill = CALC_FILL
+    title_cell.border = BOX
+    ws.merge_cells(start_row=start_row, start_column=2,
+                   end_row=start_row, end_column=8)
+    for offset, text in enumerate(lines, start=1):
+        body_cell = ws.cell(row=start_row + offset, column=2, value=text)
+        body_cell.font = BODY_FONT
+        body_cell.fill = CALC_FILL
+        body_cell.alignment = LEFT_WRAP
+        body_cell.border = BOX
+        ws.merge_cells(start_row=start_row + offset, start_column=2,
+                       end_row=start_row + offset, end_column=8)
+        ws.row_dimensions[start_row + offset].height = 18
+    return start_row + len(lines) + 1
 
 INPUT_FILL = PatternFill("solid", fgColor="FFF8DC")
 CALC_FILL = PatternFill("solid", fgColor="EAF3F4")
@@ -659,7 +782,16 @@ PATTERN_DISPATCH = {
 
 def make_ccn_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
     handler = PATTERN_DISPATCH.get(spec.pattern, make_default_sheet)
-    return handler(wb, profile, spec)
+    ws = handler(wb, profile, spec)
+    # Apex Omega Sec.5.5: render FC 2-000-05N citation footer on every
+    # CCN sheet so the source of the planning factor is visible inline
+    # on the BFR. Citations are read from audit/PLANNING_FACTORS.yaml
+    # via fc_citation_lookup. CCNs absent from supplied Series 100/200
+    # carry an explicit "TBD pending Series N" citation rather than
+    # silently inheriting CLB-4 values.
+    if ws is not None:
+        render_fc_citation_footer(ws, spec.ccn, start_row=40)
+    return ws
 
 
 def make_to_sheet(wb: Workbook, profile: UnitProfile):

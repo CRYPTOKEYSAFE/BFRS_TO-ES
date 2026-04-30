@@ -126,5 +126,89 @@
       "ntg": 1.33,
       "calc_label": "BAS Personnel Space"
     }
+  },
+  {
+    "ccn": "85210",
+    "loading": 100,
+    "factor": 75,
+    "ntg": 1.0,
+    "loading_label": "Organizational Vehicle Parking (count of CLB-4 motor pool vehicles); FAC 8521; cited factor 75 SY/vehicle for FMF Ground Units (50 SY/vehicle if >50% are <=18ft x 6.5ft); UoM=SY; user-supplied spec 2026-04-30 pending FC 2-000-05N Series 800 cross-check"
+  },
+  {
+    "ccn": "85122",
+    "loading": 5000,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Vehicle Staging Area for mount-out operations (SY); FAC 8523; sized by mission scale not by parked-vehicle count; CLB-4 placeholder 5000 SY pending unit doctrine input"
+  },
+  {
+    "ccn": "85121",
+    "loading": 0,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Vehicular Parking Unsurfaced (SY); FAC 8522; calculated using 85210 criteria when used; CLB-4 sets to 0 because primary parking is paved per 85210"
+  },
+  {
+    "ccn": "87210",
+    "loading": 2000,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Station Security and Perimeter Fencing (LF); FAC 8721; standard 7-ft chain link with 1.5-ft outriggers and 3 strands BB; min 50-150 ft from buildings/critical supplies; SRC I/II ammo fence per DoDM 5100.76 + UFC 4-022-03; CLB-4 placeholder 2000 LF pending compound perimeter survey"
+  },
+  {
+    "ccn": "87250",
+    "loading": 30,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Entry Gate (LF); FAC 8721; CCN added Jan 2024; CLB-4 default 30 LF for 1-2 main gates pending site survey"
+  },
+  {
+    "ccn": "87230",
+    "loading": 2,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Mechanical Security Barricade (EA); FAC 1458; drop arm barriers at gates; CLB-4 default 2 EA (one per gate)"
+  },
+  {
+    "ccn": "83143",
+    "loading": 400,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Hazardous Waste Storage Building (SF); FAC 4423; 150-meter buffer from inhabited areas, ammo, or POL stores; short-term <90 days vs long-term >90 days; CLB-4 placeholder 400 SF for unit HAZMAT point"
+  },
+  {
+    "ccn": "83141",
+    "loading": 1,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Hazardous Waste Storage and Transfer Facility (EA); FAC 8926; non-building structures; same 150-meter buffer rule; CLB-4 default 1 EA"
+  },
+  {
+    "ccn": "81160",
+    "loading": 150,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Standby Generator Plant (KW); FAC 8112; mission-essential standby power; CLB-4 placeholder 150 KW pending engineering load study"
+  },
+  {
+    "ccn": "88010",
+    "loading": 1,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Fire Alarm System (MI); FAC 1351; linear miles of fire-alarm wiring across CLB-4 compound; placeholder 1 MI pending site survey"
+  },
+  {
+    "ccn": "85235",
+    "loading": 1000,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Other Paved Areas Not in 100/400 Series (SY); FAC 8526; miscellaneous hardstand; CLB-4 placeholder 1000 SY"
+  },
+  {
+    "ccn": "85240",
+    "loading": 2000,
+    "factor": 1.0,
+    "ntg": 1.0,
+    "loading_label": "Misc Open Storage/Laydown Area Paved (SY); FAC 8526; PW open storage allowances per Table 85240-1; CLB-4 placeholder 2000 SY pending shop-type breakdown"
   }
 ]

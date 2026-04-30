@@ -4,18 +4,19 @@ FC 2-000-05N Planning Factors Extraction Summary
 Series PDFs supplied:
   Series 100: fc_2_000_05n_100series_02_11_2026.pdf  (350 CCN records)
   Series 200: fc_2_000_05n_200series_05_16_2025.pdf  (183 CCN records)
+  Series 300: fc_2_000_05n_300series_03_02_2023.pdf  (71 CCN records)
   Series 400: fc_2_000_05n_400series_11_19_2025.pdf  (53 CCN records)
   Series 500: fc_2_000_05n_500series_03_17_2023.pdf  (20 CCN records)
   Series 600: fc_2_000_05n_600series_03_02_2023.pdf  (16 CCN records)
   Series 700: fc_2_000_05n_700series_11_19_2025.pdf  (158 CCN records)
-Series PDFs NOT supplied: 300, 800
+  Series 800: fc_2_000_05n_800series_03_31_2025.pdf  (152 CCN records)
 
-Total CCN records     : 780
-CCNs with factor table: 114
-CCNs engineering-study: 535 (narrative captured, no factor table per NAVFAC doctrine)
-Total factor tables   : 530
-Loading drivers inferred (vs TBD) : 68 / 530
-Distinct CCNs         : 780
+Total CCN records     : 1003
+CCNs with factor table: 121
+CCNs engineering-study: 712 (narrative captured, no factor table per NAVFAC doctrine)
+Total factor tables   : 564
+Loading drivers inferred (vs TBD) : 70 / 564
+Distinct CCNs         : 1003
   sample (first 20)   : ['11110', '11112', '11115', '11120', '11125', '11210', '11320', '11340', '11610', '11612', '11615', '11620', '11635', '11640', '11641', '11642', '11645', '11650', '11655', '11656']
 
 CLB-4 worked-example CCN coverage:

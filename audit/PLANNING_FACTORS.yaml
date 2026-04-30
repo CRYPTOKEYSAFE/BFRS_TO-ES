@@ -10,6 +10,8 @@ provenance:
   source_date_100: "2026-02-11"
   source_pdf_200: "fc_2_000_05n_200series_05_16_2025.pdf"
   source_date_200: "2025-05-16"
+  source_pdf_300: "fc_2_000_05n_300series_03_02_2023.pdf"
+  source_date_300: "2023-03-02"
   source_pdf_400: "fc_2_000_05n_400series_11_19_2025.pdf"
   source_date_400: "2025-11-19"
   source_pdf_500: "fc_2_000_05n_500series_03_17_2023.pdf"
@@ -18,12 +20,13 @@ provenance:
   source_date_600: "2023-03-02"
   source_pdf_700: "fc_2_000_05n_700series_11_19_2025.pdf"
   source_date_700: "2025-11-19"
-  series_not_supplied: "300, 800"
+  source_pdf_800: "fc_2_000_05n_800series_03_31_2025.pdf"
+  source_date_800: "2025-03-31"
   authority: "FC 2-000-05N (Marine Corps Basic Facility Requirements)"
   extractor: "audit/extract_planning_factors.py (authoritative tabular pass)"
   apex_omega_note: "Tabular extraction via pdfplumber.extract_tables() with each table anchored to the most recent CCN heading at-or-above the table's top edge. Table headers, body rows, and loading_driver inference are produced where unambiguous; otherwise marked TBD. Raw row content is always preserved so a human ratifier can read the table directly."
 
-record_count: 780
+record_count: 1003
 
 ccns:
   - ccn: "11110"
@@ -12965,6 +12968,1117 @@ ccns:
     pages: [218]
     narrative_sections: []
     tables: []
+  - ccn: "31120"
+    ccn_display: "311 20"
+    facility_name: "AIRCRAFT GROUND SUPPORT EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "3111"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 2
+    pages: [2, 19]
+    narrative_sections:
+      - section_id: "31120-1"
+        first_line: "DEFINITION. This facility is used to research, development, test"
+    tables: []
+  - ccn: "31410"
+    ccn_display: "314 10"
+    facility_name: "GROUND TRANSPORTATION EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "3141"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 3
+    pages: [3, 22]
+    narrative_sections:
+      - section_id: "31410-1"
+        first_line: "DEFINITION. This facility is used in conducting research,"
+    tables: []
+  - ccn: "31720"
+    ccn_display: "317 20"
+    facility_name: "ELECTRICAL AND ELECTRONICS SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3171"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 3
+    pages: [3, 25]
+    narrative_sections:
+      - section_id: "31720-1"
+        first_line: "DEFINITION. This facility is used in conducting research,"
+      - section_id: "31720-2"
+        first_line: "USAGE. This facility is also used in the fields of electronics and"
+    tables: []
+  - ccn: "31910"
+    ccn_display: "319 10"
+    facility_name: "MISCELLANEOUS EQUIPMENT AND ITEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3181"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 3
+    pages: [3, 26]
+    narrative_sections:
+      - section_id: "31910-1"
+        first_line: "DEFINITION. This facility supports research, development, test,"
+    tables: []
+  - ccn: "37116"
+    ccn_display: "371 16"
+    facility_name: "AMMUNITION, EXPLOSIVES AND TOXICS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 4
+    pages: [4, 5, 6, 7, 8, 9, 10, 11, 12, 30]
+    narrative_sections: []
+    tables:
+      - table_id: "page_7_table_1"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Total Area"]
+          - ["(Gross)"]
+        rows: []
+      - table_id: "page_7_table_2"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Research Office"]
+          - ["(Net SF x NTG)"]
+        rows: []
+      - table_id: "page_7_table_3"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Research Support"]
+          - ["(Net SF x NTG)"]
+        rows: []
+      - table_id: "page_7_table_4"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["", "Bench", ""]
+          - ["", "Type", ""]
+          - ["", "Labs", ""]
+        rows:
+          - ["(Net SF x NTG)", "", ""]
+      - table_id: "page_7_table_5"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["", "Specialized", ""]
+          - ["", "Research", ""]
+          - ["", "Facilities", ""]
+        rows:
+          - ["(Net SF x NTG)", "", ""]
+      - table_id: "page_7_table_6"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Total"]
+          - ["Area"]
+        rows: []
+      - table_id: "page_7_table_7"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Research"]
+          - ["Office"]
+        rows: []
+      - table_id: "page_7_table_8"
+        caption: ""
+        page: 7
+        loading_driver: "TBD"
+        headers:
+          - ["Research"]
+          - ["Support"]
+        rows: []
+      - table_id: "page_8_table_9"
+        caption: ""
+        page: 8
+        loading_driver: "TBD"
+        headers:
+          - ["Installation Restaurant", "Category Code 740 26"]
+          - ["Academic Instruction Building", "Category Code 171 10"]
+          - ["Applied Instruction Building", "Category Code 171 20"]
+        rows:
+          - ["Auditorium", "Category Code 171 25"]
+      - table_id: "page_9_table_10"
+        caption: ""
+        page: 9
+        loading_driver: "TBD"
+        headers:
+          - ["For buildings supported by a central heating/cooling plant", "1.35"]
+          - ["For buildings containing their own HVAC equipment", "1.65"]
+        rows: []
+      - table_id: "page_9_table_11"
+        caption: ""
+        page: 9
+        loading_driver: "TBD"
+        headers:
+          - ["For buildings supported by a central heating/cooling plant", "1.35"]
+          - ["For buildings containing their own HVAC equipment", "1.65"]
+        rows: []
+      - table_id: "page_9_table_12"
+        caption: ""
+        page: 9
+        loading_driver: "TBD"
+        headers:
+          - ["For buildings supported by a central heating/cooling plant", "1.35"]
+          - ["For buildings containing their own HVAC equipment", "1.65"]
+        rows: []
+      - table_id: "page_11_table_13"
+        caption: ""
+        page: 11
+        loading_driver: "TBD"
+        headers:
+          - ["For buildings supported by a central heating/cooling plant", "1.5"]
+          - ["For buildings containing their own HVAC equipment", "2.2"]
+        rows: []
+  - ccn: "31011"
+    ccn_display: "310 11"
+    facility_name: "ASTRONOMY & ASTROPHYSICS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 13
+    pages: [13]
+    narrative_sections:
+      - section_id: "31011-1"
+        first_line: "DEFINITION. A facility required to support the investigation of"
+    tables: []
+  - ccn: "31013"
+    ccn_display: "310 13"
+    facility_name: "CHEMISTRY AND TOXICOLOGY LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 13
+    pages: [13]
+    narrative_sections:
+      - section_id: "31013-1"
+        first_line: "DEFINITION. The facility required to support the conducting of"
+    tables: []
+  - ccn: "31015"
+    ccn_display: "310 15"
+    facility_name: "MATERIALS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 13
+    pages: [13]
+    narrative_sections:
+      - section_id: "31015-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+      - section_id: "31015-2"
+        first_line: "USAGE. This facility also supports research in the areas of"
+    tables: []
+  - ccn: "31017"
+    ccn_display: "310 17"
+    facility_name: "OPTICS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 14
+    pages: [14]
+    narrative_sections:
+      - section_id: "31017-1"
+        first_line: "DEFINITION. This facility is used in conducting research,"
+    tables: []
+  - ccn: "31019"
+    ccn_display: "310 19"
+    facility_name: "PHYSICS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 14
+    pages: [14]
+    narrative_sections:
+      - section_id: "31019-1"
+        first_line: "DEFINITION. This facility is used in research, development, test"
+    tables: []
+  - ccn: "31021"
+    ccn_display: "310 21"
+    facility_name: "RADIATION EFFECTS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 14
+    pages: [14]
+    narrative_sections:
+      - section_id: "31021-1"
+        first_line: "DEFINITION. This facility is used in conducting research,"
+    tables: []
+  - ccn: "31023"
+    ccn_display: "310 23"
+    facility_name: "COMBINED RESEARCH LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 14
+    pages: [14]
+    narrative_sections: []
+    tables: []
+  - ccn: "31025"
+    ccn_display: "310 25"
+    facility_name: "BIOLOGICAL LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 15
+    pages: [15]
+    narrative_sections:
+      - section_id: "31025-1"
+        first_line: "DEFINITION. This facility is used in research, development, test"
+    tables: []
+  - ccn: "31027"
+    ccn_display: "310 27"
+    facility_name: "ENVIRONMENTAL LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 15
+    pages: [15]
+    narrative_sections:
+      - section_id: "31027-1"
+        first_line: "DEFINITION. This facility is used to support the research,"
+    tables: []
+  - ccn: "31029"
+    ccn_display: "310 29"
+    facility_name: "ANIMAL APPLICATIONS LABORATORY"
+    uom: "SF"
+    parent_fac: "3101"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 15
+    pages: [15]
+    narrative_sections:
+      - section_id: "31029-1"
+        first_line: "DEFINITION. This facility is used to support the research,"
+    tables: []
+  - ccn: "31031"
+    ccn_display: "310 31"
+    facility_name: "MEDICAL LABORATORY"
+    uom: "SF"
+    parent_fac: "3102"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 16
+    pages: [16]
+    narrative_sections:
+      - section_id: "31031-1"
+        first_line: "DEFINITION. This facility is used in conducting research toward"
+    tables: []
+  - ccn: "31033"
+    ccn_display: "310 33"
+    facility_name: "COMPUTATION AND ANALYSIS LABORATORY"
+    uom: "SF"
+    parent_fac: "3102"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 16
+    pages: [16]
+    narrative_sections:
+      - section_id: "31033-1"
+        first_line: "DEFINITION. This facility supports research, development, test"
+      - section_id: "31033-2"
+        first_line: "FUNCTIONAL AREAS. A Computation and Analysis Laboratory"
+    tables: []
+  - ccn: "31037"
+    ccn_display: "310 37"
+    facility_name: "OCEAN SCIENCES LABORATORY"
+    uom: "SF"
+    parent_fac: "3102"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 16
+    pages: [16]
+    narrative_sections:
+      - section_id: "31037-1"
+        first_line: "DEFINITION. This facility is used to accomplish research,"
+    tables: []
+  - ccn: "31039"
+    ccn_display: "310 39"
+    facility_name: "LEVEL III BIOSAFETY LABORATORY"
+    uom: "SF"
+    parent_fac: "3102"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 16
+    pages: [16]
+    narrative_sections: []
+    tables: []
+  - ccn: "31040"
+    ccn_display: "310 40"
+    facility_name: "LEVEL IV BIOSAFETY LABORATORY"
+    uom: "SF"
+    parent_fac: "3104"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 17
+    pages: [17]
+    narrative_sections:
+      - section_id: "31040-1"
+        first_line: "DEFINITION. This type of laboratory is associated with work on"
+      - section_id: "31040-2"
+        first_line: "USAGE. A Laboratory facility consists of either a separate building"
+    tables: []
+  - ccn: "31105"
+    ccn_display: "311 05"
+    facility_name: "RDAT&E MAINTENANCE HANGAR (SQ. M. / SF)"
+    uom: "SF"
+    parent_fac: "2111"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 18
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [18]
+    narrative_sections: []
+    tables: []
+  - ccn: "31110"
+    ccn_display: "311 10"
+    facility_name: "AIRCRAFT FLIGHT AND NAVIGATIONAL EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "2111"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 18
+    pages: [18]
+    narrative_sections:
+      - section_id: "31110-1"
+        first_line: "DEFINITION. This facility is utilized in conducting research,"
+    tables: []
+  - ccn: "31125"
+    ccn_display: "311 25"
+    facility_name: "AIRCRAFT SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3111"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 19
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [19]
+    narrative_sections:
+      - section_id: "31125-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31210"
+    ccn_display: "312 10"
+    facility_name: "GUIDED MISSILE LABORATORY"
+    uom: "SF"
+    parent_fac: "3111"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 19
+    pages: [19]
+    narrative_sections:
+      - section_id: "31210-1"
+        first_line: "DEFINITION. This facility is used in support of research,"
+    tables: []
+  - ccn: "31220"
+    ccn_display: "312 20"
+    facility_name: "MISSILE SUPPORT EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "3121"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 20
+    pages: [20]
+    narrative_sections:
+      - section_id: "31220-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31225"
+    ccn_display: "312 25"
+    facility_name: "SPACECRAFT/SATELLITE LABORATORY"
+    uom: "SF"
+    parent_fac: "3121"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 20
+    pages: [20]
+    narrative_sections:
+      - section_id: "31225-1"
+        first_line: "DEFINITION. This facility supports research, development, test"
+    tables: []
+  - ccn: "31230"
+    ccn_display: "312 30"
+    facility_name: "MISSILE SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3121"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 20
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [20]
+    narrative_sections:
+      - section_id: "31230-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31310"
+    ccn_display: "313 10"
+    facility_name: "SHIP AND MARINE LABORATORY"
+    uom: "SF"
+    parent_fac: "3121"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 20
+    pages: [20]
+    narrative_sections: []
+    tables: []
+  - ccn: "31320"
+    ccn_display: "313 20"
+    facility_name: "SHIPS AND MARINE EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "3131"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 21
+    pages: [21]
+    narrative_sections:
+      - section_id: "31320-1"
+        first_line: "DEFINITION. This facility is used to conduct research,"
+    tables: []
+  - ccn: "31325"
+    ccn_display: "313 25"
+    facility_name: "SHIPS AND MARINE SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3131"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 21
+    pages: [21]
+    narrative_sections:
+      - section_id: "31325-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31510"
+    ccn_display: "315 10"
+    facility_name: "AIRCRAFT WEAPON SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3141"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 22
+    pages: [22]
+    narrative_sections:
+      - section_id: "31510-1"
+        first_line: "DEFINITION. This facility supports the research, development, test"
+    tables: []
+  - ccn: "31515"
+    ccn_display: "315 15"
+    facility_name: "SHIP WEAPON SYSTEM LABORATORY"
+    uom: "SF"
+    parent_fac: "3141"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 22
+    pages: [22]
+    narrative_sections:
+      - section_id: "31515-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31520"
+    ccn_display: "315 20"
+    facility_name: "UNDERWATER WEAPON SYSTEM LABORATORY"
+    uom: "SF"
+    parent_fac: "3141"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 22
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [22]
+    narrative_sections: []
+    tables: []
+  - ccn: "31525"
+    ccn_display: "315 25"
+    facility_name: "GROUND WEAPON SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3151"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 23
+    pages: [23]
+    narrative_sections:
+      - section_id: "31525-1"
+        first_line: "DEFINITION. This facility is used for research, development, test"
+    tables: []
+  - ccn: "31530"
+    ccn_display: "315 30"
+    facility_name: "WEAPON SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3151"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 23
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [23]
+    narrative_sections:
+      - section_id: "31530-1"
+        first_line: "DEFINITION. This facility is used to accomplish research,"
+    tables: []
+  - ccn: "31610"
+    ccn_display: "316 10"
+    facility_name: "AMMUNITION, EXPLOSIVES AND TOXICS LABORATORY"
+    uom: "SF"
+    parent_fac: "3161"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 24
+    pages: [24]
+    narrative_sections:
+      - section_id: "31610-1"
+        first_line: "DEFINITION. This facility is used to support the research,"
+    tables: []
+  - ccn: "31710"
+    ccn_display: "317 10"
+    facility_name: "COMMUNICATIONS SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3161"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 24
+    pages: [24]
+    narrative_sections:
+      - section_id: "31710-1"
+        first_line: "DEFINITION. This facility is used for conducting research,"
+      - section_id: "31710-2"
+        first_line: "FUNCTIONAL AREAS. A Communications Systems Laboratory"
+    tables: []
+  - ccn: "31715"
+    ccn_display: "317 15"
+    facility_name: "DETECTION SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3171"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 25
+    pages: [25]
+    narrative_sections:
+      - section_id: "31715-1"
+        first_line: "DEFINITION. This facility is used in conducting research,"
+    tables: []
+  - ccn: "31725"
+    ccn_display: "317 25"
+    facility_name: "ELECTRICAL, ELECTRONICS AND COMMUNICATION SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3171"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 25
+    pages: [25]
+    narrative_sections:
+      - section_id: "31725-1"
+        first_line: "DEFINITION. This facility is used to accomplish research,"
+    tables: []
+  - ccn: "31810"
+    ccn_display: "318 10"
+    facility_name: "PROPULSION SYSTEMS LABORATORY"
+    uom: "SF"
+    parent_fac: "3181"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 26
+    pages: [26]
+    narrative_sections:
+      - section_id: "31810-1"
+        first_line: "DEFINITION. This facility is used to support research,"
+    tables: []
+  - ccn: "31815"
+    ccn_display: "318 15"
+    facility_name: "PROPULSION FUEL LABORATORY"
+    uom: "SF"
+    parent_fac: "3181"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 26
+    pages: [26]
+    narrative_sections:
+      - section_id: "31815-1"
+        first_line: "DEFINITION. This facility is used to support research,"
+    tables: []
+  - ccn: "31915"
+    ccn_display: "319 15"
+    facility_name: "RDAT&E STORAGE LABORATORY"
+    uom: "SF"
+    parent_fac: "3181"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 26
+    pages: [26]
+    narrative_sections: []
+    tables: []
+  - ccn: "31920"
+    ccn_display: "319 20"
+    facility_name: "CIVIL ENGINEERING LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 27
+    pages: [27]
+    narrative_sections:
+      - section_id: "31920-1"
+        first_line: "DEFINITION. This facility is used to support research,"
+    tables: []
+  - ccn: "31925"
+    ccn_display: "319 25"
+    facility_name: "HUMAN FACTORS LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 27
+    pages: [27]
+    narrative_sections:
+      - section_id: "31925-1"
+        first_line: "DEFINITION. This facility is used to determine the effects of"
+    tables: []
+  - ccn: "31930"
+    ccn_display: "319 30"
+    facility_name: "SURVIVAL EQUIPMENT AND CLOTHING LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 27
+    pages: [27]
+    narrative_sections:
+      - section_id: "31930-1"
+        first_line: "DEFINITION. This facility supports research, development, test"
+    tables: []
+  - ccn: "31935"
+    ccn_display: "319 35"
+    facility_name: "METROLOGY AND CALIBRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 28
+    pages: [28]
+    narrative_sections:
+      - section_id: "31935-1"
+        first_line: "DEFINITION. This facility will be used in direct support of research,"
+    tables: []
+  - ccn: "31940"
+    ccn_display: "319 40"
+    facility_name: "RANGE OPERATIONS AND INSTRUMENTATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 28
+    pages: [28]
+    narrative_sections:
+      - section_id: "31940-1"
+        first_line: "DEFINITION. This facility is used in support of research,"
+    tables: []
+  - ccn: "32010"
+    ccn_display: "320 10"
+    facility_name: "UNDERWATER EQUIPMENT LABORATORY"
+    uom: "SF"
+    parent_fac: "3191"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 28
+    pages: [28]
+    narrative_sections:
+      - section_id: "32010-1"
+        first_line: "This facility is used in conducting research development, test and"
+      - section_id: "32010-2"
+        first_line: "The facility is also used to support RDT&E in hydro-acoustics,"
+      - section_id: "32010-3"
+        first_line: "This building supports the RDT&E of undersea navigational"
+    tables: []
+  - ccn: "32020"
+    ccn_display: "320 20"
+    facility_name: "UNDERWATER SYSTEMS INTEGRATION LABORATORY"
+    uom: "SF"
+    parent_fac: "3201"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 29
+    pages: [29]
+    narrative_sections:
+      - section_id: "32020-1"
+        first_line: "This facility will be used for research, development, test and"
+    tables: []
+  - ccn: "32110"
+    ccn_display: "321 10"
+    facility_name: "TECHNICAL SERVICES LABORATORY"
+    uom: "SF"
+    parent_fac: "3201"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 29
+    pages: [29]
+    narrative_sections:
+      - section_id: "32110-1"
+        first_line: "Buildings used directly in RD&T manufacturing or reverse"
+    tables: []
+  - ccn: "37110"
+    ccn_display: "371 10"
+    facility_name: "SCIENCE SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3201"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 29
+    pages: [29]
+    narrative_sections:
+      - section_id: "37110-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37111"
+    ccn_display: "371 11"
+    facility_name: "AIRCRAFT SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3201"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 29
+    pages: [29]
+    narrative_sections: []
+    tables: []
+  - ccn: "37112"
+    ccn_display: "371 12"
+    facility_name: "MISSILE AND SPACE SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 30
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [30]
+    narrative_sections:
+      - section_id: "37112-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37113"
+    ccn_display: "371 13"
+    facility_name: "SHIPS AND MARINE SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 30
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [30]
+    narrative_sections:
+      - section_id: "37113-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37114"
+    ccn_display: "371 14"
+    facility_name: "TANK AND AUTOMOTIVE SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 30
+    pages: [30]
+    narrative_sections:
+      - section_id: "37114-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37115"
+    ccn_display: "371 15"
+    facility_name: "WEAPONS AND WEAPON SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 30
+    pages: [30]
+    narrative_sections:
+      - section_id: "37115-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37117"
+    ccn_display: "371 17"
+    facility_name: "ELECTRONIC, COMMUNICATION AND ELECTRICAL SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "37117-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37118"
+    ccn_display: "371 18"
+    facility_name: "PROPULSION SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "37118-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37119"
+    ccn_display: "371 19"
+    facility_name: "MISCELLANEOUS ITEMS AND EQUIPMENT RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "37119-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "37120"
+    ccn_display: "371 20"
+    facility_name: "UNDERWATER SYSTEMS RANGE FACILITY"
+    uom: "EA"
+    parent_fac: "3712"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "37120-1"
+        first_line: "Facilities used in the conduct of tests and evaluations of items"
+    tables: []
+  - ccn: "39010"
+    ccn_display: "390 10"
+    facility_name: "SCIENCE SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "39010-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39011"
+    ccn_display: "390 11"
+    facility_name: "AIRCRAFT SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "39011-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39012"
+    ccn_display: "390 12"
+    facility_name: "MISSILE AND SPACE SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "39012-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39013"
+    ccn_display: "390 13"
+    facility_name: "SHIPS AND MARINE SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "39013-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39014"
+    ccn_display: "390 14"
+    facility_name: "TANK AND AUTOMOTIVE SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "39014-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39015"
+    ccn_display: "390 15"
+    facility_name: "WEAPONS AND WEAPONS SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "39015-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39016"
+    ccn_display: "390 16"
+    facility_name: "AMMUNITION, EXPLOSIVES AND TOXICS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 33
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [33]
+    narrative_sections:
+      - section_id: "39016-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39017"
+    ccn_display: "390 17"
+    facility_name: "ELECTRONIC, COMMUNICATION AND ELECTRICAL SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "39017-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39018"
+    ccn_display: "390 18"
+    facility_name: "PROPULSION SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "39018-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39019"
+    ccn_display: "390 19"
+    facility_name: "MISCELLANEOUS ITEMS AND EQUIPMENT FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 33
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [33]
+    narrative_sections:
+      - section_id: "39019-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
+  - ccn: "39020"
+    ccn_display: "390 20"
+    facility_name: "UNDERWATER SYSTEMS FACILITY"
+    uom: "EA"
+    parent_fac: "3901"
+    series: "300"
+    source_pdf: "fc_2_000_05n_300series_03_02_2023.pdf"
+    source_date: "2023-03-02"
+    first_page: 34
+    pages: [34]
+    narrative_sections:
+      - section_id: "39020-1"
+        first_line: "Facilities used in the conduct of research, development, test and"
+    tables: []
   - ccn: "41110"
     ccn_display: "411 10"
     facility_name: "SHIP FUEL STORAGE 10K-100K (BL)"
@@ -20306,4 +21420,2650 @@ ccns:
     narrative_sections:
       - section_id: "76030-1"
         first_line: "No specific planning factors are available for this group. Requirements for"
+    tables: []
+  - ccn: "85235"
+    ccn_display: "852 35"
+    facility_name: "OTHER PAVED AREAS NOT CODED IN THE 100 OR 400 SERIES"
+    uom: "SY"
+    parent_fac: "7384"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 9
+    pages: [9, 64]
+    narrative_sections:
+      - section_id: "85235-1"
+        first_line: "OTHER PAVED AREAS NOT CODED IN THE 100 OR 400 SERIES."
+    tables: []
+  - ccn: "85240"
+    ccn_display: "852 40"
+    facility_name: "MISCELLANEOUS OPEN STORAGE OR LAYDOWN AREA - PAVED"
+    uom: "SY"
+    parent_fac: "8526"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 9
+    pages: [9, 10, 11, 12, 65]
+    narrative_sections:
+      - section_id: "85240-1"
+        first_line: "MISCELLANEOUS OPEN STORAGE OR LAYDOWN AREA - PAVED."
+      - section_id: "85240-1"
+        first_line: "for allowances."
+    tables:
+      - table_id: "page_12_table_1"
+        caption: ""
+        page: 12
+        loading_driver: "TBD"
+        headers:
+          - ["Category Group", "Description", "Unit of Measure", "", "Maximum Demand", ""]
+          - ["", "", "", "", "Per Unit of", ""]
+          - ["", "", "", "", "Measure (Watts)", ""]
+        rows:
+          - ["130", "Communication & Navigational Aid", "SF", "13, 5", "", ""]
+          - ["", "Airfield Lighting", "LF", "6", "", ""]
+          - ["140", "Land Operations Facilities", "SF", "7.5", "", ""]
+          - ["150", "Waterfront Operational Facilities", "SF FB", "5 5 x 103", "", ""]
+          - ["170", "Training Facilities", "SF", "7.5", "", ""]
+          - ["210", "Maintenance. Shops & Facilities", "SF", "7.5", "", ""]
+          - ["220", "Production Buildings. & Plants", "SF", "7.5", "", ""]
+          - ["310", "Research, Development & Test Bldg.", "SF", "7.5", "", ""]
+          - ["440", "Storage, Covered", "SF", "2", "", ""]
+          - ["510/20", "Hospital Buildings", "SF BD", "6 4 x 103", "", ""]
+          - ["230/40/50", "Labs, Clinics, Dispensaries", "SF", "8", "", ""]
+          - ["610", "Administration Buildings", "SF", "6", "", ""]
+          - ["710", "Family Housing", "SF FA", "4.5* 6 x 103*", "", ""]
+          - ["720", "Troop Housing", "SF MN", "5.5 500", "", ""]
+          - ["730/40", "Community Facilities", "SF", "7", "", ""]
+          - ["821", "Heating Plants", "SF MBH", "5 3 x 103", "", ""]
+          - ["830", "Sewage Treatment Plants", "MGPD", "200 x 103", "", ""]
+      - table_id: "page_12_table_2"
+        caption: ""
+        page: 12
+        loading_driver: "TBD"
+        headers:
+          - ["Category"]
+          - ["Group"]
+        rows: []
+      - table_id: "Table 85240-1"
+        caption: ""
+        page: 65
+        loading_driver: "TBD"
+        headers:
+          - ["", "PW Shop Type", "", "", "Square Yards", ""]
+          - ["A, B, C", "", "", "225", "", ""]
+          - ["D", "", "", "380", "", ""]
+        rows:
+          - ["E", "", "", "780", "", ""]
+          - ["F", "", "", "1,180", "", ""]
+  - ccn: "81109"
+    ccn_display: "811 09"
+    facility_name: "ELECTRIC POWER PLANT BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 13
+    pages: [13]
+    narrative_sections:
+      - section_id: "81109-1"
+        first_line: "DEFINITION. This category code is used for the buildings or shelters that"
+      - section_id: "81109-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each electric power plant building,"
+    tables: []
+  - ccn: "81110"
+    ccn_display: "811 10"
+    facility_name: "ELECTRIC POWER PLANT - DIESEL (KW)"
+    uom: "KW"
+    parent_fac: "8111"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 14
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [14]
+    narrative_sections:
+      - section_id: "81110-1"
+        first_line: "DEFINITION. This category code is used for power plants that use diesel"
+      - section_id: "81110-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment is inclusive to the"
+    tables: []
+  - ccn: "81125"
+    ccn_display: "811 25"
+    facility_name: "ELECTRIC POWER PLANT - STEAM TURBINE (KW)"
+    uom: "KW"
+    parent_fac: "8111"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 15
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [15]
+    narrative_sections:
+      - section_id: "81125-1"
+        first_line: "DEFINITION. A central plant using steam turbine generators for the"
+      - section_id: "81125-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment internal to the"
+    tables: []
+  - ccn: "81145"
+    ccn_display: "811 45"
+    facility_name: "ELECTRIC POWER PLANT - GAS TURBINE (KW)"
+    uom: "KW"
+    parent_fac: "8111"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 15
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [15]
+    narrative_sections:
+      - section_id: "81145-1"
+        first_line: "DEFINITION. A central plant using gas fired turbine generators for the"
+      - section_id: "81145-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment internal to the"
+    tables: []
+  - ccn: "81146"
+    ccn_display: "811 46"
+    facility_name: "ELECTRIC POWER PLANT - WIND TURBINE (KW)"
+    uom: "KW"
+    parent_fac: "8114"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 16
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [16]
+    narrative_sections:
+      - section_id: "81146-1"
+        first_line: "DEFINITION. A central plant using wind turbines for the production of"
+      - section_id: "81146-2"
+        first_line: "PROPERTY RECORD CARD USAGE. The equipment internal to the"
+    tables: []
+  - ccn: "81150"
+    ccn_display: "811 50"
+    facility_name: "ELECTRIC POWER - PHOTOVOLTAIC SYSTEM (KW)"
+    uom: "KW"
+    parent_fac: "8114"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 16
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [16]
+    narrative_sections:
+      - section_id: "81150-1"
+        first_line: "DEFINITION. A power source using photovoltaic (PV) panels for the"
+      - section_id: "81150-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All photovoltaic systems are"
+    tables: []
+  - ccn: "81159"
+    ccn_display: "811 59"
+    facility_name: "STANDBY GENERATOR BUILDING"
+    uom: "SF"
+    parent_fac: "8114"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 16
+    pages: [16]
+    narrative_sections: []
+    tables: []
+  - ccn: "81160"
+    ccn_display: "811 60"
+    facility_name: "STANDBY GENERATOR PLANT (KW)"
+    uom: "KW"
+    parent_fac: "8112"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 17
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [17]
+    narrative_sections:
+      - section_id: "81160-1"
+        first_line: "DEFINITION. Standby generator plants include all necessary equipment"
+    tables: []
+  - ccn: "81209"
+    ccn_display: "812 09"
+    facility_name: "ELECTRIC DISTRIBUTION BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 18
+    pages: [18]
+    narrative_sections:
+      - section_id: "81209-1"
+        first_line: "DEFINITION. This category code should be used for buildings"
+    tables: []
+  - ccn: "81212"
+    ccn_display: "812 12"
+    facility_name: "TRANSFORMERS (KV)"
+    uom: "KV"
+    parent_fac: "8133"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 19
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [19]
+    narrative_sections:
+      - section_id: "81212-1"
+        first_line: "DEFINITION. Transformers transform electrical power on the primary"
+      - section_id: "81212-2"
+        first_line: "PROPERTY RECORD CARD USAGE. A separate property record card"
+    tables: []
+  - ccn: "81220"
+    ccn_display: "812 20"
+    facility_name: "EXTERIOR LIGHTING, POLE MOUNTED"
+    uom: "EA"
+    parent_fac: "8133"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 19
+    pages: [19]
+    narrative_sections:
+      - section_id: "81220-1"
+        first_line: "DEFINITION. A utility consisting of secondary power distribution lines"
+    tables: []
+  - ccn: "81231"
+    ccn_display: "812 31"
+    facility_name: "OVERHEAD ELECTRICAL DISTRIBUTION LINES"
+    uom: "LF"
+    parent_fac: "8121"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 20
+    pages: [20]
+    narrative_sections:
+      - section_id: "81231-1"
+        first_line: "DEFINITION. The overhead lines are for the transmission of electrical"
+      - section_id: "81231-2"
+        first_line: "PROPERTY RECORD CARD USAGE. A separate property record card"
+    tables: []
+  - ccn: "81232"
+    ccn_display: "812 32"
+    facility_name: "UNDERGROUND ELECTRICAL DISTRIBUTION LINES"
+    uom: "LF"
+    parent_fac: "8121"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 20
+    pages: [20]
+    narrative_sections:
+      - section_id: "81232-1"
+        first_line: "DEFINITION. The underground lines are for the transmission of electrical"
+      - section_id: "81232-2"
+        first_line: "PROPERTY RECORD CARD USAGE. A separate property record card"
+    tables: []
+  - ccn: "81240"
+    ccn_display: "812 40"
+    facility_name: "LEVEL 1 / LEVEL 2 ELECTRIC VEHICLE CHARGING"
+    uom: ""
+    parent_fac: "8124"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 21
+    pages: [21]
+    narrative_sections:
+      - section_id: "81240-1"
+        first_line: "DEFINITION. An electric vehicle (EV) charging facility delivers either a"
+      - section_id: "81240-2"
+        first_line: "PARKING REQUIREMENT. Provide adequate electric charging capability"
+      - section_id: "81240-3"
+        first_line: "PARKING SPACE AND ACCESS AISLE. Provide an EV charging"
+      - section_id: "81240-4"
+        first_line: "PROPERTY RECORD CARD USAGE. EVCFs are permanently"
+    tables: []
+  - ccn: "81241"
+    ccn_display: "812 41"
+    facility_name: "LEVEL 3 DIRECT CURRENT FAST CHARGING FACILITY"
+    uom: ""
+    parent_fac: "8124"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 22
+    pages: [22]
+    narrative_sections:
+      - section_id: "81241-1"
+        first_line: "DEFINITION. An electric vehicle (EV) charging facility delivers 50kW-"
+      - section_id: "81241-2"
+        first_line: "PARKING REQUIREMENT. Provide adequate electric charging capability"
+      - section_id: "81241-4"
+        first_line: "PROPERTY RECORD CARD USAGE. EVCFs are considered real"
+    tables: []
+  - ccn: "81310"
+    ccn_display: "813 10"
+    facility_name: "SWITCHING STATION / SUBSTATION BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 23
+    pages: [23]
+    narrative_sections:
+      - section_id: "81310-1"
+        first_line: "DEFINITION. This Category Code is used for the buildings associated"
+      - section_id: "81310-2"
+        first_line: "PROPERTY RECORD CARD USAGE. A separate property record card"
+    tables: []
+  - ccn: "81320"
+    ccn_display: "813 20"
+    facility_name: "SUBSTATIONS (KV)"
+    uom: "KV"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 23
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [23]
+    narrative_sections:
+      - section_id: "81320-1"
+        first_line: "DEFINITION. Distribution substations, normally consisting of transformers"
+      - section_id: "81320-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each distribution substation shall"
+    tables: []
+  - ccn: "81330"
+    ccn_display: "813 30"
+    facility_name: "SWITCHING STATION FOR SECTIONALIZED"
+    uom: "KV"
+    parent_fac: "8132"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 24
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [24]
+    narrative_sections:
+      - section_id: "81330-1"
+        first_line: "DEFINITION. A switching station is equipment in an electric distribution"
+      - section_id: "81330-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All switching stations that are"
+    tables: []
+  - ccn: "81340"
+    ccn_display: "813 40"
+    facility_name: "LIGHTNING PROTECTION SYSTEM, STANDALONE"
+    uom: "EA"
+    parent_fac: "8132"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 24
+    pages: [24, 25]
+    narrative_sections:
+      - section_id: "81340-1"
+        first_line: "DEFINITION. Standalone Lightning Protection Systems are those that are"
+      - section_id: "81340-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Capture an entire “system” or"
+    tables: []
+  - ccn: "82109"
+    ccn_display: "821 09"
+    facility_name: "HEATING PLANT BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 26
+    pages: [26]
+    narrative_sections:
+      - section_id: "82109-1"
+        first_line: "DEFINITION. This Category Code is used for buildings associated with a"
+      - section_id: "82109-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each heating plant building"
+    tables: []
+  - ccn: "82112"
+    ccn_display: "821 12"
+    facility_name: "HEATING PLANT- OIL / GAS (BH)"
+    uom: "BH"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 26
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [26]
+    narrative_sections:
+      - section_id: "82112-1"
+        first_line: "DEFINITION. This Category Code is used for a plant that utilizes oil or"
+      - section_id: "82112-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment for heating plant"
+    tables: []
+  - ccn: "82122"
+    ccn_display: "821 22"
+    facility_name: "HEATING PLANT- COAL (BH)"
+    uom: "BH"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 26
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [26]
+    narrative_sections:
+      - section_id: "82122-1"
+        first_line: "DEFINITION. This Category Code is used for a plant that utilizes coal for"
+    tables: []
+  - ccn: "82130"
+    ccn_display: "821 30"
+    facility_name: "HEATING PLANT- NON - FOSSIL FUEL (BH)"
+    uom: "BH"
+    parent_fac: "8211"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 27
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [27, 28]
+    narrative_sections:
+      - section_id: "82130-1"
+        first_line: "DEFINITION. This Category Code is used for a plant that utilizes a non-"
+      - section_id: "82130-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment for heating plant"
+    tables: []
+  - ccn: "82160"
+    ccn_display: "821 60"
+    facility_name: "DISTILLATE HEATING FUEL OIL STORAGE (GA)"
+    uom: "GA"
+    parent_fac: "1244"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 29
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [29]
+    narrative_sections:
+      - section_id: "82160-1"
+        first_line: "DEFINITION. This Category Code is used for fuel oil tanks used for"
+      - section_id: "82160-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each storage tank should be"
+    tables: []
+  - ccn: "82161"
+    ccn_display: "821 61"
+    facility_name: "RESIDUAL HEATING FUEL OIL STORAGE (GA)"
+    uom: "GA"
+    parent_fac: "1244"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 29
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [29]
+    narrative_sections:
+      - section_id: "82161-1"
+        first_line: "DEFINITION. This Category Code is used for fuel oil tanks used for"
+    tables: []
+  - ccn: "82209"
+    ccn_display: "822 09"
+    facility_name: "STEAM / HEAT BUILDING / SHELTER"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 30
+    pages: [30]
+    narrative_sections:
+      - section_id: "82209-1"
+        first_line: "DEFINITION. Buildings associated with a heating distribution system"
+      - section_id: "82209-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be listed on a"
+    tables: []
+  - ccn: "82210"
+    ccn_display: "822 10"
+    facility_name: "CONDENSATE RETURN PUMP STATION"
+    uom: "EA"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 30
+    pages: [30]
+    narrative_sections:
+      - section_id: "82210-1"
+        first_line: "DEFINITION. A condensate return pump station may serve steam,"
+      - section_id: "82210-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All pump station equipment and"
+    tables: []
+  - ccn: "82212"
+    ccn_display: "822 12"
+    facility_name: "STEAM LINES"
+    uom: "LF"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "82212-1"
+        first_line: "DEFINITION. This Category Code contains all distribution system pipes"
+      - section_id: "82212-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "82214"
+    ccn_display: "822 14"
+    facility_name: "CONDENSATE LINES"
+    uom: "LF"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "82214-1"
+        first_line: "DEFINITION. This Category Code contains all collection system pipes"
+      - section_id: "82214-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "82216"
+    ccn_display: "822 16"
+    facility_name: "HOT WATER LINES"
+    uom: "LF"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 31
+    pages: [31]
+    narrative_sections:
+      - section_id: "82216-1"
+        first_line: "DEFINITION. This Category Code contains all pipes that convey hot"
+      - section_id: "82216-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "82226"
+    ccn_display: "822 26"
+    facility_name: "HIGH TEMPERATURE HOT WATER LINES"
+    uom: "LF"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "82226-1"
+        first_line: "DEFINITION. This Category Code contains all pipes that convey hot"
+      - section_id: "82226-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "82309"
+    ccn_display: "823 09"
+    facility_name: "GAS GENERATING BUILDING"
+    uom: "SF"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 32
+    pages: [32]
+    narrative_sections:
+      - section_id: "82309-1"
+        first_line: "DEFINITION. This Category Code contains buildings associated with a"
+      - section_id: "82309-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be shown on"
+    tables: []
+  - ccn: "82310"
+    ccn_display: "823 10"
+    facility_name: "GAS GENERATING PLANT (BH)"
+    uom: "BH"
+    parent_fac: "8221"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 32
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [32]
+    narrative_sections:
+      - section_id: "82310-1"
+        first_line: "DEFINITION. This Category Code contains plant equipment that"
+    tables: []
+  - ccn: "82315"
+    ccn_display: "823 15"
+    facility_name: "GAS METER BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "82315-1"
+        first_line: "DEFINITION. This Category Code contains buildings associated with gas"
+      - section_id: "82315-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be shown on"
+    tables: []
+  - ccn: "82320"
+    ccn_display: "823 20"
+    facility_name: "GAS STORAGE TANKS"
+    uom: "CF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "82320-1"
+        first_line: "DEFINITION. This Category Code contains tanks for the storage of liquid"
+    tables: []
+  - ccn: "82410"
+    ccn_display: "824 10"
+    facility_name: "GAS MAINS"
+    uom: "LF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 33
+    pages: [33]
+    narrative_sections:
+      - section_id: "82410-1"
+        first_line: "DEFINITION. The planning of gas pipelines includes trenching, piping,"
+    tables: []
+  - ccn: "82610"
+    ccn_display: "826 10"
+    facility_name: "COOLING SYSTEM PLANT BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 34
+    pages: [34]
+    narrative_sections:
+      - section_id: "82610-1"
+        first_line: "DEFINITION. Buildings associated with a cooling system plant (Category"
+      - section_id: "82610-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be listed on a"
+    tables: []
+  - ccn: "82620"
+    ccn_display: "826 20"
+    facility_name: "COOLING SYSTEM PLANT (TR)"
+    uom: "TR"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 34
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [34]
+    narrative_sections:
+      - section_id: "82620-1"
+        first_line: "DEFINITION. A plant for the production and distribution of a chilled fluid"
+    tables: []
+  - ccn: "82710"
+    ccn_display: "827 10"
+    facility_name: "COOLING SYSTEM VALVE BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 35
+    pages: [35]
+    narrative_sections:
+      - section_id: "82710-1"
+        first_line: "DEFINITION. Buildings associated with a cooling distribution system"
+      - section_id: "82710-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be listed on a"
+    tables: []
+  - ccn: "82720"
+    ccn_display: "827 20"
+    facility_name: "CHILLED FLUID LINES"
+    uom: "LF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 35
+    pages: [35, 36]
+    narrative_sections:
+      - section_id: "82720-1"
+        first_line: "DEFINITION. All distribution system pipes that convey chilled fluid."
+      - section_id: "82720-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "83109"
+    ccn_display: "831 09"
+    facility_name: "SEWAGE TREATMENT BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 37
+    pages: [37]
+    narrative_sections:
+      - section_id: "83109-1"
+        first_line: "DEFINITION. This Category Code includes the buildings associated with"
+      - section_id: "83109-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be included"
+    tables: []
+  - ccn: "83110"
+    ccn_display: "831 10"
+    facility_name: "SEWAGE TREATMENT PLANT (KG)"
+    uom: "KG"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 37
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [37]
+    narrative_sections:
+      - section_id: "83110-1"
+        first_line: "DEFINITION. This category code is used for all type of sewage treatment"
+      - section_id: "83110-2"
+        first_line: "PROPERTY RECORD CARD USAGE. This category code includes all"
+    tables: []
+  - ccn: "83111"
+    ccn_display: "831 11"
+    facility_name: "BALLAST CONTAMINATION SKIMMER (KG)"
+    uom: "KG"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 37
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [37]
+    narrative_sections: []
+    tables: []
+  - ccn: "83114"
+    ccn_display: "831 14"
+    facility_name: "INDUSTRIAL WASTEWATER TREATMENT BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 37
+    pages: [37]
+    narrative_sections:
+      - section_id: "83114-1"
+        first_line: "DEFINITION. This category code is used for buildings associated with an"
+    tables: []
+  - ccn: "83115"
+    ccn_display: "831 15"
+    facility_name: "INDUSTRIAL WASTEWATER TREATMENT FACILITY (KG)"
+    uom: "KG"
+    parent_fac: "8312"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 38
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [38]
+    narrative_sections:
+      - section_id: "83115-1"
+        first_line: "DEFINITION. This Category Code is used for a dedicated industrial"
+      - section_id: "83115-2"
+        first_line: "PROPERTY RECORD CARD USAGE. This Category Code includes all"
+    tables: []
+  - ccn: "83116"
+    ccn_display: "831 16"
+    facility_name: "OIL/WATER SEPARATOR (KG)"
+    uom: "KG"
+    parent_fac: "8312"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 38
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [38]
+    narrative_sections:
+      - section_id: "83116-1"
+        first_line: "DEFINITION. This Category Code is used for oil/water separators that"
+      - section_id: "83116-2"
+        first_line: "PROPERTY RECORD CARD USAGE. This category code is used for"
+    tables: []
+  - ccn: "83120"
+    ccn_display: "831 20"
+    facility_name: "OUTFALL SEWER LINE (KG)"
+    uom: "KG"
+    parent_fac: "8312"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 38
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [38]
+    narrative_sections:
+      - section_id: "83120-1"
+        first_line: "DEFINITION. An outfall sanitary sewer line receives the sewage from a"
+    tables: []
+  - ccn: "83130"
+    ccn_display: "831 30"
+    facility_name: "SEPTIC TANK AND DRAIN FIELD (GA)"
+    uom: "KG"
+    parent_fac: "8314"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 39
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [39]
+    narrative_sections:
+      - section_id: "83130-1"
+        first_line: "DEFINITION. A septic tank and drain field facility provides sewage"
+      - section_id: "83130-2"
+        first_line: "PROPERTY RECORD CARD USAGE. If these assets support a single"
+    tables: []
+  - ccn: "83131"
+    ccn_display: "831 31"
+    facility_name: "SEPTIC LAGOON AND / OR SETTLEMENT POND (GA)"
+    uom: "GA"
+    parent_fac: "8314"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 39
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [39]
+    narrative_sections:
+      - section_id: "83131-1"
+        first_line: "DEFINITION. A structure used for collecting and holding sewage to allow"
+      - section_id: "83131-2"
+        first_line: "PROPERTY RECORD CARD USAGE. A separate property record card"
+    tables: []
+  - ccn: "83139"
+    ccn_display: "831 39"
+    facility_name: "RADIOACTIVE WASTE HANDLING BUILDING"
+    uom: "SF"
+    parent_fac: "8314"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 39
+    pages: [39]
+    narrative_sections: []
+    tables: []
+  - ccn: "83140"
+    ccn_display: "831 40"
+    facility_name: "RADIOACTIVE WASTE HANDLING FACILITY"
+    uom: "EA"
+    parent_fac: "8314"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 39
+    pages: [39]
+    narrative_sections: []
+    tables: []
+  - ccn: "83141"
+    ccn_display: "831 41"
+    facility_name: "HAZARDOUS WASTE STORAGE AND TRANSFER FACILITY"
+    uom: "EA"
+    parent_fac: "8926"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 40
+    pages: [40]
+    narrative_sections:
+      - section_id: "83141-1"
+        first_line: "DEFINITION. Use this category code for facilities that are structures (non-"
+      - section_id: "83141-2"
+        first_line: "FACILITY TYPES. There are basically two types of facilities to handle"
+      - section_id: "83141-3"
+        first_line: "DESIGN REQUIREMENTS. The design requirements are found in"
+    tables: []
+  - ccn: "83142"
+    ccn_display: "831 42"
+    facility_name: "HAZARDOUS WASTE STORAGE AREA"
+    uom: "SY"
+    parent_fac: "8526"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 41
+    pages: [41]
+    narrative_sections:
+      - section_id: "83142-1"
+        first_line: "DEFINITION. The requirements for this facility are similar to those for"
+      - section_id: "83142-2"
+        first_line: "SEGREGATION OF MATERIAL. The danger involved in the storage of"
+    tables: []
+  - ccn: "83143"
+    ccn_display: "831 43"
+    facility_name: "HAZARDOUS WASTE STORAGE BUILDING"
+    uom: "SF"
+    parent_fac: "4423"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 42
+    pages: [42]
+    narrative_sections:
+      - section_id: "83143-1"
+        first_line: "DEFINITION. Use this category code for facilities that are buildings used"
+    tables: []
+  - ccn: "83210"
+    ccn_display: "832 10"
+    facility_name: "SANITARY SEWER LINE"
+    uom: "LF"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 43
+    pages: [43]
+    narrative_sections:
+      - section_id: "83210-1"
+        first_line: "DEFINITION. All distribution system pipes that collect and transport"
+      - section_id: "83210-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "83220"
+    ccn_display: "832 20"
+    facility_name: "COMBINED SEWER LINE"
+    uom: "LF"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 43
+    pages: [43]
+    narrative_sections:
+      - section_id: "83220-1"
+        first_line: "DEFINITION. All distribution pipes that collect and transport both sanitary"
+      - section_id: "83220-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "83229"
+    ccn_display: "832 29"
+    facility_name: "SEWAGE PUMP STATION BUILDING"
+    uom: "SF"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 43
+    pages: [43]
+    narrative_sections:
+      - section_id: "83229-1"
+        first_line: "DEFINITION. Buildings associated with a sewage pump station. The"
+      - section_id: "83229-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each pump station building shall"
+    tables: []
+  - ccn: "83230"
+    ccn_display: "832 30"
+    facility_name: "SEWAGE WASTE PUMPING STATION (KG)"
+    uom: "EA"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 43
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [43]
+    narrative_sections:
+      - section_id: "83230-1"
+        first_line: "DEFINITION. A sewage pumping station is a facility used to move"
+    tables: []
+  - ccn: "83240"
+    ccn_display: "832 40"
+    facility_name: "INDUSTRIAL WASTEWATER LINE"
+    uom: "LF"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 44
+    pages: [44]
+    narrative_sections:
+      - section_id: "83240-1"
+        first_line: "DEFINITION. This Category Code includes all distribution system pipes"
+      - section_id: "83240-1"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "83241"
+    ccn_display: "832 41"
+    facility_name: "INDUSTRIAL WASTEWATER PUMP STATION"
+    uom: "EA"
+    parent_fac: "8321"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 44
+    pages: [44]
+    narrative_sections:
+      - section_id: "83241-1"
+        first_line: "DEFINITION. Industrial wastewater pump stations are required to"
+    tables: []
+  - ccn: "83309"
+    ccn_display: "833 09"
+    facility_name: "INCINERATOR BUILDING AND INCINERATOR (TN)"
+    uom: "SF"
+    parent_fac: "8332"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 45
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [45]
+    narrative_sections:
+      - section_id: "83309-1"
+        first_line: "DEFINITION. An incinerator building is associated with an incinerator. An"
+    tables: []
+  - ccn: "83310"
+    ccn_display: "833 10"
+    facility_name: "INCINERATOR - EXTERIOR (TN)"
+    uom: "TH"
+    parent_fac: "8332"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 46
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [46]
+    narrative_sections: []
+    tables:
+      - table_id: "page_46_table_1"
+        caption: ""
+        page: 46
+        loading_driver: "TBD"
+        headers:
+          - ["Population (military-civilian residing on station)", "", "Incinerator capacity", ""]
+          - ["", "", "(tons per 8 hr day)", ""]
+        rows:
+          - ["up to 2,000", "5", "", ""]
+          - ["2,001 to 4,000", "10", "", ""]
+          - ["4,001 to 6,000", "15", "", ""]
+          - ["6,001 to 8,000", "20", "", ""]
+          - ["8,001 to 10,000", "25", "", ""]
+  - ccn: "83315"
+    ccn_display: "833 15"
+    facility_name: "SANITARY/CUT-FILL DISPOSAL AREA"
+    uom: "EA"
+    parent_fac: "8332"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 46
+    pages: [46]
+    narrative_sections:
+      - section_id: "83315-1"
+        first_line: "DEFINITION. Landfilling solid waste is the technology of last resort."
+    tables: []
+  - ccn: "83320"
+    ccn_display: "833 20"
+    facility_name: "GARBAGE GRINDER BUILDING"
+    uom: "SF"
+    parent_fac: "8330"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 47
+    pages: [47]
+    narrative_sections:
+      - section_id: "83320-1"
+        first_line: "DEFINITION. A building used for the collection of refuse or recyclable"
+    tables: []
+  - ccn: "83321"
+    ccn_display: "833 21"
+    facility_name: "GARBAGE GRINDER (TN)"
+    uom: "TN"
+    parent_fac: "8330"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 47
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [47]
+    narrative_sections: []
+    tables: []
+  - ccn: "83330"
+    ccn_display: "833 30"
+    facility_name: "GARBAGE STAND"
+    uom: "EA"
+    parent_fac: "8330"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 47
+    pages: [47]
+    narrative_sections: []
+    tables: []
+  - ccn: "83340"
+    ccn_display: "833 40"
+    facility_name: "GARBAGE HOUSE/RECYCLE CENTER BUILDING"
+    uom: "SF"
+    parent_fac: "8330"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 47
+    pages: [47]
+    narrative_sections: []
+    tables: []
+  - ccn: "84109"
+    ccn_display: "841 09"
+    facility_name: "WATER TREATMENT FACILITY BUILDING"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 48
+    pages: [48]
+    narrative_sections:
+      - section_id: "84109-1"
+        first_line: "DEFINITION. This Category Code includes buildings associated with a"
+      - section_id: "84109-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be included"
+    tables: []
+  - ccn: "84110"
+    ccn_display: "841 10"
+    facility_name: "WATER TREATMENT PLANT - POTABLE (KG)"
+    uom: "KG"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 48
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [48]
+    narrative_sections:
+      - section_id: "84110-1"
+        first_line: "DEFINITION. This Category Code includes the structures, equipment,"
+      - section_id: "84110-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All the water treatment plant"
+    tables: []
+  - ccn: "84115"
+    ccn_display: "841 15"
+    facility_name: "NUCLEAR REACTOR WATER TREATMENT FACILITY (KG)"
+    uom: "KG"
+    parent_fac: "8412"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 49
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [49]
+    narrative_sections:
+      - section_id: "84115-1"
+        first_line: "DEFINITION. No criteria for this facility are currently available."
+    tables: []
+  - ccn: "84120"
+    ccn_display: "841 20"
+    facility_name: "WATER SUPPLY LINE"
+    uom: "LF"
+    parent_fac: "8412"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 49
+    pages: [49]
+    narrative_sections:
+      - section_id: "84120-1"
+        first_line: "DEFINITION. The pipe that conveys water from source to point of"
+      - section_id: "84120-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "84125"
+    ccn_display: "841 25"
+    facility_name: "DESALINIZATION PLANT (KG)"
+    uom: "KG"
+    parent_fac: "8412"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 49
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [49]
+    narrative_sections:
+      - section_id: "84125-1"
+        first_line: "DEFINITION. A water treatment plant that utilizes a process, such as"
+      - section_id: "84125-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All the equipment involved in the"
+    tables: []
+  - ccn: "84130"
+    ccn_display: "841 30"
+    facility_name: "STORAGE TANKS - ELEVATED, POTABLE (GA)"
+    uom: "GA"
+    parent_fac: "8412"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 49
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [49]
+    narrative_sections: []
+    tables: []
+  - ccn: "84140"
+    ccn_display: "841 40"
+    facility_name: "STORAGE TANKS - GROUND LEVEL, POTABLE (GA)"
+    uom: "GA"
+    parent_fac: "8413"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 50
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [50]
+    narrative_sections: []
+    tables: []
+  - ccn: "84150"
+    ccn_display: "841 50"
+    facility_name: "WATER WELLS - POTABLE (KG)"
+    uom: "KG"
+    parent_fac: "8413"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 50
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [50]
+    narrative_sections:
+      - section_id: "84150-1"
+        first_line: "DEFINITION. Equipment that pumps water from underground sources to"
+      - section_id: "84150-2"
+        first_line: "PROPERTY RECORD CARD USAGE - All equipment associated with a"
+    tables: []
+  - ccn: "84151"
+    ccn_display: "841 51"
+    facility_name: "RESERVOIR - POTABLE WATER (MG)"
+    uom: "MG"
+    parent_fac: "8413"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 50
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [50]
+    narrative_sections:
+      - section_id: "84151-1"
+        first_line: "DEFINITION. An open body of water for the collection and storage of"
+    tables: []
+  - ccn: "84152"
+    ccn_display: "841 52"
+    facility_name: "WATER CATCHMENT STRUCTURE (GA)"
+    uom: "SY"
+    parent_fac: "8442"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 51
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [51]
+    narrative_sections:
+      - section_id: "84152-1"
+        first_line: "DEFINITION. A man-made structure designed to capture or collect"
+    tables: []
+  - ccn: "84209"
+    ccn_display: "842 09"
+    facility_name: "WATER DISTRIBUTION BUILDING, POTABLE"
+    uom: "SF"
+    parent_fac: "8442"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 51
+    pages: [51]
+    narrative_sections:
+      - section_id: "84209-1"
+        first_line: "DEFINITION. This Category Code includes buildings associated with the"
+      - section_id: "84209-2"
+        first_line: "PROPERTY RECORD CARD USAGE – Each building shall be included"
+    tables: []
+  - ccn: "84210"
+    ccn_display: "842 10"
+    facility_name: "WATER DISTRIBUTION LINE, POTABLE"
+    uom: "LF"
+    parent_fac: "8442"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 51
+    pages: [51]
+    narrative_sections:
+      - section_id: "84210-2"
+        first_line: "DEFINITION. All pipes that convey potable water from the treatment plant"
+      - section_id: "84210-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "84215"
+    ccn_display: "842 15"
+    facility_name: "PUMP STATION - POTABLE WATER (KG)"
+    uom: "KG"
+    parent_fac: "8422"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 52
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [52, 53]
+    narrative_sections:
+      - section_id: "84215-1"
+        first_line: "DEFINITION. This category code will include the pump(s) and"
+      - section_id: "84215-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment in a single pump"
+    tables:
+      - table_id: "page_53_table_1"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Height and Area (Sq Ft)", "", "Unsprinkered", "", "", "", "", "Sprinklered", "", "", "", "", "", ""]
+          - ["", "", "Hose Streams", "", "", "", "", "Hose Streams", "", "Sprinkler Demand", "", "Total 4B", "", ""]
+          - ["", "", "Fire", "", "Frame, N.C. (All Metal)", "", "Fire Resistive, N.C. (Masonry) Ordinary, and Heavy Timber", "", "Frame, N.C. (All Metal)", "", "Fire Resistive, N.C. (Masonry) Ordinary, and Heavy Timber", "", "Frame, N.C. (All Metal)", ""]
+        rows:
+          - ["", "", "Resistiv", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "e, N.C.", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "(Masonr", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "y)", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "Ordinar", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "y, and", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "Heavy", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["", "", "Timber", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["1 Story 0B", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["0-10,000", "750", "", "", "1,250", "", "250", "", "250", "500", "750", "", "750", ""]
+          - ["10,000-20,000", "1,000", "", "", "1,750", "", "250", "", "250", "750", "1,000", "", "1,000", ""]
+          - ["20,000-80,000", "1,250", "", "", "2,500", "", "250", "", "500", "1,000", "1,250", "", "1,500", ""]
+          - ["Multistory 1B", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+          - ["0-10,000", "1,000", "", "", "2,000", "", "250", "", "500", "500", "750", "", "1,000", ""]
+          - ["10,000-20,000 2B", "1,250", "", "", "2,500", "", "250", "", "500", "750", "750", "", "1,250", ""]
+          - ["20,000-80,000 3B", "1,750", "", "", "3,000", "", "300", "", "750", "1,000", "1,500", "", "1,750", ""]
+      - table_id: "page_53_table_2"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - [""]
+          - [""]
+          - ["Sprinkler"]
+        rows:
+          - ["Demand"]
+      - table_id: "page_53_table_3"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Fire"]
+          - ["Resistive,"]
+          - ["N.C."]
+        rows:
+          - ["(Masonry)"]
+          - ["Ordinary,"]
+          - ["and Heavy"]
+          - ["Timber"]
+      - table_id: "page_53_table_4"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Fire"]
+          - ["Resistive,"]
+          - ["N.C."]
+        rows:
+          - ["(Masonry)"]
+          - ["Ordinary,"]
+          - ["and Heavy"]
+          - ["Timber"]
+      - table_id: "page_53_table_5"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Height and Area"]
+          - ["(Sq Ft)"]
+        rows: []
+      - table_id: "page_53_table_6"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Frame,"]
+          - ["N.C. (All"]
+          - ["Metal)"]
+        rows: []
+      - table_id: "page_53_table_7"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["Frame,"]
+          - ["N.C. (All"]
+          - ["Metal)"]
+        rows: []
+      - table_id: "page_53_table_8"
+        caption: ""
+        page: 53
+        loading_driver: "TBD"
+        headers:
+          - ["", "Fire Flow Demands", "", "", "Storage Requirements (hours)", "", "Storage Requirements", ""]
+          - ["", "(gallons per minute)", "", "", "", "", "(gallons)", ""]
+        rows:
+          - ["up to 750", "", "", "1-1 ½", "", "66,500", "", ""]
+          - ["up to 1,250", "", "", "2", "", "150,000", "", ""]
+          - ["up to 1,750", "", "", "2", "", "210,000", "", ""]
+          - ["up to 2,250", "", "", "2-2 ½", "", "338,000", "", ""]
+          - ["up to 3,000", "", "", "3", "", "540,000", "", ""]
+          - ["over 3,000", "", "", "4", "", "960,000", "", ""]
+  - ccn: "84310"
+    ccn_display: "843 10"
+    facility_name: "FIRE PROTECTION LINES"
+    uom: "LF"
+    parent_fac: "8432"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 54
+    pages: [54]
+    narrative_sections:
+      - section_id: "84310-1"
+        first_line: "DEFINITION. Fire protection pipelines are used exclusively in the"
+      - section_id: "84310-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+      - section_id: "84310-2"
+        first_line: "PROPERTY RECORD CARD USAGE. All equipment in a single pump"
+    tables: []
+  - ccn: "84320"
+    ccn_display: "843 20"
+    facility_name: "FIRE PROTECTION PUMP STATION (KG)"
+    uom: "KG"
+    parent_fac: "8432"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 54
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [54]
+    narrative_sections:
+      - section_id: "84320-1"
+        first_line: "DEFINITION. A fire protection pumping station is a collection of pumps"
+    tables: []
+  - ccn: "84330"
+    ccn_display: "843 30"
+    facility_name: "WATER STORAGE TANK - FIRE PROTECTION WATER"
+    uom: "MG"
+    parent_fac: "8432"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 54
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [54]
+    narrative_sections:
+      - section_id: "84330-1"
+        first_line: "DEFINITION. Tanks that provide fire protection water storage to"
+      - section_id: "84330-2"
+        first_line: "PROPERTY RECORD CARD USAGE – Each tank shall be shown on a"
+    tables: []
+  - ccn: "84335"
+    ccn_display: "843 35"
+    facility_name: "RESERVOIRS - FIRE PROTECTION WATER (MG)"
+    uom: "MG"
+    parent_fac: "8432"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 54
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [54]
+    narrative_sections: []
+    tables: []
+  - ccn: "84340"
+    ccn_display: "843 40"
+    facility_name: "WELLS - FIRE PROTECTION WATER (GM)"
+    uom: "GM"
+    parent_fac: "8431"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 55
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [55]
+    narrative_sections:
+      - section_id: "84340-1"
+        first_line: "DEFINITION. This Category Code is for equipment that pumps water"
+      - section_id: "84340-2"
+        first_line: "PROPERTY RECORD CARD USAGE – Each well shall be shown on a"
+    tables: []
+  - ccn: "84350"
+    ccn_display: "843 50"
+    facility_name: "FIRE PROTECTION BUILDING"
+    uom: "SF"
+    parent_fac: "8431"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 55
+    pages: [55]
+    narrative_sections:
+      - section_id: "84350-1"
+        first_line: "DEFINITION. This Category Code includes buildings associated with the"
+      - section_id: "84350-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be included"
+    tables: []
+  - ccn: "84410"
+    ccn_display: "844 10"
+    facility_name: "WATER DISTRIBUTION BUILDING, NONPOTABLE WATER"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 56
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [56]
+    narrative_sections:
+      - section_id: "84410-1"
+        first_line: "DEFINITION. This Category Code includes all buildings associated with"
+      - section_id: "84410-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each building shall be included"
+    tables: []
+  - ccn: "84420"
+    ccn_display: "844 20"
+    facility_name: "WATER WELL (KG)"
+    uom: "KG"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 56
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [56]
+    narrative_sections:
+      - section_id: "84420-1"
+        first_line: "DEFINITION. This Category Code includes equipment that pumps water"
+      - section_id: "84420-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each well and associated"
+    tables: []
+  - ccn: "84430"
+    ccn_display: "844 30"
+    facility_name: "PUMP STATION - NONPOTABLE WATER (KG)"
+    uom: "KG"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 56
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [56]
+    narrative_sections:
+      - section_id: "84430-1"
+        first_line: "DEFINITION. This Category Code includes the collection of pumps and"
+      - section_id: "84430-2"
+        first_line: "PROPERTY RECORD CARD USAGE. The equipment in a single pump"
+    tables: []
+  - ccn: "84440"
+    ccn_display: "844 40"
+    facility_name: "STORAGE TANKS - NONPOTABLE WATER (GA)"
+    uom: "GA"
+    parent_fac: "8442"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 57
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [57]
+    narrative_sections:
+      - section_id: "84440-1"
+        first_line: "DEFINITION. This Category Code includes tanks that provide non-"
+      - section_id: "84440-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each tank shall be shown on a"
+      - section_id: "84440-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each reservoir shall be shown on"
+    tables: []
+  - ccn: "84450"
+    ccn_display: "844 50"
+    facility_name: "RESERVOIRS - NONPOTABLE WATER (MG)"
+    uom: "MG"
+    parent_fac: "8442"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 57
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [57]
+    narrative_sections:
+      - section_id: "84450-1"
+        first_line: "DEFINITION. This Category Code includes a reservoir that has a capacity"
+    tables: []
+  - ccn: "84451"
+    ccn_display: "844 51"
+    facility_name: "STORMWATER TREATMENT STRUCTURE (GM)"
+    uom: ""
+    parent_fac: "8717"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 58
+    pages: [58]
+    narrative_sections:
+      - section_id: "84451-1"
+        first_line: "DEFINITION. A stormwater control structure that uses chambers, gradations,"
+    tables: []
+  - ccn: "84520"
+    ccn_display: "845 20"
+    facility_name: "WATER DISTRIBUTION LINE, NONPOTABLE"
+    uom: "LF"
+    parent_fac: "8717"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 58
+    pages: [58]
+    narrative_sections:
+      - section_id: "84520-1"
+        first_line: "DEFINITION. This Category Code includes all pipes that transmit water in"
+      - section_id: "84520-2"
+        first_line: "PROPERTY RECORD CARD USAGE. There may be multiple property"
+    tables: []
+  - ccn: "85110"
+    ccn_display: "851 10"
+    facility_name: "ROADS"
+    uom: "SY"
+    parent_fac: "8717"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 58
+    pages: [58]
+    narrative_sections: []
+    tables: []
+  - ccn: "85111"
+    ccn_display: "851 11"
+    facility_name: "ROADS, UNSURFACED"
+    uom: "SY"
+    parent_fac: "8717"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 58
+    pages: [58]
+    narrative_sections: []
+    tables: []
+  - ccn: "85115"
+    ccn_display: "851 15"
+    facility_name: "LOAD/UNLOAD RAMP"
+    uom: "SY"
+    parent_fac: "8717"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 58
+    pages: [58]
+    narrative_sections: []
+    tables: []
+  - ccn: "85120"
+    ccn_display: "851 20"
+    facility_name: "VEHICULAR BRIDGES"
+    uom: "SY"
+    parent_fac: "8513"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 59
+    pages: [59]
+    narrative_sections: []
+    tables: []
+  - ccn: "85121"
+    ccn_display: "851 21"
+    facility_name: "VEHICULAR PARKING, UNSURFACED"
+    uom: "SY"
+    parent_fac: "8513"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 59
+    pages: [59]
+    narrative_sections:
+      - section_id: "85121-1"
+        first_line: "DEFINITION. An unpaved surface for parking and/or staging private"
+    tables: []
+  - ccn: "85122"
+    ccn_display: "851 22"
+    facility_name: "VEHICLE STAGING AREA"
+    uom: "SY"
+    parent_fac: "8513"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 59
+    pages: [59]
+    narrative_sections:
+      - section_id: "85122-1"
+        first_line: "DEFINITION. This category code represents surfaced areas for the"
+    tables: []
+  - ccn: "85123"
+    ccn_display: "851 23"
+    facility_name: "TRAFFIC CONTROL SIGNALS"
+    uom: "EA"
+    parent_fac: "8513"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 59
+    pages: [59]
+    narrative_sections:
+      - section_id: "85123-1"
+        first_line: "DEFINITION. Traffic control signals are devices used for directing"
+      - section_id: "85123-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Each (EA) is defined as one"
+    tables: []
+  - ccn: "85125"
+    ccn_display: "851 25"
+    facility_name: "VEHICULAR TUNNELS"
+    uom: "LF"
+    parent_fac: "8514"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 60
+    pages: [60]
+    narrative_sections:
+      - section_id: "85125-1"
+        first_line: "DEFINITION. Vehicular tunnels are used for slope stabilization and"
+    tables: []
+  - ccn: "85210"
+    ccn_display: "852 10"
+    facility_name: "PARKING AREA"
+    uom: "SY"
+    parent_fac: "8514"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 60
+    pages: [60, 61, 62, 63]
+    narrative_sections:
+      - section_id: "85210-1"
+        first_line: "ORGANIZATIONAL VEHICLE PARKING. The paved and/or stabilized"
+      - section_id: "85210-1.1"
+        first_line: "Navy and Marine Corps installations (except Marine Corps"
+      - section_id: "85210-1.2"
+        first_line: "Marine Corps installations with FMF Ground Units assigned. Seventy-"
+      - section_id: "85210-2"
+        first_line: "NON-ORGANIZATIONAL VEHICLE PARKING. Authorized parking"
+      - section_id: "85210-3"
+        first_line: "REFUELING VEHICLE PARKING. A paved area to provide parking for"
+      - section_id: "85210-3.1"
+        first_line: "Separation Distances. One hundred feet is the optimum separation"
+    tables:
+      - table_id: "Table 85210-1"
+        caption: ""
+        page: 61
+        loading_driver: "Personnel"
+        headers:
+          - ["Facility", "Number of Parking Spaces"]
+          - ["Administration, Headquarters, and Office Buildings", "60% of assigned personnel"]
+          - ["Bakeries", "75% of employees"]
+        rows:
+          - ["Bank and Credit Union, when not included in a Community Shopping", "2% of customers served"]
+          - ["Cafeteria, Civilian, when not included in a Community Shopping Center", "15% of seating capacity"]
+          - ["Central Food Preparation Facilities", "38% of employees"]
+          - ["Chapels", "30% of seating capacity"]
+          - ["Child Development Centers (Patron Parking)", "10% of children served"]
+          - ["Child Development Centers (Staff Parking)", "80% of staff"]
+          - ["Commissary Stores, Food Sales, when not included in a Community Shopping Center", "Contact DeCA for parking requirements."]
+          - ["Community Shopping Center, including such elements as Main Exchange, Miscellaneous Shops, Restaurant, Commissary Stores, Food Sales, Bank, Theater, Post Office", "4% of customers served"]
+          - ["Dental Clinic Parking", "3 spaces per treatment room"]
+          - ["Dormitories (BEQ, Enlisted Unaccompanied Personnel Housing)", "70% of design capacity"]
+          - ["Enlisted Personnel Dining Facilities (Staff Parking)", "38% of employees"]
+      - table_id: "page_62_table_2"
+        caption: ""
+        page: 62
+        loading_driver: "Personnel"
+        headers:
+          - ["Facility", "Number of Parking Spaces"]
+          - ["Enlisted Personnel Dining Facilities (Patron Parking)", "8% of enlisted personnel served"]
+          - ["Exchanges, Main, when not included in a Community Shopping Center", "25% of customers served"]
+        rows:
+          - ["Family Housing", "2.5 spaces per living unit"]
+          - ["Field House, combined with Football and Baseball Facilities", "1% of military strength"]
+          - ["Fire Stations", "100% of largest shift"]
+          - ["Guard Houses, Brigs, Military Police Stations", "30% of guard and staff strength"]
+          - ["Fitness Center", "1 percent of military strength served"]
+          - ["Laundries and Dry Cleaning Plants", "38% of employees"]
+          - ["Libraries (Central)", "1 space for each 46 m2 (500 ft2) of gross floor area"]
+          - ["Libraries (Branch)", "8 spaces"]
+          - ["Maintenance Shops", "40% of employees"]
+          - ["Medical Facilities (Staff Parking)", "Use UFC 4-510-01"]
+          - ["Medical Facilities (Outpatient / Visitor Parking)", "Use UFC 4-510-01"]
+          - ["Naval Criminal Investigation Service Field Offices, Resident Agencies and Resident Units", "60% of assigned personnel"]
+          - ["Officers’ Quarters (BOQ, Officer Unaccompanied Personnel Housing)", "100% of living suites"]
+          - ["Reserve Training Center Parking", "80% of reservists, largest drill period"]
+          - ["Schools, Dependent, with Auditorium", "2 spaces per classroom plus 15 percent of auditorium seats"]
+          - ["Schools, Dependent, without Auditorium", "2 spaces per classroom"]
+          - ["Security Offices: Population served 100 to 2,000", "5 spaces"]
+          - ["Security Offices: Population served 2,001 to 4,000 population", "10 spaces"]
+      - table_id: "page_63_table_3"
+        caption: ""
+        page: 63
+        loading_driver: "TBD"
+        headers:
+          - ["Facility", "Number of Parking Spaces"]
+          - ["Security Offices: Population served 4,001 to 6,000 population", "15 spaces"]
+          - ["Security Offices: Population served 6,001 to 10,000 population", "20 spaces"]
+        rows:
+          - ["Security Offices: Population served 10,001 and over", "To be based on a special study."]
+          - ["Service Clubs (Open Mess and Club Facility)", "2% of military strength served"]
+          - ["Swimming Pools", "20 percent of the pool capacity"]
+          - ["Temporary Lodging Facilities", "90% of bedrooms"]
+          - ["Theaters, when not included in a Community Shopping Center", "25% of seating capacity"]
+          - ["Training Buildings (Staff Parking)", "70% of staff"]
+          - ["Training Buildings (Student Parking)", "60% of students"]
+          - ["Warehouses", "40% of employees"]
+  - ccn: "85215"
+    ccn_display: "852 15"
+    facility_name: "BICYCLE SHELTER"
+    uom: "SF"
+    parent_fac: "7384"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 64
+    pages: [64]
+    narrative_sections: []
+    tables: []
+  - ccn: "85220"
+    ccn_display: "852 20"
+    facility_name: "SIDEWALK"
+    uom: "SY"
+    parent_fac: "7384"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 64
+    pages: [64]
+    narrative_sections: []
+    tables: []
+  - ccn: "85230"
+    ccn_display: "852 30"
+    facility_name: "PEDESTRIAN BRIDGES"
+    uom: "SY"
+    parent_fac: "7384"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 64
+    pages: [64]
+    narrative_sections: []
+    tables: []
+  - ccn: "85241"
+    ccn_display: "852 41"
+    facility_name: "BUILDING/TRAILER PAD WITH UTILITY CONNECTIONS"
+    uom: "SY"
+    parent_fac: "8526"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 65
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [65]
+    narrative_sections:
+      - section_id: "85241-1"
+        first_line: "BUILDING/TRAILER PAD WITH UTILITY CONNECTIONS. Paved"
+    tables: []
+  - ccn: "85310"
+    ccn_display: "853 10"
+    facility_name: "PARKING BUILDING"
+    uom: "SF"
+    parent_fac: "8526"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 65
+    pages: [65]
+    narrative_sections:
+      - section_id: "85310-1"
+        first_line: "DEFINITION. A structure or building designed for parking private and/or"
+    tables: []
+  - ccn: "86010"
+    ccn_display: "860 10"
+    facility_name: "RAILROAD TRACKAGE (MI)"
+    uom: "MI"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 66
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [66]
+    narrative_sections:
+      - section_id: "86010-1"
+        first_line: "RAILROAD TRACKAGE. The planning of railroad trackage will be based"
+    tables: []
+  - ccn: "86020"
+    ccn_display: "860 20"
+    facility_name: "EXPLOSIVE BARRICADE FOR SUSPECT TRUCKS AND RAILROAD CARS"
+    uom: "EA"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 66
+    pages: [66]
+    narrative_sections:
+      - section_id: "86020-1"
+        first_line: "EXPLOSIVE BARRICADE FOR SUSPECT TRUCKS AND RAILROAD"
+    tables: []
+  - ccn: "86030"
+    ccn_display: "860 30"
+    facility_name: "RAILROAD BRIDGE AND TRESTLE (MI)"
+    uom: "MI"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 66
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [66]
+    narrative_sections: []
+    tables: []
+  - ccn: "86040"
+    ccn_display: "860 40"
+    facility_name: "CRANE TRACKAGE (MI)"
+    uom: "MI"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 67
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [67]
+    narrative_sections: []
+    tables: []
+  - ccn: "86041"
+    ccn_display: "860 41"
+    facility_name: "RAILROAD SCALEHOUSE"
+    uom: "SF"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 67
+    pages: [67]
+    narrative_sections:
+      - section_id: "86041-1"
+        first_line: "RAILROAD SCALEHOUSE. A railroad scale house is a facility designed"
+    tables: []
+  - ccn: "87110"
+    ccn_display: "871 10"
+    facility_name: "STORM SEWER"
+    uom: "LF"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 67
+    pages: [67]
+    narrative_sections: []
+    tables: []
+  - ccn: "87111"
+    ccn_display: "871 11"
+    facility_name: "OIL/WATER SEPARATOR - RUNOFF WATER (KG)"
+    uom: "KG"
+    parent_fac: "8601"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 67
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [67]
+    narrative_sections:
+      - section_id: "87111-1"
+        first_line: "DEFINITION. A facility for the separation of grease, oil, or grit from"
+    tables: []
+  - ccn: "87115"
+    ccn_display: "871 15"
+    facility_name: "STORM WATER PUMPING STATION"
+    uom: "EA"
+    parent_fac: "8452"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 68
+    pages: [68]
+    narrative_sections: []
+    tables: []
+  - ccn: "87116"
+    ccn_display: "871 16"
+    facility_name: "STORMWATER RETENTION PONDS (MG)"
+    uom: "MG"
+    parent_fac: "8452"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 68
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [68]
+    narrative_sections:
+      - section_id: "87116-1"
+        first_line: "DEFINITION. An impoundment for the temporary storage of water"
+    tables: []
+  - ccn: "87120"
+    ccn_display: "871 20"
+    facility_name: "DRAINAGE DITCH"
+    uom: "LF"
+    parent_fac: "8452"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 68
+    pages: [68]
+    narrative_sections:
+      - section_id: "87120-1"
+        first_line: "DEFINITION. Drainage ditches serve the same purpose as storm sewers."
+    tables: []
+  - ccn: "87125"
+    ccn_display: "871 25"
+    facility_name: "DAM"
+    uom: "LF"
+    parent_fac: "8452"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 68
+    pages: [68]
+    narrative_sections:
+      - section_id: "87125-1"
+        first_line: "DEFINITION. A dam is an artificial or natural barrier usually constructed"
+      - section_id: "87125-2"
+        first_line: "Dimensions and Capacity: A dam is at least six feet in height, measured"
+    tables: []
+  - ccn: "87126"
+    ccn_display: "871 26"
+    facility_name: "LEVEE AND/OR DIKE"
+    uom: "LF"
+    parent_fac: "8714"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 69
+    pages: [69]
+    narrative_sections:
+      - section_id: "87126-1"
+        first_line: "DEFINITION. A levee is a type of dam that runs along the banks of a river"
+    tables: []
+  - ccn: "87130"
+    ccn_display: "871 30"
+    facility_name: "IRRIGATION FACILITY"
+    uom: "LF"
+    parent_fac: "8714"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 69
+    pages: [69]
+    narrative_sections: []
+    tables: []
+  - ccn: "87135"
+    ccn_display: "871 35"
+    facility_name: "RETAINING WALL"
+    uom: "LF"
+    parent_fac: "8714"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 69
+    pages: [69]
+    narrative_sections: []
+    tables: []
+  - ccn: "87145"
+    ccn_display: "871 45"
+    facility_name: "DREDGED SPOIL HANDLING FACILITY (GM)"
+    uom: "EA"
+    parent_fac: "8714"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 69
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [69]
+    narrative_sections: []
+    tables: []
+  - ccn: "87210"
+    ccn_display: "872 10"
+    facility_name: "STATION SECURITY AND PERIMETER FENCING AND WALLS"
+    uom: "LF"
+    parent_fac: "8721"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 70
+    pages: [70, 71, 72]
+    narrative_sections:
+      - section_id: "87210-1"
+        first_line: "DEFINITION. Security fencing and walls define the limits of security areas"
+      - section_id: "87210-1.1"
+        first_line: "Standard Security Fencing. The average standard security fence of the"
+      - section_id: "87210-1.2"
+        first_line: "Security Fencing for Storage of Security Risk Categories I and II. The"
+      - section_id: "87210-1.3"
+        first_line: "Barbed Wire. There are instances such as in isolated air stations, where"
+      - section_id: "87210-1.4"
+        first_line: "Walls. Where walls, floors, and roofs serve as barriers, they should be"
+    tables:
+      - table_id: "Table 87210-1"
+        caption: ""
+        page: 71
+        loading_driver: "TBD"
+        headers:
+          - ["Application", "Location or Special Requirement", "Suitable Type", "", "Height", "", "", "", ""]
+          - ["", "", "", "", "Feet", "", "", "Inches", ""]
+          - ["Restricted Area Security", "Restricted Areas — as defined in OPNAVINST 5530.14E", "Chain link security fence with three strands of barbed wire mounted on outriggers (facing out except for brigs).", "Refer to OPNAVINST 5530.14E", "", "", "", "", ""]
+        rows:
+          - ["Magazines storing SRC I & II A&E", "Restricted Areas — as defined in DoDM 5100.76", "Fence fabric shall be chain link, i.e., galvanized, aluminized, or plastic- coated woven steel, 2-inch square mesh made from 9- gauge diameter wire, excluding coating that meets Federal Specification RR-F-191K.", "Refer to DoDM 5100.76", "", "", "", "", ""]
+          - ["Non-metallic Security Fence Requirement", "Where restrictions of visibility into activity is desired.", "Wooden Security fence", "Refer to OPNAVINST 5530.14E", "", "", "", "", ""]
+          - ["", "At radio direction-finder structures.", "Wooden Security fence", "", "", "", "", "", ""]
+          - ["", "Where chain link materials are not available.", "Wooden Security fence", "", "", "", "", "", ""]
+          - ["Protection of sports facilities, users and spectators", "Athletic courts.", "Chain link.", "10-12", "", "", "--", "", ""]
+          - ["", "Swimming pools.", "Chain link or decorative wood.", "6", "", "", "--", "", ""]
+          - ["", "Playgrounds.", "Chain link or decorative wood.", "5", "", "", "--", "", ""]
+          - ["Snow fencing", "Where drifting snow is a problem.", "Picket interwoven with wire- studded metal posts", "4", "", "", "--", "", ""]
+          - ["Right-of-way fencing", "Railways, highways", "Woven wire fencing or wooden or metal posts with or without barbed wire.", "4.5", "", "", "--", "", ""]
+          - ["Animal Fencing", "Woven wire fencing with wooden or metal posts—barbed wire as indicated:", "", "", "", "", "", "", ""]
+          - ["", "Horses, mules, cattle, general.", "1 strand top", "--", "", "", "47", "", ""]
+          - ["", "Hogs.", "1 strand at bottom", "--", "", "", "32-39", "", ""]
+          - ["", "Sheep and goats.", "1 strand at top", "--", "", "", "39-47", "", ""]
+          - ["", "Poultry.", "None", "--", "", "", "48-72", "", ""]
+          - ["Perimeter marking", "Property lines, firing ranges, outside security barrier of high security area", "Two strand barbed wire.", "--", "", "", "42", "", ""]
+          - ["", "", "Three strand barbed wire (wood or metal posts).", "--", "", "", "48", "", ""]
+          - ["Decorative wood fencing", "To discourage passage or access.", "Picket fence.", "3-5", "", "", "--", "", ""]
+          - ["", "", "Post and rail or horizontal board.", "4", "", "", "--", "", ""]
+          - ["", "To provide privacy and screening.", "Stockade fence.", "6-8", "", "", "--", "", ""]
+          - ["", "", "Louver fence.", "6-7", "", "", "--", "", ""]
+      - table_id: "page_72_table_2"
+        caption: ""
+        page: 72
+        loading_driver: "TBD"
+        headers:
+          - ["Application", "", "Location or Special", "", "Suitable Type", "", "Height", "", "", "", ""]
+          - ["", "", "Requirement", "", "", "", "Feet", "", "", "Inches", ""]
+          - ["", "", "", "", "Basket weave fence.", "6-8", "", "", "--", "", ""]
+        rows: []
+  - ccn: "87211"
+    ccn_display: "872 11"
+    facility_name: "HARDENED SECURITY FENCE"
+    uom: "SF"
+    parent_fac: "8722"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 72
+    pages: [72]
+    narrative_sections:
+      - section_id: "87211-1"
+        first_line: "DEFINITION. Security is a key issue for all military installations; hardened"
+      - section_id: "87211-2"
+        first_line: "Prior to making decisions to employ security fencing, perform a thorough"
+    tables: []
+  - ccn: "87215"
+    ccn_display: "872 15"
+    facility_name: "INTERIOR FENCING (NOT CODED IN 872 10)"
+    uom: "LF"
+    parent_fac: "8722"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 72
+    pages: [72]
+    narrative_sections: []
+    tables: []
+  - ccn: "87220"
+    ccn_display: "872 20"
+    facility_name: "GUARD AND WATCH TOWERS"
+    uom: "EA"
+    parent_fac: "1499"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 73
+    pages: [73]
+    narrative_sections:
+      - section_id: "87220-1"
+        first_line: "DEFINITION. Where authorized, guard or watchtowers should be"
+    tables: []
+  - ccn: "87230"
+    ccn_display: "872 30"
+    facility_name: "MECHANICAL SECURITY BARRICADE"
+    uom: "EA"
+    parent_fac: "1499"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 73
+    pages: [73]
+    narrative_sections:
+      - section_id: "87230-1"
+        first_line: "DEFINITION. Mechanically operated barricade consisting of pop-up"
+      - section_id: "87230-2"
+        first_line: "PROPERTY RECORD CARD USAGE. EA is defined as a single"
+    tables: []
+  - ccn: "87250"
+    ccn_display: "872 50"
+    facility_name: "ENTRY GATE"
+    uom: "LF"
+    parent_fac: "1499"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 73
+    pages: [73]
+    narrative_sections:
+      - section_id: "87250-1"
+        first_line: "ENTRY GATE. An entry gate is the frame, gate, or other apparatus that"
+    tables: []
+  - ccn: "88010"
+    ccn_display: "880 10"
+    facility_name: "FIRE ALARM SYSTEM (MI)"
+    uom: "MI"
+    parent_fac: "1351"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 74
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [74]
+    narrative_sections:
+      - section_id: "88010-1"
+        first_line: "FIRE ALARM SYSTEM. Fire alarm systems are of two general types:"
+      - section_id: "88010-1.1"
+        first_line: "Exterior Fire Reporting Facilities. Exterior fire reporting systems of"
+      - section_id: "88010-1.2"
+        first_line: "Interior Fire Reporting Facilities"
+    tables: []
+  - ccn: "88020"
+    ccn_display: "880 20"
+    facility_name: "WATCH REPORTING SYSTEM (MI)"
+    uom: "MI"
+    parent_fac: "1351"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 75
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [75]
+    narrative_sections:
+      - section_id: "88020-1"
+        first_line: "WATCH REPORTING SYSTEM. A watch reporting system provides a"
+    tables: []
+  - ccn: "88030"
+    ccn_display: "880 30"
+    facility_name: "BASE ALERT SYSTEMS (MI)"
+    uom: "MI"
+    parent_fac: "1351"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 75
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [75]
+    narrative_sections:
+      - section_id: "88030-1"
+        first_line: "BASE ALERT SYSTEMS. Base alert systems shall be planned for all"
+    tables: []
+  - ccn: "88040"
+    ccn_display: "880 40"
+    facility_name: "AIR CRASH/ALERT (MI)"
+    uom: "MI"
+    parent_fac: "1351"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 75
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [75]
+    narrative_sections:
+      - section_id: "88040-1"
+        first_line: "AIR CRASH/ALERT. No planning criteria are currently available."
+    tables: []
+  - ccn: "89009"
+    ccn_display: "890 09"
+    facility_name: "MISCELLANEOUS UTILITY BUILDING"
+    uom: "SF"
+    parent_fac: "1351"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 75
+    pages: [75]
+    narrative_sections:
+      - section_id: "89009-1"
+        first_line: "DEFINITION. This Category Code is used for structures associated with"
+    tables: []
+  - ccn: "89010"
+    ccn_display: "890 10"
+    facility_name: "ACETYLENE PLANT"
+    uom: "EA"
+    parent_fac: "8921"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 76
+    pages: [76]
+    narrative_sections: []
+    tables: []
+  - ccn: "89011"
+    ccn_display: "890 11"
+    facility_name: "ACETYLENE DISTRIBUTION SYSTEM"
+    uom: "LF"
+    parent_fac: "8921"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 76
+    pages: [76]
+    narrative_sections: []
+    tables: []
+  - ccn: "89015"
+    ccn_display: "890 15"
+    facility_name: "NITROGEN PLANT"
+    uom: "EA"
+    parent_fac: "8921"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 76
+    pages: [76]
+    narrative_sections:
+      - section_id: "89015-1"
+        first_line: "DEFINITION. A nitrogen plant is required for the provision of large"
+    tables: []
+  - ccn: "89018"
+    ccn_display: "890 18"
+    facility_name: "UTILITY VAULT-NON COMMUNICATIONS"
+    uom: "EA"
+    parent_fac: "8921"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 76
+    pages: [76]
+    narrative_sections:
+      - section_id: "89018-1"
+        first_line: "DEFINITION. A utility vault is an enclosed structure generally made of"
+    tables: []
+  - ccn: "89020"
+    ccn_display: "890 20"
+    facility_name: "COMPRESSED AIR PLANT"
+    uom: "EA"
+    parent_fac: "8921"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 76
+    pages: [76]
+    narrative_sections: []
+    tables: []
+  - ccn: "89021"
+    ccn_display: "890 21"
+    facility_name: "COMPRESSED AIR DISTRIBUTION SYSTEM"
+    uom: "LF"
+    parent_fac: "8930"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 77
+    pages: [77]
+    narrative_sections: []
+    tables: []
+  - ccn: "89025"
+    ccn_display: "890 25"
+    facility_name: "CARBON DIOXIDE PLANT"
+    uom: "EA"
+    parent_fac: "8930"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 77
+    pages: [77]
+    narrative_sections:
+      - section_id: "89025-1"
+        first_line: "DEFINITION. A carbon dioxide plant at a naval activity provides space for"
+    tables: []
+  - ccn: "89027"
+    ccn_display: "890 27"
+    facility_name: "ICE-MAKING PLANT (TN)"
+    uom: "SF"
+    parent_fac: "8930"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 77
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [77]
+    narrative_sections:
+      - section_id: "89027-1"
+        first_line: "DEFINITION. No planning criteria are currently available."
+    tables: []
+  - ccn: "89030"
+    ccn_display: "890 30"
+    facility_name: "INDUSTRIAL OXYGEN PLANT"
+    uom: "EA"
+    parent_fac: "8930"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 77
+    pages: [77]
+    narrative_sections: []
+    tables: []
+  - ccn: "89031"
+    ccn_display: "890 31"
+    facility_name: "OXYGEN DISTRIBUTION SYSTEM"
+    uom: "LF"
+    parent_fac: "8930"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 77
+    pages: [77]
+    narrative_sections: []
+    tables: []
+  - ccn: "89045"
+    ccn_display: "890 45"
+    facility_name: "VALVE HOUSE OR OTHER ENCLOSURE"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 78
+    pages: [78]
+    narrative_sections:
+      - section_id: "89045-1"
+        first_line: "DEFINITION. This Category Code is used for any structure used for"
+    tables: []
+  - ccn: "89050"
+    ccn_display: "890 50"
+    facility_name: "ICS COMMUNICATION LINES (MI)"
+    uom: "MI"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 78
+    uom_source: "CCN_VOCABULARY.json (Appendix A 2019-06-27); Series PDF heading omitted UoM, ratifier should verify against current Series text"
+    pages: [78]
+    narrative_sections:
+      - section_id: "89050-1"
+        first_line: "DEFINITION. This category code is used for Industrial Control System"
+      - section_id: "89050-2"
+        first_line: "PROPERTY RECORD CARD USAGE. Industrial Control System"
+    tables: []
+  - ccn: "89051"
+    ccn_display: "890 51"
+    facility_name: "ICS MONITORING STATION"
+    uom: "SF"
+    parent_fac: "8910"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 78
+    pages: [78, 79, 80, 81, 82, 83, 84, 85]
+    narrative_sections:
+      - section_id: "89051-1"
+        first_line: "BACKGROUND. The Navy and Marine Corps Smart Grid Program"
+      - section_id: "89051-2"
+        first_line: "DEFINITION. The ICS Monitoring Station is the utility support facility that"
+      - section_id: "89051-2.1"
+        first_line: "Types of ICS Monitoring Stations."
+      - section_id: "89051-3"
+        first_line: "SPACE TYPES AND PLANNING FACTORS"
+      - section_id: "89051-4"
+        first_line: "PROPERTY RECORD CARD USAGE. Each ICS Monitoring Station"
+    tables:
+      - table_id: "page_80_table_1"
+        caption: ""
+        page: 80
+        loading_driver: "TBD"
+        headers:
+          - ["ICS Components Located OUTSIDE of a Controlled Building or Utility", "", ""]
+          - ["Component", "Picture", "Property Classification"]
+          - ["ICS Monitoring Station (Building – Square Feet)", "", "Real Property (CCN 89051)"]
+        rows:
+          - ["Wired Communications (Cable – Linear Feet)", "", "Real Property (CCN 89050)"]
+          - ["Network Devices", "", "Personal Property"]
+          - ["Computers", "", "Personal Property"]
+          - ["Software", "", "Personal Property"]
+          - ["Wireless Communications", "", "Personal Property"]
+      - table_id: "page_81_table_2"
+        caption: ""
+        page: 81
+        loading_driver: "TBD"
+        headers:
+          - ["ICS Components Located INSIDE of a Controlled Building or Utility", "", ""]
+          - ["Component", "Picture", "Property Classification"]
+          - ["Supervisory Controllers", "", "Real Property Installed Equipment"]
+        rows:
+          - ["Network Devices", "", "Personal Property"]
+          - ["Supervisory Control and Data Acquisition (SCADA)", "", "Real Property Installed Equipment"]
+          - ["Direct Digital Control (DDC)", "", "Real Property Installed Equipment"]
+          - ["Advanced Metering Infrastructure (AMI) Meters", "", "Real Property Installed Equipment"]
+          - ["Sensors", "", "Real Property Installed Equipment"]
+          - ["Actuators", "", "Real Property Installed Equipment"]
+          - ["Cameras", "", "Personal Property"]
+          - ["Protection", "", "Personal Property"]
+      - table_id: "page_84_table_3"
+        caption: ""
+        page: 84
+        loading_driver: "TBD"
+        headers:
+          - ["Space Type", "NSF Factor/Multiplier"]
+          - ["Office and Assembly Space:", ""]
+          - ["Private Offices", "120 NSF/person"]
+        rows:
+          - ["Open Offices", "64 NSF/person"]
+          - ["Administrative Support Space", "8 NSF/PN for office space personnel."]
+          - ["Conference Room at Installation Level ICSMS", "200 NSF"]
+          - ["Conference Room at Regional Level ICSMS", "400 NSF"]
+          - ["Reception Area at Regional Level ICSMS", "164 NSF"]
+          - ["Office and Assembly Space Circulation Multiplier", "10%"]
+          - ["Special Purpose Space:", ""]
+          - ["ICS Integration and Application Space", "200 NSF"]
+          - ["IT Storage Space", "150 NSF"]
+          - ["Master Control Room", "90 NSF/Operator Work Station"]
+          - ["Reception Area", "164 NSF"]
+          - ["Server Room", "See Table 89051-4"]
+          - ["Technical Equipment Area", "100 NSF"]
+          - ["Bunk Room (for emergency events)", "130 NSF"]
+          - ["Break Room (apply in lieu of Kitchen)", "20 NSF/PN"]
+          - ["Kitchen (for emergency events)", "30 NSF/PN justified"]
+          - ["Locker Room", "10 NSF/Locker/PN justified"]
+          - ["Shower Room (for emergency events)", "20 NSF/Shower"]
+          - ["Circulation Multiplier", "10%"]
+          - ["ICS Monitoring Station NTG Factor:", "1.35"]
+      - table_id: "page_85_table_4"
+        caption: ""
+        page: 85
+        loading_driver: "TBD"
+        headers:
+          - ["Space Type: Office and General Purpose Space", "Qty", "NSF Factor or Multiplier", "Subtotal NSF", "Total Area NSF"]
+          - ["Private Office Space (PN)", "4", "120", "", "480"]
+          - ["Open Office Space (PN)", "8", "64", "", "512"]
+        rows:
+          - ["Administrative Support Space Factor (PN)", "12", "8", "", "96"]
+          - ["Conference Room (EA) Installation", "0", "200", "", "0"]
+          - ["Conference Room (EA) Regional", "1", "400", "", "400"]
+          - ["Reception Area (EA) Regional", "1", "164", "", "164"]
+          - ["Office and Assembly Space Subtotal (NSF)", "", "", "1,652", ""]
+          - ["Office and Assembly Space Circulation (NSF)", "", "10%", "165", ""]
+          - ["Total Office and Assembly Space (NSF):", "", "", "", "1,817"]
+          - ["Space Type: Special Purpose Space", "", "", "", ""]
+          - ["ICS Integration and Application Space (EA)", "1", "200", "", "200"]
+          - ["IT Storage Space (EA)", "1", "150", "", "150"]
+          - ["Master Control Room (WS)", "6", "90", "", "540"]
+          - ["Server Room (Racks)", "4", "60", "", "240"]
+          - ["Technical Equipment Area (EA)", "1", "100", "", "100"]
+          - ["Break Room (based MCR personnel during largest shift)", "8", "160", "", "160"]
+          - ["Bunk Room for Emergency Events (EA)", "0", "130", "", "0"]
+          - ["Kitchen (based MCR personnel during largest shift)", "0", "20", "", "0"]
+          - ["Locker Room (based MCR personnel during largest shift)", "0", "10", "", "0"]
+          - ["Shower Room (Up to two showers)", "0", "20", "", "0"]
+          - ["Special Purpose Space Subtotal (NSF)", "", "", "1390", ""]
+          - ["Circulation Multiplier: (NSF)", "", "10%", "139", ""]
+          - ["Total Special Purpose Space (NSF)", "", "", "", "1,529"]
+          - ["Total Net Area Subtotal", "", "", "3346", ""]
+          - ["Net-to-Gross Factor (NTG)", "", "35%", "1,171", ""]
+          - ["Total Gross Area (GSF)", "", "", "", "4,517"]
+  - ccn: "89056"
+    ccn_display: "890 56"
+    facility_name: "WEIGHTING FACILITY"
+    uom: "EA"
+    parent_fac: "8923"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 86
+    pages: [86]
+    narrative_sections: []
+    tables: []
+  - ccn: "89077"
+    ccn_display: "890 77"
+    facility_name: "STORAGE FOR UTILITY SYSTEMS (READY ISSUE/SHOP STORES/MISC.)"
+    uom: "SF"
+    parent_fac: "8923"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 86
+    pages: [86]
+    narrative_sections:
+      - section_id: "89077-1"
+        first_line: "DEFINITION. This facility provides covered storage for large items and"
+    tables: []
+  - ccn: "89210"
+    ccn_display: "892 10"
+    facility_name: "MONITORING WELLS"
+    uom: "EA"
+    parent_fac: "8923"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 86
+    pages: [86]
+    narrative_sections:
+      - section_id: "89210-1"
+        first_line: "DEFINITION. Monitoring wells are for inventory purposes only."
+    tables: []
+  - ccn: "89320"
+    ccn_display: "893 20"
+    facility_name: "UTILITY CHANNEL NON-COMMUNICATIONS"
+    uom: "LF"
+    parent_fac: "8932"
+    series: "800"
+    source_pdf: "fc_2_000_05n_800series_03_31_2025.pdf"
+    source_date: "2025-03-31"
+    first_page: 87
+    pages: [87]
+    narrative_sections:
+      - section_id: "89320-1"
+        first_line: "DEFINITION. A utility channel is an underground channel for utility distribution"
     tables: []

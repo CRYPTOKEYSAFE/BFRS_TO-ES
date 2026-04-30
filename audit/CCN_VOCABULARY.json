@@ -7,7 +7,8 @@
     "extraction_date": "2026-04-28",
     "extractor": "audit/extract_ccn_appendix_a.py",
     "apex_omega_note": "Source CCN catalog is dated 2019-06-27. Time-stamp at citation per Apex Omega Sec. 5.5. CCN catalog (NAVFAC P-72 lineage) changes infrequently; current planning-factor authority is FC 2-000-05N Series 100 (2025-12-10) and Series 200 (2025-05-16).",
-    "authority_chain": "FC 2-000-05N Appendix A -> NAVFAC P-72 (DON Facility Category Codes)"
+    "authority_chain": "FC 2-000-05N Appendix A -> NAVFAC P-72 (DON Facility Category Codes)",
+    "notes": " 87250 ENTRY GATE added 2026-04-30 from methodology-owner spec; post-2019 CCN not in Appendix A extraction; verify on next refresh."
   },
   "ccn_count": 1059,
   "ccns": [
@@ -12142,6 +12143,19 @@
       "page": 186,
       "title": "MECH SEC BARRICADE",
       "description": "MECHANICALLY OPERATED BARRICADE CONSISTING OF POP-UP BOLLARDS, RISING ROAD PLATES, OR WEDGES DESIGNED TO CONTROL VEHICLULAR OR OTHER TRAFFIC. UNIT OF MEASURE IS EA AND INCLUDES DEVICES USED FOR A SINGLE TRAFFIC LANE."
+    },
+    {
+      "ccn": "87250",
+      "fac_code": "8721",
+      "rpa_type": "LS",
+      "uom_area": null,
+      "uom_other": "[LF]",
+      "uom_alt": null,
+      "rqmts_rptg_ind": "N",
+      "page": null,
+      "title": "ENTRY GATE",
+      "description": "ENTRY GATE; PORTION OF STATION SECURITY/PERIMETER FENCE WALL DEDICATED TO PEDESTRIAN AND VEHICLE INGRESS/EGRESS. CCN ADDED JANUARY 2024 (POST 2019-06-27 APPENDIX A EXTRACTION). ADDED TO LOCAL VOCABULARY FROM USER-SUPPLIED CLB-4 SPEC 2026-04-30; PENDING FC 2-000-05N APPENDIX A REFRESH.",
+      "_provenance_note": "not_in_2019_appendix_a_extraction; added 2026-04-30 from methodology-owner spec; verify against current FC 2-000-05N Appendix A on next refresh"
     },
     {
       "ccn": "88010",

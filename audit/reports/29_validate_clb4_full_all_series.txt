@@ -1,0 +1,69 @@
+================================================================
+BFR Validation Report, Layer 6 Pipeline Harness
+================================================================
+Source workbook : out/CLB4_BFR_full.xlsx
+Sheet count     : 26
+  visible       : 26
+  hidden        : 0
+Vocabulary      : CCN_VOCABULARY.json (1060 CCNs)
+
+CHECK: 1. Schema (TO/TE columns)    PASS
+  - TO: header row 6; required cols matched 10/10
+  - TE: header row 4; required cols matched 10/10
+
+CHECK: 2. NOTE coverage             FAIL
+  - TO: data rows=310, NOTE matched=268, empty=42, malformed=0
+  - TE: data rows=854, NOTE matched=854, empty=0, malformed=0
+
+CHECK: 3. NOTE<->CCN consistency    PASS
+  - TO: rows examined=268, mismatches=0
+  - TE: rows examined=854, mismatches=0
+
+CHECK: 4. Vocabulary                PASS
+  - CCN sheets found: 23; unknown to vocabulary: 0
+  - TO: unique CCNs in CCN column=7; unknown to vocabulary=0
+  - TE: unique CCNs in CCN column=8; unknown to vocabulary=0
+
+CHECK: 5. Cell error scan           PASS
+  - error tokens found: 0; counts={'#REF!': 0, '#DIV/0!': 0, '#NAME?': 0, '#VALUE!': 0, '#NULL!': 0, '#NUM!': 0}
+
+CHECK: 6. Roll-up integrity         PASS
+  - UNIT_ROLLUP sheet: 'UNIT_ROLLUP'; CCN sheets in workbook=23; CCNs listed in rollup=23
+  - workbook CCN sheets: ['14312', '14326', '14345', '21451', '21455', '21710', '21730', '44112', '45110', '53010', '61072', '81160', '83141', '83143', '85121', '85122', '85210', '85235', '85240', '87210', '87230', '87250', '88010']
+  - rollup-listed CCNs: ['14312', '14326', '14345', '21451', '21455', '21710', '21730', '44112', '45110', '53010', '61072', '81160', '83141', '83143', '85121', '85122', '85210', '85235', '85240', '87210', '87230', '87250', '88010']
+  -   sheet '14312': TOTAL at H37 = '=AB16'
+  -   sheet '14326': TOTAL at H37 = '=AB14'
+  -   sheet '14345': TOTAL at H37 = '=AB16'
+  -   sheet '21451': TOTAL at H37 = '=AB24'
+  -   sheet '21455': TOTAL at H37 = '=AB16'
+  -   sheet '21710': TOTAL at H37 = '=AB24'
+  -   sheet '21730': TOTAL at H37 = '=AB24'
+  -   sheet '44112': TOTAL at H37 = '=AB16'
+  -   sheet '45110': TOTAL at H37 = '=AB16'
+  -   sheet '53010': TOTAL at H37 = '=AB14'
+  -   sheet '61072': TOTAL at H37 = '=AB20'
+  -   sheet '81160': TOTAL at H37 = '=AB16'
+  -   sheet '83141': TOTAL at H37 = '=AB16'
+  -   sheet '83143': TOTAL at H37 = '=AB16'
+  -   sheet '85121': TOTAL at H37 = '=AB16'
+  -   sheet '85122': TOTAL at H37 = '=AB16'
+  -   sheet '85210': TOTAL at H37 = '=AB16'
+  -   sheet '85235': TOTAL at H37 = '=AB16'
+  -   sheet '85240': TOTAL at H37 = '=AB16'
+  -   sheet '87210': TOTAL at H37 = '=AB16'
+  -   sheet '87230': TOTAL at H37 = '=AB16'
+  -   sheet '87250': TOTAL at H37 = '=AB16'
+  -   sheet '88010': TOTAL at H37 = '=AB16'
+
+CHECK: 7. Billet accounting         FAIL
+  - TO data rows=310, attributed=268, orphans=42, distinct attributed CCNs=7
+  -   per-CCN counts (top 6): [('44112', 63), ('21730', 49), ('61072', 47), ('21451', 43), ('21710', 28), ('14345', 20)]
+  -   orphan sample (row, BIC or NOTE): [(28, 'M2911100028'), (30, 'M2911100030'), (32, 'M2911100032'), (33, 'M2911100033'), (82, 'M2911100057')]
+
+CHECK: 8. Equipment accounting      PASS
+  - TE data rows=854, attributed=854, orphans=0, distinct attributed CCNs=8
+  -   per-CCN counts (top 6): [('44112', 314), ('21710', 225), ('14345', 184), ('14326', 69), ('21451', 30), ('61072', 15)]
+
+----------------------------------------------------------------
+OVERALL: 6 PASS / 2 FAIL
+----------------------------------------------------------------

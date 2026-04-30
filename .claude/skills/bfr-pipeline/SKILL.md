@@ -450,6 +450,46 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- CLB-4 Series 800 worked example expanded. Methodology owner
+  supplied per-CCN spec for 12 Series 800 facilities applicable
+  to a CLB-shaped unit; entries added to `samples/clb4_ccns.json`
+  with cited factors:
+    85210 Parking Area (SY)             100 vehicles x 75 SY (FAC 8521)
+    85122 Vehicle Staging Area (SY)     5,000 SY mount-out (FAC 8523)
+    85121 Vehicular Parking Unsurfaced  0 (paved primary) (FAC 8522)
+    87210 Station Security/Perimeter    2,000 LF fence (FAC 8721)
+    87250 Entry Gate (LF)               30 LF for 1-2 gates (FAC 8721)
+    87230 Mechanical Security Barricade 2 EA drop-arm (FAC 1458)
+    83143 Hazardous Waste Storage Bldg  400 SF (FAC 4423)
+    83141 Hazardous Waste Stg/Transfer  1 EA structure (FAC 8926)
+    81160 Standby Generator Plant (KW)  150 KW (FAC 8112)
+    88010 Fire Alarm System (MI)        1 MI (FAC 1351)
+    85235 Other Paved Areas (SY)        1,000 SY misc (FAC 8526)
+    85240 Misc Open Storage Paved (SY)  2,000 SY (FAC 8526)
+  Each entry's loading_label cites FAC code, the user-supplied
+  spec, and explicit "placeholder pending unit input / Series 800
+  PDF cross-check" notes. CCN 87250 (ENTRY GATE, added Jan 2024
+  post-Appendix-A-2019-extraction) added to
+  `audit/CCN_VOCABULARY.json` with explicit `_provenance_note`
+  flagging it for verification on next vocab refresh. Generated
+  CLB-4 BFR now spans 23 CCN sheets (was 11). Validator: 6 PASS
+  / 2 FAIL (Check 4 Vocabulary now passes with 87250 added; the
+  2 FAILs remain Check 2 NOTE coverage and Check 7 billet
+  accounting on the 42 BMOS-rule-lift-pending billets).
+  Series 300 (v300.20230302, 2 Mar 2023) and Series 800
+  (v800.20250331, 31 Mar 2025) PDFs landed on origin/main at
+  commit 2a6d06a immediately after this entry was first authored.
+  Re-extraction now covers all 6 Series PDFs: 1,003 distinct CCN
+  records (was 780, +223), 564 factor tables, 712 engineering-
+  study CCNs with narrative captured. Per-Series counts: 100=357,
+  200=187, 300=60, 400=53, 500=20, 600=16, 700=158, 800=152.
+  Citation footers on the 12 CLB-4 Series 800 sheets lifted from
+  TBD to cited: 85210 cites Series 800 v2025-03-31 pages 60-63
+  Table 85210-1 with the parking-ratios-per-facility-type table
+  rows visible verbatim; 87210 cites pages 70-72 Table 87210-1
+  with the SRC-I/II ammo fence and chain-link/wooden alternatives
+  visible inline; 81160/83143/83141/88010/85235/85240 cite their
+  Series 800 narrative_section first lines (engineering-study).
 - Track 8, TFSMS_UNRECONCILED reconciliation gate repaired
   (methodology-owner direction received: Option A1 unmerge plus
   three-state gate). The B19:O19 merge was unmerged; B19:C19

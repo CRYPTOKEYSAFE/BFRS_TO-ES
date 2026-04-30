@@ -942,6 +942,54 @@ Track 7 (RE-SCOPED 2026-04-30 per methodology owner). ASR
    AND a sample real ASR PDF. Without samples, prototyping would
    be guesses about ASR layout (Apex Omega rule 4).
 
+- Debug pass on the CLB-4 product (commit 8a49fa8). Two real
+  bugs found and fixed; validator stayed at 8 PASS / 0 FAIL.
+  Bug 1: UNIT_ROLLUP grand total at E35 mixed UoMs. Replaced
+    with one SUBTOTAL row per UoM that appears in the unit's
+    CCN list. CLB-4 now emits SUBTOTAL (EA), SUBTOTAL (GSF),
+    SUBTOTAL (GSY), SUBTOTAL (KW), SUBTOTAL (LF), SUBTOTAL (MI)
+    each summing only matching-UoM cells. Per Apex Omega rule 4,
+    when you cannot honestly sum heterogeneous units, you do
+    not pretend.
+  Bug 2: methodology mismatch on engineering-study CCNs.
+    pipeline/template.py methodology_warning_for(ccn, pattern)
+    returns a one-line warning when a CCN's chosen pattern is
+    closed-form (admin / primary_items / shop_with_bays /
+    default) AND the CCN has no factor table in
+    PLANNING_FACTORS AND has narrative_sections. Warning rendered
+    in WARNING_FILL palette (#F8E2D6) above the citation footer.
+    Verified on out/CLB4_BFR_full.xlsx:
+      53010 BAS Dispensary  (admin, engineering-study) -> warning
+      61072 BN HQ Admin     (admin, engineering-study) -> warning
+      14345 Armory          (primary_items, factor)    -> clean
+      54010 Dental Clinic   (admin, factor)            -> clean
+      72210 Galley          (admin, factor)            -> clean
+    Apex Omega rule 4 enforced at the generated-BFR level: the
+    user sees inline that those numbers are CLB-4 observed-pattern
+    placeholders, not FC-defensible.
+
+- 3d MED BN strategic basing package landed (origin/main commit
+  30bdeaa, merged into dev branch). Six artifacts at repo root:
+    "3d Med Bn Strat Basing Req CG SIGNED (004).pdf"  (signed)
+    "CG Endorsement Surg Co B 3d Med Bn 3d MLG - G-5 Basing
+      Actionv1.docx"
+    "FW_ CG MCIPAC Endorsement Request 2026-04-30T15_19_44+
+      09_00.eml"
+    "Tab A - 3d MLG, 3 MED BN, SURGICAL CO B. Endorsement
+      Letters (1).pdf"
+    "Tab B - 3d MLG Bravo Surgical Decision Brief v2 (2).pdf"
+    "Tab C - Basing assessment Surg Co B_MCB Butler Aug 2025_
+      KMedit 250926.pptx"
+  Subject: III MEF 3d MLG Strategic Basing Program request for
+  Surgical Company B at MCB Camp Butler. Strategic basing is
+  upstream of BFR generation (decides WHERE the unit sits); BFR
+  is the facility requirements document once site is chosen.
+  Pipeline applies to 3d MED BN as soon as TFSMS exports for
+  the unit (or Surgical Co B specifically) arrive. NEXT-list
+  expansion: a 3d MED BN unit profile + CCN list (mirroring
+  samples/clb4_*.json) plus M134* / M67400* TFSMS exports for
+  the unit's companies.
+
 - Tracks 1d-extended-2 and 1e shipped together (Layer 3 BMOS
   rule lift + Layer 5 unit-type-defaults ratification using the
   now-supplied Series 500/600/700 narratives).

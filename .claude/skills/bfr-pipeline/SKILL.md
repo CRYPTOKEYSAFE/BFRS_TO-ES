@@ -450,6 +450,28 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 8, TFSMS_UNRECONCILED reconciliation gate repaired
+  (methodology-owner direction received: Option A1 unmerge plus
+  three-state gate). The B19:O19 merge was unmerged; B19:C19
+  (merged) now holds the label "Reconciliation Gate"; D19:O19
+  (merged) holds the live formula returning one of three states:
+  PENDING (yellow, ASR not yet provided), FALSE - RECONCILED
+  (green, TFSMS=ASR, BFR releasable per DoD item 6), TRUE -
+  UNRECONCILED (red, TFSMS<>ASR; per-bucket diagnostic at rows
+  41-51 surfaces which bucket is off). ASR data entry section
+  added at TFSMS_Loading rows 26-37 mirroring the TFSMS layout
+  (rows 9-17). PN_* named-range family added parallel to
+  TFSMS_* family (PN_MAR_OFF/PN_MAR_ENL/PN_NAV_OFF/PN_NAV_ENL/
+  PN_OS_OFF/PN_OS_ENL/PN_RES_OFF/PN_RES_ENL/PN_CIV/PN_CTR/PN_NC/
+  PN_TOTAL all in row 37). Recalc verification: 5,553 cells, zero
+  error tokens via Python `formulas` package; fullCalcOnLoad=True.
+  CLAUDE.md item 6 updated to document the three-state workflow.
+  audit/FINDINGS.md Finding 9 closed; new Finding 9b records the
+  repair. The user's stated workflow ("sometimes I have ASR,
+  sometimes I don't") is now supported without weakening Apex
+  Omega Sec.5.6: PENDING is the truthful default state, not
+  silently treated as "OK". Definition of Done item 6 satisfiable
+  for any unit once user pastes both TFSMS and ASR counts.
 - Track 1f, FC 2-000-05N Series 400/500/600/700 PDFs landed
   (origin/main commit e00823c, merged into dev branch). Series 300
   and 800 still not supplied (training/range and utilities/ground;
@@ -846,16 +868,7 @@ Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
    (vehicle storage 21710 is doctrinally clear). Each addition
    requires a citation; do not chase the orphan count by guessing.
 
-Track 8 (HIGH PRIORITY, methodology-owner direction required).
-   Wire the TFSMS_UNRECONCILED reconciliation gate per
-   `audit/FINDINGS.md` Finding 9. Today the named range resolves to
-   `TFSMS_Loading!$D$19` which is part of merged range `$B$19:$O$19`
-   and structurally cannot hold a value. Definition of Done item 6
-   ("TFSMS_UNRECONCILED = FALSE") cannot be honestly satisfied for
-   any unit until this is fixed. Repair options are documented in
-   Finding 9 (Option A unmerge, Option B relocate the named range).
-   Choice between them is a methodology-owner decision; not a guess
-   for this pipeline to make.
+Track 8 shipped (DONE entry below).
 
 Track 7. Format-D PDF ingestion prototype
    (`pipeline/pdf_ingest.py`). Builds against a real TFSMS or ASR

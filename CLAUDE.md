@@ -119,8 +119,17 @@ hold. This is the acceptance test.
 5. All cross-references resolve, named ranges, sheet refs, and
    lookups all point at populated cells. No external links. No
    `#REF!` or `#N/A` in the defined-names list.
-6. TFSMS reconciliation gate green, `TFSMS_UNRECONCILED` flag
-   is `FALSE`; ASR-reconciled `PN_*` named ranges populated.
+6. TFSMS reconciliation gate green. `TFSMS_UNRECONCILED` at
+   `TFSMS_Loading!$D$19` reads `"FALSE - RECONCILED"`. The gate
+   formula is three-state: paste TFSMS counts into rows 9-15 and
+   ASR counts into rows 30-36; gate auto-checks. States: `PENDING`
+   (yellow, ASR not yet provided), `FALSE - RECONCILED` (green,
+   TFSMS=ASR, BFR releasable), `TRUE - UNRECONCILED` (red, TFSMS
+   not equal to ASR; per-bucket diagnostic at rows 41-51 shows
+   which bucket is off). `PN_*` named-range family
+   (`PN_MAR_OFF`, `PN_MAR_ENL`, ..., `PN_TOTAL`) parallels
+   the `TFSMS_*` family at row 37. See `audit/FINDINGS.md`
+   item 9b for the full repair record.
 7. Personnel summaries populated and accurate, billet
    breakdowns by rank, by MOS, by MCC (the `RecapMCC` / `RecapMOS` /
    `Billet Summary` equivalents). Numbers tie out to source TFSMS

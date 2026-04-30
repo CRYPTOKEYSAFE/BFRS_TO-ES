@@ -188,3 +188,69 @@ be authored without speculation.
 
 This audit does NOT silently fix the workbook. The defect is
 documented here and surfaced for methodology-owner direction.
+
+## 9b. TFSMS_UNRECONCILED gate repaired (Round 3 follow-up, 2026-04-30)
+
+Methodology owner directed: Option A1 (unmerge B19:O19) plus a
+three-state gate that supports the user's stated workflow
+("sometimes I have ASR, sometimes I don't").
+
+Repair shipped:
+
+  Cell B19:C19 (merged) holds the label "Reconciliation Gate".
+  Cell D19:O19 (merged) holds the formula
+    =IF(O37=0,"PENDING - ASR not yet provided",
+        IF(O17=O37,"FALSE - RECONCILED",
+                   "TRUE - UNRECONCILED"))
+  Conditional formatting on D19:
+    contains "FALSE" -> green fill (BFR releasable)
+    contains "TRUE"  -> red fill (BFR held; per-bucket diagnostic)
+    default          -> yellow (PENDING)
+  Cell comment documents the three states plus Apex Omega Sec.5.6
+  authority.
+
+ASR data entry section added at TFSMS_Loading rows 26-37:
+  Row 26: section heading
+  Row 27: "Per-UIC ASR Loading" sub-header
+  Row 28: column-group headers (Marine Active, Navy Active, etc.)
+  Row 29: column sub-headers (UIC, Unit Name, Off, Enl, ...)
+  Rows 30-36: 7 ASR data entry rows (mirror of TFSMS rows 9-15)
+  Row 37: ASR UNIT TOTAL (mirror of TFSMS row 17)
+
+Per-bucket reconciliation diagnostic at TFSMS_Loading rows 39-51:
+  Row 39: section heading
+  Row 40: column headers (Bucket, TFSMS, ASR, Delta, Status)
+  Rows 41-51: one row per personnel bucket showing TFSMS count,
+              ASR count, delta, and per-bucket status
+              (PENDING / OK / MISMATCH) with conditional fill.
+
+Named ranges:
+  TFSMS_UNRECONCILED rebound to TFSMS_Loading!$D$19 (now live)
+  PN_MAR_OFF, PN_MAR_ENL, PN_NAV_OFF, PN_NAV_ENL, PN_OS_OFF,
+  PN_OS_ENL, PN_RES_OFF, PN_RES_ENL, PN_CIV, PN_CTR, PN_NC,
+  PN_TOTAL all point at the corresponding cells in row 37.
+  Parallel to the TFSMS_* family at row 17.
+
+Recalc verification: 5,553 cells; zero error tokens
+(#REF!, #DIV/0!, #NAME?, #VALUE!) via Python `formulas` package.
+fullCalcOnLoad=True set on the workbook so Excel and LibreOffice
+recompute on open.
+
+Workflow per the methodology owner:
+
+  1. Paste TFSMS counts into rows 9-15 (existing). Totals roll up
+     to row 17 automatically. Gate at D19 reads
+     "PENDING - ASR not yet provided" because the ASR section is
+     empty. BFR planning work can proceed.
+  2. When ASR data is available, paste it into rows 30-36 with
+     the same UIC sequence. Totals roll up to row 37. Gate at D19
+     turns green ("FALSE - RECONCILED") if TFSMS = ASR, red
+     ("TRUE - UNRECONCILED") if not.
+  3. If red, the per-bucket diagnostic at rows 41-51 shows which
+     bucket is off. User adjusts either side until each bucket
+     reads "OK".
+  4. Definition of Done item 6 ("TFSMS_UNRECONCILED = FALSE") is
+     satisfied only in the green / RECONCILED state. Apex Omega
+     Sec.5.6 binding.
+
+Finding 9 (the structural defect) is closed by this commit.

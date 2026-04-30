@@ -990,6 +990,72 @@ Track 7 (RE-SCOPED 2026-04-30 per methodology owner). ASR
   samples/clb4_*.json) plus M134* / M67400* TFSMS exports for
   the unit's companies.
 
+- 3d MED BN package read in full (this session, 2026-04-30 JST,
+  on branch claude/resume-bfr-pipeline-nrRNC at HEAD 00c2f00).
+  All six artifacts opened and analyzed; the CG signed letter is
+  scanned image-only and required tesseract OCR to extract.
+  Captured products in audit/:
+    audit/3DMEDBN_BASING_BRIEF.md
+      Strategic-basing rundown for the user. Reconciles three
+      conflicting documents:
+        Tab B v9 (16 Mar 25), Tab C MCBB GF (1 Aug 25) - both
+          scoped to Bravo Surg Co only on Camp Foster (180 PN);
+          Tab C scorecard had Foster 4.45 vs Kinser 4.15.
+        CG signed ltr (2 Feb 26) - supersedes; consolidates
+          entire 3d Med Bn (HQ&S + Alpha + Bravo + MT/UT + MSTC,
+          711 PN) on Camp Kinser.
+        CG MCIPAC endorsement docx (Wolford draft) - confirms
+          Kinser, names six buildings: 107 (battalion co-use),
+          300 (MSTC), 613 (MT/UT), 400 (consolidated armory bay),
+          1225 (housing), 508 (supply). Tasker DON-250501-LTNQ.
+          POC Mark J. Godfrey, AC/S G-5 MCIPAC-MCBB.
+      Tab C facility categories mapped to CCN candidates:
+        ARMORY 944 SF                -> 14345
+        STORAGE/WAREHOUSE 3,500 SF   -> 44110
+        ORGANIC STORAGE 800 SF       -> 44112
+        HQS/ADMIN 4,063 SF           -> 61072 (or 61073 at Co level)
+        APPLIED INSTRUCTION 2,815 SF -> 17120
+        AUTO ORG SHOP 2,848 SF       -> 21410 (LOW confidence;
+          21410 vocab name is Combat Vehicle Maint Shop, medical
+          bn is not a combat-vehicle unit; Apex Omega rule 4
+          holds: render engineering-study warning, do not silently
+          fill)
+        TACTICAL VEH LAYDOWN 1,811 SY -> 85210 (PARKING AREA)
+        BEQ ~50 beds                 -> 72111
+        Role 2 medical               -> 53010 / 61074
+      Surg Co B equipment T/E captured (Tab A p16 / Tab B p7):
+        18 D00267K JLTV ambulances and 18 D10017K M997 ambulances
+        are the dominant laydown line item (36 ambulances total).
+      Email source: Kenji Music (CIV, Facility Planning,
+        MCBB PWB / GF / MCIPAC, DSN 315-645-3207) asked Doug Burk
+        and Anthony Potter (both CTR) for bandwidth; sizing was
+        "(1) Planner and (1) Engineer" for "a couple weeks";
+        framed as primer for the larger 3d MLG deep-dive.
+        Inner FW from Keith Simon (G-5 Plans MCIPAC, DSN 315-
+        645-2689) noted unit has effectively already moved to
+        Kinser and endorsement paperwork is catching up.
+    audit/email_to_kenji_DRAFT.md
+      Human-voiced reply for the user (Anthony Potter) to send
+      back to Kenji. Confirms Planner-side bandwidth, Engineer
+      seat TBD with name in 1-2 days, reads back the basing
+      action, proposes a 5-step first sprint, asks one data
+      question (current INFADS pull for the Kinser building list
+      vs. walk as data source), proposes Wed/Thu PM JST kickoff
+      with Mr. Kaye looped in. No AI jargon; tone is contractor-
+      to-customer professional.
+  No code changes this session. Pipeline state unchanged
+  (validator still 8 PASS / 0 FAIL on out/CLB4_BFR_full.xlsx).
+  No TFSMS / ASR data for 3d Med Bn yet - profile + CCN list
+  scaffolding still gated on user-supplied TFSMS export.
+  Terminology audit on the package (per repo hard rules):
+    CG signed letter writes "MCBB" (legacy).
+    CG MCIPAC endorsement docx writes "MCBCB" once and "MCBB"
+      twice (legacy).
+    Our work product (audit/3DMEDBN_BASING_BRIEF.md and the
+      Kenji email draft) uses MCIPAC and MCB Camp Butler
+      throughout. Source spellings preserved verbatim only when
+      directly quoting.
+
 - Tracks 1d-extended-2 and 1e shipped together (Layer 3 BMOS
   rule lift + Layer 5 unit-type-defaults ratification using the
   now-supplied Series 500/600/700 narratives).

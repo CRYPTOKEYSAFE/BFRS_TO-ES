@@ -197,20 +197,67 @@ def fc_citation_lookup(ccn: str) -> list[str]:
     return lines
 
 
-def render_fc_citation_footer(ws, ccn: str, start_row: int = 40):
+def methodology_warning_for(ccn: str, pattern: str) -> str:
+    """Return a one-line warning string when a CCN's chosen pattern
+    does not match the FC 2-000-05N methodology in PLANNING_FACTORS,
+    or empty string if no mismatch. Apex Omega rule 4: the displayed
+    TOTAL REQUIREMENT for these CCNs is a placeholder, not a
+    defensible FC-compliant number; the warning makes that visible
+    on the BFR sheet itself."""
+    pf = _load_planning_factors()
+    rec = pf.get(ccn)
+    if rec is None:
+        return ""
+    has_factor_table = bool(rec.get("tables"))
+    is_engineering_study = (
+        not has_factor_table and bool(rec.get("narrative_sections"))
+    )
+    # Patterns that compute a number from inputs: admin, primary_items,
+    # shop_with_bays, default. All four assume a closed-form factor.
+    closed_form_patterns = {"admin", "primary_items", "shop_with_bays", "default"}
+    if pattern in closed_form_patterns and is_engineering_study:
+        return (
+            "WARNING: FC 2-000-05N requires an engineering study for "
+            "this CCN; the displayed TOTAL REQUIREMENT is a CLB-4 "
+            "observed-pattern placeholder, not a defensible FC-cited "
+            "value. Replace with engineering-study output before BFR "
+            "release. Apex Omega rule 4."
+        )
+    return ""
+
+
+def render_fc_citation_footer(ws, ccn: str, start_row: int = 40,
+                              pattern: str = ""):
     """Write the FC 2-000-05N citation block as a styled footer on
     a CCN sheet starting at the given row. Uses the Apex Omega
     'calc' palette color (#EAF3F4) and a light border to set the
     block apart from the worksheet body without disturbing the
-    cosmetic style of the four CLB-4 reference sheets."""
+    cosmetic style of the four CLB-4 reference sheets.
+    When the CCN's pattern does not match the FC methodology
+    (e.g., admin pattern on an engineering-study CCN), a warning
+    line is rendered in the warning palette color (#F8E2D6) above
+    the citation block."""
+    warning = methodology_warning_for(ccn, pattern)
+    cur = start_row
+    if warning:
+        warn_cell = ws.cell(row=cur, column=2, value=warning)
+        warn_cell.font = SECTION_FONT
+        warn_cell.fill = WARNING_FILL
+        warn_cell.alignment = LEFT_WRAP
+        warn_cell.border = BOX
+        ws.merge_cells(start_row=cur, start_column=2,
+                       end_row=cur, end_column=8)
+        ws.row_dimensions[cur].height = 36
+        cur += 1
     lines = fc_citation_lookup(ccn)
-    title_cell = ws.cell(row=start_row, column=2,
+    title_cell = ws.cell(row=cur, column=2,
                          value="FC 2-000-05N Citation (Apex Omega Sec.5.5)")
     title_cell.font = SECTION_FONT
     title_cell.fill = CALC_FILL
     title_cell.border = BOX
-    ws.merge_cells(start_row=start_row, start_column=2,
-                   end_row=start_row, end_column=8)
+    ws.merge_cells(start_row=cur, start_column=2,
+                   end_row=cur, end_column=8)
+    start_row = cur  # so the body-line loop below uses the right offset
     for offset, text in enumerate(lines, start=1):
         body_cell = ws.cell(row=start_row + offset, column=2, value=text)
         body_cell.font = BODY_FONT
@@ -804,7 +851,8 @@ def make_ccn_sheet(wb: Workbook, profile: UnitProfile, spec: CcnSpec):
     # carry an explicit "TBD pending Series N" citation rather than
     # silently inheriting CLB-4 values.
     if ws is not None:
-        render_fc_citation_footer(ws, spec.ccn, start_row=40)
+        render_fc_citation_footer(ws, spec.ccn, start_row=40,
+                                  pattern=spec.pattern or "default")
     return ws
 
 
@@ -900,13 +948,33 @@ def make_unit_rollup(wb: Workbook, profile: UnitProfile,
         for c in range(2, 6):
             ws.cell(row=r, column=c).border = BOX
             ws.cell(row=r, column=c).alignment = CENTER_WRAP
+    # Per-UoM subtotals replace the single mixed-UoM grand total.
+    # NAVFAC P-72 facility CCNs use heterogeneous units (GSF, GSY,
+    # LF, EA, KW, MI). Summing them as one number is doctrinally
+    # meaningless. Apex Omega rule 4: if you cannot honestly add
+    # them up, do not pretend. The rollup therefore emits one
+    # subtotal row per UoM that appears in the unit's CCN list.
+    by_uom = {}
+    for i, spec in enumerate(ccns, start=1):
+        uom = gsf_or_gsy(spec.uom or "")
+        by_uom.setdefault(uom, []).append(base + i)
     total_row = base + 1 + len(ccns) + 1
-    ws.cell(row=total_row, column=2, value="GRAND TOTAL").font = LABEL_FONT_C
-    ws.cell(row=total_row, column=5,
-            value=f"=SUM(E{base+1}:E{base+len(ccns)})").font = LABEL_FONT_C
-    ws.cell(row=total_row, column=5).fill = OUTPUT_FILL
-    for c in range(2, 6):
-        ws.cell(row=total_row, column=c).border = TOP_THIN
+    cur = total_row
+    for uom in sorted(by_uom):
+        row_refs = by_uom[uom]
+        ranges = []
+        # Build SUMIFS-equivalent: SUM of E-cells whose row index
+        # is in row_refs. Use a literal SUM(E_a, E_b, ...) for
+        # simplicity since the row indices are static.
+        cell_list = ", ".join(f"E{r}" for r in row_refs)
+        ws.cell(row=cur, column=2, value=f"SUBTOTAL ({uom})").font = LABEL_FONT_C
+        ws.cell(row=cur, column=4, value=uom).font = BODY_FONT
+        ws.cell(row=cur, column=5,
+                value=f"=SUM({cell_list})").font = LABEL_FONT_C
+        ws.cell(row=cur, column=5).fill = OUTPUT_FILL
+        for c in range(2, 6):
+            ws.cell(row=cur, column=c).border = TOP_THIN
+        cur += 1
     return ws
 
 

@@ -1,0 +1,64 @@
+BFR ETL Run Report
+========================================================
+Output workbook : out/CLB4_BFR_full.xlsx
+Profile         : clb4_profile.json
+CCN list        : clb4_ccns.json
+Source TO files : 4
+  M29111_HQ_CO_CLB-4.xlsx  billets=85  equipment=223
+  M29112_CLC_A_CLB-4.xlsx  billets=58  equipment=193
+  M29113_CLC_B_CLB-4.xlsx  billets=58  equipment=193
+  M29114_GS_CO_CLB-4.xlsx  billets=109  equipment=245
+
+TO populated rows : 310
+TE populated rows : 854
+Classified billets: 268
+Unclassified      : 42
+
+Classified billets by NOTE tag (top 12):
+  44112w  63
+  21730  49
+  21451  43
+  61072o  27
+  61072c  20
+  14345  20
+  14326  18
+  21710ds  16
+  21710  8
+  21710shf  4
+
+Unclassified billets by reason:
+  23  rule navy_nec_l0_corpsman matched but tag_template is TBD
+  8  rule bmos_3300_food_service matched but tag_template is TBD
+  4  rule bmos_8000_medical matched but tag_template is TBD
+  2  rule navy_nec_l1_idc matched but tag_template is TBD
+  2  rule navy_nec_l3_dental matched but tag_template is TBD
+  2  rule bmos_2900_navy_nurse matched but tag_template is TBD
+  1  rule bmos_2200_navy_dental matched but tag_template is TBD
+
+TE attribution (Layer 5 TAMCN to facility CCN map):
+  Rule table   : /home/user/BFRS_TO-ES/audit/TAMCN_CCN_MAP.yaml
+  Active rules : 28
+  Skipped (TBD): 0  (rules: [])
+  TE rows      : 854
+  Attributed   : 854
+  Orphans      : 0
+  Per-CCN attribution:
+    44112  314
+    21710  225
+    14345  184
+    14326  69
+    21451  30
+    61072  15
+    21730  11
+    53010  6
+  Top rule hits:
+    individual_equipment_personal  135
+    engineer_heavy_equipment  123
+    individual_equipment_shop_set_misc  112
+    weapons_optics_sights  96
+    comm_radio_sets_and_shelters  55
+    weapons_small_arms  51
+    individual_equipment_chem_bio  42
+    motor_t_tactical_vehicles  42
+
+Apex Omega note: TAMCN orphans are surfaced, not silently dropped, per audit/TAMCN_CCN_MAP.yaml unmapped_disposition.do_not_silently_drop. SME review extends the rule table; do not guess CCNs.

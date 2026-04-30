@@ -539,13 +539,13 @@ unit; the order is the recommended build sequence.
 - Track 5b, TAMCN orphan closure. `audit/TAMCN_CCN_MAP.yaml`
   extended with 7 cited rule additions: medical_amal_kits lifted
   from confidence=low TBD to high (Series 500 53010 cited);
-  comm_admin_computers (A9-series → 61072 admin per Series 600
-  61072-1); comm_a7_e_class_test_kits (A7xxxxE → 21710);
+  comm_admin_computers (A9-series to 61072 admin per Series 600
+  61072-1); comm_a7_e_class_test_kits (A7xxxxE to 21710);
   weapons_aav_recovery (E-prefix K-class full-tracked vehicles
-  → 21710); misc_b_g_recon_instrument (B-prefix G-class → 21730);
-  misc_c_t_class_machine_tools (C-prefix T-class → 21451);
-  weapons_eod_x_class (E-prefix X-class → 14326). After:
-  TAMCN orphans 27 → 0; per-CCN attribution: 44112 (314), 21710
+  to 21710); misc_b_g_recon_instrument (B-prefix G-class to 21730);
+  misc_c_t_class_machine_tools (C-prefix T-class to 21451);
+  weapons_eod_x_class (E-prefix X-class to 14326). After:
+  TAMCN orphans 27 to 0; per-CCN attribution: 44112 (314), 21710
   (225), 14345 (184), 14326 (69), 21451 (30), 61072 (15),
   21730 (11), 53010 (6). `samples/clb4_ccns.json` gained 53010
   (CLB-4 BAS Dispensary) at 4 officers + 30 enlisted from
@@ -704,8 +704,13 @@ unit; the order is the recommended build sequence.
     factor-table CCNs:        14312 (3 tables), 14345 (1 table).
     engineering-study CCNs:   14326 (24 sections), 21451 (3),
                               21455 (1), 21710 (1), 21730 (1).
-    absent from supplied PDFs: 44112, 45110, 61072 (likely in
-                              Series 400 or 600, not supplied).
+    absent at the time of this Track 1b commit: 44112, 45110,
+                              61072. Now resolved by the Series
+                              400/500/600 supply landed at commit
+                              4b02732 (2026-04-30); 44112 cited
+                              from Series 400 page 46, 45110 from
+                              Series 400 pages 50-51, 61072 from
+                              Series 600 page 39.
   Validation: pdfplumber's table extraction is deterministic; the
   14345 Armory step function (576 SF up to 2,000 personnel scaling
   to 0.1 SF/person above 10,000) is preserved verbatim with
@@ -910,9 +915,96 @@ Track 5b (follow-on to Track 5). Extend `audit/TAMCN_CCN_MAP.yaml`
 
 Track 8 shipped (DONE entry below).
 
-Track 7. Format-D PDF ingestion prototype
-   (`pipeline/pdf_ingest.py`). Builds against a real TFSMS or ASR
-   PDF when one arrives. Held until then.
+Track 7 (RE-SCOPED 2026-04-30 per methodology owner). ASR
+   ingestion prototype that accepts BOTH Excel and PDF ASR
+   submissions. The pipeline must read whichever format the unit
+   provides and pipe the ASR counts into the methodology
+   workbook's TFSMS_Loading rows 30-36 (the ASR data entry
+   section installed by Track 8). Two new modules:
+     pipeline/asr_ingest.py - dispatcher; sniffs Excel vs PDF and
+       calls the right reader.
+     pipeline/asr_ingest_excel.py - reads ASR from Excel (an
+       openpyxl walk anchored to the column header row of the
+       ASR's per-rank or per-MOS table; per-bucket totals roll
+       up to the same Off/Enl/Civ/Ctr/NC schema TFSMS_Loading
+       expects).
+     pipeline/asr_ingest_pdf.py - reads ASR from PDF via
+       pdfplumber.extract_tables(); same per-bucket roll-up.
+   Output: a JSON record per UIC with the 11 personnel buckets
+   plus per-row source citation (page, table, row index for PDF;
+   sheet name + cell range for Excel). The ETL or a separate
+   helper then writes those values into TFSMS_Loading rows 30-36.
+   Apex Omega rule 4: any extracted value with confidence below
+   a threshold (e.g., column header ambiguous, multi-page table)
+   is flagged TBD with the source coordinate captured; the user
+   reconciles manually before the gate at D19 turns green.
+   Held until methodology owner supplies a sample real ASR Excel
+   AND a sample real ASR PDF. Without samples, prototyping would
+   be guesses about ASR layout (Apex Omega rule 4).
+
+QA PASS shipped (Apex Omega Sec.5 rituals applied to the project
+as a whole as of commit 4b02732, results captured 2026-04-30).
+
+ALL GREEN:
+  Git state clean. Branch claude/resume-bfr-pipeline-nrRNC synced
+    with origin (0 commits ahead/behind at QA time).
+  Validator out/CLB4_BFR_full.xlsx: 6 PASS / 2 FAIL. The 2 FAILs
+    are Check 2 NOTE coverage and Check 7 billet accounting on
+    42 Apex-Omega-rule-4 TBD-held billets (medical/dental/Navy
+    NEC/food service) pending BMOS rule lift; expected.
+  Validator out/CLB4_BFR_sample.xlsx: 8 PASS / 0 FAIL.
+  Methodology workbook recalc: 5,553 cells, zero error tokens.
+  Generated CLB-4 BFR recalc: 15,041 cells, zero error tokens.
+    Both via Python `formulas` package; fullCalcOnLoad=True.
+  PLANNING_FACTORS.{yaml,json} sync: 1,003 records each.
+  CCN_VOCABULARY.json 87250 entry well-formed with
+    _provenance_note.
+  Sample JSONs valid: samples/clb4_ccns.json 23 CCNs;
+    samples/clb4_profile.json 11 keys (incl. unit_type).
+  Defined-name health: 51 named ranges, ZERO with #REF! or #N/A.
+    TFSMS_UNRECONCILED -> TFSMS_Loading!$D$19 (live formula).
+    PN_TOTAL -> TFSMS_Loading!$O$37 (live ASR total cell).
+  Pipeline modules import cleanly (classify, etl, template,
+    validate); fc_citation_lookup and render_fc_citation_footer
+    callable.
+  End-to-end ETL on CLB-4 produces a 26-sheet workbook
+    (UNIT_ROLLUP + TO + TE + 23 CCN sheets).
+  Per-CCN attribution stable: 44112w (63), 21730 (49), 21451
+    (43), 61072o (27), 61072c (20), 14345 (20), 14326 (18),
+    21710ds (16), 21710 (8), 21710shf (4).
+  CLAUDE.md DoD item 6 cites three-state gate workflow.
+  Audit reports inventory: 41 files in audit/reports/.
+
+FOUND AND FIXED:
+  Six right-arrow Unicode characters (U+2192) in skill Track 5b
+    DONE entry violated Apex Omega typography. Stripper converted
+    to "to" automatically. Re-run idempotent (zero further
+    changes). Same finding pattern surfaced in earlier work; no
+    open instances remain.
+  One stale "Series 400 or 600 not supplied" reference in Track
+    1b DONE entry. Was true at the time of that commit; now
+    resolved by Series 400/500/600 supply at commit 4b02732.
+    Updated to note the resolution and the citation pages.
+
+FOLLOW-UP (not blocking the QA pass; tracks remain in NEXT):
+  Track 1d-extended-2: lift the 5 still-TBD BMOS rules
+    (medical/dental/Navy NEC/food service) to confidence=high
+    using Series 500/700 narratives. Closes Check 2 and Check 7.
+    Pushes CLB-4 classification 86.5% -> ~100%.
+  Track 1e: ratify 11 TBD admin_ccn slots in
+    audit/UNIT_TYPE_DEFAULTS.yaml using Series 600 (610 70 / 71
+    / 72 / 73 / 74 now supplied).
+  Track 7 (re-scoped): ASR ingest accepting Excel and PDF;
+    held until methodology owner supplies sample real ASR Excel
+    AND sample real ASR PDF. Without samples, prototyping would
+    violate Apex Omega rule 4.
+
+The product is in a known-good state. Apex Omega Sec.5 rituals
+all green: timestamping at point of citation, three-state TFSMS
+gate, recalc-clean workbooks, citation traceability, three-
+bucket separation honored, no IFERROR masking, no #REF! / #N/A
+in defined names. Definition of Done item 6 satisfiable for any
+unit once user pastes both TFSMS and ASR counts.
 
 ## Hand-off protocol (APEX OMEGA)
 

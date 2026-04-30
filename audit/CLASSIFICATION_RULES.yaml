@@ -206,20 +206,23 @@ rules:
                MCO 1200.18 (current edition TBD)."
 
   - id: bmos_5800_mp
-    description: "MP / Corrections BMOS (5800), military police
-                  facility / brig"
+    description: "MP / Corrections BMOS (5800), brig (corrections)
+                  or security force facility"
     when:
       bmos_prefix: "58"
-    tag_template: "TBD"
-    confidence: low
-    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019) CCN
-               730 15 BRIG and CCN 730 10 FIRE STATION (MP/security
-               coverage adjunct) are in Series 700 / facility group
-               not yet supplied. The exact CCN depends on whether the
-               MP billet is brig-assigned (730 15) or general
-               security force (730 series admin). Apex Omega rule 4:
-               do not guess; flag for SME review until Series 700
-               ratification possible."
+    tag_template: "73015"
+    confidence: medium
+    citation: "FC 2-000-05N Series 700 (version 700.20251119, 19 Nov
+               2025), CCN 730 15 BRIG (factor-table) pages 46-48:
+               'This code is to be used for facilities whose primary
+               purpose is correctional confinement.' BMOS 58xx
+               (Military Police / Corrections) per MCO 1200.18
+               (current edition TBD). Confidence medium because
+               BMOS 58xx covers both corrections specialists (730 15
+               BRIG) and general security force billets (730 20
+               SECURITY BUILDING per FC 2-000-05N Series 700 page
+               49); rule defaults to 73015 corrections; user
+               overrides via unit_context for security-force units."
 
   - id: bmos_5900_elec_maint
     description: "Electronic maintenance BMOS (5900), comm/electronics
@@ -254,22 +257,25 @@ rules:
                aviation-doctrine input."
 
   - id: bmos_6500_aviation_ord
-    description: "Aviation ordnance BMOS (6500), aviation armament
-                  shop"
+    description: "Aviation ordnance BMOS (6500), aircraft armament
+                  system shop (NON-NAVAIR DEPOT)"
     when:
       bmos_prefix: "65"
-    tag_template: "TBD"
-    confidence: low
-    citation: "FC 2-000-05N Series 100 (version 100.20260211, 11 Feb
-               2026), CCN 14321 AMMUNITION SEGREGATION FACILITY page
-               192 covers ammunition handling. FC 2-000-05N Series
-               200 CCN 211 54 AIRCRAFT ARMAMENT SYSTEM SHOP
-               (NON-NAVAIR DEPOT) covers aviation armament
-               maintenance at squadron level. Choice between 14321
-               (loadout segregation) and 21154 (armament shop)
-               depends on whether the BMOS 65xx billet is
-               assembly/segregation (14321) or maintenance (21154);
-               unit doctrine required."
+    tag_template: "21154"
+    confidence: medium
+    citation: "FC 2-000-05N Series 200 (version 200.20250516, 16 May
+               2025), CCN 211 54 AIRCRAFT ARMAMENT SYSTEM SHOP
+               (NON-NAVAIR DEPOT) factor-table pages 108-112: 'Prior
+               to commencing any I-Level facilities projects,
+               coordinate with the appropriate weapons program
+               office.' BMOS 65xx (Aviation Ordnance) per MCO
+               1200.18 (current edition TBD). Confidence medium
+               because 65xx billets in loadout/segregation roles
+               instead route to FC 2-000-05N Series 100 CCN 143 21
+               AMMUNITION SEGREGATION FACILITY page 192 (engineering-
+               study); rule defaults to 21154 armament shop; user
+               overrides via unit_context for ammunition-handling
+               focused billets."
 
   - id: bmos_7200_atc
     description: "Air Traffic Control BMOS (7200), control tower"
@@ -285,23 +291,27 @@ rules:
                per MCO 1200.18 (current edition TBD)."
 
   - id: bmos_8000_medical
-    description: "Medical / dental BMOS (8000), garrison aid station
-                  or clinic"
+    description: "Medical BMOS (8000), dispensary / outpatient clinic
+                  for unit-organic BAS billets"
     when:
       bmos_prefix: "80"
-    tag_template: "TBD"
-    confidence: low
-    citation: "FC 2-000-05N Appendix A (extracted 27 Jun 2019)
-               candidate CCNs: 510 10 HOSPITAL, 530 10 DISPENSARY /
-               OUT PATIENT CLINIC, 540 10 DENTAL CLINIC, 550 10
-               PRIMARY CARE CLINIC, 610 74 GARRISON AID STATION
-               (MARCOR). Series 500 PDF not supplied. For unit-organic
-               BAS billets (the CLB-4 case, 34 medical billets per
-               audit/FINDINGS.md item 2), the closest dedicated
-               MARCOR facility is 610 74 GARRISON AID STATION (MARCOR)
-               but Series 600 PDF supply is needed to confirm. Apex
-               Omega rule 4: leave unclassified pending Series 500/600
-               supply or methodology-owner direction."
+    tag_template: "53010"
+    confidence: high
+    citation: "FC 2-000-05N Series 500 (version 500.20230317, 17 Mar
+               2023), Section 53010-1 page 8: 'Free Standing Clinic,
+               outpatient clinic, which occupies a separate building
+               at a Military Treatment Facility (MTF), provides
+               outpatient medical and surgical care to authorized
+               beneficiaries.' BMOS 80xx (Medical, including 8023
+               Medical specialties, 8000 General Medical) per
+               MCO 1200.18 (current edition TBD). For unit-organic
+               BAS billets the closest dedicated MARCOR facility is
+               FC 2-000-05N Series 600 CCN 610 74 GARRISON AID
+               STATION (MARCOR) factor-table pages 40-41; rule
+               defaults to 53010 dispensary which is the BUMED-
+               authoritative outpatient CCN; user overrides to 61074
+               via unit_context for purely garrison-aid-station
+               configurations."
 
   # Track 1d-extended additions: BMOS prefixes that appear in CLB-4
   # data but were absent from the prior rule set. Each rule cites the
@@ -409,17 +419,24 @@ rules:
                ratification TBD."
 
   - id: bmos_3300_food_service
-    description: "Food Service BMOS (33xx), dining facility"
+    description: "Food Service BMOS (33xx), galley / mess hall"
     when:
       bmos_prefix: "33"
-    tag_template: "TBD"
-    confidence: low
-    citation: "BMOS 33xx (Food Service, including 3381 Food Service
-               Specialist / Chief) per MCO 1200.18 (current edition
-               TBD). Dining facility CCN is in NAVFAC P-72 Category
-               740 series (Subsistence). Series 700 PDF not supplied;
-               leave at TBD per Apex Omega rule 4 until Series 700
-               supply or methodology-owner direction."
+    tag_template: "72210"
+    confidence: high
+    citation: "FC 2-000-05N Series 700 (version 700.20251119, 19 Nov
+               2025), CCN 722 10 GALLEY / MESS HALL (PN) factor-table
+               pages 29-35: principal subsistence facility for
+               military personnel feeding. BMOS 33xx (Food Service,
+               including 3381 Food Service Specialist / Chief) per
+               MCO 1200.18 (current edition TBD). Alternative CCNs
+               for special configurations: 721 45 GALLEY/MESS HALL
+               BUILT-IN/ATTACHED (Series 700 page 28); 722 35
+               AUSTERE GALLEY (Series 700 page 36); 722 50 COLD
+               STORAGE DETACHED FROM GALLEY (Series 700 page 36).
+               Rule defaults to 72210 standalone galley; user
+               overrides via unit_context for built-in or austere
+               variants."
 
   - id: bmos_8900_senior_enlisted
     description: "Unit Senior Enlisted Leader BMOS (89xx), admin
@@ -439,25 +456,37 @@ rules:
     description: "Navy Dental Officer BMOS (22xx), dental clinic"
     when:
       bmos_prefix: "22"
-    tag_template: "TBD"
-    confidence: low
-    citation: "Navy Officer designator 22xx (Dental Corps).
-               FC 2-000-05N Appendix A CCN 540 10 DENTAL CLINIC.
-               Series 500 PDF not supplied; Apex Omega rule 4:
-               leave unclassified pending Series 500 supply."
+    tag_template: "54010"
+    confidence: high
+    citation: "FC 2-000-05N Series 500 (version 500.20230317, 17 Mar
+               2023), Section 54010-1 pages 11-13 (factor-table):
+               'The Bureau of Medicine and Surgery (BUMED), subject
+               to Department of Defense (DoD) regulations, prescribes
+               and provides dental care to authorized military
+               personnel and other authorized beneficiaries.' Navy
+               Officer designator 22xx (Dental Corps); for CLB-4
+               BAS-attached dental billets, 54010 is the BUMED-
+               authoritative facility CCN."
 
   - id: bmos_2900_navy_nurse
-    description: "Navy Nurse Corps BMOS (29xx), medical clinic"
+    description: "Navy Nurse Corps BMOS (29xx), dispensary /
+                  outpatient clinic for unit-organic BAS placement"
     when:
       bmos_prefix: "29"
-    tag_template: "TBD"
-    confidence: low
-    citation: "Navy Officer designator 29xx (Nurse Corps; observed
-               2900 Emergency-Trauma Nurse, Critical Care Nurse).
-               FC 2-000-05N Appendix A candidate CCNs: 510 10
-               HOSPITAL, 530 10 DISPENSARY, 550 10 PRIMARY CARE
-               CLINIC. Series 500 PDF not supplied; Apex Omega rule
-               4: leave unclassified pending Series 500 supply."
+    tag_template: "53010"
+    confidence: medium
+    citation: "FC 2-000-05N Series 500 (version 500.20230317, 17 Mar
+               2023), Section 53010-1 page 8 (engineering-study):
+               BUMED outpatient facility CCN. Navy Officer designator
+               29xx (Nurse Corps; observed 2900 Emergency-Trauma
+               Nurse, Critical Care Nurse). For CLB-4 BAS
+               attachments the rule defaults to 53010 dispensary;
+               for hospital-attached nurses use FC 2-000-05N Series
+               500 CCN 510 10 HOSPITAL (engineering-study, page 7);
+               for primary care clinic nurses use 550 10 PRIMARY
+               CARE CLINIC (engineering-study, page 14). User
+               overrides via unit_context for non-BAS nursing
+               billets."
 
   # Navy NEC L-prefix rules. Format-A T/O&E exports for joint
   # USMC/Navy units (e.g., CLB-4 BAS personnel) put Navy NECs in
@@ -468,43 +497,49 @@ rules:
 
   - id: navy_nec_l0_corpsman
     description: "Navy NEC L0xx (general Hospital Corpsman, e.g.,
-                  L03A Field Med Tech), garrison aid station or
-                  dispensary"
+                  L03A Field Med Tech), dispensary / outpatient
+                  clinic for unit-organic BAS placement"
     when:
       bmos_prefix: "L0"
-    tag_template: "TBD"
-    confidence: low
-    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
-               Manual, current edition TBD pending verification).
-               L01A / L03A NECs identify Hospital Corpsmen with
-               operational medicine training. Facility CCN is in
-               NAVFAC P-72 Category 530 / 540 / 610 74 (Garrison
-               Aid Station, MARCOR). Series 500 / 600 PDFs not
-               supplied; Apex Omega rule 4: leave unclassified."
+    tag_template: "53010"
+    confidence: high
+    citation: "FC 2-000-05N Series 500 (version 500.20230317, 17 Mar
+               2023), Section 53010-1 page 8: 'Free Standing Clinic,
+               outpatient clinic ... provides outpatient medical
+               and surgical care to authorized beneficiaries.' L01A
+               / L03A NECs identify Hospital Corpsmen with
+               operational medicine training (BUMEDINST 1510.27,
+               Navy Enlisted Classification Manual; current edition
+               date TBD pending verification). For CLB-4 BAS the
+               53010 dispensary is the operational placement;
+               alternative for garrison-only configurations is FC
+               2-000-05N Series 600 CCN 610 74 GARRISON AID STATION
+               (MARCOR) factor-table pages 40-41."
 
   - id: navy_nec_l1_idc
     description: "Navy NEC L1xx (Independent Duty Corpsman, e.g.,
-                  L10A Surface IDC)"
+                  L10A Surface IDC), dispensary / outpatient clinic"
     when:
       bmos_prefix: "L1"
-    tag_template: "TBD"
-    confidence: low
-    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
-               Manual). IDC NECs identify Corpsmen qualified for
-               independent operational medicine. Same facility
-               family as L0xx pending Series 500 / 600 supply."
+    tag_template: "53010"
+    confidence: high
+    citation: "Same FC 2-000-05N Series 500 53010 page 8 citation as
+               navy_nec_l0_corpsman. IDC NECs identify Corpsmen
+               qualified for independent operational medicine
+               (BUMEDINST 1510.27)."
 
   - id: navy_nec_l3_dental
     description: "Navy NEC L3xx (Dental Tech, e.g., L33A Dental
-                  Assistant)"
+                  Assistant), dental clinic"
     when:
       bmos_prefix: "L3"
-    tag_template: "TBD"
-    confidence: low
-    citation: "BUMEDINST 1510.27 (Navy Enlisted Classification
-               Manual). L33A and related Dental Tech NECs route to
-               NAVFAC P-72 CCN 540 10 DENTAL CLINIC. Series 500 PDF
-               not supplied; Apex Omega rule 4: leave unclassified."
+    tag_template: "54010"
+    confidence: high
+    citation: "FC 2-000-05N Series 500 (version 500.20230317, 17 Mar
+               2023), Section 54010-1 pages 11-13 (factor-table):
+               BUMED dental care facility. L33A and related Dental
+               Tech NECs (BUMEDINST 1510.27) route to 54010 dental
+               clinic."
 
 unclassified_disposition:
   emit: orphan

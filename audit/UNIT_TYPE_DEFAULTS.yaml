@@ -65,131 +65,177 @@ unit_types:
 
   MLG_HQ:
     description: "Marine Logistics Group HQ (e.g., 3d MLG, 1st MLG)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61070"
+    confidence: medium
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; MLG HQ is a
-                 higher headquarters echelon than BN/squadron and
-                 likely uses a different 610 sub-category"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61070-1 page 39"
+        section: "61070 DIVISION/WING HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "FC text explicitly names 'Marine Division Headquarters
+              or Marine Aircraft Wing Headquarters'; MLG is the
+              parallel-echelon logistics MAGTF MSC, doctrinally
+              equivalent to MARDIV/MAW. Confidence medium because
+              FC narrative does not enumerate MLG by name; user
+              overrides via unit_context if a different sub-category
+              applies."
 
   MEF_HQ:
     description: "Marine Expeditionary Force HQ (e.g., I MEF, III MEF)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61070"
+    confidence: medium
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; MEF HQ is the
-                 highest operational echelon below MARFOR"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61070-1 page 39"
+        section: "61070 DIVISION/WING HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "MEF HQ is the highest MAGTF echelon. FC enumerates
+              MARDIV / MAW which MEF echelon-supersedes; for
+              consistency MEF defaults to the same FMF-administrative
+              CCN. Confidence medium pending methodology-owner
+              direction on whether to use 61070 (FMF) or 61010
+              (general administrative) for MEF HQ."
 
   MEU_CE:
     description: "Marine Expeditionary Unit Command Element (e.g.,
                   31st MEU)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61072"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; MEU CEs are
-                 forward-deployable command echelons with
-                 administrative requirements distinct from a
-                 garrison BN"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61072-1 page 39"
+        section: "61072 BATTALION/SQUADRON HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "MEU CE is a battalion-equivalent forward-deployable
+              command element. FC text 'Marine Battalion or Squadron
+              Headquarters' applies. CLB-4 worked example shares
+              this CCN."
 
   MAG_HQ:
     description: "Marine Aircraft Group HQ (e.g., MAG-12, MAG-36)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61071"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; aviation
-                 unit admin facility CCN may differ from ground
-                 BN-equivalent"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61071-1 page 39"
+        section: "61071 REGIMENTAL/GROUP HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "FC text explicitly names 'Marine Regimental
+              Headquarters or Marine Aircraft Group Headquarters';
+              direct match for MAG."
 
   MWHS:
     description: "Marine Wing Headquarters Squadron (e.g., MWHS-1,
                   MWHS-3)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61072"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61072-1 page 39"
+        section: "61072 BATTALION/SQUADRON HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "MWHS is a squadron echelon by definition; FC text
+              'Marine Battalion or Squadron Headquarters' applies."
 
   AVIATION_SQUADRON:
     description: "Marine Aircraft Wing flying squadron (VMFA, VMM,
                   VMA, HMLA, HMH, etc.)"
-    admin_ccn: "TBD"
+    admin_ccn: "61072"
     confidence: low
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; aviation
-                 squadron admin space is typically integrated with
-                 the hangar (NAVFAC P-72 Category 211 series), not
-                 stood up as a standalone Category 610 facility"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61072-1 page 39"
+        section: "61072 BATTALION/SQUADRON HEADQUARTERS, MARINE CORPS"
+        date: "2023-03-02"
+        note: "FC 61072-1 narrative explicitly states 'Squadron
+              administrative facilities are often provided within
+              the organizational maintenance hangar (Category Code
+              211 05) and in such cases, are not authorized under
+              this category code.' The default 61072 applies only
+              when admin space is NOT integrated into the hangar.
+              Confidence low because the choice depends on the
+              squadron's hangar configuration; user must override
+              via unit_context for hangar-integrated admin."
 
   RECRUIT_DEPOT:
     description: "Marine Corps Recruit Depot HQ (MCRD San Diego,
                   MCRD Parris Island)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61010"
+    confidence: medium
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; recruit
-                 depot admin requirements include training-cadre
-                 office space distinct from a tactical BN"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61010-1 page 3 (factor-table
+                 with full Admin BFR Generator across pages 3-33)"
+        section: "61010 ADMINISTRATIVE OFFICE"
+        date: "2023-03-02"
+        note: "Recruit depots are base-support echelons rather than
+              FMF; 61010 is the base-support administrative facility
+              CCN with the full Series 600 BFR generator. Confidence
+              medium pending methodology-owner direction on whether
+              recruit-cadre billets justify a different sub-
+              category."
 
   SCHOOLHOUSE:
     description: "Formal training command (e.g., TBS, IOC, MCU,
                   Marine Combat Training)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61010"
+    confidence: medium
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; schoolhouse
-                 admin is sometimes co-located with classroom space
-                 (NAVFAC P-72 Category 171 series) rather than
-                 standing up Category 610 separately"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61010-1 page 3"
+        section: "61010 ADMINISTRATIVE OFFICE"
+        date: "2023-03-02"
+        note: "Schoolhouse admin space defaults to 61010 base-support
+              administrative; classroom space lives in NAVFAC P-72
+              Category 171 series (Series 100). When admin and
+              classroom share a building per program practice, the
+              admin loading still routes to 61010."
 
   TRAINING_COMMAND:
     description: "Higher-echelon training command (e.g., TECOM,
-                  MAGTFTC)"
-    admin_ccn: "TBD"
-    confidence: low
+                  MAGTFTC, MCU at Quantico)"
+    admin_ccn: "61010"
+    confidence: medium
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61010-1 page 3"
+        section: "61010 ADMINISTRATIVE OFFICE"
+        date: "2023-03-02"
+        note: "Higher-echelon training commands operate as base-
+              support administrative organizations. For division-
+              equivalent training commands (e.g., MCU functioning at
+              Marine Aircraft Wing scale) override to 61070 via
+              unit_context."
 
   DEPOT:
     description: "Marine Corps Logistics Base depot (e.g., MCLB
                   Albany, MCLB Barstow)"
-    admin_ccn: "TBD"
-    confidence: low
+    admin_ccn: "61010"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; depot admin
-                 may use base-support 610 sub-category rather than
-                 operational-forces sub-category"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61010-1 page 3 (factor-table
+                 across pages 3-33)"
+        section: "61010 ADMINISTRATIVE OFFICE"
+        date: "2023-03-02"
+        note: "Marine Corps Logistics Base depots are base-support
+              echelons. 61010 is the base-support administrative
+              facility CCN with the full Series 600 BFR generator
+              (the workbook referenced at FC pages 3-15)."
 
   INSTALLATION_HQ:
     description: "Marine Corps installation command (e.g., MCB Camp
-                  Butler HQ, MCAS Iwakuni HQ)"
-    admin_ccn: "TBD"
-    confidence: low
+                  Butler HQ, MCAS Iwakuni HQ, MCB Quantico HQ)"
+    admin_ccn: "61010"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Series 100 admin facility table"
-        section: "TBD pending Series 100 ratification; installation
-                 HQ is base-support, not operational forces, and
-                 likely maps to a different 610 sub-category than
-                 the tenant tactical units it supports"
-        date: "TBD"
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61010-1 page 3"
+        section: "61010 ADMINISTRATIVE OFFICE"
+        date: "2023-03-02"
+        note: "Installation HQ is base-support, not operational
+              forces. 61010 is the canonical base-support
+              administrative facility CCN."
 
 # Notes for SMEs filling out this table:
 #

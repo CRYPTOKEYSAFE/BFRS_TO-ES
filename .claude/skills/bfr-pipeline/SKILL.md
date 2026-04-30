@@ -942,6 +942,68 @@ Track 7 (RE-SCOPED 2026-04-30 per methodology owner). ASR
    AND a sample real ASR PDF. Without samples, prototyping would
    be guesses about ASR layout (Apex Omega rule 4).
 
+- Tracks 1d-extended-2 and 1e shipped together (Layer 3 BMOS
+  rule lift + Layer 5 unit-type-defaults ratification using the
+  now-supplied Series 500/600/700 narratives).
+  audit/CLASSIFICATION_RULES.yaml: 7 BMOS rules lifted from
+  TBD / confidence=low to confidence=high or medium with FC
+  citations:
+    bmos_8000_medical          -> 53010 high (Series 500 p8)
+    bmos_2200_navy_dental      -> 54010 high (Series 500 pp11-13)
+    bmos_2900_navy_nurse       -> 53010 medium (Series 500 p8)
+    bmos_3300_food_service     -> 72210 high (Series 700 pp29-35)
+    bmos_5800_mp               -> 73015 medium (Series 700 pp46-48)
+    bmos_6500_aviation_ord     -> 21154 medium (Series 200 pp108-112)
+    navy_nec_l0_corpsman       -> 53010 high (Series 500 p8)
+    navy_nec_l1_idc            -> 53010 high (Series 500 p8)
+    navy_nec_l3_dental         -> 54010 high (Series 500 pp11-13)
+  Two rules stay at confidence=low (genuinely doctrine-dependent):
+    bmos_0800_artillery (no dedicated artillery battery facility
+      CCN exists; artillery occupies 21451 + 14345)
+    bmos_6000_aviation_maint (hangar CCN choice depends on
+      aircraft type; multi-CCN per unit; per-aircraft override
+      via unit_context)
+  audit/UNIT_TYPE_DEFAULTS.yaml: 11 admin_ccn slots ratified:
+    CLB           -> 61072 high  (Series 600 p39, FC text exact)
+    MLG_HQ        -> 61070 medium (parallel echelon to MARDIV/MAW)
+    MEF_HQ        -> 61070 medium (echelon-equivalent default)
+    MEU_CE        -> 61072 high  (battalion-equivalent CE)
+    MAG_HQ        -> 61071 high  (FC text exact: "Marine Aircraft
+                    Group Headquarters")
+    MWHS          -> 61072 high  (squadron echelon by definition)
+    AVIATION_SQUADRON -> 61072 low (FC 61072-1 explicitly notes
+                    squadron admin "often provided within the
+                    organizational maintenance hangar (Category
+                    Code 211 05)"; default applies only when
+                    standalone)
+    RECRUIT_DEPOT -> 61010 medium (base support, full Series 600
+                    BFR Generator)
+    SCHOOLHOUSE   -> 61010 medium
+    TRAINING_COMMAND -> 61010 medium
+    DEPOT         -> 61010 high (base support, MCLB scale)
+    INSTALLATION_HQ -> 61010 high (canonical base-support admin)
+  samples/clb4_ccns.json gained CCN 54010 (3 dental billets) and
+  72210 (8 food-service billets) so the workbook has sheets for
+  the lifted rules' destinations. Generated CLB-4 BFR now spans
+  28 sheets (was 26).
+  Final CLB-4 worked-example state:
+    TO populated rows : 310 (was 359 raw, 49 organizational
+                       dividers filtered)
+    Classified        : 310 / 310 = 100% (was 49% pre-Track-1d,
+                       86.5% post-Track-1d-extended)
+    Unclassified      : 0
+    TE populated rows : 854
+    TAMCN orphans     : 0
+    Validator         : 8 PASS / 0 FAIL (was 6/2 immediately before)
+  Per-CCN billet attribution (top 12): 44112w 63, 21730 49, 21451
+  43, 53010 31 (medical concentration), 61072o 27, 61072c 20,
+  14345 20, 14326 18, 21710ds 16, 21710 8, 72210 8, 21710shf 4.
+  Definition of Done items 1-9 now satisfiable for any unit; item
+  10 (inline citations) satisfied by Track 1c-citation; item 6
+  (TFSMS gate) user-driven via the now-functional three-state
+  gate (Track 8). The pipeline is structurally and doctrinally
+  complete for CLB-4.
+
 QA PASS shipped (Apex Omega Sec.5 rituals applied to the project
 as a whole as of commit 4b02732, results captured 2026-04-30).
 

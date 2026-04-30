@@ -128,6 +128,26 @@
     }
   },
   {
+    "ccn": "54010",
+    "pattern": "admin",
+    "pattern_data": {
+      "officers": {"label": "Navy Dental Officers", "sf_per": 120, "count": 1},
+      "enlisted": {"label": "Dental Techs (L33A)", "sf_per": 60, "count": 2},
+      "ntg": 1.33,
+      "calc_label": "Dental Clinic Space"
+    }
+  },
+  {
+    "ccn": "72210",
+    "pattern": "admin",
+    "pattern_data": {
+      "officers": {"label": "Food Service Officer / Chief", "sf_per": 120, "count": 1},
+      "enlisted": {"label": "Food Service Specialists (3381)", "sf_per": 60, "count": 7},
+      "ntg": 1.33,
+      "calc_label": "Galley/Mess Hall Space (CLB-4 cooks; FC 2-000-05N Series 700 CCN 722 10 PN-driven authoritative formula in BFR Generator pages 29-35)"
+    }
+  },
+  {
     "ccn": "85210",
     "loading": 100,
     "factor": 75,

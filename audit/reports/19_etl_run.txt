@@ -37,18 +37,20 @@ Unclassified billets by reason:
 
 TE attribution (Layer 5 TAMCN to facility CCN map):
   Rule table   : /home/user/BFRS_TO-ES/audit/TAMCN_CCN_MAP.yaml
-  Active rules : 21
-  Skipped (TBD): 1  (rules: ['medical_amal_kits'])
+  Active rules : 28
+  Skipped (TBD): 0  (rules: [])
   TE rows      : 854
-  Attributed   : 827
-  Orphans      : 27
+  Attributed   : 854
+  Orphans      : 0
   Per-CCN attribution:
     44112  314
-    21710  223
+    21710  225
     14345  184
-    14326  68
-    21451  29
-    21730  9
+    14326  69
+    21451  30
+    61072  15
+    21730  11
+    53010  6
   Top rule hits:
     individual_equipment_personal  135
     engineer_heavy_equipment  123

@@ -327,19 +327,128 @@ rules:
         date: "2019-06-27"
 
   - id: medical_amal_kits
-    description: "A-class items in the C8xxxx range: AMAL surgical /
+    description: "A-class items in the C8xxxx range: AMAL (Authorized
+                  Medical Allowance List) surgical / shock-surgical /
                   preventive medicine / medical logistics test kits.
-                  Stored in the medical/dental clinic."
+                  Stored in the unit's organic medical facility, which
+                  for CLB-shaped units is the Battalion Aid Station
+                  (BAS) functioning as a dispensary / outpatient
+                  clinic at CCN 530 10."
     pattern: "^C8[0-9]{3,4}A[A-Z0-9]?$"
-    facility_ccn: "TBD"
-    confidence: low
+    facility_ccn: "53010"
+    confidence: high
     citations:
-      - source: "FC 2-000-05N Appendix A"
-        section: "CCN 540 series (medical/dental clinic) per
-                 CLASSIFICATION_RULES.yaml bmos_8000_medical
-                 rule template"
-        date: "TBD pending FC 2-000-05N Series 500 medical CCN
-               ratification (54010 dental clinic, 54035, 54040, etc.)"
+      - source: "FC 2-000-05N Series 500 (version 500.20230317,
+                 17 Mar 2023), CCN 530 10 DISPENSARY AND OUTPATIENT
+                 CLINIC heading"
+        section: "CCN 530 10"
+        date: "2023-03-17"
+      - source: "Observed CLB-4 audit/FINDINGS.md item 2 noting 34
+                 BAS billets requiring a medical facility CCN; AMAL
+                 sets are the equipment basis for those billets"
+        date: "2026-04"
+
+  # Track 5b additions: TAMCN families newly groundable now that
+  # Series 400/500/600/700 PDFs are supplied. Each rule cites the
+  # FC 2-000-05N Series narrative or vocabulary record for the
+  # facility CCN and a doctrine note for why the TAMCN family is
+  # housed there.
+
+  - id: comm_admin_computers
+    description: "A9-series computer systems and servers (A90257GB,
+                  A90607G, A91007G variants). Field-deployable
+                  computers and servers travel with the operator
+                  but are accountable items housed in the unit's
+                  admin facility when not deployed."
+    pattern: "^A9[0-9]{3,4}[A-Z][A-Z0-9]?$"
+    facility_ccn: "61072"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Series 600 (version 600.20230302,
+                 2 Mar 2023), Section 61072-1 page 39: 'This
+                 category code is for a Fleet Marine Force (FMF)
+                 facility and provides the necessary administrative
+                 space to conduct the day-to-day operations of a
+                 Marine Battalion or a Squadron Headquarters.'"
+        section: "61072-1"
+        date: "2023-03-02"
+      - source: "Observed CLB-4 SW BFR convention: portable office
+                 computers and admin servers are storage-allotted
+                 to the BN HQ admin facility 61072"
+        date: "2026-02"
+
+  - id: comm_a7_e_class_test_kits
+    description: "A7xxxxE class items: electronic tool kits used by
+                  electronics maintenance personnel. Stored at the
+                  electronics/communications maintenance shop bench."
+    pattern: "^A7[0-9]{3,4}E[A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Series 200 (version 200.20250516,
+                 16 May 2025), Section 21710-1 page 195"
+        section: "21710-1 (engineering-study facility)"
+        date: "2025-05-16"
+
+  - id: weapons_aav_recovery
+    description: "E-prefix K-class assault vehicles (full-tracked):
+                  AAVR7A1 RAM/RS (E08567K). Vehicle storage applies
+                  the same way as D-prefix K-class motor T tactical
+                  vehicles."
+    pattern: "^E[0-9]{4,5}K[A-Z0-9]?$"
+    facility_ccn: "21710"
+    confidence: high
+    citations:
+      - source: "FC 2-000-05N Appendix A, CCN 217 10 Vehicle
+                 Operations / Maintenance Facility (organizational);
+                 NAVFAC P-72 Category 217 series convention applies
+                 to amphibious/full-tracked vehicles equally"
+        section: "CCN 217 10"
+        date: "2019-06-27"
+
+  - id: misc_b_g_recon_instrument
+    description: "B-prefix G-class reconnaissance instrument set
+                  (B00727GA). Recon instruments support engineer
+                  reconnaissance missions and are stored with the
+                  engineer field-maintenance toolset."
+    pattern: "^B[0-9]{4,5}G[A-Z0-9]?$"
+    facility_ccn: "21730"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Series 200 (version 200.20250516,
+                 16 May 2025), Section 21730-1 page 196: field
+                 maintenance shop scope covers engineer equipment"
+        section: "21730-1"
+        date: "2025-05-16"
+
+  - id: misc_c_t_class_machine_tools
+    description: "C-prefix T-class machine tools (C49602TA grinding
+                  machine, etc.). Bench tools used in organizational
+                  motor-pool maintenance work."
+    pattern: "^C[0-9]{4,5}T[A-Z0-9]?$"
+    facility_ccn: "21451"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Series 200 (version 200.20250516,
+                 16 May 2025), Section 21451-1 page 188:
+                 'administrative and dispatching areas as well as
+                 storage for OEM equipment, tools, and parts'"
+        section: "21451-1"
+        date: "2025-05-16"
+
+  - id: weapons_eod_x_class
+    description: "E-prefix X-class items: expeditionary disassembly
+                  tool (E02207X) and similar EOD-adjacent tools.
+                  Stored in the EOD Section facility."
+    pattern: "^E[0-9]{4,5}X[A-Z0-9]?$"
+    facility_ccn: "14326"
+    confidence: medium
+    citations:
+      - source: "FC 2-000-05N Series 100 (version 100.20260211,
+                 11 Feb 2026), Section 14326-1 page 201: 'EOD
+                 operations in support of Fleet Marine Forces (FMF)'"
+        section: "14326-1"
+        date: "2026-02-11"
 
   # H-prefix: Test and Measurement Instrumentation
 

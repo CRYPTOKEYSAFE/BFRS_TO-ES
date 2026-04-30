@@ -165,6 +165,20 @@ def fc_citation_lookup(ccn: str) -> list[str]:
             lines.append(
                 f"  {tid} ({cap}); loading driver: {ld}"
             )
+            # Track 1c-factor: render the table rows verbatim so
+            # Apex Omega rule 7 ("numbers must be traceable") is
+            # satisfied at the point of use. Only emit non-empty
+            # cells; pdfplumber extraction sometimes pads rows with
+            # blank columns where the source table has merged cells.
+            for row in (t.get("rows") or [])[:8]:
+                non_empty = [str(c).strip() for c in row if c and str(c).strip()]
+                if not non_empty:
+                    continue
+                lines.append(f"    {' | '.join(non_empty)}")
+            extra = len(t.get("rows") or []) - 8
+            if extra > 0:
+                lines.append(f"    ... and {extra} more rows; see "
+                             f"audit/PLANNING_FACTORS.yaml CCN {ccn}")
     else:
         # Engineering-study CCN: cite the narrative section count
         narr = rec.get("narrative_sections") or []

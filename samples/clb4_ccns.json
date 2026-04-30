@@ -116,5 +116,15 @@
     "factor": 1.0,
     "ntg": 1.0,
     "loading_label": "Open storage area"
+  },
+  {
+    "ccn": "53010",
+    "pattern": "admin",
+    "pattern_data": {
+      "officers": {"label": "BAS Medical Officers / IDC", "sf_per": 120, "count": 4},
+      "enlisted": {"label": "Hospital Corpsmen / Field Med Tech / Dental Asst", "sf_per": 60, "count": 30},
+      "ntg": 1.33,
+      "calc_label": "BAS Personnel Space"
+    }
   }
 ]

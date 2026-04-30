@@ -56,9 +56,20 @@ from collections import OrderedDict
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+# All known FC 2-000-05N Series PDFs. The extractor walks every
+# series file present in repo root; missing series are reported in
+# the summary rather than failing the run. Series 300 (Training and
+# Range Facilities) is not on the CLB-4 critical path; not yet
+# supplied as of 30 Apr 2026.
 SERIES_PATTERNS = {
     "100": "fc_2_000_05n_100series_*.pdf",
     "200": "fc_2_000_05n_200series_*.pdf",
+    "300": "fc_2_000_05n_300series_*.pdf",
+    "400": "fc_2_000_05n_400series_*.pdf",
+    "500": "fc_2_000_05n_500series_*.pdf",
+    "600": "fc_2_000_05n_600series_*.pdf",
+    "700": "fc_2_000_05n_700series_*.pdf",
+    "800": "fc_2_000_05n_800series_*.pdf",
 }
 VOCAB_PATH = REPO_ROOT / "audit" / "CCN_VOCABULARY.json"
 YAML_OUT = REPO_ROOT / "audit" / "PLANNING_FACTORS.yaml"
@@ -80,8 +91,17 @@ HEADING_RE = re.compile(
     r"(?:\s+\((SF|SY|EA|AC|LF|CF|HA|MIL|FT|YD)\))?"
     r"\s*$"
 )
-# "FAC: 1442" or "FAC: 8927"
-FAC_RE = re.compile(r"^FAC:\s*(\d+)\s*$")
+# "FAC: 1442" (Series 100/200/400/700 convention) or "FAC 6100"
+# (Series 600 convention: no colon).
+FAC_RE = re.compile(r"^FAC:?\s*(\d+)\s*$")
+# Continuation line for a wrapped heading: all-caps (with the
+# allowed name punctuation) followed by UoM in parens. Matches
+# only if the line starts with an upper-case letter (preventing
+# false positives on body prose continuations).
+HEADING_CONT_RE = re.compile(
+    r"^\s*([A-Z][A-Z0-9\- ,/'()&\.]*?)"
+    r"\s+\((SF|SY|EA|AC|LF|CF|HA|MIL|FT|YD)\)\s*$"
+)
 # Table caption: "Table 14345-1. Armory" or "Table 21103-2"
 TABLE_CAPTION_RE = re.compile(
     r"^\s*Table\s+(\d{4,5})\s*-\s*(\d+)(?:\.\s*(.+?))?\s*$"
@@ -141,35 +161,50 @@ def group_words_into_lines(words, y_tolerance=3):
 
 
 def find_headings_on_page(lines):
-    """Return list of dicts for each CCN heading line found on the page,
-    each with ccn, ccn_display, facility_name, uom, top.
+    """Return list of dicts for each CCN heading line found on the page.
 
     False-positive guard: when the heading line lacks a trailing UoM
     in parens (e.g., "143 26 MARINE CORPS EXPLOSIVE ORDNANCE DISPOSAL
-    COMPANY FACILITY"), require a "FAC: NNNN" line within the next 5
-    lines to confirm. Headings WITH UoM are accepted unconditionally
-    because the all-caps name plus UoM in parens uniquely matches a
-    NAVFAC heading; prose mentions never appear in that form."""
+    COMPANY FACILITY"), look for either (a) a continuation line
+    immediately below that ends in "<NAME-CONT> (UoM)" form (Series
+    600 convention where the heading wraps because the name is too
+    long, e.g. "610 72 BATTALION/SQUADRON HEADQUARTERS, MARINE" /
+    "CORPS (SF)"), or (b) a "FAC[:] NNNN" line within the next 5
+    lines (Series 100/200/400/700 convention with optional colon).
+    Headings WITH UoM on the same line are accepted unconditionally."""
     headings = []
     for idx, line in enumerate(lines):
         m = HEADING_RE.match(line["text"])
         if not m:
             continue
         uom = m.group(4) or ""
-        # If UoM absent, look for FAC: in next 5 lines as confirmation
+        name = m.group(3).strip()
         if not uom:
-            confirmed = False
-            for ahead in lines[idx + 1: idx + 6]:
-                if FAC_RE.match(ahead["text"].strip()):
-                    confirmed = True
-                    break
-            if not confirmed:
-                continue
+            # Try wrapped-heading continuation on the next line.
+            if idx + 1 < len(lines):
+                cont = HEADING_CONT_RE.match(lines[idx + 1]["text"])
+            else:
+                cont = None
+            if cont:
+                name = (name + " " + cont.group(1).strip()).strip()
+                uom = cont.group(2)
+                # Confirm via FAC line within 5 lines after the cont
+                fac_search_start = idx + 2
+            else:
+                fac_search_start = idx + 1
+            if not uom:
+                confirmed = False
+                for ahead in lines[fac_search_start: fac_search_start + 5]:
+                    if FAC_RE.match(ahead["text"].strip()):
+                        confirmed = True
+                        break
+                if not confirmed:
+                    continue
         ccn = m.group(1) + m.group(2)
         headings.append({
             "ccn": ccn,
             "ccn_display": f"{m.group(1)} {m.group(2)}",
-            "facility_name": m.group(3).strip(),
+            "facility_name": name,
             "uom": uom,
             "top": line["top"],
         })
@@ -533,40 +568,58 @@ def emit_json(ccn_records, provenance, path):
 
 
 def main():
-    pdf100 = find_pdf("100")
-    pdf200 = find_pdf("200")
-    if not pdf100 or not pdf200:
+    # Walk every Series PDF present in repo root; missing series are
+    # listed in the summary, not fatal. Series 100 is mandatory
+    # (anchor for the rest); without it the run aborts.
+    found_pdfs = {}
+    missing = []
+    for series in sorted(SERIES_PATTERNS):
+        pdf = find_pdf(series)
+        if pdf:
+            found_pdfs[series] = pdf
+        else:
+            missing.append(series)
+    if "100" not in found_pdfs:
         sys.stderr.write(
-            "FC 2-000-05N Series PDFs not found in repo root.\n\n"
-            "Expected files (glob patterns):\n"
-            f"  Series 100: {SERIES_PATTERNS['100']}\n"
-            f"  Series 200: {SERIES_PATTERNS['200']}\n\n"
-            "Both PDFs are public WBDG documents but cannot be retrieved\n"
-            "from this sandbox (egress allowlist blocks wbdg.org). User\n"
-            "supplies via main-branch upload then merge into the dev branch.\n"
+            "FC 2-000-05N Series 100 PDF not found in repo root.\n"
+            "Expected glob: " + SERIES_PATTERNS["100"] + "\n"
+            "Series 100 is the anchor for the extraction; without it "
+            "the run aborts. Other Series are optional and a missing "
+            "Series is reported in the summary, not fatal.\n"
         )
         sys.exit(2)
 
     vocab = load_vocabulary()
-    rec100 = extract_series(pdf100, "100", vocab)
-    rec200 = extract_series(pdf200, "200", vocab)
-    records = rec100 + rec200
+    records = []
+    per_series = OrderedDict()
+    for series in sorted(found_pdfs):
+        pdf = found_pdfs[series]
+        recs = extract_series(pdf, series, vocab)
+        per_series[series] = (pdf, recs)
+        records.extend(recs)
 
-    provenance = OrderedDict([
-        ("source_pdf_100", pdf100.name),
-        ("source_pdf_200", pdf200.name),
-        ("source_date_100", parse_version_from_filename(pdf100.name)),
-        ("source_date_200", parse_version_from_filename(pdf200.name)),
-        ("authority", "FC 2-000-05N (Marine Corps Basic Facility Requirements)"),
-        ("extractor", "audit/extract_planning_factors.py (authoritative tabular pass)"),
-        ("apex_omega_note",
-         "Tabular extraction via pdfplumber.extract_tables() with each "
-         "table anchored to the most recent CCN heading at-or-above the "
-         "table's top edge. Table headers, body rows, and loading_driver "
-         "inference are produced where unambiguous; otherwise marked TBD. "
-         "Raw row content is always preserved so a human ratifier can "
-         "read the table directly."),
-    ])
+    provenance = OrderedDict()
+    for series, (pdf, _) in per_series.items():
+        provenance[f"source_pdf_{series}"] = pdf.name
+        provenance[f"source_date_{series}"] = parse_version_from_filename(
+            pdf.name
+        )
+    if missing:
+        provenance["series_not_supplied"] = ", ".join(missing)
+    provenance["authority"] = (
+        "FC 2-000-05N (Marine Corps Basic Facility Requirements)"
+    )
+    provenance["extractor"] = (
+        "audit/extract_planning_factors.py (authoritative tabular pass)"
+    )
+    provenance["apex_omega_note"] = (
+        "Tabular extraction via pdfplumber.extract_tables() with each "
+        "table anchored to the most recent CCN heading at-or-above the "
+        "table's top edge. Table headers, body rows, and loading_driver "
+        "inference are produced where unambiguous; otherwise marked TBD. "
+        "Raw row content is always preserved so a human ratifier can "
+        "read the table directly."
+    )
 
     YAML_OUT.parent.mkdir(parents=True, exist_ok=True)
     SUMMARY_OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -589,11 +642,19 @@ def main():
         "FC 2-000-05N Planning Factors Extraction Summary",
         "(authoritative tabular pass)",
         "",
-        f"Series 100 PDF        : {pdf100.name}",
-        f"Series 200 PDF        : {pdf200.name}",
+        "Series PDFs supplied:",
+    ]
+    for series, (pdf, recs) in per_series.items():
+        summary.append(
+            f"  Series {series}: {pdf.name}  ({len(recs)} CCN records)"
+        )
+    if missing:
+        summary.append(
+            f"Series PDFs NOT supplied: {', '.join(missing)}"
+        )
+    summary += [
+        "",
         f"Total CCN records     : {len(records)}",
-        f"  from Series 100     : {len(rec100)}",
-        f"  from Series 200     : {len(rec200)}",
         f"CCNs with factor table: {len(ccns_with_tables)}",
         f"CCNs engineering-study: {len(ccns_engineering_study)} "
         f"(narrative captured, no factor table per NAVFAC doctrine)",
@@ -610,8 +671,9 @@ def main():
         rec = next((r for r in records if r["ccn"] == c), None)
         if rec is None:
             summary.append(
-                f"  {c}: ABSENT from supplied PDFs (likely in Series 400 "
-                f"or 600, not yet supplied)"
+                f"  {c}: ABSENT from supplied PDFs (Series "
+                f"{', '.join(missing) if missing else '(all supplied)'} "
+                f"missing)"
             )
         else:
             tab_n = len(rec["tables"])
@@ -623,7 +685,7 @@ def main():
             summary.append(
                 f"  {c}: {rec['facility_name'][:30]:30}  "
                 f"kind={kind}  tables={tab_n}  narrative_sections={narr_n}  "
-                f"pages={rec['pages']}"
+                f"pages={rec['pages']}  series={rec['series']}"
             )
     SUMMARY_OUT.write_text("\n".join(summary) + "\n")
     print("\n".join(summary))

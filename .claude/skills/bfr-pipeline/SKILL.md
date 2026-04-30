@@ -450,6 +450,59 @@ unit; the order is the recommended build sequence.
   `out/CLB4_BFR_full.xlsx`. Validator: 5 PASS / 3 FAIL (the FAILs are
   expected, NOTE coverage and accounting orphans waiting on rule-table
   ratification and TAMCN-to-CCN doctrine). Commit `de3891c`.
+- Track 1f, FC 2-000-05N Series 400/500/600/700 PDFs landed
+  (origin/main commit e00823c, merged into dev branch). Series 300
+  and 800 still not supplied (training/range and utilities/ground;
+  not on the CLB-4 critical path).
+  fc_2_000_05n_400series_11_19_2025.pdf  v400.20251119  19 Nov 2025
+  fc_2_000_05n_500series_03_17_2023.pdf  v500.20230317  17 Mar 2023
+  fc_2_000_05n_600series_03_02_2023.pdf  v600.20230302   2 Mar 2023
+  fc_2_000_05n_700series_11_19_2025.pdf  v700.20251119  19 Nov 2025
+- audit/extract_planning_factors.py extended to walk every Series
+  PDF present in repo root (not just 100/200) with two layout
+  fixes for Series 600: (a) HEADING_CONT_RE handles wrapped
+  headings where the UoM is on the next line (e.g., "610 72
+  BATTALION/SQUADRON HEADQUARTERS, MARINE" / "CORPS (SF)"); (b)
+  FAC_RE relaxed to treat the colon as optional (Series 600
+  writes "FAC 6100" without colon, others use "FAC: NNNN").
+  Re-extraction output: 780 distinct CCN records (was 533, +247),
+  267+263 = 530 factor tables, 535 engineering-study CCNs with
+  narrative captured. Series 100=357, 200=187, 400=53, 500=20,
+  600=16, 700=158. ALL 10 CLB-4 worked-example CCNs now have
+  citations: 14345 Armory factor-table; 14312 factor-table; 14326
+  / 21451 / 21455 / 21710 / 21730 engineering-study from supplied
+  PDFs; 44112 (Series 400 page 46) / 45110 (Series 400 pages 50-51)
+  / 53010 (Series 500 page 8) / 61072 (Series 600 page 39)
+  engineering-study from newly supplied PDFs.
+- Track 5b, TAMCN orphan closure. `audit/TAMCN_CCN_MAP.yaml`
+  extended with 7 cited rule additions: medical_amal_kits lifted
+  from confidence=low TBD to high (Series 500 53010 cited);
+  comm_admin_computers (A9-series → 61072 admin per Series 600
+  61072-1); comm_a7_e_class_test_kits (A7xxxxE → 21710);
+  weapons_aav_recovery (E-prefix K-class full-tracked vehicles
+  → 21710); misc_b_g_recon_instrument (B-prefix G-class → 21730);
+  misc_c_t_class_machine_tools (C-prefix T-class → 21451);
+  weapons_eod_x_class (E-prefix X-class → 14326). After:
+  TAMCN orphans 27 → 0; per-CCN attribution: 44112 (314), 21710
+  (225), 14345 (184), 14326 (69), 21451 (30), 61072 (15),
+  21730 (11), 53010 (6). `samples/clb4_ccns.json` gained 53010
+  (CLB-4 BAS Dispensary) at 4 officers + 30 enlisted from
+  audit/FINDINGS.md item 2.
+- Track 1c-factor (citation-side), FC factor row rendering on
+  the citation footer. `pipeline/template.py` `fc_citation_lookup`
+  now emits each table's body rows verbatim under the citation
+  block. Apex Omega rule 7 ("numbers must be traceable") satisfied
+  at the point of use: 14345 Armory sheet now shows on its footer
+  the full step function (up to 2,000 personnel: 576 SF; 2,001 to
+  4,000: 880 SF; 4,001 to 7,500: 1,200 SF; 7,501 to 10,000:
+  1,508 SF; over 10,000: 0.1 SF/person). 14312 sheet shows the
+  three vehicle SF allowance tables. Engineering-study CCNs
+  continue to cite their narrative section. Validator: 6 PASS /
+  2 FAIL (was 5 / 3 since Track 5b TE attribution removed Check
+  8 failure); the 2 remaining FAILs are Check 2 (NOTE coverage)
+  and Check 7 (billet accounting) on the 42 still-unclassified
+  billets pending the BMOS rule lift now that Series 500/700 are
+  supplied (separate iteration).
 - Track 1c-citation, Layer 5 FC 2-000-05N citation rendering on
   every CCN sheet of every generated BFR. `pipeline/template.py`
   gained `fc_citation_lookup(ccn)` and `render_fc_citation_footer`
@@ -694,6 +747,48 @@ unchanged (175/359 = 49%) because the rule set does not cover
 all CLB-4 BMOS prefixes; the rule ratification work was about
 citation lift, not coverage expansion. Coverage expansion is
 Track 1d-extended below.
+
+After Tracks 5b and 1c-factor ship, the next leverage move is
+LIFTING the still-TBD BMOS rules now that Series 500/700 are
+supplied. The 42 currently-unclassified CLB-4 billets are ALL
+ratifiable now: 23+4+2+2 medical to CCN 53010 DISPENSARY AND
+OUTPATIENT CLINIC; 2+1 dental to CCN 54010 DENTAL CLINIC; 8 food
+service to CCN in Series 700 (dining/messhall) pending lookup.
+Plus the 11 TBD admin_ccn slots in audit/UNIT_TYPE_DEFAULTS.yaml
+become ratifiable against Series 600 (CCNs 610 70 / 71 / 72 / 73
+/ 74 plus 620 10 underground variant). That ratification is held
+for a separate iteration to keep commit boundaries clean.
+
+Tracks 5b and 1c-factor IN PROGRESS. Series 400, 500, 600, 700
+PDFs landed on origin/main at commit e00823c (user upload, 30 Apr
+2026). Specifically:
+  fc_2_000_05n_400series_11_19_2025.pdf  (v400.20251119, 19 Nov 2025)
+  fc_2_000_05n_500series_03_17_2023.pdf  (v500.20230317, 17 Mar 2023)
+  fc_2_000_05n_600series_03_02_2023.pdf  (v600.20230302,  2 Mar 2023)
+  fc_2_000_05n_700series_11_19_2025.pdf  (v700.20251119, 19 Nov 2025)
+Series 300 still not supplied (training/range facilities; not on
+the CLB-4 critical path). After merge into the dev branch:
+  1. Re-run audit/extract_planning_factors.py against all four
+     Series PDFs to expand audit/PLANNING_FACTORS.{yaml,json}.
+     Expected: CLB-4 missing CCNs (44112 in Series 400, 45110 in
+     400, 61072 in 600) gain factor tables or narrative_sections.
+  2. Track 5b: close the 27 TAMCN orphans by extending
+     audit/TAMCN_CCN_MAP.yaml with cited rules where the new
+     Series narrative grounds the choice. Apex Omega rule 4
+     applies for any TAMCN whose facility CCN is still in Series
+     300 or otherwise ambiguous.
+  3. Track 1c-factor: replace pipeline/template.py hardcoded
+     factor values (120 SF/person, 60 SF/cubicle, 420 SF/bay,
+     30 vehicles-per-bay, NTG 1.33) with PLANNING_FACTORS.json
+     lookups so the actual numbers in the BFR are FC-cited.
+
+After Tracks 5b and 1c-factor ship, the next ratification window
+opens: lift the 5 confidence=low / TBD BMOS rules in
+audit/CLASSIFICATION_RULES.yaml to confidence=high using the
+newly extracted Series 500/600/700 narratives, plus ratify the
+11 TBD admin_ccn slots in audit/UNIT_TYPE_DEFAULTS.yaml against
+Series 600. That's a separate iteration; stop after Tracks 5b
+and 1c-factor for clean commit boundaries.
 
 Track 1c-factor (next sub-step of Layer 5 ratification). Replace
    against the extracted factor table at

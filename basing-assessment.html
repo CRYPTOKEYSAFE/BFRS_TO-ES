@@ -176,12 +176,79 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 ::selection{background:rgba(196,163,90,0.25);color:var(--navy)}
 
+.print-title{display:none}
+
 @media print{
-  .site-header,.site-nav,.header-actions,.add-row-btn,.section-toggle,.row-btn,.row-actions{display:none!important}
-  .tab-panel{display:block!important;page-break-inside:avoid}
-  .content-wrap{max-width:100%;padding:18px}
-  .card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid}
-  .dark-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{margin:14mm 12mm}
+
+  .site-header,.site-nav,.header-actions,.add-row-btn,.section-toggle,.row-btn,.row-actions,.hidden-marker{display:none!important}
+
+  body{background:#fff;color:#1A1A2E;font-size:10pt;line-height:1.5}
+  .content-wrap{max-width:100%;padding:0;margin:0}
+
+  .print-title{display:block;text-align:center;margin:0 0 16px 0;padding:0 0 12px 0;border-bottom:2px solid var(--gold)}
+  .print-title .pt-eyebrow{font-size:7.5pt;letter-spacing:.18em;text-transform:uppercase;color:#7A6B45;margin-bottom:4px;font-weight:600}
+  .print-title h1{font-size:14pt;font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.2;color:#0A1628}
+  .print-title .pt-sub{font-size:8.5pt;color:#4A5568;margin-top:4px;font-weight:400}
+
+  .tab-panel{display:block!important;break-before:auto;break-after:auto;page-break-before:auto;page-break-after:auto}
+  .tab-panel + .tab-panel{break-before:page;page-break-before:always}
+
+  h1,h2,h3,.card-header,.timeline-title,.facility-name,.risk-title{break-after:avoid;page-break-after:avoid}
+
+  .card{box-shadow:none;border:1px solid #d0d0d0;margin-bottom:14px;padding:14px;break-inside:auto;page-break-inside:auto;background:#fff}
+  .card-header{margin-bottom:10px}
+  .card-header h2{font-size:11.5pt}
+
+  .alert,.dark-box,.metric,.facility,.risk-cell,.data-table th,.timeline-dot{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  .alert{padding:12px 16px;margin-bottom:14px}
+  .alert p{font-size:9.5pt}
+
+  .metric{padding:12px;border:1px solid #d0d0d0;box-shadow:none}
+  .metric-value{font-size:16pt}
+  .metric-context{font-size:7.5pt}
+
+  .facility{padding:12px;border:1px solid #d0d0d0;box-shadow:none}
+  .facility-num{font-size:14pt}
+  .facility-name{font-size:9.5pt}
+  .facility-desc{font-size:8.5pt}
+
+  .risk-cell{padding:12px;border:1px solid #d0d0d0}
+  .risk-title{font-size:9pt}
+  .risk-desc{font-size:8pt}
+
+  .dark-box{padding:14px 16px;border:1px solid #0A1628;background:#0A1628!important;color:#fff!important}
+  .dark-box h3{color:var(--gold)!important}
+  .dark-box p{color:#fff!important}
+
+  .data-table{font-size:9pt}
+  .data-table thead{display:table-header-group}
+  .data-table th{background:#0A1628!important;color:#fff!important;padding:8px 10px;font-size:7.5pt}
+  .data-table td{padding:7px 10px}
+  .data-table tr{break-inside:avoid;page-break-inside:avoid}
+
+  .timeline{padding-left:26px}
+  .timeline-item{padding-bottom:14px;break-inside:avoid;page-break-inside:avoid}
+  .timeline-date{font-size:7.5pt}
+  .timeline-title{font-size:9pt}
+  .timeline-desc{font-size:8.5pt}
+
+  .grid-3,.grid-4,.grid-2{grid-template-columns:repeat(2,1fr);gap:10px}
+  .risk-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+
+  .body-text{font-size:9.5pt;margin-bottom:10px}
+  .section-lead{font-size:10pt;margin-bottom:14px}
+  .checklist{font-size:9pt}
+  .cite{font-size:7.5pt;margin-top:6px;padding-top:6px}
+
+  .site-footer{background:#fff;color:#666;border-top:1px solid #ccc;padding:14px 0;margin-top:18px;text-align:center}
+  .site-footer .footer-label{color:#7A6B45}
+
+  *{animation:none!important;transition:none!important}
 }
 
 @media (max-width:1024px){
@@ -213,9 +280,11 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <div class="sub">Predicate to the forthcoming MLG consolidation review. Controlled Unclassified Information.</div>
     </div>
     <div class="header-actions">
-      <button class="btn" id="editToggle" type="button" onclick="toggleEdit()">Edit Mode</button>
-      <button class="btn" type="button" onclick="saveFile()">Save HTML</button>
-      <button class="btn" type="button" onclick="window.print()">Print</button>
+      <button class="btn" id="editToggle" type="button" onclick="toggleEdit()" title="Toggle in-page editing of all body content">Edit Mode</button>
+      <button class="btn" type="button" onclick="saveFile()" title="Download the current document as an HTML file with all edits applied">Save HTML</button>
+      <button class="btn" type="button" onclick="exportPDF()" title="Open the print dialog. Choose Save as PDF as the destination to export.">Export PDF</button>
+      <button class="btn" type="button" onclick="window.print()" title="Open the print dialog">Print</button>
+      <button class="btn" id="restoreBtn" type="button" onclick="clearAutosave()" style="display:none" title="Discard locally autosaved edits">Discard Autosave</button>
     </div>
   </div>
   <nav class="site-nav">
@@ -231,11 +300,18 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 
 <div class="content-wrap">
 
+<!-- Print-only title block. Hidden on screen, shown only when printing. -->
+<div class="print-title">
+  <div class="pt-eyebrow">Marine Corps Installations Pacific, Marine Corps Base Camp Butler</div>
+  <h1>3d MED BN Camp Kinser Facility Plan</h1>
+  <div class="pt-sub">Predicate to the forthcoming MLG consolidation review. Controlled Unclassified Information.</div>
+</div>
+
 <!-- ============================== TAB 0: OVERVIEW ============================== -->
 <div class="tab-panel active">
 
   <div class="alert alert-gold">
-    <p contenteditable="true"><strong>Bottom line.</strong> The strategic basing decision has been made. 3d Medical Battalion is consolidating on Camp Kinser. The unit has physically relocated. The work now is facility planning and project development to support the relocation, leveraging existing Basic Facility Requirements data to identify gaps and surpluses, then producing a scope of work that can award between now and Q4 of FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows.</p>
+    <p contenteditable="true"><strong>Bottom line.</strong> The strategic basing decision is made. 3d Medical Battalion is consolidating on Camp Kinser. The unit has physically relocated. The work now is facility planning and project development to support the relocation, anchored to existing Basic Facility Requirements data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows.</p>
   </div>
 
   <div class="grid-4" style="margin-bottom:22px">
@@ -295,7 +371,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     </div>
     <div class="card-body">
       <p class="body-text" contenteditable="true">III MEF requires eight surgical platoons to meet wartime requirements. Per the CG 3d MLG signed letter dated 2 February 2026, III MEF is staffed to three surgical platoons within the First Island Chain. Bravo Surgical Company is part of the relocation back from Hawaii.</p>
-      <p class="body-text" contenteditable="true">Per Tab A page 7 (3d MLG basing-action letter, 20 March 2025), the 2020 relocation of Bravo Surgical Company from Okinawa to Hawaii created unintended consequences for III MEF surgical readiness. The Hawaii-based company was increasingly tasked with supporting MCB Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are valid missions, but they are not III MEF missions, and they pulled surgical capacity away from where III MEF needs it.</p>
+      <p class="body-text" contenteditable="true">Per Tab A page 7 (3d MLG basing-action letter, 20 March 2025), the 2020 relocation of Bravo Surgical Company from Okinawa to Hawaii created unintended consequences for III MEF surgical readiness. The Hawaii-based company was increasingly tasked with supporting MCB Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are not III MEF missions; the result was a reduction in III MEF surgical capacity in the First Island Chain.</p>
       <span class="cite">Sources: CG 3d MLG signed letter para 1; Tab A page 7 paras 1 and 2.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
@@ -321,7 +397,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
           <span class="timeline-dot done"></span>
           <div class="timeline-date" contenteditable="true">2020</div>
           <div class="timeline-title" contenteditable="true">Bravo Surg Co relocated to Hawaii</div>
-          <div class="timeline-desc" contenteditable="true">Bravo Surgical Company moved from Okinawa to Oahu in support of Force Design initiatives. Tab A page 7 paragraph 2 documents the unintended consequence: Hawaii-based Bravo got pulled into supporting Camp Smith, Tripler, and Pearl Harbor, draining III MEF surgical capacity in the First Island Chain.</div>
+          <div class="timeline-desc" contenteditable="true">Bravo Surgical Company moved from Okinawa to Oahu in support of Force Design initiatives. Tab A page 7 paragraph 2 documents the unintended consequence: the Hawaii-based company was tasked with supporting Camp Smith, Tripler, and Pearl Harbor, reducing III MEF surgical capacity in the First Island Chain.</div>
         </div>
 
         <div class="timeline-item">
@@ -479,7 +555,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">The team formulates the initial plan of attack and verifies resources, touchpoints, and delivery. Per Kenji Music, initial assessments are Planner-focused. Existing data sets, including BFR data, are leveraged to set constraining facility requirements and identify critical gaps and surpluses. An engineering lift follows to survey buildings and to develop supporting work scopes with the units.</p>
+      <p class="body-text" contenteditable="true">The team formulates the initial plan of attack and verifies resources, touchpoints, and delivery. Per Kenji Music, initial assessments are Planner-focused. Existing data sets, including BFR data, set the constraining facility requirements and surface critical gaps and surpluses. An engineering lift follows to survey buildings and to develop supporting work scopes with the units.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -532,7 +608,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">Phase one is Planner-led. The engineering lift comes in for building surveys and SOW development; engineering walkthroughs are run as a group rather than serially. Additional planner support added as scope demands.</p>
+      <p class="body-text" contenteditable="true">Phase one is Planner-led. The engineering lift comes in for building surveys and SOW development; engineering walkthroughs are run as a group. Additional planner support is added as scope expands.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -621,7 +697,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="facility">
       <div class="facility-num" contenteditable="true">508</div>
       <div class="facility-name" contenteditable="true">Supply</div>
-      <div class="facility-desc" contenteditable="true">Supply functions and organic storage. Class VIII(a) medical supply remains with MEDLOG, CLR-35, also at Kinser, which is the primary operational rationale for the Kinser site (per CG signed letter para 3).</div>
+      <div class="facility-desc" contenteditable="true">Supply functions and organic storage. Class VIII(a) medical supply remains with MEDLOG, CLR-35, also at Kinser. The MEDLOG co-location is the operational rationale cited in the CG signed letter para 3.</div>
     </div>
 
   </div>
@@ -646,7 +722,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">These are the documented Bravo Surgical Company functional space requirements per Tab C slide 20. They are useful as a baseline for Bravo's contribution to the consolidated requirement. The whole-battalion footprint at 711 personnel will exceed these numbers across most categories. Tab C used 181 personnel in its analysis; the proponent personnel number (Tab A page 7, Tab B page 4) is 180 BICs (41 officer, 164 enlisted).</p>
+      <p class="body-text" contenteditable="true">These are the Bravo Surgical Company functional space requirements per Tab C slide 20. They cover Bravo only; the consolidated battalion at 711 personnel drives a larger total. Tab C used 181 personnel in its analysis; the proponent personnel number (Tab A page 7, Tab B page 4) is 180 BICs (41 officer, 164 enlisted).</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -777,7 +853,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <div class="risk-cell risk-y">
           <div class="risk-label">Coordination Risk</div>
           <div class="risk-title" contenteditable="true">ICG deconflict</div>
-          <div class="risk-desc" contenteditable="true">Installation Communications Grid effort is recent and at early scope. Camp Kinser is identified among the more impacted sites. Facility work scopes need to coordinate against ICG cable routing and equipment placement once the grid scope firms up.</div>
+          <div class="risk-desc" contenteditable="true">Installation Communications Grid is a recent effort. Scope is at an early stage. Camp Kinser and Camp Hansen are identified as among the more impacted sites at MCB Camp Butler. Once ICG scope firms, deconflict facility work scopes against it.</div>
         </div>
 
       </div>
@@ -812,15 +888,15 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">The near-term path is clear. Complete the Planner-led read-in and constraint setting against existing BFR data. Sequence the building walk with the engineering lift once identified. Produce the complete scope of work for ideal operational capabilities within the existing Kinser footprint, and identify the prioritized subset that can award between now and Q4 of FY27. Reconcile against UDP3, HAP turnover, OKICON, the Kinser Tower, and ICG.</p>
-      <p class="body-text" contenteditable="true">Two strategic decisions remain at HQMC and are outside the scope of this effort: whether to engage DPRI to modify the Pacific Posture Program of Record so the full 3d MED BN can remain in Okinawa long-term, and whether to invest in new development areas (KASA-1, CTA, NTA) as enduring basing options. This effort delivers the documentation and prioritized SOW that informs those higher-level decisions.</p>
+      <p class="body-text" contenteditable="true">Near-term sequence: complete the Planner-led read-in and constraint setting against existing BFR data; sequence the building walk with the engineering lift once identified; produce the scope of work for ideal operational capabilities within the existing Kinser footprint; identify the prioritized subset that can award between now and Q4 FY27; reconcile against UDP3, HAP turnover, OKICON, the Kinser Tower, and ICG.</p>
+      <p class="body-text" contenteditable="true">Two strategic decisions remain at HQMC, outside the scope of this effort: whether to engage DPRI to modify the Pacific Posture Program of Record so the full 3d MED BN can remain in Okinawa long-term, and whether to invest in new development areas (KASA-1, CTA, NTA) as enduring basing options. This effort delivers the documentation and prioritized SOW that feeds those decisions.</p>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
 
   <div class="dark-box">
     <h3>Summary for Decision Makers</h3>
-    <p contenteditable="true">The SBA decision is made. The unit is at Kinser. Six buildings are allocated. The work is facility planning and project development to support the relocation, leveraging existing BFR data to identify gaps and surpluses, then producing a scope of work that can award between now and Q4 of FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows. Risks worth managing are UH capacity at Bldg 1225 against UDP3 inbound, the six-building scope possibly expanding, the Q4 FY27 award gate, ICG deconfliction at Kinser, and the DPRI POR strategic risk that applies to the entire 3d MLG presence on Okinawa.</p>
+    <p contenteditable="true">The SBA decision is made. The unit is at Kinser. Six buildings are allocated. The work is facility planning and project development to support the relocation, anchored to existing BFR data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows. Risks to manage: UH capacity at Bldg 1225 against UDP3 inbound, the six-building scope possibly expanding, the Q4 FY27 award gate, ICG deconfliction at Kinser, and the DPRI POR strategic risk that applies to the entire 3d MLG presence on Okinawa.</p>
   </div>
 
 </div>
@@ -846,21 +922,36 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
+  var EDITABLE_SELECTOR = '.content-wrap p, .content-wrap td, .content-wrap h2, .content-wrap .timeline-date, .content-wrap .timeline-title, .content-wrap .timeline-desc, .content-wrap .facility-num, .content-wrap .facility-name, .content-wrap .facility-desc, .content-wrap .metric-value, .content-wrap .metric-context, .content-wrap .risk-title, .content-wrap .risk-desc, .content-wrap .checklist li, .content-wrap .body-text, .content-wrap .section-lead, .content-wrap .alert p, .content-wrap .dark-box p, .site-footer [contenteditable], .site-footer > div';
+
+  function setEditable(on){
+    var els = document.querySelectorAll(EDITABLE_SELECTOR);
+    els.forEach(function(el){
+      if(on){
+        el.setAttribute('contenteditable', 'true');
+      } else {
+        if(el.getAttribute('contenteditable') === 'true'){
+          el.setAttribute('contenteditable', 'false');
+        }
+      }
+    });
+  }
+
   window.toggleEdit = function(){
-    document.body.classList.toggle('edit-mode');
+    var entering = !document.body.classList.contains('edit-mode');
+    document.body.classList.toggle('edit-mode', entering);
     var btn = document.getElementById('editToggle');
-    if(document.body.classList.contains('edit-mode')){
+    if(entering){
       btn.classList.add('btn-active');
       btn.textContent = 'Exit Edit Mode';
-      var editables = document.querySelectorAll('.content-wrap p, .content-wrap td, .content-wrap h2, .content-wrap .timeline-date, .content-wrap .timeline-title, .content-wrap .timeline-desc, .content-wrap .facility-num, .content-wrap .facility-name, .content-wrap .facility-desc, .content-wrap .metric-value, .content-wrap .metric-context, .content-wrap .risk-title, .content-wrap .risk-desc, .content-wrap .checklist li, .content-wrap .body-text, .content-wrap .section-lead, .content-wrap .alert p, .content-wrap .dark-box p, .site-footer [contenteditable]');
-      editables.forEach(function(el){
-        if(!el.hasAttribute('contenteditable')){
-          el.setAttribute('contenteditable', 'true');
-        }
-      });
+      setEditable(true);
     } else {
       btn.classList.remove('btn-active');
       btn.textContent = 'Edit Mode';
+      setEditable(false);
+      if(document.activeElement && document.activeElement.blur){
+        document.activeElement.blur();
+      }
     }
   };
 
@@ -905,8 +996,20 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     }
   };
 
+  function buildHTML(){
+    var clone = document.documentElement.cloneNode(true);
+    var hidden = clone.querySelectorAll('#editToggle, #restoreBtn');
+    hidden.forEach(function(b){
+      if(b.id === 'editToggle') b.textContent = 'Edit Mode';
+      if(b.id === 'restoreBtn') b.setAttribute('style', 'display:none');
+    });
+    var body = clone.querySelector('body');
+    if(body) body.classList.remove('edit-mode');
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
   window.saveFile = function(){
-    var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    var html = buildHTML();
     var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -920,6 +1023,77 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       URL.revokeObjectURL(url);
     }, 100);
   };
+
+  window.exportPDF = function(){
+    var wasEdit = document.body.classList.contains('edit-mode');
+    if(wasEdit){
+      document.body.classList.remove('edit-mode');
+    }
+    setTimeout(function(){
+      window.print();
+      if(wasEdit){
+        setTimeout(function(){ document.body.classList.add('edit-mode'); }, 200);
+      }
+    }, 50);
+  };
+
+  var STORAGE_KEY = 'kinser-facility-plan-v2';
+  var autosaveTimer = null;
+
+  function autosave(){
+    if(autosaveTimer) clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(function(){
+      try {
+        var content = document.querySelector('.content-wrap').innerHTML;
+        var footer = document.querySelector('.site-footer').innerHTML;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          content: content,
+          footer: footer,
+          when: new Date().toISOString()
+        }));
+        var btn = document.getElementById('restoreBtn');
+        if(btn) btn.style.display = 'inline-block';
+      } catch(e) {}
+    }, 750);
+  }
+
+  function tryRestore(){
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var saved = JSON.parse(raw);
+      if(!saved || !saved.content) return;
+      var when = saved.when ? new Date(saved.when).toLocaleString() : 'unknown time';
+      if(confirm('Locally autosaved edits found from ' + when + '. Restore them?')){
+        document.querySelector('.content-wrap').innerHTML = saved.content;
+        if(saved.footer) document.querySelector('.site-footer').innerHTML = saved.footer;
+        var btn = document.getElementById('restoreBtn');
+        if(btn) btn.style.display = 'inline-block';
+      } else {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch(e) {}
+  }
+
+  window.clearAutosave = function(){
+    if(confirm('Discard locally autosaved edits? The current view stays as is until you reload.')){
+      localStorage.removeItem(STORAGE_KEY);
+      var btn = document.getElementById('restoreBtn');
+      if(btn) btn.style.display = 'none';
+    }
+  };
+
+  document.addEventListener('input', function(e){
+    if(e.target && e.target.isContentEditable){
+      autosave();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    if(localStorage.getItem(STORAGE_KEY)){
+      tryRestore();
+    }
+  });
 
   document.addEventListener('keydown', function(e){
     if(e.target.isContentEditable) return;

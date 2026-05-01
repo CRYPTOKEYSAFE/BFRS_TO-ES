@@ -4,256 +4,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Strategic Basing Assessment | 3d Medical Battalion | Camp Kinser</title>
+<title>3d MED BN Camp Kinser Facility Plan</title>
 <style>
-/* === CORE VARIABLES === */
 :root{
   --gold:#C4A35A;
   --gold-bright:#D4B76A;
   --gold-soft:rgba(196,163,90,0.15);
-  --gold-glow:rgba(196,163,90,0.25);
   --navy:#0A1628;
-  --navy-deep:#070F1D;
   --navy-mid:#111D2E;
-  --navy-light:#1A2942;
   --cream:#F5F3EE;
-  --cream-warm:#FAF9F6;
   --white:#FFFFFF;
   --text:#1A1A2E;
   --text-secondary:#4A5568;
   --text-muted:#6B7280;
-  --text-light:#9CA3AF;
   --border:#E5E7EB;
-  --border-light:#F0EDE8;
   --green:#065F46;
-  --green-soft:rgba(6,95,70,0.1);
+  --green-soft:rgba(6,95,70,0.10);
   --orange:#B45309;
-  --orange-soft:rgba(180,83,9,0.1);
+  --orange-soft:rgba(180,83,9,0.10);
   --red:#991B1B;
-  --red-soft:rgba(153,27,27,0.1);
+  --red-soft:rgba(153,27,27,0.10);
   --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
   --shadow-md:0 4px 6px rgba(0,0,0,0.04),0 2px 4px rgba(0,0,0,0.03);
   --shadow-lg:0 10px 15px rgba(0,0,0,0.05),0 4px 6px rgba(0,0,0,0.03);
-  --shadow-xl:0 20px 25px rgba(0,0,0,0.06),0 8px 10px rgba(0,0,0,0.04);
   --radius-sm:6px;
   --radius-md:10px;
   --radius-lg:14px;
-  --transition-fast:0.15s ease;
-  --transition-base:0.25s ease;
-  --transition-slow:0.4s ease;
+  --transition:0.25s ease;
 }
 
-/* === RESET === */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.65;font-size:15.5px;min-height:100vh}
 
-/* === HEADER === */
 .site-header{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.25)}
-.header-top{display:flex;align-items:center;justify-content:space-between;padding:18px 36px;border-bottom:1px solid rgba(196,163,90,0.15)}
-.logo-group{display:flex;align-items:center;gap:18px}
-.logo-group img{height:78px;width:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.35));transition:transform var(--transition-base)}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:18px 36px;border-bottom:1px solid rgba(196,163,90,0.15);flex-wrap:wrap;gap:18px}
+.logo-group{display:flex;align-items:center;gap:18px;flex-shrink:0}
+.logo-group img{height:72px;width:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.35));transition:transform var(--transition)}
 .logo-group img:hover{transform:scale(1.04)}
-.header-title-block{text-align:right}
-.header-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:600}
-.header-title-block h1{font-size:1.6rem;font-weight:800;letter-spacing:.04em;line-height:1.15;text-transform:uppercase;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
-.header-subtitle{font-size:.8rem;color:rgba(255,255,255,0.55);margin-top:4px;font-weight:400}
+.title-block{flex:1;min-width:280px;text-align:center}
+.title-eyebrow{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:600}
+.title-block h1{font-size:1.55rem;font-weight:800;letter-spacing:.04em;line-height:1.15;text-transform:uppercase}
+.title-block .sub{font-size:.8rem;color:rgba(255,255,255,0.6);margin-top:4px;font-weight:400}
+.header-actions{display:flex;gap:8px;align-items:center}
+.btn{font-family:inherit;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:9px 14px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);cursor:pointer;transition:all var(--transition);white-space:nowrap}
+.btn:hover{background:rgba(255,255,255,0.14);color:var(--white)}
+.btn-primary{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-bright)}
+.btn-active{background:var(--gold);color:var(--navy);border-color:var(--gold)}
 
-/* === NAVIGATION === */
-.site-nav{display:flex;padding:0 36px;gap:2px;background:rgba(0,0,0,0.2)}
-.nav-tab{position:relative;padding:13px 20px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,0.45);cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all var(--transition-base);white-space:nowrap}
+.site-nav{display:flex;padding:0 36px;gap:2px;background:rgba(0,0,0,0.2);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-tab{position:relative;padding:13px 18px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,0.45);cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;transition:all var(--transition);white-space:nowrap;font-family:inherit}
 .nav-tab:hover{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.04)}
 .nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(196,163,90,0.06)}
-.nav-tab::after{content:'';position:absolute;bottom:-3px;left:50%;width:0;height:3px;background:var(--gold);transition:all var(--transition-base);transform:translateX(-50%)}
-.nav-tab:hover::after{width:60%}
-.nav-tab.active::after{width:0}
 .header-accent{height:3px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-bright) 50%,var(--gold) 100%)}
 
-/* === CONTENT === */
 .content-wrap{max-width:1240px;margin:0 auto;padding:32px 36px 60px;min-height:600px}
-.tab-panel{display:none;animation:fadeIn var(--transition-slow) ease forwards}
-.tab-panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .35s ease forwards}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* === SECTION HEADERS === */
-.section-lead{font-size:1.05rem;color:var(--text-secondary);margin-bottom:28px;line-height:1.75;max-width:880px;font-weight:400}
+.section-lead{font-size:1.05rem;color:var(--text-secondary);margin-bottom:24px;line-height:1.75;max-width:880px;font-weight:400}
 
-/* === CARDS === */
-.card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:26px;margin-bottom:20px;border:1px solid var(--border);transition:all var(--transition-base)}
-.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
-.card-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
-.card-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;transition:transform var(--transition-fast)}
-.card:hover .card-icon{transform:scale(1.08)}
-.card-header h2{font-size:1.25rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
+.card{background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:26px;margin-bottom:20px;border:1px solid var(--border);transition:all var(--transition)}
+.card:hover{box-shadow:var(--shadow-lg)}
+.card-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.card-header h2{font-size:1.18rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
+.section-toggle{margin-left:auto;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);width:28px;height:28px;cursor:pointer;color:var(--text-muted);font-size:.85rem;font-weight:700;font-family:inherit;display:none}
+body.edit-mode .section-toggle{display:inline-block}
+.section-toggle:hover{background:var(--cream);color:var(--navy)}
+.card.collapsed .card-body{display:none}
 
-/* === BADGES === */
-.badge{margin-left:auto;font-size:.65rem;padding:5px 11px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.07em;font-weight:700;border:1px solid transparent;transition:all var(--transition-fast);cursor:default;position:relative}
-.badge:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.badge{margin-left:auto;font-size:.65rem;padding:5px 11px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.07em;font-weight:700;border:1px solid transparent}
 .badge-gold{background:var(--gold-soft);color:#7A6B45;border-color:rgba(196,163,90,0.25)}
 .badge-red{background:var(--red-soft);color:var(--red);border-color:rgba(153,27,27,0.2)}
 .badge-green{background:var(--green-soft);color:var(--green);border-color:rgba(6,95,70,0.2)}
 .badge-orange{background:var(--orange-soft);color:var(--orange);border-color:rgba(180,83,9,0.2)}
 
-/* === TOOLTIP === */
-.badge[title]:hover::before{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--navy);color:var(--white);padding:6px 12px;border-radius:6px;font-size:.7rem;letter-spacing:.02em;text-transform:none;font-weight:500;white-space:nowrap;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,0.2);opacity:0;animation:tipIn .2s ease forwards}
-@keyframes tipIn{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-
-/* === ALERTS === */
-.alert{border-radius:var(--radius-md);padding:18px 22px;margin-bottom:22px;border-left:4px solid;position:relative;overflow:hidden}
-.alert::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;border-radius:50%;opacity:.06;transform:translate(30%,-30%)}
+.alert{border-radius:var(--radius-md);padding:18px 22px;margin-bottom:22px;border-left:4px solid}
 .alert-gold{background:linear-gradient(135deg,rgba(196,163,90,0.08) 0%,rgba(196,163,90,0.03) 100%);border-color:var(--gold)}
-.alert-gold::before{background:var(--gold)}
 .alert-red{background:linear-gradient(135deg,rgba(153,27,27,0.05) 0%,rgba(153,27,27,0.02) 100%);border-color:var(--red)}
-.alert-red::before{background:var(--red)}
 .alert-green{background:linear-gradient(135deg,rgba(6,95,70,0.05) 0%,rgba(6,95,70,0.02) 100%);border-color:var(--green)}
-.alert-green::before{background:var(--green)}
-.alert p{font-size:.92rem;line-height:1.7;color:var(--text);font-weight:400}
+.alert p{font-size:.92rem;line-height:1.7;color:var(--text)}
 .alert strong{font-weight:700}
 
-/* === GRIDS === */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 
-/* === METRIC CARDS === */
-.metric{background:var(--white);border-radius:var(--radius-md);padding:22px;border:1px solid var(--border);box-shadow:var(--shadow-sm);transition:all var(--transition-base);position:relative;overflow:hidden}
-.metric::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));opacity:0;transition:opacity var(--transition-base)}
-.metric:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.metric:hover::before{opacity:1}
+.metric{background:var(--white);border-radius:var(--radius-md);padding:22px;border:1px solid var(--border);box-shadow:var(--shadow-sm);transition:all var(--transition)}
+.metric:hover{box-shadow:var(--shadow-lg)}
 .metric-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:8px;font-weight:600}
 .metric-value{font-size:2rem;font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:-.02em}
 .metric-unit{font-size:.9rem;font-weight:500;color:var(--text-muted);margin-left:4px}
-.metric-context{font-size:.8rem;color:var(--text-muted);margin-top:8px;font-weight:400}
+.metric-context{font-size:.78rem;color:var(--text-muted);margin-top:8px;font-weight:400;line-height:1.5}
 
-/* === TABLES === */
 .data-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:14px}
 .data-table th{font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;text-align:left;padding:12px 14px;background:var(--navy);color:var(--white);font-weight:700;white-space:nowrap}
 .data-table th:first-child{border-radius:6px 0 0 0}
 .data-table th:last-child{border-radius:0 6px 0 0}
-.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text);font-weight:400;transition:background var(--transition-fast)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--text);font-weight:400}
 .data-table tr:hover td{background:rgba(196,163,90,0.04)}
 .data-table tr:last-child td{border-bottom:none}
 .data-table td:first-child{font-weight:600;color:var(--navy)}
+.data-table td.row-actions{width:1%;white-space:nowrap;text-align:right;display:none}
+body.edit-mode .data-table td.row-actions{display:table-cell}
+body.edit-mode .data-table th.row-actions{display:table-cell}
+.data-table th.row-actions{display:none}
+.row-btn{font-family:inherit;font-size:.7rem;padding:4px 8px;border:1px solid var(--border);background:var(--white);color:var(--text-muted);border-radius:4px;cursor:pointer;margin-left:4px}
+.row-btn:hover{background:var(--cream);color:var(--navy)}
+.add-row-btn{display:none;margin-top:10px;font-family:inherit;font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;font-weight:700;padding:7px 12px;border:1px dashed var(--gold);background:transparent;color:var(--gold);border-radius:var(--radius-sm);cursor:pointer}
+body.edit-mode .add-row-btn{display:inline-block}
+.add-row-btn:hover{background:var(--gold-soft)}
 
-/* === TIMELINE === */
 .timeline{position:relative;padding-left:32px}
 .timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--border) 0%,var(--gold) 50%,var(--border) 100%)}
-.timeline-item{position:relative;padding-bottom:28px}
-.timeline-dot{position:absolute;left:-26px;top:3px;width:16px;height:16px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 2px var(--gold),0 2px 6px rgba(0,0,0,0.15);background:var(--gold);transition:all var(--transition-base);z-index:2}
-.timeline-item:hover .timeline-dot{transform:scale(1.15);box-shadow:0 0 0 3px var(--gold),0 3px 10px rgba(0,0,0,0.2)}
-.timeline-dot.done{background:var(--green);box-shadow:0 0 0 2px var(--green),0 2px 6px rgba(0,0,0,0.15)}
-.timeline-item:hover .timeline-dot.done{box-shadow:0 0 0 3px var(--green),0 3px 10px rgba(0,0,0,0.2)}
-.timeline-dot.now{background:var(--red);box-shadow:0 0 0 2px var(--red),0 2px 6px rgba(0,0,0,0.15);animation:pulse 2.5s infinite ease-in-out}
-@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 2px var(--red),0 2px 6px rgba(0,0,0,0.15)}50%{transform:scale(1.18);box-shadow:0 0 0 4px var(--red),0 4px 12px rgba(153,27,27,0.3)}}
+.timeline-item{position:relative;padding-bottom:24px}
+.timeline-dot{position:absolute;left:-26px;top:3px;width:14px;height:14px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 2px var(--gold);background:var(--gold);z-index:2}
+.timeline-dot.done{background:var(--green);box-shadow:0 0 0 2px var(--green)}
+.timeline-dot.now{background:var(--red);box-shadow:0 0 0 2px var(--red)}
 .timeline-date{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);font-weight:700;margin-bottom:3px}
-.timeline-title{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.03em;transition:color var(--transition-fast)}
-.timeline-item:hover .timeline-title{color:var(--gold)}
+.timeline-title{font-size:1rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
 .timeline-desc{font-size:.85rem;color:var(--text-muted);margin-top:6px;line-height:1.6;font-weight:400}
 
-/* === EXPANDABLE === */
-.expandable{border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:12px;overflow:hidden;background:var(--white);transition:box-shadow var(--transition-base)}
-.expandable:hover{box-shadow:var(--shadow-md)}
-.expandable.open{box-shadow:var(--shadow-md)}
-.expandable-header{padding:16px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all var(--transition-fast);user-select:none;-webkit-user-select:none}
-.expandable-header:hover{background:rgba(196,163,90,0.03)}
-.expandable-title{font-size:.92rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--navy);transition:color var(--transition-fast)}
-.expandable-header:hover .expandable-title{color:var(--gold)}
-.expandable-icon{font-size:1.1rem;color:var(--gold);transition:transform var(--transition-slow);flex-shrink:0}
-.expandable.open .expandable-icon{transform:rotate(180deg)}
-.expandable-body{max-height:0;overflow:hidden;transition:max-height var(--transition-slow),padding var(--transition-slow);padding:0 22px}
-.expandable.open .expandable-body{max-height:2000px;padding:0 22px 22px}
-
-/* === FACILITY CARDS === */
-.facility{background:var(--white);border-radius:var(--radius-md);padding:22px;border:1px solid var(--border);transition:all var(--transition-base);position:relative}
-.facility:hover{border-color:var(--gold);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
-.facility::after{content:'';position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));opacity:0;transition:opacity var(--transition-base);border-radius:0 0 2px 2px}
-.facility:hover::after{opacity:1}
+.facility{background:var(--white);border-radius:var(--radius-md);padding:22px;border:1px solid var(--border);transition:all var(--transition)}
+.facility:hover{border-color:var(--gold);box-shadow:var(--shadow-lg)}
 .facility-num{font-size:1.7rem;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-.03em}
 .facility-name{font-size:.92rem;font-weight:800;color:var(--navy);text-transform:uppercase;margin-top:6px;letter-spacing:.03em}
 .facility-desc{font-size:.8rem;color:var(--text-muted);margin-top:8px;line-height:1.55;font-weight:400}
 
-/* === RISK GRID === */
-.risk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
-.risk-cell{border-radius:var(--radius-md);padding:18px;text-align:center;border:2px solid transparent;transition:all var(--transition-base);position:relative;overflow:hidden}
-.risk-cell::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;opacity:.04;transition:opacity var(--transition-base)}
-.risk-cell:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-.risk-cell:hover::before{opacity:.08}
-.risk-g{background:var(--green-soft);border-color:rgba(6,95,70,0.18)}.risk-g::before{background:var(--green)}
-.risk-y{background:rgba(160,140,40,0.06);border-color:rgba(160,140,40,0.18)}.risk-y::before{background:#B8A948}
-.risk-o{background:var(--orange-soft);border-color:rgba(180,83,9,0.18)}.risk-o::before{background:var(--orange)}
-.risk-r{background:var(--red-soft);border-color:rgba(153,27,27,0.18)}.risk-r::before{background:var(--red)}
-.risk-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:700;position:relative;z-index:1}
-.risk-g .risk-label{color:var(--green)}.risk-y .risk-label{color:#8B7D3A}.risk-o .risk-label{color:var(--orange)}.risk-r .risk-label{color:var(--red)}
-.risk-title{font-size:.92rem;font-weight:800;text-transform:uppercase;position:relative;z-index:1;letter-spacing:.03em}
-.risk-g .risk-title{color:var(--green)}.risk-y .risk-title{color:#8B7D3A}.risk-o .risk-title{color:var(--orange)}.risk-r .risk-title{color:var(--red)}
-.risk-desc{font-size:.75rem;color:var(--text-muted);margin-top:8px;line-height:1.45;position:relative;z-index:1;font-weight:400}
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.risk-cell{border-radius:var(--radius-md);padding:18px;border:2px solid transparent;transition:all var(--transition)}
+.risk-cell:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.risk-g{background:var(--green-soft);border-color:rgba(6,95,70,0.18)}
+.risk-y{background:rgba(160,140,40,0.06);border-color:rgba(160,140,40,0.18)}
+.risk-o{background:var(--orange-soft);border-color:rgba(180,83,9,0.18)}
+.risk-r{background:var(--red-soft);border-color:rgba(153,27,27,0.18)}
+.risk-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:700}
+.risk-g .risk-label{color:var(--green)} .risk-y .risk-label{color:#8B7D3A} .risk-o .risk-label{color:var(--orange)} .risk-r .risk-label{color:var(--red)}
+.risk-title{font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:6px}
+.risk-g .risk-title{color:var(--green)} .risk-y .risk-title{color:#8B7D3A} .risk-o .risk-title{color:var(--orange)} .risk-r .risk-title{color:var(--red)}
+.risk-desc{font-size:.82rem;color:var(--text-muted);line-height:1.55;font-weight:400}
 
-/* === DARK BOX === */
-.dark-box{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:var(--white);border-radius:var(--radius-md);padding:24px 28px;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(196,163,90,0.1)}
-.dark-box::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(196,163,90,0.06) 0%,transparent 70%)}
-.dark-box h3{font-size:1.05rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;color:var(--gold);position:relative;z-index:1}
-.dark-box p{font-size:.9rem;line-height:1.75;color:rgba(255,255,255,0.82);position:relative;z-index:1;font-weight:400}
+.dark-box{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:var(--white);border-radius:var(--radius-md);padding:24px 28px;margin-bottom:20px;box-shadow:var(--shadow-lg)}
+.dark-box h3{font-size:1.05rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px;color:var(--gold)}
+.dark-box p{font-size:.9rem;line-height:1.75;color:rgba(255,255,255,0.85)}
 
-/* === BODY TEXT === */
 .body-text{font-size:.93rem;line-height:1.75;color:var(--text);margin-bottom:14px;font-weight:400}
 
-/* === LISTS === */
 .checklist{list-style:none;font-size:.88rem;line-height:2.1}
-.checklist li{position:relative;padding-left:28px;transition:all var(--transition-fast)}
-.checklist li:hover{padding-left:32px;color:var(--navy)}
-.checklist li::before{position:absolute;left:0;top:0;font-weight:700}
-.checklist .done::before{content:'\2713';color:var(--green);font-size:1.1rem}
-.checklist .pending::before{content:'\2605';color:var(--orange);font-size:.9rem}
+.checklist li{position:relative;padding-left:22px}
+.checklist li::before{position:absolute;left:0;top:0;font-weight:700;font-size:1rem}
+.checklist .done::before{content:'OK';color:var(--green);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
+.checklist .pending::before{content:'WIP';color:var(--orange);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
 
-/* === FOOTER === */
-.site-footer{background:var(--navy);color:rgba(255,255,255,0.4);padding:28px 36px;margin-top:50px;font-size:.75rem;text-align:center;position:relative}
-.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.footer-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+.cite{font-size:.78rem;color:var(--text-muted);font-style:italic;display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border)}
 
-/* === SCROLLBAR === */
-::-webkit-scrollbar{width:8px}
+body.edit-mode [contenteditable="true"]{outline:1px dashed rgba(196,163,90,0.5);outline-offset:2px;border-radius:3px}
+body.edit-mode [contenteditable="true"]:focus{outline:2px solid var(--gold);background:rgba(196,163,90,0.05)}
+
+.hidden-marker{display:none;color:var(--text-muted);font-style:italic;font-size:.85rem;padding:10px;border:1px dashed var(--border);border-radius:var(--radius-sm);text-align:center}
+body.edit-mode .card.collapsed .card-body{display:none}
+body.edit-mode .card.collapsed .hidden-marker{display:block}
+
+.site-footer{background:var(--navy);color:rgba(255,255,255,0.4);padding:24px 36px;margin-top:50px;font-size:.75rem;text-align:center}
+.footer-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600}
+
+::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background:var(--cream)}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
-
-/* === SELECTION === */
 ::selection{background:rgba(196,163,90,0.25);color:var(--navy)}
 
-/* === PRINT === */
 @media print{
-  .site-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:var(--navy)!important}
-  .site-nav{display:none}
+  .site-header,.site-nav,.header-actions,.add-row-btn,.section-toggle,.row-btn,.row-actions{display:none!important}
   .tab-panel{display:block!important;page-break-inside:avoid}
-  .content-wrap{max-width:100%;padding:20px}
+  .content-wrap{max-width:100%;padding:18px}
   .card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid}
   .dark-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .metric{box-shadow:none;border:1px solid #ccc}
-  .facility{box-shadow:none;border:1px solid #ccc}
-  .expandable-body{max-height:none!important;padding:0 22px 22px!important}
 }
 
-/* === RESPONSIVE === */
 @media (max-width:1024px){
-  .grid-4{grid-template-columns:repeat(2,1fr)}
-  .risk-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
-  .header-top{flex-direction:column;text-align:center;gap:14px;padding:16px 24px}
-  .header-title-block{text-align:center}
-  .logo-group img{height:64px}
-  .site-nav{overflow-x:auto;padding:0 16px;-webkit-overflow-scrolling:touch}
-  .nav-tab{padding:11px 16px;font-size:.68rem;white-space:nowrap}
+  .header-top{flex-direction:column;text-align:center;padding:14px 18px}
+  .title-block{text-align:center}
   .content-wrap{padding:20px 16px}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
   .risk-grid{grid-template-columns:1fr}
-  .header-title-block h1{font-size:1.25rem}
+  .title-block h1{font-size:1.2rem}
   .card{padding:20px}
   .metric-value{font-size:1.7rem}
 }
-
-/* === ANIMATIONS === */
-@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -264,447 +207,629 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
       <img src="data:image/png;base64,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" alt="MCIPAC" title="Marine Corps Installations Pacific">
       <img src="data:image/png;base64,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" alt="III MEF" title="III Marine Expeditionary Force">
     </div>
-    <div class="header-title-block">
-      <div class="header-label">Controlled Unclassified Information</div>
-      <h1>Strategic Basing Assessment</h1>
-      <div class="header-subtitle">3d Medical Battalion Consolidation | Camp Kinser, Okinawa, Japan</div>
+    <div class="title-block">
+      <div class="title-eyebrow">Marine Corps Installations Pacific, Marine Corps Base Camp Butler</div>
+      <h1>3d MED BN Camp Kinser Facility Plan</h1>
+      <div class="sub">Predicate to the forthcoming MLG consolidation review. Controlled Unclassified Information.</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" id="editToggle" type="button" onclick="toggleEdit()">Edit Mode</button>
+      <button class="btn" type="button" onclick="saveFile()">Save HTML</button>
+      <button class="btn" type="button" onclick="window.print()">Print</button>
     </div>
   </div>
   <nav class="site-nav">
-    <button class="nav-tab active" onclick="showTab(0)">Command Intent</button>
-    <button class="nav-tab" onclick="showTab(1)">How We Got Here</button>
-    <button class="nav-tab" onclick="showTab(2)">Current State</button>
-    <button class="nav-tab" onclick="showTab(3)">The Scope</button>
-    <button class="nav-tab" onclick="showTab(4)">Facilities</button>
-    <button class="nav-tab" onclick="showTab(5)">Risk &amp; Way Forward</button>
+    <button class="nav-tab active" type="button" onclick="showTab(0)">Overview</button>
+    <button class="nav-tab" type="button" onclick="showTab(1)">How We Got Here</button>
+    <button class="nav-tab" type="button" onclick="showTab(2)">Current State</button>
+    <button class="nav-tab" type="button" onclick="showTab(3)">The Work</button>
+    <button class="nav-tab" type="button" onclick="showTab(4)">Facilities</button>
+    <button class="nav-tab" type="button" onclick="showTab(5)">Plans, Risks, Way Forward</button>
   </nav>
   <div class="header-accent"></div>
 </header>
 
-<main class="content-wrap">
+<div class="content-wrap">
 
-<!-- TAB 1: COMMAND INTENT -->
-<section class="tab-panel active" id="tab-0">
+<!-- ============================== TAB 0: OVERVIEW ============================== -->
+<div class="tab-panel active">
 
-<div class="alert alert-gold">
-  <p><strong>Bottom line up front:</strong> III MEF needs eight surgical platoons to meet wartime requirements. Right now we have two within the First Island Chain. Moving the entire 3d Medical Battalion to Camp Kinser puts all Role II medical capability where it matters in a fight.</p>
-</div>
-
-<div class="grid-4" style="margin-bottom:24px">
-  <div class="metric">
-    <div class="metric-label">Required Surgical Platoons</div>
-    <div class="metric-value">8<span class="metric-unit">platoons</span></div>
-    <div class="metric-context">III MEF wartime requirement</div>
+  <div class="alert alert-gold">
+    <p contenteditable="true"><strong>Bottom line.</strong> The strategic basing decision has been made. 3d Medical Battalion is consolidating on Camp Kinser. The unit has physically relocated. The work now is facility planning and project development to support the relocation, leveraging existing Basic Facility Requirements data to identify gaps and surpluses, then producing a scope of work that can award between now and Q4 of FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows.</p>
   </div>
-  <div class="metric">
-    <div class="metric-label">Available in FIC Now</div>
-    <div class="metric-value">2<span class="metric-unit">platoons</span></div>
-    <div class="metric-context">First Island Chain current</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">Personnel Moving</div>
-    <div class="metric-value">711<span class="metric-unit">total</span></div>
-    <div class="metric-context">Full battalion strength</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">Target Location</div>
-    <div class="metric-value" style="font-size:1.55rem">Camp Kinser</div>
-    <div class="metric-context">Okinawa, Japan</div>
-  </div>
-</div>
 
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(196,163,90,0.12);color:var(--gold)">&#9733;</div>
-    <h2>What This Is About</h2>
-    <span class="badge badge-gold" title="Priority action requiring immediate attention">Priority</span>
-  </div>
-  <p class="body-text">
-    This started as a request to move Bravo Surgical Company back to Okinawa from Hawaii. That 2020 move created the problem we are fixing now. Over time the scope grew. What began as a single-company relocation turned into consolidating the <strong>entire 3d Medical Battalion</strong> at Camp Kinser. That means Headquarters and Service Company, Alpha and Bravo Surgical Companies, Motor Transport, Utilities, and the Medical Skills Training Center, all moving to one location.
-  </p>
-  <p class="body-text">
-    The Commanding General signed the endorsement letter on 2 February 2026. The unit has already physically relocated. What we are doing now is the refresh: a walk and documentation pass to validate that the six designated buildings at Kinser actually support what the battalion needs, and to capture anything that still requires attention.
-  </p>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(153,27,27,0.1);color:var(--red)">&#9888;</div>
-    <h2>Why This Matters</h2>
-    <span class="badge badge-red" title="Critical operational gap identified">Critical</span>
-  </div>
-  <p class="body-text">
-    When Bravo Surgical Company moved to Hawaii in 2020, the intent was to support Force Design initiatives. What actually happened is that the company got pulled into supporting Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are valid missions, but they are not III MEF missions. The surgical capacity that should be forward in the First Island Chain got diverted to Oahu.
-  </p>
-  <p class="body-text">
-    In a rapid transition to conflict, every minute counts for trauma care. Having Role II surgical capability sitting in Hawaii instead of Okinawa means longer evacuation times, limited surgical capacity at the point of injury, and a direct hit to operational effectiveness. This consolidation fixes that by putting the full battalion where the fight is.
-  </p>
-</div>
-
-<div class="dark-box">
-  <h3>Command Intent</h3>
-  <p>Get the entire medical battalion onto Camp Kinser. Colocate them with MEDLOG CLR-35 so deployable medical equipment is immediately accessible. Cut response times for rapid deployment. Keep the battalion intact as one unit instead of split across installations. Document the building conditions and any gaps so leadership knows exactly what we have and what still needs work.</p>
-</div>
-
-</section>
-
-<!-- TAB 2: HOW WE GOT HERE -->
-<section class="tab-panel" id="tab-1">
-
-<p class="section-lead">This request evolved significantly. Understanding the timeline matters because earlier documents do not match the current scope. Tab B and Tab C were built around Bravo-only to Camp Foster. The signed CG endorsement calls for the full battalion at Camp Kinser.</p>
-
-<div class="card">
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">2020</div>
-      <div class="timeline-title">Bravo Surg Co Moved to Hawaii</div>
-      <div class="timeline-desc">Bravo Surgical Company relocated from Okinawa to Oahu to support Force Design initiatives. This created the gap we are now closing.</div>
+  <div class="grid-4" style="margin-bottom:22px">
+    <div class="metric">
+      <div class="metric-label">III MEF Wartime Requirement</div>
+      <div class="metric-value" contenteditable="true">8</div>
+      <div class="metric-context" contenteditable="true">surgical platoons (CG 3d MLG signed letter, 2 Feb 26)</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">16 March 2025</div>
-      <div class="timeline-title">Tab B: Requirements Decision Brief</div>
-      <div class="timeline-desc">3d MLG submitted the Basing Requirements Brief for Bravo Surgical Company only. Target was Camp Foster. Scorecard rated Foster highest at 4.45, Kinser second at 4.15, Hansen third at 3.20. Timeline aimed for IOC in Q1 FY28 and FOC in Q4 FY28.</div>
+    <div class="metric">
+      <div class="metric-label">Currently in First Island Chain</div>
+      <div class="metric-value" contenteditable="true">3</div>
+      <div class="metric-context" contenteditable="true">surgical platoons (CG signed letter, 2 Feb 26). Tab A and Tab B reported 2 in March 25.</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">1 August 2025</div>
-      <div class="timeline-title">Tab C: Installation Assessment</div>
-      <div class="timeline-desc">MCB Butler completed the installation response for Bravo-only relocation to Camp Foster. Recommended COA 1: co-locate in existing 3d Med Bn and 3d MLG facilities with unit-procured ARMAG for armory shortfall. Flagged that DPRI POR does not support long-term basing.</div>
+    <div class="metric">
+      <div class="metric-label">3d MED BN Personnel</div>
+      <div class="metric-value" contenteditable="true">711</div>
+      <div class="metric-context" contenteditable="true">total consolidated battalion (CG signed letter para 5a)</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">31 January 2025</div>
-      <div class="timeline-title">3d MLG TOECR Package Submitted</div>
-      <div class="timeline-desc">CG 3d MLG submitted Phase IV LCE Reorganization TOECRs to DC CD&amp;I. Bravo Surgical Company relocation was listed as DWG Priority 5, a FY28 initiative requiring Service-level analysis for 180 BICs.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">2 February 2026</div>
-      <div class="timeline-title">CG Signed Endorsement Letter</div>
-      <div class="timeline-desc">The CG 3d MLG signed letter moving the scope to the entire 3d Med Bn (711 personnel) to Camp Kinser. This superseded the Bravo-only, Camp-Foster scope of Tab B and Tab C. Buildings identified: 107, 300, 613, 400, 1225, and 508.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot done"></div>
-      <div class="timeline-date">30 April 2026</div>
-      <div class="timeline-title">Unit Already Relocated</div>
-      <div class="timeline-desc">Per the G-5 note, the 3d Medical Battalion plus Surgical Bravo Company have already physically relocated to Camp Kinser. The basing action endorsement is now moving up to MCICOM. The assessment work shifts from feasibility to documentation and validation.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot now"></div>
-      <div class="timeline-date">Current</div>
-      <div class="timeline-title">Refresh Assessment Underway</div>
-      <div class="timeline-desc">Planner and Engineer conducting walk of six Kinser buildings, netting functional space requirements against actual building conditions, and rerunning DOTMLPF-C for the consolidated battalion footprint.</div>
+    <div class="metric">
+      <div class="metric-label">Buildings Allocated at Kinser</div>
+      <div class="metric-value" contenteditable="true">6</div>
+      <div class="metric-context" contenteditable="true">named in CG MCIPAC endorsement; scope may extend</div>
     </div>
   </div>
-</div>
 
-<div class="alert alert-red">
-  <p><strong>Important distinction:</strong> If you are reading Tab B or Tab C, remember those documents were built for a different scope. They assessed Bravo-only to Camp Foster. The current action is the full battalion to Camp Kinser. Do not mix the numbers or building references from earlier tabs with the current Kinser footprint without adjusting for the expanded scope.</p>
-</div>
-
-</section>
-
-<!-- TAB 3: CURRENT STATE -->
-<section class="tab-panel" id="tab-2">
-
-<p class="section-lead">The unit is already at Kinser. That changes what the assessment looks like. Instead of a feasibility study asking "can we do this?" the work is now a validation pass asking "what do we actually have and what is still missing?"</p>
-
-<div class="grid-2" style="margin-bottom:20px">
   <div class="card">
     <div class="card-header">
-      <div class="card-icon" style="background:rgba(6,95,70,0.1);color:var(--green)">&#10003;</div>
+      <h2>Command Intent</h2>
+      <span class="badge badge-gold">Per CG 3d MLG signed letter</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Consolidate 3d Medical Battalion on Camp Kinser. Co-locate Headquarters and Service Company, Alpha Surgical Company, Bravo Surgical Company, Motor Transport and Utilities, and the Medical Skills Training Center on one installation. Place the battalion adjacent to Medical Logistics Company, CLR-35, which already houses the deployable medical equipment used by 3d MED BN. Improve operational posture by reducing equipment-to-unit response time.</p>
+      <span class="cite">Source: CG 3d MLG signed letter (2 Feb 26) paras 1, 2, 3.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>What This Work Is</h2>
+      <span class="badge badge-gold">Per Kenji Music email 1 May 26</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">The Strategic Basing Action (SBA) decision is complete. The primary goal of this effort is not to provide a supporting assessment for the SBA decision. The goal is the facility planning and project development necessary to properly support the relocation of 3d MED BN to Kinser. There is consensus on both the III MEF and MCIPAC sides that the facilities 3d MED BN has, and is in the process of relocating into, need work to convert and mitigate deficiencies. The list of specific facility requirements per building is expected to be substantial and may require a phased approach. Short-term gaps are closed first; longer-term requirements line up with the bigger MLG consolidation and modernization plans.</p>
+      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Why It Matters</h2>
+      <span class="badge badge-red">Sourced</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">III MEF requires eight surgical platoons to meet wartime requirements. Per the CG 3d MLG signed letter dated 2 February 2026, III MEF is staffed to three surgical platoons within the First Island Chain. Bravo Surgical Company is part of the relocation back from Hawaii.</p>
+      <p class="body-text" contenteditable="true">Per Tab A page 7 (3d MLG basing-action letter, 20 March 2025), the 2020 relocation of Bravo Surgical Company from Okinawa to Hawaii created unintended consequences for III MEF surgical readiness. The Hawaii-based company was increasingly tasked with supporting MCB Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are valid missions, but they are not III MEF missions, and they pulled surgical capacity away from where III MEF needs it.</p>
+      <span class="cite">Sources: CG 3d MLG signed letter para 1; Tab A page 7 paras 1 and 2.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+</div>
+
+<!-- ============================== TAB 1: HOW WE GOT HERE ============================== -->
+<div class="tab-panel">
+
+  <p class="section-lead" contenteditable="true">The action evolved. The original request was Bravo Surgical Company only, returning from Hawaii to Camp Foster. During the Strategic Basing process the scope changed to consolidating the entire 3d Medical Battalion on Camp Kinser. That is why the older Tab B brief and Tab C installation response do not match the current footprint. Both were Bravo-only Foster documents.</p>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Timeline</h2>
+      <span class="badge badge-gold">Sourced</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">2020</div>
+          <div class="timeline-title" contenteditable="true">Bravo Surg Co relocated to Hawaii</div>
+          <div class="timeline-desc" contenteditable="true">Bravo Surgical Company moved from Okinawa to Oahu in support of Force Design initiatives. Tab A page 7 paragraph 2 documents the unintended consequence: Hawaii-based Bravo got pulled into supporting Camp Smith, Tripler, and Pearl Harbor, draining III MEF surgical capacity in the First Island Chain.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">31 January 2025</div>
+          <div class="timeline-title" contenteditable="true">3d MLG TOECR package submitted</div>
+          <div class="timeline-desc" contenteditable="true">CG 3d MLG submitted Phase IV LCE Reorganization TOECRs to DC CD&amp;I (Tab A pages 4 to 6). Bravo Surgical Company relocation listed as DOTMLPF-C Working Group Priority 5, an FY28 initiative for 180 BICs.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">16 March 2025</div>
+          <div class="timeline-title" contenteditable="true">Tab B requirements decision brief</div>
+          <div class="timeline-desc" contenteditable="true">3d MLG Plans submitted the Basing Requirements Brief for Bravo Surgical Company only. Site target was MCB Camp Butler. Internal scorecard rated Foster 4.45, Kinser 4.15, Hansen 3.20 (Tab B page 9). Bldg 5628 Camp Foster identified as initial site (Tab B page 12). Required IOC Q1 FY28; FOC Q4 FY28.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">20 March 2025</div>
+          <div class="timeline-title" contenteditable="true">3d MLG basing-action letter to DC I&amp;L</div>
+          <div class="timeline-desc" contenteditable="true">Commander 3d MLG signed the formal basing-action request for Bravo Surgical Company at MCB Camp Butler (Tab A page 7). Personnel: 180 BICs (41 officer, 164 enlisted, totals confirmed Tab A page 13). Office space requirement: 7,056 net square feet.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">1 August 2025</div>
+          <div class="timeline-title" contenteditable="true">Tab C installation response</div>
+          <div class="timeline-desc" contenteditable="true">MCB Butler GF (CDR O'Connor, PWO) completed the installation response for Bravo-only relocation to Camp Foster. COA 1 recommended: co-locate in existing 3d MED BN and 3d MLG facilities at Camp Foster, with unit-procured ARMAG to mitigate Foster armory shortfall. Tab C flagged that DPRI Program of Record does not support 3d MED BN at Foster beyond approximately 2030.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">Fall 2025</div>
+          <div class="timeline-title" contenteditable="true">Scope changes from Bravo-only Foster to whole-battalion Kinser</div>
+          <div class="timeline-desc" contenteditable="true">3d MLG conducted an internal assessment that identified a way ahead in which 3d MED BN, in its entirety, could relocate to Camp Kinser. Drivers cited in the CG signed letter: Medical Logistics Company CLR-35 already on Kinser houses the deployable medical equipment; consolidation maximizes 3d MLG building use; the MT and UT section and the Medical Skills Training Center were already at Kinser due to limited adequate space at Foster. The Tab B Foster scorecard no longer applies because the question changed from a Bravo-only move to a full-battalion consolidation.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">2 February 2026</div>
+          <div class="timeline-title" contenteditable="true">CG 3d MLG signed letter, full battalion at Kinser</div>
+          <div class="timeline-desc" contenteditable="true">CG 3d MLG signed the Basing Action Request for 3d Medical Battalion. Personnel: 711 total. Site: Camp Kinser. This letter superseded the Bravo-only Foster scope of Tab B and Tab C.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">April 2026</div>
+          <div class="timeline-title" contenteditable="true">CG MCIPAC endorsement draft</div>
+          <div class="timeline-desc" contenteditable="true">CG MCIPAC drafted the endorsement memorandum naming the Kinser building footprint: Bldg 107 battalion (co-use), Bldg 300 MSTC, Bldg 613 Motor Transport and Utilities, Bldg 400 dedicated bay in consolidated armory, Bldg 1225 personnel housing, Bldg 508 supply. POC: Mr. Mark J. Godfrey, AC/S G-5 MCIPAC. Tasker DON-250501-LTNQ.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot done"></span>
+          <div class="timeline-date" contenteditable="true">30 April 2026</div>
+          <div class="timeline-title" contenteditable="true">G-5 note: unit physically already at Kinser</div>
+          <div class="timeline-desc" contenteditable="true">Per Mr. Keith Simon, G-5 Plans MCIPAC, the 3d Medical Battalion plus Bravo Surgical Company have already physically relocated to Camp Kinser. The basing action endorsements continue up to MCICOM. The work shifts from feasibility analysis to facility planning and project development.</div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot now"></span>
+          <div class="timeline-date" contenteditable="true">1 May 2026</div>
+          <div class="timeline-title" contenteditable="true">Kenji Music reframes the work</div>
+          <div class="timeline-desc" contenteditable="true">Kenji Music (Facility Planning, MCB Camp Butler PWB / GF / MCIPAC) confirmed the goal is facility planning and project development, not a supporting assessment. Deliverable target: complete scope of work for ideal operational capabilities within the existing Kinser footprint, plus a prioritized subset that can realistically award between now and Q4 of FY27.</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Why the Tab B Scorecard No Longer Controls</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Tab B page 9 scored Foster at 4.45 versus Kinser at 4.15. That score answered a different question: where to put Bravo Surgical Company alone, 180 BICs. Once the question changed to where to put the entire 3d Medical Battalion, 711 personnel, with MEDLOG already at Kinser and MT and UT plus the MSTC already at Kinser, the answer changed. The current authoritative source is the CG 3d MLG signed letter of 2 February 2026.</p>
+      <span class="cite">Sources: Tab B page 9 (Foster vs Kinser scorecard); CG 3d MLG signed letter paras 1 to 3.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+</div>
+
+<!-- ============================== TAB 2: CURRENT STATE ============================== -->
+<div class="tab-panel">
+
+  <p class="section-lead" contenteditable="true">The unit is at Kinser. Six buildings have been allocated by name in the CG MCIPAC endorsement draft. Scope may extend beyond those six as the planning effort matures.</p>
+
+  <div class="card">
+    <div class="card-header">
       <h2>What Is Done</h2>
-      <span class="badge badge-green" title="Actions completed">Complete</span>
+      <span class="badge badge-green">Complete</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
-    <ul class="checklist">
-      <li class="done">Physical relocation of 3d Med Bn to Camp Kinser</li>
-      <li class="done">CG endorsement letter signed (2 Feb 2026)</li>
-      <li class="done">Six buildings identified and allocated</li>
-      <li class="done">Colocation with MEDLOG CLR-35 established</li>
-      <li class="done">Basing action package forwarded to MCICOM</li>
-      <li class="done">Planner assigned and beginning read-in</li>
-    </ul>
+    <div class="card-body">
+      <ul class="checklist">
+        <li class="done" contenteditable="true">Strategic Basing Action decision made; CG 3d MLG signed letter of 2 February 2026.</li>
+        <li class="done" contenteditable="true">CG MCIPAC endorsement drafted, Kinser footprint named (six buildings).</li>
+        <li class="done" contenteditable="true">3d MED BN physically relocated to Camp Kinser per G-5 note dated 30 April 2026.</li>
+        <li class="done" contenteditable="true">MEDLOG (CLR-35) co-location at Kinser established (precedes the consolidation).</li>
+        <li class="done" contenteditable="true">Basing action package forwarded to MCICOM.</li>
+        <li class="done" contenteditable="true">Planner assigned (Anthony L. Potter); read-in complete.</li>
+      </ul>
+      <span class="cite">Sources: CG 3d MLG signed letter; CG MCIPAC endorsement draft; G-5 email chain dated 30 April 2026.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
+
   <div class="card">
     <div class="card-header">
-      <div class="card-icon" style="background:rgba(180,83,9,0.1);color:var(--orange)">&#9733;</div>
       <h2>What Is In Progress</h2>
-      <span class="badge badge-orange" title="Currently active work streams">Active</span>
+      <span class="badge badge-orange">Active</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
-    <ul class="checklist">
-      <li class="pending">Engineer being identified and brought on</li>
-      <li class="pending">Walk of six Kinser buildings scheduled</li>
-      <li class="pending">Building condition and utilization documentation</li>
-      <li class="pending">iNFADS data pull for Kinser buildings</li>
-      <li class="pending">DOTMLPF-C rerun for full battalion at Kinser</li>
-      <li class="pending">DOTMLPF-C and COA stack refresh in Tab C format</li>
-    </ul>
+    <div class="card-body">
+      <ul class="checklist">
+        <li class="pending" contenteditable="true">Engineering lift identification (TBD; engineering effort scoped to follow the Planner-led pass).</li>
+        <li class="pending" contenteditable="true">Initial plan of attack: resources, touchpoints, delivery, formulation in coordination with Kenji Music and Mr. Robert Kaye.</li>
+        <li class="pending" contenteditable="true">iNFADS data pull for the six allocated Kinser buildings (or use of physical walk as primary source if iNFADS is not current).</li>
+        <li class="pending" contenteditable="true">Constraining facility requirements set against existing BFR data; gaps and surpluses identified.</li>
+        <li class="pending" contenteditable="true">Reconciliation against UDP3 inbound, HAP turnover, DPRI OKICON projections, Kinser Tower renovation, and ICG plans.</li>
+      </ul>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
+
+  <div class="alert alert-gold">
+    <p contenteditable="true"><strong>Scope caveat.</strong> The six buildings named in the CG MCIPAC endorsement draft are the currently known scope. Additional facilities may be brought into scope as the assessment progresses, particularly if UDP3 absorption, Kinser Tower delivery, or downstream MLG consolidation actions reshape the footprint.</p>
+  </div>
+
 </div>
 
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(196,163,90,0.12);color:var(--gold)">&#9874;</div>
-    <h2>Assessment Team Structure</h2>
-  </div>
-  <p class="body-text">
-    The team working this refresh consists of one Planner and one Engineer, targeted to knock it out in a couple weeks. The Planner is already assigned and doing the read-in. The Engineer is still being identified from the available pool.
-  </p>
-  <p class="body-text">
-    This two-person team structure is deliberate. It is lean enough to move fast but has the right skill mix: the Planner brings the basing process knowledge and documentation expertise, while the Engineer brings the technical building assessment and infrastructure eye. Together they can walk, measure, photograph, document, and produce the refreshed assessment without dragging in a larger working group.
-  </p>
-</div>
+<!-- ============================== TAB 3: THE WORK ============================== -->
+<div class="tab-panel">
 
-<div class="alert alert-green">
-  <p><strong>Key point:</strong> Since the unit has already relocated, this refresh leans more toward a walk and documentation pass against the building list than a traditional feasibility study. The question is no longer "should we do this?" It is "what condition are these buildings in and do they actually fit what the battalion needs?"</p>
-</div>
+  <p class="section-lead" contenteditable="true">The deliverable, the plan of attack, and the team. Per Kenji Music email 1 May 2026.</p>
 
-</section>
-
-<!-- TAB 4: THE SCOPE -->
-<section class="tab-panel" id="tab-3">
-
-<p class="section-lead">The first sprint of work has a clear shape. Walk the buildings, net the requirements, account for the full battalion instead of just Bravo, and slot the results into the existing CG endorsement format.</p>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(196,163,90,0.12);color:var(--gold)">1</div>
-    <h2>Planned Work Breakdown</h2>
-  </div>
-
-  <div class="expandable open">
-    <div class="expandable-header" onclick="toggleExpand(this)">
-      <span class="expandable-title">Walk the Six Kinser Buildings</span>
-      <span class="expandable-icon">&#9662;</span>
-    </div>
-    <div class="expandable-body">
-      <p class="body-text">A physical walk of all six buildings to capture current condition, actual utilization, and any deficiencies that need attention. The buildings are:</p>
-      <table class="data-table">
-        <thead><tr><th>Building</th><th>Function</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>Bldg. 107</td><td>Battalion HQ (co-use)</td><td>Allocated</td></tr>
-          <tr><td>Bldg. 300</td><td>Medical Skills Training Center (MSTC)</td><td>Allocated</td></tr>
-          <tr><td>Bldg. 613</td><td>Motor Transport and Utilities</td><td>Allocated</td></tr>
-          <tr><td>Bldg. 400</td><td>Consolidated armory (dedicated bay)</td><td>Allocated</td></tr>
-          <tr><td>Bldg. 1225</td><td>Personnel housing (BEQ)</td><td>Allocated</td></tr>
-          <tr><td>Bldg. 508</td><td>Supply functions</td><td>Allocated</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="expandable">
-    <div class="expandable-header" onclick="toggleExpand(this)">
-      <span class="expandable-title">Net Functional Space Against Building Offerings</span>
-      <span class="expandable-icon">&#9662;</span>
-    </div>
-    <div class="expandable-body">
-      <p class="body-text">Take the documented Surg Co B functional requirements and compare them square foot by square foot against what each building actually provides:</p>
-      <table class="data-table">
-        <thead><tr><th>Requirement</th><th>Space Needed</th><th>Unit</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Armory / weapon storage</td><td>944</td><td>SF</td><td>Critical shortfall expected; ARMAG or new bay needed</td></tr>
-          <tr><td>Warehouse / general storage</td><td>3,500</td><td>SF</td><td>MEDLOG on Kinser may cover general warehouse</td></tr>
-          <tr><td>Organic storage (personal effects)</td><td>800</td><td>SF</td><td>Maintained by parent command</td></tr>
-          <tr><td>Headquarters / admin</td><td>4,063</td><td>SF</td><td>Co-use in Bldg. 107 must accommodate this</td></tr>
-          <tr><td>Applied instruction / training</td><td>2,815</td><td>SF</td><td>MSTC in Bldg. 300 handles this</td></tr>
-          <tr><td>Auto org shop / maintenance</td><td>2,848</td><td>SF</td><td>Bldg. 613 for Motor T</td></tr>
-          <tr><td>Tactical vehicle laydown</td><td>1,811</td><td>SY</td><td>Part of Bldg. 613 area or adjacent motorpool</td></tr>
-          <tr><td>Billeting (unaccompanied)</td><td>~50</td><td>beds</td><td>Bldg. 1225; full battalion = ~71 UH PN</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="expandable">
-    <div class="expandable-header" onclick="toggleExpand(this)">
-      <span class="expandable-title">Add the Rest of the Battalion</span>
-      <span class="expandable-icon">&#9662;</span>
-    </div>
-    <div class="expandable-body">
-      <p class="body-text">The numbers above are for Bravo Surgical Company alone. The full battalion at 711 personnel drives a completely different picture for armory, warehouse, motor transport, admin, and billeting. The refresh must account for HQ and Service Company, Alpha Surgical Company, and the consolidated battalion staff. That means the armory requirement grows well beyond 944 SF. The warehouse grows beyond 3,500 SF. The admin space grows beyond 4,063 SF. The billeting grows beyond 50 beds. This is the core difference between the old Tab C assessment and what the refresh must cover.</p>
-    </div>
-  </div>
-
-  <div class="expandable">
-    <div class="expandable-header" onclick="toggleExpand(this)">
-      <span class="expandable-title">Rerun DOTMLPF-C for Kinser</span>
-      <span class="expandable-icon">&#9662;</span>
-    </div>
-    <div class="expandable-body">
-      <p class="body-text">The DOTMLPF-C assessment from Tab C was built for Bravo-only co-located at Camp Foster. The refresh must rebuild this for the full battalion at Camp Kinser. Each pillar (Doctrine, Organization, Training, Material, Leadership, Personnel, Facilities, Cost) needs to be rescored against the Kinser footprint. The Facilities pillar in particular will shift from the orange rating Tab C gave it, since Kinser already has the buildings assigned and the unit is already operating there.</p>
-    </div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(153,27,27,0.1);color:var(--red)">&#63;</div>
-    <h2>Open Data Question</h2>
-  </div>
-  <p class="body-text">
-    There is a decision point on data sourcing. The team can either pull a current iNFADS extract for the six Kinser buildings, or treat the physical walk as the primary data source. Tab C noted that some 3d MLG units on Camp Foster operate from buildings without GF documentation. The team wants to avoid that same gap at Kinser. If iNFADS is stale or incomplete for these buildings, the walk becomes the authoritative source and iNFADS gets updated afterward. If iNFADS is current, it becomes the baseline the walk validates against. Either way, the walk happens; the question is just what the team carries in hand when they step off.
-  </p>
-</div>
-
-</section>
-
-<!-- TAB 5: FACILITIES -->
-<section class="tab-panel" id="tab-4">
-
-<p class="section-lead">Camp Kinser is a logistics hub in the western part of Urasoe City. It sits near the port and has historically housed CLR-35, MEDLOG, and other 3d MLG support elements. The six buildings identified for this consolidation are already part of that logistics footprint.</p>
-
-<div class="grid-3" style="margin-bottom:20px">
-  <div class="facility">
-    <div class="facility-num">107</div>
-    <div class="facility-name">Battalion Headquarters</div>
-    <div class="facility-desc">Co-use facility shared with other CLR units. Houses battalion staff, S-shops, and administrative functions. Requires net square footage sufficient for full HQ and Service Company staff.</div>
-  </div>
-  <div class="facility">
-    <div class="facility-num">300</div>
-    <div class="facility-name">Medical Skills Training Center</div>
-    <div class="facility-desc">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Replaces or supplements the CSS rotation model at Naval Hospital Okinawa.</div>
-  </div>
-  <div class="facility">
-    <div class="facility-num">613</div>
-    <div class="facility-name">Motor Transport &amp; Utilities</div>
-    <div class="facility-desc">Auto org shop, tactical vehicle laydown, and utilities equipment staging. Must accommodate the full battalion motorpool including JLTV ambulances, MTVRs, trailers, and generators.</div>
-  </div>
-  <div class="facility">
-    <div class="facility-num">400</div>
-    <div class="facility-name">Consolidated Armory</div>
-    <div class="facility-desc">Dedicated bay within the consolidated armory for battalion weapons storage. Critical shortfall area. Current 3d Med Bn armory utilization is already below requirement; full battalion consolidation will intensify this gap.</div>
-  </div>
-  <div class="facility">
-    <div class="facility-num">1225</div>
-    <div class="facility-name">Barracks / BEQ</div>
-    <div class="facility-desc">Unaccompanied personnel housing for the battalion. Original Bravo-only planning factor was ~50 beds. Full battalion loading is significantly higher. Bldg. 1225 capacity must be validated against actual personnel numbers.</div>
-  </div>
-  <div class="facility">
-    <div class="facility-num">508</div>
-    <div class="facility-name">Supply &amp; Storage</div>
-    <div class="facility-desc">Organic storage for unit equipment and supply functions. General warehouse and MEDLOG storage are handled separately by CLR-35 MEDLOG also on Kinser, which is the key advantage of this location.</div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(196,163,90,0.12);color:var(--gold)">&#9878;</div>
-    <h2>Why Kinser Makes Sense</h2>
-  </div>
-  <div class="grid-2">
-    <div>
-      <h4 style="font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:10px;letter-spacing:.03em">Proximity to MEDLOG</h4>
-      <p class="body-text">MEDLOG Company, CLR-35 is already on Camp Kinser. They house all the deployable medical equipment for 3d Med Bn. Putting the battalion on the same installation means equipment response time drops from cross-installation coordination to walking distance. In a rapid deployment scenario, that difference is measured in hours, not minutes.</p>
-
-      <h4 style="font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:10px;margin-top:20px;letter-spacing:.03em">Port Access</h4>
-      <p class="body-text">Camp Kinser sits near the port facilities in the western part of the island. For a medical battalion that may need to stage equipment for maritime prepositioning or force flow, that geographic advantage matters. Camp Foster and Camp Butler do not have the same immediate port proximity.</p>
-    </div>
-    <div>
-      <h4 style="font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:10px;letter-spacing:.03em">MLG Cohesion</h4>
-      <p class="body-text">Kinser is already a 3d MLG logistics hub. CLR-35, MEDLOG, and other support elements live there. Consolidating the medical battalion into that same hub strengthens the logistics group as a whole rather than fragmenting it across multiple installations.</p>
-
-      <h4 style="font-size:.95rem;font-weight:800;text-transform:uppercase;color:var(--navy);margin-bottom:10px;margin-top:20px;letter-spacing:.03em">Existing Infrastructure</h4>
-      <p class="body-text">Unlike a greenfield development at KASA-1 or Northern Training Area, Kinser already has buildings, roads, utilities, and communications. The unit is already there. The refresh is validating and documenting, not building from scratch. That drastically reduces activation timeline and cost.</p>
-    </div>
-  </div>
-</div>
-
-<div class="alert alert-gold">
-  <p><strong>Scorecard context from Tab B:</strong> When 3d MLG originally evaluated sites, Camp Foster scored 4.45, Camp Kinser scored 4.15, and Camp Hansen scored 3.20. The Kinser score was dragged down primarily on proximity to training areas (3 vs 5 for Foster). However, with the full battalion moving to Kinser and the MSTC co-located in Bldg. 300, that training gap is now internal to the footprint rather than requiring travel to external ranges.</p>
-</div>
-
-</section>
-
-<!-- TAB 6: RISK & WAY FORWARD -->
-<section class="tab-panel" id="tab-5">
-
-<p class="section-lead">Every basing action carries risk. The key risks here are armory capacity, DPRI alignment, and long-term sustainment funding. Understanding them upfront lets leadership make informed decisions about what to mitigate now versus what to accept as residual risk.</p>
-
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(153,27,27,0.1);color:var(--red)">&#9888;</div>
-    <h2>Risk Matrix</h2>
-    <span class="badge badge-red" title="Overall risk assessment">Assessment</span>
-  </div>
-  <div class="risk-grid">
-    <div class="risk-cell risk-g">
-      <div class="risk-label">Low Risk</div>
-      <div class="risk-title">Green</div>
-      <div class="risk-desc">Achievable with no foreseeable obstacles. Doctrine, organization, training, and personnel all fit this category.</div>
-    </div>
-    <div class="risk-cell risk-y">
-      <div class="risk-label">Moderate Risk</div>
-      <div class="risk-title">Yellow</div>
-      <div class="risk-desc">Can be done but needs mitigation. Material (new phones, computers, workstations) and communications (2-month backlog on lines) sit here.</div>
-    </div>
-    <div class="risk-cell risk-o">
-      <div class="risk-label">Significant Risk</div>
-      <div class="risk-title">Orange</div>
-      <div class="risk-desc">Insufficient resources without significant modification. Mid-range facilities planning (5-15 years) falls here because DPRI POR does not account for the full battalion.</div>
-    </div>
-    <div class="risk-cell risk-r">
-      <div class="risk-label">High Risk</div>
-      <div class="risk-title">Red</div>
-      <div class="risk-desc">Unsupportable with current resources. Long-term basing post-2048 OKICON is red because DPRI POR plans to move 3d MLG functions off Okinawa entirely.</div>
-    </div>
-  </div>
-</div>
-
-<div class="grid-2">
   <div class="card">
     <div class="card-header">
-      <div class="card-icon" style="background:rgba(153,27,27,0.1);color:var(--red)">1</div>
-      <h2>Armory Shortfall</h2>
-      <span class="badge badge-red" title="Most critical deficiency">Critical</span>
+      <h2>The Deliverable</h2>
+      <span class="badge badge-gold">Per Kenji Music email 1 May 26</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
-    <p class="body-text">
-      The numbers do not lie. Even before adding Bravo, 3d Med Bn was utilizing 809 SF of armory against a 6,398 SF requirement. That is a 5,589 SF shortfall. Now add the full battalion. A dedicated bay in Bldg. 400 helps, but the consolidated armory is shared across multiple units. The realistic near-term fix is unit-procured ARMAG containers. The long-term fix requires either an armory expansion or a DPRI POR modification to retain the battalion in Okinawa. Neither is currently funded.
-    </p>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Define the complete scope of work to achieve ideal operational capabilities within the existing Kinser footprint. Identify a prioritized subset of that work that can realistically award for execution between now and Q4 of FY27. Phased approach expected: short-term gap closure first, longer-term requirements aligned with the larger MLG consolidation and modernization plans.</p>
+      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
+
   <div class="card">
     <div class="card-header">
-      <div class="card-icon" style="background:rgba(180,83,9,0.1);color:var(--orange)">2</div>
-      <h2>DPRI POR Misalignment</h2>
-      <span class="badge badge-orange" title="Strategic-level concern">Strategic</span>
+      <h2>Plan of Attack</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
-    <p class="body-text">
-      The Defense Policy Review Initiative Okinawa Consolidation program does not plan for 100 percent of 3d MLG subordinate battalions to remain in Okinawa. Per the current POR, only task-organized detachments of Supply, Maintenance, and Medical battalions stay. The full battalion consolidation at Kinser is operationally sound but programmatically unsupported beyond roughly 2030. That creates a strategic risk: the unit may be asked to move again just as it gets settled.
-    </p>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">The team formulates the initial plan of attack and verifies resources, touchpoints, and delivery. Per Kenji Music, initial assessments are Planner-focused. Existing data sets, including BFR data, are leveraged to set constraining facility requirements and identify critical gaps and surpluses. An engineering lift follows to survey buildings and to develop supporting work scopes with the units.</p>
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Lead</th>
+            <th>Activity</th>
+            <th>Output</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">1. Read-in and constraint setting</td>
+            <td contenteditable="true">Planner</td>
+            <td contenteditable="true">Reconcile existing BFR data against the six Kinser buildings; identify critical gaps and surpluses; flag the cross-cutting plans (UDP3, HAP, OKICON, Tower, ICG).</td>
+            <td contenteditable="true">Constraint set; gap/surplus list.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">2. Building surveys</td>
+            <td contenteditable="true">Engineering lift (TBD)</td>
+            <td contenteditable="true">Walk each Kinser building; capture current condition, utilization, and deficiencies. Coordinate with the affected units on workscope inputs.</td>
+            <td contenteditable="true">Per-building condition memo.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">3. Scope of work development</td>
+            <td contenteditable="true">Planner + Engineering</td>
+            <td contenteditable="true">Build the complete SOW for ideal operational capabilities. Identify the prioritized subset awardable between now and Q4 FY27.</td>
+            <td contenteditable="true">Complete SOW; prioritized subset.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">4. Phased gap closure plan</td>
+            <td contenteditable="true">Planner</td>
+            <td contenteditable="true">Sequence projects against funding, base operating constraints, UDP3 inbound, and Kinser Tower delivery.</td>
+            <td contenteditable="true">Phasing plan; funding and execution timeline.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
-</div>
 
-<div class="card">
-  <div class="card-header">
-    <div class="card-icon" style="background:rgba(6,95,70,0.1);color:var(--green)">&#9733;</div>
-    <h2>Way Forward</h2>
-    <span class="badge badge-green" title="Recommended course of action">Recommended</span>
+  <div class="card">
+    <div class="card-header">
+      <h2>Team Structure</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Phase one is Planner-led. The engineering lift comes in for building surveys and SOW development; engineering walkthroughs are run as a group rather than serially. Additional planner support added as scope demands.</p>
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Name</th>
+            <th>Phase</th>
+            <th>Notes</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">Lead Planner</td>
+            <td contenteditable="true">Anthony L. Potter</td>
+            <td contenteditable="true">Phase 1 onward</td>
+            <td contenteditable="true">Read-in, constraint setting, plan of attack, primary client interface with MCIPAC GF Facility Planning.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Additional Planner</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">Phase 1 onward</td>
+            <td contenteditable="true">Placeholder for additional planner support added as scope expands.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Engineering Lift Lead</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">Phase 2 onward</td>
+            <td contenteditable="true">Placeholder. Engineer identification in progress on the contractor side.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Client POC</td>
+            <td contenteditable="true">Mr. Kenji Music</td>
+            <td contenteditable="true">All phases</td>
+            <td contenteditable="true">Facility Planning, MCB Camp Butler PWB / GF / MCIPAC. DSN 315-645-3207.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
-  <p class="body-text">
-    The near-term path is clear. Complete the walk, document the buildings, validate the space against the full battalion, produce the refreshed DOTMLPF-C, and slot it into the CG endorsement format. That closes the immediate documentation gap and gives MCICOM a clean package to endorse upward.
-  </p>
-  <p class="body-text">
-    Beyond that, two strategic decisions sit with HQMC. First, whether to engage DPRI to modify the Program of Record to account for the full 3d Med Bn remaining in Okinawa. Second, whether to invest in new development areas (KASA-1, Central Training Area, or Northern Training Area) if enduring basing is required. Both options carry significant dollar and political cost. Neither is a base-level decision.
-  </p>
-  <p class="body-text">
-    The practical middle ground is what Tab C recommended and what still holds: treat this as a short-term consolidation with unit-procured mitigation for immediate deficiencies, while the Service figures out the long-term posture. The unit gets the operational benefit of colocation now. The installation gets a documented baseline. HQMC gets a clean decision point.
-  </p>
+
 </div>
 
-<div class="dark-box">
-  <h3>Summary for Decision Makers</h3>
-  <p>The unit is already at Kinser. The buildings are assigned. The operational benefit of colocation with MEDLOG is real and immediate. The assessment work validates and documents rather than debates feasibility. The risks are known: armory capacity, DPRI long-term alignment, and funding for any facility upgrades. The near-term fix is unit-procured equipment and a clean documentation pass. The long-term fix requires Service-level engagement on DPRI POR or new development investment. This is a sound operational decision with manageable near-term risk and a clear strategic fork ahead.</p>
+<!-- ============================== TAB 4: FACILITIES ============================== -->
+<div class="tab-panel">
+
+  <p class="section-lead" contenteditable="true">Six buildings allocated by name in the CG MCIPAC endorsement draft. Scope may extend.</p>
+
+  <div class="grid-3">
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">107</div>
+      <div class="facility-name" contenteditable="true">Battalion Headquarters (co-use)</div>
+      <div class="facility-desc" contenteditable="true">Co-use facility shared with other CLR units. Houses 3d MED BN battalion staff and administrative functions. Net square footage to be validated against the consolidated battalion requirement (711 personnel).</div>
+    </div>
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">300</div>
+      <div class="facility-name" contenteditable="true">Medical Skills Training Center (MSTC)</div>
+      <div class="facility-desc" contenteditable="true">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Already relocated to Kinser per CG signed letter para 2. Note: UDP3 inbound in 2027 impacts this building (per Kenji email 1 May 26).</div>
+    </div>
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">613</div>
+      <div class="facility-name" contenteditable="true">Motor Transport and Utilities</div>
+      <div class="facility-desc" contenteditable="true">Auto org shop, tactical vehicle laydown, and utilities equipment staging. MT and UT section already relocated to Kinser per CG signed letter para 2 (note: section was reallocated under CLR-3 during Foster space-maximization efforts).</div>
+    </div>
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">400</div>
+      <div class="facility-name" contenteditable="true">Consolidated Armory (dedicated bay)</div>
+      <div class="facility-desc" contenteditable="true">Dedicated bay within the consolidated armory for battalion weapons storage. Note: the prior Foster armory shortfall analysis (Tab C slide 5) is not the Kinser shortfall; Bldg 400 has assigned space here. Bay sufficiency for full battalion equipment to be validated during walk.</div>
+    </div>
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">1225</div>
+      <div class="facility-name" contenteditable="true">Personnel Housing (BEQ)</div>
+      <div class="facility-desc" contenteditable="true">Unaccompanied personnel housing for the battalion. UH bedspace availability may not support both 3d MED BN and the inbound UDP3 in the near term (per Kenji email 1 May 26).</div>
+    </div>
+
+    <div class="facility">
+      <div class="facility-num" contenteditable="true">508</div>
+      <div class="facility-name" contenteditable="true">Supply</div>
+      <div class="facility-desc" contenteditable="true">Supply functions and organic storage. Class VIII(a) medical supply remains with MEDLOG, CLR-35, also at Kinser, which is the primary operational rationale for the Kinser site (per CG signed letter para 3).</div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:24px">
+    <div class="card-header">
+      <h2>Foster Turnover</h2>
+      <span class="badge badge-orange">Per Kenji email 1 May 26</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">3d MED BN currently occupies Bldg 215 on Camp Foster (the old 3/12 Battalion Headquarters). As part of the Kinser consolidation, 3d MED BN turns over Bldg 215 along with other Foster facilities they currently hold. DPRI OKICON has Foster 5665 (3/12 Command Post) on its planned demolition list, estimated 2033. The Foster turnover sequencing is one of the plans this effort needs to reconcile against.</p>
+      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Bravo Surg Co Functional Space (reference)</h2>
+      <span class="badge badge-gold">From Tab C slide 20</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">These are the documented Bravo Surgical Company functional space requirements per Tab C slide 20. They are useful as a baseline for Bravo's contribution to the consolidated requirement. The whole-battalion footprint at 711 personnel will exceed these numbers across most categories. Tab C used 181 personnel in its analysis; the proponent personnel number (Tab A page 7, Tab B page 4) is 180 BICs (41 officer, 164 enlisted).</p>
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Bravo Surg Co requirement</th>
+            <th>UoM</th>
+            <th>Notes</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td contenteditable="true">Armory</td><td contenteditable="true">944</td><td contenteditable="true">SF</td><td contenteditable="true">Bldg 400 dedicated bay assigned at Kinser; Bravo number is the floor.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Storage / Warehouse</td><td contenteditable="true">3,500</td><td contenteditable="true">SF</td><td contenteditable="true">MEDLOG CLR-35 covers Class VIII(a) at Kinser per CG signed letter.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Organic Storage</td><td contenteditable="true">800</td><td contenteditable="true">SF</td><td contenteditable="true">Maintained by parent command per Tab C slide 20.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">HQs / Administrative</td><td contenteditable="true">4,063</td><td contenteditable="true">SF</td><td contenteditable="true">Co-use Bldg 107; full-battalion total will exceed Bravo-only.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Applied Instruction</td><td contenteditable="true">2,815</td><td contenteditable="true">SF</td><td contenteditable="true">MSTC in Bldg 300; UDP3 impact to validate.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Auto Org Shop</td><td contenteditable="true">2,848</td><td contenteditable="true">SF</td><td contenteditable="true">Bldg 613.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Tactical Vehicle Laydown</td><td contenteditable="true">1,811</td><td contenteditable="true">SY</td><td contenteditable="true">Bldg 613 area or adjacent motor pool.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+          <tr><td contenteditable="true">Billeting (UH)</td><td contenteditable="true">~50</td><td contenteditable="true">beds</td><td contenteditable="true">Bldg 1225; full battalion plus UDP3 to be validated against capacity.</td><td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td></tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
+      <span class="cite">Source: Tab C slide 20 (1 August 2025 MCB Butler GF response). Personnel: Tab A page 7 (180 BICs); Tab C slide 5 used 181.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
 </div>
 
-</section>
-</main>
+<!-- ============================== TAB 5: PLANS, RISKS, WAY FORWARD ============================== -->
+<div class="tab-panel">
+
+  <p class="section-lead" contenteditable="true">External plans this effort must reconcile against, the risks worth managing, the future state worth tracking, and the way forward.</p>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Plans to Reconcile</h2>
+      <span class="badge badge-gold">Per Kenji email 1 May 26</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Touchpoint</th>
+            <th>Impact on this effort</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">UDP3 relocation to Kinser, 2027</td>
+            <td contenteditable="true">Bldg 300; Food Service Co relocating from Bldg 832; UH bedspace</td>
+            <td contenteditable="true">UDP3 inbound competes with 3d MED BN for MSTC space and unaccompanied housing. UH bedspace may not support two battalions in the near term.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Army HAP tenant relocation</td>
+            <td contenteditable="true">Bldg 350 turnover</td>
+            <td contenteditable="true">Building 350 becomes available for re-use. Potential to absorb capacity 3d MED BN may need.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">DPRI OKICON, Foster 5665 demolition</td>
+            <td contenteditable="true">Bldg 5665 (3/12 Command Post), demolition estimated 2033; 3d MED BN Foster turnover including Bldg 215 (old 3/12 BN HQs)</td>
+            <td contenteditable="true">Sequence the Foster turnover so that 3d MED BN Foster facility releases align with the OKICON demolition timeline.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Kinser Tower renovation</td>
+            <td contenteditable="true">Converted admin facilities, Kinser</td>
+            <td contenteditable="true">If the Tower renovation lands as planned, new converted admin facilities relieve some shortfalls in critical CCNs. Worth holding capacity options in the SOW.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">ICG (Installation Communications Grid)</td>
+            <td contenteditable="true">DoD-driven installation across MCB Camp Butler; Camp Kinser and Camp Hansen identified among the more impacted sites</td>
+            <td contenteditable="true">Recent effort. Scope very early. Potential deconflict against facility work scopes (cable routes, equipment rooms, comm closets) to be tracked as ICG plans firm up.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
+      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Risk Matrix</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <div class="risk-grid">
+
+        <div class="risk-cell risk-y">
+          <div class="risk-label">Facility Risk</div>
+          <div class="risk-title" contenteditable="true">Bldg 400 armory bay sufficiency</div>
+          <div class="risk-desc" contenteditable="true">Dedicated bay is assigned. Sufficiency for the full battalion equipment load is to be validated during the walk. Mitigation if needed: unit-procured ARMAG, similar to the prior Foster mitigation concept.</div>
+        </div>
+
+        <div class="risk-cell risk-o">
+          <div class="risk-label">Facility Risk</div>
+          <div class="risk-title" contenteditable="true">Bldg 1225 UH capacity vs. UDP3</div>
+          <div class="risk-desc" contenteditable="true">Per Kenji 1 May 26, UH bedspace at Bldg 1225 may not support both 3d MED BN and the inbound UDP3 battalion in the near term. Sequencing and bridging options to be developed.</div>
+        </div>
+
+        <div class="risk-cell risk-y">
+          <div class="risk-label">Scope Risk</div>
+          <div class="risk-title" contenteditable="true">Six-building scope may expand</div>
+          <div class="risk-desc" contenteditable="true">CG MCIPAC endorsement names six buildings. Scope may extend if the walk surfaces requirements that cannot be absorbed within the named footprint, or if downstream MLG actions reshape it.</div>
+        </div>
+
+        <div class="risk-cell risk-y">
+          <div class="risk-label">Timeline Risk</div>
+          <div class="risk-title" contenteditable="true">Q4 FY27 award gate</div>
+          <div class="risk-desc" contenteditable="true">Prioritized subset of work must be defined and packaged in time to award between now and Q4 of FY27. Phased gap closure approach helps. FSRM funding for any conversion or repair was flagged as needed by Q2 FY26 in the CG MCIPAC endorsement draft.</div>
+        </div>
+
+        <div class="risk-cell risk-o">
+          <div class="risk-label">Strategic Risk</div>
+          <div class="risk-title" contenteditable="true">DPRI POR retains only detachments</div>
+          <div class="risk-desc" contenteditable="true">Per CG MCIPAC endorsement draft, the DPRI Pacific Posture Program of Record retains only task-organized detachments of Supply, Maintenance, and Medical Battalions on Okinawa long-term. The Kinser consolidation is operationally sound near term but in tension with the long-term POR. Mitigation is HQMC-level: engage DPRI to modify POR, or invest in new development areas such as KASA-1, CTA, or NTA.</div>
+        </div>
+
+        <div class="risk-cell risk-y">
+          <div class="risk-label">Coordination Risk</div>
+          <div class="risk-title" contenteditable="true">ICG deconflict</div>
+          <div class="risk-desc" contenteditable="true">Installation Communications Grid effort is recent and at early scope. Camp Kinser is identified among the more impacted sites. Facility work scopes need to coordinate against ICG cable routing and equipment placement once the grid scope firms up.</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Future State Considerations</h2>
+      <span class="badge badge-gold">Captured for situational awareness</span>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Per Mr. Kenji Music's planning view, downstream factors may reshape the 3d MED BN footprint over the medium term:</p>
+      <ul class="checklist">
+        <li class="pending" contenteditable="true">Once the Mega Warehouse completes, the H-block warehouses on Camp Foster open up, creating space MEDLOG could absorb at Foster.</li>
+        <li class="pending" contenteditable="true">Truck Company moves to Camp Courtney, freeing Motor T capacity at Foster.</li>
+        <li class="pending" contenteditable="true">Additional armory capacity is coming online.</li>
+        <li class="pending" contenteditable="true">Kinser Tower renovation, if it lands, delivers new converted admin facilities at Kinser.</li>
+        <li class="pending" contenteditable="true">Foster's adjacency to the hospital provides clinical sustainment access for medical units.</li>
+      </ul>
+      <p class="body-text" contenteditable="true">Taken together, these conditions could open a downstream path for 3d MED BN to return to Foster after the Kinser consolidation completes its near-term function. This is captured for situational awareness, not stated as plan. The current plan of record is the Kinser consolidation per the CG signed letter and the CG MCIPAC endorsement.</p>
+      <span class="cite">Source: client conversation, captured here as the client's view, not as basing action.</span>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Way Forward</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">The near-term path is clear. Complete the Planner-led read-in and constraint setting against existing BFR data. Sequence the building walk with the engineering lift once identified. Produce the complete scope of work for ideal operational capabilities within the existing Kinser footprint, and identify the prioritized subset that can award between now and Q4 of FY27. Reconcile against UDP3, HAP turnover, OKICON, the Kinser Tower, and ICG.</p>
+      <p class="body-text" contenteditable="true">Two strategic decisions remain at HQMC and are outside the scope of this effort: whether to engage DPRI to modify the Pacific Posture Program of Record so the full 3d MED BN can remain in Okinawa long-term, and whether to invest in new development areas (KASA-1, CTA, NTA) as enduring basing options. This effort delivers the documentation and prioritized SOW that informs those higher-level decisions.</p>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="dark-box">
+    <h3>Summary for Decision Makers</h3>
+    <p contenteditable="true">The SBA decision is made. The unit is at Kinser. Six buildings are allocated. The work is facility planning and project development to support the relocation, leveraging existing BFR data to identify gaps and surpluses, then producing a scope of work that can award between now and Q4 of FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows. Risks worth managing are UH capacity at Bldg 1225 against UDP3 inbound, the six-building scope possibly expanding, the Q4 FY27 award gate, ICG deconfliction at Kinser, and the DPRI POR strategic risk that applies to the entire 3d MLG presence on Okinawa.</p>
+  </div>
+
+</div>
+
+</div><!-- /content-wrap -->
 
 <footer class="site-footer">
-  <div class="footer-label">Controlled Unclassified Information // For Official Use Only</div>
-  <p>Strategic Basing Assessment | 3d Medical Battalion Consolidation | Camp Kinser, Okinawa, Japan</p>
-  <p style="margin-top:6px;opacity:0.7">Marine Corps Installations Pacific | III Marine Expeditionary Force</p>
+  <div class="footer-label">Controlled Unclassified Information / For Official Use Only</div>
+  <div contenteditable="true">3d MED BN Camp Kinser Facility Plan. Marine Corps Installations Pacific. III Marine Expeditionary Force.</div>
 </footer>
 
 <script>
@@ -721,43 +846,90 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
     window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
-  window.toggleExpand = function(header){
-    var expandable = header.parentElement;
-    expandable.classList.toggle('open');
-  };
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var metrics = document.querySelectorAll('.metric');
-    metrics.forEach(function(card, i){
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(16px)';
-      setTimeout(function(){
-        card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, 80 + i * 100);
-    });
-
-    var cards = document.querySelectorAll('.card, .facility');
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.style.animation = 'slideUp 0.5s ease forwards';
-          observer.unobserve(entry.target);
+  window.toggleEdit = function(){
+    document.body.classList.toggle('edit-mode');
+    var btn = document.getElementById('editToggle');
+    if(document.body.classList.contains('edit-mode')){
+      btn.classList.add('btn-active');
+      btn.textContent = 'Exit Edit Mode';
+      var editables = document.querySelectorAll('.content-wrap p, .content-wrap td, .content-wrap h2, .content-wrap .timeline-date, .content-wrap .timeline-title, .content-wrap .timeline-desc, .content-wrap .facility-num, .content-wrap .facility-name, .content-wrap .facility-desc, .content-wrap .metric-value, .content-wrap .metric-context, .content-wrap .risk-title, .content-wrap .risk-desc, .content-wrap .checklist li, .content-wrap .body-text, .content-wrap .section-lead, .content-wrap .alert p, .content-wrap .dark-box p, .site-footer [contenteditable]');
+      editables.forEach(function(el){
+        if(!el.hasAttribute('contenteditable')){
+          el.setAttribute('contenteditable', 'true');
         }
       });
-    }, {threshold: 0.1});
-    cards.forEach(function(card){observer.observe(card);});
-  });
+    } else {
+      btn.classList.remove('btn-active');
+      btn.textContent = 'Edit Mode';
+    }
+  };
+
+  window.toggleCollapse = function(btn){
+    var card = btn.closest('.card');
+    card.classList.toggle('collapsed');
+    btn.textContent = card.classList.contains('collapsed') ? '+' : '-';
+  };
+
+  window.addRow = function(btn){
+    var table = btn.previousElementSibling;
+    while(table && table.tagName !== 'TABLE'){
+      table = table.previousElementSibling;
+    }
+    if(!table) return;
+    var tbody = table.querySelector('tbody');
+    var lastRow = tbody.querySelector('tr:last-child');
+    if(!lastRow) return;
+    var newRow = lastRow.cloneNode(true);
+    var cells = newRow.querySelectorAll('td');
+    cells.forEach(function(cell){
+      if(!cell.classList.contains('row-actions')){
+        cell.textContent = '';
+      }
+    });
+    tbody.appendChild(newRow);
+    var first = newRow.querySelector('td[contenteditable="true"]');
+    if(first) first.focus();
+  };
+
+  window.deleteRow = function(btn){
+    var row = btn.closest('tr');
+    if(row && row.parentElement.children.length > 1){
+      row.remove();
+    } else if(row){
+      var cells = row.querySelectorAll('td');
+      cells.forEach(function(cell){
+        if(!cell.classList.contains('row-actions')){
+          cell.textContent = '';
+        }
+      });
+    }
+  };
+
+  window.saveFile = function(){
+    var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    var stamp = new Date().toISOString().slice(0,10);
+    a.download = '3d_MED_BN_Kinser_Facility_Plan_' + stamp + '.html';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  };
 
   document.addEventListener('keydown', function(e){
+    if(e.target.isContentEditable) return;
     var tabs = document.querySelectorAll('.nav-tab');
     var active = document.querySelector('.nav-tab.active');
-    var currentIndex = Array.from(tabs).indexOf(active);
-    if(e.key === 'ArrowRight' && currentIndex < tabs.length - 1){
-      showTab(currentIndex + 1);
-    } else if(e.key === 'ArrowLeft' && currentIndex > 0){
-      showTab(currentIndex - 1);
+    var idx = Array.prototype.indexOf.call(tabs, active);
+    if(e.key === 'ArrowRight' && idx < tabs.length - 1){
+      showTab(idx + 1);
+    } else if(e.key === 'ArrowLeft' && idx > 0){
+      showTab(idx - 1);
     }
   });
 })();

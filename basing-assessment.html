@@ -162,6 +162,9 @@ body.edit-mode .add-row-btn{display:inline-block}
 
 body.edit-mode [contenteditable="true"]{outline:1px dashed rgba(196,163,90,0.5);outline-offset:2px;border-radius:3px}
 body.edit-mode [contenteditable="true"]:focus{outline:2px solid var(--gold);background:rgba(196,163,90,0.05)}
+body.edit-mode .logo-group img{cursor:pointer;outline:2px dashed var(--gold);outline-offset:4px;transition:opacity var(--transition)}
+body.edit-mode .logo-group img:hover{opacity:0.75}
+body.edit-mode .logo-group img::after{content:'Click to replace'}
 
 .hidden-marker{display:none;color:var(--text-muted);font-style:italic;font-size:.85rem;padding:10px;border:1px dashed var(--border);border-radius:var(--radius-sm);text-align:center}
 body.edit-mode .card.collapsed .card-body{display:none}
@@ -1034,7 +1037,38 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     window.scrollTo({top: 0, behavior: 'smooth'});
   };
 
-  var EDITABLE_SELECTOR = '.content-wrap p, .content-wrap td, .content-wrap h2, .content-wrap .timeline-date, .content-wrap .timeline-title, .content-wrap .timeline-desc, .content-wrap .facility-num, .content-wrap .facility-name, .content-wrap .facility-desc, .content-wrap .metric-value, .content-wrap .metric-context, .content-wrap .risk-title, .content-wrap .risk-desc, .content-wrap .checklist li, .content-wrap .body-text, .content-wrap .section-lead, .content-wrap .alert p, .content-wrap .dark-box p, .site-footer [contenteditable], .site-footer > div';
+  var EDITABLE_SELECTOR = [
+    '.site-header .title-eyebrow',
+    '.site-header .title-block h1',
+    '.site-header .sub',
+    '.site-nav .nav-tab',
+    '.content-wrap p',
+    '.content-wrap td',
+    '.content-wrap th',
+    '.content-wrap h2',
+    '.content-wrap h3',
+    '.content-wrap .timeline-date',
+    '.content-wrap .timeline-title',
+    '.content-wrap .timeline-desc',
+    '.content-wrap .facility-num',
+    '.content-wrap .facility-name',
+    '.content-wrap .facility-desc',
+    '.content-wrap .metric-label',
+    '.content-wrap .metric-value',
+    '.content-wrap .metric-context',
+    '.content-wrap .risk-label',
+    '.content-wrap .risk-title',
+    '.content-wrap .risk-desc',
+    '.content-wrap .checklist li',
+    '.content-wrap .body-text',
+    '.content-wrap .section-lead',
+    '.content-wrap .alert p',
+    '.content-wrap .dark-box p',
+    '.content-wrap .badge',
+    '.content-wrap .cite',
+    '.site-footer .footer-label',
+    '.site-footer > div'
+  ].join(', ');
 
   function setEditable(on){
     var els = document.querySelectorAll(EDITABLE_SELECTOR);
@@ -1158,9 +1192,11 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       try {
         var content = document.querySelector('.content-wrap').innerHTML;
         var footer = document.querySelector('.site-footer').innerHTML;
+        var header = document.querySelector('.site-header').innerHTML;
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
           content: content,
           footer: footer,
+          header: header,
           when: new Date().toISOString()
         }));
         var btn = document.getElementById('restoreBtn');
@@ -1179,6 +1215,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       if(confirm('Locally autosaved edits found from ' + when + '. Restore them?')){
         document.querySelector('.content-wrap').innerHTML = saved.content;
         if(saved.footer) document.querySelector('.site-footer').innerHTML = saved.footer;
+        if(saved.header) document.querySelector('.site-header').innerHTML = saved.header;
         var btn = document.getElementById('restoreBtn');
         if(btn) btn.style.display = 'inline-block';
       } else {
@@ -1195,17 +1232,64 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     }
   };
 
+  function syncPrintTitle(){
+    try {
+      var pairs = [
+        ['.site-header .title-eyebrow', '.print-title .pt-eyebrow'],
+        ['.site-header .title-block h1', '.print-title h1'],
+        ['.site-header .sub', '.print-title .pt-sub']
+      ];
+      pairs.forEach(function(pair){
+        var src = document.querySelector(pair[0]);
+        var dst = document.querySelector(pair[1]);
+        if(src && dst) dst.textContent = src.textContent;
+      });
+    } catch(e) {}
+  }
+
   document.addEventListener('input', function(e){
     if(e.target && e.target.isContentEditable){
+      syncPrintTitle();
       autosave();
     }
   });
 
   document.addEventListener('DOMContentLoaded', function(){
+    setupLogoReplacement();
     if(localStorage.getItem(STORAGE_KEY)){
       tryRestore();
     }
   });
+
+  function setupLogoReplacement(){
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+    var target = null;
+
+    document.addEventListener('click', function(e){
+      if(!document.body.classList.contains('edit-mode')) return;
+      var img = e.target.closest && e.target.closest('.logo-group img');
+      if(!img) return;
+      e.preventDefault();
+      target = img;
+      input.click();
+    });
+
+    input.addEventListener('change', function(){
+      var file = input.files && input.files[0];
+      if(!file || !target){ input.value=''; return; }
+      var reader = new FileReader();
+      reader.onload = function(ev){
+        target.src = ev.target.result;
+        autosave();
+      };
+      reader.readAsDataURL(file);
+      input.value = '';
+    });
+  }
 
   document.addEventListener('keydown', function(e){
     if(e.target.isContentEditable) return;

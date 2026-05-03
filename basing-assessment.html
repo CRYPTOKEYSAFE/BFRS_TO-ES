@@ -155,8 +155,8 @@ body.edit-mode .add-row-btn{display:inline-block}
 .checklist{list-style:none;font-size:.88rem;line-height:2.1}
 .checklist li{position:relative;padding-left:22px}
 .checklist li::before{position:absolute;left:0;top:0;font-weight:700;font-size:1rem}
-.checklist .done::before{content:'OK';color:var(--green);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
-.checklist .pending::before{content:'WIP';color:var(--orange);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
+.checklist .done::before{content:'DONE';color:var(--green);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
+.checklist .pending::before{content:'IN WORK';color:var(--orange);font-size:.7rem;letter-spacing:.05em;font-weight:800;top:4px}
 
 .cite{font-size:.78rem;color:var(--text-muted);font-style:italic;display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border)}
 
@@ -277,7 +277,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="title-block">
       <div class="title-eyebrow">Marine Corps Installations Pacific, Marine Corps Base Camp Butler</div>
       <h1>3d MED BN Camp Kinser Facility Plan</h1>
-      <div class="sub">Predicate to the forthcoming MLG consolidation review. Controlled Unclassified Information.</div>
+      <div class="sub">Predicate to the forthcoming MLG consolidation review. Unclassified.</div>
     </div>
     <div class="header-actions">
       <button class="btn" id="editToggle" type="button" onclick="toggleEdit()" title="Toggle in-page editing of all body content">Edit Mode</button>
@@ -304,14 +304,14 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 <div class="print-title">
   <div class="pt-eyebrow">Marine Corps Installations Pacific, Marine Corps Base Camp Butler</div>
   <h1>3d MED BN Camp Kinser Facility Plan</h1>
-  <div class="pt-sub">Predicate to the forthcoming MLG consolidation review. Controlled Unclassified Information.</div>
+  <div class="pt-sub">Predicate to the forthcoming MLG consolidation review. Unclassified.</div>
 </div>
 
 <!-- ============================== TAB 0: OVERVIEW ============================== -->
 <div class="tab-panel active">
 
   <div class="alert alert-gold">
-    <p contenteditable="true"><strong>Bottom line.</strong> The strategic basing decision is made. 3d Medical Battalion is consolidating on Camp Kinser. The unit has physically relocated. The work now is facility planning and project development to support the relocation, anchored to existing Basic Facility Requirements data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows.</p>
+    <p contenteditable="true"><strong>Bottom line.</strong> The strategic basing decision is made. 3d Medical Battalion is consolidating on Camp Kinser. Elements have begun relocating; the unit is in a transitional state, vacating buildings on Camp Foster. The work now is facility planning and project development to support the relocation, anchored to existing Basic Facility Requirements data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows.</p>
   </div>
 
   <div class="grid-4" style="margin-bottom:22px">
@@ -340,38 +340,35 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
   <div class="card">
     <div class="card-header">
       <h2>Command Intent</h2>
-      <span class="badge badge-gold">Per CG 3d MLG signed letter</span>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
       <p class="body-text" contenteditable="true">Consolidate 3d Medical Battalion on Camp Kinser. Co-locate Headquarters and Service Company, Alpha Surgical Company, Bravo Surgical Company, Motor Transport and Utilities, and the Medical Skills Training Center on one installation. Place the battalion adjacent to Medical Logistics Company, CLR-35, which already houses the deployable medical equipment used by 3d MED BN. Improve operational posture by reducing equipment-to-unit response time.</p>
-      <span class="cite">Source: CG 3d MLG signed letter (2 Feb 26) paras 1, 2, 3.</span>
+      <span class="cite">Source: CG 3d MLG signed letter, February 2026, paras 1 to 3.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
 
   <div class="card">
     <div class="card-header">
-      <h2>What This Work Is</h2>
-      <span class="badge badge-gold">Per Kenji Music email 1 May 26</span>
+      <h2>Scope</h2>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">The Strategic Basing Action (SBA) decision is complete. The primary goal of this effort is not to provide a supporting assessment for the SBA decision. The goal is the facility planning and project development necessary to properly support the relocation of 3d MED BN to Kinser. There is consensus on both the III MEF and MCIPAC sides that the facilities 3d MED BN has, and is in the process of relocating into, need work to convert and mitigate deficiencies. The list of specific facility requirements per building is expected to be substantial and may require a phased approach. Short-term gaps are closed first; longer-term requirements line up with the bigger MLG consolidation and modernization plans.</p>
-      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+      <p class="body-text" contenteditable="true">The Strategic Basing Action decision is complete. This effort is not a supporting assessment for that decision. The goal is the facility planning and project development needed to support the relocation of 3d Medical Battalion to Camp Kinser. III MEF and MCIPAC concur that the facilities the battalion holds, and is moving into, need work to convert spaces and mitigate deficiencies. The per-building requirements set is expected to be substantial and will likely be phased. Short-term gaps are closed first; longer-term requirements align with the broader MLG consolidation and modernization plans.</p>
+      <span class="cite">Source: MCIPAC endorsement request, May 2026.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
 
   <div class="card">
     <div class="card-header">
-      <h2>Why It Matters</h2>
-      <span class="badge badge-red">Sourced</span>
+      <h2>Operational Driver</h2>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">III MEF requires eight surgical platoons to meet wartime requirements. Per the CG 3d MLG signed letter dated 2 February 2026, III MEF is staffed to three surgical platoons within the First Island Chain. Bravo Surgical Company is part of the relocation back from Hawaii.</p>
-      <p class="body-text" contenteditable="true">Per Tab A page 7 (3d MLG basing-action letter, 20 March 2025), the 2020 relocation of Bravo Surgical Company from Okinawa to Hawaii created unintended consequences for III MEF surgical readiness. The Hawaii-based company was increasingly tasked with supporting MCB Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are not III MEF missions; the result was a reduction in III MEF surgical capacity in the First Island Chain.</p>
+      <p class="body-text" contenteditable="true">III MEF requires eight surgical platoons to meet wartime requirements. The CG 3d MLG signed letter records III MEF as staffed to three surgical platoons within the First Island Chain. Bravo Surgical Company is part of the relocation back from Hawaii.</p>
+      <p class="body-text" contenteditable="true">The 2020 relocation of Bravo Surgical Company from Okinawa to Hawaii created unintended consequences for III MEF surgical readiness. The Hawaii-based company was increasingly tasked with supporting MCB Camp Smith, Tripler Army Medical Center, and Joint Base Pearl Harbor. Those are not III MEF missions; the result was a reduction in III MEF surgical capacity in the First Island Chain.</p>
       <span class="cite">Sources: CG 3d MLG signed letter para 1; Tab A page 7 paras 1 and 2.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
@@ -387,7 +384,6 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
   <div class="card">
     <div class="card-header">
       <h2>Timeline</h2>
-      <span class="badge badge-gold">Sourced</span>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
@@ -446,21 +442,21 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
           <span class="timeline-dot done"></span>
           <div class="timeline-date" contenteditable="true">April 2026</div>
           <div class="timeline-title" contenteditable="true">CG MCIPAC endorsement draft</div>
-          <div class="timeline-desc" contenteditable="true">CG MCIPAC drafted the endorsement memorandum naming the Kinser building footprint: Bldg 107 battalion (co-use), Bldg 300 MSTC, Bldg 613 Motor Transport and Utilities, Bldg 400 dedicated bay in consolidated armory, Bldg 1225 personnel housing, Bldg 508 supply. POC: Mr. Mark J. Godfrey, AC/S G-5 MCIPAC. Tasker DON-250501-LTNQ.</div>
+          <div class="timeline-desc" contenteditable="true">CG MCIPAC drafted the endorsement memorandum naming the Kinser building footprint: Bldg 107 battalion (co-use), Bldg 300 MSTC, Bldg 613 Motor Transport and Utilities, Bldg 400 dedicated bay in consolidated armory, Bldg 1225 personnel housing, Bldg 508 supply. Action POC: AC/S G-5 MCIPAC. Tasker DON-250501-LTNQ.</div>
         </div>
 
         <div class="timeline-item">
           <span class="timeline-dot done"></span>
-          <div class="timeline-date" contenteditable="true">30 April 2026</div>
-          <div class="timeline-title" contenteditable="true">G-5 note: unit physically already at Kinser</div>
-          <div class="timeline-desc" contenteditable="true">Per Mr. Keith Simon, G-5 Plans MCIPAC, the 3d Medical Battalion plus Bravo Surgical Company have already physically relocated to Camp Kinser. The basing action endorsements continue up to MCICOM. The work shifts from feasibility analysis to facility planning and project development.</div>
+          <div class="timeline-date" contenteditable="true">April 2026</div>
+          <div class="timeline-title" contenteditable="true">Unit transitions toward Kinser</div>
+          <div class="timeline-desc" contenteditable="true">Elements of 3d Medical Battalion and Bravo Surgical Company have begun relocating to Camp Kinser; the unit is in a transitional state, vacating buildings on Camp Foster. The basing action endorsements continue up to MCICOM. The work shifts from feasibility analysis to facility planning and project development.</div>
         </div>
 
         <div class="timeline-item">
           <span class="timeline-dot now"></span>
-          <div class="timeline-date" contenteditable="true">1 May 2026</div>
-          <div class="timeline-title" contenteditable="true">Kenji Music reframes the work</div>
-          <div class="timeline-desc" contenteditable="true">Kenji Music (Facility Planning, MCB Camp Butler PWB / GF / MCIPAC) confirmed the goal is facility planning and project development, not a supporting assessment. Deliverable target: complete scope of work for ideal operational capabilities within the existing Kinser footprint, plus a prioritized subset that can realistically award between now and Q4 of FY27.</div>
+          <div class="timeline-date" contenteditable="true">May 2026</div>
+          <div class="timeline-title" contenteditable="true">Mission partner reframes the work</div>
+          <div class="timeline-desc" contenteditable="true">The MCIPAC mission partner confirmed the goal is facility planning and project development, not a supporting assessment. Deliverable target: complete scope of work for ideal operational capabilities within the existing Kinser footprint, plus a prioritized subset that can realistically award between now and Q4 of FY27.</div>
         </div>
 
       </div>
@@ -470,12 +466,12 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 
   <div class="card">
     <div class="card-header">
-      <h2>Why the Tab B Scorecard No Longer Controls</h2>
+      <h2>Why the Tab B Scorecard Is Superseded</h2>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">Tab B page 9 scored Foster at 4.45 versus Kinser at 4.15. That score answered a different question: where to put Bravo Surgical Company alone, 180 BICs. Once the question changed to where to put the entire 3d Medical Battalion, 711 personnel, with MEDLOG already at Kinser and MT and UT plus the MSTC already at Kinser, the answer changed. The current authoritative source is the CG 3d MLG signed letter of 2 February 2026.</p>
-      <span class="cite">Sources: Tab B page 9 (Foster vs Kinser scorecard); CG 3d MLG signed letter paras 1 to 3.</span>
+      <p class="body-text" contenteditable="true">Tab B scored Foster at 4.45 versus Kinser at 4.15. That score answered a Bravo-only question scoped to Camp Foster, 180 BICs. The current question is where to place the entire 3d Medical Battalion, 711 personnel, given that MEDLOG, Motor Transport and Utilities, and the Medical Skills Training Center are already at Kinser. Different question, different answer. The current authoritative source is the CG 3d MLG signed letter, February 2026.</p>
+      <span class="cite">Sources: Tab B page 9; CG 3d MLG signed letter paras 1 to 3.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -485,7 +481,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 <!-- ============================== TAB 2: CURRENT STATE ============================== -->
 <div class="tab-panel">
 
-  <p class="section-lead" contenteditable="true">The unit is at Kinser. Six buildings have been allocated by name in the CG MCIPAC endorsement draft. Scope may extend beyond those six as the planning effort matures.</p>
+  <p class="section-lead" contenteditable="true">Elements of 3d Medical Battalion are at Kinser; the relocation is in progress. Six buildings have been allocated by name in the CG MCIPAC endorsement draft. Scope may extend beyond those six as the planning effort matures.</p>
 
   <div class="card">
     <div class="card-header">
@@ -495,14 +491,14 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     </div>
     <div class="card-body">
       <ul class="checklist">
-        <li class="done" contenteditable="true">Strategic Basing Action decision made; CG 3d MLG signed letter of 2 February 2026.</li>
-        <li class="done" contenteditable="true">CG MCIPAC endorsement drafted, Kinser footprint named (six buildings).</li>
-        <li class="done" contenteditable="true">3d MED BN physically relocated to Camp Kinser per G-5 note dated 30 April 2026.</li>
+        <li class="done" contenteditable="true">Strategic Basing Action decision made; CG 3d MLG signed letter, February 2026.</li>
+        <li class="done" contenteditable="true">CG MCIPAC endorsement drafted; Kinser footprint named (six buildings).</li>
+        <li class="done" contenteditable="true">Elements of 3d Medical Battalion have relocated to Camp Kinser; the unit is in a transitional state, vacating Camp Foster facilities.</li>
         <li class="done" contenteditable="true">MEDLOG (CLR-35) co-location at Kinser established (precedes the consolidation).</li>
         <li class="done" contenteditable="true">Basing action package forwarded to MCICOM.</li>
-        <li class="done" contenteditable="true">Planner assigned (Anthony L. Potter); read-in complete.</li>
+        <li class="done" contenteditable="true">MCIPAC planner assigned; read-in complete.</li>
       </ul>
-      <span class="cite">Sources: CG 3d MLG signed letter; CG MCIPAC endorsement draft; G-5 email chain dated 30 April 2026.</span>
+      <span class="cite">Sources: CG 3d MLG signed letter; CG MCIPAC endorsement draft.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -515,9 +511,9 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     </div>
     <div class="card-body">
       <ul class="checklist">
-        <li class="pending" contenteditable="true">Engineering lift identification (TBD; engineering effort scoped to follow the Planner-led pass).</li>
-        <li class="pending" contenteditable="true">Initial plan of attack: resources, touchpoints, delivery, formulation in coordination with Kenji Music and Mr. Robert Kaye.</li>
-        <li class="pending" contenteditable="true">iNFADS data pull for the six allocated Kinser buildings (or use of physical walk as primary source if iNFADS is not current).</li>
+        <li class="pending" contenteditable="true">Engineer requirement identification (TBD; engineering effort scoped to follow the planner-led pass).</li>
+        <li class="pending" contenteditable="true">Initial plan of attack: resources, touchpoints, and delivery, formulated in coordination with the MCIPAC mission partner.</li>
+        <li class="pending" contenteditable="true">iNFADS data pull for the six allocated Kinser buildings (or physical walk as primary source if iNFADS is not current).</li>
         <li class="pending" contenteditable="true">Constraining facility requirements set against existing BFR data; gaps and surpluses identified.</li>
         <li class="pending" contenteditable="true">Reconciliation against UDP3 inbound, HAP turnover, DPRI OKICON projections, Kinser Tower renovation, and ICG plans.</li>
       </ul>
@@ -534,17 +530,16 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 <!-- ============================== TAB 3: THE WORK ============================== -->
 <div class="tab-panel">
 
-  <p class="section-lead" contenteditable="true">The deliverable, the plan of attack, and the team. Per Kenji Music email 1 May 2026.</p>
+  <p class="section-lead" contenteditable="true">The deliverable, the plan of attack, and the team.</p>
 
   <div class="card">
     <div class="card-header">
       <h2>The Deliverable</h2>
-      <span class="badge badge-gold">Per Kenji Music email 1 May 26</span>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
       <p class="body-text" contenteditable="true">Define the complete scope of work to achieve ideal operational capabilities within the existing Kinser footprint. Identify a prioritized subset of that work that can realistically award for execution between now and Q4 of FY27. Phased approach expected: short-term gap closure first, longer-term requirements aligned with the larger MLG consolidation and modernization plans.</p>
-      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+      <span class="cite">Source: MCIPAC endorsement request, May 2026.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -555,7 +550,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">The team formulates the initial plan of attack and verifies resources, touchpoints, and delivery. Per Kenji Music, initial assessments are Planner-focused. Existing data sets, including BFR data, set the constraining facility requirements and surface critical gaps and surpluses. An engineering lift follows to survey buildings and to develop supporting work scopes with the units.</p>
+      <p class="body-text" contenteditable="true">The team formulates the initial plan of attack and verifies resources, touchpoints, and delivery. Per the MCIPAC mission partner initial acceptance, the first pass is planner-focused. Existing data sets, including BFR data, set the constraining facility requirements and surface critical gaps and surpluses. An engineering survey follows to walk buildings and develop supporting work scopes with the units.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -576,14 +571,14 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
           </tr>
           <tr>
             <td contenteditable="true">2. Building surveys</td>
-            <td contenteditable="true">Engineering lift (TBD)</td>
+            <td contenteditable="true">Engineer (TBD)</td>
             <td contenteditable="true">Walk each Kinser building; capture current condition, utilization, and deficiencies. Coordinate with the affected units on workscope inputs.</td>
             <td contenteditable="true">Per-building condition memo.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
             <td contenteditable="true">3. Scope of work development</td>
-            <td contenteditable="true">Planner + Engineering</td>
+            <td contenteditable="true">Planner and engineer</td>
             <td contenteditable="true">Build the complete SOW for ideal operational capabilities. Identify the prioritized subset awardable between now and Q4 FY27.</td>
             <td contenteditable="true">Complete SOW; prioritized subset.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
@@ -608,7 +603,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">Phase one is Planner-led. The engineering lift comes in for building surveys and SOW development; engineering walkthroughs are run as a group. Additional planner support is added as scope expands.</p>
+      <p class="body-text" contenteditable="true">Phase one is planner-led. The engineer comes in for building surveys and scope-of-work development; walkthroughs are run as a group. Additional planner support is added as scope expands.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -622,9 +617,9 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <tbody>
           <tr>
             <td contenteditable="true">Lead Planner</td>
-            <td contenteditable="true">Anthony L. Potter</td>
+            <td contenteditable="true">MCIPAC planner</td>
             <td contenteditable="true">Phase 1 onward</td>
-            <td contenteditable="true">Read-in, constraint setting, plan of attack, primary client interface with MCIPAC GF Facility Planning.</td>
+            <td contenteditable="true">Read-in, constraint setting, plan of attack, primary interface with MCIPAC GF Facility Planning.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
@@ -635,17 +630,17 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Engineering Lift Lead</td>
+            <td contenteditable="true">Engineer Lead</td>
             <td contenteditable="true">TBD</td>
             <td contenteditable="true">Phase 2 onward</td>
             <td contenteditable="true">Placeholder. Engineer identification in progress on the contractor side.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Client POC</td>
+            <td contenteditable="true">Mission Partner POC</td>
             <td contenteditable="true">Mr. Kenji Music</td>
             <td contenteditable="true">All phases</td>
-            <td contenteditable="true">Facility Planning, MCB Camp Butler PWB / GF / MCIPAC. DSN 315-645-3207.</td>
+            <td contenteditable="true">Facility Planning, MCIPAC GF, MCB Camp Butler. DSN 315-645-3207.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
         </tbody>
@@ -673,7 +668,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="facility">
       <div class="facility-num" contenteditable="true">300</div>
       <div class="facility-name" contenteditable="true">Medical Skills Training Center (MSTC)</div>
-      <div class="facility-desc" contenteditable="true">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Already relocated to Kinser per CG signed letter para 2. Note: UDP3 inbound in 2027 impacts this building (per Kenji email 1 May 26).</div>
+      <div class="facility-desc" contenteditable="true">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Already at Kinser per CG signed letter para 2. UDP3 inbound in 2027 competes for this building. Bldg 300 has significant condition issues that may render it unsuitable for MSTC; sufficiency to be validated during the walk and final medical battalion footprint subject to scoping outcomes.</div>
     </div>
 
     <div class="facility">
@@ -691,7 +686,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="facility">
       <div class="facility-num" contenteditable="true">1225</div>
       <div class="facility-name" contenteditable="true">Personnel Housing (BEQ)</div>
-      <div class="facility-desc" contenteditable="true">Unaccompanied personnel housing for the battalion. UH bedspace availability may not support both 3d MED BN and the inbound UDP3 in the near term (per Kenji email 1 May 26).</div>
+      <div class="facility-desc" contenteditable="true">Unaccompanied personnel housing for the battalion. UH bedspace availability may not support both 3d Medical Battalion and the inbound UDP3 in the near term.</div>
     </div>
 
     <div class="facility">
@@ -705,12 +700,11 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
   <div class="card" style="margin-top:24px">
     <div class="card-header">
       <h2>Foster Turnover</h2>
-      <span class="badge badge-orange">Per Kenji email 1 May 26</span>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">3d MED BN currently occupies Bldg 215 on Camp Foster (the old 3/12 Battalion Headquarters). As part of the Kinser consolidation, 3d MED BN turns over Bldg 215 along with other Foster facilities they currently hold. DPRI OKICON has Foster 5665 (3/12 Command Post) on its planned demolition list, estimated 2033. The Foster turnover sequencing is one of the plans this effort needs to reconcile against.</p>
-      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+      <p class="body-text" contenteditable="true">3d Medical Battalion currently occupies Bldg 215 Camp Foster (the old 3/12 Battalion Headquarters); elements have begun relocating to Camp Kinser, and the unit is in a transitional state. As part of the Kinser consolidation, the battalion turns over Bldg 215 along with other Foster facilities it currently holds. DPRI OKICON has Foster 5665 (3/12 Command Post) on its planned demolition list, estimated 2033. The Foster turnover sequencing is one of the plans this effort needs to reconcile against.</p>
+      <span class="cite">Source: MCIPAC endorsement request, May 2026.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -722,7 +716,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">These are the Bravo Surgical Company functional space requirements per Tab C slide 20. They cover Bravo only; the consolidated battalion at 711 personnel drives a larger total. Tab C used 181 personnel in its analysis; the proponent personnel number (Tab A page 7, Tab B page 4) is 180 BICs (41 officer, 164 enlisted).</p>
+      <p class="body-text" contenteditable="true">Bravo Surgical Company functional space requirements per Tab C slide 20. These cover Bravo only; the consolidated battalion at 711 personnel drives a larger total. Personnel-count caveat: Tab A page 7 reports 180 BICs broken out as 41 officer / 164 enlisted (the breakdown does not reconcile against the total); Tab C slide 5 uses 181. See Open Questions for the source-conflict reconciliation.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -745,7 +739,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         </tbody>
       </table>
       <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
-      <span class="cite">Source: Tab C slide 20 (1 August 2025 MCB Butler GF response). Personnel: Tab A page 7 (180 BICs); Tab C slide 5 used 181.</span>
+      <span class="cite">Source: Tab C slide 20, August 2025. Personnel: Tab A page 7 (180 BICs); Tab C slide 5 (181). Discrepancy logged in Open Questions.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -760,7 +754,6 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
   <div class="card">
     <div class="card-header">
       <h2>Plans to Reconcile</h2>
-      <span class="badge badge-gold">Per Kenji email 1 May 26</span>
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
@@ -807,7 +800,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         </tbody>
       </table>
       <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
-      <span class="cite">Source: Kenji Music email RE: CG MCIPAC Endorsement Request, 1 May 26 11:43 JST.</span>
+      <span class="cite">Source: MCIPAC endorsement request, May 2026.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -829,7 +822,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <div class="risk-cell risk-o">
           <div class="risk-label">Facility Risk</div>
           <div class="risk-title" contenteditable="true">Bldg 1225 UH capacity vs. UDP3</div>
-          <div class="risk-desc" contenteditable="true">Per Kenji 1 May 26, UH bedspace at Bldg 1225 may not support both 3d MED BN and the inbound UDP3 battalion in the near term. Sequencing and bridging options to be developed.</div>
+          <div class="risk-desc" contenteditable="true">UH bedspace at Bldg 1225 may not support both 3d Medical Battalion and the inbound UDP3 battalion in the near term. Sequencing and bridging options to be developed.</div>
         </div>
 
         <div class="risk-cell risk-y">
@@ -868,7 +861,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">Per Mr. Kenji Music's planning view, downstream factors may reshape the 3d MED BN footprint over the medium term:</p>
+      <p class="body-text" contenteditable="true">Per the MCIPAC mission partner's planning view, downstream factors may reshape the 3d Medical Battalion footprint over the medium term:</p>
       <ul class="checklist">
         <li class="pending" contenteditable="true">Once the Mega Warehouse completes, the H-block warehouses on Camp Foster open up, creating space MEDLOG could absorb at Foster.</li>
         <li class="pending" contenteditable="true">Truck Company moves to Camp Courtney, freeing Motor T capacity at Foster.</li>
@@ -877,7 +870,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <li class="pending" contenteditable="true">Foster's adjacency to the hospital provides clinical sustainment access for medical units.</li>
       </ul>
       <p class="body-text" contenteditable="true">Taken together, these conditions could open a downstream path for 3d MED BN to return to Foster after the Kinser consolidation completes its near-term function. This is captured for situational awareness, not stated as plan. The current plan of record is the Kinser consolidation per the CG signed letter and the CG MCIPAC endorsement.</p>
-      <span class="cite">Source: client conversation, captured here as the client's view, not as basing action.</span>
+      <span class="cite">Mission partner conversation; captured as planning view, not as basing action.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -894,9 +887,67 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
 
+  <div class="card">
+    <div class="card-header">
+      <h2>Open Questions</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Items the planner cannot resolve from current repository documents. Each lists the unresolved question and the source that would resolve it.</p>
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Source that would resolve it</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">Bravo Surgical Company BIC count. Tab A page 7 reports 180 BICs broken out as 41 officer / 164 enlisted; that breakdown does not reconcile against the stated total. Tab C slide 5 uses 181. A separate strategic basing document is recalled to use 185.</td>
+            <td contenteditable="true">Authoritative current Bravo Surgical Company T/O (TFSMS export) and the strategic basing document containing the 185 figure.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Foster vs Kinser transitional state. Bldg 215 Camp Foster remains occupied; elements have begun relocating to Camp Kinser. Which battalion components have completed move and which remain at Foster.</td>
+            <td contenteditable="true">3d Medical Battalion transitional status update; site walk of the six Kinser buildings and Bldg 215 Camp Foster.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Bldg 300 condition. Significant condition issues are flagged that may render the building unsuitable for MSTC. Final medical battalion footprint at Kinser is subject to scoping outcomes.</td>
+            <td contenteditable="true">Per-building condition memo from the engineer walkthrough.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Engineer assignment. Sizing per the MCIPAC mission partner is one planner plus one engineer for several weeks as primer; engineer identification is in progress on the contractor side.</td>
+            <td contenteditable="true">Contractor staffing decision and engineer name.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">HAP turnover (Bldg 350) timing relative to 3d Medical Battalion absorption capacity.</td>
+            <td contenteditable="true">Army HAP relocation schedule; MCIPAC GF coordination with the Army host nation program.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Kinser Tower delivery date and added admin capacity.</td>
+            <td contenteditable="true">Kinser Tower renovation project schedule and converted-floor allocation memo.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">ICG impact at Camp Kinser. Deconfliction scope to be tracked as Installation Communications Grid plans firm up.</td>
+            <td contenteditable="true">ICG implementation plan for MCB Camp Butler, Kinser scope.</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
   <div class="dark-box">
     <h3>Summary for Decision Makers</h3>
-    <p contenteditable="true">The SBA decision is made. The unit is at Kinser. Six buildings are allocated. The work is facility planning and project development to support the relocation, anchored to existing BFR data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows. Risks to manage: UH capacity at Bldg 1225 against UDP3 inbound, the six-building scope possibly expanding, the Q4 FY27 award gate, ICG deconfliction at Kinser, and the DPRI POR strategic risk that applies to the entire 3d MLG presence on Okinawa.</p>
+    <p contenteditable="true">The Strategic Basing Action decision is made. Elements of 3d Medical Battalion are at Kinser; the unit is in a transitional state, vacating Camp Foster facilities. Six buildings are allocated by name in the CG MCIPAC endorsement; scope may extend. The work is facility planning and project development to support the relocation, anchored to existing BFR data, to identify gaps and surpluses and produce a scope of work that can award between now and Q4 FY27. This effort is the predicate to the broader 3d MLG consolidation review that follows. Risks to manage: UH capacity at Bldg 1225 against UDP3 inbound, the six-building scope possibly expanding, the Q4 FY27 award gate, ICG deconfliction at Kinser, and the DPRI POR strategic risk that applies to the entire 3d MLG presence on Okinawa.</p>
   </div>
 
 </div>
@@ -904,7 +955,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 </div><!-- /content-wrap -->
 
 <footer class="site-footer">
-  <div class="footer-label">Controlled Unclassified Information / For Official Use Only</div>
+  <div class="footer-label">Unclassified</div>
   <div contenteditable="true">3d MED BN Camp Kinser Facility Plan. Marine Corps Installations Pacific. III Marine Expeditionary Force.</div>
 </footer>
 

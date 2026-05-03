@@ -1182,6 +1182,172 @@ bucket separation honored, no IFERROR masking, no #REF! / #N/A
 in defined names. Definition of Done item 6 satisfiable for any
 unit once user pastes both TFSMS and ASR counts.
 
+- Track 9, 3d MED BN basing dashboard cleanup, full-edit
+  affordance, and live-tracker pattern. Five-pass wording,
+  framing, citation, cosmetic, and editability cleanup of
+  basing-assessment.html on branch
+  claude/review-medical-battalion-html-5iTRP. Source artifacts
+  for the pass: audit/3DMEDBN_BASING_BRIEF.md (the round-1
+  briefing rundown, current as of 2026-04-30), the CG 3d MLG
+  signed letter (February 2026), the CG MCIPAC endorsement draft
+  (April 2026), Tab A / Tab B / Tab C as cited in the brief, and
+  user-supplied resolutions to seven Open Questions captured
+  in-session.
+
+  Pass 1 (commit f031198), wording and citation hygiene.
+  Classification banner unified to "Unclassified" at top,
+  print-block, and footer (was Controlled Unclassified
+  Information / FOUO at the bottom and CUI at the top; the
+  dashboard does not handle CUI). Removed the planner's name and
+  every named individual except one Mr. Kenji Music reference in
+  the Mission Partner POC row of the Team Structure table; all
+  other references replaced with role labels (MCIPAC mission
+  partner, MCIPAC planner, AC/S G-5 MCIPAC). Stripped every
+  "Source: ... email ..." citation; surviving citations name the
+  underlying document with month and year only, no day, no time,
+  no JST stamp. Renamed the odd block titles "What This Work Is"
+  to "Scope", "Why It Matters" to "Operational Driver", and "Why
+  the Tab B Scorecard No Longer Controls" to "Why the Tab B
+  Scorecard Is Superseded". Replaced "Engineering Lift" community
+  jargon with engineer / engineering survey throughout. Status
+  glyphs in the checklist CSS changed from 'OK' to 'DONE' and
+  'WIP' to 'IN WORK'. Removed the meaningless "Sourced" badge
+  from the Timeline header.
+
+  Pass 2 (commit 52860ec), user resolutions for the seven Open
+  Questions. The Open Questions card was added to the bottom of
+  Tab 5 in pass 1 with TBDs; pass 2 captured the user's
+  in-session resolutions:
+  - Bravo Surg Co BIC count: held TBD with sources conflict
+    surfaced inline (Tab A 180, Tab C 181, strategic basing
+    action 185); requires authoritative T/O reconciliation
+    before the number is finalized. Numeric field stays editable.
+  - Foster vs Kinser transitional state: new Component Status
+    card added to Tab 2 with editable Element / Current Location
+    / Status table. Seeded with confirmed moves (S-4 at Camp
+    Kinser, MSTC at Camp Kinser) and TBD rows for HQ&S Co, Alpha
+    Surg Co, Bravo Surg Co, MT and UT pending confirmation.
+  - Bldg 300 condition: factual language captured (Life Safety
+    Health concerns, requires more extensive project including
+    extensive roof repair, may not be suitable for medical use
+    as is); final medical battalion footprint subject to scoping
+    outcomes.
+  - Engineer assignment: held TBD pending contractor staffing
+    decision.
+  - HAP (Bldg 350) move timing: held TBD pending Army HAP
+    relocation schedule.
+  - Kinser Towers delivery: estimated 2030 to 2031; field
+    editable.
+  - ICG deconfliction: scope is new and developing; will require
+    deconfliction throughout the lifecycle of the project and
+    the relocation; field editable.
+
+  Pass 3 (commit 1803ffd), fact verification and top / bottom
+  cosmetic. Verified every numeric and factual claim against
+  audit/3DMEDBN_BASING_BRIEF.md and this skill's content.
+  Confirmed: 711 personnel total (CG signed letter para 5a),
+  six Kinser buildings 107, 300, 613, 400, 1225, 508 (CG MCIPAC
+  endorsement), Bravo Surg Co count discrepancy across Tab A 180
+  and Tab C 181 and strategic basing 185, timeline dates for
+  Tab A action letter 20 March 2025 and Tab B 16 March 2025 and
+  Tab C 1 August 2025 and CG signed letter 2 February 2026, DPRI
+  OKICON references for Foster 5665 demolition 2033 and 3d MLG
+  retention beyond 2030. One pre-existing inference flagged but
+  left in place: the "Fall 2025" timeline entry for the
+  scope-shift event, which the brief documents but does not date
+  to a season; entry preexists this Track 9 work and is not
+  contradicted. Header subtitle replaced with "Camp Kinser
+  facility planning for 3d Medical Battalion consolidation."
+  Bottom-line block tightened. Tab 1 / Tab 2 / Tab 5 leads
+  polished. Gold accent strip added above the footer to mirror
+  the header accent; print rule extended to hide the strip in
+  print. Cleaned residual "engineering lift" in Way Forward and
+  three "Kinser Tower" singular references to "Kinser Towers"
+  plural to match the user's pass 2 resolution.
+
+  Pass 4 (commit 51e0000), briefing-quality segues. Two
+  transition points read abruptly when the deck is briefed in
+  order; both bridged with one-sentence connectors, no factual
+  content changed. Tab 0 Command Intent to Scope: Scope now
+  opens "With command intent set, the team's task is downstream:
+  facility planning and project development to execute the
+  move." Tab 4 Foster Turnover to Bravo Surg Co Functional Space:
+  Bravo block opens "Until the consolidated 3d Medical Battalion
+  T/O is reconciled, the most detailed functional reference
+  available is the Bravo Surgical Company data from Tab C slide
+  20, captured below."
+
+  Pass 5 (commit 4b71223), full editability and replaceable
+  logos, per user direction that the dashboard must accommodate
+  unforeseen changes as the project remains fluid.
+  EDITABLE_SELECTOR in the in-page edit-mode JS extended to
+  cover every visible text container that was previously
+  read-only: header title eyebrow / h1 / subtitle, every tab
+  label in the nav bar, table column headers (th), card section
+  headings (h3 added; h2 already covered), metric labels above
+  the big numbers, risk labels above risk titles, badge pills,
+  source citation lines (.cite), and the footer label. Logo
+  replacement wired via event delegation: in edit mode, clicking
+  either logo in .logo-group opens a file picker; the selected
+  image is read as a base64 data URL and swapped into the img
+  src. The change is captured by autosave and persisted in the
+  downloaded HTML when Save HTML runs. Edit-mode CSS gives logos
+  a gold dashed outline plus pointer cursor as the affordance.
+  Print-title block is no longer separately editable; it
+  auto-syncs from the screen header on every input event so
+  edits propagate to the printed output without the user
+  maintaining two copies. Autosave / restore extended to capture
+  and restore .site-header innerHTML so logo replacements and
+  header edits survive accidental browser close. JS validated
+  syntactically clean (node --check pass) with stubbed browser
+  globals. STORAGE_KEY unchanged; new fields are optional, so
+  existing autosaves load without error.
+
+  Live-tracker pattern (methodology contribution applicable
+  beyond this dashboard). Two cards in the dashboard implement a
+  fluid-project tracker pattern other unit-agnostic deliverables
+  can reuse:
+  - Component Status table on Tab 2 with editable Element /
+    Current Location / Status columns. Confirmed entries are
+    seeded as data; unknowns are seeded as TBD pending
+    confirmation. Updates land in one place as moves are
+    confirmed.
+  - Open Questions table at the bottom of Tab 5 with editable
+    Question / Resolution Source columns. Each TBD created during
+    a work pass is captured here with the source that would
+    resolve it. Resolutions are folded back into the dashboard
+    text in the next pass and the row updated.
+  Apex Omega rule 4 (never silently fill) is enforced at the
+  product level by these two tables: every unresolved item is
+  visible to the briefer and the audience.
+
+  Mission partner attribution rule (project-wide, applies to all
+  briefer-facing deliverables in this repo). Named individuals
+  are referred to by role (MCIPAC mission partner, MCIPAC
+  planner, AC/S G-5 MCIPAC) rather than by name in body text.
+  The single allowed exception is a Mission Partner POC row in a
+  team or contact table where the proper name is the relevant
+  data. No "per <person> email" framings; cite the underlying
+  signed document or endorsement, never the email chain. Date
+  format on surviving citations is month-year only, no day, no
+  time, no JST stamp.
+
+  File state at close of Track 9.
+  basing-assessment.html, branch
+  claude/review-medical-battalion-html-5iTRP, HEAD 4b71223. HTML
+  well-formed (HTMLParser: 0 errors, 0 unclosed). Classification
+  banner reads Unclassified at top, print-block, and footer.
+  Zero em dashes, zero en dashes, zero markdown asterisk bold
+  leaks. One Kenji Music reference (Mission Partner POC, allowed).
+  Zero email or JST citations. Edit Mode covers every visible
+  element. Logos replaceable in Edit Mode via click-to-replace.
+  Print-title auto-synced from screen header. Open Questions
+  tracker carries seven live items as of HEAD; Component Status
+  tracker seeded with two confirmed moves and four TBD pending
+  confirmation rows. Pipeline state (BFR generator, validator,
+  ETL, classifier, planning factors) unchanged this track; no
+  out/* artifacts modified.
+
 ## Hand-off protocol (APEX OMEGA)
 
 The user has flagged that when context approaches the limit, they will

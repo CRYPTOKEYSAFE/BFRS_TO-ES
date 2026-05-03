@@ -18,55 +18,55 @@ Subject: RE: CG MCIPAC Endorsement Request
 
 Kenji,
 
-Quick status update and the refreshed dashboard for your read.
+Quick update plus the refreshed dashboard for your look.
 
-We took your notes from the 1 May email and the discussion from
-last Friday and rolled them into the dashboard you saw earlier
-in the week. Same product, tightened up: classification handled,
-naming cleaned, the Tab B versus Kinser framing reworked, the
-component-level transitional status broken out so we are
-tracking which elements are at Kinser and which are still in
-motion, and the six-building Kinser footprint (107, 300, 613,
-400, 1225, 508) carried through Foster turnover and the plans
-we need to reconcile against (UDP3, HAP, OKICON, Kinser Towers,
-ICG). The intent is for this to be our project charter going
-forward, so the team works off one document instead of cycling
-through the original attachments.
+We took the notes from your 1 May email and what came out of
+last Friday and rolled them into the version you saw last week.
+Same dashboard, tightened up. Classification fixed. Names
+cleaned up. The Tab B vs Kinser piece rewritten so it reads
+cleaner. Component status broken out so it's clear which pieces
+of the battalion are at Kinser and which are still moving. The
+six Kinser buildings (107, 300, 613, 400, 1225, 508), the
+Foster turnover, and the cross-cutting plans (UDP3, HAP,
+OKICON, Kinser Towers, ICG) all carry through. The thinking is
+that this becomes the project charter going forward, so we are
+all working from one document instead of bouncing between
+attachments.
 
-One change worth flagging: the dashboard is now fully editable
-in the browser. Edit Mode at the top right opens every field,
-including the logos (click to replace). Save HTML downloads the
-current state as a single file. If you change anything, send the
-edited file back and we will pick it up.
+One thing that is new since you last saw it. The whole
+dashboard is editable now in the browser. Hit Edit Mode in the
+top right and every field opens up, logos included (click to
+swap). Hit Save HTML when you are done and it downloads the
+updated file. If you change anything, send it back and we will
+pick it up from there.
 
-A couple of items still open that you should know about. There
-is a real personnel-count disparity on Bravo Surg Co between
-Tab A (180 BICs), Tab C (181), and the strategic basing action
-(185). It is logged inline and on the Open Questions card and is
-held as TBD until we can validate against the authoritative T/O.
-Building 300 has been walked and has Life Safety Health concerns
-plus extensive roof work needed, so the final medical footprint
-is going to depend on how 300 scopes out. Engineer assignment on
-our side is still being determined.
+A couple of open items worth flagging. The Bravo Surg Co head
+count does not line up across the sources. Tab A says 180,
+Tab C says 181, the strategic basing action says 185. We have
+it called out inline and on the Open Questions tab, and we are
+holding it as TBD until we can pull the actual T/O and
+reconcile. Building 300 was walked and it has real Life Safety
+Health issues plus a serious roof problem, so where the medical
+footprint actually lands is going to depend on how 300 plays
+out in scoping. Still working the engineer slot on our end.
 
-In parallel we have started pulling in the BFRs from 3d MLG,
-sorting through the relevant ones, and beginning to flush out
-where they line up cleanly against the Kinser footprint and
-where they need refinement. Once we have a working set we will
-walk it against the iNFADS pull, or against the building walk
-itself if iNFADS is not current, and feed the deltas back into
-the dashboard.
+In parallel we have started pulling the 3d MLG BFRs in and
+going through them, sorting which ones map cleanly to the
+Kinser buildings and which ones need work. Once we have a clean
+set we will walk it against iNFADS, or against the building
+walk itself if iNFADS is not current, and roll the deltas back
+into the dashboard.
 
-Take a pass when you have a chance and let us know if the
-current read matches your intent. Anything you want changed,
-edit it directly and send the file back, or flag it and we will
-update on our end. We want this to stay useful to you and to the
-back-briefs going up the chain, so your edits are how we keep it
-accurate.
+Take a look when you get a chance and let us know if it tracks
+with what you had in mind. Anything you want changed, edit it
+in the dashboard and send it back, or flag it and we will
+update on our end. We want this to stay useful for you and for
+whatever you are briefing up the chain, so your edits are what
+keep it sharp.
 
-Happy to set up another working session whenever fits your
-schedule, or to just trade comments in the file. Whatever works
-on your end works on ours.
+Happy to set up another working session whenever works for you,
+or to just trade comments in the file. Whatever is easier on
+your end works.
 
 V/r,
 

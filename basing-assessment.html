@@ -481,7 +481,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
 <!-- ============================== TAB 2: CURRENT STATE ============================== -->
 <div class="tab-panel">
 
-  <p class="section-lead" contenteditable="true">Elements of 3d Medical Battalion are at Kinser; the relocation is in progress. Six buildings have been allocated by name in the CG MCIPAC endorsement draft. Scope may extend beyond those six as the planning effort matures.</p>
+  <p class="section-lead" contenteditable="true">The unit is in a transitional state. S-4 and the Medical Skills Training Center have moved to Camp Kinser; other elements have not been confirmed moved. Six buildings have been allocated by name in the CG MCIPAC endorsement draft. Scope may extend beyond those six as the planning effort matures. See Component Status below for current location by element.</p>
 
   <div class="card">
     <div class="card-header">
@@ -493,7 +493,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <ul class="checklist">
         <li class="done" contenteditable="true">Strategic Basing Action decision made; CG 3d MLG signed letter, February 2026.</li>
         <li class="done" contenteditable="true">CG MCIPAC endorsement drafted; Kinser footprint named (six buildings).</li>
-        <li class="done" contenteditable="true">Elements of 3d Medical Battalion have relocated to Camp Kinser; the unit is in a transitional state, vacating Camp Foster facilities.</li>
+        <li class="done" contenteditable="true">S-4 and the Medical Skills Training Center have moved to Camp Kinser. Other elements remain in transition; see Component Status.</li>
         <li class="done" contenteditable="true">MEDLOG (CLR-35) co-location at Kinser established (precedes the consolidation).</li>
         <li class="done" contenteditable="true">Basing action package forwarded to MCICOM.</li>
         <li class="done" contenteditable="true">MCIPAC planner assigned; read-in complete.</li>
@@ -517,6 +517,66 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <li class="pending" contenteditable="true">Constraining facility requirements set against existing BFR data; gaps and surpluses identified.</li>
         <li class="pending" contenteditable="true">Reconciliation against UDP3 inbound, HAP turnover, DPRI OKICON projections, Kinser Tower renovation, and ICG plans.</li>
       </ul>
+    </div>
+    <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>Component Status</h2>
+      <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
+    </div>
+    <div class="card-body">
+      <p class="body-text" contenteditable="true">Per-element location and move status. Add, edit, or delete rows as the relocation progresses. Confirmed entries reflect verified moves; everything else is TBD pending confirmation.</p>
+      <table class="data-table" data-editable="true">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Current Location</th>
+            <th>Status</th>
+            <th class="row-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">S-4 (Logistics)</td>
+            <td contenteditable="true">Camp Kinser</td>
+            <td contenteditable="true">Moved</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Medical Skills Training Center (MSTC)</td>
+            <td contenteditable="true">Camp Kinser</td>
+            <td contenteditable="true">Moved</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Headquarters and Service Company</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">TBD pending confirmation</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Alpha Surgical Company</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">TBD pending confirmation</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Bravo Surgical Company</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">TBD pending confirmation</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Motor Transport and Utilities</td>
+            <td contenteditable="true">TBD</td>
+            <td contenteditable="true">TBD pending confirmation</td>
+            <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -668,7 +728,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
     <div class="facility">
       <div class="facility-num" contenteditable="true">300</div>
       <div class="facility-name" contenteditable="true">Medical Skills Training Center (MSTC)</div>
-      <div class="facility-desc" contenteditable="true">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Already at Kinser per CG signed letter para 2. UDP3 inbound in 2027 competes for this building. Bldg 300 has significant condition issues that may render it unsuitable for MSTC; sufficiency to be validated during the walk and final medical battalion footprint subject to scoping outcomes.</div>
+      <div class="facility-desc" contenteditable="true">Applied instruction space for clinical skills sustainment, trauma training, and surgical readiness. Already at Kinser per CG signed letter para 2. UDP3 inbound in 2027 competes for this building. Building 300 has been walked. It has significant Life Safety Health (LSH) concerns and will require a more extensive project in the near future, including extensive roof repair. The final medical battalion footprint is subject to scoping outcomes; Building 300 may not be suitable for medical use as is.</div>
     </div>
 
     <div class="facility">
@@ -716,7 +776,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
       <button class="section-toggle" type="button" onclick="toggleCollapse(this)">-</button>
     </div>
     <div class="card-body">
-      <p class="body-text" contenteditable="true">Bravo Surgical Company functional space requirements per Tab C slide 20. These cover Bravo only; the consolidated battalion at 711 personnel drives a larger total. Personnel-count caveat: Tab A page 7 reports 180 BICs broken out as 41 officer / 164 enlisted (the breakdown does not reconcile against the total); Tab C slide 5 uses 181. See Open Questions for the source-conflict reconciliation.</p>
+      <p class="body-text" contenteditable="true">Bravo Surgical Company functional space requirements per Tab C slide 20. These cover Bravo only; the consolidated battalion at 711 personnel drives a larger total. Personnel-count caveat: sources conflict. Tab A page 7 reports 180 BICs broken out as 41 officer / 164 enlisted (the breakdown does not reconcile against the stated total). Tab C slide 5 uses 181. The strategic basing action uses 185. Validation against the authoritative Bravo Surgical Company T/O is required before this number is finalized. Numeric fields in the table below are editable; treat the values as TBD pending T/O reconciliation.</p>
       <table class="data-table" data-editable="true">
         <thead>
           <tr>
@@ -739,7 +799,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         </tbody>
       </table>
       <button class="add-row-btn" type="button" onclick="addRow(this)">+ Add row</button>
-      <span class="cite">Source: Tab C slide 20, August 2025. Personnel: Tab A page 7 (180 BICs); Tab C slide 5 (181). Discrepancy logged in Open Questions.</span>
+      <span class="cite">Source: Tab C slide 20, August 2025. Personnel: Tab A page 7 (180 BICs); Tab C slide 5 (181); strategic basing action (185). Discrepancy logged in Open Questions; TBD pending T/O reconciliation.</span>
     </div>
     <div class="hidden-marker">Section hidden. Use the toggle to restore.</div>
   </div>
@@ -775,26 +835,26 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
           </tr>
           <tr>
             <td contenteditable="true">Army HAP tenant relocation</td>
-            <td contenteditable="true">Bldg 350 turnover</td>
-            <td contenteditable="true">Building 350 becomes available for re-use. Potential to absorb capacity 3d MED BN may need.</td>
+            <td contenteditable="true">Bldg 350 turnover; move timing TBD</td>
+            <td contenteditable="true">Building 350 becomes available for re-use once HAP moves; timing is still being determined. Potential to absorb capacity 3d Medical Battalion may need.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
             <td contenteditable="true">DPRI OKICON, Foster 5665 demolition</td>
-            <td contenteditable="true">Bldg 5665 (3/12 Command Post), demolition estimated 2033; 3d MED BN Foster turnover including Bldg 215 (old 3/12 BN HQs)</td>
-            <td contenteditable="true">Sequence the Foster turnover so that 3d MED BN Foster facility releases align with the OKICON demolition timeline.</td>
+            <td contenteditable="true">Bldg 5665 (3/12 Command Post), demolition estimated 2033; 3d Medical Battalion Foster turnover including Bldg 215 (old 3/12 BN HQs)</td>
+            <td contenteditable="true">Sequence the Foster turnover so that Foster facility releases align with the OKICON demolition timeline.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Kinser Tower renovation</td>
-            <td contenteditable="true">Converted admin facilities, Kinser</td>
-            <td contenteditable="true">If the Tower renovation lands as planned, new converted admin facilities relieve some shortfalls in critical CCNs. Worth holding capacity options in the SOW.</td>
+            <td contenteditable="true">Kinser Towers renovation</td>
+            <td contenteditable="true">Converted admin facilities, Kinser; estimated 2030 to 2031</td>
+            <td contenteditable="true">Kinser Towers delivery is estimated 2030 to 2031. New converted admin facilities would relieve shortfalls in critical CCNs. Hold capacity options in the scope of work.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
             <td contenteditable="true">ICG (Installation Communications Grid)</td>
             <td contenteditable="true">DoD-driven installation across MCB Camp Butler; Camp Kinser and Camp Hansen identified among the more impacted sites</td>
-            <td contenteditable="true">Recent effort. Scope very early. Potential deconflict against facility work scopes (cable routes, equipment rooms, comm closets) to be tracked as ICG plans firm up.</td>
+            <td contenteditable="true">Scope is new and developing. ICG will require deconfliction throughout the lifecycle of this project and the relocation; treat as an active coordination thread, not a settled item.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
         </tbody>
@@ -846,7 +906,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <div class="risk-cell risk-y">
           <div class="risk-label">Coordination Risk</div>
           <div class="risk-title" contenteditable="true">ICG deconflict</div>
-          <div class="risk-desc" contenteditable="true">Installation Communications Grid is a recent effort. Scope is at an early stage. Camp Kinser and Camp Hansen are identified as among the more impacted sites at MCB Camp Butler. Once ICG scope firms, deconflict facility work scopes against it.</div>
+          <div class="risk-desc" contenteditable="true">Installation Communications Grid scope is new and developing. Camp Kinser and Camp Hansen are identified among the more impacted sites at MCB Camp Butler. ICG will require deconfliction throughout the lifecycle of this project and the relocation.</div>
         </div>
 
       </div>
@@ -866,7 +926,7 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         <li class="pending" contenteditable="true">Once the Mega Warehouse completes, the H-block warehouses on Camp Foster open up, creating space MEDLOG could absorb at Foster.</li>
         <li class="pending" contenteditable="true">Truck Company moves to Camp Courtney, freeing Motor T capacity at Foster.</li>
         <li class="pending" contenteditable="true">Additional armory capacity is coming online.</li>
-        <li class="pending" contenteditable="true">Kinser Tower renovation, if it lands, delivers new converted admin facilities at Kinser.</li>
+        <li class="pending" contenteditable="true">Kinser Towers renovation (estimated 2030 to 2031) delivers new converted admin facilities at Kinser.</li>
         <li class="pending" contenteditable="true">Foster's adjacency to the hospital provides clinical sustainment access for medical units.</li>
       </ul>
       <p class="body-text" contenteditable="true">Taken together, these conditions could open a downstream path for 3d MED BN to return to Foster after the Kinser consolidation completes its near-term function. This is captured for situational awareness, not stated as plan. The current plan of record is the Kinser consolidation per the CG signed letter and the CG MCIPAC endorsement.</p>
@@ -904,37 +964,37 @@ body.edit-mode .card.collapsed .hidden-marker{display:block}
         </thead>
         <tbody>
           <tr>
-            <td contenteditable="true">Bravo Surgical Company BIC count. Tab A page 7 reports 180 BICs broken out as 41 officer / 164 enlisted; that breakdown does not reconcile against the stated total. Tab C slide 5 uses 181. A separate strategic basing document is recalled to use 185.</td>
-            <td contenteditable="true">Authoritative current Bravo Surgical Company T/O (TFSMS export) and the strategic basing document containing the 185 figure.</td>
+            <td contenteditable="true">Bravo Surgical Company BIC count. Sources conflict: Tab A page 7 reports 180 BICs (breakdown 41 officer / 164 enlisted does not reconcile against the stated total); Tab C slide 5 uses 181; the strategic basing action uses 185. The number is held TBD; do not finalize without T/O reconciliation.</td>
+            <td contenteditable="true">Authoritative current Bravo Surgical Company T/O (TFSMS export) and the strategic basing action source for the 185 figure.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Foster vs Kinser transitional state. Bldg 215 Camp Foster remains occupied; elements have begun relocating to Camp Kinser. Which battalion components have completed move and which remain at Foster.</td>
-            <td contenteditable="true">3d Medical Battalion transitional status update; site walk of the six Kinser buildings and Bldg 215 Camp Foster.</td>
+            <td contenteditable="true">Foster vs Kinser transitional status. S-4 and the Medical Skills Training Center are confirmed at Camp Kinser. Other elements (Headquarters and Service Company, Alpha Surgical Company, Bravo Surgical Company, Motor Transport and Utilities) are TBD pending confirmation. Component Status table on the Current State tab is the live tracker.</td>
+            <td contenteditable="true">Per-element move confirmation from 3d Medical Battalion; updates entered directly into the Component Status table.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Bldg 300 condition. Significant condition issues are flagged that may render the building unsuitable for MSTC. Final medical battalion footprint at Kinser is subject to scoping outcomes.</td>
-            <td contenteditable="true">Per-building condition memo from the engineer walkthrough.</td>
+            <td contenteditable="true">Building 300 condition. Building 300 has been walked. It has significant Life Safety Health (LSH) concerns and will require a more extensive project in the near future, including extensive roof repair. Final medical battalion footprint is subject to scoping outcomes; Building 300 may not be suitable for medical use as is.</td>
+            <td contenteditable="true">Engineer condition memo with project recommendation; downstream MILCON or FSRM project decision.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Engineer assignment. Sizing per the MCIPAC mission partner is one planner plus one engineer for several weeks as primer; engineer identification is in progress on the contractor side.</td>
+            <td contenteditable="true">Engineer assignment (contractor side). TBD; still being determined.</td>
             <td contenteditable="true">Contractor staffing decision and engineer name.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">HAP turnover (Bldg 350) timing relative to 3d Medical Battalion absorption capacity.</td>
+            <td contenteditable="true">HAP turnover, Bldg 350, timing. Move timing is still being determined. Field is editable; update when confirmed.</td>
             <td contenteditable="true">Army HAP relocation schedule; MCIPAC GF coordination with the Army host nation program.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">Kinser Tower delivery date and added admin capacity.</td>
-            <td contenteditable="true">Kinser Tower renovation project schedule and converted-floor allocation memo.</td>
+            <td contenteditable="true">Kinser Towers delivery and added admin capacity. Estimated 2030 to 2031. Field is editable; update when confirmed.</td>
+            <td contenteditable="true">Kinser Towers renovation project schedule and converted-floor allocation memo.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>
           <tr>
-            <td contenteditable="true">ICG impact at Camp Kinser. Deconfliction scope to be tracked as Installation Communications Grid plans firm up.</td>
+            <td contenteditable="true">ICG impact at Camp Kinser. Scope is new and developing. ICG will require deconfliction throughout the lifecycle of this project and relocation. Field is editable; treat as an active coordination thread.</td>
             <td contenteditable="true">ICG implementation plan for MCB Camp Butler, Kinser scope.</td>
             <td class="row-actions"><button class="row-btn" type="button" onclick="deleteRow(this)">Delete</button></td>
           </tr>

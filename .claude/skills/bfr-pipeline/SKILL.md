@@ -1348,6 +1348,64 @@ unit once user pastes both TFSMS and ASR counts.
   ETL, classifier, planning factors) unchanged this track; no
   out/* artifacts modified.
 
+- Track 9b, MCIPAC mission partner email handoff draft.
+  Companion deliverable to Track 9: a draft reply on the existing
+  CG MCIPAC Endorsement Request chain that hands the refreshed
+  dashboard back to the mission partner and frames it as the
+  project charter coming out of the 1 May email and the working
+  session the prior Friday. File at audit/email_to_kenji_HANDOFF_DRAFT.md.
+  Three iterations on this branch: initial draft (commit 9266d11)
+  introduced the dashboard, reframe (commit cb91e3e) corrected
+  the framing because the mission partner had already seen the
+  prior version the week before so the email opens "refreshed
+  dashboard" not "new dashboard", voice pass (commit dcdcbcd)
+  rewrote bureaucratic phrasing (personnel-count disparity,
+  validate against the authoritative T/O, is held as TBD, carried
+  through) into how a colleague would actually say it.
+
+  Email content covers: the updates rolled in from the 1 May
+  email and Friday meeting (classification, naming, Tab B vs
+  Kinser framing, component-level transitional status, six
+  Kinser buildings carried through Foster turnover and the
+  cross-cutting plans), the new full-edit and replaceable-logo
+  affordances added in dashboard pass 5, the three open items
+  the mission partner needs to know about (Bravo Surg Co BIC
+  count disparity Tab A 180 / Tab C 181 / strategic basing 185,
+  Bldg 300 Life Safety Health and roof condition, engineer
+  assignment TBD), the parallel work pulling 3d MLG BFRs and
+  the iNFADS reconciliation plan, and the ask for direct edits
+  to the dashboard rather than a separate reply thread. About
+  460 words, one screen.
+
+  Voice rule for email deliverables (project-wide, narrower than
+  the prose rule for analytical deliverables). Email is a
+  conversation. Use contractions in moderation, prefer active
+  voice, drop bureaucratic verbs (validate, reconcile against,
+  is held as), short sentences win, paragraph breaks at natural
+  pauses. Apex Omega typography rules still apply (no em dashes,
+  no en dashes, no markdown asterisk bold, no decorative
+  content, hyphens within identifiers stay). Cite documents not
+  email chains within the email body itself. Sender signs with
+  their own block; the draft leaves a placeholder block for the
+  sender to fill in. The mission-partner attribution rule from
+  Track 9 also applies in email body text: refer to others by
+  role except where naming is the relevant data (cc lines, POC
+  rows, named addressees).
+
+  Project-charter handoff pattern (methodology contribution,
+  reusable beyond this engagement). When a fluid-project
+  deliverable is being handed back to the mission partner for
+  ratification, frame the handoff as: status update plus
+  refreshed deliverable, named call-out of the specific updates
+  rolled in from the partner's prior guidance, brief note on
+  any new affordances added, explicit list of open items the
+  partner should know about (with TBDs visible), parallel work
+  in progress, ask for direct edits to the deliverable rather
+  than a separate reply thread, offer a working session. The
+  pattern keeps the deliverable as the single source of truth
+  rather than letting the email thread become a parallel
+  authoritative artifact.
+
 ## Hand-off protocol (APEX OMEGA)
 
 The user has flagged that when context approaches the limit, they will

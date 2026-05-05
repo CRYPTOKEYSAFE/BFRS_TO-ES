@@ -1,0 +1,33 @@
+Sheet: 3D MED BN  rows=207  cols=61
+loaded 207 rows
+  R  3: UNIT/MOS | PREVIOUS | CURRENT | CHANGES AGAINST CURR | NEW CHANGES SINCE TH
+  R  4: 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2026 | 2027 | 2028
+  R  5: BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR | BIC | ASR
+  R  6: 3D MED BN 3D MLG | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609 | 609
+  R  7: 1CP | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429 | 429
+  R  8: H&S CO 3D MED BN 3D  | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250 | 250
+  R  9: 0000 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4
+  R 10: E4 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1
+  R 11: E5 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2
+  R 12: E6 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1
+
+--- Looking for totals/subtotals/RecapMOS-style rows ---
+  R207: Grand Total
+    col1: Grand Total
+    col2: 609
+    col3: 609
+    col4: 609
+    col5: 609
+    col6: 609
+    col7: 609
+    col8: 609
+    col9: 609
+    col10: 609
+    col11: 609
+    col12: 609
+    col13: 609
+    col14: 609
+    col15: 609
+    col16: 609
+    col17: 609
+    col18: 609

@@ -1,0 +1,55 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== 14345 sheet cosmetic sample ===
+  A1: value='BASIC FACILITY REQUIREMENTS WORKSHEET'
+        font: name=Calibri, size=16.0, bold=True, color=None
+        fill: type=None, fg=00000000, bg=00000000
+  B5: value=None
+        font: name=Calibri, size=10.0, bold=False, color=None
+        fill: type=None, fg=00000000, bg=00000000
+  D5: value=None
+        font: name=Calibri, size=10.0, bold=False, color=None
+        fill: type=None, fg=00000000, bg=00000000
+  B40: value=None
+        font: name=Calibri, size=10.0, bold=False, color=None
+        fill: type=None, fg=00000000, bg=00000000
+  H40: value='=P25+K25'
+        font: name=Calibri, size=12.0, bold=True, color=None
+        fill: type=None, fg=00000000, bg=00000000
+  A14: value='Planning Criteria:'
+        font: name=Calibri, size=11.0, bold=True, color=None
+        fill: type=None, fg=00000000, bg=00000000
+
+=== 17120 sheet cosmetic sample ===
+  A1: value='BASIC FACILITY REQUIREMENTS WORKSHEET'
+        font: name=Calibri, size=16.0, bold=True
+        fill: type=None, fg=00000000
+  B5: value=None
+        font: name=Calibri, size=10.0, bold=False
+        fill: type=None, fg=00000000
+  D5: value=None
+        font: name=Calibri, size=10.0, bold=False
+        fill: type=None, fg=00000000
+  A19: value='Loading:'
+        font: name=Calibri, size=11.0, bold=True
+        fill: type=None, fg=00000000
+  A50: value=None
+        font: name=Calibri, size=10.0, bold=False
+        fill: type=None, fg=00000000
+
+=== Sheet tab colors ===
+  UNIT_ROLLUP: state=visible, tab_color=FFFF0000
+  MISSION STATEMENT: state=visible, tab_color=None
+  TO: state=visible, tab_color=None
+  TE: state=visible, tab_color=None
+  Locator_Deck: state=visible, tab_color=None
+  14312: state=hidden, tab_color=FFFF0000
+  14345: state=visible, tab_color=FF00B050
+  17110: state=visible, tab_color=FF00B050
+  17120: state=visible, tab_color=FF00B050
+  21451: state=hidden, tab_color=FFFF0000
+  21710: state=hidden, tab_color=FFFF0000
+  44112: state=visible, tab_color=FF00B050
+  45110: state=hidden, tab_color=FFFF0000
+  61072: state=visible, tab_color=FF00B050
+  61073: state=visible, tab_color=FF00B050

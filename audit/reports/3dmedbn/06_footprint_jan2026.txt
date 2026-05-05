@@ -1,0 +1,559 @@
+Pages: 7
+
+===== Page 1 =====
+3D MED BN Footprint and IT automation requirements
+(as of Jan 2026; Camps FOSTER, KINSER)
+# W/S
+# NIPR 
+Phones
+# NIPR 
+Printers
+# NIPR 
+VTC
+# SIPR 
+Phones
+# SIPR 
+Printers
+# SIPR 
+SVTC
+Other
+FOS-215  (BN HQS)
+78
+58
+6
+1
+2
+1
+1
+1x SIPR Shredder
+FOS-5717 (Co HQS)
+68
+38
+4
+FOS-5628 (BN Supply)
+10
+4
+1
+KIN-300 (MSTC, BN Supply)
+22
+5
+0
+TOTALS: 178
+105
+11
+1
+2
+1
+1
+1x SIPR Shredder
+
+
+===== Page 2 =====
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#SIPR 
+#phones  
+# Printer 
+103 
+BN Clrm 
+1 
+ 
+2 
+103B 
+S-3 Tng 
+8 
+ 
+2 
+1
+104 
+S-6 
+10 
+ 
+8 
+1
+105 
+S-6
+106 
+S-6
+107 
+Duty Rest 
+108   
+Chiefs Mess
+109 
+Female Head
+110 
+Male Head
+112 
+SEL, GySgt 
+2 
+ 
+1 
+113 
+H&S Co Cmd 3 
+ 
+2 
+1
+114 
+CO, XO 
+2 
+ 
+2
+115 
+S-6 closet 
+117 
+Duty Hut 
+2 
+ 
+2 
+118 
+S-2 
+6 
+ 
+3 
+1
+119 
+S-2
+120 
+S-2 (Vault) 
+2 
+2 
+1 
+1x SIPR Printer, 1x Shredder, 1x SVTC
+121 
+S-2 
+ 
+36
+2
+23
+4x NIPR, 1x SIPR. 1x SVTC
+FOS-215  HQS, 3D MED BN (1st Fl)
+
+
+===== Page 3 =====
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#SIPR 
+#phones  
+# Printer 
+201 
+S-4 (vacant)  Moved to KIN-300. 7x W/S, 4x phones, 1x Printer 
+202 
+CMO, CNO 
+2 
+ 
+2
+203 
+Chaplain 
+2 
+ 
+2 
+door must have window
+204 
+BN Legal 
+2 
+ 
+1
+205 
+S-3 COPS 
+10 
+ 
+6 (3 lines) 
+1        TV
+206 
+OpsO 
+1 
+ 
+1
+207   
+XO 
+1 
+ 
+1
+209 
+CO 
+1 
+ 
+1
+210 
+Closet
+211 
+ADJ 
+2 
+ 
+2 
+212 
+DCR 
+1 
+ 
+1
+213 
+CMC 
+1 
+ 
+1 
+1
+214 
+CCC 
+2 
+ 
+2 
+1
+215 
+S-1 
+15 
+ 
+15 (current: 8) 1    1x shredder
+216 
+S-1 
+217 
+Conf Rm 
+1 (VTC Suite)
+218 
+Vestibule
+219 
+Mail Room Ofc 1
+222 
+Mail Stg 
+221 
+Male Head
+222 
+Janitor Closet
+222 
+Admin Stg
+ 
+42
+25 (35 is rqmt), 2x NIPR Printer, 1x VTC
+FOS-215  HQS, 3D MED BN (2nd Fl)
+
+
+===== Page 4 =====
+FOS-5717   Elements of H&S Co, 3D MED BN, Co HQS (2nd Fl)
+3d MED BN occupies
+ half of 2nd Floor
+NOT ASSIGNED to 3d MED BN
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#phones  
+# Printer 
+201 
+Safety Sect OIC 
+1 
+1
+202 
+PMU OIC 
+1 
+1 
+203 
+PMU, Safety 
+2 
+1
+204 
+ PMU, Safety 
+1 
+1 
+205 
+ PMU, Safety 
+2 
+1
+206 
+ PMU, Safety 
+2 
+1
+207   
+ PMU, Safety 
+2 
+1
+208 
+ PMU, Safety 
+1 
+1
+209 
+ PMU, Safety 
+1 
+1
+210 
+ PMU, Safety 
+2 
+1 
+211 
+VACANT (had mold issues; fixed)
+212 
+PMU, Safety 
+1 
+1
+213 
+CSP (Cbt Stress) 
+1 
+1
+214 
+CSP 
+1 
+1
+215 
+ 
+2 
+0 
+216 
+Clinic Ops, BN Surgeon 
+2 
+1 
+ 
+218 
+PRINTER 
+ 
+ 
+1
+240 
+Male head
+239 
+Mech Room
+238 
+Storage/Supply  (PMU, Safety)
+21
+14
+1
+
+
+===== Page 5 =====
+FOS-5717   A Co, 3D MED BN, Co HQS (3rd Fl)
+3d MED BN occupies
+ all of 3rd Floor
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#phones  
+# Printer 
+301 
+CO 
+1 
+1 
+1
+302 
+XO 
+1 
+1 
+303 
+SEL 
+1 
+1
+304 
+LPO 
+2 
+1
+305 
+OPS Chief 
+2 
+ 
+306 
+1st PLT CDR, CPO 
+2 
+1
+307 
+OPS OIC 
+2 
+1
+308   
+2nd PLT CDR, CPO 
+2 
+1
+309  
+Ops 
+2 
+1
+310 
+3rd PLT OIC, LCPO 
+2 
+1
+311  
+Ops 
+2 
+1 
+312 
+TNG LPO, LT 
+2 
+1
+313  
+S-4 Supply Ofc 
+1 
+1
+314  
+Swing Space 
+2 
+315  
+Supply 
+1
+316 
+PRINTER 
+2 
+ 
+1
+317 
+Breakroom 
+ 
+ 
+318 
+Conf Room 
+1
+340 
+Female Head
+339 
+Mech Room 
+ 
+ 
+28 
+12 
+2
+ 
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#phones  
+# Printer 
+338 
+Storage 
+ 
+337 
+Mech Room 
+ 
+336 
+Comm Room
+319 
+1st PLT  
+1 
+1
+320 
+1st PLT 
+1 
+1
+321   
+1st PLT 
+2 
+1
+322  
+1st PLT 
+1 
+1
+323 
+2nd PLT 
+1
+324  
+2nd PLT 
+1 
+1 
+325 
+2nd PLT 
+2 
+1
+326  
+2nd PLT 
+1 
+1
+327  
+PRINTER 
+ 
+ 
+1
+328 
+Study CLRM 
+1 
+1
+329 
+3rd PLT 
+1 
+1
+330 
+3rd PLT 
+1 
+1 
+ 
+331 
+ERC (H&S Co) 
+1 
+1
+332 
+ERC (H&S Co) 
+2 
+1
+333 
+ERC (H&S Co) 
+2 
+1
+334 
+ERC (H&S Co) 
+1
+ 
+ 
+19 
+13 
+1
+ 
+47
+24
+3
+318
+
+
+===== Page 6 =====
+FOS-5628    3D MED BN, Supply
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#phones  
+# Printer 
+110 
+Supply OIC 
+3 
+2
+111 
+Supply Section 
+5 
+2 
+1
+113 
+WHSE; MNT Bay 
+2 
+ 
+ 
+10
+4
+1
+Most of unshaded areas are unoccupied
+Location of WHSE; MNT Bay Phone
+
+
+===== Page 7 =====
+Rm # 
+Room Function 
+# W/S(NIPR) 
+#phones  
+# Printer 
+118 
+MSTC Classroom 
+12 
+0
+119 
+MSTC Staff 
+10 
+5 
+0
+Bay 2 
+WHSE; MNT Bay 
+ 
+ 
+ 
+22
+5
+0
+119
+118
+KIN-300    3D MED BN, Supply
+BAY 2, KIN-300, is shared by:
+MSTC 
+CBRNE
+Food SVC Co
+Rations
+Stored here 
+

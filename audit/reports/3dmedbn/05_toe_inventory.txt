@@ -1,0 +1,214 @@
+===== M28262_3dMedSurgB.xlsx (Surg Co B) =====
+  Header R1: CUI
+  Header R3: Source: Published Average | United States Marine Corps | Report Fiscal Year: | 2026
+  Header R4: Structure Data current as of: 02/03/2026 | Total Force Structure Management System | Manning Precedence Level: | FIC
+  Header R5: Equipment Data Current as of:  | Unit TO&E Report | Military Unit Level Code: | CO
+  Header R6: 2026-04-08 22:43:38.999000
+  Header R7: SURG CO B 3D MED BN 3D MLG | Unit Descriptor Code: | T
+  Header R8: MCBH BOX 63062 | Unit Type Code: | FWQBB
+  Header R9: SASSY AAC: | SASSY M29018
+  Header R10: LONG TERM STORAGE -- DATA CONVERSION INITIAL ACCOUNT
+  Header R11: KANEOHE BAY, HI   96863 | MEF Code: | C
+  Header R12: Country: US | Type Support Code: | C
+  Header R13: UIC: M28262
+  Header R15: Mission Statement: 
+  Header R16: Signed as of FEB 3, 2021
+
+UNIT IDENTIFICATION	       
+CODE...SEE ENCL (1)
+
+SURGICAL COMPANY 
+MEDICAL BATTALION        
+
+SUBJ:  MISSION STATEMENT
+
+1.  Promulgation Statement.  This is the Surgical Company (Surg Co), Medical Battalion (Med Bn), Marine Logistics Group (MLG) Mission Statement.  This Mission Statement defines the unit?s role and responsibilities in support of the MAGTF, the SE, and/or Joint Operations and prescribes the unit's organizational structure and capabilities in accordance with its tasks that manifests in the unit?s table of organization and equipment (T/O&E).
+
+2.  Organization
+
+    Headquarters Platoon
+    Ambulance Platoon
+    Surgical Platoon 1
+    Surgical Platoon 2
+    Surgical Platoon 3
+    
+3.  Mission and Tasks
+
+    a.  Mission.  Provide Role 2 health service support to the infantry regiment, as part of the Combat Logistics Battalion (CLB) including temporary casualty holding and casualty evacuation support.
+
+    b.  Tasks
+
+        (1) MCT 4.5.3 Conduct Casualty Treatment.
+
+        (2) MCT 4.5.4 Conduct Temporary Casualty Holding.
+
+        (3) MCT 4.5.5 Conduct Casualty Evacuation.
+
+        (4) MCT 4.5.8 Conduct Medical Regulating.
+
+4.  Concept of Organization.  The company is organized to plan, coordinate, and conduct health services support for the infantry regiment.  It is under the tactical control of a CLB within Combat Logistics Regiment x7 (CLR x7), MLG, and may be task-organized to provide mobile health services support to sub-elements of the regiment.
+
+5.  Concept of Employment.  The company is employed as a unit and provides health services support to the infantry regiment.
+
+    a.  Maneuver.  The company maneuvers using organic assets and transportation from the CLB to support operations.
+    b.  Intelligence.  Intelligence support and products are provided by MLG Headquarters.
+
+    c.  Fires.  Organic firepower is limited to individual and crew-served weapons for personal security and for defense of medical health care services installations per applicable international law, which defines company personnel as personnel employed in the administration of health care treatment facilities.
+
+    d.  Logistics.  The company provides health services support to the infantry regiment and serves as an emergency resupply source for medical health care services materiel for supported medical health care services units.
+
+    e.  Command and Control.  The Company Commander directs and controls command support functions relating to operations, administration, and logistics for the company.
+
+    f.  Force Protection.  The company has limited organic security capability.  
+
+6.  Administrative Capabilities.  Administrative support is provided by Headquarters and Service Company, Medical Battalion, MLG.
+
+7.  Logistics Capabilities
+
+    a.  Maintenance.  The company is capable of organic field-level maintenance.  Field-level maintenance for medical equipment beyond organic capability, to include maintaining the authorized medical allowance list, is provided by Medical Logistics Company, Supply Battalion, MLG.
+
+    b.  Supply.  The company is capable of organic supply support to receive, temporarily hold, account for, and issue Class VIII supplies.  All other nonmedical supply support is provided by Headquarters and Service Company, Med Bn.  Medical Logistics Company, Supply Battalion, MLG, provides Class VIII supply support.
+
+    c.  Transportation.  The company is capable of organic transportation support for command, patient movement, and administrative purposes.
+
+    d.  General Engineering.  The company is capable of organic power generation.  Additional engineering support is provided by Engineer Support Battalion, MLG.
+
+    e.  Health Services.  The company is capable of organic Role 1 and 2 health care capabilities.  Dental health care services are provided by Dental Battalion, MLG.
+  
+    f.  Services.  Services support is provided by Service Company, CLR x7, MLG.  Food service support is provided by Food Service Company, CLR x7, MLG.
+
+8.  Command and Signal
+
+    a.  Command Relationships.  The Company Commander reports to the Med Bn Commander.
+
+    b.  Communications and Information Systems.  Communications support is provided by Headquarters and Service Company, Med Bn, MLG.
+
+9.  Supersession.  This Mission Statement supersedes the previous Mission Statement of 20 June 2017 and is effective upon receipt.
+
+
+
+	                               ERIC M. SMITH
+	                               Deputy Commandant for
+	                               Combat Development and Integration
+
+
+  TO sheet:
+    R1: 1:CUI
+    R3: 1:Billet Organiz
+    R4: 1:M28262 - SURG 
+    R5: 1:Rec CD | 2:BIC | 4:Billet Descrip | 9:Alpha Grade | 11:BMOS ASD1 ASD2 | 12:P | 13:B R N | 14:T Y P | 15:S T A | 16:M P R
+    R6: 12:M | 21:Marine Active | 23:Marine Reserve | 25:Civ | 26:Other Active | 28:Other Reserve | 30:Marine Active | 32:Marine Reserve | 34:Civ | 36:Other Active
+    R7: 12:O | 21:Off | 22:Enl | 23:Off | 24:Enl | 26:Off | 27:Enl | 28:Off | 29:Enl | 30:Off
+    R8: 12:S
+
+  Counting BICs in TO sheet...
+    BIC prefix counts: {}
+    Total BICs in TO sheet: 0
+
+===== M28263_3dMedSurgA.xlsx (Surg Co A) =====
+  Header R1: CUI
+  Header R3: Source: Published Average | United States Marine Corps | Report Fiscal Year: | 2026
+  Header R4: Structure Data current as of: 02/03/2026 | Total Force Structure Management System | Manning Precedence Level: | FIC
+  Header R5: Equipment Data Current as of:  | Unit TO&E Report | Military Unit Level Code: | CO
+  Header R6: 2026-04-08 22:43:38.999000
+  Header R7: SURG CO A 3D MED BN 3D MLG | Unit Descriptor Code: | T
+  Header R8: UNIT 38448 | Unit Type Code: | FWQBB
+  Header R9: SASSY AAC: | SASSY M28260
+  Header R10: LONG TERM STORAGE -- DATA CONVERSION INITIAL ACCOUNT
+  Header R11: FPO, AP   966048448 | MEF Code: | C
+  Header R12: Country: JP | Type Support Code: | C
+  Header R13: UIC: M28263
+  Header R15: Mission Statement: 
+  Header R16: Signed as of FEB 3, 2021
+
+UNIT IDENTIFICATION	       
+CODE...SEE ENCL (1)
+
+SURGICAL COMPANY 
+MEDICAL BATTALION        
+
+SUBJ:  MISSION STATEMENT
+
+1.  Promulgation Statement.  This is the Surgical Company (Surg Co), Medical Battalion (Med Bn), Marine Logistics Group (MLG) Mission Statement.  This Mission Statement defines the unit?s role and responsibilities in support of the MAGTF, the SE, and/or Joint Operations and prescribes the unit's organizational structure and capabilities in accordance with its tasks that manifests in the unit?s table of organization and equipment (T/O&E).
+
+2.  Organization
+
+    Headquarters Platoon
+    Ambulance Platoon
+    Surgical Platoon 1
+    Surgical Platoon 2
+    Surgical Platoon 3
+    
+3.  Mission and Tasks
+
+    a.  Mission.  Provide Role 2 health service support to the infantry regiment, as part of the Combat Logistics Battalion (CLB) including temporary casualty holding and casualty evacuation support.
+
+    b.  Tasks
+
+        (1) MCT 4.5.3 Conduct Casualty Treatment.
+
+        (2) MCT 4.5.4 Conduct Temporary Casualty Holding.
+
+        (3) MCT 4.5.5 Conduct Casualty Evacuation.
+
+        (4) MCT 4.5.8 Conduct Medical Regulating.
+
+4.  Concept of Organization.  The company is organized to plan, coordinate, and conduct health services support for the infantry regiment.  It is under the tactical control of a CLB within Combat Logistics Regiment x7 (CLR x7), MLG, and may be task-organized to provide mobile health services support to sub-elements of the regiment.
+
+5.  Concept of Employment.  The company is employed as a unit and provides health services support to the infantry regiment.
+
+    a.  Maneuver.  The company maneuvers using organic assets and transportation from the CLB to support operations.
+    b.  Intelligence.  Intelligence support and products are provided by MLG Headquarters.
+
+    c.  Fires.  Organic firepower is limited to individual and crew-served weapons for personal security and for defense of medical health care services installations per applicable international law, which defines company personnel as personnel employed in the administration of health care treatment facilities.
+
+    d.  Logistics.  The company provides health services support to the infantry regiment and serves as an emergency resupply source for medical health care services materiel for supported medical health care services units.
+
+    e.  Command and Control.  The Company Commander directs and controls command support functions relating to operations, administration, and logistics for the company.
+
+    f.  Force Protection.  The company has limited organic security capability.  
+
+6.  Administrative Capabilities.  Administrative support is provided by Headquarters and Service Company, Medical Battalion, MLG.
+
+7.  Logistics Capabilities
+
+    a.  Maintenance.  The company is capable of organic field-level maintenance.  Field-level maintenance for medical equipment beyond organic capability, to include maintaining the authorized medical allowance list, is provided by Medical Logistics Company, Supply Battalion, MLG.
+
+    b.  Supply.  The company is capable of organic supply support to receive, temporarily hold, account for, and issue Class VIII supplies.  All other nonmedical supply support is provided by Headquarters and Service Company, Med Bn.  Medical Logistics Company, Supply Battalion, MLG, provides Class VIII supply support.
+
+    c.  Transportation.  The company is capable of organic transportation support for command, patient movement, and administrative purposes.
+
+    d.  General Engineering.  The company is capable of organic power generation.  Additional engineering support is provided by Engineer Support Battalion, MLG.
+
+    e.  Health Services.  The company is capable of organic Role 1 and 2 health care capabilities.  Dental health care services are provided by Dental Battalion, MLG.
+  
+    f.  Services.  Services support is provided by Service Company, CLR x7, MLG.  Food service support is provided by Food Service Company, CLR x7, MLG.
+
+8.  Command and Signal
+
+    a.  Command Relationships.  The Company Commander reports to the Med Bn Commander.
+
+    b.  Communications and Information Systems.  Communications support is provided by Headquarters and Service Company, Med Bn, MLG.
+
+9.  Supersession.  This Mission Statement supersedes the previous Mission Statement of 20 June 2017 and is effective upon receipt.
+
+
+
+	                               ERIC M. SMITH
+	                               Deputy Commandant for
+	                               Combat Development and Integration
+
+
+  TO sheet:
+    R1: 1:CUI
+    R3: 1:Billet Organiz
+    R4: 1:M28263 - SURG 
+    R5: 1:Rec CD | 2:BIC | 4:Billet Descrip | 9:Alpha Grade | 11:BMOS ASD1 ASD2 | 12:P | 13:B R N | 14:T Y P | 15:S T A | 16:M P R
+    R6: 12:M | 21:Marine Active | 23:Marine Reserve | 25:Civ | 26:Other Active | 28:Other Reserve | 30:Marine Active | 32:Marine Reserve | 34:Civ | 36:Other Active
+    R7: 12:O | 21:Off | 22:Enl | 23:Off | 24:Enl | 26:Off | 27:Enl | 28:Off | 29:Enl | 30:Off
+    R8: 12:S
+
+  Counting BICs in TO sheet...
+    BIC prefix counts: {}
+    Total BICs in TO sheet: 0
+

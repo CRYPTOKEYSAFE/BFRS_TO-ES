@@ -1,0 +1,64 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== Dead VLOOKUP external refs ===
+  [5]CCN!: 1959 formulas
+  [5]TAMCN!: 1348 formulas
+
+=== Sample of dead VLOOKUP formulas ===
+  [TO!E5]: =VLOOKUP(D5,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E6]: =VLOOKUP(D6,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E7]: =VLOOKUP(D7,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E8]: =VLOOKUP(D8,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E9]: =VLOOKUP(D9,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E10]: =VLOOKUP(D10,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E12]: =VLOOKUP(D12,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E13]: =VLOOKUP(D13,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E14]: =VLOOKUP(D14,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E15]: =VLOOKUP(D15,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E17]: =VLOOKUP(D17,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E18]: =VLOOKUP(D18,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E19]: =VLOOKUP(D19,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E20]: =VLOOKUP(D20,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E21]: =VLOOKUP(D21,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E22]: =VLOOKUP(D22,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E23]: =VLOOKUP(D23,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E24]: =VLOOKUP(D24,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E25]: =VLOOKUP(D25,[5]CCN!$C$7:$D$1098,2,FALSE)
+  [TO!E26]: =VLOOKUP(D26,[5]CCN!$C$7:$D$1098,2,FALSE)
+
+=== Workbook external links (target paths) ===
+
+--- xl/externalLinks/externalLink1.xml ---
+  rels: ['rId1']
+  sheets exposed: ['assetloc', 'Macro1', 'Sheet1', 'TE']
+
+--- xl/externalLinks/externalLink2.xml ---
+  rels: ['rId1']
+  sheets exposed: ['MISSION_STATEMENT', 'TO', 'TE', 'UNIT_ROLLUP', '11665', '14312', '14985', '14345', '17120', '17120 (2)', '21451', '21710', '44112', '61072', '61073']
+
+--- xl/externalLinks/externalLink3.xml ---
+  rels: ['rId1']
+  sheets exposed: ['Mission_Statement', 'TO', 'TE', 'UNIT_ROLLUP', '14311', '14312', '14345_Newest', '14378', '17110', '17120', '21451', '21710', '21820', '44112', '61072', '61073', 'Sheet1']
+
+--- xl/externalLinks/externalLink4.xml ---
+  rels: ['rId1']
+  sheets exposed: ['MISSION_STATEMENT', 'TO', 'TE', 'UNIT_ROLLUP', '14312', '14345', '17110', '17135', '21451', '21710', '44112', '61072', '61073', 'Comments Roll-Up', 'Locator_Deck', 'Battalion Rollup', '21440', '21430', '21820', '21880']
+
+--- xl/externalLinks/externalLink5.xml ---
+  rels: ['rId1']
+  sheets exposed: ['TO calc', 'TE calc', 'Locator_Deck', 'EQUIP', 'CCN', 'MOS', 'TAMCN', 'CSP', 'TO values', 'TE values', 'Camp Lejeune ']
+
+--- xl/externalLinks/_rels/externalLink1.xml.rels ---
+  target: file:///\\naeanrfkfs43\BULK_Storage_4\Users\p0047813\AppData\Local\Microsoft\Windows\Temporary%20Internet%20Files\Content.Outlook\L7YX691S\Master%20Asset%20(2).xls
+
+--- xl/externalLinks/_rels/externalLink2.xml.rels ---
+  target: file:///C:\Users\renel.douyon\Desktop\Copy%20of%2019Marine%20Air%20Support%20Squadron_advocate%20review%20(002).xlsx
+
+--- xl/externalLinks/_rels/externalLink3.xml.rels ---
+  target: file:///\\mcuspndlfs44\CPEN_GF\cpen_pwd\IR%20TEAM%20OASIS\BFR\1stMED%20BN%20BFR%202025\1ST%20MED%20BN%20M11020_BFR%20UNIT%20EDIT_04MAY2018.xlsx
+
+--- xl/externalLinks/_rels/externalLink4.xml.rels ---
+  target: https://mcicom.usmc.mil/MCICOM_IR_OPT/Standard%20BFRs/2%20LAAD/M00146-MS-M19885-20161222.xlsx
+
+--- xl/externalLinks/_rels/externalLink5.xml.rels ---
+  target: https://flankspeed-my.sharepoint-mil.us/AM2&amp;4/AM2/AM21/MCB%20Camp%20Butler%20MCIPAC%20FRP%20FY23/SV#5/Team D - DY EA/TO&amp;E/TO E CUT/M13020 2029 TO E CUT.xlsx

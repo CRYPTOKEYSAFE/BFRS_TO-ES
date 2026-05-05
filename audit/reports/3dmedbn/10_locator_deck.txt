@@ -1,0 +1,60 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+Locator_Deck: 608 rows, 11 cols
+
+First 20 rows:
+  R  1: col1=CCN | col2=CCN Description | col3=BFR? | col4=LOCATION | col5=PAL/QUAD SN | col6=NOMENCLATURE | col7=TAMCN | col8= NSN
+  R  5: col4=A902201AA | col5=PRC 036199 | col6=MRE'S  | col7=N/A | col8=8970-00-149-1094 | col9=EA | col10=11
+  R  6: col4=A902201AA | col5=PRC 036199 | col6=MRE'S  | col7=N/A | col8=8970-00-149-1094 | col9=BX | col10=4
+  R  7: col4=A902201BA | col5=PRC 036271 | col6=EMPTY
+  R  8: col4=A902201CA | col5=PRC 036064 | col6=EMPTY
+  R 10: col4=A902202AA | col5=PRC 043956 | col6=STRIP CLSTRIP .25INX3IN | col7=N/A | col8=6510-00-913-5874 | col9=BG | col10=62
+  R 11: col4=A902202BA | col5=PRC 043981 | col6=EMPTY
+  R 12: col4=A902202CA | col5=PRC 043161 | col6=EMPTY
+  R 14: col4=A902203AA | col5=PRC 044194 | col6=BANDAGE SELF ADHESIVE COT | col7=N/A | col8=6510-01-522-5204 | col9=EA | col10=174
+  R 15: col4=A902203AA | col5=PRC 044194 | col6=DRY STERILE BURN DRESSING | col7=N/A | col8=6510-01-587-6579 | col9=EA | col10=379
+  R 16: col4=A902203AA | col5=PRC 044194 | col6=BANDAGE GAUZE SELK ADHESI | col7=N/A | col8=6510-01-522-7374 | col9=EA | col10=62
+  R 17: col4=A902203AA | col5=PRC 044194 | col6=BANDAGE, ELASTIC   | col7=N/A | col8=6510-00-935-5821 | col9=EA | col10=124
+  R 19: col4=A902203CA | col5=PRC 044110 | col6=EMPTY
+
+--- Rows around 30-40 (where row 33 had the only ccn-like hit) ---
+  R 28: col4=A902206BA | col5=PRC 043962 | col6=EMPTY
+  R 29: col4=A902206CA | col5=PRC 044112 | col6=EMPTY
+  R 31: col4=A902207AA | col5=PRC 044207 | col6=SKEDCO TACTIKKA MEDICAL | col7=N/A | col8=6515-01-527-8068 | col9=EA | col10=49
+  R 32: col4=A902207AA | col5=PRC 044207 | col6=BATTERY, NONRECHARGEABLE | col7=N/A | col8=6135-00-826-4798 | col9=EA | col10=366
+  R 33: col4=A902207AA | col5=PRC 044207 | col6=MASK CPR W/FILTER | col7=N/A | col8=6515-01276-1417 | col9=EA | col10=45
+  R 34: col4=A902207AA | col5=PRC 044207 | col6=STORAGE CASE | col7=N/A | col8=8145-01-573-2533 | col9=EA | col10=35
+  R 35: col4=A902207BA | col5=PRC 043539 | col6=EMPTY
+  R 36: col4=A902207CA | col5=PRC 044213 | col6=EMPTY
+  R 38: col4=A902208AA | col5=PRC 043964 | col6=THERMOMETER DIGITAL  | col7=N/A | col8=6515-01-560-8925 | col9=EA | col10=57
+  R 39: col4=A902208AA | col5=PRC 043964 | col6=MED ALCOHOL PREP PAD | col7=N/A | col8=6510-00-786-3736 | col9=EA | col10=2232
+  R 40: col4=A902208AA | col5=PRC 043964 | col6=AIRWAY, NASOPHARYNGEAL | col7=N/A | col8=6515-01-542-1390 | col9=EA | col10=186
+  R 41: col4=A902208AA | col5=PRC 043964 | col6=MED AIRWAY NASAL PVC | col7=N/A | col8=6515-01-444-5404 | col9=EA | col10=180
+  R 42: col4=A902208AA | col5=PRC 043964 | col6=SWABSTICK TINCTURE OF BEN | col7=N/A | col8=6510-01-501-6024 | col9=BG | col10=52
+  R 43: col4=A902208BA | col5=PRC 043429 | col6=EMPTY
+  R 44: col4=A902208CA | col5=PRC 044073 | col6=EMPTY
+
+--- Last 20 rows ---
+  R588: col4=FRONT CAGE | col6=FLAG, COMMANDANT | col7=N/A | col8=8345-00-249-6221 | col9=EA | col10=1
+  R589: col4=FRONT CAGE | col6=FLAG NATIONAL, INTERMENT | col7=N/A | col8=8345-01-334-6825 | col9=EA | col10=3
+  R590: col4=FRONT CAGE | col6=FLAG NATIONAL, USA | col7=N/A | col8=8345-00-656-1435 | col9=EA | col10=5
+  R591: col4=FRONT CAGE | col6=FLAG CASE, 7"X 4'6', GREE | col7=N/A | col8=8345-00-178-8495 | col9=EA | col10=6 | col11=3
+  R592: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7942 | col9=EA | col10=1
+  R593: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7943 | col9=EA | col10=0 | col11=5
+  R594: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7944 | col9=EA | col10=4
+  R595: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7945 | col9=EA | col10=1
+  R596: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7946 | col9=EA | col10=2
+  R597: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7947 | col9=EA | col10=2
+  R598: col4=FRONT CAGE | col6=MILITARY POLICE BELT, CER | col8=8465-00-924-7948 | col9=EA | col10=1
+  R599: col4=FRONT CAGE | col6=FLAGSTAFF, WOOD 8FT | col7=N/A | col8=8345-00-214-9125 | col9=EA | col10=4
+  R600: col4=FRONT CAGE | col6=FLAGSTAFF, WOOD 9FT | col7=N/A | col8=8345-00-214-9123 | col9=EA | col10=4
+  R601: col4=FRONT CAGE | col6=FLAGSTAFF, WOOD 3FT | col7=N/A | col8=8345-00-242-3650 | col9=EA | col10=4
+  R603: col4=FRONT DECK | col6=BATES SAFETY BOOTS, 8M | col7=N/A | col8=N/A | col9=PR | col10=1
+  R604: col4=FRONT DECK | col6=BELLEVILLE SAFETY BOOTS,  | col7=N/A | col8=N/A | col9=PR | col10=1
+  R605: col4=FRONT DECK | col6=DANERS SAFETY BOOTS, 11.5 | col7=N/A | col8=N/A | col9=PR | col10=1
+  R606: col5=PRC 036197 | col6=MARKED FOR DRMO
+  R607: col5=PRC 036168 | col6=MARKED FOR DRMO
+  R608: col6=DANERS SAFETY BOOTS, 12 | col7=N/A | col8=N/A | col9=PR | col10=1
+
+=== Sheets that reference 'Locator_Deck' in any formula/value ===
+  NONE. Locator_Deck is referenced from no other sheet.

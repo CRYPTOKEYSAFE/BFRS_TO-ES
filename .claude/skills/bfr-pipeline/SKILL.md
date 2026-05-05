@@ -775,6 +775,143 @@ unit; the order is the recommended build sequence.
 
 ### NEXT (in priority order)
 
+- Track 10, 3d MED BN BFR Phase B repair complete (this session,
+  commits f36e121 through fe7cba6 on
+  claude/resume-bfr-pipeline-nrRNC). Workbook
+  `M67400-FO-M13020 3D MED BN-22NOV2024.xlsx` brought from broken-
+  template state to recalc-clean foundational document.
+
+  Source artifacts during this session:
+    `3DMLG_ASR.xlsx` (24 MB, 3D MED BN sheet R6-207, FY26 BIC counts)
+    `M28262_3dMedSurgB.xlsx` (Surg Co B TFSMS export)
+    `M28263_3dMedSurgA.xlsx` (Surg Co A TFSMS export)
+    `M29111_CLB4.xlsx` (CLB-4 T/O&E reference)
+    `3D MED BN Footprint (as of Jan 2026) - Camps FOSTER, KINSER.{pdf,pptx}`
+       (current building assignments at Foster: 215, 5717, 5628;
+       Kinser: 300; total 178 workstations)
+    `RE_ CG MCIPAC Endorsement Request.pdf` (Kenji Music email
+       1 May 26 reframing the work)
+
+  User-ratified decisions during this session:
+    D1 Personnel canonical = 711 (CG signed letter), with 609 ASR
+       footnoted as Marine BICs only. 100 delta is USN+civ+contractor.
+    D2 Surg Co C / UIC M28275 = strip; not 3d MED BN.
+    D3 External library replacement = internal CCN_Library sheet
+       with 10 rows (only CCNs the BFR's own sheets reference).
+    D4 = (a) repair hidden CCN sheets in place with 3d MED BN data,
+       unhide.
+    D5 Locator_Deck = extract to separate file, remove from BFR.
+    D6 Phase order = A (audit) -> B (structural) -> C (reconcile)
+       -> D (validate) -> E (deliver).
+
+  Phase A audit reports (read-only, audit/reports/3dmedbn/01-19):
+    01_bfr_inventory.txt, 02_bfr_error_tokens.txt,
+    03_asr_3dmedbn.txt, 04_asr_unit_breakdown.txt,
+    05_toe_inventory.txt, 06_footprint_jan2026.txt,
+    07_bfr_cosmetic_check.txt, 08_surg_c_search.txt,
+    09_hidden_sheets_deepdive.txt, 10_locator_deck.txt,
+    11_dead_vlookups.txt, 12_locator_deck_purpose.txt,
+    13_library_scope.txt, 14_ccn_21820.txt,
+    15_cosmetic_fingerprint.txt, 16_formula_paths.txt,
+    17_to_billet_walk.txt, 18_te_equipment_walk.txt,
+    19_personnel_equipment_reconciliation.txt
+  Plus: audit/3DMEDBN_BFR_REPAIR_PLAN.md and
+        audit/3DMEDBN_BFR_INVESTIGATION_FINDINGS.md.
+
+  Lineage discovery: BFR is third copy in a chain.
+    2nd MED BN at Camp Lejeune (M67001) [original template]
+      -> 1st MED BN at Camp Pendleton (M11020) on 04 May 2018
+        -> 3d MED BN at MCB Camp Butler (M67400) on 22 Nov 2024
+  Each copy partially updated identifiers; the four hidden CCN sheets
+  (14312, 21451, 21710, 45110) carried 2nd Med Bn UICs (M28271/72/73/75)
+  and Surg Co C as scaffolding because the unit had no 3d MED BN BFR
+  to start from. User confirmed this narrative directly.
+
+  Phase B edits (sub-commits f36e121, 840bfc2, adad889, 4a175d3,
+  e11683d, 28326c1, 084d13a, fe7cba6):
+    B.1 backup file created
+    B.2 Locator_Deck (608-row AMAL container manifest) extracted to
+        audit/reports/3dmedbn/locator_deck_extract.xlsx, removed
+        from BFR.
+    B.3 CCN_Library sheet added with 10 rows from FC 2-000-05N
+        planning factors (each row cites source PDF and page).
+        TO!E5:E713 (611 cells) rewired from external [5]CCN! lookup
+        to internal CCN_Library lookup. TE row 504 stranded data row
+        fixed (TAMCN E02022B telescope -> CCN 14345 ARMORY, derived
+        from same TAMCN's tagging in TE rows 27/357).
+        TE!D505:E1852 dead skeleton formulas (1,348+1,348) cleared.
+    B.4 All 44 broken/junk defined names deleted (31 #REF!, 2 #N/A,
+        14 garbage names, 5 literal-string aliases, 3 external-file
+        refs).
+    B.5a UICs corrected on four hidden CCN sheets:
+        M28271 -> M28261 (H&S Co)
+        M28272 -> M28263 (Surgical Co A; UIC swap noted because
+                          3d MED BN's A has the higher UIC number
+                          and B has the lower, opposite of the
+                          2nd Med Bn pattern)
+        M28273 -> M28262 (Surgical Co B)
+        M28275 row stripped (Surg Co C does not exist in 3d MED BN)
+        Installation header on 21451, 21710, 45110 changed from
+        MCB Camp Lejeune (M67001) to MCB Camp Butler (M67400).
+    B.5b Four CCN sheets unhidden, tab color changed FFFF0000 (red)
+        to FF00B050 (green) to match the canonical visible-sheet
+        convention.
+    B.6 UNIT_ROLLUP rows 15-18 added for the 4 newly-unhidden CCN
+        sheets pointing at their respective TOTAL REQUIREMENT cells:
+        14312!H36, 21451!H44, 21710!H47, 45110!H50. Totals row
+        moved to R19 with =SUM(W9:AA18) covering all 10 CCN sheets.
+    B.7 TE!E2:E504 (503 cells) rewired with internal CCN_Library
+        lookup pattern matching TO!E. Replaces 134 literal '#N/A'
+        strings (left over from dead [5]CCN! cache) with live
+        formulas. TE col D literal '#N/A' on 5 rows cleared (real
+        equipment data preserved; CCN tagging deferred to Phase C).
+        fullCalcOnLoad set to True.
+
+  Final state of the BFR:
+    Sheets                       : 15
+    Defined names                : 0 (was 44)
+    Cached error tokens          : 0 (was 3,303 #N/A + 1 #VALUE!)
+    External link refs in formulas: 0 (was 3,307)
+    Cosmetic                     : 190 cond formats preserved on
+                                   14345, 7,620 merged cells,
+                                   all tab colors, all fonts,
+                                   page setup, header/footer
+    fullCalcOnLoad               : True
+    Personnel reconciled         : TO 709 vs CG 711 (delta 2),
+                                   TO Surg A 210 = TFSMS exact,
+                                   TO Surg B 211 = TFSMS exact
+    Equipment reconciled         : 96.4% TFSMS COE coverage with
+                                   3 TAMCN misses per surgical co
+                                   for Phase C investigation
+    UNIT_ROLLUP coverage         : All 10 CCN sheets feed total at
+                                   R19 (=SUM(W9:AA18))
+
+  Three known issues handed to Phase C:
+    a. 36 TE rows tagged CCN 21820 (Construction/Weight Handling Eq
+       Shop) are misclassified utility/engineer items. Per finding
+       14, they should be re-tagged: trailer-mounted gensets to
+       14312 (Operational Vehicle Laydown), skid-mounted gear to
+       44112 (Storage of Air or Ground Organic Units).
+    b. 134 TE rows have CCN col D = literal 'CSP' (placeholder
+       from source TFSMS file's CSP sheet). Real C-prefix
+       equipment items needing proper CCN tagging.
+    c. 5 TE rows cleared from literal '#N/A' but still need CCN
+       tagging (R379, 401, 426, 461, 478).
+    d. Hidden CCN sheets 14312 and 45110 had no 3d MED BN TE rows
+       tagged to them prior to repair. After Phase C tagging
+       work (a)+(b)+(c), the 14312 sheet will pick up trailer-
+       mounted gensets and the 45110 sheet may pick up shipping
+       container TAMCNs from properly-retagged TE rows.
+    e. 3 TFSMS COE TAMCNs per surgical company (C00392B, C02222F,
+       C02472Z) are present in the TFSMS export but not in BFR TE.
+       Investigate whether these are recent additions to the
+       company TE that have not propagated to the BFR.
+
+  Track 10 follow-up: Phase C TO/TE reconciliation work to clear
+  the 3 issues above. After Phase C, run pipeline/validate.py for
+  the formal validator pass (Phase D), then deliver foundational
+  document (Phase E).
+
 Track 1 PDFs landed at commit 357981b. Series 100 supplied is
 `fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
 11 Feb 2026; one minor version newer than the 100.20251210 named

@@ -1,0 +1,46 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== TE sheet equipment walk ===
+
+Total TE equipment rows: 503
+
+By company UIC:
+  M28261: 197 TE rows
+  M28262: 147 TE rows
+  M28263: 159 TE rows
+
+By CCN tag (col D, with suffixes):
+  14345: 110
+  21451: 46
+  21710: 75
+  21820: 36
+  44112: 101
+
+Per-UIC CCN distribution:
+  M28261:
+    CCN 14345: 43
+    CCN 21451: 21
+    CCN 21710: 31
+    CCN 21820: 19
+    CCN 44112: 40
+  M28262:
+    CCN 14345: 31
+    CCN 21451: 10
+    CCN 21710: 18
+    CCN 21820: 8
+    CCN 44112: 38
+  M28263:
+    CCN 14345: 36
+    CCN 21451: 15
+    CCN 21710: 26
+    CCN 21820: 9
+    CCN 44112: 23
+
+Total distinct TAMCNs: 216
+
+Distinct TAMCNs per company UIC:
+  M28261: 197 distinct TAMCNs
+  M28262: 147 distinct TAMCNs
+  M28263: 159 distinct TAMCNs
+
+TE rows without a CCN tag: 135

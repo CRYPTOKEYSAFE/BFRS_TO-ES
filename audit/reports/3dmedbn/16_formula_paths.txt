@@ -1,0 +1,54 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+
+========================================================================
+=== 14312 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A36, value at H36: =M25
+
+========================================================================
+=== 14345 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: =P25+K25
+  UNIT_ROLLUP W9: ='14345'!H40
+
+========================================================================
+=== 17110 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: =P25+K25
+  UNIT_ROLLUP W10: ='17110'!H40
+
+========================================================================
+=== 17120 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: =U28
+  UNIT_ROLLUP W11: ='17120'!H40
+
+========================================================================
+=== 21451 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A44, value at H44: =N24
+
+========================================================================
+=== 21710 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A47, value at H47: =AB27
+
+========================================================================
+=== 44112 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: =AB27
+  UNIT_ROLLUP W12: ='44112'!H40
+
+========================================================================
+=== 45110 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A50, value at H50: =M25
+
+========================================================================
+=== 61072 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: =P30
+  UNIT_ROLLUP W13: ='61072'!H40
+
+========================================================================
+=== 61073 TOTAL REQUIREMENT formula trace ===
+  TOTAL REQUIREMENT label at A40, value at H40: 0
+  UNIT_ROLLUP W14: ='61073'!H40
+
+
+=== UNIT_ROLLUP grand total formula ===
+  R15: value=Total =
+  W15: formula==SUM(W9:AA14)
+  A40: value=TOTAL REQUIREMENT:

@@ -912,6 +912,86 @@ unit; the order is the recommended build sequence.
   the formal validator pass (Phase D), then deliver foundational
   document (Phase E).
 
+- Track 10b, 3d MED BN BFR Phase C TE retag executed (session
+  2026-05-05, commits f3f3c60/85466ba scoping then 67607f7,
+  e7d772c, 16617a1, a760785 retag, then extractions consolidation).
+  All four buckets ratified by user 2026-05-05 with the recommended
+  options:
+    A. 36 rows from CCN 21820: 8 to 14312 (towable engineer items),
+       28 to 44112 (storage-state organic items)
+    B-ii. 129 CSP rows split: 12 to 14345 (weapons accessories),
+       7 to 45110 (shelter/container), 110 to 44112 (clothing,
+       load gear, CBRN, IFAK, OTHER, fabrication)
+    C. 5 rows previously cleared from #N/A tagged per row:
+       R379->14345, R401->21451, R426->14345, R461->14345, R478->44112
+    D. Added C00392B at qty 180/co for Surg A and Surg B (CCN 44112);
+       documented C02222F as correctly absent; held C02472Z TBD pending
+       ERAA/TSC verification.
+  Final TE state (505 rows):
+    CCN 44112: 242 rows (was 101)
+    CCN 14345: 126 rows (was 111)
+    CCN 21710:  75 rows
+    CCN 21451:  47 rows (was 46)
+    CCN 14312:   8 rows (was 0; sheet now has live TE data)
+    CCN 45110:   7 rows (was 0; sheet now has live TE data)
+    CSP placeholder: 0 (was 129)
+    None: 0 (was 5)
+    21820: 0 (was 36; not a 3d MED BN facility)
+  Cosmetic and recalc state preserved across all four sub-commits:
+    Sheets: 15 (unchanged)
+    Defined names: 0 (unchanged)
+    fullCalcOnLoad: True (unchanged)
+    Tab colors: UNIT_ROLLUP red FFFF0000, all 10 CCN sheets green
+                FF00B050 (unchanged)
+    A1 banner: 'BASIC FACILITY REQUIREMENTS WORKSHEET' on every CCN
+               sheet (unchanged), Calibri 16 bold
+    Merged cell ranges: 13,630 (preserved)
+    Cached error tokens: 0 across all sheets
+  Per-row diff logs:
+    audit/reports/3dmedbn/20_phase_c1_diff.txt (Bucket A, 36 rows)
+    audit/reports/3dmedbn/21_phase_c2_diff.txt (Bucket B, 129 rows)
+    audit/reports/3dmedbn/22_phase_c3_diff.txt (Bucket C, 5 rows)
+    audit/reports/3dmedbn/23_phase_c4_diff.txt (Bucket D, 2 add + 2 doc)
+  Phase C scoping doc: audit/3DMEDBN_PHASE_C_SCOPE.md
+  Consolidated extractions: audit/3DMEDBN_EXTRACTIONS.xlsx (8 tabs)
+                            audit/3DMEDBN_EXTRACTIONS_README.md
+
+  Critical finding from Phase C investigation: the embedded TAMCN
+  lists on the CCN sheets (14312, 21451, 21710, 44112, 45110) are
+  still 2nd Med Bn Camp Lejeune template scaffolding. They drive
+  each sheet's TOTAL REQUIREMENT via SUMIFS(TE!U:U, TE!D:D=$C$5,
+  TE!H:H=embedded_tamcn). Phase C fixed col D (CCN tags) but did
+  NOT rebuild the embedded TAMCN lists. Consequence: post-Phase-C
+  TE col D is data-hygiene clean, but most CCN sheet TOTAL
+  REQUIREMENTS still compute against 2nd Med Bn TAMCN sets that
+  may not match 3d MED BN's actual TE TAMCN inventory. The 14345
+  Armory and 17110/17120/61072/61073 sheets were clean rebuilds in
+  the original BFR and are not affected. The five sheets with
+  inherited template TAMCN lists need a rebuild pass against 3d
+  MED BN's actual TE before TOTAL REQUIREMENT numbers can be
+  released. This is a Phase C-bis or new-track scope item, not a
+  Phase D blocker.
+
+- Track 10c, deliverables for Phase D and forward:
+    Phase D (validator): run pipeline/validate.py against the
+       repaired BFR. Target 8 PASS / 0 FAIL. Output to
+       audit/reports/3dmedbn/24_validator.txt.
+    Phase E (delivery): update audit/3DMEDBN_BASING_BRIEF.md to
+       point at the repaired BFR; notify Kenji Music or Doug Burk
+       per the handoff email pattern.
+    Phase C-bis (CCN sheet rebuild): rebuild 14312, 21451, 21710,
+       44112, 45110 embedded TAMCN lists from 3d MED BN's actual
+       TE TAMCN distribution. Held pending user direction on whether
+       to (a) auto-generate TAMCN lists from TE retag results,
+       (b) curate TAMCN lists manually with SME consultation, or
+       (c) accept conservative under-counting on these five sheets
+       and note the constraint in the BFR cover sheet.
+
+  H&S Co (M28261) C00392B row remains TBD pending H&S TFSMS file.
+  C02472Z M50 mask row remains TBD pending ERAA TSC verification.
+  These TBDs are Apex Omega rule-4 honest gaps, not pipeline
+  failures.
+
 Track 1 PDFs landed at commit 357981b. Series 100 supplied is
 `fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
 11 Feb 2026; one minor version newer than the 100.20251210 named

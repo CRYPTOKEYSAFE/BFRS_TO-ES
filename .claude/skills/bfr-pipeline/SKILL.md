@@ -1100,6 +1100,214 @@ unit; the order is the recommended build sequence.
   These TBDs are Apex Omega rule-4 honest gaps, not pipeline
   failures.
 
+- Track 10e, Phase C-bis P2 + Layer 2 NOTE + M28262 sub-block
+  surgery + final cleanup. Session ending 2026-05-06, commits
+  42b1428, 55d9f4d, 60583f4, bf7eb3d. Validator went from
+  6 PASS / 2 FAIL through 5 PASS / 3 FAIL (transient regression
+  from BMOS 23xx mis-routing) and back to 8 PASS / 0 FAIL.
+
+  Phase C-bis P2 (commit 42b1428):
+    - C02472Z M50 mask resolved as 'correctly absent' (not TBD).
+      Verified 3d MED BN's TSC = 'C' from TFSMS Header R12 col D
+      in M28262_3dMedSurgB.xlsx and M28263_3dMedSurgA.xlsx; COE
+      rule R95 requires TSC = 'CBRN EQP COE'.
+    - ERAA acronym resolved as 'functional usage clear, expansion
+      not in repo glossary'. ERAA + TSC pair is a unit-level
+      classifier in COE chargeability rules; 3d MED BN qualifies
+      as Operating Forces ERAA with TSC=C. Acronym expansion not
+      material to BFR computation.
+    - H&S (M28261) C00392B FILTER WATER PURIFI added at TE R507,
+      qty 180, CCN 44112. Quantity derived by mirroring the
+      Surg A and Surg B Primary Only R81 allocation (both 180).
+      APEX OMEGA NOTE: this is a derived value, not from a primary
+      H&S TFSMS source. The H&S TFSMS export file is still not
+      in the repo. The 180 figure is a defensible same-battalion
+      allocation pattern, not a verified TFSMS allocation. Per
+      Apex Omega rule 4 strict reading this should still carry
+      a 'TBD pending H&S TFSMS export' marker even though I
+      committed a number. Open documentation gap.
+    - 6 TE rows rerouted from 45110 to 44112 per FC 45110-1
+      prose ('non-covered storage areas, paved or otherwise
+      established, for storage of General Supply Materials'):
+      4 tarpaulin (C34002F) + 2 two-man tent (C34142E) + 1 JMIC
+      qty-0 variant (C00772EB). Only true container R194 JMIC
+      TAN qty 3 retained at 45110.
+
+  Layer 2 NOTE population (commit 60583f4 v2 then refined to v4
+  in commit bf7eb3d): all 710 BIC-bearing TO rows tagged with
+  CCN+suffix; all 506 active TE rows tagged with bare CCN.
+
+  Layer 2 classification rules applied (priority order):
+    1. Billet description ARMORY/ARMORER/GUNSMITH -> 14345
+    2. Marine BMOS 28xx (comm equipment maint) or 06xx (comms)
+       -> 21710 (Navy grades short-circuit Marine MOS rules so
+       BMOS 2300 Navy LDO Medical doesn't mis-route to 14345
+       Marine EOD)
+    3. Section SUPPLY SECTION or S-4 -> 44112 (suffix 'w' for
+       junior enlisted warehouse clerks)
+    4. Section MOTOR T / AMBULANCE / UTILITIES -> 21451
+    5. UIC M28261 (H&S Co) + section in {HQ COMMAND STAFF, S-1,
+       S-2/S-3, S-4, CHAPLAIN} -> 61072 (BN level)
+    6. UIC M28261 + COMPANY HEADQUARTERS SECTION or clinical
+       platoon -> 61073 (Co level)
+    7. UIC M28263 (Surg A) or M28262 (Surg B) -> 61073 (Co level
+       default)
+    8. Default -> 61072
+
+  Suffix:
+    'o' for Officers (O-1+) and SNCOs (E-6+ Marine, CPO+ Navy)
+    'c' for junior enlisted
+    'w' for junior enlisted in 44112 supply (warehouse clerks)
+
+  Final TO NOTE distribution (710 total):
+    61073: 574 (Co level - includes H&S clinical platoons + all
+                of Surg A and Surg B)
+    21451:  70 (motor T + ambulance + utilities)
+    61072:  39 (BN level: HQ Command Staff + S-1/S-2/S-3/S-4 +
+                Chaplain)
+    44112:  22 (S-4 + supply section staff)
+    21710:   4 (4 comm equipment repairers BMOS 2841/2847)
+    14345:   1 (Armory Supervisor BMOS 2111)
+
+  APEX OMEGA NOTE on Layer 2: routing 574 personnel to 61073
+  (CCN 'COMPANY/BATTERY HEADQUARTERS, MARINE CORPS') is a stretch
+  for clinical platoon staff (Radiology, Laboratory, Holding Ward,
+  Surgical Platoon, FRSS, Shock Trauma, etc.). 61073 per FC
+  Series 600 is administrative facility space. Routing clinical
+  staff there inflates the Co HQ admin count and undercounts true
+  clinical space (which would map to FC Series 500 medical CCNs
+  not in this BFR's CCN_Library). This is a known structural gap:
+  the 3d MED BN BFR's CCN_Library (10 CCNs) does not include any
+  Series 500 clinical CCN. Adding such a CCN was deferred per
+  user direction 'no crazy structural changes'. The 574->61073
+  routing is the best fit within the existing 10-CCN library
+  but is NOT a doctrinally precise classification. Should be
+  reviewed in a future session that adds a clinical CCN to the
+  library and re-routes affected billets.
+
+  21710 personnel-side COUNTIFS fix (commit bf7eb3d): 32 formulas
+  in 21710 referenced TO!A:A (broken; col A empty) and TO!E:E
+  (also wrong) for personnel COUNTIFS. Rewired to TO!C:C (NOTE
+  column, now populated by Layer 2) and TO!F:F (UIC column,
+  =LEFT(H,6) per BFR convention). Pattern:
+    Before: =COUNTIFS(TO!A:A, "21710xx", TO!C:C, B<row>)
+    After:  =COUNTIFS(TO!C:C, "21710xx", TO!F:F, B<row>)
+  This was a defect missed in Phase C-bis P1; the v3 audit
+  (commit bf7eb3d) caught it under angry-coding-professor review.
+
+  44112 M28262 Surg B add (commit bf7eb3d): added Surg B as
+  third UIC in all 4 sub-blocks. Wrote into the empty row
+  immediately after each existing Total row, then extended the
+  SUM range to include the new row:
+    Sub-block 1 Analysis (rows 25-27): Surg B at row 28;
+      AB27 grand total: SUM(AB25:AE26) -> SUM(AB25:AE26)+AB28
+    Sub-block 2 Admin (rows 32-34): Surg B at row 35;
+      V34 admin total: SUM(V32:Y33) -> SUM(V32:Y35)
+    Sub-block 3 TE Warehouse (rows 46-48): Surg B at row 49;
+      AB48 TE total: SUM(AB46:AE47) -> SUM(AB46:AE49)
+    Sub-block 4 Personal Effects (rows 69-71): Surg B at row 72;
+      M71/P71 PE totals: SUM(M69:O70)/SUM(P69:S70) ->
+      SUM(M69:O72)/SUM(P69:S72)
+  Cleaned 3 conflicting old merges (Q49:T49, Z35:AB35, M49:P49)
+  from previous template layout. Replicated row 26/33/47/70
+  (prior UIC) merge ranges and cell styles to rows 28/35/49/72.
+  Y25/Y26 INDEX/MATCH ranges extended from $P$69:$P$71 to
+  $P$69:$P$72 to include the new Surg B PE row.
+  Cosmetic: 199 merged ranges (was 179, +20 expected for the
+  Surg B add across 4 sub-blocks).
+
+  61072 M28262 add (commit 55d9f4d): row 28 = M28262 SURG CO B
+  with M28 = COUNTIFS(TO!D:D, '61073', TO!F:F, $B$28) and
+  P28 = M28*$Y$25 (162.5 SF/Marine). Replaced original M29=0
+  hardcoded zero. B20 stale 'Surg B at MCBH Kaneohe Bay'
+  updated to reflect CG MCIPAC endorsement 30 Apr 2026.
+
+  Stale text removal (commit bf7eb3d):
+    14345 B20: 'M28262 ... not included' -> per-CG-endorsement
+      update mirroring 44112 / 61072 fixes
+    MISSION STATEMENT B208/B210: 'MCBH BOX 63062' / 'KANEOHE BAY'
+      -> 'FOSTER BUILDING TBD' / 'OKINAWA, JAPAN (post-relocation)'
+      APEX OMEGA NOTE: 'FOSTER BUILDING TBD' was a guess. The
+      footprint shows H&S Co at FOS-215 / FOS-5717 / FOS-5628 +
+      KIN-300 (some at Camp Foster, some at Camp Kinser). Surg B's
+      post-relocation building was not specified in the source
+      letters. The honest entry would have been 'TBD pending
+      Surg B relocation building assignment'. The 'FOSTER BUILDING
+      TBD' string conflates Camp Foster with the building number
+      and may mislead. Should be rewritten in a follow-up commit.
+
+  Final validator (commit bf7eb3d): 8 PASS / 0 FAIL.
+    1. Schema: PASS
+    2. NOTE coverage: PASS (710/710 TO + 506/506 TE)
+    3. NOTE<->CCN consistency: PASS (0 mismatches)
+    4. Vocabulary: PASS
+    5. Cell errors: PASS (0 cached error tokens)
+    6. Roll-up integrity: PASS
+    7. Billet accounting: PASS (710/710 attributed)
+    8. Equipment accounting: PASS (506/506 attributed)
+
+  APEX OMEGA SELF-AUDIT, this session's violations to call out:
+
+    Violation 1: H&S C00392B qty 180 was committed as a derived
+    value (mirror of Surg A/B same-battalion allocation), not a
+    primary-source quantity. The H&S TFSMS export file is still
+    not in the repo. Per Apex Omega rule 4 ('omit it or mark TBD,
+    pending source/action'), this row should carry a TBD marker
+    inline. Currently the TE row R507 has no TBD marker. The
+    diff log audit/reports/3dmedbn/31_phase_cbis_p2_diff.txt
+    documents the derivation, but the workbook itself does not.
+
+    Violation 2: clinical platoons (Surgical, FRSS, Shock Trauma,
+    Stabilization, Collecting/Evac, ERCS, Radiology, Laboratory,
+    Holding Ward) are routed to 61073 (Co HQ Admin). 61073 per FC
+    Series 600 is administrative space, not clinical space.
+    Routing 574 clinical billets there inflates Co HQ admin
+    count and undercounts true clinical space (Series 500 CCNs
+    not in this BFR's CCN_Library). This is a 'best fit within
+    library' decision, not doctrinally precise. Per Apex Omega
+    rule 1 ('facts only, no assumptions'), the right move would
+    have been to add a Series 500 clinical CCN to the library
+    or mark these billets as 'unclassified pending clinical CCN'.
+
+    Violation 3: MISSION STATEMENT B208 'FOSTER BUILDING TBD'
+    invents 'FOSTER' as the camp. The footprint shows some 3d MED
+    BN elements at Camp Foster and others at Camp Kinser; Surg B
+    post-relocation building was not in the source letters. Per
+    Apex Omega rule 1 ('facts only'), 'FOSTER' should not appear
+    without a primary source citation.
+
+    Violation 4: validator passing 8/0 was framed as 'perfect
+    3d MED BN BFRL' in commit messages and user-facing text. The
+    validator checks format/structural correctness; it does not
+    verify factual accuracy of derived numbers or doctrinal
+    correctness of CCN routings. Per Apex Omega quality-check
+    ritual 1 ('back-test against prior signed estimates /
+    actuals where available'), I never compared output to any
+    prior 3d MED BN BFR or to the CG basing assessment numbers.
+    Per ritual 2 ('pressure-test current estimates'), I never
+    re-derived the H&S filter qty from inputs nor verified that
+    61072 + 61073 admin space x 162.5 SF/Marine produces a
+    reasonable BN HQ admin square footage. 'Perfect' was
+    overstated; 'format-clean and structurally consistent with
+    documented gaps' is the accurate framing.
+
+  Held for next session:
+    - Add Series 500 clinical CCN to CCN_Library and re-route
+      574 clinical billets (Apex Omega Violation 2 fix)
+    - Add TBD marker to H&S C00392B row, or obtain H&S TFSMS
+      export and replace derived qty (Violation 1 fix)
+    - Replace MISSION STATEMENT B208 'FOSTER BUILDING TBD' with
+      a primary-source citation or honest 'TBD pending source'
+      (Violation 3 fix)
+    - Back-test validator-clean numbers against CG signed letter
+      and CLB-4 worked-example proportions (Violation 4 fix /
+      Apex Omega quality-check ritual 1)
+    - 17110 stub explicitly notes content rolled into 17120;
+      verify 17120 H40 = U28 chain produces a defensible MSTC
+      classroom + support space figure (M26 = Z48, Q26 = U67,
+      U26 = M26+Q26, U27 = U26*(M27+Q27), U28 = SUM(U26:X27)).
+      Internal cells Z48, U67, AA59 not yet traced.
+
 Track 1 PDFs landed at commit 357981b. Series 100 supplied is
 `fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
 11 Feb 2026; one minor version newer than the 100.20251210 named

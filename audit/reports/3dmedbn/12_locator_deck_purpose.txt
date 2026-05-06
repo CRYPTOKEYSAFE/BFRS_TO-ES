@@ -1,0 +1,40 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== HEADERS (row 1) ===
+  col1 (A1): CCN
+  col2 (B1): CCN Description
+  col3 (C1): BFR?
+  col4 (D1): LOCATION
+  col5 (E1): PAL/QUAD SN
+  col6 (F1): NOMENCLATURE
+  col7 (G1): TAMCN
+  col8 (H1):  NSN
+  col9 (I1): U/I
+  col10 (J1):   QTY
+  col11 (K1): TEMP LOAN
+
+=== col4 (LOCATION header) — unique value categories ===
+  TAMCN-like values in col4: 160 (sample: ['A902201AA', 'A902201BA', 'A902201CA', 'A902202AA', 'A902202BA'])
+  Location-text values in col4: 3 (all: ['BACK CAGE', 'FRONT CAGE', 'FRONT DECK'])
+  PRC-prefix values in col4: 0 (sample: [])
+  Other in col4: 0 (sample: [])
+
+=== col5 (PAL/QUAD SN header) — distribution ===
+  PRC nnnnnn entries: 131
+  Non-PRC samples: ['USMU 0183815', 'USMU 0183815', 'USMU 0183815', 'USMU 0183815', 'USMU 0184236', 'USMU 0184236', 'USMU 0184236', 'USMU 0184236', 'USMU 0184236', 'USMU 0184236']
+
+=== col1 (CCN header) — usage ===
+  distinct values: 0 []
+
+=== Group sample: rows 2-12 with all cols ===
+  R5: col4=A902201AA | col5=PRC 036199 | col6=MRE'S  | col7=N/A | col8=8970-00-149-1094 | col9=EA | col10=11
+  R6: col4=A902201AA | col5=PRC 036199 | col6=MRE'S  | col7=N/A | col8=8970-00-149-1094 | col9=BX | col10=4
+  R7: col4=A902201BA | col5=PRC 036271 | col6=EMPTY
+  R8: col4=A902201CA | col5=PRC 036064 | col6=EMPTY
+  R10: col4=A902202AA | col5=PRC 043956 | col6=STRIP CLSTRIP .25INX3IN | col7=N/A | col8=6510-00-913-5874 | col9=BG | col10=62
+  R11: col4=A902202BA | col5=PRC 043981 | col6=EMPTY
+  R12: col4=A902202CA | col5=PRC 043161 | col6=EMPTY
+
+=== PRC grouping behavior ===
+  Top PRCs by line count: [('PRC 036058', 124), ('PRC 043964', 5), ('PRC 044194', 4), ('PRC 044207', 4), ('PRC 036199', 2), ('PRC 036168', 2), ('PRC 036271', 1), ('PRC 036064', 1)]
+  Total distinct PRCs: 120

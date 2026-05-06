@@ -1,0 +1,342 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+FILE: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+PATH: /home/user/BFRS_TO-ES/M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+SIZE: 1,444,814 bytes
+
+SHEETS (15):
+  [00] 'UNIT_ROLLUP'  state=visible  dim=A1:AM40  max_row=40  max_col=39
+  [01] 'MISSION STATEMENT'  state=visible  dim=A1:R306  max_row=306  max_col=18
+  [02] 'TO'  state=visible  dim=B1:AT1325  max_row=1325  max_col=46
+  [03] 'TE'  state=visible  dim=B1:V2251  max_row=2251  max_col=22
+  [04] 'Locator_Deck'  state=visible  dim=A1:K608  max_row=608  max_col=11
+  [05] '14312'  state=hidden  dim=A1:AF772  max_row=772  max_col=32
+  [06] '14345'  state=visible  dim=A1:AF1189  max_row=1189  max_col=32
+  [07] '17110'  state=visible  dim=A1:AF40  max_row=40  max_col=32
+  [08] '17120'  state=visible  dim=A1:BC88  max_row=88  max_col=55
+  [09] '21451'  state=hidden  dim=A1:AF568  max_row=568  max_col=32
+  [10] '21710'  state=hidden  dim=A1:AF96  max_row=96  max_col=32
+  [11] '44112'  state=visible  dim=A1:AH88  max_row=88  max_col=34
+  [12] '45110'  state=hidden  dim=A1:AI50  max_row=50  max_col=35
+  [13] '61072'  state=visible  dim=A1:XFD40  max_row=40  max_col=16384
+  [14] '61073'  state=visible  dim=A1:AF40  max_row=40  max_col=32
+
+DEFINED NAMES (44):
+  '_17120Ne'  ->  '#REF!'
+  '_17120new'  ->  '#REF!'
+  '_17945'  ->  '#REF!'
+  '_21451_UIC'  ->  '#REF!'
+  '_21451New'  ->  '#REF!'
+  '_21451NewTab'  ->  '#REF!'
+  '_2145NEW'  ->  '#REF!'
+  '_lAQUETTAaRMORY'  ->  '#REF!'
+  '_MY'  ->  '#REF!'
+  '_Order1'  ->  '255'
+  'a'  ->  '#REF!'
+  'Amroy'  ->  '#REF!'
+  'CostCode'  ->  '#REF!'
+  'd'  ->  '#REF!'
+  'dd'  ->  '#REF!'
+  'DDD'  ->  '#REF!'
+  'delete1'  ->  '#REF!'
+  'EWC'  ->  '"M00873"'
+  'GDSGSDG'  ->  '#REF!'
+  'gfhgfhgf'  ->  '#REF!'
+  'ghgghhg'  ->  '#REF!'
+  'ghhghg'  ->  '#REF!'
+  'gsg'  ->  '#REF!'
+  'Hello'  ->  '#REF!'
+  'HELLO1'  ->  '#REF!'
+  'heloo'  ->  '#REF!'
+  'HQ'  ->  '"M00871"'
+  'IN_ins'  ->  '#REF!'
+  'M12301_'  ->  '#N/A'
+  'mt'  ->  '#REF!'
+  'new'  ->  '#REF!'
+  'oc'  ->  '#REF!'
+  'Ordnance'  ->  '#REF!'
+  'Recover'  ->  '[1]Macro1!$A$206'
+  'sds'  ->  '#N/A'
+  'TableName'  ->  '"Dummy"'
+  'TAOC'  ->  '"M00872"'
+  'TE_2'  ->  '#REF!'
+  'TE_3'  ->  '#REF!'
+  'TE_orignial'  ->  '#REF!'
+  'te_table'  ->  '#REF!'
+  'UIC_HQ'  ->  "'[3]14312'!$C$51"
+  'UIC_HS'  ->  "'[4]14312'!$C$96"
+  'x'  ->  '#REF!'
+
+EXTERNAL LINKS (5):
+  target='file:///\\\\naeanrfkfs43\\BULK_Storage_4\\Users\\p0047813\\AppData\\Local\\Microsoft\\Windows\\Temporary%20Internet%20Files\\Content.Outlook\\L7YX691S\\Master%20Asset%20(2).xls'
+  target='file:///C:\\Users\\renel.douyon\\Desktop\\Copy%20of%2019Marine%20Air%20Support%20Squadron_advocate%20review%20(002).xlsx'
+  target='file:///\\\\mcuspndlfs44\\CPEN_GF\\cpen_pwd\\IR%20TEAM%20OASIS\\BFR\\1stMED%20BN%20BFR%202025\\1ST%20MED%20BN%20M11020_BFR%20UNIT%20EDIT_04MAY2018.xlsx'
+  target='https://mcicom.usmc.mil/MCICOM_IR_OPT/Standard%20BFRs/2%20LAAD/M00146-MS-M19885-20161222.xlsx'
+  target='https://flankspeed-my.sharepoint-mil.us/AM2&4/AM2/AM21/MCB%20Camp%20Butler%20MCIPAC%20FRP%20FY23/SV#5/Team D - DY EA/TO&E/TO E CUT/M13020 2029 TO E CUT.xlsx'
+
+PER-SHEET DETAIL
+============================================================
+
+[Sheet: 'UNIT_ROLLUP']
+  state         : visible
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 39
+  print_area    : 'UNIT_ROLLUP'!$A$1:$AF$40
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 8  (with ext refs: 0)
+  ccn-like rows : 6  (showing first 12)
+      row    9  CCN~14345  :: 14345 | Armory | ='14345'!H40
+      row   10  CCN~17110  :: 17110 | Academic Instruction Building | ='17110'!H40
+      row   11  CCN~17120  :: 17120 | Applied Instruction Building | ='17120'!H40
+      row   12  CCN~44112  :: 44112 | Storage of Air or Ground Organic Units - USMC | ='44112'!H40
+      row   13  CCN~61072  :: 61072 | Battalion /Squadron Headquarters, Marine Corps | ='61072'!H40
+      row   14  CCN~61073  :: 61073 | Company/Battery Headquarters, Marine Corps | ='61073'!H40
+
+[Sheet: 'MISSION STATEMENT']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 52
+  print_area    : 'MISSION STATEMENT'!$A$1:$D$279
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 1  (with ext refs: 0)
+  ccn-like rows : 4  (showing first 12)
+      row    7  CCN~38445  :: UNIT 38445
+      row  107  CCN~38448  :: UNIT 38448
+      row  208  CCN~63062  :: MCBH BOX 63062
+      row  210  CCN~96863  :: KANEOHE BAY HI, HI   96863
+
+[Sheet: 'TO']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : None
+  merged_cells  : 11
+  print_area    : 'TO'!$A$1:$AT$713
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 1819  (with ext refs: 611)
+  ccn-like rows : 145  (showing first 12)
+      row    5  CCN~61072  :: =B4+1 | 61072 | =VLOOKUP(D5,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H5,6) | E | M2826101022 | COMMANDING OFFICER | CAPT
+      row    6  CCN~61072  :: =B5+1 | 61072 | =VLOOKUP(D6,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H6,6) | E | M2826101023 | EXECUTIVE OFFICER | CDR
+      row    7  CCN~44112  :: =B6+1 | 44112o | 44112 | =VLOOKUP(D7,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H7,6) | E | M2826101531 | SUPPLY OFFICER
+      row    8  CCN~61072  :: =B7+1 | 61072 | =VLOOKUP(D8,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H8,6) | E | M2826101024 | DIRECTOR HEALTH SERVICES/PROGRAM | CAPT
+      row    9  CCN~61072  :: =B8+1 | 61072 | =VLOOKUP(D9,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H9,6) | E | M2826101025 | COMMAND MASTER CHIEF | CMDCM
+      row   10  CCN~61072  :: =B9+1 | 61072 | =VLOOKUP(D10,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H10,6) | E | M2826101026 | FLD MED TECH | HN
+      row   12  CCN~61072  :: =B11+1 | 61072 | =VLOOKUP(D12,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H12,6) | E | M2826101423 | COMPANY COMMANDER | CAPT
+      row   13  CCN~61072  :: =B12+1 | 61072 | =VLOOKUP(D13,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H13,6) | E | M2826101425 | ADMIN CLERK | LCPL
+      row   14  CCN~61072  :: =B13+1 | 61072 | =VLOOKUP(D14,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H14,6) | E | M2826101491 | FLD MED TECH | HMCS
+      row   15  CCN~61072  :: =B14+1 | 61072 | =VLOOKUP(D15,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H15,6) | E | M2826101029 | FLD MED TECH | HM3
+      row   17  CCN~61072  :: =B16+1 | 61072 | =VLOOKUP(D17,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H17,6) | E | M2826101031 | S-1 OFFICER | LT
+      row   18  CCN~61072  :: =B17+1 | 61072 | =VLOOKUP(D18,[5]CCN!$C$7:$D$1098,2,FALSE) | =LEFT(H18,6) | E | M2826101032 | ADJUTANT/LEGAL OFFICER | LTJG
+
+[Sheet: 'TE']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : A2
+  merged_cells  : 0
+  print_area    : 'TE'!$A$1:$V$504
+  data_validns  : 0
+  cond_formats  : 10
+  formulas      : 6901  (with ext refs: 2696)
+  ccn-like rows : 387  (showing first 12)
+      row    1  CCN~21451  :: ROW | NOTE | CCN | CCN Description | CCN 21451 Equipment Type (if applicable) | UIC | TAMCN
+Short | TAMCN
+      row    2  CCN~14345  :: 3 | 14345 | ARMORY | M28261 | =LEFT(I2,5) | E00302M | PISTOL,9 MILLIMETER-M18 | IS
+      row    3  CCN~44112  :: 4 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I3,5) | K00012B | CHARGER,BATTERY-PCWV+ | IS
+      row    4  CCN~21710  :: 5 | 21710 | ELECTRONICS / COMMUNICATIONS MAINTENANCE SHOP | M28261 | =LEFT(I4,5) | A20427G | RADIO SET-AN/PRC-150 (C) | DP
+      row    5  CCN~44112  :: 11 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I5,5) | C30202E | INSERTS,ENHANCED SM- CO/PD 04-10 | I
+      row    6  CCN~44112  :: 12 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I6,5) | C34232E | STAND,CANTEEN CUP-MIL-S-44221 | IS
+      row    7  CCN~14345  :: 16 | 14345 | ARMORY | M28261 | =LEFT(I7,5) | E01902M | CARBINE,5.56 MILLIM-M4A1 | IS
+      row    8  CCN~14345  :: 19 | 14345 | ARMORY | M28261 | =LEFT(I8,5) | E28292E | TOOL KIT,ORGANIZATI- | IS
+      row    9  CCN~44112  :: 20 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I9,5) | K41282E | CAN,MILITARY- | IS
+      row   10  CCN~44112  :: 21 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I10,5) | K42362E | COT,FOLDING-2-5-72 | IS
+      row   11  CCN~44112  :: 23 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I11,5) | K49592E | TABLE,FOLDING LEGS- MILT3338 | IS
+      row   12  CCN~44112  :: 30 | 44112 | STORAGE OF AIR OR GROUND ORGANIC UNITS FOR MARINE CORPS | M28261 | =LEFT(I12,5) | C79112B | SHOP EQUIPMENT,UTIL-USMC24-1000 | I
+
+[Sheet: 'Locator_Deck']
+  state         : visible
+  tab_color     : None
+  freeze_panes  : A524
+  merged_cells  : 0
+  print_area    : 'Locator_Deck'!$A$1:$K$602
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 0  (with ext refs: 0)
+  ccn-like rows : 1  (showing first 12)
+      row   33  CCN~01276  :: A902207AA | PRC 044207 | MASK CPR W/FILTER | N/A | 6515-01276-1417 | EA | 45
+
+[Sheet: '14312']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 3220
+  print_area    : '14312'!$A$1:$AF$772
+  data_validns  : 0
+  cond_formats  : 33
+  formulas      : 2941  (with ext refs: 2390)
+  ccn-like rows : 18  (showing first 12)
+      row    5  CCN~14312  :: CCN: | 14312 | Nomenclature: | Operational Vehicle Laydown Area
+      row   30  CCN~14312  :: 1All vehicles are assigned a type code (A through E) based on its length, per guidelines from UFC 2-000-05N, Table 14312-1. A vehicle's type
+      row   39  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row   85  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  131  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  177  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  223  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  269  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  315  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  361  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  407  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+      row  453  CCN~14312  :: Operational Vehicle Laydown Area per UFC 2-000-05N  Table 14312-1
+
+[Sheet: '14345']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 7620
+  print_area    : '14345'!$A$1:$AF$806
+  data_validns  : 0
+  cond_formats  : 190
+  formulas      : 1411  (with ext refs: 461)
+  ccn-like rows : 27  (showing first 12)
+      row    5  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row   41  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row   68  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row   95  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  122  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  149  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  176  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  203  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  230  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  257  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  284  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+      row  311  CCN~14345  :: CCN: | 14345 | Nomenclature: | Armory
+
+[Sheet: '17110']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 19
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 0
+  formulas      : 6  (with ext refs: 0)
+  ccn-like rows : 2  (showing first 12)
+      row    5  CCN~17110  :: CCN: | 17110 | Nomenclature: | Academic Instruction Building
+      row   11  CCN~17120  :: Please see CCN 17120 BFR calculation. 
+
+The space requirement for a CCN 17110 Academic Instruction Building has been rolled up to the CCN 17
+
+[Sheet: '17120']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 105
+  print_area    : '17120'!$A$1:$AF$88
+  data_validns  : 0
+  cond_formats  : 3
+  formulas      : 25  (with ext refs: 0)
+  ccn-like rows : 3  (showing first 12)
+      row    5  CCN~17120  :: CCN: | 17120 | Nomenclature: | Applied Instruction Building
+      row   50  CCN~17110  :: 1 Per MSTC POC, it is ideal to have 30 seats at a time in a General Academic Classroom. Per Table 17110-1 Space Criteria for General Academi
+      row   52  CCN~17120  :: 2 Per MSTC POC, there are 4 different stations at a time to conduct training personnel through use of technical equipment/tools such as an a
+
+[Sheet: '21451']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 1950
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 10
+  formulas      : 2250  (with ext refs: 1748)
+  ccn-like rows : 7  (showing first 12)
+      row    5  CCN~21451  :: CCN: | 21451 | Nomenclature: | Automotive Organizational Shop
+      row   15  CCN~21420  :: UFC 2-000-05N - modified CCN 21420 to allow odd numbered bay counts
+
+
+      row   35  CCN~21420  :: 1 Maintenance Bay calculations based on repair bay factor per vehicle, as determined by UFC 2-000-05N, Tables 21420-1, 2 & 3.
+2 Support spac
+      row   47  CCN~21420  :: Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2, & 3
+      row  178  CCN~21420  :: Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2, & 3
+      row  309  CCN~21420  :: Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2, & 3
+      row  440  CCN~21420  :: Maintenance Bay Calculations - per UFC 2-000-05N, Tables 21420-1, 2, & 3
+
+[Sheet: '21710']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 246
+  print_area    : '21710'!$A$1:$AF$96
+  data_validns  : 0
+  cond_formats  : 16
+  formulas      : 144  (with ext refs: 37)
+  ccn-like rows : 1  (showing first 12)
+      row    5  CCN~21710  :: CCN: | 21710 | Nomenclature: | Electronic/Communications Maintenance Shop
+
+[Sheet: '44112']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 179
+  print_area    : '44112'!$A$1:$AF$86
+  data_validns  : 0
+  cond_formats  : 16
+  formulas      : 51  (with ext refs: 10)
+  ccn-like rows : 2  (showing first 12)
+      row    5  CCN~44112  :: CCN: | 44112 | Nomenclature: | Storage of Air or Ground Organic Units - USMC
+      row   73  CCN~44112  :: 1 Each TAMCN on the TE tab with a 44112 in the CCN column is calculated in this table. The net volume was calculated using the organizationa
+
+[Sheet: '45110']
+  state         : hidden
+  tab_color     : FFFF0000
+  freeze_panes  : None
+  merged_cells  : 117
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 9
+  formulas      : 36  (with ext refs: 15)
+  ccn-like rows : 8  (showing first 12)
+      row    5  CCN~45110  :: CCN: | 45110 | Nomenclature: | Open Storage Area
+      row   25  CCN~11111  :: =R32*0.11111 | =AA46*0.11111 | =SUM(B25:K25)
+      row   36  CCN~45110  :: M28271 | H&S CO | =SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B36) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B36) | =SUMIFS(TE!O:O,TE!H:H,
+      row   37  CCN~45110  :: M28272 | SURGICAL CO A | =SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B37) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B37) | =SUMIFS(TE!O:O,
+      row   38  CCN~45110  :: M28273 | SURGICAL CO B | =SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B38) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B38) | =SUMIFS(TE!O:O,
+      row   39  CCN~45110  :: M28275 | SURGICAL CO C | =SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B39) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B39) | =SUMIFS(TE!O:O,
+      row   40  CCN~45110  :: =SUMIFS(TE!O:O,TE!H:H,'45110'!$M$38,TE!D:D,B40) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$38,TE!D:D,B40) | =SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D
+      row   48  CCN~45110  :: 1 All shipping containers can be stacked two high when stored outside.  
+2 Numbers below reflect the actual units located in 45110 minus the
+
+[Sheet: '61072']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 43
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 1
+  formulas      : 13  (with ext refs: 2)
+  ccn-like rows : 3  (showing first 12)
+      row    5  CCN~61072  :: CCN: | 61072 | Nomenclature: | Battalion /Squadron Headquarters, Marine Corps
+      row   26  CCN~61072  :: M28261 | H&S CO | =COUNTIFS(TO!D:D,"61072",TO!F:F,$B$26) | =M26*$Y$25
+      row   27  CCN~61073  :: M28263 | SURG CO A | =COUNTIFS(TO!D:D,"61073",TO!F:F,$B$27) | =M27*$Y$25
+
+[Sheet: '61073']
+  state         : visible
+  tab_color     : FF00B050
+  freeze_panes  : None
+  merged_cells  : 17
+  print_area    : 
+  data_validns  : 0
+  cond_formats  : 3
+  formulas      : 5  (with ext refs: 0)
+  ccn-like rows : 2  (showing first 12)
+      row    5  CCN~61073  :: CCN: | 61073 | Nomenclature: | Company/Battery Headquarters, Marine Corps
+      row    9  CCN~61072  :: Please see CCN 61072 BFR calculation. 
+
+The space requirement for a CCN 61073 Company/Battery Headquarters has been rolled up to the CCN 610
+
+########################################################################
+

@@ -1,0 +1,35 @@
+Phase C-bis P1 on sheet 21451 AUTOMOTIVE ORGANIZATIONAL SHOP
+
+FC source: fc_2_000_05n_200series_05_16_2025.pdf p.188, current 2025-05-16
+
+Edits:
+  S3 tenant header: '2D MED BN' -> '3d MED BN'
+  S4 tenant UIC: 'M12020' -> 'M13020'
+  SUMIFS rewired: 437 formulas
+
+Pattern (regex):
+  Before: SUMIFS(TE!$O:$O,TE!$D:$D,$B$<n>,TE!$H:$H,B<row>,TE!$C:$C,$C$5)
+  After:  SUMIFS(TE!$O:$O,TE!$G:$G,$B$<n>,TE!$I:$I,B<row>,TE!$D:$D,$C$5)
+
+Three column corrections per formula:
+  1. TE!$D:$D vs UIC ref -> TE!$G:$G (col D is CCN, col G is UIC)
+  2. TE!$H:$H vs full TAMCN -> TE!$I:$I (col H is 5-char short)
+  3. TE!$C:$C vs CCN -> TE!$D:$D (col C is empty NOTE; col D is CCN)
+
+Sample fixes:
+
+  T51:
+    Before: =IFERROR(SUMIFS(TE!$O:$O,TE!$D:$D,$B$48,TE!$H:$H,B51,TE!$C:$C,$C$5),"")
+    After:  =IFERROR(SUMIFS(TE!$O:$O,TE!$G:$G,$B$48,TE!$I:$I,B51,TE!$D:$D,$C$5),"")
+
+  T52:
+    Before: =IFERROR(SUMIFS(TE!$O:$O,TE!$D:$D,$B$48,TE!$H:$H,B52,TE!$C:$C,$C$5),"")
+    After:  =IFERROR(SUMIFS(TE!$O:$O,TE!$G:$G,$B$48,TE!$I:$I,B52,TE!$D:$D,$C$5),"")
+
+  T53:
+    Before: =IFERROR(SUMIFS(TE!$O:$O,TE!$D:$D,$B$48,TE!$H:$H,B53,TE!$C:$C,$C$5),"")
+    After:  =IFERROR(SUMIFS(TE!$O:$O,TE!$G:$G,$B$48,TE!$I:$I,B53,TE!$D:$D,$C$5),"")
+
+Block 4 (rows 441-565, B441=B31=None) is orphan template residue;
+its SUMIFS will compute 0 because UIC criterion never matches.
+Left in place to preserve cosmetic.

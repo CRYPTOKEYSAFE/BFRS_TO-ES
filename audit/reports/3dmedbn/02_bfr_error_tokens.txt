@@ -1,0 +1,10 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+ERRORS BY SHEET:
+  MISSION STATEMENT: {'#REF!': 0, '#N/A': 0, '#VALUE!': 1, '#DIV/0!': 0, '#NAME?': 0, '#NULL!': 0, '#NUM!': 0}
+  TO: {'#REF!': 0, '#N/A': 466, '#VALUE!': 0, '#DIV/0!': 0, '#NAME?': 0, '#NULL!': 0, '#NUM!': 0}
+  TE: {'#REF!': 0, '#N/A': 2837, '#VALUE!': 0, '#DIV/0!': 0, '#NAME?': 0, '#NULL!': 0, '#NUM!': 0}
+
+TOTALS:
+  #VALUE!: 1
+  #N/A: 3303

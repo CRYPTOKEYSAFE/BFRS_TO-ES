@@ -1,0 +1,106 @@
+R  6 3D MED BN 3D MLG                           | BIC=609 ASR=609
+R  7 1CP                                        | BIC=429 ASR=429
+R  8 H&S CO 3D MED BN 3D MLG                    | BIC=250 ASR=250
+R  9 0000                                       | BIC=4 ASR=4
+R 13 0111                                       | BIC=2 ASR=2
+R 15 0402                                       | BIC=2 ASR=2
+R 18 0411                                       | BIC=2 ASR=2
+R 21 0441                                       | BIC=4 ASR=4
+R 26 1141                                       | BIC=2 ASR=2
+R 29 1164                                       | BIC=2 ASR=2
+
+--- UNIT PIVOT MAIN tab (where 3d MED BN lives) ---
+  R  1: Billet Record Code | E
+  R  2: Chargeable Categor | (Multiple Items)
+  R  3: Funded | (Multiple Items)
+  R  8: Row Labels | BIC | ASR | BIC | ASR | BIC | ASR | BIC
+  R  9: MLG HQTRS 3D MLG | 301 | 296 | 303 | 298 | 303 | 298 | 309
+  R 11: MLG HQTRS 3D MLG | 301 | 296 | 303 | 298 | 303 | 298 | 309
+  R 12: CLR 37 3D MLG | 712 | 705 | 667 | 660 | 667 | 658 | 667
+  R 14: COMM CO CLR 37 3D  | 218 | 215 | 222 | 219 | 222 | 219 | 222
+  R 15: FD SVC CO CLR 37 3 | 83 | 83 | 87 | 87 | 87 | 87 | 87
+  R 16: HQTRS CO CLR 37 3D | 182 | 180 | 184 | 182 | 184 | 181 | 184
+  R 17: SVC CO CLR 37 3D M | 126 | 124 | 128 | 126 | 128 | 125 | 128
+  R 18: CLR 37 (DET) 3D ML | 103 | 103 | 46 | 46 | 46 | 46 | 46
+  R 19: 3D LNDG SPT BN (DE | 15 | 15 | 15 | 15 | 15 | 15 | 15
+  R 20: 3D MAINT BN (DET)  | 16 | 16 | 16 | 16 | 16 | 16 | 16
+  R 21: 3D SUP BN (DET) 3D | 24 | 24 | 24 | 24 | 24 | 24 | 24
+  R 22: 9TH ENGR SUP BN (D | 30 | 30 | 30 | 30 | 30 | 30 | 30
+  R 23: CLR 3 (DET) 3D MLG | 3 | 3 | 3 | 3 | 3 | 3 | 3
+  R 24: CLR 37 (DET) 3D ML | 8 | 8 | 46 | 46 | 46 | 46 | 46
+  R 25: MLG III MEF (FWD)  | 7 | 7 | 7 | 7 | 7 | 7 | 7
+  R 26: CLB 31 CLR 37 3D M | 296 | 296 | 296 | 296 | 296 | 296 | 296
+  R 28: CLC A CLB 31 CLR 3 | 58 | 58 | 58 | 58 | 58 | 58 | 58
+  R 29: CLC B CLB 31 CLR 3 | 58 | 58 | 58 | 58 | 58 | 58 | 58
+  R 30: GS CO CLB 31 CLR 3 | 106 | 106 | 106 | 106 | 106 | 106 | 106
+  R 31: HQ CO CLB 31 CLR 3 | 74 | 74 | 74 | 74 | 74 | 74 | 74
+  R 32: HQTRS CO CLR 3 3D  | 117 | 116 | 120 | 119 | 120 | 118 | 120
+  R 34: HQTRS CO CLR 3 3D  | 117 | 116 | 120 | 119 | 120 | 118 | 120
+  R 35: CLB 4 CLR 3 3D MLG | 284 | 284 | 284 | 284 | 284 | 284 | 284
+  R 37: CLC A CLB 4 CLR 3  | 58 | 58 | 58 | 58 | 58 | 58 | 58
+  R 38: CLC B CLB 4 CLR 3  | 58 | 58 | 58 | 58 | 58 | 58 | 58
+  R 39: GS CO CLB 4 CLR 3  | 83 | 83 | 83 | 83 | 83 | 83 | 83
+  R 40: HQ CO CLB 4 CLR 3  | 85 | 85 | 85 | 85 | 85 | 85 | 85
+  R 41: 3D DSB CLR 3 3D ML | 554 | 550 | 550 | 546 | 570 | 565 | 570
+  R 42: 3D DSB CLR 3 3D ML | 554 | 550 | 550 | 546 | 570 | 565 | 570
+  R 43: BCH & TERM OPS CO  | 78 | 78 | 78 | 78 | 78 | 78 | 78
+  R 44: H&S CO 3D LNDG SPT | 145 | 143 | 145 | 143 | 145 | 145 | 145
+  R 45: H&S CO 3D TRANS BN | 230 | 228 | 230 | 227 | 230 | 227 | 230
+  R 46: HQTRS CO 3D DSB CL | 230 | 230 | 230 | 230 | 230 | 230 | 230
+  R 47: LNDG SPT CO 3D DSB | 164 | 164 | 184 | 184 | 184 | 184 | 184
+  R 48: LNDG SPT CO 3D TSB | 164 | 163 | 184 | 183 | 184 | 183 | 184
+  R 49: LNDG SPT CO A 3D L | 58 | 58 | 58 | 58 | 58 | 58 | 58
+  R 50: LNDG SPT EQUIP CO  | 273 | 271 | 273 | 271 | 273 | 273 | 273
+  R 51: MT CO 3D DSB CLR 3 | 156 | 156 | 156 | 156 | 156 | 156 | 156
+  R 52: MT CO 3D TSB CLR 3 | 156 | 155 | 156 | 155 | 156 | 155 | 156
+  R 53: 3D CRR 3D MLG | 932 | 925 | 947 | 940 | 947 | 939 | 947
+  R 55: AMMO CO 3D CRR 3D  | 123 | 123 | 123 | 123 | 123 | 123 | 123
+  R 56: AMMO CO 3D SUP BN  | 107 | 106 | 107 | 106 | 107 | 107 | 107
+  R 57: AMMO CO CLR 35 3D  | 123 | 122 | 123 | 122 | 123 | 122 | 123
+  R 58: H&S CO 3D SUP BN 3 | 159 | 157 | 159 | 157 | 159 | 159 | 159
+  R 59: H&S CO CLR 35 3D M | 158 | 156 | 158 | 155 | 158 | 155 | 158
+  R 60: HQTRS CO 3D CRR 3D | 158 | 158 | 158 | 158 | 158 | 158 | 158
+  R 61: MEDLOG CO 3D CRR 3 | 73 | 73 | 73 | 73 | 73 | 73 | 73
+  R 62: MEDLOG CO 3D SUP B | 73 | 73 | 73 | 73 | 73 | 73 | 73
+  R 63: MEDLOG CO CLR 35 3 | 73 | 73 | 73 | 73 | 73 | 73 | 73
+  R 64: SUP CO 3D CRR 3D M | 178 | 178 | 178 | 178 | 178 | 178 | 178
+  R 65: SUP CO 3D SUP BN 3 | 175 | 174 | 175 | 174 | 175 | 175 | 175
+  R 66: SUP CO CLR 35 3D M | 178 | 177 | 178 | 177 | 178 | 177 | 178
+  R 68: CLC 33 3D CRR 3D M | 302 | 302 | 302 | 302 | 302 | 302 | 302
+  R 69: CLC 33 3D SUP BN 3 | 306 | 304 | 302 | 300 | 302 | 300 | 302
+  R 71: CLC 36 3D CRR 3D M | 116 | 116 | 116 | 116 | 116 | 116 | 116
+  R 72: CLC 36 3D SUP BN 3 | 112 | 111 | 112 | 111 | 112 | 112 | 112
+  R 73: CLC 36 CLR 35 3D M | 113 | 112 | 113 | 112 | 113 | 112 | 113
+  R 74: 3D MAINT BN 3D CRR | 581 | 580 | 590 | 589 | 590 | 589 | 590
+  R 76: ELMACO 3D MAINT BN | 91 | 91 | 91 | 91 | 91 | 91 | 91
+  R 77: ELMACO 3D MAINT BN | 91 | 91 | 91 | 91 | 91 | 91 | 91
+  R 78: ENGR MAINT CO 3D M | 99 | 99 | 99 | 99 | 99 | 99 | 99
+  R 79: ENGR MAINT CO 3D M | 99 | 99 | 99 | 99 | 99 | 99 | 99
+  R 80: GSM CO 3D MAINT BN | 86 | 86 | 86 | 86 | 86 | 86 | 86
+  R 81: GSM CO 3D MAINT BN | 79 | 79 | 86 | 86 | 86 | 86 | 86
+  R 82: H&S CO 3D MAINT BN | 88 | 88 | 89 | 89 | 89 | 89 | 89
+  R 83: HQTRS CO 3D MAINT  | 89 | 89 | 89 | 89 | 89 | 89 | 89
+  R 84: MTM CO 3D MAINT BN | 182 | 182 | 182 | 182 | 182 | 182 | 182
+  R 85: MTM CO 3D MAINT BN | 181 | 180 | 182 | 181 | 182 | 181 | 182
+  R 86: ORD MAINT CO 3D MA | 43 | 43 | 43 | 43 | 43 | 43 | 43
+  R 87: ORD MAINT CO 3D MA | 43 | 43 | 43 | 43 | 43 | 43 | 43
+  R 88: 3D MED BN 3D MLG | 609 | 609 | 609 | 609 | 609 | 609 | 609
+  R 90: H&S CO 3D MED BN 3 | 250 | 250 | 250 | 250 | 250 | 250 | 250
+  R 91: SURG CO A 3D MED B | 179 | 179 | 179 | 179 | 179 | 179 | 179
+  R 93: SURG CO B 3D MED B | 180 | 180 | 180 | 180 | 180 | 180 | 180
+  R 94: 9TH ESB 3D MLG | 760 | 757 | 793 | 790 | 793 | 790 | 793
+  R 95: 9TH ESB 3D MLG | 760 | 757 | 793 | 790 | 793 | 790 | 793
+  R 96: BULK FUEL CO 9TH E | 150 | 149 | 152 | 151 | 152 | 151 | 152
+  R 97: ENGR CO A 9TH ESB  | 85 | 85 | 85 | 85 | 85 | 85 | 85
+  R 98: ENGR CO B 9TH ESB  | 91 | 91 | 91 | 91 | 91 | 91 | 91
+  R 99: ENGR SPT CO 9TH ES | 252 | 250 | 253 | 251 | 253 | 251 | 253
+  R100: EOD CO 9TH ESB 3D  | 61 | 61 | 91 | 91 | 91 | 91 | 91
+  R101: H&S CO 9TH ESB 3D  | 121 | 121 | 121 | 121 | 121 | 121 | 121
+  R102: 3D DEN BN 3D MLG | 212 | 212 | 212 | 212 | 212 | 212 | 212
+  R103: 3D DEN BN 3D MLG | 156 | 156 | 156 | 156 | 156 | 156 | 156
+  R104: 11TH DEN CO 3D DEN | 72 | 72 | 72 | 72 | 72 | 72 | 72
+  R105: 3D DEN CO 3D DEN B | 71 | 71 | 71 | 71 | 71 | 71 | 71
+  R106: H&S CO 3D DEN BN 3 | 13 | 13 | 13 | 13 | 13 | 13 | 13
+  R107: 21ST DEN CO 3D DEN | 56 | 56 | 56 | 56 | 56 | 56 | 56
+  R108: 21ST DEN CO 3D DEN | 56 | 56 | 56 | 56 | 56 | 56 | 56
+  R109: Grand Total | 5358 | 5330 | 5371 | 5343 | 5391 | 5358 | 5397

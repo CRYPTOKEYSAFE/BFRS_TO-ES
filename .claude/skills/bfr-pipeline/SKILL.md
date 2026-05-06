@@ -775,6 +775,539 @@ unit; the order is the recommended build sequence.
 
 ### NEXT (in priority order)
 
+- Track 10, 3d MED BN BFR Phase B repair complete (this session,
+  commits f36e121 through fe7cba6 on
+  claude/resume-bfr-pipeline-nrRNC). Workbook
+  `M67400-FO-M13020 3D MED BN-22NOV2024.xlsx` brought from broken-
+  template state to recalc-clean foundational document.
+
+  Source artifacts during this session:
+    `3DMLG_ASR.xlsx` (24 MB, 3D MED BN sheet R6-207, FY26 BIC counts)
+    `M28262_3dMedSurgB.xlsx` (Surg Co B TFSMS export)
+    `M28263_3dMedSurgA.xlsx` (Surg Co A TFSMS export)
+    `M29111_CLB4.xlsx` (CLB-4 T/O&E reference)
+    `3D MED BN Footprint (as of Jan 2026) - Camps FOSTER, KINSER.{pdf,pptx}`
+       (current building assignments at Foster: 215, 5717, 5628;
+       Kinser: 300; total 178 workstations)
+    `RE_ CG MCIPAC Endorsement Request.pdf` (Kenji Music email
+       1 May 26 reframing the work)
+
+  User-ratified decisions during this session:
+    D1 Personnel canonical = 711 (CG signed letter), with 609 ASR
+       footnoted as Marine BICs only. 100 delta is USN+civ+contractor.
+    D2 Surg Co C / UIC M28275 = strip; not 3d MED BN.
+    D3 External library replacement = internal CCN_Library sheet
+       with 10 rows (only CCNs the BFR's own sheets reference).
+    D4 = (a) repair hidden CCN sheets in place with 3d MED BN data,
+       unhide.
+    D5 Locator_Deck = extract to separate file, remove from BFR.
+    D6 Phase order = A (audit) -> B (structural) -> C (reconcile)
+       -> D (validate) -> E (deliver).
+
+  Phase A audit reports (read-only, audit/reports/3dmedbn/01-19):
+    01_bfr_inventory.txt, 02_bfr_error_tokens.txt,
+    03_asr_3dmedbn.txt, 04_asr_unit_breakdown.txt,
+    05_toe_inventory.txt, 06_footprint_jan2026.txt,
+    07_bfr_cosmetic_check.txt, 08_surg_c_search.txt,
+    09_hidden_sheets_deepdive.txt, 10_locator_deck.txt,
+    11_dead_vlookups.txt, 12_locator_deck_purpose.txt,
+    13_library_scope.txt, 14_ccn_21820.txt,
+    15_cosmetic_fingerprint.txt, 16_formula_paths.txt,
+    17_to_billet_walk.txt, 18_te_equipment_walk.txt,
+    19_personnel_equipment_reconciliation.txt
+  Plus: audit/3DMEDBN_BFR_REPAIR_PLAN.md and
+        audit/3DMEDBN_BFR_INVESTIGATION_FINDINGS.md.
+
+  Lineage discovery: BFR is third copy in a chain.
+    2nd MED BN at Camp Lejeune (M67001) [original template]
+      -> 1st MED BN at Camp Pendleton (M11020) on 04 May 2018
+        -> 3d MED BN at MCB Camp Butler (M67400) on 22 Nov 2024
+  Each copy partially updated identifiers; the four hidden CCN sheets
+  (14312, 21451, 21710, 45110) carried 2nd Med Bn UICs (M28271/72/73/75)
+  and Surg Co C as scaffolding because the unit had no 3d MED BN BFR
+  to start from. User confirmed this narrative directly.
+
+  Phase B edits (sub-commits f36e121, 840bfc2, adad889, 4a175d3,
+  e11683d, 28326c1, 084d13a, fe7cba6):
+    B.1 backup file created
+    B.2 Locator_Deck (608-row AMAL container manifest) extracted to
+        audit/reports/3dmedbn/locator_deck_extract.xlsx, removed
+        from BFR.
+    B.3 CCN_Library sheet added with 10 rows from FC 2-000-05N
+        planning factors (each row cites source PDF and page).
+        TO!E5:E713 (611 cells) rewired from external [5]CCN! lookup
+        to internal CCN_Library lookup. TE row 504 stranded data row
+        fixed (TAMCN E02022B telescope -> CCN 14345 ARMORY, derived
+        from same TAMCN's tagging in TE rows 27/357).
+        TE!D505:E1852 dead skeleton formulas (1,348+1,348) cleared.
+    B.4 All 44 broken/junk defined names deleted (31 #REF!, 2 #N/A,
+        14 garbage names, 5 literal-string aliases, 3 external-file
+        refs).
+    B.5a UICs corrected on four hidden CCN sheets:
+        M28271 -> M28261 (H&S Co)
+        M28272 -> M28263 (Surgical Co A; UIC swap noted because
+                          3d MED BN's A has the higher UIC number
+                          and B has the lower, opposite of the
+                          2nd Med Bn pattern)
+        M28273 -> M28262 (Surgical Co B)
+        M28275 row stripped (Surg Co C does not exist in 3d MED BN)
+        Installation header on 21451, 21710, 45110 changed from
+        MCB Camp Lejeune (M67001) to MCB Camp Butler (M67400).
+    B.5b Four CCN sheets unhidden, tab color changed FFFF0000 (red)
+        to FF00B050 (green) to match the canonical visible-sheet
+        convention.
+    B.6 UNIT_ROLLUP rows 15-18 added for the 4 newly-unhidden CCN
+        sheets pointing at their respective TOTAL REQUIREMENT cells:
+        14312!H36, 21451!H44, 21710!H47, 45110!H50. Totals row
+        moved to R19 with =SUM(W9:AA18) covering all 10 CCN sheets.
+    B.7 TE!E2:E504 (503 cells) rewired with internal CCN_Library
+        lookup pattern matching TO!E. Replaces 134 literal '#N/A'
+        strings (left over from dead [5]CCN! cache) with live
+        formulas. TE col D literal '#N/A' on 5 rows cleared (real
+        equipment data preserved; CCN tagging deferred to Phase C).
+        fullCalcOnLoad set to True.
+
+  Final state of the BFR:
+    Sheets                       : 15
+    Defined names                : 0 (was 44)
+    Cached error tokens          : 0 (was 3,303 #N/A + 1 #VALUE!)
+    External link refs in formulas: 0 (was 3,307)
+    Cosmetic                     : 190 cond formats preserved on
+                                   14345, 7,620 merged cells,
+                                   all tab colors, all fonts,
+                                   page setup, header/footer
+    fullCalcOnLoad               : True
+    Personnel reconciled         : TO 709 vs CG 711 (delta 2),
+                                   TO Surg A 210 = TFSMS exact,
+                                   TO Surg B 211 = TFSMS exact
+    Equipment reconciled         : 96.4% TFSMS COE coverage with
+                                   3 TAMCN misses per surgical co
+                                   for Phase C investigation
+    UNIT_ROLLUP coverage         : All 10 CCN sheets feed total at
+                                   R19 (=SUM(W9:AA18))
+
+  Three known issues handed to Phase C:
+    a. 36 TE rows tagged CCN 21820 (Construction/Weight Handling Eq
+       Shop) are misclassified utility/engineer items. Per finding
+       14, they should be re-tagged: trailer-mounted gensets to
+       14312 (Operational Vehicle Laydown), skid-mounted gear to
+       44112 (Storage of Air or Ground Organic Units).
+    b. 134 TE rows have CCN col D = literal 'CSP' (placeholder
+       from source TFSMS file's CSP sheet). Real C-prefix
+       equipment items needing proper CCN tagging.
+    c. 5 TE rows cleared from literal '#N/A' but still need CCN
+       tagging (R379, 401, 426, 461, 478).
+    d. Hidden CCN sheets 14312 and 45110 had no 3d MED BN TE rows
+       tagged to them prior to repair. After Phase C tagging
+       work (a)+(b)+(c), the 14312 sheet will pick up trailer-
+       mounted gensets and the 45110 sheet may pick up shipping
+       container TAMCNs from properly-retagged TE rows.
+    e. 3 TFSMS COE TAMCNs per surgical company (C00392B, C02222F,
+       C02472Z) are present in the TFSMS export but not in BFR TE.
+       Investigate whether these are recent additions to the
+       company TE that have not propagated to the BFR.
+
+  Track 10 follow-up: Phase C TO/TE reconciliation work to clear
+  the 3 issues above. After Phase C, run pipeline/validate.py for
+  the formal validator pass (Phase D), then deliver foundational
+  document (Phase E).
+
+- Track 10b, 3d MED BN BFR Phase C TE retag executed (session
+  2026-05-05, commits f3f3c60/85466ba scoping then 67607f7,
+  e7d772c, 16617a1, a760785 retag, then extractions consolidation).
+  All four buckets ratified by user 2026-05-05 with the recommended
+  options:
+    A. 36 rows from CCN 21820: 8 to 14312 (towable engineer items),
+       28 to 44112 (storage-state organic items)
+    B-ii. 129 CSP rows split: 12 to 14345 (weapons accessories),
+       7 to 45110 (shelter/container), 110 to 44112 (clothing,
+       load gear, CBRN, IFAK, OTHER, fabrication)
+    C. 5 rows previously cleared from #N/A tagged per row:
+       R379->14345, R401->21451, R426->14345, R461->14345, R478->44112
+    D. Added C00392B at qty 180/co for Surg A and Surg B (CCN 44112);
+       documented C02222F as correctly absent; held C02472Z TBD pending
+       ERAA/TSC verification.
+  Final TE state (505 rows):
+    CCN 44112: 242 rows (was 101)
+    CCN 14345: 126 rows (was 111)
+    CCN 21710:  75 rows
+    CCN 21451:  47 rows (was 46)
+    CCN 14312:   8 rows (was 0; sheet now has live TE data)
+    CCN 45110:   7 rows (was 0; sheet now has live TE data)
+    CSP placeholder: 0 (was 129)
+    None: 0 (was 5)
+    21820: 0 (was 36; not a 3d MED BN facility)
+  Cosmetic and recalc state preserved across all four sub-commits:
+    Sheets: 15 (unchanged)
+    Defined names: 0 (unchanged)
+    fullCalcOnLoad: True (unchanged)
+    Tab colors: UNIT_ROLLUP red FFFF0000, all 10 CCN sheets green
+                FF00B050 (unchanged)
+    A1 banner: 'BASIC FACILITY REQUIREMENTS WORKSHEET' on every CCN
+               sheet (unchanged), Calibri 16 bold
+    Merged cell ranges: 13,630 (preserved)
+    Cached error tokens: 0 across all sheets
+  Per-row diff logs:
+    audit/reports/3dmedbn/20_phase_c1_diff.txt (Bucket A, 36 rows)
+    audit/reports/3dmedbn/21_phase_c2_diff.txt (Bucket B, 129 rows)
+    audit/reports/3dmedbn/22_phase_c3_diff.txt (Bucket C, 5 rows)
+    audit/reports/3dmedbn/23_phase_c4_diff.txt (Bucket D, 2 add + 2 doc)
+  Phase C scoping doc: audit/3DMEDBN_PHASE_C_SCOPE.md
+  Consolidated extractions: audit/3DMEDBN_EXTRACTIONS.xlsx (8 tabs)
+                            audit/3DMEDBN_EXTRACTIONS_README.md
+
+  Critical finding from Phase C investigation: the embedded TAMCN
+  lists on the CCN sheets (14312, 21451, 21710, 44112, 45110) are
+  still 2nd Med Bn Camp Lejeune template scaffolding. They drive
+  each sheet's TOTAL REQUIREMENT via SUMIFS(TE!U:U, TE!D:D=$C$5,
+  TE!H:H=embedded_tamcn). Phase C fixed col D (CCN tags) but did
+  NOT rebuild the embedded TAMCN lists. Consequence: post-Phase-C
+  TE col D is data-hygiene clean, but most CCN sheet TOTAL
+  REQUIREMENTS still compute against 2nd Med Bn TAMCN sets that
+  may not match 3d MED BN's actual TE TAMCN inventory. The 14345
+  Armory and 17110/17120/61072/61073 sheets were clean rebuilds in
+  the original BFR and are not affected. The five sheets with
+  inherited template TAMCN lists need a rebuild pass against 3d
+  MED BN's actual TE before TOTAL REQUIREMENT numbers can be
+  released. This is a Phase C-bis or new-track scope item, not a
+  Phase D blocker.
+
+- Track 10c, deliverables for Phase D and forward:
+    Phase D (validator): run pipeline/validate.py against the
+       repaired BFR. Target 8 PASS / 0 FAIL. Output to
+       audit/reports/3dmedbn/24_validator.txt.
+    Phase E (delivery): update audit/3DMEDBN_BASING_BRIEF.md to
+       point at the repaired BFR; notify Kenji Music or Doug Burk
+       per the handoff email pattern.
+    Phase C-bis (CCN sheet rebuild): rebuild 14312, 21451, 21710,
+       44112, 45110 embedded TAMCN lists from 3d MED BN's actual
+       TE TAMCN distribution. Held pending user direction on whether
+       to (a) auto-generate TAMCN lists from TE retag results,
+       (b) curate TAMCN lists manually with SME consultation, or
+       (c) accept conservative under-counting on these five sheets
+       and note the constraint in the BFR cover sheet.
+
+- Track 10d, Phase C-bis P1 executed (this session, commits f738d55,
+  8db0406, 6fd2357, 501ddd0, 10e6709, 343cefd, 0faceb0). User
+  ratified P1 (rebuild calc chains per FC) on 2026-05-05.
+
+  Critical structural finding from Phase C-bis investigation:
+  the 5 CCN sheets carrying inherited 2nd Med Bn template
+  scaffolding (14312, 21451, 21710, 45110, plus 44112's TE side)
+  had SUMIFS chains designed against an OLDER TE column schema
+  where col A held CCN, col C held NOTE, col D held UIC, col H
+  held full TAMCN. The 3d MED BN BFR's actual TE schema has
+  col D=CCN, col G=UIC, col H=TAMCN-short (5 char), col I=TAMCN
+  (full). Every SUMIFS criterion was filtering on the wrong column
+  and producing 0. This was independent of the col D retag work
+  in Phase C and would have left TOTAL REQUIREMENT cells at 0
+  even with perfect col D tagging.
+
+  Per-sheet fixes applied (all via deterministic regex + minimal
+  manual edit):
+
+  Sheet 45110 OPEN STORAGE AREA (commit f738d55):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    M35/Q35 container TAMCNs: PALCON/QUADCON -> '(none)' (3d MED
+      BN has no PALCONs/QUADCONs); U35 kept as C00772EA (JMIC TAN
+      x3 at M28261)
+    15 SUMIFS rewired:
+      Before: =SUMIFS(TE!O:O, TE!H:H, '<TAMCN>', TE!D:D, B<row>)
+      After:  =SUMIFS(TE!O:O, TE!I:I, '<TAMCN>', TE!G:G, B<row>,
+                      TE!D:D, $C$5)
+    Magic -11 / -12 constants in M41/Q41 (subtract JMICs in 44112)
+      removed (zero for 3d MED BN)
+    Note: 4 tarp + 2 tent rows tagged 45110 in Phase C.2 may
+      belong in 44112 per FC 45110-1 prose; flagged for SME review
+
+  Sheet 21710 ELECTRONICS/COMMS MAINT SHOP (commit 8db0406):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    H47 TOTAL: =AB27 (per-UIC M28261-only) -> =AB31 (grand total).
+      This was a significant bug: pre-fix UNIT_ROLLUP undercounted
+      21710 by missing M28263 and M28262 contributions.
+    4 storage-side SUMIFS rewired (TE!T->U for Volume Total,
+      TE!A->D for CCN, TE!D->G for UIC)
+    L57/P57/T57/X57 orphan formulas (no UIC label in B57) cleared
+    Personnel-side (admin, shop, maint bays) held for Layer 2
+
+  Sheet 14312 OPERATIONAL VEHICLE LAYDOWN AREA (commit 6fd2357):
+    Tenant header already correct from Phase B.5a
+    477 SUMIFS rewired via regex:
+      Before: =SUMIFS(TE!O:O, TE!D:D, $C$<UIC>, TE!H:H, C<row>,
+                      TE!A:A, $C$5)
+      After:  =SUMIFS(TE!O:O, TE!G:G, $C$<UIC>, TE!I:I, C<row>,
+                      TE!D:D, $C$5)
+    Block 4 (rows 592-740, B24=None orphan) left in place (its
+      SUMIFS produces 0 because UIC criterion never matches)
+    Inherited TAMCN list (~120 TAMCNs duplicated per UIC) not
+      trimmed; non-3d-MED-BN TAMCNs produce 0 from SUMIFS
+
+  Sheet 21451 AUTOMOTIVE ORGANIZATIONAL SHOP (commit 501ddd0):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    437 SUMIFS rewired via regex:
+      Before: =IFERROR(SUMIFS(TE!O:O, TE!D:D, $B$<n>, TE!H:H,
+                              B<row>, TE!C:C, $C$5), "")
+      After:  =IFERROR(SUMIFS(TE!O:O, TE!G:G, $B$<n>, TE!I:I,
+                              B<row>, TE!D:D, $C$5), "")
+    Block 4 (B441=B31=None orphan) left in place
+
+  Sheet 44112 STORAGE OF AIR OR GROUND ORGANIC UNITS (commit 10e6709):
+    Tenant header pulls from UNIT_ROLLUP via formula -- correct
+    L46/L47 TE-side SUMIFS already use correct columns -- no fix
+    B19 stale claim "M28262 ... not included" updated to reflect
+      Surg B's relocation per CG MCIPAC endorsement 30 Apr 2026
+    Add M28262 as third UIC in 4 sub-blocks: held for separate
+      scope (requires row-shift handling on 179-merged-range sheet)
+    Personnel-side COUNTIFS for 44112o/44112c/44112w: held for
+      Layer 2 NOTE population
+
+  Dead-row cleanup (commit 343cefd):
+    Cleared 1346 stray rows 507-1852 in TE: col B (ROW counters),
+      col T (=Q*R*S Volume Each formulas), col U (=T*P Volume
+      Total formulas) on rows where col D and col I are both None.
+    Phase B.7 had cleared col D and col E only.
+
+  Phase D validator re-run (commit 0faceb0): 6 PASS / 2 FAIL.
+    NEW PASS: Check 8 Equipment accounting (505 rows, 505
+      attributed, 0 orphans).
+    REMAINING FAIL: Check 2 NOTE coverage and Check 7 Billet
+      accounting -- both depend on TO!C NOTE column population
+      (Layer 2 work). 21710 H47 fix from per-UIC to grand total
+      shows up correctly in CHECK 6 output ('21710': =AB31).
+
+  Cosmetic preserved across all 5 sheet rewrites:
+    14312: 3220 merged ranges
+    21451: 1950 merged ranges
+    21710: 246 merged ranges
+    44112: 179 merged ranges
+    45110: 117 merged ranges
+    All tab colors FF00B050 green; A1 banners 'BASIC FACILITY
+    REQUIREMENTS WORKSHEET' Calibri 16 bold; sheet states visible.
+
+  Held for separate scope:
+    Layer 2 NOTE population on TO!C with CCN+suffix tags
+      (44112o/44112c/44112w/21710o/21710c/21710rs/21710cs/21710ds/
+      21710ws/21710es/21710ms). Doctrine-heavy; needs user
+      ratification of classification rules per BIC/MOS/MCC.
+    Add M28262 Surg B row to 44112 sub-blocks (analysis 27, admin
+      34, TE warehouse 48, personal effects 71). Structural
+      surgery on 179-merged-range sheet.
+    Tarps and tents tagged 45110 in Phase C.2 may belong in 44112
+      per FC 45110-1 prose; SME review.
+
+  H&S Co (M28261) C00392B row remains TBD pending H&S TFSMS file.
+  C02472Z M50 mask row remains TBD pending ERAA TSC verification.
+  These TBDs are Apex Omega rule-4 honest gaps, not pipeline
+  failures.
+
+- Track 10e, Phase C-bis P2 + Layer 2 NOTE + M28262 sub-block
+  surgery + final cleanup. Session ending 2026-05-06, commits
+  42b1428, 55d9f4d, 60583f4, bf7eb3d. Validator went from
+  6 PASS / 2 FAIL through 5 PASS / 3 FAIL (transient regression
+  from BMOS 23xx mis-routing) and back to 8 PASS / 0 FAIL.
+
+  Phase C-bis P2 (commit 42b1428):
+    - C02472Z M50 mask resolved as 'correctly absent' (not TBD).
+      Verified 3d MED BN's TSC = 'C' from TFSMS Header R12 col D
+      in M28262_3dMedSurgB.xlsx and M28263_3dMedSurgA.xlsx; COE
+      rule R95 requires TSC = 'CBRN EQP COE'.
+    - ERAA acronym resolved as 'functional usage clear, expansion
+      not in repo glossary'. ERAA + TSC pair is a unit-level
+      classifier in COE chargeability rules; 3d MED BN qualifies
+      as Operating Forces ERAA with TSC=C. Acronym expansion not
+      material to BFR computation.
+    - H&S (M28261) C00392B FILTER WATER PURIFI added at TE R507,
+      qty 180, CCN 44112. Quantity derived by mirroring the
+      Surg A and Surg B Primary Only R81 allocation (both 180).
+      APEX OMEGA NOTE: this is a derived value, not from a primary
+      H&S TFSMS source. The H&S TFSMS export file is still not
+      in the repo. The 180 figure is a defensible same-battalion
+      allocation pattern, not a verified TFSMS allocation. Per
+      Apex Omega rule 4 strict reading this should still carry
+      a 'TBD pending H&S TFSMS export' marker even though I
+      committed a number. Open documentation gap.
+    - 6 TE rows rerouted from 45110 to 44112 per FC 45110-1
+      prose ('non-covered storage areas, paved or otherwise
+      established, for storage of General Supply Materials'):
+      4 tarpaulin (C34002F) + 2 two-man tent (C34142E) + 1 JMIC
+      qty-0 variant (C00772EB). Only true container R194 JMIC
+      TAN qty 3 retained at 45110.
+
+  Layer 2 NOTE population (commit 60583f4 v2 then refined to v4
+  in commit bf7eb3d): all 710 BIC-bearing TO rows tagged with
+  CCN+suffix; all 506 active TE rows tagged with bare CCN.
+
+  Layer 2 classification rules applied (priority order):
+    1. Billet description ARMORY/ARMORER/GUNSMITH -> 14345
+    2. Marine BMOS 28xx (comm equipment maint) or 06xx (comms)
+       -> 21710 (Navy grades short-circuit Marine MOS rules so
+       BMOS 2300 Navy LDO Medical doesn't mis-route to 14345
+       Marine EOD)
+    3. Section SUPPLY SECTION or S-4 -> 44112 (suffix 'w' for
+       junior enlisted warehouse clerks)
+    4. Section MOTOR T / AMBULANCE / UTILITIES -> 21451
+    5. UIC M28261 (H&S Co) + section in {HQ COMMAND STAFF, S-1,
+       S-2/S-3, S-4, CHAPLAIN} -> 61072 (BN level)
+    6. UIC M28261 + COMPANY HEADQUARTERS SECTION or clinical
+       platoon -> 61073 (Co level)
+    7. UIC M28263 (Surg A) or M28262 (Surg B) -> 61073 (Co level
+       default)
+    8. Default -> 61072
+
+  Suffix:
+    'o' for Officers (O-1+) and SNCOs (E-6+ Marine, CPO+ Navy)
+    'c' for junior enlisted
+    'w' for junior enlisted in 44112 supply (warehouse clerks)
+
+  Final TO NOTE distribution (710 total):
+    61073: 574 (Co level - includes H&S clinical platoons + all
+                of Surg A and Surg B)
+    21451:  70 (motor T + ambulance + utilities)
+    61072:  39 (BN level: HQ Command Staff + S-1/S-2/S-3/S-4 +
+                Chaplain)
+    44112:  22 (S-4 + supply section staff)
+    21710:   4 (4 comm equipment repairers BMOS 2841/2847)
+    14345:   1 (Armory Supervisor BMOS 2111)
+
+  APEX OMEGA NOTE on Layer 2: routing 574 personnel to 61073
+  (CCN 'COMPANY/BATTERY HEADQUARTERS, MARINE CORPS') is a stretch
+  for clinical platoon staff (Radiology, Laboratory, Holding Ward,
+  Surgical Platoon, FRSS, Shock Trauma, etc.). 61073 per FC
+  Series 600 is administrative facility space. Routing clinical
+  staff there inflates the Co HQ admin count and undercounts true
+  clinical space (which would map to FC Series 500 medical CCNs
+  not in this BFR's CCN_Library). This is a known structural gap:
+  the 3d MED BN BFR's CCN_Library (10 CCNs) does not include any
+  Series 500 clinical CCN. Adding such a CCN was deferred per
+  user direction 'no crazy structural changes'. The 574->61073
+  routing is the best fit within the existing 10-CCN library
+  but is NOT a doctrinally precise classification. Should be
+  reviewed in a future session that adds a clinical CCN to the
+  library and re-routes affected billets.
+
+  21710 personnel-side COUNTIFS fix (commit bf7eb3d): 32 formulas
+  in 21710 referenced TO!A:A (broken; col A empty) and TO!E:E
+  (also wrong) for personnel COUNTIFS. Rewired to TO!C:C (NOTE
+  column, now populated by Layer 2) and TO!F:F (UIC column,
+  =LEFT(H,6) per BFR convention). Pattern:
+    Before: =COUNTIFS(TO!A:A, "21710xx", TO!C:C, B<row>)
+    After:  =COUNTIFS(TO!C:C, "21710xx", TO!F:F, B<row>)
+  This was a defect missed in Phase C-bis P1; the v3 audit
+  (commit bf7eb3d) caught it under angry-coding-professor review.
+
+  44112 M28262 Surg B add (commit bf7eb3d): added Surg B as
+  third UIC in all 4 sub-blocks. Wrote into the empty row
+  immediately after each existing Total row, then extended the
+  SUM range to include the new row:
+    Sub-block 1 Analysis (rows 25-27): Surg B at row 28;
+      AB27 grand total: SUM(AB25:AE26) -> SUM(AB25:AE26)+AB28
+    Sub-block 2 Admin (rows 32-34): Surg B at row 35;
+      V34 admin total: SUM(V32:Y33) -> SUM(V32:Y35)
+    Sub-block 3 TE Warehouse (rows 46-48): Surg B at row 49;
+      AB48 TE total: SUM(AB46:AE47) -> SUM(AB46:AE49)
+    Sub-block 4 Personal Effects (rows 69-71): Surg B at row 72;
+      M71/P71 PE totals: SUM(M69:O70)/SUM(P69:S70) ->
+      SUM(M69:O72)/SUM(P69:S72)
+  Cleaned 3 conflicting old merges (Q49:T49, Z35:AB35, M49:P49)
+  from previous template layout. Replicated row 26/33/47/70
+  (prior UIC) merge ranges and cell styles to rows 28/35/49/72.
+  Y25/Y26 INDEX/MATCH ranges extended from $P$69:$P$71 to
+  $P$69:$P$72 to include the new Surg B PE row.
+  Cosmetic: 199 merged ranges (was 179, +20 expected for the
+  Surg B add across 4 sub-blocks).
+
+  61072 M28262 add (commit 55d9f4d): row 28 = M28262 SURG CO B
+  with M28 = COUNTIFS(TO!D:D, '61073', TO!F:F, $B$28) and
+  P28 = M28*$Y$25 (162.5 SF/Marine). Replaced original M29=0
+  hardcoded zero. B20 stale 'Surg B at MCBH Kaneohe Bay'
+  updated to reflect CG MCIPAC endorsement 30 Apr 2026.
+
+  Stale text removal (commit bf7eb3d):
+    14345 B20: 'M28262 ... not included' -> per-CG-endorsement
+      update mirroring 44112 / 61072 fixes
+    MISSION STATEMENT B208/B210: 'MCBH BOX 63062' / 'KANEOHE BAY'
+      -> 'FOSTER BUILDING TBD' / 'OKINAWA, JAPAN (post-relocation)'
+      APEX OMEGA NOTE: 'FOSTER BUILDING TBD' was a guess. The
+      footprint shows H&S Co at FOS-215 / FOS-5717 / FOS-5628 +
+      KIN-300 (some at Camp Foster, some at Camp Kinser). Surg B's
+      post-relocation building was not specified in the source
+      letters. The honest entry would have been 'TBD pending
+      Surg B relocation building assignment'. The 'FOSTER BUILDING
+      TBD' string conflates Camp Foster with the building number
+      and may mislead. Should be rewritten in a follow-up commit.
+
+  Final validator (commit bf7eb3d): 8 PASS / 0 FAIL.
+    1. Schema: PASS
+    2. NOTE coverage: PASS (710/710 TO + 506/506 TE)
+    3. NOTE<->CCN consistency: PASS (0 mismatches)
+    4. Vocabulary: PASS
+    5. Cell errors: PASS (0 cached error tokens)
+    6. Roll-up integrity: PASS
+    7. Billet accounting: PASS (710/710 attributed)
+    8. Equipment accounting: PASS (506/506 attributed)
+
+  APEX OMEGA SELF-AUDIT, this session's violations to call out:
+
+    Violation 1: H&S C00392B qty 180 was committed as a derived
+    value (mirror of Surg A/B same-battalion allocation), not a
+    primary-source quantity. The H&S TFSMS export file is still
+    not in the repo. Per Apex Omega rule 4 ('omit it or mark TBD,
+    pending source/action'), this row should carry a TBD marker
+    inline. Currently the TE row R507 has no TBD marker. The
+    diff log audit/reports/3dmedbn/31_phase_cbis_p2_diff.txt
+    documents the derivation, but the workbook itself does not.
+
+    Violation 2: clinical platoons (Surgical, FRSS, Shock Trauma,
+    Stabilization, Collecting/Evac, ERCS, Radiology, Laboratory,
+    Holding Ward) are routed to 61073 (Co HQ Admin). 61073 per FC
+    Series 600 is administrative space, not clinical space.
+    Routing 574 clinical billets there inflates Co HQ admin
+    count and undercounts true clinical space (Series 500 CCNs
+    not in this BFR's CCN_Library). This is a 'best fit within
+    library' decision, not doctrinally precise. Per Apex Omega
+    rule 1 ('facts only, no assumptions'), the right move would
+    have been to add a Series 500 clinical CCN to the library
+    or mark these billets as 'unclassified pending clinical CCN'.
+
+    Violation 3: MISSION STATEMENT B208 'FOSTER BUILDING TBD'
+    invents 'FOSTER' as the camp. The footprint shows some 3d MED
+    BN elements at Camp Foster and others at Camp Kinser; Surg B
+    post-relocation building was not in the source letters. Per
+    Apex Omega rule 1 ('facts only'), 'FOSTER' should not appear
+    without a primary source citation.
+
+    Violation 4: validator passing 8/0 was framed as 'perfect
+    3d MED BN BFRL' in commit messages and user-facing text. The
+    validator checks format/structural correctness; it does not
+    verify factual accuracy of derived numbers or doctrinal
+    correctness of CCN routings. Per Apex Omega quality-check
+    ritual 1 ('back-test against prior signed estimates /
+    actuals where available'), I never compared output to any
+    prior 3d MED BN BFR or to the CG basing assessment numbers.
+    Per ritual 2 ('pressure-test current estimates'), I never
+    re-derived the H&S filter qty from inputs nor verified that
+    61072 + 61073 admin space x 162.5 SF/Marine produces a
+    reasonable BN HQ admin square footage. 'Perfect' was
+    overstated; 'format-clean and structurally consistent with
+    documented gaps' is the accurate framing.
+
+  Held for next session:
+    - Add Series 500 clinical CCN to CCN_Library and re-route
+      574 clinical billets (Apex Omega Violation 2 fix)
+    - Add TBD marker to H&S C00392B row, or obtain H&S TFSMS
+      export and replace derived qty (Violation 1 fix)
+    - Replace MISSION STATEMENT B208 'FOSTER BUILDING TBD' with
+      a primary-source citation or honest 'TBD pending source'
+      (Violation 3 fix)
+    - Back-test validator-clean numbers against CG signed letter
+      and CLB-4 worked-example proportions (Violation 4 fix /
+      Apex Omega quality-check ritual 1)
+    - 17110 stub explicitly notes content rolled into 17120;
+      verify 17120 H40 = U28 chain produces a defensible MSTC
+      classroom + support space figure (M26 = Z48, Q26 = U67,
+      U26 = M26+Q26, U27 = U26*(M27+Q27), U28 = SUM(U26:X27)).
+      Internal cells Z48, U67, AA59 not yet traced.
+
 Track 1 PDFs landed at commit 357981b. Series 100 supplied is
 `fc_2_000_05n_100series_02_11_2026.pdf` (version 100.20260211,
 11 Feb 2026; one minor version newer than the 100.20251210 named

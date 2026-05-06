@@ -1,0 +1,45 @@
+=== PERSONNEL: BFR TO vs TFSMS company files vs ASR vs CG signed letter ===
+
+Source                                H&S (M28261)   Surg A (M28263)   Surg B (M28262)    Total
+-----------------------------------------------------------------------------------------------
+BFR TO sheet                                   288               210               211      709
+TFSMS company exports                (no H&S file)               210               211      421
+ASR (Marine BICs only)                         250               179               180      609
+CG signed ltr (2 Feb 26 para 5a)                 -                 -                 -      711
+
+=== ANALYSIS ===
+BFR TO total: 709
+CG signed letter: 711
+Delta BFR TO vs CG letter: 2
+
+BFR TO H&S 288 vs ASR H&S 250 -> +38 (likely USN corpsmen + civilian + contractor not in Marine ASR)
+BFR TO Surg A 210 vs ASR Surg A 179 -> +31 (same explanation)
+BFR TO Surg B 211 vs ASR Surg B 180 -> +31 (same explanation)
+Total non-ASR delta: 100 -> consistent with US Navy + civilian + contractor count
+
+=== TFSMS company billets vs BFR TO (Surg A and Surg B only) ===
+TFSMS Surg A (M28263_3dMedSurgA.xlsx): 210 billets vs BFR TO Surg A: 210, delta 0
+TFSMS Surg B (M28262_3dMedSurgB.xlsx): 211 billets vs BFR TO Surg B: 211, delta 0
+
+
+=== EQUIPMENT (TE / TAMCN) ===
+
+Source                                     H&S (M28261)   Surg A (M28263)   Surg B (M28262)    Total
+----------------------------------------------------------------------------------------------------
+BFR TE rows (this workbook)                         197               159               147      503
+TFSMS company COE TAMCNs                  (no H&S file)                84                84      168
+
+=== TAMCN overlap analysis ===
+Surg A: BFR TE has 159 distinct TAMCNs; TFSMS COE has 84
+  Intersection: 81
+  Only in BFR TE: 78
+  Only in TFSMS COE: 3
+  Sample only-in-BFR: ['A00227G', 'A00977G', 'A01357G', 'A02077G', 'A02087G', 'A04107G', 'A12607GK', 'A12607GL']
+  Sample only-in-TFSMS: ['C00392B', 'C02222F', 'C02472Z']
+
+Surg B: BFR TE has 147 distinct TAMCNs; TFSMS COE has 84
+  Intersection: 81
+  Only in BFR TE: 66
+  Only in TFSMS COE: 3
+  Sample only-in-BFR: ['A00227G', 'A00977G', 'A01357G', 'A02077G', 'A02087G', 'A04107G', 'A12607GK', 'A12607GL']
+  Sample only-in-TFSMS: ['C00392B', 'C02222F', 'C02472Z']

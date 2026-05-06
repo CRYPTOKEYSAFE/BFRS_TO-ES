@@ -1,0 +1,77 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== TO sheet billet walk ===
+
+Total BIC rows in TO: 709
+
+By UIC prefix:
+  M28261: 288
+  M28262: 211
+  M28263: 210
+
+=== ASR comparison (3DMLG_ASR.xlsx, sheet 3D MED BN, row 6-207, FY26 BIC counts) ===
+  H&S Co (M28261):  TO has 288, ASR has 250  -> delta 38
+  Surg Co A (M28263): TO has 210, ASR has 179  -> delta 31
+  Surg Co B (M28262): TO has 211, ASR has 180  -> delta 31
+  TOTAL: TO has 709, ASR has 609 -> delta 100
+
+=== Sample BICs per UIC ===
+  M28261: ['M2826101022', 'M2826101023', 'M2826101531', 'M2826101024', 'M2826101025']
+  M28262: ['M2826200392', 'M2826200648', 'M2826200394', 'M2826200395', 'M2826200396']
+  M28263: ['M2826300392', 'M2826300648', 'M2826300394', 'M2826300649', 'M2826300396']
+
+=== TO billets by CCN tag (column D) ===
+  Total CCN-tagged billets: 0
+  Untagged billet rows (CCN col empty/non-numeric): 709
+
+=== Top 10 BMOS in TO (col K) ===
+  BMOS 2100: 55
+  BMOS 3531: 46
+  BMOS 2900: 42
+  BMOS 2300: 40
+  BMOS 1171: 8
+  BMOS 0000: 6
+  BMOS 1141: 6
+  BMOS 3043: 5
+  BMOS 0441: 4
+  BMOS 0402: 2
+
+
+=== RE-RUN: type-tolerant CCN tag matching ===
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+
+Total CCN-tagged billets: 145
+Untagged billet rows: 564
+
+Distribution by full CCN tag (with suffixes):
+  14345: 2
+  21451: 55
+  21710: 4
+  44112: 7
+  61072: 52
+  61073: 25
+
+Per-UIC CCN tag breakdown:
+  M28261:
+    CCN 14345: 2
+    CCN 21451: 37
+    CCN 21710: 4
+    CCN 44112: 6
+    CCN 61072: 52
+  M28263:
+    CCN 21451: 18
+    CCN 44112: 1
+    CCN 61073: 25
+
+First 10 untagged billet rows:
+  R11: BIC=M2826101027, info=COMPANY HEADQUARTERS SECTION
+  R16: BIC=M2826101030, info=S-1
+  R29: BIC=M2826101040, info=S-2/S-3
+  R45: BIC=M2826101056, info=S-4
+  R66: BIC=M2826100620, info=SUPPLY SECTION
+  R72: BIC=M2826100600, info=MOTOR TRANSPORT SECTION
+  R96: BIC=M2826100601, info=AMBULANCE SECTION
+  R106: BIC=M2826100602, info=UTILITIES SECTION
+  R112: BIC=M2826101064, info=CHAPLAIN SECTION
+  R115: BIC=M2826101067, info=PREVENTIVE MED SECTION

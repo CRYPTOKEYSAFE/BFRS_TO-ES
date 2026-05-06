@@ -1,0 +1,47 @@
+Phase C-bis P2: TBD resolutions and Phase C.2 refinement
+
+=== H&S C00392B row added ===
+
+  R507 UIC=M28261 TAMCN=C00392B qty=180 stat=IS CCN=44112
+  Source derivation: TFSMS Surg A and Surg B Primary Only R81
+  both show qty 180 IS for C00392B (consumable filter for parent
+  water purification B00077B). Same-battalion allocation pattern
+  applied to H&S Co. Quantity is mirrored, not derived from a
+  ratio, because the COE rule 'All Chargeable Structure' x qty 1
+  produces 180 in both Surg A (210 BIC) and Surg B (211 BIC),
+  indicating chargeable-structure count != BIC count and the
+  more reliable basis is the same-battalion allocation pattern.
+
+=== 6 TE rows rerouted from 45110 to 44112 ===
+
+  Per FC 45110-1: 45110 is non-covered storage for general supply
+  materials (containers, large equipment). Tarps and tents are
+  organic gear typically held in covered storage.
+
+  Rerouted rows:
+    R 95 UIC=M28261 TAMCN=C34002F | TARPAULIN-8405-00-NSH-00 | 45110 -> 44112
+    R124 UIC=M28261 TAMCN=C00772EB | COLLAPSIBLE,JMIC 3.-7517221-3 | 45110 -> 44112
+    R258 UIC=M28263 TAMCN=C34002F | TARPAULIN-8405-00-NSH-00 | 45110 -> 44112
+    R299 UIC=M28263 TAMCN=C34142E | TENT,COMBAT,TWO MAN-2628916 | 45110 -> 44112
+    R458 UIC=M28262 TAMCN=C34142E | TENT,COMBAT,TWO MAN-2628916 | 45110 -> 44112
+    R471 UIC=M28262 TAMCN=C34002F | TARPAULIN-8405-00-NSH-00 | 45110 -> 44112
+
+  Kept at 45110:
+    R194 UIC=M28261 TAMCN=C00772EA | COLLAPSIBLE JMIC 3.-TAN | qty 3 (true container)
+
+=== Resolved TBDs ===
+
+  ERAA acronym: TFSMS COE rules use ERAA as a unit-level
+  classifier paired with Type Support Code (TSC). Acronym
+  expansion not in repo PDFs (FC 2-000-05N) or TFSMS exports.
+  Functional meaning: 3d MED BN qualifies as Operating Forces
+  ERAA with TSC='C' (per TFSMS Header R12 D in M28262 and
+  M28263 exports). The COE chargeability rules using ERAA +
+  TSC are interpretable for 3d MED BN; expansion is glossary-
+  level information not material to BFR computation.
+
+  C02472Z M50 mask: NOT chargeable to 3d MED BN. COE rule R95
+  requires Type Support Code 'CBRN EQP COE'; 3d MED BN's TSC
+  is 'C' (Operating Forces). The mask is correctly absent
+  from the BFR TE. Phase C.4 'TBD' marker on this row is
+  resolved to 'correctly absent'.

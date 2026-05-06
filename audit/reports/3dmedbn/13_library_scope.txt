@@ -1,0 +1,86 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== Distinct CCNs in TO sheet column D ===
+  Total distinct CCNs in TO: 6
+  CCNs: ['14345', '21451', '21710', '44112', '61072', '61073']
+
+=== Distinct CCNs in TE sheet column C ===
+  Total distinct CCNs in TE: 0
+  CCNs: []
+
+=== Union (all CCNs used in this BFR) ===
+  6 CCNs: ['14345', '21451', '21710', '44112', '61072', '61073']
+
+=== Distinct TAMCNs in TE column G ===
+  Total distinct TAMCNs in TE: 3
+  Sample: ['M28261', 'M28262', 'M28263']
+
+
+=== RE-RUN: TE sheet column-by-column scan ===
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+  R1:
+    col2 (B1): ROW
+    col3 (C1): NOTE
+    col4 (D1): CCN
+    col5 (E1): CCN Description
+    col6 (F1): CCN 21451 Equipment Type (if applicable)
+    col7 (G1): UIC
+    col8 (H1): TAMCN
+Short
+    col9 (I1): TAMCN
+    col10 (J1): Nomenclature (Name - Model)
+    col11 (K1): TAM Stat
+  R2:
+    col2 (B2): 3
+    col4 (D2): 14345
+    col5 (E2): ARMORY
+    col7 (G2): M28261
+    col8 (H2): =LEFT(I2,5)
+    col9 (I2): E00302M
+    col10 (J2): PISTOL,9 MILLIMETER-M18
+    col11 (K2): IS
+  R3:
+    col2 (B3): 4
+    col4 (D3): 44112
+    col5 (E3): STORAGE OF AIR OR GROUND ORGANIC UNITS F
+    col7 (G3): M28261
+    col8 (H3): =LEFT(I3,5)
+    col9 (I3): K00012B
+    col10 (J3): CHARGER,BATTERY-PCWV+
+    col11 (K3): IS
+  R4:
+    col2 (B4): 5
+    col4 (D4): 21710
+    col5 (E4): ELECTRONICS / COMMUNICATIONS MAINTENANCE
+    col7 (G4): M28261
+    col8 (H4): =LEFT(I4,5)
+    col9 (I4): A20427G
+    col10 (J4): RADIO SET-AN/PRC-150 (C)
+    col11 (K4): DP
+  R5:
+    col2 (B5): 11
+    col4 (D5): 44112
+    col5 (E5): STORAGE OF AIR OR GROUND ORGANIC UNITS F
+    col7 (G5): M28261
+    col8 (H5): =LEFT(I5,5)
+    col9 (I5): C30202E
+    col10 (J5): INSERTS,ENHANCED SM- CO/PD 04-10
+    col11 (K5): IS
+
+  Distinct CCNs in TE col2 (NOTE): 0: []
+  Distinct TAMCNs (col6/7): 0
+  By commodity prefix: {}
+
+=== FINAL: CCN col4(D), TAMCN col9(I) ===
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+  TE distinct CCNs in col D: 5: ['14345', '21451', '21710', '21820', '44112']
+  TE distinct TAMCNs in col I: 216
+  By commodity prefix: {'D': 17, 'C': 80, 'E': 40, 'K': 18, 'B': 22, 'A': 27, 'H': 8, 'N': 1, 'M': 2, 'J': 1}
+  Sample: ['A00227G', 'A00732B', 'A00977G', 'A01187G', 'A01267G', 'A01357G', 'A01987G', 'A02077G', 'A02087G', 'A02987G', 'A03007G', 'A03317G', 'A03317GA', 'A04107G', 'A12607GK', 'A12607GL', 'A20427G', 'A70597G', 'A75047G', 'A75057H']
+
+  TO distinct CCNs in col D: 6: ['14345', '21451', '21710', '44112', '61072', '61073']
+
+  TOTAL CCN library size needed: 7 entries
+  TOTAL TAMCN library size needed: 216 entries

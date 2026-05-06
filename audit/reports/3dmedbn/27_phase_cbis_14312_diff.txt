@@ -1,0 +1,39 @@
+Phase C-bis P1 on sheet 14312 OPERATIONAL VEHICLE LAYDOWN AREA
+
+FC source: fc_2_000_05n_100series_02_11_2026.pdf p.189, current 2026-02-11
+
+SUMIFS criterion fix applied to 477 formulas.
+
+Pattern (regex):
+  Before: =SUMIFS(TE!$O:$O,TE!$D:$D,$C$<UIC>,TE!$H:$H,C<row>,TE!$A:$A,$C$5)
+  After:  =SUMIFS(TE!$O:$O,TE!$G:$G,$C$<UIC>,TE!$I:$I,C<row>,TE!$D:$D,$C$5)
+
+Three column corrections per formula:
+  1. TE!$D:$D vs UIC reference -> TE!$G:$G (col G holds UIC; col D holds CCN)
+  2. TE!$H:$H vs full TAMCN constant -> TE!$I:$I (col H is 5-char short; col I is full)
+  3. TE!$A:$A vs CCN -> TE!$D:$D (col A is empty; col D holds CCN)
+
+Sample fixes:
+
+  W43:
+    Before: =SUMIFS(TE!$O:$O,TE!$D:$D,$C$40,TE!$H:$H,C43,TE!$A:$A,$C$5)
+    After:  =SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C43,TE!$D:$D,$C$5)
+
+  W44:
+    Before: =SUMIFS(TE!$O:$O,TE!$D:$D,$C$40,TE!$H:$H,C44,TE!$A:$A,$C$5)
+    After:  =SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C44,TE!$D:$D,$C$5)
+
+  W45:
+    Before: =SUMIFS(TE!$O:$O,TE!$D:$D,$C$40,TE!$H:$H,C45,TE!$A:$A,$C$5)
+    After:  =SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C45,TE!$D:$D,$C$5)
+
+Notes:
+- Block 4 (rows 592-740) references C592=B24 which is None
+  (orphan from 2nd Med Bn template). Its SUMIFS will compute 0
+  because UIC criterion never matches. Left in place to preserve
+  cosmetic; deletion would risk merged-cell damage.
+- Inherited TAMCN list (~120 TAMCNs duplicated per UIC) was not
+  trimmed. TAMCNs not in 3d MED BN's TE-tagged-14312 set will
+  produce 0 from SUMIFS. The TOTAL REQUIREMENT cell H36 will
+  reflect only 3d MED BN's actual 14312 quantities (8 TE rows
+  per Phase C.1).

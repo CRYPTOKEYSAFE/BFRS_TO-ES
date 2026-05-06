@@ -1,0 +1,40 @@
+Phase C.4, Bucket D: 3 missing TFSMS COE TAMCNs
+
+Per user ratification 2026-05-05:
+
+=== ADDED ===
+
+C00392B FILTER, WATER PURIFICATION-41207
+  Source: TFSMS Surg A and Surg B exports, Primary Only sheet R81
+    M28263_3dMedSurgA.xlsx: qty 180 (IS)
+    M28262_3dMedSurgB.xlsx: qty 180 (IS)
+  COE rule: 'All ERAAs Excludes DMFA, WRMR, MCPPN, MPF' x 'All Chargeable Structure' (M28262/M28263 COE R23)
+  CCN tag: 44112 STORAGE OF AIR OR GROUND ORGANIC UNITS, USMC
+  Rationale: spare consumable for parent unit B00077B WATER PURIFICATION which Phase C.1 retagged 44112
+  TE rows added:
+    R505 UIC=M28263 (Surg A) qty=180
+    R506 UIC=M28262 (Surg B) qty=180
+  Held TBD: H&S (M28261) row pending H&S TFSMS file (not in repo per Phase B.5 reconciliation report)
+
+=== DOCUMENTED ABSENT (no edit) ===
+
+C02222F HELMET, GROUND TROOP HC ECH
+  Status: correctly absent from BFR TE
+  Source: TFSMS Surg A/B Primary Only R111 qty 0 (IS)
+  COE rules:
+    Row 92: 'All Artillery, Missile, & Rocket Units (no Hqtrs Btry, nor Reg)'
+    Row 93: 'All ERAAs Excludes DMFA, WRMR, MCPPN, MPF', 'Per TAMCN E00272G - SBNVG'
+    Row 94: 'MACS ATC UNIT', 'ATC MARINE MOBILE TEAM'
+  3d MED BN matches none of the COE chargeability rules. No row added.
+
+=== HELD TBD ===
+
+C02472Z JOINT SERVICE GENERAL PURPOSE MASK, FIELD (M50)
+  Status: TBD pending verification of 3d MED BN COE Type Support Code
+  Source: TFSMS Surg A/B Primary Only R112 qty 180 (PL planned)
+  COE rules (multiple, requires TSC verification):
+    Row 95: 'All ERAAs Type Support Code (CBRN EQP COE)'
+    Row 96: 'MARFOR Headquarters', 'All Chargeable Structure Active'
+    Row 100: 'MCIPAC CBRN IPE COE', 'All Chargeable Structure'
+  ERAA acronym not expanded in TFSMS sheet. Cannot determine 3d MED BN qualification without authoritative source.
+  Apex Omega rule 4: TBD pending TSC source identification. No row added.

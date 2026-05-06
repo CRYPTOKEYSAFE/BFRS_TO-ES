@@ -1,0 +1,57 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+=== Searching every sheet for 'M28275', 'SURG CO C', 'SURGICAL CO C' ===
+
+
+[MISSION STATEMENT]  (4 hits)
+  B106  (SURG C)  : SURG CO A 3D MED BN 3D MLG
+  A130  (SURG C)  : Signed as of FEB 3, 2021
+
+UNIT IDENTIFICATION	       
+CODE...SEE ENCL (1)
+
+SURGI
+  B207  (SURG C)  : SURG CO B 3D MED BN 3D MLG
+  A231  (SURG C)  : Signed as of FEB 3, 2021
+
+UNIT IDENTIFICATION	       
+CODE...SEE ENCL (1)
+
+SURGI
+
+[14312]  (5 hits)
+  B21  (M28271)  : M28271
+  B22  (M28272)  : M28272
+  B23  (M28273)  : M28273
+  B24  (M28275)  : M28275
+  E24  (SURGICAL CO C)  : SURGICAL CO C
+
+[21451]  (4 hits)
+  B28  (M28271)  : M28271
+  B29  (M28272)  : M28272
+  B30  (M28273)  : M28273
+  B31  (M28275)  : M28275
+
+[21710]  (5 hits)
+  B27  (M28271)  : M28271
+  B28  (M28272)  : M28272
+  B29  (M28273)  : M28273
+  B30  (M28275)  : M28275
+  E30  (SURGICAL CO C)  : SURGICAL CO C
+
+[45110]  (5 hits)
+  B36  (M28271)  : M28271
+  B37  (M28272)  : M28272
+  B38  (M28273)  : M28273
+  B39  (M28275)  : M28275
+  E39  (SURGICAL CO C)  : SURGICAL CO C
+
+[61072]  (1 hits)
+  E27  (SURG C)  : SURG CO A
+
+=== TO sheet: count rows by UIC prefix (column-by-column scan first 6 rows) ===
+  R3: 2:LINE | 3:NOTE | 4:CCN | 5:CCN Decription | 6:UIC | 7:Rec CD | 8:BIC | 9:Billet Descrip | 10:Alpha Grade | 11:BMOS
+  R4: 2:1 | 6:=LEFT(H4,6) | 7:C | 8:M2826101021 | 9:HEADQUARTERS C
+  R5: 2:=B4+1 | 4:61072 | 5:=VLOOKUP(D5,[5 | 6:=LEFT(H5,6) | 7:E | 8:M2826101022 | 9:COMMANDING OFF | 10:CAPT | 11:2300
+  R6: 2:=B5+1 | 4:61072 | 5:=VLOOKUP(D6,[5 | 6:=LEFT(H6,6) | 7:E | 8:M2826101023 | 9:EXECUTIVE OFFI | 10:CDR | 11:2300
+  R7: 2:=B6+1 | 3:44112o | 4:44112 | 5:=VLOOKUP(D7,[5 | 6:=LEFT(H7,6) | 7:E | 8:M2826101531 | 9:SUPPLY OFFICER | 10:1STLT | 11:3002

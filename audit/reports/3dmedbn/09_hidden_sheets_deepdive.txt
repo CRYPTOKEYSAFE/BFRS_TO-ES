@@ -1,0 +1,171 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+
+======================================================================
+=== HIDDEN SHEET '14312' ===
+======================================================================
+R  1: A1=BASIC FACILITY REQUIREMENTS WO
+R  3: A3=Installation: | F3=MCB Camp Butler
+R  4: A4=Installation UIC: | F4=M67400
+R  5: A5=CCN: | C5=14312
+R  6: A6=LOADING ANALYSIS / JUSTIFICATI
+R  7: A7=Description:
+R  8: B8=Mission: Provide health servic
+R 14: A14=Planning Criteria:
+R 15: B15=UFC 2-000-05N 
+
+
+R 16: A16=Loading:
+R 17: B17=FY2025 Table of Organization
+R 18: B18=FY2025 Table of Equipment
+R 19: A19=Analysis:
+R 20: B20=Subordinate Unit
+R 21: B21=M28271 | E21=H&S CO
+R 22: B22=M28272 | E22=SURGICAL CO A
+R 23: B23=M28273 | E23=SURGICAL CO B
+R 24: B24=M28275 | E24=SURGICAL CO C
+R 25: B25=Totals =
+R 28: B28=SEE THE ATTACHED PAGES FOR CAL
+R 30: B30=1All vehicles are assigned a t
+R 36: A36=TOTAL REQUIREMENT: | H36==M25
+R 37: A37=CCN: | C37==$C$5
+R 39: C39=Operational Vehicle Laydown Ar
+R 40: C40==B21 | F40==E21
+R 41: C41=TAMCN | F41=Description
+R 43: C43=A00477B | F43==IFERROR(VLOOKUP(C43,TE!$H:$Y,
+R 44: C44=A00557G | F44==IFERROR(VLOOKUP(C44,TE!$H:$Y,
+R 45: C45=A00617G | F45==IFERROR(VLOOKUP(C45,TE!$H:$Y,
+R 46: C46=A02427G | F46==IFERROR(VLOOKUP(C46,TE!$H:$Y,
+R 47: C47=A03877G | F47==IFERROR(VLOOKUP(C47,TE!$H:$Y,
+R 48: C48=A03887G | F48==IFERROR(VLOOKUP(C48,TE!$H:$Y,
+R 49: C49=A04037G | F49==IFERROR(VLOOKUP(C49,TE!$H:$Y,
+R 50: C50=A04577G | F50==IFERROR(VLOOKUP(C50,TE!$H:$Y,
+R 51: C51=A04587G | F51==IFERROR(VLOOKUP(C51,TE!$H:$Y,
+R 52: C52=A19577G | F52==IFERROR(VLOOKUP(C52,TE!$H:$Y,
+R 53: C53=A21797G | F53==IFERROR(VLOOKUP(C53,TE!$H:$Y,
+R 54: C54=A23352B | F54==IFERROR(VLOOKUP(C54,TE!$H:$Y,
+R 55: C55=A23362B | F55==IFERROR(VLOOKUP(C55,TE!$H:$Y,
+R 56: C56=A23372B | F56==IFERROR(VLOOKUP(C56,TE!$H:$Y,
+R 57: C57=A23382B | F57==IFERROR(VLOOKUP(C57,TE!$H:$Y,
+R 58: C58=A32327G | F58==IFERROR(VLOOKUP(C58,TE!$H:$Y,
+R 59: C59=B00037B | F59==IFERROR(VLOOKUP(C59,TE!$H:$Y,
+
+======================================================================
+=== HIDDEN SHEET '21451' ===
+======================================================================
+R  1: A1=BASIC FACILITY REQUIREMENTS WO
+R  3: A3=Installation: | F3=MCB Camp Lejeune							
+R  4: A4=Installation UIC: | F4=M67001
+R  5: A5=CCN: | C5=21451
+R  6: A6=LOADING ANALYSIS / JUSTIFICATI
+R  7: A7=Description:
+R  8: B8=Mission: Provide health servic
+R 14: A14=Planning Criteria:
+R 15: B15=UFC 2-000-05N - modified CCN 2
+R 16: B16=NAVFAC Infrastructure Reset BF
+R 18: A18=Loading:
+R 19: B19=FY2025 Table of Organization &
+R 21: A21=Analysis:
+R 22: B22=Total Space Requirement1
+R 23: B23=Maint Bays | F23=Admin Sppt2 | J23=Direct Sppt2
+R 24: B24==Q32 | F24==414*M33^0.854 | J24==IF(M33<=14,347*M33+1129,22*M3
+R 26: B26=Maintenance Bays 
+R 27: B27=Subordinate Unit
+R 28: B28=M28271 | E28=H&S CO
+R 29: B29=M28272 | E29=SURGICAL COMPANY A
+R 30: B30=M28273 | E30=SURGICAL COMPANY B
+R 31: B31=M28275 | E31=SURGICAL COMPANY C
+R 35: B35=1 Maintenance Bay calculations
+R 43: D43=REFER TO THE FOLLOWING PAGES F
+R 44: A44=TOTAL REQUIREMENT: | H44==N24
+R 45: A45=CCN: | C45==$C$5
+R 47: B47=Maintenance Bay Calculations -
+R 48: B48==B28 | E48==INDEX($E$28:$E$32,MATCH(B48,$
+R 49: B49=TAMCN | E49=Description
+R 51: B51=A00557G | E51==IFERROR(VLOOKUP(B51,TE!$H$1:$
+R 52: B52=A00617G | E52==IFERROR(VLOOKUP(B52,TE!$H$1:$
+R 53: B53=A00677G | E53==IFERROR(VLOOKUP(B53,TE!$H$1:$
+R 54: B54=A01537G | E54==IFERROR(VLOOKUP(B54,TE!$H$1:$
+R 55: B55=A02427G | E55==IFERROR(VLOOKUP(B55,TE!$H$1:$
+R 56: B56=A02547G | E56==IFERROR(VLOOKUP(B56,TE!$H$1:$
+R 57: B57=A03877G | E57==IFERROR(VLOOKUP(B57,TE!$H$1:$
+R 58: B58=A03887G | E58==IFERROR(VLOOKUP(B58,TE!$H$1:$
+R 59: B59=A04037G | E59==IFERROR(VLOOKUP(B59,TE!$H$1:$
+
+======================================================================
+=== HIDDEN SHEET '21710' ===
+======================================================================
+R  1: A1=BASIC FACILITY REQUIREMENTS WO
+R  3: A3=Installation: | F3=MCB Camp Lejeune
+R  4: A4=Installation UIC: | F4=M67001
+R  5: A5=CCN: | C5=21710
+R  6: A6=LOADING ANALYSIS / JUSTIFICATI
+R  7: A7=Description:
+R  8: B8=Mission: Provide health servic
+R 18: A18=Planning Criteria:
+R 19: B19=UFC 2-000-05N
+
+
+R 20: B20=NAVFAC Infrastructure Reset BF
+R 21: A21=Loading:
+R 22: B22=FY2025 Tables of Organization 
+R 24: A24=Analysis:
+R 25: B25=Total Space Requirement (from 
+R 26: B26=Subordinate Unit
+R 27: B27=M28271 | E27=H&S CO
+R 28: B28=M28272 | E28=SURGICAL CO A
+R 29: B29=M28273 | E29=SURGICAL CO B
+R 30: B30=M28275 | E30=SURGICAL CO C
+R 34: B34=Admin Space see attached TO fo
+R 35: B35=Subordinate Unit
+R 37: B37==B27 | E37==E27
+R 38: B38==B28 | E38==E28
+R 39: B39==B29 | E39==E29
+R 40: B40==B30 | E40==E30
+R 43: B43=1 Shown as 21710o (o = office)
+R 47: A47=TOTAL REQUIREMENT: | H47==AB27
+R 48: A48=CCN: | C48==C5
+R 50: B50=Storage Space (4-Step Method o
+R 51: B51=Subordinate Unit
+R 53: B53==B27 | E53==E27
+R 54: B54==B28 | E54==E28
+R 55: B55==B29 | E55==E29
+R 56: B56==B30 | E56==E30
+R 59: B59=Warehouse Space for Non-TE Ite
+
+======================================================================
+=== HIDDEN SHEET '45110' ===
+======================================================================
+R  1: A1=BASIC FACILITY REQUIREMENTS WO
+R  3: A3=Installation: | F3=MCB Camp Lejeune
+R  4: A4=Installation UIC: | F4=M67001
+R  5: A5=CCN: | C5=45110
+R  6: A6=LOADING ANALYSIS / JUSTIFICATI
+R  8: A8=Description:
+R  9: B9=Mission: Provide health servic
+R 16: A16=Planning Criteria:
+R 17: B17=UFC 2-000-05N
+
+
+R 18: B18=NAVFAC Infrastructure Reset BF
+R 19: A19=Loading:
+R 20: B20=FY2025 Table of Organization &
+R 22: A22=Analysis:
+R 23: B23=Total Space Requirement
+R 24: B24=Shipping Containers | G24=Additional Storage
+R 25: B25==R32*0.11111 | G25==AA46*0.11111
+R 27: B27=Summary of Shipping Container 
+R 28: B28=ITEM | F28=Total Stacks1 | J28=NSF per Stack
+R 29: B29=PALCON | F29==M42 | J29=13.34
+R 30: B30=QUADCON | F30==Q42 | J30=38
+R 31: B31=JMIC | F31==U42 | J31=16
+R 33: B33=Calculation of Outdoor Shippin
+R 34: B34=Subordinate Unit
+R 36: B36=M28271 | E36=H&S CO
+R 37: B37=M28272 | E37=SURGICAL CO A
+R 38: B38=M28273 | E38=SURGICAL CO B
+R 39: B39=M28275 | E39=SURGICAL CO C
+R 44: B44=Additional Storage Requirement
+R 45: B45=Function
+R 48: B48=1 All shipping containers can 
+R 50: A50=TOTAL REQUIREMENT: | H50==M25

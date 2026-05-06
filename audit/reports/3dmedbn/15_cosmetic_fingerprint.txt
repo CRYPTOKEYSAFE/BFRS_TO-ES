@@ -1,0 +1,1001 @@
+/usr/local/lib/python3.11/dist-packages/openpyxl/reader/drawings.py:33: UserWarning: DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.
+  warn("DrawingML support is incomplete and limited to charts and images only. Shapes and drawings will be lost.")
+
+========================================================================
+=== SHEET 'UNIT_ROLLUP' (state=visible) ===
+  tab_color: FFFF0000
+  dim: A1:AM40, freeze: None, print_area: 'UNIT_ROLLUP'!$A$1:$AF$40
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    AD: 3.140625
+    AE: 2.85546875
+    AG: 2.85546875
+    AH: 9.140625
+    AN: 2.85546875
+  merged_cells: 39 total
+    E10:G10
+    E13:G13
+    W10:AA10
+    E9:G9
+    W15:AA15
+    H11:V11
+    AE3:AF3
+    A40:G40
+    E11:G11
+    R15:V15
+    F4:L4
+    H13:V13
+    AB15:AE15
+    H12:V12
+    A3:E3
+    ... and 24 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS UN'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=thin T=thin B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=thin R=thin T=None B=None
+        align: h=center v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=None v=center wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=None v=center wrap=None
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=None v=center wrap=None
+    B19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A36: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=None v=center wrap=None
+    H40: value='=W15'
+        font=Calibri size=10.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=10.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=thin R=None T=None B=None
+        align: h=center v=center wrap=None
+
+========================================================================
+=== SHEET '14312' (state=hidden) ===
+  tab_color: FFFF0000
+  dim: A1:AF772, freeze: None, print_area: '14312'!$A$1:$AF$772
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    C: 2.85546875
+    D: 2.85546875
+    F: 2.85546875
+    G: 2.85546875
+  merged_cells: 3220 total
+    AC652:AE652
+    Y553:Z553
+    AA582:AB582
+    U420:V420
+    U718:V718
+    U87:V88
+    AA283:AB283
+    AA161:AB161
+    AA459:AB459
+    U291:V291
+    AC654:AE654
+    AA617:AB617
+    AC436:AE436
+    U720:V720
+    W65:X65
+    ... and 3205 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='14312'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A16: value='Loading:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    A19: value='Analysis:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    B19: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    A36: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+    H40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=thin
+        align: h=None v=None wrap=None
+    A40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+
+========================================================================
+=== SHEET '14345' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:AF1189, freeze: None, print_area: '14345'!$A$1:$AF$806
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    AD: 3.28515625
+    AE: 3.7109375
+    AF: 3.42578125
+    AG: 9.140625
+    T: 3.140625
+    U: 2.85546875
+    X: 2.7109375
+    XFD: 0.42578125
+    Y: 2.42578125
+    Z: 2.85546875
+  merged_cells: 7620 total
+    S662:T662
+    C770:D770
+    S226:T226
+    A855:C855
+    U291:V291
+    D346:L346
+    S831:T831
+    S962:T962
+    W1091:X1091
+    M358:N358
+    S657:T657
+    D652:L652
+    Q624:R624
+    D646:L646
+    U292:V292
+    ... and 7605 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='14345'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B19: value='FY2029 Table of Organization &'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A36: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    H40: value='=P25+K25'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=center v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+
+========================================================================
+=== SHEET '17110' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:AF40, freeze: None, print_area: 
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+  merged_cells: 19 total
+    M5:Q5
+    AE3:AF3
+    A40:G40
+    O40:Q40
+    A6:AF6
+    A4:F4
+    M40:N40
+    A3:E3
+    C5:L5
+    A11:AF28
+    H40:K40
+    R4:X4
+    A5:B5
+    R5:AF5
+    Y4:AD4
+    ... and 4 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='17110'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    B19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A36: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=True
+    H40: value='=P25+K25'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=center v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+
+========================================================================
+=== SHEET '17120' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:BC88, freeze: None, print_area: '17120'!$A$1:$AF$88
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    AG: 2.85546875
+    AI: 9.140625
+  merged_cells: 105 total
+    U60:Y60
+    Z48:AC48
+    Q60:T66
+    U59:Y59
+    M88:N88
+    U61:Y61
+    A41:B41
+    B20:AF20
+    U64:Y65
+    U24:X25
+    B45:G45
+    H59:K59
+    L60:P60
+    Y4:AD4
+    M41:Q41
+    ... and 90 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='17120'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A16: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A19: value='Loading:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    B19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A36: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    H40: value='=U28'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=right v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+
+========================================================================
+=== SHEET '21451' (state=hidden) ===
+  tab_color: FFFF0000
+  dim: A1:AF568, freeze: None, print_area: 
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+  merged_cells: 1950 total
+    AB99:AD99
+    T479:W479
+    T60:W60
+    C526:L526
+    N194:S194
+    T52:W52
+    X187:AA187
+    X301:AA301
+    T360:W360
+    X487:AA487
+    AB430:AD430
+    X182:AA182
+    AB125:AD125
+    T505:W505
+    N463:S463
+    ... and 1935 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=True
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='21451'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B19: value='FY2025 Table of Organization &'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A36: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    H40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A40: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+
+========================================================================
+=== SHEET '21710' (state=hidden) ===
+  tab_color: FFFF0000
+  dim: A1:AF96, freeze: None, print_area: '21710'!$A$1:$AF$96
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    M: 4.5703125
+    P: 2.85546875
+  merged_cells: 246 total
+    L82:M82
+    X26:AA26
+    V73:W73
+    P51:S52
+    AB57:AE57
+    P36:R36
+    L56:O56
+    B19:AF19
+    M40:O40
+    Q62:R62
+    S62:T62
+    B53:D53
+    P69:Q69
+    R69:S69
+    AA67:AD67
+    ... and 231 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='21710'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    B19: value='UFC 2-000-05N\n\n'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A36: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    H40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=thin
+        align: h=None v=None wrap=None
+    A40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+
+========================================================================
+=== SHEET '44112' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:AH88, freeze: None, print_area: '44112'!$A$1:$AF$86
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    P: 4.0
+    V: 2.85546875
+  merged_cells: 179 total
+    V32:Y32
+    B19:AF19
+    E33:L33
+    P23:U23
+    Y26:AA26
+    B36:AE39
+    Q55:R55
+    S24:U24
+    A41:B41
+    B20:AF20
+    M54:N54
+    O54:P54
+    N61:O61
+    B30:L31
+    E69:L69
+    ... and 164 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='44112'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B19: value='M28262 Surgical Company B is l'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A36: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    H40: value='=AB27'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=right v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=None wrap=None
+
+========================================================================
+=== SHEET '45110' (state=hidden) ===
+  tab_color: FFFF0000
+  dim: A1:AI50, freeze: None, print_area: 
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    T: 4.42578125
+  merged_cells: 117 total
+    B18:AE18
+    U39:X39
+    B25:F25
+    U38:X38
+    B37:D37
+    AA46:AC46
+    N46:O46
+    B20:AF20
+    U40:X40
+    F29:I29
+    L45:M45
+    B31:E31
+    T46:V46
+    J28:M28
+    G24:K24
+    ... and 102 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='45110'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A16: value='Planning Criteria:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A19: value='Loading:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    B19: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=center wrap=None
+    A36: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    H40: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=thin
+        align: h=None v=None wrap=None
+    A40: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+
+========================================================================
+=== SHEET '61072' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:XFD40, freeze: None, print_area: 
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    AF: 4.28515625
+    AG: 9.140625
+  merged_cells: 43 total
+    B19:AF19
+    A8:A14
+    P30:S30
+    M25:O25
+    B29:D29
+    M5:Q5
+    M30:O30
+    B8:XFD14
+    AE3:AF3
+    A40:G40
+    M27:O27
+    O40:Q40
+    E29:L29
+    B20:AF20
+    P26:S26
+    ... and 28 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=True
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='61072'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=1
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B19: value='FY2029 Table of Organization'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=top wrap=True
+    A36: value='None'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    H40: value='=P30'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=right v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+
+========================================================================
+=== SHEET '61073' (state=visible) ===
+  tab_color: FF00B050
+  dim: A1:AF40, freeze: None, print_area: 
+  page_setup: orientation=portrait, paperSize=None, fitToWidth=None, fitToHeight=None
+  page_margins: L=0.75, R=0.5, T=0.75, B=0.5
+  header_footer: oddHeader=STANDARD UNIT BFR - MEDICAL BATTALION, oddFooter=&A
+  column widths:
+    A: 2.85546875
+    AG: 9.140625
+  merged_cells: 17 total
+    C5:L5
+    AE3:AF3
+    A40:G40
+    H40:K40
+    O40:Q40
+    A1:AF2
+    R4:X4
+    A9:AF26
+    A5:B5
+    A3:E3
+    R5:AF5
+    Y4:AD4
+    M5:Q5
+    M3:Q3
+    M40:N40
+    ... and 2 more
+  cell style samples:
+    A1: value='BASIC FACILITY REQUIREMENTS WO'
+        font=Calibri size=16.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=center v=center wrap=None
+    A3: value='Installation:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A5: value='CCN:'
+        font=Calibri size=11.0 bold=True italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    B5: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    C5: value='61073'
+        font=Calibri size=11.0 bold=False italic=False color=0
+        fill=solid fg=1
+        border L=None R=None T=None B=None
+        align: h=left v=center wrap=None
+    A14: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A16: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    B19: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    A36: value='None'
+        font=Calibri size=10.0 bold=False italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=None B=None
+        align: h=None v=None wrap=None
+    H40: value='0'
+        font=Calibri size=12.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=right v=None wrap=None
+    A40: value='TOTAL REQUIREMENT:'
+        font=Calibri size=11.0 bold=True italic=False color=None
+        fill=none fg=00000000
+        border L=None R=None T=thin B=None
+        align: h=left v=None wrap=None
+
+
+=== WORKBOOK-LEVEL ===
+  active_sheet_idx: 61072
+  sheet count: 15

@@ -1,0 +1,124 @@
+External links purge, 3d MED BN BFR
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+Backup before purge: M67400-FO-M13020 3D MED BN-22NOV2024.preExtLinkPurge-backup.xlsx
+
+================================================================
+What was found
+================================================================
+
+The xlsx archive carried 5 orphaned external workbook links inside
+xl/externalLinks/ even after the prior session's "External link
+refs in formulas: 0" claim. The formulas no longer reference them,
+but the link parts remained inside the archive, causing Excel to
+display the file-open advisory ("This workbook contains links to
+other data sources ...") and creating phantom dependencies that
+can interfere with calculation.
+
+================================================================
+The 5 external links, verbatim from xl/externalLinks/_rels/
+================================================================
+
+externalLink1 -> Master Asset (2).xls
+  file:///\\naeanrfkfs43\BULK_Storage_4\Users\p0047813\AppData\
+  Local\Microsoft\Windows\Temporary Internet Files\Content.Outlook\
+  L7YX691S\Master Asset (2).xls
+  Sheets: assetloc, Macro1, Sheet1, TE
+  Verdict: legacy NAVFAC asset library, Camp Lejeune file path,
+  not relevant to 3d MED BN.
+
+externalLink2 -> 19MASS BFR (somebody's desktop)
+  file:///C:\Users\renel.douyon\Desktop\
+  Copy of 19Marine Air Support Squadron_advocate review (002).xlsx
+  Sheets: MISSION_STATEMENT, TO, TE, UNIT_ROLLUP, 11665, 14312,
+  14985, 14345, 17120, 17120 (2), 21451, 21710, 44112, 61072, 61073
+  Verdict: 19MASS standalone BFR copy, drag-and-drop residue.
+
+externalLink3 -> 1ST MED BN M11020_BFR UNIT EDIT_04MAY2018.xlsx
+  file:///\\mcuspndlfs44\CPEN_GF\cpen_pwd\IR TEAM OASIS\BFR\
+  1stMED BN BFR 2025\1ST MED BN M11020_BFR UNIT EDIT_04MAY2018.xlsx
+  Sheets: Mission_Statement, TO, TE, UNIT_ROLLUP, 14311, 14312,
+  14345_Newest, 14378, 17110, 17120, 21451, 21710, 21820, 44112,
+  61072, 61073, Sheet1
+  Verdict: confirms the lineage chain documented in the BFR
+  pipeline skill (2nd MED BN at Camp Lejeune -> 1st MED BN at
+  Camp Pendleton 2018-05-04 -> 3d MED BN at MCB Camp Butler
+  2024-11-22). The 3d MED BN BFR was copy-paste-shaped from the
+  1st MED BN file.
+
+externalLink4 -> 2 LAAD M00146-MS-M19885-20161222.xlsx
+  https://mcicom.usmc.mil/MCICOM_IR_OPT/Standard BFRs/2 LAAD/
+  M00146-MS-M19885-20161222.xlsx
+  Sheets: MISSION_STATEMENT, TO, TE, UNIT_ROLLUP, 14312, 14345,
+  17110, 17135, 21451, 21710, 44112, 61072, 61073, Comments
+  Roll-Up, Locator_Deck, Battalion Rollup, 21440, 21430, 21820,
+  21880, 44135, 45110, ...
+  Verdict: 2nd LAAD Battalion standard BFR, dated 22 Dec 2016.
+  Likely the 2017 NAVFAC MIDLANT template ancestor referenced in
+  audit/FINDINGS.md.
+
+externalLink5 -> M13020 2029 TO E CUT.xlsx
+  https://flankspeed-my.sharepoint-mil.us/AM2&4/AM2/AM21/
+  MCB Camp Butler MCIPAC FRP FY23/SV#5/Team D - DY EA/TO&E/
+  TO E CUT/M13020 2029 TO E CUT.xlsx
+  Sheets: TO calc, TE calc, Locator_Deck, EQUIP, CCN, MOS, TAMCN,
+  CSP, TO values, TE values, Camp Lejeune
+  Verdict: 3d MED BN's OWN 2029 future-state T/O&E cut on the
+  flankspeed SharePoint site. This is a candidate primary source
+  for the 711-personnel target referenced by the CG signed letter
+  (2 Feb 2026). The "Camp Lejeune" sheet name suggests the 2029
+  cut still carries lineage residue, consistent with the chain
+  documented above. ACTION: request this file from the user; it
+  may close Apex Omega Violation 4 (back-test against CG-letter
+  workspace requirement per enclosure 2).
+
+================================================================
+Surgery applied
+================================================================
+
+1. Read xlsx as zip, materialize all 34 members.
+2. Drop 10 members under xl/externalLinks/ (5 link files +
+   5 _rels files).
+3. Strip <externalReferences>...</externalReferences> block from
+   xl/workbook.xml.
+4. Strip 5 externalLink Relationship lines from
+   xl/_rels/workbook.xml.rels (count: 15 -> 0 'externalLink'
+   string occurrences).
+5. Strip 5 externalLink Override lines from [Content_Types].xml
+   (count: 5 -> 0 'externalLinks' string occurrences).
+6. Re-zip and replace original.
+
+================================================================
+Verification
+================================================================
+
+Post-purge archive:
+  Members:                    24 (was 34)
+  externalLinks/* members:    0 (was 10)
+  rels with externalLink:     0 (was 5)
+  Content_Types overrides:    0 (was 5)
+  openpyxl load:              OK, 15 sheets unchanged
+  Sheet list unchanged:       UNIT_ROLLUP, MISSION STATEMENT,
+                              CCN_Library, TO, TE, 14312, 14345,
+                              17110, 17120, 21451, 21710, 44112,
+                              45110, 61072, 61073
+
+================================================================
+Apex Omega application
+================================================================
+
+Rule 1 (facts only): the prior session report stated "External
+link refs in formulas: 0" which was true at the formula level but
+masked the archive-level externalLinks/ presence. The advisory
+the user reported on file open is real; this report does not
+silently fix it without disclosure.
+
+Rule 4 (TBD where unverifiable): externalLink5 references a
+SharePoint file ("M13020 2029 TO E CUT.xlsx") that may be
+primary-source data for Violation 4. That file is not in the
+repo. Disposition: surface to the user as a candidate to obtain;
+do not silently close Violation 4 without it.
+
+Rule 5 (timestamp at citation): the xlsx archive surgery and
+verification was performed 2026-05-06 on branch
+claude/apex-omega-audit-repair-gG9mM, against the workbook's
+HEAD state at commit 3407bdf.

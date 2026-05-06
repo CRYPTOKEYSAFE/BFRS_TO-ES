@@ -1958,3 +1958,230 @@ containing:
    then `audit/PIPELINE.md`, `audit/STYLE_GUIDE.md`, `audit/FINDINGS.md`.
 
 Do not start new work after the user requests the handoff. Hand off cleanly.
+
+## Track 10f, post-9a01d01 repair work (2026-05-06 session)
+
+Branch: claude/usmc-bfr-audit-repair-0YYwt. Commits in order:
+0d358e9, 54e2668, 2cf9c80, 3bdb87f, 9f4ceef, cd5738f, c3a6c7c,
+9553f7d, 12a5f12, 3fc3814.
+
+What this session did:
+
+  - Fixed the session-start hook (.claude/hooks/session-start.sh).
+    Prior version aborted under set -u because CLAUDE_PROJECT_DIR
+    was unbound; ruflo install never ran. Fix uses
+    ${CLAUDE_PROJECT_DIR:-$PWD} default and reorders ruflo install
+    before any cd. Verified: fresh sandbox runs the hook clean.
+
+  - Closed Apex Omega Violation 3 with primary-source citation. The
+    CG Endorsement Surg Co B 3d Med Bn G-5 Basing Action v1.docx
+    paragraph 19 names the consolidated 3d Med Bn buildings at
+    Camp Kinser: 107 BN HQ co-use, 300 MSTC, 613 MT/UT, 400 armory
+    bay, 1225 housing, 508 supply. Verified by direct docx read.
+
+  - Stripped placeholder narrative from MISSION STATEMENT B208/
+    B210/B211 after the user's "no placeholder crap" and "stop
+    chasing locations" directives. The sheet's actual convention
+    (observed in H&S Co rows 7-10 and Surg A rows 107-110) is a
+    3-line postal address block (UNIT NNNNN / FPO line / Country).
+    Surg B now matches: UNIT 38445 / FPO, AP 963734500 / Country: JP.
+
+  - Re-marked TE!J507 from a bracketed TBD note to plain
+    'FILTER,WATER PURIFI-41207'. The H&S T/E re-source work
+    (198 rows of inherited NAVFAC MIDLANT template residue) is
+    held for next session under ruflo orchestration; no inline
+    cell marker.
+
+  - Performed a GSF reconciliation audit. Recursive formula chain
+    dump for every CCN sheet's TOTAL cell exposed real defects:
+      14312 = 0 GSF (TE VLOOKUPs return string "0" via IFERROR)
+      45110 = 8.89 GSF (factor 0.11111 SF-to-SY conversion, chain wrong)
+      21451 = 1,129 GSF (equipment-side AB173 chain returns 0)
+      21710 = 583 GSF (officers count 0 across all UICs)
+      61073 = 0 GSF (literal hardcoded zero, 574 billets routed there)
+      61072 = 69,875 GSF (sweeps clinical Marines at admin rate)
+    Defensible portion of the 126,704 GSF roll-up is approximately
+    56,000 GSF; the rest is broken or doctrinally wrong.
+
+  - OCR'd the 2 Feb 2026 CG signed letter via pdftoppm + tesseract
+    (image-only PDF, pdftotext yielded zero text). Confirmed
+    primary-source 711 personnel; BFR has 710 (1-billet gap).
+    Workspace requirement is in CG letter enclosure (2) "Proposed
+    Facilities Layout" which is not directly identified in the
+    repo by name.
+
+  - Wrote audit/HANDOFF_NEXT_SESSION.md, a self-contained
+    Apex-Omega-style handoff with branch, commits, GitHub URLs,
+    per-CCN defect priorities, sources, and "do this first"
+    directives. Designed so the next session does not have to
+    ask 90 questions.
+
+What this session got wrong, lessons enforced below:
+
+  - LibreOffice --convert-to xlsx recalc CORRUPTED the workbook
+    for Microsoft Excel. openpyxl read the output cleanly, the
+    validator passed 8/0, the cosmetic check matched preB-backup,
+    the file size halved (1.4 MB to 751 KB) which I noted and
+    rationalized, but the user could not open the file in Excel.
+    Reverted at 9553f7d. New BLOCKING gate below.
+
+  - Parallel research agent (Find H&S equipment source) returned
+    false negatives. It claimed "no M28261 rows in TE" and "Row
+    507 is not an H&S row" because it confused col D (CCN) with
+    col I (TAMCN) and missed col G (UIC). Actual count: 198
+    M28261 rows. New BLOCKING gate below.
+
+  - Three iterations on MISSION STATEMENT B208/B210 before reading
+    the existing convention from H&S Co (rows 7-10) and Surg A
+    (rows 107-110) of the same sheet. Each iteration burned the
+    user's patience. New rule below.
+
+  - Wrote bracketed TBD narrative ("[TBD pending H&S TFSMS export
+    ...]") directly into TE!J507 instead of into the audit log.
+    User had to redirect with "no placeholder crap". New rule
+    below.
+
+## Failure modes and BLOCKING gates (Apex Omega level)
+
+These are not best-practice suggestions. They are blocking gates.
+A deliverable that violates one of them is `TBD pending [gate
+fix]`, never released.
+
+GATE 1, Excel-open verification for any workbook commit.
+
+  Trigger: any commit that modifies an .xlsx file at repo root.
+  Required action: confirm the file opens in Microsoft Excel
+  before commit. If the sandbox has no Excel, the commit message
+  must explicitly state "openpyxl-read-only verified, NOT
+  Excel-verified" and the user must open and confirm before the
+  branch is considered releasable.
+  Forbidden tools: `libreoffice --convert-to xlsx` and any
+  equivalent round-trip that re-serializes the file. The output
+  of this command corrupts xlsx for Excel even when openpyxl
+  reads it cleanly. Symptoms: file size halves, openpyxl + the
+  validator both pass, Excel refuses to open with a generic
+  "the file is corrupt" error.
+  Acceptable recalc methods: (a) rely on the workbook's
+  `fullCalcOnLoad=True` setting and document that consumers must
+  open in Excel to populate cached values; (b) Python `formulas`
+  package with explicit cache write (used in earlier tracks);
+  (c) UNO macro that calls Calculate then SaveAs preserving the
+  original xlsx structure (untested; verify with Excel before
+  committing). Never path (d) which is `--convert-to xlsx`.
+
+GATE 2, column-letter audit before any "ABSENT" finding.
+
+  Trigger: any agent or script reports that a row, column, value,
+  or pattern is absent from a workbook.
+  Required action: dump the actual column header letters and a
+  minimum of 5 sample cells from each named column to evidence
+  that the inspection was on the right column. ABSENT findings
+  without this column-letter audit are not accepted and must be
+  re-verified.
+  Reason: a parallel research agent in 2026-05-06 session
+  reported "no M28261 rows in TE" when there are 198, by
+  confusing the CCN column (col D) with the TAMCN column
+  (col I) and missing the UIC column (col G) entirely. The
+  finding was committed to a research log before being caught.
+
+GATE 3, convention-first rule for cell edits.
+
+  Trigger: any edit to a cell whose row or block has analogous
+  rows or blocks elsewhere in the same sheet.
+  Required action: dump the analogous block first. Match its
+  pattern (column count, value type, citation style, length).
+  Only deviate with explicit doctrinal or structural
+  justification.
+  Reason: three commits (2cf9c80, 3bdb87f, 9f4ceef) all touched
+  MISSION STATEMENT B208/B210 in the 2026-05-06 session because
+  the first edit ignored the H&S Co block at rows 7-10 and the
+  Surg A block at rows 107-110, both of which use a 3-line
+  postal-address pattern (UNIT NNNNN / FPO line / Country). The
+  correct edit was visible from the start.
+
+GATE 4, no placeholder text inside cells, ever.
+
+  Trigger: any cell that is about to receive a "TBD pending X",
+  bracketed annotation, status note, or any non-data string used
+  to flag uncertainty.
+  Required action: the cell holds either a real value or is
+  empty. The TBD note belongs in the commit message, the diff
+  log under audit/reports/, and the audit/FINDINGS.md or
+  HANDOFF_NEXT_SESSION.md, never inside the cell content. Excel
+  consumers do not parse bracketed annotations; the BFR is a
+  numeric document. Cells with placeholder text show up as text
+  values in lookups and break formula chains.
+  Apex Omega rule 4 (mark TBD pending source) applies in the
+  audit trail, not in the deliverable.
+
+GATE 5, GSF roll-up sanity check before claiming a CCN sheet is OK.
+
+  Trigger: a CCN sheet's TOTAL cell evaluates to a value.
+  Required action: verify the cached value is a number, not a
+  hardcoded literal masquerading as a calculation; verify the
+  formula chain depth (TOTAL through L*W*H or COUNTIFS through
+  TO/TE inputs) is at least 3 levels deep with real intermediate
+  values; verify a doctrinal sanity bound (admin Marines x
+  162.5 SF, junior enlisted x 90 SF, officers x 120 SF for
+  personnel-driven CCNs; equipment-driven CCNs check L x W x H
+  totals against TE rows tagged for that CCN). Mismatches
+  greater than 50 percent or values of zero with non-zero billet
+  routing are BLOCKING.
+  Reason: the validator's format-level checks pass even when
+  CCN 61073 H40 = 0 hardcoded literal with 574 billets routed
+  to it, because the roll-up integrity check sees a number (0)
+  and a presence in UNIT_ROLLUP. A CCN sheet that returns 0 GSF
+  with non-zero billet routing is broken; GATE 5 catches it.
+
+GATE 6, recalc cached values must be present at commit time
+unless the workbook's fullCalcOnLoad=True is documented in
+the commit message.
+
+  Trigger: any commit of an xlsx that contains formulas.
+  Required action: confirm openpyxl(data_only=True) returns a
+  number (not None) for every CCN sheet's TOTAL cell, OR the
+  commit message states "cached values intentionally None;
+  fullCalcOnLoad=True so Excel will recalc on open". The
+  commit at cd5738f passed this gate (cached values present)
+  but failed GATE 1 (Excel could not open the file). GATE 6
+  alone is not sufficient; GATE 1 is the binding test.
+
+GATE 7, primary-source extraction before any verbal claim about
+a unit's posting, location, mission, or facility plan.
+
+  Trigger: any user-facing claim about where a unit sits, what
+  buildings it uses, what its mission is, what facilities it
+  needs.
+  Required action: cite the primary source (CG signed letter,
+  CG endorsement, MARADMIN, FC table) by document name, page
+  or paragraph, and date. PDF sources require OCR if image-only
+  (pdftoppm 300dpi + tesseract --psm 1 is the working path;
+  pdfplumber and pdfminer fail when the sandbox cryptography
+  binding is broken).
+  Reason: violation 3 took two iterations to close because the
+  prior session's audit (claiming "post-relocation building not
+  in source letters") was incomplete. Direct read of the docx
+  found the building list immediately.
+
+## Tooling notes (sandbox-specific, may need re-install in fresh sandbox)
+
+  - openpyxl, et-xmlfile: Python xlsx I/O. Always available.
+  - poppler-utils (pdftotext, pdftoppm): apt-get install
+    poppler-utils. Required for PDF page render to PNG.
+  - tesseract-ocr: apt-get install tesseract-ocr. Required for
+    image-only PDFs (CG signed letter, Tab A/B endorsement
+    letters, etc.).
+  - libreoffice-calc: apt-get install libreoffice-calc. Used for
+    inspection only, NEVER for recalc-and-save (corrupts xlsx
+    for Excel; see GATE 1).
+  - pdfplumber, pdfminer.six: installed but the sandbox
+    cryptography binding is broken (pyo3 panic). Do not rely
+    on them; use pdftoppm + tesseract instead.
+  - ruflo: npm install -g ruflo@latest installs to
+    /opt/node22/bin/ruflo. The session-start hook
+    (.claude/hooks/session-start.sh) handles this automatically
+    if CLAUDE_CODE_REMOTE=true. The .mcp.json uses
+    `npx -y ruflo@latest mcp start` so the MCP server can spawn
+    even without the global binary. mcp__ruflo__* tools appear
+    after session start, not mid-session.
+

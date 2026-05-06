@@ -57,9 +57,20 @@ Authoritative BFR file
 ================================================================
 
 M67400-FO-M13020 3D MED BN-22NOV2024.xlsx at repo root.
-Recalc'd via LibreOffice headless this session, cached values
-now populated for every CCN TOTAL cell.
+GitHub (this branch):
+  https://github.com/cryptokeysafe/bfrs_to-es/blob/claude/usmc-bfr-audit-repair-0YYwt/M67400-FO-M13020%203D%20MED%20BN-22NOV2024.xlsx
+GitHub (raw download):
+  https://github.com/cryptokeysafe/bfrs_to-es/raw/claude/usmc-bfr-audit-repair-0YYwt/M67400-FO-M13020%203D%20MED%20BN-22NOV2024.xlsx
+
+This file is the reverted (pre-recalc) version. Cached TOTAL
+values are None until opened in Excel; fullCalcOnLoad=True is
+set so Excel will recalc on open. Do not run LibreOffice
+--convert-to xlsx on this file; that round-trip corrupts the
+workbook for Excel even though openpyxl reads the output.
+
 Backup (do not modify): M67400-FO-M13020 3D MED BN-22NOV2024.preB-backup.xlsx
+GitHub:
+  https://github.com/cryptokeysafe/bfrs_to-es/blob/claude/usmc-bfr-audit-repair-0YYwt/M67400-FO-M13020%203D%20MED%20BN-22NOV2024.preB-backup.xlsx
 
 ================================================================
 Validator state

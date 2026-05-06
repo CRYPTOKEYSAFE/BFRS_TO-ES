@@ -116,100 +116,72 @@ Real defects, F24 / J24 regressions uncited per Apex Omega rule 7. Row-749 trunc
 
 ## Sheet 21710 (Electronics Maint Shop)
 
-H47 = `=AB31`. AB31 = `=SUM(AB27:AE30)`.
+H47 = `=AB31`. AB31 = `=SUM(AB27:AE30)`. AB27..AB30 = `=SUM(Mn:AAn)`.
 
-| Block | Cell | Formula | Cached | DC | Upstream | Fix |
-|---|---|---|---|---|---|---|
-| Sheet | H47 | `=AB31` | None | 1 | AB31 | E |
-| Roll-up | AB31 | `=SUM(AB27:AE30)` | None | 1,5 (AC,AD,AE empty) | AB27..AB30 | E |
-| Block 1 H&S | AB27 | `=SUM(M27:AA27)` | None | 1 | M27 | E |
-| Block 2 SRG A | AB28 | `=SUM(M28:AA28)` | None | 1 | M28 | E |
-| Block 3 SRG B | AB29 | `=SUM(M29:AA29)` | None | 1 | M29 | E |
-| Block 4 orphan | AB30 | `=SUM(M30:AA30)` | None | 1,7 | M30 | H |
-| H&S admin | M27 | `=S37` | None | 1 | S37 | E |
-| SRG A | M28 | `=S38` | None | 1 | S38 | E |
-| SRG B | M29 | `=S39` | None | 1 | S39 | E |
-| Block 4 | M30 | `=S40` | None | 1,7 | S40 | H |
-| Block 5 | M31 | `=S41` | None | 9 (S41 empty) | S41 | H |
-| S37 | S37 | `=M37*M$36+P37*P$36` (M36=120, P36=90) | None | 1 | M37 | E |
-| S38 | S38 | `=M38*M$36+P38*P$36` | None | 1 | M38 | E |
-| S39 | S39 | `=M39*M$36+P39*P$36` | None | 1 | M39 | E |
-| S40 | S40 | `=M40*M$36+P40*P$36` | None | 1 | M40 | E |
-| S41 | S41 | None | None | 9 | structural | H |
-| H&S 21710o | M37 | `=COUNTIFS(TO!C:C,"21710o",TO!F:F,B37)` | None | 2 | TO!C | M |
-| SRG A 21710o | M38 | (same pattern) | None | 2 | TO!C | M |
-| SRG B 21710o | M39 | (same pattern) | None | 2 | TO!C | M |
-| Block 4 21710o | M40 | (same pattern) | None | 2,7 | TO!C, B40 | H |
-| Admin grand | M41 | `=SUM(M37:O40)*M36` | None | 1,5 (only x M36, ignores P36 tier) | M37..M40 | M |
-| Storage NV H&S | L53 | `=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B53,TE!U:U,"<>#N/A")` | None | 2 | TE!D, TE!G | M |
-| Storage NV SRG A | L54 | (same) | None | 2 | TE!D, TE!G | M |
-| Storage NV SRG B | L55 | (same) | None | 2 | TE!D, TE!G | M |
-| Storage NV blk 4 | L56 | (same) | None | 2,7 | TE!D, TE!G | H |
-| Radio sect H&S | L70 | `=ROUNDUP((COUNTIFS(TO!C:C,"21710rs",TO!F:F,B70)/15),0)` | None | 2 | TO!C "21710rs" | M |
-| Radio sect SRG A | L71 | (same) | None | 2 | TO!C | M |
-| Radio sect SRG B | L72 | (same) | None | 2 | TO!C | M |
-| Radio sect blk 4 | L73 | (same) | None | 2,7 | TO!C | H |
-| Maint bay | L79 | `=V77*V78` (34, 16) | None | 1 | literals | E |
+| Block | Cell | Formula | DC | Fix |
+|---|---|---|---|---|
+| Sheet | H47 | `=AB31` (=SUM(AB27:AE30); AC/AD/AE empty) | 1,5 | E |
+| Block 1 H&S | AB27 | `=SUM(M27:AA27)` -> M27 | 1 | E |
+| Block 2 SRG A | AB28 | `=SUM(M28:AA28)` -> M28 | 1 | E |
+| Block 3 SRG B | AB29 | `=SUM(M29:AA29)` -> M29 | 1 | E |
+| Block 4 orphan | AB30 | `=SUM(M30:AA30)` -> M30 | 1,7 | H |
+| H&S admin | M27 | `=S37` (=M37*M$36+P37*P$36; M36=120, P36=90) | 1 | E |
+| SRG A | M28 | `=S38` (analog) | 1 | E |
+| SRG B | M29 | `=S39` (analog) | 1 | E |
+| Block 4 | M30 | `=S40` (analog) | 1,7 | H |
+| Block 5 | M31 | `=S41` (S41 is empty cell) | 9 | H |
+| H&S 21710o | M37 | `=COUNTIFS(TO!C:C,"21710o",TO!F:F,B37)` | 2 | M |
+| SRG A 21710o | M38 | (same pattern) | 2 | M |
+| SRG B 21710o | M39 | (same pattern) | 2 | M |
+| Block 4 21710o | M40 | (same pattern) | 2,7 | H |
+| Admin grand | M41 | `=SUM(M37:O40)*M36` (ignores P36 tier) | 1,5 | M |
+| Storage NV (4 rows) | L53..L56 | `=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,Bn,TE!U:U,"<>#N/A")` | 2 | M |
+| Radio sect (4 rows) | L70..L73 | `=ROUNDUP((COUNTIFS(TO!C:C,"21710rs",TO!F:F,Bn)/15),0)` | 2 | M |
+| Maint bay | L79 | `=V77*V78` (34, 16 literals) | 1 | E |
 
-Real defects, S41 empty breaks block 5. Pipeline NOTE tags 21710o, 21710rs absent or partial.
+Real defects, S41 empty breaks block 5. Pipeline NOTE tags 21710o, 21710rs absent or partial. All cached = None.
 
 ---
 
 ## Sheet 44112 (Organic Supply Storage)
 
-H40 = `=AB27`. AB27 = `=SUM(AB25:AE26)+AB28` (irregular: AB28 outside SUM).
+H40 = `=AB27`. AB27 = `=SUM(AB25:AE26)+AB28` (irregular).
 
-| Block | Cell | Formula | Cached | DC | Upstream | Fix |
-|---|---|---|---|---|---|---|
-| Sheet | H40 | `=AB27` | None | 1 | AB27 | E |
-| Roll-up | AB27 | `=SUM(AB25:AE26)+AB28` | None | 1,5 | AB25, AB26, AB28 | M |
-| Block 1 row | AB25 | `=SUM(M25:AA25)` | None | 1 | M25 | E |
-| Block 2 row | AB26 | `=SUM(M26:AA26)` | None | 1 | M26 | E |
-| Block 3 row | AB28 | `=SUM(M28:AA28)` | None | 1 | M28 | E |
-| H&S admin | M25 | `=V32` | None | 1 | V32 | E |
-| SRG A admin | M26 | `=V33` | None | 1 | V33 | E |
-| SRG B admin | M28 | `=V35` | None | 1 | V35 | E |
-| H&S calc | V32 | `=M32*$M$31+P32*$P$31+S32*$S$31` | None | 1,9 (P31, S31, P32, S32 empty) | M31, P31, S31 | M |
-| SRG A calc | V33 | `=M33*$M$31+P33*$P$31+S33*$S$31` | None | 1,9 | same | M |
-| SRG B calc | V35 | `=M35*$M$31+P35*$P$31+S35*$S$31` | None | 1,9 | same | M |
-| H&S 44112o | M32 | `=COUNTIFS(TO!C:C,"44112o",TO!F:F,$B$32)` | None | 2 | TO!C | M |
-| SRG A 44112o | M33 | (same) | None | 2 | TO!C | M |
-| SRG B 44112o | M35 | (same) | None | 2 | TO!C | M |
-| Wh NV H&S | L46 | `=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B46,TE!U:U,"<>#N/A")` | None | 2 | TE!D, TE!G | M |
-| Wh NV SRG A | L47 | (same) | None | 2 | TE!D, TE!G | M |
-| Wh NV SRG B | L49 | (same) | None | 2 | TE!D, TE!G | M |
-| PE H&S | M69 | `=COUNTIFS(TO!AP:AP,"1",TO!F:F,"M28261")` | None | 2 | TO!AP deployable flag | M |
-| PE SRG A | M70 | `=COUNTIFS(TO!AP:AP,"1",TO!F:F,"M28263")` | None | 2 | TO!AP | M |
-| PE SRG B | M72 | `=COUNTIFS(TO!AP:AP,"1",TO!F:F,"M28262")` | None | 2 | TO!AP | M |
-| PE total | M71 | `=SUM(M69:O72)` | None | 1,5 | M69, M70, M72 | E |
+| Block | Cell | Formula | DC | Fix |
+|---|---|---|---|---|
+| Sheet | H40 | `=AB27` (=SUM(AB25:AE26)+AB28) | 1,5 | M |
+| Block rows | AB25,AB26,AB28 | `=SUM(Mn:AAn)` -> M25/M26/M28 | 1 | E |
+| H&S admin | M25 | `=V32` | 1 | E |
+| SRG A admin | M26 | `=V33` | 1 | E |
+| SRG B admin | M28 | `=V35` | 1 | E |
+| Tier calc V32/V33/V35 | V32,V33,V35 | `=Mn*$M$31+Pn*$P$31+Sn*$S$31` (P31, S31 empty; Pn, Sn empty) | 1,9 | M |
+| 44112o counts | M32,M33,M35 | `=COUNTIFS(TO!C:C,"44112o",TO!F:F,$B$nn)` | 2 | M |
+| Warehouse NV (3 rows) | L46,L47,L49 | `=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,Bn,TE!U:U,"<>#N/A")` | 2 | M |
+| PE counts | M69,M70,M72 | `=COUNTIFS(TO!AP:AP,"1",TO!F:F,"<UIC>")` | 2 | M |
+| PE total | M71 | `=SUM(M69:O72)` | 1,5 | E |
 
-Real defect, P31 / S31 GSF/PN constants for 44112c (90) and 44112w (TBD) not populated; companion P-col / S-col COUNTIFS absent. V32/V33/V35 collapse to first-tier only.
+Real defect, P31 / S31 second/third-tier GSF/PN constants for 44112c (90) and 44112w (TBD) not populated; companion P-col / S-col COUNTIFS absent. V32/V33/V35 collapse to first tier only. All cached = None.
 
 ---
 
 ## Sheet 45110 (Open Storage)
 
-H50 = `=M25`. M25 = `=SUM(B25:K25)`. B25 = `=R32*0.11111` (NSF -> NSY).
+H50 = `=M25`. M25 = `=SUM(B25:K25)`.
 
-| Block | Cell | Formula | Cached | DC | Upstream | Fix |
-|---|---|---|---|---|---|---|
-| Sheet | H50 | `=M25` | None | 1 | M25 | E |
-| Roll-up | M25 | `=SUM(B25:K25)` | None | 1,5 | B25, G25 | E |
-| Container NSY | B25 | `=R32*0.11111` | None | 1 | R32 | E |
-| Additional NSY | G25 | `=AA46*0.11111` | None | 10 (AA55 None, W46 None) | AA55, W46 | H |
-| Containers NSF | R32 | `=SUM(R29:T31)` | None | 1,5 | R29..R31 | E |
-| PALCON | R29 | `=N29*R28` | None | 1 | literals | E |
-| QUADCON | R30 | `=N30*R28` | None | 1 | literals | E |
-| JMIC | R31 | `=N31*R28` | None | 1 | literals | E |
-| H&S PALCON | M36 | `=SUMIFS(TE!O:O,TE!I:I,'45110'!$M$35,TE!G:G,B36,TE!D:D,$C$5)` | None | 10 (M35 = "(none)" string) | M35 | H |
-| SRG A PALCON | M37 | (same) | None | 10 | M35 | H |
-| SRG B PALCON | M38 | (same) | None | 10 | M35 | H |
-| Total cont. | M41 | `=SUM(M36:P40)` | None | 1,5 | M36..M38 | E |
-| Total stacks | M42 | `=ROUNDUP((M41/2),0)` | None | 1 | M41 | E |
-| QUADCON F30 | F30 | `=Q42` | None | 1 | Q41 (None) | H |
-| JMIC F31 | F31 | `=U42` | None | 1 | U41 (None) | H |
+| Block | Cell | Formula | DC | Fix |
+|---|---|---|---|---|
+| Sheet | H50 | `=M25` | 1 | E |
+| Roll-up | M25 | `=SUM(B25:K25)` | 1,5 | E |
+| Container NSY | B25 | `=R32*0.11111` | 1 | E |
+| Additional NSY | G25 | `=AA46*0.11111` (AA55 None, W46 None) | 10 | H |
+| Containers NSF | R32 | `=SUM(R29:T31)` (R29=N29*R28 etc., literals) | 1,5 | E |
+| PALCON counts (3) | M36,M37,M38 | `=SUMIFS(TE!O:O,TE!I:I,'45110'!$M$35,TE!G:G,Bn,TE!D:D,$C$5)` (M35 = literal string "(none)") | 10 | H |
+| Total cont. | M41 | `=SUM(M36:P40)` | 1,5 | E |
+| Total stacks | M42 | `=ROUNDUP((M41/2),0)` | 1 | E |
+| QUADCON F30 | F30 | `=Q42` (Q41 None) | 1 | H |
+| JMIC F31 | F31 | `=U42` (U41 None) | 1 | H |
 
-Real defect, M35 is the literal string "(none)" used as a SUMIFS criterion, so M36..M38 = 0 by construction. AA55 and W46 also empty. Note: round-1 verified the sheet at 8.89 SY through the additional-storage branch; the container branch is dead.
+Real defect, M35 = literal string "(none)" used as SUMIFS criterion; M36..M38 = 0 by construction. AA55, W46 empty. Round-1 verified 8.89 SY through the additional-storage branch; container branch dead. All cached = None.
 
 ---
 
@@ -217,20 +189,19 @@ Real defect, M35 is the literal string "(none)" used as a SUMIFS criterion, so M
 
 H40 = `=P30`. P30 = `=SUM(P26:S29)`. P26..P28 = `=Mn * Y25` (Y25 = 162.5 GSF/PN).
 
-| Block | Cell | Formula | Cached | DC | Upstream | Fix |
-|---|---|---|---|---|---|---|
-| Sheet | H40 | `=P30` | None | 1 | P30 | E |
-| Roll-up | P30 | `=SUM(P26:S29)` | None | 1,5 | P26..P28 | E |
-| H&S GSF | P26 | `=M26*$Y$25` | None | 1 | M26 | E |
-| SRG A GSF | P27 | `=M27*$Y$25` | None | 8 | M27 | E |
-| SRG B GSF | P28 | `=M28*$Y$25` | None | 8 | M28 | E |
-| Block 4 | P29 | None | None | 9 | P29 absent | E |
-| H&S 61072 cnt | M26 | `=COUNTIFS(TO!D:D,"61072",TO!F:F,$B$26)` | None | 2 | TO!D | M |
-| SRG A | M27 | `=COUNTIFS(TO!D:D,"61073",TO!F:F,$B$27)` | None | 8 (should be "61072") | TO!D criterion | E |
-| SRG B | M28 | `=COUNTIFS(TO!D:D,"61073",TO!F:F,$B$28)` | None | 8 (should be "61072") | TO!D criterion | E |
-| PN total | M30 | `=SUM(M26:O29)` | None | 1,5 | M26..M28 | E |
+| Block | Cell | Formula | DC | Fix |
+|---|---|---|---|---|
+| Sheet | H40 | `=P30` (=SUM(P26:S29)) | 1,5 | E |
+| H&S GSF | P26 | `=M26*$Y$25` | 1 | E |
+| SRG A GSF | P27 | `=M27*$Y$25` | 8 | E |
+| SRG B GSF | P28 | `=M28*$Y$25` | 8 | E |
+| Block 4 | P29 | empty | 9 | E |
+| H&S 61072 cnt | M26 | `=COUNTIFS(TO!D:D,"61072",TO!F:F,$B$26)` | 2 | M |
+| SRG A | M27 | `=COUNTIFS(TO!D:D,"61073",TO!F:F,$B$27)` (should be "61072") | 8 | E |
+| SRG B | M28 | `=COUNTIFS(TO!D:D,"61073",TO!F:F,$B$28)` (should be "61072") | 8 | E |
+| PN total | M30 | `=SUM(M26:O29)` | 1,5 | E |
 
-Real defect, M27 and M28 use "61073" as CCN criterion. Copy-paste bug analogous to round-1 CLB-4 finding "21730 still searching for 21710o".
+Real defect, M27 and M28 use "61073" as CCN criterion. Copy-paste bug analogous to round-1 CLB-4 finding "21730 still searching for 21710o". All cached = None.
 
 ---
 

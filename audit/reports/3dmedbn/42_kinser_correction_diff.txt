@@ -1,0 +1,152 @@
+Diff log: corrections to violations 1 and 3 after primary-source research
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+Branch: claude/usmc-bfr-audit-repair-0YYwt
+Supersedes: audit/reports/3dmedbn/41_violations_1_and_3_diff.txt (interim)
+
+================================================================
+Why this diff exists
+================================================================
+
+The interim fix in commit 2cf9c80 marked B208/B210 as "specific camp
+TBD pending CG MCIPAC final basing decision" because the prior session's
+self-audit at commit 9a01d01 reported the post-relocation building was
+not in the source letters. That report was incomplete: a parallel
+research pass on the unread source documents this session located the
+named buildings in the CG Endorsement docx.
+
+The interim fix on TE!J507 marked it "TBD pending verified H&S source"
+on the assumption an H&S TFSMS export might be supplied later. User
+confirmed no H&S TFSMS export exists. Verification of the workbook
+shows H&S has 198 TE rows (not just R507), all inherited from the
+2017 NAVFAC MIDLANT template baseline that the 22-Nov-2024 BFR
+descended from. The proper marker for R507 is therefore "inherited
+template residue, no TFSMS export available", not "pending TFSMS".
+
+================================================================
+Primary-source citation for Surg B post-relocation
+================================================================
+
+Source: CG Endorsement Surg Co B 3d Med Bn 3d MLG - G-5 Basing Action
+v1.docx, paragraph 19 (verified by direct read this session).
+
+Verbatim quote (paragraph 19, sentence 4): "The plan allocates specific
+facilities to meet the battalion's needs, including co-use of Bldg.
+107 for the battalion, Bldg. 300 for the Medical Skills Training Center
+(MSTC), Bldg. 613 for Motor Transport and Utilities, and a dedicated
+bay in the Bldg. 400 consolidated armory. Personnel will be housed in
+Bldg. 1225, with supply functions located in Bldg. 508."
+
+Paragraph 18 establishes the camp: MCIPAC-MCBB endorsement is for
+relocating the entire 3d Medical Battalion (including Surg Co B) to
+Camp Kinser, Okinawa.
+
+================================================================
+Cell edits
+================================================================
+
+  MISSION STATEMENT!B208
+    pre  (commit 2cf9c80): 'TBD pending Surg B relocation building assignment'
+    post                  : 'Current: Camp Foster. Planned post-relocation:
+           Bldg. 107 (battalion co-use), Camp Kinser, per CG MCIPAC
+           endorsement, not yet executed'
+
+  MISSION STATEMENT!B210
+    pre  (commit 2cf9c80): 'OKINAWA, JAPAN (MCB Camp Butler; specific
+           camp TBD pending CG MCIPAC final basing decision; current
+           footprint spans FOS-215, FOS-5717, FOS-5628, KIN-300 per
+           3d MED BN Footprint Jan 2026)'
+    post                  : 'OKINAWA, JAPAN. Current state (per 3d MED BN
+           Footprint Jan 2026): MCB Camp Butler, Camp Foster (FOS-215,
+           FOS-5717, FOS-5628) and Camp Kinser (KIN-300). Planned
+           post-relocation (not yet executed): consolidated at Camp
+           Kinser per CG MCIPAC endorsement: Bldg. 107 BN HQ co-use,
+           Bldg. 300 MSTC, Bldg. 613 MT/Util, Bldg. 400 armory bay,
+           Bldg. 1225 housing, Bldg. 508 supply (source: CG Endorsement
+           Surg Co B 3d Med Bn 3d MLG G-5 Basing Action v1, para 19)'
+
+  Refinement note: user clarified 'they are still at Foster' / 'they
+  are not at Camp Kinser yet'. Initial draft of this commit named
+  Camp Kinser as the unit's location without distinguishing planned
+  from current state, which conflated the post-relocation plan with
+  present-day occupancy. Revised to lead with current state (Camp
+  Foster + Camp Kinser per Jan 2026 footprint) and footnote the
+  planned post-relocation. Apex Omega rule 1 (facts only): the BFR
+  is a current-state document; the endorsement names a planned
+  state that has not been executed.
+
+  TE!J507
+    pre  (commit 2cf9c80): 'FILTER,WATER PURIFI-41207 [TBD pending
+           verified H&S source; qty 180 derived from Surg A and Surg
+           B same-battalion allocation]'
+    post                  : 'FILTER,WATER PURIFI-41207 [TBD pending
+           verified H&S T/E source; qty 180 derived from Surg A and
+           Surg B same-battalion allocation; H&S T/E side inherited
+           from 2017 NAVFAC MIDLANT template baseline, no TFSMS
+           export available]'
+
+================================================================
+Newly surfaced finding (held for next session)
+================================================================
+
+Finding: H&S Co (M28261) has 198 TE rows in the workbook, all
+inherited from the 2017 NAVFAC MIDLANT template baseline. None of them
+have a TFSMS source. Per Apex Omega rules 1, 3, and 4, the entire H&S
+T/E side is suspect, not just R507. The 197 inherited rows have
+real-looking quantities (e.g., R2 PISTOL,9MM qty 111; R5 INSERTS,SAPI
+qty 610; R10 COT,FOLDING qty 168) which descend from a 2nd Med Bn
+template, not from any 3d Med Bn primary source.
+
+Held for next session under ruflo orchestration: re-source the entire
+H&S Co T/E side from an authoritative 3d Med Bn document (Master TO&E
+extract, MERIT pull, MCBUL 3000 series, or user-supplied list) and
+either confirm or replace the 197 inherited quantities. Apex Omega
+rule 4 applies row-by-row.
+
+Lesson learned about agent prompt design: the first parallel research
+agent this session (Find H&S equipment source) reported "no M28261
+rows in TE" and "Row 507 is not an H&S row" because it confused the
+CCN column with TAMCN and missed the UIC column entirely. Its negative
+findings on the workbook were false. Verification by direct openpyxl
+read found 198 H&S rows. Future parallel agents that report ABSENT on
+workbook data must include a column-letter audit (header row dump
+plus a sample of cells from each named column) before the ABSENT
+claim is accepted.
+
+================================================================
+Cosmetic verification
+================================================================
+
+Merged-range counts unchanged:
+  TE                        prev=0   post=0   delta=0
+  MISSION STATEMENT         prev=52  post=52  delta=0
+
+No formulas, defined names, CCN sheets, or tab colors changed.
+
+================================================================
+Validator (post-edit)
+================================================================
+
+audit/reports/3dmedbn/42_validator_post_kinser_correction.txt:
+  8 PASS / 0 FAIL.
+
+================================================================
+Apex Omega violation status
+================================================================
+
+  Violation 1: PARTIAL (re-marked)
+    Inline marker on TE!J507 now reflects the correct gap: H&S T/E
+    side is inherited template residue, not pending TFSMS. Closure
+    requires re-sourcing all 198 H&S rows (next session).
+
+  Violation 2: OPEN (unchanged)
+    574 clinical billets still routed to 61073. Held until user
+    ratifies adding an FC Series 500 medical CCN to CCN_Library.
+
+  Violation 3: CLOSED
+    MISSION STATEMENT B208 and B210 now cite the CG Endorsement
+    docx para 19 with the named Camp Kinser buildings. Primary
+    source on file in repo.
+
+  Violation 4: OPEN (unchanged)
+    Back-test and pressure-test still pending; should be done after
+    violation 2 is closed so the numbers being verified are final.

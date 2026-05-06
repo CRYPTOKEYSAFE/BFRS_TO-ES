@@ -6,17 +6,14 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
-# Ruflo agent orchestration (global, idempotent: installs once per cached sandbox).
-# Run before the project cd so ruflo activation is not coupled to project-dir state
-# or to the success of any project-dependency install below.
+# Ruflo first: keep activation independent of project-dir state and of the
+# project-dependency installs below.
 if ! command -v ruflo >/dev/null 2>&1; then
   npm install -g ruflo@latest
 fi
 
-# Install dependencies based on what exists in the project.
-# Default CLAUDE_PROJECT_DIR to pwd so set -u does not abort when the harness
-# omits the variable; the hook is invoked from the repo root in that case.
-cd "${CLAUDE_PROJECT_DIR:-$(pwd)}"
+# Default CLAUDE_PROJECT_DIR so set -u does not abort when the harness omits it.
+cd "${CLAUDE_PROJECT_DIR:-.}"
 
 # Node.js
 if [ -f "package.json" ]; then

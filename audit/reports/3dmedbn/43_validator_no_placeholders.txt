@@ -1,0 +1,55 @@
+================================================================
+BFR Validation Report, Layer 6 Pipeline Harness
+================================================================
+Source workbook : M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+Sheet count     : 15
+  visible       : 15
+  hidden        : 0
+Vocabulary      : CCN_VOCABULARY.json (1060 CCNs)
+
+CHECK: 1. Schema (TO/TE columns)    PASS
+  - TO: header row 3; required cols matched 10/10
+  - TE: header row 1; required cols matched 10/10
+
+CHECK: 2. NOTE coverage             PASS
+  - TO: data rows=710, NOTE matched=710, empty=0, malformed=0
+  - TE: data rows=506, NOTE matched=506, empty=0, malformed=0
+
+CHECK: 3. NOTE<->CCN consistency    PASS
+  - TO: rows examined=710, mismatches=0
+  - TE: rows examined=506, mismatches=0
+
+CHECK: 4. Vocabulary                PASS
+  - CCN sheets found: 10; unknown to vocabulary: 0
+  - TO: unique CCNs in CCN column=6; unknown to vocabulary=0
+  - TE: unique CCNs in CCN column=6; unknown to vocabulary=0
+
+CHECK: 5. Cell error scan           PASS
+  - error tokens found: 0; counts={'#REF!': 0, '#DIV/0!': 0, '#NAME?': 0, '#VALUE!': 0, '#NULL!': 0, '#NUM!': 0}
+
+CHECK: 6. Roll-up integrity         PASS
+  - UNIT_ROLLUP sheet: 'UNIT_ROLLUP'; CCN sheets in workbook=10; CCNs listed in rollup=10
+  - workbook CCN sheets: ['14312', '14345', '17110', '17120', '21451', '21710', '44112', '45110', '61072', '61073']
+  - rollup-listed CCNs: ['14312', '14345', '17110', '17120', '21451', '21710', '44112', '45110', '61072', '61073']
+  -   sheet '14312': TOTAL at H36 = '=M25'
+  -   sheet '14345': TOTAL at H40 = '=P25+K25'
+  -   sheet '17110': TOTAL at H40 = '=P25+K25'
+  -   sheet '17120': TOTAL at H40 = '=U28'
+  -   sheet '21451': TOTAL at H44 = '=N24'
+  -   sheet '21710': TOTAL at H47 = '=AB31'
+  -   sheet '44112': TOTAL at H40 = '=AB27'
+  -   sheet '45110': TOTAL at H50 = '=M25'
+  -   sheet '61072': TOTAL at H40 = '=P30'
+  -   sheet '61073': TOTAL at H40 = 0
+
+CHECK: 7. Billet accounting         PASS
+  - TO data rows=710, attributed=710, orphans=0, distinct attributed CCNs=6
+  -   per-CCN counts (top 6): [('61073', 574), ('21451', 70), ('61072', 39), ('44112', 22), ('21710', 4), ('14345', 1)]
+
+CHECK: 8. Equipment accounting      PASS
+  - TE data rows=506, attributed=506, orphans=0, distinct attributed CCNs=6
+  -   per-CCN counts (top 6): [('44112', 249), ('14345', 126), ('21710', 75), ('21451', 47), ('14312', 8), ('45110', 1)]
+
+----------------------------------------------------------------
+OVERALL: 8 PASS / 0 FAIL
+----------------------------------------------------------------

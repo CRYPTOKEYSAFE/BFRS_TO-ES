@@ -1,0 +1,45 @@
+Diff log: strip placeholder narratives, match sheet convention
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+Branch: claude/usmc-bfr-audit-repair-0YYwt
+Supersedes: audit/reports/3dmedbn/41_violations_1_and_3_diff.txt
+            audit/reports/3dmedbn/42_kinser_correction_diff.txt
+
+Reason: prior session and the first two iterations this session
+treated MISSION STATEMENT B208/B210 as a status-tracking field for
+Surg B's relocation. That was wrong. The sheet's actual convention
+(observed at H&S Co rows 6-15 and Surg A rows 106-115) is a 3-line
+postal address block: UNIT NNNNN / FPO line / Country line. The BFR
+is a facility requirements document, not a relocation status report;
+chasing where the unit physically sits today is out of scope.
+
+Cell edits:
+  MISSION STATEMENT!B208: 'UNIT 38445'
+    (was: narrative about Camp Foster current / Camp Kinser planned)
+  MISSION STATEMENT!B210: 'FPO, AP   963734500'
+    (was: multi-clause narrative with footprint and endorsement cites)
+  MISSION STATEMENT!B211: 'Country: JP'
+    (was: 'Country: US', residual from Kaneohe Bay address)
+  TE!J507:                'FILTER,WATER PURIFI-41207'
+    (was: bracketed [TBD pending H&S T/E source ...] marker)
+
+Convention citation: H&S Co block (row 7-10) reads 'UNIT 38445 / FPO,
+AP 963734500 / Country: JP'. Surg A block (row 107-110) reads 'UNIT
+38448 / FPO, AP 966048448 / Country: JP'. Surg B routes to the
+battalion HQ address (UNIT 38445 / Country: JP) consistent with its
+status as a battalion subordinate consolidating into 3d Med Bn
+facilities at Camp Butler.
+
+Validator: 8 PASS / 0 FAIL
+  audit/reports/3dmedbn/43_validator_no_placeholders.txt
+
+Cosmetic: TE merged 0 unchanged, MISSION STATEMENT 52 unchanged.
+
+Apex Omega violation status:
+  Violation 1: H&S T/E rows are inherited template residue (198 rows
+    from M28261, no TFSMS source). The R507 qty 180 stays as a
+    same-battalion-pattern estimate; cell text matches convention
+    (no inline marker). Re-source of the full 198 H&S rows is held
+    for next session under ruflo.
+  Violation 2: 574 clinical billets still routed to 61073. Held.
+  Violation 3: closed. B208/B210/B211 now match sheet convention.
+  Violation 4: back-test and pressure-test still pending.

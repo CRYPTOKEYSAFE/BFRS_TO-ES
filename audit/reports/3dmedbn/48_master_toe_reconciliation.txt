@@ -1,0 +1,160 @@
+2031 Master TO&E v1.1 reconciliation, 3d MED BN BFR
+File: 2031 Master TO&E v1.1 - 20250411.xlsx (7.9 MB)
+Date in cell: FY 2031 (per TE_3 col A FY field, rows 2+)
+Source date in filename: 11 April 2025
+
+================================================================
+What this file contains for 3d MED BN
+================================================================
+
+The skill stated "Master TO&E does not cover CLB-4; covers a
+different MEF/MLG; M29030/M29111-14 absent". That is true for
+CLB-4. The skill did NOT state whether the file covers 3d MED
+BN. Direct UIC search confirms it does:
+
+  TO_2 sheet (24,299 personnel rows total):
+    M28261 H&S Co        : 288 billets
+    M28262 Surg Co B     : 211 billets
+    M28263 Surg Co A     : 210 billets
+    -----                  -----
+    3d MED BN total      : 709 billets
+    Reference, BFR:        710 billets (delta -1)
+    Reference, CG signed:  711 personnel (delta -2)
+
+  TE_3 sheet (19,002 equipment rows total):
+    M28261 H&S Co        : 198 equipment lines
+    M28262 Surg Co B     : 148 equipment lines
+    M28263 Surg Co A     : 160 equipment lines
+    -----                  -----
+    3d MED BN total      : 506 equipment lines
+    Reference, BFR:        506 TE rows after Phase C retag (exact match)
+
+================================================================
+Critical schema finding
+================================================================
+
+The 2031 Master TO&E TE_3 sheet has 27 columns including the
+exact columns the 3d MED BN BFR's CCN sheets reference but the
+BFR's own TE leaves blank:
+
+  col 17  L, Ft
+  col 18  W, Ft
+  col 19  H, Ft
+  col 20  Volume EA, ft3
+  col 21  Volume Total, ft3
+  col 22  Space Factor              <- CCN 21451 needs this
+  col 23  Type Code
+  col 24  NSY                       <- CCN 14312 needs this
+  col 25  NTG Factor                <- CCN 14312 needs this
+  col 26  Cost Code
+  col 27  Primary/Component
+
+The 3d MED BN BFR was built from a 2nd MED BN / 1st MED BN
+Camp Pendleton template (now confirmed by externalLink3 in the
+purged ghost links). That template's CCN sheets reference Space
+Factor, NSY, and NTG via VLOOKUP into the BFR's own TE. The
+BFR's TE never populated those columns; the data was always in
+the 2031 Master TO&E and never imported.
+
+Net effect: every CCN sheet whose math depends on Space Factor /
+NSY / NTG returns 0 for the equipment-driven side, dragging the
+TOTAL REQUIREMENT cell down to either 0 or a constant offset.
+
+Per-CCN consequence:
+  14312 (Op Veh Laydown)   : VLOOKUPs target NSY at offset 16 of
+                              col H, but col H is TAMCN-short
+                              and offset 16 is empty. Real NSY
+                              and NTG are in 2031 Master TO&E
+                              cols X (24) and Y (25).
+  21451 (Auto Org Shop)    : Space Factor lookup hits TE col U
+                              (Volume Total) which is empty.
+                              Real Space Factor is in 2031 Master
+                              TO&E col V (22). Visible 1,129 SF
+                              is the y-intercept of formula
+                              J24=347*M33+1129 evaluated at M33=0.
+  21710 (Comm Maint Shop)  : Sheet itself OK; design has 0
+                              comm officers (only 4 enlisted
+                              comm repairers across 3d MED BN).
+  44112 (General Warehouse): SUMIFS on TE col O (qty) works,
+                              already populated.
+  45110 (Open Storage)     : 8.89 SY is correct; sheet labeled SY
+                              not GSF. Audit DEFECT 3 misread.
+  61072 (BN HQ Admin)      : 69,875 SF inflated by sweeping
+                              clinical platoon billets at admin
+                              rate. Apex Omega Violation 2 case.
+  61073 (Co HQ Admin)      : Literal 0 in H40. 574 clinical
+                              billets routed there with no SF.
+
+================================================================
+H&S C00392B FILTER WATER PURIFI verification
+================================================================
+
+Apex Omega Violation 1 from skill Track 10e self-audit: prior
+session derived a qty of 180 for H&S C00392B by mirroring the
+Surg A and Surg B Primary Only R81 allocation. That was a guess.
+
+Direct search in 2031 Master TO&E TE_3 sheet for any FILTER WATER
+PURIFI or TAMCN starting with C00392 in M28261:
+
+  Hits in M28261: 0
+
+Verdict: per primary source (2031 Master TO&E v1.1 dated
+2025-04-11), H&S Co (M28261) does not have FILTER WATER PURIFI
+in its T/E. The prior session's derived qty 180 should be removed
+from BFR TE row 507 or marked TBD pending unit confirmation. The
+"same battalion mirror" assumption was wrong.
+
+================================================================
+What this changes
+================================================================
+
+1. Apex Omega Violation 1 (H&S C00392B qty 180): primary source
+   says 0. Recommend removing TE row 507 or marking for unit
+   confirmation. Not a structural change.
+
+2. CCN 21451 "Space Factor missing" (today's agent finding):
+   answer is to import col V from 2031 Master TO&E into the BFR's
+   TE for each TAMCN. Then the existing X-column VLOOKUPs need
+   to be re-anchored to point at the imported column.
+
+3. CCN 14312 NSY/NTG missing: same fix; import cols X and Y from
+   2031 Master TO&E into BFR TE; re-anchor VLOOKUPs.
+
+4. Apex Omega Violation 4 (back-test against CG signed letter
+   711-personnel target): the 2031 Master TO&E has 709 (delta -2).
+   The 1-billet BFR delta plus the 2-billet Master TO&E delta
+   are both reconcilable from the same primary source.
+
+5. The "M13020 2029 TO E CUT" SharePoint file referenced by
+   purged externalLink5 is NOT needed; the 2031 Master TO&E is
+   the better source (newer, broader, contains all three
+   companies' BICs and TAMCNs).
+
+================================================================
+Apex Omega application
+================================================================
+
+Rule 1 (facts only): the 709 / 506 / 0 figures above are
+deterministic UIC-filtered counts on the 2031 Master TO&E sheets
+TO_2 and TE_3.
+
+Rule 4 (TBD where unverifiable): the H&S C00392B is now
+verifiable: zero per primary source. Removing the derived 180
+or marking it TBD is the rule-4 compliant outcome.
+
+Rule 7 (numbers traceable): every figure in this report is
+reproducible from the 2031 Master TO&E xlsx using the openpyxl
+walks captured in the session log preceding this document.
+
+================================================================
+Next concrete actions
+================================================================
+
+  - Backfill BFR TE cols Q/R/S/T/U/V/X/Y from 2031 Master TO&E
+    keyed by TAMCN + UIC.
+  - Re-anchor CCN sheet VLOOKUPs (14312, 21451, etc.) to the
+    correct backfilled columns.
+  - Recalculate; report per-CCN cached value deltas.
+  - Reconcile the 709 vs 711 delta (find the 2 missing billets;
+    either H&S Co or one of the surgical companies).
+  - Mark or remove the H&S C00392B qty 180 row.

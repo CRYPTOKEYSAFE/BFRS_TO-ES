@@ -1,0 +1,23 @@
+Phase C-bis P1 on sheet 44112 STORAGE OF AIR OR GROUND ORGANIC UNITS
+
+FC source: fc_2_000_05n_400series_11_19_2025.pdf p.46
+
+Edits applied:
+
+  B19:
+    Before: 'M28262 Surgical Company B is located at MCBH Kaneohe Bay and is not included in this BFR Calculation'
+    After:  'FY2029 Tables of Organization and Equipment, with Surgical Co B (M28262) per CG MCIPAC endorsement 30 Apr 2026 relocating from MCBH Kaneohe Bay to MCB Camp Butler. Surg B inclusion in 44112 calculation pending structural row-add (see Phase C-bis follow-up note).'
+
+Verified already correct (no edit needed):
+  L46: =SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B46,TE!U:U,"<>#N/A")
+  L47: same pattern -- TE columns D (CCN), G (UIC) correct.
+  G3, R3, R4 tenant header -- pulls from UNIT_ROLLUP via formula.
+
+Held for separate scope:
+  - Add M28262 Surg B row to 4 sub-blocks (rows 27, 34, 48, 71).
+    Requires row-shift handling on 179-merged-range sheet.
+  - Layer 2 NOTE population on TO!C ('44112o', '44112c', '44112w')
+    so admin and warehouse-clerk COUNTIFS compute non-zero.
+  - Personal effects COUNTIFS at M69/M70 use TO!AP:AP for
+    chargeable+deployable flag; TO!AP-column population status
+    not yet verified.

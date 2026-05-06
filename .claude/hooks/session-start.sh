@@ -6,8 +6,17 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
-# Install dependencies based on what exists in the project
-cd "$CLAUDE_PROJECT_DIR"
+# Ruflo agent orchestration (global, idempotent: installs once per cached sandbox).
+# Run before the project cd so ruflo activation is not coupled to project-dir state
+# or to the success of any project-dependency install below.
+if ! command -v ruflo >/dev/null 2>&1; then
+  npm install -g ruflo@latest
+fi
+
+# Install dependencies based on what exists in the project.
+# Default CLAUDE_PROJECT_DIR to pwd so set -u does not abort when the harness
+# omits the variable; the hook is invoked from the repo root in that case.
+cd "${CLAUDE_PROJECT_DIR:-$(pwd)}"
 
 # Node.js
 if [ -f "package.json" ]; then
@@ -34,9 +43,4 @@ fi
 # Rust
 if [ -f "Cargo.toml" ]; then
   cargo fetch
-fi
-
-# Ruflo agent orchestration (global, idempotent: installs once per cached sandbox)
-if ! command -v ruflo >/dev/null 2>&1; then
-  npm install -g ruflo@latest
 fi

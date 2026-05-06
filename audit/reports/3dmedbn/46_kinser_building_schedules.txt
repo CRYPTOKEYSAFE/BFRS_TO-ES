@@ -1,0 +1,70 @@
+Kinser building schedules (iNFADS room-by-room data), inventory note
+Files at repo root (uploaded since prior session):
+  107_KI_Schedule.xlsx
+  300_KI_Schedule.xlsx
+  350_KI_Compound_Schedule.xlsx
+  400_KI_schedule.xlsx
+  508_KI_Schedule.xlsx
+  613_KI_Schedule.xlsx
+
+Form: each xlsx has a 'Utilization' sheet with columns
+  Building, Room Name, Room Number, UIC, UIC Description, Subordinate UIC,
+  UIC Description, Security, CCN, CCN Description, Area SF (or SF)
+
+Some files include UIC JPN and CATEGORY_CODE reference sheets.
+
+================================================================
+What these are: current iNFADS facility supply at named Kinser buildings
+================================================================
+
+Bldg 107, 300, 400, 508, 613 are the buildings named in the CG MCIPAC
+endorsement (April 2026 draft, in repo) as the proposed 3d MED BN
+landing spots. Bldg 350 is the adjacent Army HAP compound named in
+the basing-assessment dashboard timeline.
+
+These are NOT enclosure (2) "Proposed Facilities Layout" of the CG
+signed letter (2 Feb 2026). They are room-by-room schedules of
+CURRENT occupancy and CURRENT CCN tagging at the named buildings.
+The 3d MED BN UICs (M13020, M28261, M28262, M28263) do NOT appear
+in any of these schedules. The M67400 entries that do appear refer
+to "H&S BN MCIPAC MCB CP BUTLER JA" (the installation's H&S
+battalion under MCIPAC), which shares the M67400 UIC and is a
+different unit from 3d MED BN.
+
+Use these as facility-supply data. Do not treat them as proposed
+3d MED BN demand.
+
+================================================================
+Aggregate per building, current state
+================================================================
+
+  Building   Total SF    Top CCN occupants                       Top UIC occupants
+  --------   --------    ----------------------------------      ----------------------
+  107         96,478     61071 admin (37,548) + 17110 (12,487)   M29001 (50,563), Common (20,567), M29017 (11,236), M67400 (9,299)
+  300        210,473     71477 (119,772) + 44113 (43,469)        D03 (119,772), M29002 (43,469), M29012 (42,046)
+  400        202,479     44112 warehouse (169,229) + 14345       M29010 (171,309), M67400/Vacant (6,994)
+                         armory (22,685)
+  508        204,355     44112 warehouse (188,104) + 44110       M20320 (81,193), M29021 (40,245), M13001 (39,949),
+                         caged storage (14,954)                  M29010 (26,717), M67400 (14,954)
+  613         15,996     21451 auto org shop (entire bldg)       M29002 (10,218), M20320 (4,813)
+  350        250,165     untagged Army parking/storage           D00 Army Active
+
+================================================================
+Application
+================================================================
+
+Per CG MCIPAC endorsement (April 2026 draft), proposed 3d MED BN
+allotment names: Bldg 107 BN HQ co-use, Bldg 300 MSTC, Bldg 400
+consolidated armory bay, Bldg 508 supply, Bldg 613 MT/UT, plus
+Bldg 1225 housing and the medical-specific buildings TBD. Note
+Bldg 1225 schedule was not supplied in this batch. The medical
+clinical facility (Series 500 53010 Dispensary candidate per
+audit/reports/3dmedbn/44_gsf_findings.txt Defect 1) is also
+absent from the supplied schedules.
+
+These schedules support a facility-supply sanity check once the
+proposed BFR demand by CCN is computed. They do not, in their own
+form, supply enclosure (2) "Proposed Facilities Layout" demand
+data. The BFR demand calculation must come from the T/O&E driven
+side of the pipeline, with these schedules used only as a
+matched-against-supply cross-reference.

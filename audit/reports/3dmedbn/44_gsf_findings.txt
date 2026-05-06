@@ -1,0 +1,173 @@
+GSF reconciliation findings, 3d MED BN BFR
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx (recalc'd, this commit)
+Branch: claude/usmc-bfr-audit-repair-0YYwt
+Full chain dump: 44_gsf_audit_full.txt
+
+================================================================
+Action this iteration: LibreOffice headless recalc
+================================================================
+
+Symptom found: every CCN sheet's TOTAL cell had cached value None
+prior to this iteration. The validator's 8 PASS / 0 FAIL was
+checking format (no #REF, no #N/A) but not whether any cached value
+existed at all. Anyone opening the workbook in Excel or any
+cached-value-only consumer would see blank totals.
+
+Action: ran LibreOffice headless on the workbook to force a full
+recalc and write cached values back. Cosmetic state preserved
+(merged-range counts, defined names, tab colors all match the
+expected post-prior-session state). Workbook size shrunk from
+1.4 MB to 751 KB; this is LibreOffice's compact xlsx serialization,
+not data loss.
+
+================================================================
+Per-CCN TOTAL state (cached value, post-recalc)
+================================================================
+
+  CCN     TOTAL                  STATUS
+  -----   --------------------   ----------------------------------
+  14312       0.00 GSF           BROKEN: TE lookup chain returns 0
+  14345    6,110.08 GSF          OK, traceable
+  17110       0.00 GSF           DESIGN STUB (rolls into 17120)
+  17120    2,815.45 GSF          OK, traceable
+  21451    1,129.00 GSF          PARTIAL: equipment side returns 0
+  21710      583.32 GSF          PARTIAL: officers side returns 0
+  44112   46,182.74 GSF          OK, traceable
+  45110        8.89 GSF          BROKEN: F29 chain returns 0
+  61072   69,875.00 GSF          QUESTIONABLE: 430 Marines x 162.5
+  61073       0.00 GSF           CRITICAL: 574 billets, 0 SF
+  -----   --------------------
+  SUM    126,704.48 GSF
+
+The CG signed letter places the unit at 711 billets. Of those, the
+NOTE-column classifier routes:
+  61073: 574 (clinical platoons + Co HQ admin)   -> 0 SF
+  21451:  70 (motor T + ambulance + utilities)   -> 1,129 SF total
+  61072:  39 (BN HQ admin)                       -> 6,337.5 SF (BN slice)
+  44112:  22 (S-4 + supply)                      -> traceable
+  21710:   4 (comm equipment repairers)          -> 360 SF (4 x 90)
+  14345:   1 (armory supervisor)                 -> traceable
+
+================================================================
+Itemized defects, in priority order
+================================================================
+
+DEFECT 1 (CRITICAL): CCN 61073 = 0 GSF, 574 billets routed there.
+  Cell H40 holds the literal value 0, not a formula.
+  574 clinical platoon and Co HQ admin Marines have no facility
+  space in the BFR.
+  This is the same issue as Apex Omega Violation 2 from commit
+  9a01d01. The doctrinally clean fix is adding an FC Series 500
+  medical CCN (Dispensary / Outpatient Clinic 53010 plus possibly
+  Hospital components) and re-routing the clinical billets out of
+  61073 into the Series 500 sheet.
+  The lighter fix is to make 61073 H40 a real COUNTIFS x SF formula
+  matching the 61072 pattern, accepting that admin space rates are
+  not the right doctrinal rate for clinical platoons.
+
+DEFECT 2: CCN 14312 (Operational Vehicle Laydown Area) = 0 GSF.
+  The chain reads from TE rows tagged 14312 (8 rows per validator)
+  via VLOOKUP for length/width/height columns. Every VLOOKUP in
+  the chain returns the string "0" via the IFERROR fallback. The
+  IFERROR fallback is wrapped in quotes, so the formula always
+  returns "0" rather than 0; mixed string/number multiplication
+  collapses to 0 downstream.
+  Two issues to verify:
+    (a) Are the TE rows actually populated in cols T/U/V/W (the
+        length/width/height/volume cols the VLOOKUPs target)?
+    (b) Should IFERROR fallback be 0 (number) rather than "0"
+        (string)?
+
+DEFECT 3: CCN 45110 (Open Storage Area) = 8.89 GSF.
+  Eight square feet of open storage is not credible. The chain:
+    M25 = SUM(B25:K25) = 8.8888
+    B25 = R32 * 0.11111 = 80 * 0.11111 = 8.8888
+    R32 = SUM(R29:T31) = 80 (R29 = 0, so the 80 is in R30 or R31)
+  The 0.11111 factor is 1/9 (SF to SY conversion). The output
+  unit may be wrong (expressed as SY but labeled GSF), or the
+  inputs are wrong, or both.
+
+DEFECT 4: CCN 21451 (Auto Org Shop) = 1,129 GSF.
+  N24 = SUM(B24:M24) = 1,129. B24 (Q32 chain) returns 0 because
+  the equipment-side calc is empty: M28 (=AB173) = 0. The 1,129
+  comes from columns C-M of row 24, not from the documented
+  equipment-driven Q32 chain. For 70 motor T billets and an
+  organizational shop, 1,129 SF is too low (per-Marine rate would
+  be 16 SF, well below typical USMC motor T shop rates).
+
+DEFECT 5: CCN 21710 (Comm Maint Shop) = 583 GSF.
+  M37 (officers) = 0 across all UICs. P37 (junior enlisted) = 4.
+  Total = 360 SF + ~223 SF from rows 28-30. Likely undercounts
+  comm space because H&S has multiple radio/electronics TAMCNs
+  on the TE side that are not feeding the equipment-driven chain.
+
+DEFECT 6: CCN 61072 (BN HQ Admin) = 69,875 GSF.
+  P30 sum = 69,875. P26 = 39 (BN admin Marines) x 162.5 = 6,337.5.
+  Remaining 63,537.5 GSF comes from rows 27/28/29 picking up
+  COUNTIFS on the 61073 NOTE for M28262 / M28263. That captures
+  clinical platoon billets at the BN HQ admin rate (162.5 SF/Marine),
+  which is doctrinally wrong: clinical platoons need clinical
+  facility CCNs (Series 500), not admin space.
+  This defect is the mirror image of DEFECT 1; both arise from
+  the absence of a Series 500 CCN in the workbook.
+
+================================================================
+Cosmetic verification (post-recalc vs preB-backup)
+================================================================
+
+Sheets identical except for documented prior-session adds:
+  CCN_Library  : added by prior session (in current, not in preB)
+  Locator_Deck : extracted to audit/reports/ by prior session
+                 (in preB, not in current)
+
+Merged-range counts: all match preB except documented intentional
+deltas (44112 +20 from Surg B add, UNIT_ROLLUP +11 from Phase B.6
+row add).
+
+Defined names: 0 (matches prior session's deliberate purge from 44).
+
+Tab colors: 4 sheets recolored from FFFF0000 (red, hidden-broken)
+to FF00B050 (green, active) per Phase B unhide work.
+
+================================================================
+Apex Omega rule application
+================================================================
+
+Rule 4 (omit or mark TBD): CCN 14312, 45110, 21451 (equipment side),
+  21710 all have calculation chains that produce defensible-looking
+  numbers from broken or empty inputs. Per rule 4, those totals
+  should either be repaired (real chain, real numbers) or marked
+  TBD pending [specific input fix]. Currently they are treated as
+  truth.
+
+Rule 1 (facts only): CCN 61072 = 69,875 GSF rests on the
+  assumption that clinical platoon billets warrant 162.5 SF of
+  admin space per Marine. There is no FC 2-000-05N citation
+  supporting that, because clinical platoons are not BN HQ admin.
+
+Rule 7 (numbers traceable): SUM = 126,704 GSF. Of that, ~70,000 SF
+  (61072) is unreliable, ~6,000 SF (61073) is missing entirely.
+  The defensible number is closer to ~56,000 GSF (44112 + 14345 +
+  17120 + 21451 + 21710 + 6,337.5 BN-only slice of 61072).
+
+================================================================
+Held for next session
+================================================================
+
+  - Add FC Series 500 medical CCN to CCN_Library (53010
+    Dispensary / Outpatient Clinic at minimum). Re-route the 574
+    clinical billets out of 61073 NOTE column to the new
+    Series 500 NOTE.
+  - Repair CCN 14312 VLOOKUP chain: switch IFERROR fallback from
+    "0" to 0; verify TE rows tagged 14312 carry length/width/
+    height in the cols the VLOOKUPs target.
+  - Repair CCN 45110: identify the 80-value source in R30/R31,
+    confirm the 0.11111 factor is intentional (SY conversion).
+  - Repair CCN 21451 equipment side: AB173 chain returns 0;
+    determine why and fix.
+  - Repair CCN 21710 equipment side: connect H&S radio/electronics
+    TE rows to the equipment-driven half of the chain.
+  - Source-replace the 198 inherited H&S TE rows.
+  - Back-test the repaired SUM against the CG signed letter and
+    against unit-doctrine GSF benchmarks for a 711-billet medical
+    battalion.

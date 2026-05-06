@@ -1,0 +1,140 @@
+Diff log: Apex Omega violations 1 and 3 fix
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+Branch: claude/usmc-bfr-audit-repair-0YYwt
+Source of violations: commit 9a01d01 (Track 10e Apex Omega self-audit)
+
+================================================================
+Violation 1: H&S C00392B FILTER WATER PURIFI qty 180 lacks TBD marker
+================================================================
+
+Context per audit/reports/3dmedbn/31_phase_cbis_p2_diff.txt and SKILL.md
+Track 10e: TE row 507 was added in Phase C-bis P2 (commit 42b1428) to
+allocate a Water Purification Filter to H&S Co (M28261). Quantity 180
+was derived by mirroring the Surg A and Surg B Primary Only R81
+allocations, both 180. The H&S TFSMS export file is not in the repo;
+no primary source confirms qty 180 for H&S. Apex Omega rule 4 requires
+unverified data to be marked TBD pending source. The TE row had no
+inline TBD marker prior to this commit.
+
+OPEN SOURCE QUESTION (raised by user this session): the prior session's
+self-audit assumed an H&S TFSMS export existed and was simply not yet
+supplied. User has stated they do not have a TFSMS report for H&S.
+The right authoritative source for H&S equipment is therefore unsettled.
+Candidates to be confirmed by user:
+  (a) master ASR (3DMLG_ASR.xlsx) if it carries T/E rows for H&S;
+  (b) a Master TO&E or MERIT extract for M28261 outside TFSMS;
+  (c) drop the row entirely (qty 180 was a derivation with no source);
+  (d) user-supplied verbal qty cited as 'user-supplied, [date]'.
+
+Fix decision (interim, source-agnostic): keep qty 180 numeric in P507
+(preserve the validator's 8 PASS / 0 FAIL and the 506-row equipment-
+accounting count) and append a bracketed TBD marker to Nomenclature
+column J507 that does not presume the source format. Final source
+selection deferred until user answers the candidate list above.
+
+Cell edit:
+  TE!J507
+    pre : 'FILTER,WATER PURIFI-41207'
+    post: 'FILTER,WATER PURIFI-41207 [TBD pending verified H&S source;
+           qty 180 derived from Surg A and Surg B same-battalion
+           allocation]'
+
+Cells unchanged on TE row 507: A, B, C, D, E (CCN VLOOKUP formula),
+F, G (UIC M28261), H (TAMCN-short formula), I (TAMCN C00392B), K
+(TAM Stat IS), L through O (blank), P (qty 180), and downstream
+SUMIFS-fed columns.
+
+Closure path: once the user names the authoritative H&S equipment
+source (see candidates above), replace J507 text with the original
+'FILTER,WATER PURIFI-41207' and replace P507 qty with the verified
+figure (or delete row 507 entirely if option (c) is chosen). If qty
+changes, run pipeline/validate.py and confirm equipment accounting
+still tallies (currently 506 / CCN 44112 = 249).
+
+================================================================
+Violation 3: MISSION STATEMENT B208 invents 'FOSTER' without source
+================================================================
+
+Context per Track 10e self-audit: Phase C-bis P2 replaced the
+inherited stale text 'MCBH BOX 63062' / 'KANEOHE BAY' with
+'FOSTER BUILDING TBD' / 'OKINAWA, JAPAN (MCB Camp Butler / Camp
+Foster post-relocation)'. The footprint document
+(3D MED BN Footprint as of Jan 2026 - Camps FOSTER, KINSER.pdf)
+shows 3d MED BN distributed across FOS-215, FOS-5717, FOS-5628
+(Camp Foster) and KIN-300 (Camp Kinser); Surg B's specific
+post-relocation building is not stated in any source letter.
+Naming Camp Foster without a primary citation violates Apex Omega
+rule 1 (facts only).
+
+Cell edits:
+  MISSION STATEMENT!B208
+    pre : 'FOSTER BUILDING TBD'
+    post: 'TBD pending Surg B relocation building assignment'
+
+  MISSION STATEMENT!B210
+    pre : 'OKINAWA, JAPAN (MCB Camp Butler / Camp Foster post-relocation)'
+    post: 'OKINAWA, JAPAN (MCB Camp Butler; specific camp TBD pending
+           CG MCIPAC final basing decision; current footprint spans
+           FOS-215, FOS-5717, FOS-5628, KIN-300 per 3d MED BN Footprint
+           Jan 2026)'
+
+Closure path: when the CG MCIPAC final basing decision names the
+specific Surg B post-relocation building, replace B208 with the
+building number/identifier and B210 with the cited installation +
+camp. Cite the source letter (CG signed letter, endorsement, or
+basing decision document) inline at point of replacement.
+
+================================================================
+Cosmetic verification (post-edit vs preB-backup)
+================================================================
+
+Merged-range counts unchanged on affected sheets:
+  TE                        preB=0   post=0   delta=0
+  MISSION STATEMENT         preB=52  post=52  delta=0
+
+No formulas added, removed, or modified. No defined names added or
+removed. No CCN sheets added or removed. No tab colors changed.
+
+================================================================
+Validator (post-edit)
+================================================================
+
+audit/reports/3dmedbn/41_validator_post_violations_1_3.txt: 8 PASS / 0 FAIL
+  1. Schema PASS
+  2. NOTE coverage PASS (710/710 TO + 506/506 TE)
+  3. NOTE-CCN consistency PASS (0 mismatches)
+  4. Vocabulary PASS
+  5. Cell errors PASS (0 cached error tokens)
+  6. Roll-up integrity PASS (10 CCN sheets, 10 listed in UNIT_ROLLUP)
+  7. Billet accounting PASS (710/710 attributed)
+  8. Equipment accounting PASS (506/506 attributed)
+
+================================================================
+Apex Omega violation status (carried from commit 9a01d01)
+================================================================
+
+  Violation 1: PARTIAL
+    Inline TBD marker now present in TE!J507 with source-agnostic
+    wording. Qty 180 retained pending user identification of the
+    authoritative H&S equipment source (TFSMS export does not exist
+    per user). Open question documented above.
+
+  Violation 2: OPEN
+    574 clinical billets routed to 61073 (Co HQ admin). Requires
+    FC 2-000-05N Series 500 read to identify the correct medical
+    CCN(s), then a structural change (new CCN sheet, CCN_Library
+    entry, UNIT_ROLLUP entry, classifier re-route). Held for next
+    slice; user direction prohibits structural changes without
+    ratification.
+
+  Violation 3: CLOSED
+    MISSION STATEMENT B208 and B210 rewritten as honest TBD
+    pending CG MCIPAC final basing decision, with the Jan 2026
+    footprint cited as the current state.
+
+  Violation 4: OPEN
+    Validator-clean has not been back-tested against the CG signed
+    strategic basing requirement letter (711 billets) nor pressure-
+    tested by re-deriving 61072 admin SF and 17120 H40=U28 chain
+    from inputs. Held until violation 2 is closed; the back-test
+    numbers should be the final ones, not interim.

@@ -1,0 +1,206 @@
+=== GSF reconciliation audit ===
+File: M67400-FO-M13020 3D MED BN-22NOV2024.xlsx
+
+--- CCN 14312 TOTAL at H36 ---
+  formula: '=M25'
+  cached : 0
+  chain (31 cells, depth<=6):
+    M25: f='=SUM(M21:P24)'                                              v=0
+      M21: f='=AB218'                                                     v=0
+        AB218: f='=SUM(AC43:AE79)+SUM(AC89:AE125)+SUM(AC135:AE171)+SUM(AC181:AE191)' v=0
+          AC43: f='=IFERROR((W43*Y43*AA43),"")'                                v=0
+            W43: f='=SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C43,TE!$D:$D,$C$5)' v=0
+              C40: f='=B21'                                                       v='M28261'
+              C43: f='A00477B'                                                    v='A00477B'
+              C5: f='14312'                                                      v=14312
+            Y43: f='=IFERROR(VLOOKUP(C43,TE!$H:$Y,16,FALSE()),"0")'             v='0'
+            AA43: f='=IFERROR(VLOOKUP(C43,TE!$H:$Y,17,FALSE()),"0")'             v='0'
+          AE79: f='None'                                                       v=None
+          AC89: f='=IFERROR((W89*Y89*AA89),"")'                                v=0
+            W89: f='=SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C89,TE!$D:$D,$C$5)' v=0
+              C89: f='B03957B'                                                    v='B03957B'
+            Y89: f='=IFERROR(VLOOKUP(C89,TE!$H:$Y,16,FALSE()),"0")'             v='0'
+            AA89: f='=IFERROR(VLOOKUP(C89,TE!$H:$Y,17,FALSE()),"0")'             v='0'
+          AE125: f='None'                                                       v=None
+          AC135: f='=IFERROR((W135*Y135*AA135),"")'                             v=0
+            W135: f='=SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C135,TE!$D:$D,$C$5)' v=0
+              C135: f='D00317K'                                                    v='D00317K'
+            Y135: f='=IFERROR(VLOOKUP(C135,TE!$H:$Y,16,FALSE()),"0")'            v='0'
+            AA135: f='=IFERROR(VLOOKUP(C135,TE!$H:$Y,17,FALSE()),"0")'            v='0'
+          AE171: f='None'                                                       v=None
+          AC181: f='=IFERROR((W181*Y181*AA181),"")'                             v=0
+            W181: f='=SUMIFS(TE!$O:$O,TE!$G:$G,$C$40,TE!$I:$I,C181,TE!$D:$D,$C$5)' v=0
+              C181: f='E00712BA'                                                   v='E00712BA'
+            Y181: f='=IFERROR(VLOOKUP(C181,TE!$H:$Y,16,FALSE()),"0")'            v='0'
+            AA181: f='=IFERROR(VLOOKUP(C181,TE!$H:$Y,17,FALSE()),"0")'            v='0'
+          AE191: f='None'                                                       v=None
+      P24: f='None'                                                       v=None
+
+--- CCN 14345 TOTAL at H40 ---
+  formula: '=P25+K25'
+  cached : 6110.08
+  chain (12 cells, depth<=6):
+    P25: f='=B25+K25'                                                   v=3590.08
+      B25: f='=Q32'                                                       v=1070.08
+        Q32: f='=SUM(Q30:T31)'                                              v=1070.08
+          Q30: f='=M30*$Q$29'                                                 v=535.04
+            M30: f='=Z420'                                                      v=418
+              Z420: f='=ROUNDUP(SUM(Z370:AC388,Z390,Z392:AC410,Z412:AC419),0)'     v=418
+            Q29: f='1.28'                                                       v=1.28
+          T31: f='None'                                                       v=None
+      K25: f='=G25*10'                                                    v=2520
+        G25: f='=COUNTIFS(TO!G:G,"E",TO!F:F,"M28261")'                      v=252
+          M28261: f='None'                                                       v=None
+
+--- CCN 17110 TOTAL at H40 ---
+  formula: '=P25+K25'
+  cached : 0
+  chain (3 cells, depth<=6):
+    P25: f='None'                                                       v=None
+    K25: f='None'                                                       v=None
+
+--- CCN 17120 TOTAL at H40 ---
+  formula: '=U28'
+  cached : 2815.45
+  chain (18 cells, depth<=6):
+    U28: f='=SUM(U26:X27)'                                              v=2815.45
+      U26: f='=M26+Q26'                                                   v=2815.45
+        M26: f='=Z48'                                                       v=1437.9
+          Z48: f='=SUM(Z46:AC47)'                                             v=1437.9
+            Z46: f='=H46*R46*V46'                                               v=837.9
+              H46: f='30'                                                         v=30
+              R46: f='21'                                                         v=21
+              V46: f='1.33'                                                       v=1.33
+            AC47: f='None'                                                       v=None
+        Q26: f='=U67'                                                       v=1377.55
+          U67: f='=SUM(U60:Y65)'                                              v=1377.55
+            U60: f='=H60*L60*Q60'                                               v=79.8
+              H60: f='1'                                                          v=1
+              L60: f='60'                                                         v=60
+              Q60: f='1.33'                                                       v=1.33
+            Y65: f='None'                                                       v=None
+      X27: f='None'                                                       v=None
+
+--- CCN 21451 TOTAL at H44 ---
+  formula: '=N24'
+  cached : 1129
+  chain (13 cells, depth<=6):
+    N24: f='=SUM(B24:M24)'                                              v=1129
+      B24: f='=Q32'                                                       v=0
+        Q32: f='=M33*((Z28*Z29)+Z27)*Z30'                                   v=0
+          M33: f='=ROUNDUP(M32,0)'                                            v=0
+            M32: f='=SUM(M28:P31)'                                              v=0
+              M28: f='=AB173'                                                     v=0
+              P31: f='None'                                                       v=None
+          Z28: f='34'                                                         v=34
+          Z29: f='16'                                                         v=16
+          Z27: f='=Z28*Z29/2'                                                 v=272
+          Z30: f='1.33'                                                       v=1.33
+      M24: f='None'                                                       v=None
+
+--- CCN 21710 TOTAL at H47 ---
+  formula: '=AB31'
+  cached : 583.3153104
+  chain (12 cells, depth<=6):
+    AB31: f='=SUM(AB27:AE30)'                                            v=583.3153104
+      AB27: f='=SUM(M27:AA27)'                                             v=503.69177592
+        M27: f='=S37'                                                       v=360
+          S37: f='=M37*M$36+P37*P$36'                                         v=360
+            M37: f='=COUNTIFS(TO!C:C,"21710o",TO!F:F,B37)'                      v=0
+              B37: f='=B27'                                                       v='M28261'
+            M36: f='120'                                                        v=120
+            P37: f='=COUNTIFS(TO!C:C,"21710c",TO!F:F,B37)'                      v=4
+            P36: f='90'                                                         v=90
+        AA27: f='None'                                                       v=None
+      AE30: f='None'                                                       v=None
+
+--- CCN 44112 TOTAL at H40 ---
+  formula: '=AB27'
+  cached : 46182.7430572358
+  chain (22 cells, depth<=6):
+    AB27: f='=SUM(AB25:AE26)+AB28'                                       v=46182.7430572358
+      AB25: f='=SUM(M25:AA25)'                                             v=21657.1194052775
+        M25: f='=V32'                                                       v=1740
+          V32: f='=M32*$M$31+P32*$P$31+S32*$S$31'                             v=1740
+            M32: f='=COUNTIFS(TO!C:C,"44112o",TO!F:F,$B$32)'                    v=7
+              B32: f='M28261'                                                     v='M28261'
+            M31: f='120'                                                        v=120
+            P32: f='=COUNTIFS(TO!C:C,"44112c",TO!F:F,$B$32)'                    v=0
+            P31: f='60'                                                         v=60
+            S32: f='=COUNTIFS(TO!C:C,"44112w",TO!F:F,$B$32)'                    v=15
+            S31: f='60'                                                         v=60
+        AA25: f='None'                                                       v=None
+      AE26: f='None'                                                       v=None
+      AB28: f='=SUM(M28:AA28)'                                             v=12302.5782683592
+        M28: f='=V35'                                                       v=0
+          V35: f='=M35*$M$31+P35*$P$31+S35*$S$31'                             v=0
+            M35: f='=COUNTIFS(TO!C:C,"44112o",TO!F:F,$B$35)'                    v=0
+              B35: f='M28262'                                                     v='M28262'
+            P35: f='=COUNTIFS(TO!C:C,"44112c",TO!F:F,$B$35)'                    v=0
+            S35: f='=COUNTIFS(TO!C:C,"44112w",TO!F:F,$B$35)'                    v=0
+        AA28: f='None'                                                       v=None
+
+--- CCN 45110 TOTAL at H50 ---
+  formula: '=M25'
+  cached : 8.8888
+  chain (11 cells, depth<=6):
+    M25: f='=SUM(B25:K25)'                                              v=8.8888
+      B25: f='=R32*0.11111'                                               v=8.8888
+        R32: f='=SUM(R29:T31)'                                              v=80
+          R29: f='=N29*R28'                                                   v=0
+            N29: f='=F29*J29'                                                   v=0
+              F29: f='=M42'                                                       v=0
+              J29: f='13.34'                                                      v=13.34
+            R28: f='2.5'                                                        v=2.5
+          T31: f='None'                                                       v=None
+      K25: f='None'                                                       v=None
+
+--- CCN 61072 TOTAL at H40 ---
+  formula: '=P30'
+  cached : 69875
+  chain (7 cells, depth<=6):
+    P30: f='=SUM(P26:S29)'                                              v=69875
+      P26: f='=M26*$Y$25'                                                 v=6337.5
+        M26: f='=COUNTIFS(TO!D:D,"61072",TO!F:F,$B$26)'                     v=39
+          B26: f='M28261'                                                     v='M28261'
+        Y25: f='162.5'                                                      v=162.5
+      S29: f='None'                                                       v=None
+
+--- CCN 61073 TOTAL at H40 ---
+  formula: 0
+  cached : 0
+
+=== UNIT_ROLLUP per-CCN cells ===
+  R9: [None, None, None, None, 14345, None, None, 'Armory', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 14345, None, None, 'Armory', None, None, None, None, None, None, None, None, None, None, None]
+  R10: [None, None, None, None, 17110, None, None, 'Academic Instruction Building', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 17110, None, None, 'Academic Instruction Building', None, None, None, None, None, None, None, None, None, None, None]
+  R11: [None, None, None, None, 17120, None, None, 'Applied Instruction Building', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 17120, None, None, 'Applied Instruction Building', None, None, None, None, None, None, None, None, None, None, None]
+  R12: [None, None, None, None, 44112, None, None, 'Storage of Air or Ground Organic Units - USMC', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 44112, None, None, 'Storage of Air or Ground Organic Units - USMC', None, None, None, None, None, None, None, None, None, None, None]
+  R13: [None, None, None, None, 61072, None, None, 'Battalion /Squadron Headquarters, Marine Corps', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 61072, None, None, 'Battalion /Squadron Headquarters, Marine Corps', None, None, None, None, None, None, None, None, None, None, None]
+  R14: [None, None, None, None, 61073, None, None, 'Company/Battery Headquarters, Marine Corps', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 61073, None, None, 'Company/Battery Headquarters, Marine Corps', None, None, None, None, None, None, None, None, None, None, None]
+  R15: [None, None, None, None, 14312, None, None, 'Operational Vehicle Laydown Area', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 14312, None, None, 'Operational Vehicle Laydown Area', None, None, None, None, None, None, None, None, None, None, None]
+  R16: [None, None, None, None, 21451, None, None, 'Automotive Organizational Shop', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 21451, None, None, 'Automotive Organizational Shop', None, None, None, None, None, None, None, None, None, None, None]
+  R17: [None, None, None, None, 21710, None, None, 'Electronics/Communications Maintenance Shop', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 21710, None, None, 'Electronics/Communications Maintenance Shop', None, None, None, None, None, None, None, None, None, None, None]
+  R18: [None, None, None, None, 45110, None, None, 'Open Storage Area', None, None, None, None, None, None, None, None, None, None, None]
+        formulas: [None, None, None, None, 45110, None, None, 'Open Storage Area', None, None, None, None, None, None, None, None, None, None, None]
+
+=== Per-CCN TOTAL summary ===
+  CCN 14312: TOTAL = 0
+  CCN 14345: TOTAL = 6110.08
+  CCN 17110: TOTAL = 0
+  CCN 17120: TOTAL = 2815.45
+  CCN 21451: TOTAL = 1129
+  CCN 21710: TOTAL = 583.3153104
+  CCN 44112: TOTAL = 46182.7430572358
+  CCN 45110: TOTAL = 8.8888
+  CCN 61072: TOTAL = 69875
+  CCN 61073: TOTAL = 0
+  SUM of CCN TOTALs = 126704.4771676358

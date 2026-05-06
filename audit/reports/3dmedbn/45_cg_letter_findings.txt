@@ -1,0 +1,87 @@
+CG signed letter, primary-source extraction
+File: 3d Med Bn Strat Basing Req CG SIGNED (004).pdf
+Date: 2 Feb 2026
+Signed: K. G. COLLINS (CG, 3d MLG)
+OCR text: 45_cg_signed_letter_ocr_p1.txt and _p2.txt
+Method: pdftoppm 300dpi -> tesseract --psm 1 (image-only PDF)
+
+================================================================
+Verbatim primary-source facts
+================================================================
+
+Subject: BASING ACTION REQUEST FOR 3D MEDICAL BATTALION
+References:
+  (a) MARADMIN 148/20
+  (b) Basing Action Request for 3d Medical Battalion, Bravo Surgical Company
+Enclosures:
+  (1) Basing Requirements Decision Brief
+  (2) Proposed Facilities Layout
+
+Section 1 (Purpose), excerpt: "3d Medical Battalion (3d Med Bn) is
+disaggregated throughout Camp Foster and Camp Kinser ... 3d Med Bn
+seeks to consolidate its elements on Camp Kinser. III MEF requires
+eight Surgical Platoons to meet wartime requirements but is only
+staffed to three within the First Island Chain (FIC)."
+
+Section 2 (Background), excerpt: "Due to the limited adequate space
+on Camp Foster, 3d Med Bn has already relocated the MT/UT section
+and MSTC to Camp Kinser."
+
+Section 4 (Request): "III MEF, 3d MLG formally requests current
+Basing Actions aboard Marine Corps Base Butler (MCBB), Camp Kinser,
+Okinawa Japan, for 3d Medical Battalion."
+
+Section 5 (Space Requirements):
+  a. Personnel: 711
+  b. Workspace: Per enclosure (2)
+
+Section 6 (POC): Maj Ronald Lima, 3d MLG G-4 Operations Officer.
+
+================================================================
+Application to back-test (Apex Omega Violation 4)
+================================================================
+
+CG-signed personnel count: 711.
+BFR TO sheet billet count: 710 (per validator audit).
+Delta: 1 billet missing in BFR. Source of delta not yet identified;
+reconcile during the next-session re-source pass.
+
+Workspace requirement: per enclosure (2), "Proposed Facilities
+Layout". That document is not directly identified in the repo by
+name. Candidates that may be enclosure (2):
+  - 3D MED BN Footprint (as of Jan 2026) - Camps FOSTER, KINSER.pdf
+    (current state, not the proposed layout)
+  - Tab B - 3d MLG Bravo Surgical Decision Brief v2 (2).pdf
+    (possibly enclosure 1 to the CG letter)
+  - Tab C - Basing assessment Surg Co B_MCB Butler Aug 2025
+    (Aug 2025 date predates CG letter Feb 2026; possibly an input)
+  - E_BFR_F_PRC_BU26-5836R_POM26_20260228_2_OF_2.pdf
+    (POM26 packaging, contains BFR submission for budget; may
+    embed proposed layout)
+
+Of those candidates, the POM26 PDF is the most likely to contain
+the proposed facilities layout with GSF totals because POM26 is
+the funding submission that quotes facility size. If a
+"1 of 2" companion exists outside the repo, the workspace
+allocation by CCN would be in it.
+
+Note on terminology: the CG letter uses 'MCBB' (Marine Corps
+Base Butler). Per CLAUDE.md and Apex Omega rule 1, the current
+correct nomenclature is MCB Camp Butler with MCIPAC as the
+Echelon II command. The 'MCBB' usage in the signed letter
+itself is what the document says; the BFR should use the
+current-correct nomenclature even though the source uses legacy.
+
+================================================================
+Notes for next session
+================================================================
+
+  - Reconcile the 1-billet delta (BFR 710 vs CG 711). Identify the
+    missing billet by company.
+  - Locate or request enclosure (2) "Proposed Facilities Layout"
+    for direct comparison against the BFR's GSF roll-up.
+  - Until enclosure (2) is in hand, the BFR's 126,704 GSF
+    aggregate cannot be primary-source back-tested. The defensible
+    intermediate check is per-doctrine sanity (162.5 SF/admin
+    Marine, 90 SF/junior enlisted, 120 SF/officer) which the
+    44_gsf_findings.txt write-up already lays out per CCN.

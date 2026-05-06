@@ -1,0 +1,105 @@
+Phase C-bis P1 on sheet 45110 OPEN STORAGE AREA
+
+FC source: fc_2_000_05n_400series_11_19_2025.pdf p.50, current 2025-11-19
+
+Changes:
+
+  R3:
+    Before: '2D MED BN'
+    After:  '3d MED BN'
+
+  R4:
+    Before: 'M12020'
+    After:  'M13020'
+
+  B9:
+    Before: 'Mission: Provide health service support to the Marine expeditionary force (MEF).\n\nCCN: This category group consists of non-covered storage areas, paved or otherwise established, for storage of General Supply Materials.\n\nJustification: Open Storage Areas are required by 2nd MED BN to provide laydown area for shipping containers and other items not required to be stored indoors.'
+    After:  'Mission: Provide health service support to the Marine expeditionary force (MEF).\n\nCCN: This category group consists of non-covered storage areas, paved or otherwise established, for storage of General Supply Materials.\n\nJustification: Open Storage Areas are required by 3d MED BN to provide laydown area for shipping containers and other items not required to be stored indoors.'
+
+  M35:
+    Before: 'C44312E'
+    After:  '(none)'
+
+  Q35:
+    Before: 'C44332E'
+    After:  '(none)'
+
+  M36:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B36)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$M$35,TE!G:G,B36,TE!D:D,$C$5)"
+
+  Q36:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B36)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$Q$35,TE!G:G,B36,TE!D:D,$C$5)"
+
+  U36:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D:D,B36)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$U$35,TE!G:G,B36,TE!D:D,$C$5)"
+
+  M37:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B37)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$M$35,TE!G:G,B37,TE!D:D,$C$5)"
+
+  Q37:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B37)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$Q$35,TE!G:G,B37,TE!D:D,$C$5)"
+
+  U37:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D:D,B37)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$U$35,TE!G:G,B37,TE!D:D,$C$5)"
+
+  M38:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B38)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$M$35,TE!G:G,B38,TE!D:D,$C$5)"
+
+  Q38:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B38)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$Q$35,TE!G:G,B38,TE!D:D,$C$5)"
+
+  U38:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D:D,B38)"
+    After:  "=SUMIFS(TE!O:O,TE!I:I,'45110'!$U$35,TE!G:G,B38,TE!D:D,$C$5)"
+
+  M39:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$M$35,TE!D:D,B39)"
+    After:  None
+
+  Q39:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$35,TE!D:D,B39)"
+    After:  None
+
+  U39:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D:D,B39)"
+    After:  None
+
+  M40:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$M$38,TE!D:D,B40)"
+    After:  None
+
+  Q40:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$Q$38,TE!D:D,B40)"
+    After:  None
+
+  U40:
+    Before: "=SUMIFS(TE!O:O,TE!H:H,'45110'!$U$35,TE!D:D,B40)"
+    After:  None
+
+  M41:
+    Before: '=SUM(M36:P40)-11'
+    After:  '=SUM(M36:P40)'
+
+  Q41:
+    Before: '=SUM(Q36:T40)-12'
+    After:  '=SUM(Q36:T40)'
+
+Notes:
+- Tarps (C34002F, qty 305+180+180) and tents (C34142E, qty 90+90)
+  tagged 45110 in Phase C.2 are not shipping containers and do not fit
+  the container-stacking math on 45110. Per FC 45110-1 they may belong
+  in 44112 (organic covered storage). Flagged for SME review; not
+  retagged in this commit per Apex Omega rule 4 (no silent rework).
+- Magic -11 / -12 adjustments in original M41/Q41 (subtract JMICs in
+  44112) were 2nd Med Bn-specific; 3d MED BN has no JMICs in 44112,
+  so adjustment is 0.
+- W46 self-reference =$AA$55*W46 was broken (AA55 empty); cleared.
+- Orphan SUMIFS at R39/R40 (no UIC) deleted.

@@ -987,6 +987,114 @@ unit; the order is the recommended build sequence.
        (c) accept conservative under-counting on these five sheets
        and note the constraint in the BFR cover sheet.
 
+- Track 10d, Phase C-bis P1 executed (this session, commits f738d55,
+  8db0406, 6fd2357, 501ddd0, 10e6709, 343cefd, 0faceb0). User
+  ratified P1 (rebuild calc chains per FC) on 2026-05-05.
+
+  Critical structural finding from Phase C-bis investigation:
+  the 5 CCN sheets carrying inherited 2nd Med Bn template
+  scaffolding (14312, 21451, 21710, 45110, plus 44112's TE side)
+  had SUMIFS chains designed against an OLDER TE column schema
+  where col A held CCN, col C held NOTE, col D held UIC, col H
+  held full TAMCN. The 3d MED BN BFR's actual TE schema has
+  col D=CCN, col G=UIC, col H=TAMCN-short (5 char), col I=TAMCN
+  (full). Every SUMIFS criterion was filtering on the wrong column
+  and producing 0. This was independent of the col D retag work
+  in Phase C and would have left TOTAL REQUIREMENT cells at 0
+  even with perfect col D tagging.
+
+  Per-sheet fixes applied (all via deterministic regex + minimal
+  manual edit):
+
+  Sheet 45110 OPEN STORAGE AREA (commit f738d55):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    M35/Q35 container TAMCNs: PALCON/QUADCON -> '(none)' (3d MED
+      BN has no PALCONs/QUADCONs); U35 kept as C00772EA (JMIC TAN
+      x3 at M28261)
+    15 SUMIFS rewired:
+      Before: =SUMIFS(TE!O:O, TE!H:H, '<TAMCN>', TE!D:D, B<row>)
+      After:  =SUMIFS(TE!O:O, TE!I:I, '<TAMCN>', TE!G:G, B<row>,
+                      TE!D:D, $C$5)
+    Magic -11 / -12 constants in M41/Q41 (subtract JMICs in 44112)
+      removed (zero for 3d MED BN)
+    Note: 4 tarp + 2 tent rows tagged 45110 in Phase C.2 may
+      belong in 44112 per FC 45110-1 prose; flagged for SME review
+
+  Sheet 21710 ELECTRONICS/COMMS MAINT SHOP (commit 8db0406):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    H47 TOTAL: =AB27 (per-UIC M28261-only) -> =AB31 (grand total).
+      This was a significant bug: pre-fix UNIT_ROLLUP undercounted
+      21710 by missing M28263 and M28262 contributions.
+    4 storage-side SUMIFS rewired (TE!T->U for Volume Total,
+      TE!A->D for CCN, TE!D->G for UIC)
+    L57/P57/T57/X57 orphan formulas (no UIC label in B57) cleared
+    Personnel-side (admin, shop, maint bays) held for Layer 2
+
+  Sheet 14312 OPERATIONAL VEHICLE LAYDOWN AREA (commit 6fd2357):
+    Tenant header already correct from Phase B.5a
+    477 SUMIFS rewired via regex:
+      Before: =SUMIFS(TE!O:O, TE!D:D, $C$<UIC>, TE!H:H, C<row>,
+                      TE!A:A, $C$5)
+      After:  =SUMIFS(TE!O:O, TE!G:G, $C$<UIC>, TE!I:I, C<row>,
+                      TE!D:D, $C$5)
+    Block 4 (rows 592-740, B24=None orphan) left in place (its
+      SUMIFS produces 0 because UIC criterion never matches)
+    Inherited TAMCN list (~120 TAMCNs duplicated per UIC) not
+      trimmed; non-3d-MED-BN TAMCNs produce 0 from SUMIFS
+
+  Sheet 21451 AUTOMOTIVE ORGANIZATIONAL SHOP (commit 501ddd0):
+    Tenant header: 2D MED BN -> 3d MED BN; M12020 -> M13020
+    437 SUMIFS rewired via regex:
+      Before: =IFERROR(SUMIFS(TE!O:O, TE!D:D, $B$<n>, TE!H:H,
+                              B<row>, TE!C:C, $C$5), "")
+      After:  =IFERROR(SUMIFS(TE!O:O, TE!G:G, $B$<n>, TE!I:I,
+                              B<row>, TE!D:D, $C$5), "")
+    Block 4 (B441=B31=None orphan) left in place
+
+  Sheet 44112 STORAGE OF AIR OR GROUND ORGANIC UNITS (commit 10e6709):
+    Tenant header pulls from UNIT_ROLLUP via formula -- correct
+    L46/L47 TE-side SUMIFS already use correct columns -- no fix
+    B19 stale claim "M28262 ... not included" updated to reflect
+      Surg B's relocation per CG MCIPAC endorsement 30 Apr 2026
+    Add M28262 as third UIC in 4 sub-blocks: held for separate
+      scope (requires row-shift handling on 179-merged-range sheet)
+    Personnel-side COUNTIFS for 44112o/44112c/44112w: held for
+      Layer 2 NOTE population
+
+  Dead-row cleanup (commit 343cefd):
+    Cleared 1346 stray rows 507-1852 in TE: col B (ROW counters),
+      col T (=Q*R*S Volume Each formulas), col U (=T*P Volume
+      Total formulas) on rows where col D and col I are both None.
+    Phase B.7 had cleared col D and col E only.
+
+  Phase D validator re-run (commit 0faceb0): 6 PASS / 2 FAIL.
+    NEW PASS: Check 8 Equipment accounting (505 rows, 505
+      attributed, 0 orphans).
+    REMAINING FAIL: Check 2 NOTE coverage and Check 7 Billet
+      accounting -- both depend on TO!C NOTE column population
+      (Layer 2 work). 21710 H47 fix from per-UIC to grand total
+      shows up correctly in CHECK 6 output ('21710': =AB31).
+
+  Cosmetic preserved across all 5 sheet rewrites:
+    14312: 3220 merged ranges
+    21451: 1950 merged ranges
+    21710: 246 merged ranges
+    44112: 179 merged ranges
+    45110: 117 merged ranges
+    All tab colors FF00B050 green; A1 banners 'BASIC FACILITY
+    REQUIREMENTS WORKSHEET' Calibri 16 bold; sheet states visible.
+
+  Held for separate scope:
+    Layer 2 NOTE population on TO!C with CCN+suffix tags
+      (44112o/44112c/44112w/21710o/21710c/21710rs/21710cs/21710ds/
+      21710ws/21710es/21710ms). Doctrine-heavy; needs user
+      ratification of classification rules per BIC/MOS/MCC.
+    Add M28262 Surg B row to 44112 sub-blocks (analysis 27, admin
+      34, TE warehouse 48, personal effects 71). Structural
+      surgery on 179-merged-range sheet.
+    Tarps and tents tagged 45110 in Phase C.2 may belong in 44112
+      per FC 45110-1 prose; SME review.
+
   H&S Co (M28261) C00392B row remains TBD pending H&S TFSMS file.
   C02472Z M50 mask row remains TBD pending ERAA TSC verification.
   These TBDs are Apex Omega rule-4 honest gaps, not pipeline

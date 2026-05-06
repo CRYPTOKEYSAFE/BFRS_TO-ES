@@ -1,0 +1,63 @@
+Phase C-bis P1 on sheet 21710 ELECTRONICS/COMMUNICATIONS MAINTENANCE SHOP
+
+FC source: fc_2_000_05n_200series_05_16_2025.pdf p.195
+
+Storage-side TE-driven SUMIFS fix only. Personnel-side (admin, shop,
+maint bays) depends on Layer 2 NOTE tag population on TO!A column;
+Layer 2 work is a separate scope held for ratification.
+
+Changes:
+
+  R3:
+    Before: '2D MED BN'
+    After:  '3d MED BN'
+
+  R4:
+    Before: 'M12020'
+    After:  'M13020'
+
+  H47:
+    Before: '=AB27'
+    After:  '=AB31'
+
+  L53:
+    Before: '=SUMIFS(TE!T:T,TE!A:A,$C$5,TE!D:D,B53,TE!T:T,"<>#N/A")'
+    After:  '=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B53,TE!U:U,"<>#N/A")'
+
+  L54:
+    Before: '=SUMIFS(TE!T:T,TE!A:A,$C$5,TE!D:D,B54,TE!T:T,"<>#N/A")'
+    After:  '=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B54,TE!U:U,"<>#N/A")'
+
+  L55:
+    Before: '=SUMIFS(TE!T:T,TE!A:A,$C$5,TE!D:D,B55,TE!T:T,"<>#N/A")'
+    After:  '=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B55,TE!U:U,"<>#N/A")'
+
+  L56:
+    Before: '=SUMIFS(TE!T:T,TE!A:A,$C$5,TE!D:D,B56,TE!T:T,"<>#N/A")'
+    After:  '=SUMIFS(TE!U:U,TE!D:D,$C$5,TE!G:G,B56,TE!U:U,"<>#N/A")'
+
+  L57:
+    Before: '=SUMIFS(TE!T:T,TE!A:A,$C$5,TE!D:D,B57,TE!T:T,"<>#N/A")'
+    After:  None
+
+  P57:
+    Before: '=1.96*L57'
+    After:  None
+
+  T57:
+    Before: '=P57/7'
+    After:  None
+
+  X57:
+    Before: '=T57*$X$52'
+    After:  None
+
+Note on H47 fix: AB27 was per-UIC (M28261 only); AB31 is grand
+total =SUM(AB27:AE30). Pre-fix, UNIT_ROLLUP was undercounting 21710
+by missing M28263 and M28262 contributions.
+
+Note on personnel-side: rows 37-40 admin COUNTIFS, rows 70-72 shop
+COUNTIFS, and maint bay COUNTIFS reference TO!A:A for NOTE tags
+(21710o, 21710c, 21710rs, 21710cs, 21710ds, 21710ws, 21710es,
+21710ms). TO!A is not currently NOTE-populated. Personnel-side
+returns 0 until Layer 2 work lands.

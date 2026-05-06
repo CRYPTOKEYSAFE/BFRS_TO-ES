@@ -69,10 +69,42 @@ The FC 53025-1 same-category-code rule applies generally inside
 a clinic: pharmacy, lab, and similar functional areas roll up to
 the parent dispensary CCN unless physically detached.
 
-53010, 53020, 53025, 53060 are all engineering-study CCNs in the
-Series 500 PDF (no factor table); workspace requirement is
-determined by an engineering study or per-component layout. 54010
-has Table 54010-1 (factor table per Series 500 pages 11-13).
+CORRECTION TO PRIOR DRAFT. I earlier called 53010 an
+"engineering-study CCN". That framing was speculation borrowed
+from CCNs that explicitly carry it (14326, 21451 narrative
+sections in Series 100/200) and from a pipeline-extraction
+category for "no factor table found". FC 2-000-05N Series 500
+(2023-03-17) gives 53010 a definition only. No factor table, no
+"engineering study" language, no sizing methodology stated.
+Verbatim, the entire 53010 entry is:
+
+  530 10  DISPENSARY AND OUTPATIENT CLINIC (SF)
+  FAC: 5500
+  BFR Required: Y
+
+  53010-1  GENERAL. Free Standing Clinic, outpatient clinic,
+  which occupies a building or part of a building, but is not
+  physically located with a hospital or medical center that
+  provides routine and emergency care to authorized personnel.
+
+That is all FC says. Sizing for 53010 must come from a source
+outside FC 2-000-05N. Candidate sources:
+
+  1. DoD Military Health System Space Planning Criteria (MHS SPC)
+     chapters on outpatient clinics. Source not in repo.
+  2. BUMED project programming guidance (NAVMED references).
+     Source not in repo.
+  3. UFC 4-510-01 Military Medical Facilities. Design criteria,
+     not space programming. Source not in repo.
+  4. A unit-supplied per-platoon SF from a 3d MED BN engineering
+     survey or basing study.
+  5. Enclosure (2) of the CG signed letter (Proposed Facilities
+     Layout). Document referenced but not in repo by name.
+
+53020, 53025, 53060 are likewise definition-only in Series 500
+(no factor tables, no sizing methodology). 54010 DENTAL CLINIC
+does have Table 54010-1 with per-component space allowances
+(Series 500 pages 11-13).
 
 ## Proposal options
 
@@ -90,9 +122,10 @@ inherit the parent dispensary CCN. 3d MED BN's clinical platoons
 deliver outpatient and Role 2 emergency care from a free-standing
 clinic facility, which fits FC 53010-1 verbatim.
 
-GSF method: TOTAL REQUIREMENT cell is engineering-study, marked
-TBD pending engineering study citing Series 500 page 6 narrative
-section 53010-1.
+GSF method: FC 2-000-05N gives no sizing methodology for 53010.
+TOTAL REQUIREMENT cell is `TBD pending sizing source` and the
+sizing source itself is also TBD (DoD MHS Space Planning Criteria
+or BUMED programming or unit-supplied engineering survey).
 
 Pros: One sheet to build, FC-grounded, conservative, aligns with
 FC 53025-1 same-code rule.
@@ -117,8 +150,9 @@ type with its own factor table (Table 54010-1, Series 500 pages
 11-13). When dental capability occupies separate space, 54010 is
 the right CCN.
 
-GSF method: 53010 engineering-study TBD as in Option A. 54010 has
-factor table; loading driver TBD pending review of Table 54010-1.
+GSF method: 53010 sizing-source-TBD as in Option A. 54010 has
+Table 54010-1 with per-component space allowances; loading driver
+to be determined by reviewing Series 500 pages 11-13.
 
 Pros: More precise. Dental gets its own factor-driven sheet.
 

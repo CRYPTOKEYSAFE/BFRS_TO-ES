@@ -34,7 +34,7 @@ Repository state at handoff
 Repo: cryptokeysafe/bfrs_to-es
 Working dir: /home/user/BFRS_TO-ES
 Active branch (this session): claude/usmc-bfr-audit-repair-0YYwt
-Last commit: c3a6c7c (CG letter primary-source extraction)
+Last commit: 9553f7d (revert corrupt recalc + add this handoff)
 Prior commits this session, in order:
   0d358e9 hook fix: CLAUDE_PROJECT_DIR default + ruflo first
   54e2668 hook simplify: tighten comments, drop subshell
@@ -43,9 +43,14 @@ Prior commits this session, in order:
   9f4ceef strip placeholder narratives, match sheet convention
   cd5738f LibreOffice headless recalc + GSF reconciliation
   c3a6c7c CG signed letter OCR
+  9553f7d revert corrupt recalc, add HANDOFF_NEXT_SESSION.md
 
-Next session: harness will assign a fresh claude/* branch.
-Develop there. Never push to main.
+Next session: harness will assign a fresh claude/* branch name.
+Base it from claude/usmc-bfr-audit-repair-0YYwt (the branch above)
+since main is behind. Either:
+  git checkout -b <new-branch> origin/claude/usmc-bfr-audit-repair-0YYwt
+or merge claude/usmc-bfr-audit-repair-0YYwt into the new branch on
+first action. Never push to main.
 
 ================================================================
 Authoritative BFR file

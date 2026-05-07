@@ -54,6 +54,138 @@ The end-state is a unit-agnostic ETL + generator that:
 6. Rolls up to a `UNIT_ROLLUP` sheet that traces every cell back
    to a CCN sheet's TOTAL REQUIREMENT cell.
 
+## Hard guardrails (added 2026-05-06 after session-specific failures)
+
+These guardrails encode mistakes the assistant has actually made
+in this session and the corrected behavior. They override
+default LLM tendencies. Read these first; everything below is
+context.
+
+GR-1 SOURCE HIERARCHY IS FIXED. DO NOT BLEND.
+  - Regulatory:        FC 2-000-05N (Series 100-800), MCO 11000.12,
+                       UFS 3-701-01, UFC 4-510-01, BUMED instructions.
+  - Authoritative:     ASR (3DMLG_ASR.xlsx), 2031 Master TO&E v1.1,
+                       BFR_Generator_FC2-000-05N.xlsx (BFRL),
+                       embedded TFSMS data inside the BFR's
+                       MISSION STATEMENT sheet.
+  - Program-practice:  unit-supplied basing assessments (Tab B, Tab C),
+                       footprint PDFs, building schedules.
+  - External benchmark:GAO, AACE, JED, JDDG.
+  Tab C is program-practice, NOT regulatory. Do NOT use Tab C
+  GSF figures as binding sizing inputs. Tab C is a sanity-check
+  reference at most. The same applies to Tab B and any briefing
+  deck.
+
+GR-2 DO NOT GUESS SIZING FACTORS.
+  When FC 2-000-05N gives a factor, use it. When FC says
+  "engineering study" or "engineering evaluation", that IS the
+  answer; mark TBD pending engineering study and cite the FC
+  section verbatim. Do not invent a factor by extrapolating from
+  a sibling CCN. Do not invent the words "engineering study"
+  when FC says nothing about sizing (e.g., CCN 53010 has only
+  a definition; sizing flows through FC Section 500-2 to BUMED
+  HCRA, not to an engineering study).
+
+GR-3 DO NOT EXTRAPOLATE FROM TYPING.
+  Do not classify a billet because its NEC/MOS/BMOS string
+  matches a substring you remember. Look up the actual code
+  meaning before classifying. Example failure this session: a
+  classification rule mapped any Navy NEC starting with "L3" to
+  CCN 54010 Dental, which routed 27 MEDICAL LABORATORY
+  TECHNICIANS (BMOS L31A, billet description verbatim "MED LAB
+  TECH") to a dental clinic. L3 is not dental; L31A is medical
+  laboratory.
+
+GR-4 DO NOT WANDER LOOKING FOR WORDS, NAMES, OR PLACEHOLDERS.
+  When the BFR has a placeholder string ("FOSTER BUILDING TBD",
+  "Camp Kinser", "Surg Co C"), the fix is not to grep for a
+  substitute word. The fix is:
+   1. identify the field's purpose from the surrounding TFSMS
+      Unit TO&E Report context;
+   2. apply the doctrinal field convention (postal block, mission
+      statement, CCN library, etc.);
+   3. fill from primary source or mark TBD with the regulatory
+      path.
+
+GR-5 NUMBERS COME FROM FORMULAS OR PRIMARY SOURCES. PERIOD.
+  Every numeric output the assistant produces must be either
+  (a) verbatim from a primary-source document with citation,
+  (b) computed by an explicit formula whose inputs are
+  primary-source values with citations, or (c) marked TBD with
+  the source that would resolve it. Apex Omega rule 7 is binding.
+  Watch out for: constant offsets in IF formulas that produce a
+  defensible-looking number from zero inputs (CCN 21451 J24
+  =347*M33+1129 produces 1129 when M33=0 because of the
+  y-intercept; that's not a real requirement).
+
+GR-6 THE 2031 MASTER TO&E v1.1 IS A 3D MED BN PRIMARY SOURCE.
+  The skill previously stated the Master TO&E "does not cover
+  CLB-4". That statement was true for CLB-4 specifically and
+  was incorrectly extrapolated to mean "does not cover any
+  unit". For 3d MED BN, the file contains:
+    M28261 H&S Co     : 288 billets, 198 equipment lines
+    M28262 Surg Co B  : 211 billets, 148 equipment lines
+    M28263 Surg Co A  : 210 billets, 160 equipment lines
+  with full L/W/H/Vol/NSY columns populated. This is the
+  authoritative TO&E source for 3d MED BN equipment-driven CCN
+  sizing. The Org_Qty column represents unit-level authorized
+  total per the FY2031 cut, not per-billet instances.
+
+GR-7 H&S TFSMS DATA EXISTS, EMBEDDED.
+  The skill previously stated "H&S TFSMS does not exist and
+  will not exist." That is false. The H&S Co (M28261) TFSMS
+  Unit TO&E Report is embedded in the BFR's MISSION STATEMENT
+  sheet starting at row 1, with the postal block, the structure
+  data current as of 02/27/2023, and the FEB 3 2021 signed
+  Mission Statement at row 31. Do not wait on a separate H&S
+  TFSMS file; read the MISSION STATEMENT sheet.
+
+GR-8 WHEN A USER SUPPLIES A DOCTRINAL DIRECTION, IT IS BINDING.
+  Examples from this session, exact phrasing:
+   - "Surg A and B should be identical, even if you don't have
+     any info on the other...they are identical on paper."
+     -> A=B rule binding for billets, equipment, GSF, address.
+   - "Stop chasing locations; the BFR is the overarching
+     document."
+     -> Mission statement does not carry building numbers; BFR
+        is requirements not status.
+   - "No placeholder crap."
+     -> Strip TBD-pending bracketed text from cells; flag in
+        audit logs and commit messages, not in the workbook
+        itself.
+   - "We are not stuck on where the unit is at right now ... we
+     need the BFR correct so we can right size the unit into
+     the proper facilities."
+     -> BFR is a requirements doc, not a current-state tracker.
+
+GR-9 BEFORE ASKING ANOTHER QUESTION, READ EVERYTHING.
+  This session repeatedly surfaced facts that were available in
+  files the assistant hadn't read. The 2031 Master TO&E was in
+  the repo from session start, but I asked the user about
+  H&S sizing instead of reading it. The MISSION STATEMENT sheet
+  contained H&S TFSMS data, but I asked about it instead of
+  reading it. The user's binding directive is "imagine I have
+  told you to read EVERYTHING." Apply it.
+
+GR-10 THE EXTERNALLINKS PURGE MUST OUTLIVE A "RECALC".
+  A LibreOffice headless recalc or any openpyxl save can
+  reintroduce externalLinks/* parts inside the xlsx archive
+  even when the prior session "purged" them at the formula
+  level. After any save or recalc, re-verify zero entries
+  under xl/externalLinks/ and zero references in xl/workbook.xml,
+  xl/_rels/workbook.xml.rels, and [Content_Types].xml. Use the
+  zip-surgery script at audit/reports/3dmedbn/47_external_links_purge.txt
+  pattern as the canonical purge.
+
+GR-11 SETTINGS.JSON HOOK REGISTRATION IS REQUIRED.
+  A SessionStart hook script at .claude/hooks/session-start.sh
+  is not executed unless registered in .claude/settings.json
+  under hooks.SessionStart. The prior session "fixed" the hook
+  but never registered it. Settings.json must contain the
+  registration plus enableAllProjectMcpServers=true so
+  .mcp.json's ruflo entry loads without per-session approval.
+  See settings.json fix at commit 3407bdf.
+
 ## Hard rules (Apex Omega override defaults)
 
 - Facts only. No assumptions, speculation, AI jargon. Ask if unclear.
@@ -1938,6 +2070,146 @@ unit once user pastes both TFSMS and ASR counts.
   pattern keeps the deliverable as the single source of truth
   rather than letting the email thread become a parallel
   authoritative artifact.
+
+- Track 11, session 2026-05-06 on branch claude/apex-omega-audit-repair-gG9mM.
+
+  ENVIRONMENT FIX. Created .claude/settings.json registering the
+  SessionStart hook plus enableAllProjectMcpServers so ruflo MCP
+  loads automatically next session. Prior session's "hook fix"
+  edited the script but never registered it. Commit 3407bdf.
+
+  EXTERNALLINKS PURGE (DEEP). Removed 5 orphaned externalLinks
+  inside the xlsx archive (xl/externalLinks/externalLink1-5.xml
+  plus _rels) that the prior session's formula-level purge missed.
+  Removed externalReferences block from xl/workbook.xml, 5
+  Relationship lines from xl/_rels/workbook.xml.rels, and 5
+  Override lines from [Content_Types].xml. Excel file-open
+  advisory eliminated. Critical finding: externalLink5 referenced
+  M13020 2029 TO E CUT.xlsx on flankspeed SharePoint; user
+  confirmed they do not have that file and the reference itself
+  was fake. Commit 50a9094.
+
+  MASTER TO&E v1.1 RECONCILIATION. Confirmed the 2031 Master TO&E
+  v1.1 (dated 2025-04-11) IS the primary source for 3d MED BN
+  (the prior skill's claim "does not cover CLB-4" was correctly
+  about CLB-4 only; the file fully covers M28261 / M28262 /
+  M28263). Per-UIC counts: H&S 288 billets / 198 TE rows; Surg B
+  211 / 148; Surg A 210 / 160. The TE_3 schema carries L/W/H/Vol/
+  NSY columns the BFR's CCN sheets reference but the BFR's own
+  TE leaves blank. Commit c95a635.
+
+  PARALLEL READING AGENT BATCH (10 agents). Spawned 10 reader
+  agents to read files the prior sessions had not. Captured
+  digests at audit/reports/3dmedbn/49_per_block_audit.md,
+  50_doctrine_digest.md, 51_bfr_generator_digest.md,
+  52_te_backfill_summary.md, plus inline returns. Findings:
+   1. CCN 21451 visible 1,129 SF is a constant offset of
+      J24=347*M33+1129 evaluated at M33=0; not a real value.
+   2. CCN 14312 VLOOKUPs anchor to TE col H (TAMCN-short) but
+      the sheet's C column carries full 7-char TAMCNs so every
+      VLOOKUP misses. Plus offsets 16/17 hit empty TE columns.
+   3. CCN 45110 8.89 number is in SY (square yards) per L50
+      label, not GSF; the audit DEFECT 3 misread the unit.
+   4. CCN 21710 sheet is correct as written; M37=0 officers is
+      design-correct (3d MED BN has 0 comm officers, 4 enlisted
+      comm repairers).
+   5. 14345 H40 has K25 double-counted via P25.
+   6. 61072 M27 and M28 have wrong CCN tag "61073" (should be
+      "61072").
+   7. 14345 sheet missing M28262 Surg B sub-block.
+   8. 21451 21710 14312 each have an unlabeled "block 4/5" the
+      roll-up sums but no UIC populates.
+   9. BFR's TE col D carries CCN tags but Space Factor / NSY /
+      NTG columns are blank; data lives in 2031 Master TO&E.
+
+  USER-RATIFIED DECISIONS THIS SESSION (verbatim where
+  possible):
+   - "Surg A and B should be identical, even if you don't have
+     any info on the other...they are identical on paper."
+     -> A=B rule binding.
+   - "You can delete it [H&S C00392B FILTER WATER PURIFI qty
+     180] and put a read me in somewhere; that is the best."
+     -> TE row 507 deleted; readme at
+        audit/reports/3dmedbn/53_c00392b_h_and_s_deletion_readme.md.
+   - User identified that I had been "hanging your hat on
+     TAB C" while the user "given you the ASR and the BRFL".
+     -> Source hierarchy correction encoded in GR-1 above.
+   - User-supplied deep research (Claude Sonnet 4.6 Thinking)
+     confirmed verbatim: FC 2-000-05N Series 500 v.500.20231703
+     gives no methodology for CCN 53010 / 55010 / 55020.
+     Sizing flows through FC Section 500-2 to BUMED Echelon 3
+     (NMW for MCIPAC) HCRA + Program for Design. DHA SPC chapters
+     and SEPS are restricted to DHA-managed MTF projects; 3d
+     MED BN is NOT a DHA MTF, so SPC use requires NMW
+     authorization. Table 500-1 net-to-gross 1.35 (primary care,
+     emergency, specialty surgical, preventive med, dental) /
+     1.60 (surgery) / 1.25 (pathology). Documented at
+     audit/reports/3dmedbn/54_medical_ccn_regulatory_finding.md.
+
+  BFR FIXES APPLIED THIS SESSION.
+   - TE row 507 (H&S C00392B) deleted; validator stays 8/0.
+     Commit ecf6725.
+   - 24 mirror rows added to TE (rows 507-530) to make Surg A
+     and Surg B TAMCN inventories identical per A=B rule. Fixed
+     all five CCNs (14312, 14345, 21451, 21710, 44112).
+     Commit 5cc3fee.
+
+  APEX OMEGA VIOLATIONS, STATUS AT END OF SESSION.
+   V1 (H&S C00392B qty 180): CLOSED. Row deleted with readme.
+   V2 (574 clinical billets to 61073 = 0 SF): OPEN. Doctrinal
+       path documented (BUMED HCRA per FC 500-2). Implementation
+       deferred until HCRA in hand. Layer 2 reclassification of
+       574 billets from 61073 to 53010 NOTE pending.
+   V3 (MISSION STATEMENT B208 "FOSTER BUILDING TBD"): OPEN.
+       Two candidate fixes: mirror Surg A address (UNIT 38448 /
+       FPO 96604-8448 / JP) per A=B rule, or mirror BN HQ
+       address (UNIT 38445 / FPO 96373-4500 / JP) per prior
+       Track 10e ratification. User pick still pending.
+   V4 (back-test against CG signed letter 711 PN): PARTIAL.
+       Master TO&E + ASR confirm 711 raw / 609 chargeable BIC.
+       BFR has 710. 1-billet delta source not yet identified.
+
+  CCN-SHEET DEFECT-CLASS HISTOGRAM (per agent
+  aeb477ccc70646179, 124 blocks):
+   DC2 SUMIFS/COUNTIFS unpopulated TO/TE: 28 instances.
+   DC3 IFERROR string fallback: ~750 row-formulas.
+   DC4 uncited regression: 2 (21451 F24, J24).
+   DC5 range mis-sum: 22.
+   DC6 hardcoded single UIC: 1 (14345 G25).
+   DC7 orphan block: 6.
+   DC8 wrong CCN tag in COUNTIFS: 2 (61072 M27, M28).
+   DC9 absent supporting cell: 5.
+   DC10 literal "(none)"/0 sentinel: 4.
+
+  HELD FOR NEXT SESSION (priority order):
+   1. User pick on V3 Surg B postal block (A=B mirror or BN HQ
+      mirror).
+   2. Apply the easy CCN-sheet fixes from the per-block audit:
+      14345 K25 double-count, 61072 wrong CCN tag, 17110 stub.
+   3. Backfill BFR TE Space Factor / NSY / NTG / L,Ft / W,Ft /
+      H,Ft / Vol_EA / Vol_Tot from 2031 Master TO&E keyed by
+      (UIC, TAMCN). Re-anchor CCN sheet VLOOKUPs to point at
+      the correct columns.
+   4. Compute FC-method per-CCN totals using ASR personnel and
+      Master TO&E equipment, NOT Tab C. Specifically:
+       14345: 576 SF (FC 14345-1 step function on 711 PN).
+       61072: 6,338 SF (39 admin Marines x 162.5 SF).
+       61073: ~1,950 SF for true admin (12 billets x 162.5);
+              clinical 574 -> 53010 TBD.
+       14312: FC 14312-1 Type Code A-G method on Master TO&E
+              vehicles by L,Ft.
+       44112: FC 4-step method on Master TO&E volumes filtered
+              to organic-storage TAMCNs only.
+       45110: FC 4-step method, SH=4ft.
+       21451: TBD pending engineering study (FC 21451-3).
+       21710: 1.07 nsm/cm volume x 1.65 NTG via FC 21710-3.
+       17120: 150 GSF/student via FC 17120-3.1; existing
+              2,815 SF passes through.
+       53010 / 55010 / 55020: TBD pending BUMED NMW HCRA per
+              FC 500-2.
+   5. Apply Layer 2 reclass: 574 clinical billets from CCN
+      61073 NOTE to CCN 53010 NOTE.
+   6. Recalc, re-validate, deliver foundational document.
 
 ## Hand-off protocol (APEX OMEGA)
 

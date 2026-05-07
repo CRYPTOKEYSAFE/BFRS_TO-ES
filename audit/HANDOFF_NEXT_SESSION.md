@@ -65,7 +65,7 @@ GitHub (raw download):
 This file is the reverted (pre-recalc) version. Cached TOTAL
 values are None until opened in Excel; fullCalcOnLoad=True is
 set so Excel will recalc on open. Do not run LibreOffice
---convert-to xlsx on this file; that round-trip corrupts the
+-convert-to xlsx on this file; that round-trip corrupts the
 workbook for Excel even though openpyxl reads the output.
 
 Backup (do not modify): M67400-FO-M13020 3D MED BN-22NOV2024.preB-backup.xlsx
@@ -303,7 +303,7 @@ even without the global binary. The hook fix
 to make startup faster.
 
 Verification at session start:
-  bash -c 'echo CLAUDE_CODE_REMOTE=$CLAUDE_CODE_REMOTE; which ruflo; ruflo --version'
+  bash -c 'echo CLAUDE_CODE_REMOTE=$CLAUDE_CODE_REMOTE; which ruflo; ruflo -version'
   Expected: CLAUDE_CODE_REMOTE=true, /opt/node22/bin/ruflo,
             ruflo v3.7.0-alpha.7
 

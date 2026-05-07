@@ -516,7 +516,7 @@ User's durable directives this session.
 - Do not ask 90 questions at session start.
 
 Don't-do. Never push to main. Do not run LibreOffice
---convert-to xlsx on the active BFR (corrupts for Excel even though
+-convert-to xlsx on the active BFR (corrupts for Excel even though
 openpyxl reads it). Do not paper over a non-live ruflo by claiming
 it works.
 

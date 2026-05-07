@@ -5,7 +5,7 @@ before any repair work begins. Sources cited inline.
 
 ## Q1. Where does Surg Co C come from?
 
-**Finding: it is not 3d MED BN.** It is template residue from a
+Finding: it is not 3d MED BN. It is template residue from a
 Camp Lejeune medical battalion BFR.
 
 Evidence:
@@ -51,7 +51,7 @@ Evidence:
   That is 1st Medical Battalion's BFR at Camp Pendleton from
   May 2018.
 
-**Lineage reconstructed: this BFR is the third copy in a chain.**
+Lineage reconstructed: this BFR is the third copy in a chain.
 
 ```
 2nd MED BN (Lejeune, M67001)
@@ -77,7 +77,7 @@ calculations are not needed for 3d MED BN.
 
 ## Q2. Do the hidden CCN sheets pertain to 3d MED BN?
 
-**Finding: the topics yes; the data no.**
+Finding: the topics yes; the data no.
 
 The four hidden CCN sheets each cover a category that 3d MED BN
 plausibly needs:
@@ -92,9 +92,9 @@ plausibly needs:
 So the topics are valid. The data inside each sheet is wrong. It
 references the 2nd / 1st MED BN UIC structure, not 3d MED BN.
 
-**Two repair options:**
+Two repair options:
 
-A. **Rebuild each hidden sheet** with 3d MED BN's actual UICs
+A. Rebuild each hidden sheet with 3d MED BN's actual UICs
    (M28261, M28262, M28263), corrected installation field
    (MCB Camp Butler / M67400), corrected subordinate row
    labels (H&S Co, Surg Co A, Surg Co B; no Surg Co C), and
@@ -103,7 +103,7 @@ A. **Rebuild each hidden sheet** with 3d MED BN's actual UICs
    matches the CLB-4 round-1 recommendation in
    `audit/FINDINGS.md`.
 
-B. **Remove the hidden sheets entirely** from this BFR. If those
+B. Remove the hidden sheets entirely from this BFR. If those
    CCNs are needed downstream, the existing BFR pipeline
    (`pipeline/template.py`, `pipeline/etl.py`) can regenerate
    them clean from the 3d MED BN TFSMS exports plus
@@ -114,7 +114,7 @@ and should not be kept as is.
 
 ## Q3. The dead VLOOKUPs in the TO and TE sheets
 
-**Finding: 3,307 dead VLOOKUPs across two external sheets.**
+Finding: 3,307 dead VLOOKUPs across two external sheets.
 
 Counts (`audit/reports/3dmedbn/11_dead_vlookups.txt`):
 
@@ -122,7 +122,7 @@ Counts (`audit/reports/3dmedbn/11_dead_vlookups.txt`):
 |---|---|
 | `[5]CCN!$C$7:$D$1098` | 1,959 |
 | `[5]TAMCN!` | 1,348 |
-| **Total** | **3,307** |
+| Total | 3,307 |
 
 The `[5]` external file is referenced in
 `xl/externalLinks/externalLink5.xml.rels` and points at:
@@ -146,7 +146,7 @@ TO values, TE values, Camp Lejeune
 cut. The Camp Lejeune lineage reaches into the SharePoint
 artifacts too.)
 
-**What the VLOOKUPs do:**
+What the VLOOKUPs do:
 
 - `=VLOOKUP(D5,[5]CCN!$C$7:$D$1098,2,FALSE)` (TO sheet, column E)
   takes the CCN code in column D and returns the CCN
@@ -154,13 +154,13 @@ artifacts too.)
 - The TE sheet uses `[5]TAMCN!` to pull TAMCN descriptions for
   each equipment row.
 
-**Why they are dead:** the external file is not open and not in
+Why they are dead: the external file is not open and not in
 the package. Excel cannot resolve the lookup, so every cell
 returns `#N/A` and stays cached as `#N/A` across the 3,303
 error tokens documented in
 `audit/reports/3dmedbn/02_bfr_error_tokens.txt`.
 
-**Repair option:** Replace `[5]CCN!` with an internal sheet
+Repair option: Replace `[5]CCN!` with an internal sheet
 (call it `CCN_Library`) populated from
 `audit/CCN_VOCABULARY.json` (1,060 ratified CCNs already in the
 repo). Replace `[5]TAMCN!` with a similar internal `TAMCN_Library`
@@ -187,7 +187,7 @@ equipment-location tracker, not a BFR calculation input.
 The sheet has no references coming in (zero formulas in any
 other sheet mention `Locator_Deck`).
 
-**Recommendation: keep, trim, or remove is a low-impact call.**
+Recommendation: keep, trim, or remove is a low-impact call.
 Removing it cleans up the workbook and breaks nothing. Keeping
 it preserves whatever historical equipment-location data the
 unit captured. Either way, this is not a foundational BFR
@@ -212,7 +212,7 @@ severed during the repair.
 
 ## Summary of the answers
 
-1. **Surg Co C is not 3d MED BN.** Template residue from a Camp
+1. Surg Co C is not 3d MED BN. Template residue from a Camp
    Lejeune medical battalion BFR.
 
 2. **The hidden CCN sheets do not pertain to 3d MED BN as
@@ -227,10 +227,10 @@ severed during the repair.
    is broken because of the external dependency. Fix is to
    internalize the CCN and TAMCN libraries.
 
-4. **Locator_Deck is an orphan working sheet.** Referenced by
+4. Locator_Deck is an orphan working sheet. Referenced by
    nothing. Keep, trim, or remove all break nothing.
 
-5. **All five external links are dead.** Only one (link 5) ever
+5. All five external links are dead. Only one (link 5) ever
    carried live data.
 
 ## What I will do next, only after the user authorizes
@@ -240,12 +240,12 @@ and tells me what to do with each item.
 
 The decisions to take, restated cleanly:
 
-- **D2 (Surg Co C):** confirm we strip M28275 and Surg Co C
+- D2 (Surg Co C): confirm we strip M28275 and Surg Co C
   references from the four hidden sheets during repair.
-- **D4a (hidden sheets):** rebuild with 3d MED BN UICs, or
+- D4a (hidden sheets): rebuild with 3d MED BN UICs, or
   remove and let the pipeline regenerate clean later?
-- **D5 (Locator_Deck):** keep, trim, or remove?
-- **D3 (dead VLOOKUPs):** confirm the internal-library
+- D5 (Locator_Deck): keep, trim, or remove?
+- D3 (dead VLOOKUPs): confirm the internal-library
   replacement strategy (CCN_Library and TAMCN_Library sheets
   copied from the methodology workbook plus the TFSMS exports).
-- **D6 (phasing):** still open.
+- D6 (phasing): still open.

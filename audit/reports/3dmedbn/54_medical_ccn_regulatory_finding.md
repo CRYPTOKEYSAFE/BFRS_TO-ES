@@ -103,7 +103,7 @@ DHA Space Planning Criteria (SPC) chapters cover military
 Medical Treatment Facilities (MTFs). Chapter 110 verbatim:
 
   "The purpose of this document is to outline how Space Planning
-  documents are organized in order to facilitate planning,
+  documents are organized to facilitate planning,
   programming, and budgeting for DHA military Medical Treatment
   Facilities (MTFs)."
 

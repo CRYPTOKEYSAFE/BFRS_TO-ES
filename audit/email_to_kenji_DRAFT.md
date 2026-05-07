@@ -15,7 +15,7 @@ Notes for the sender (Anthony Potter):
 
 ---
 
-**Subject:** RE: CG MCIPAC Endorsement Request
+Subject: RE: CG MCIPAC Endorsement Request
 
 Kenji,
 
@@ -52,7 +52,7 @@ If it helps to frame the work, one possible shape for the first
 sprint would be something like:
 
 1. A walk of the six Kinser buildings to capture current condition
-   and utilization.
+   and use.
 2. Netting the Surg Co B functional space (944 SF armory,
    3,500 SF warehouse, 800 SF organic storage, 4,063 SF HQs and
    admin, 2,815 SF applied instruction, 2,848 SF auto org shop,

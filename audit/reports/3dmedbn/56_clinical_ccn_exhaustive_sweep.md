@@ -59,7 +59,7 @@ A4 (POM26 PDF + M67400 BFR PDF):
   Result: Zero. The "1 of 2" companion to the POM26 file is missing
   from the repo and may have carried the figure. The 3d Med Bn PDF
   (60 pages) tags clinical billets `#N/A` CCN; structurally
-  incomplete with respect to its own Role 2 mission.
+  incomplete about its own Role 2 mission.
 
 A5 (Six Kinser building schedules + AE PLUS PDFs + 3d Med Bn
     Footprint Jan 2026 PDF/PPTX):

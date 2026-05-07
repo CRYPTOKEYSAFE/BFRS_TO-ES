@@ -137,7 +137,7 @@ ASR (`3DMLG_ASR.xlsx`, sheet `3D MED BN`) FY26 BICs:
 - H&S Co 3d MED BN: 250
 - Surg Co A 3d MED BN: 179
 - Surg Co B 3d MED BN: 180
-- **Total: 609** (sheet R207 Grand Total = 609)
+- Total: 609 (sheet R207 Grand Total = 609)
 
 CG 3d MLG signed letter dated 2 Feb 26 para 5a: Personnel 711.
 
@@ -341,7 +341,7 @@ Per Apex Omega and per the user's standing direction:
 
 ## 7. Decisions needed from the user before Phase A starts
 
-D1. **Personnel total (F5 resolution).** RESOLVED per user direction
+D1. Personnel total (F5 resolution). RESOLVED per user direction
     2026-05-05: canonical planning total is 711 (CG signed letter,
     matching the HTML). The 609 ASR figure is the BIC-only structure
     number and is presented as a footnote inside the BFR for
@@ -351,11 +351,11 @@ D1. **Personnel total (F5 resolution).** RESOLVED per user direction
     reconcile to 609; the cover and headline numbers use 711, with
     the ASR breakout cited.
 
-D2. **Surg Co C (F6 resolution).** Does M28275 still exist as a
+D2. Surg Co C (F6 resolution). Does M28275 still exist as a
     real unit? If not, is the 45110 sheet's reference to Surg Co
     C historical, or is it an error to remove?
 
-D3. **External links (F3) replacement strategy.** Replace the
+D3. External links (F3) replacement strategy. Replace the
     `[5]CCN!` external lookup with:
     - (a) a new internal `CCN_Library` sheet copied from
       `BFR_Generator_FC2-000-05N.xlsx`, or
@@ -363,15 +363,15 @@ D3. **External links (F3) replacement strategy.** Replace the
       `audit/CCN_VOCABULARY.json`, or
     - (c) something else?
 
-D4. **Hidden CCN sheets (F1) treatment.** For 14312, 21451,
+D4. Hidden CCN sheets (F1) treatment. For 14312, 21451,
     21710, 45110:
     - (a) repair and unhide (preferred per CLB-4 lessons), or
     - (b) bring rollup links in but leave hidden, or
     - (c) document why excluded?
 
-D5. **Locator_Deck sheet retention.** Keep, trim, or remove?
+D5. Locator_Deck sheet retention. Keep, trim, or remove?
 
-D6. **Phase ordering.** Is the sequence A -> B -> C -> D -> E
+D6. Phase ordering. Is the sequence A -> B -> C -> D -> E
     the order you want, or do you want C (data reconciliation)
     earlier so we know the personnel and equipment ground truth
     before structural fixes?

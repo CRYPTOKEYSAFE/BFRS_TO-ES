@@ -29,7 +29,7 @@ of the battalion are at Kinser and which are still moving. The
 six Kinser buildings (107, 300, 613, 400, 1225, 508), the
 Foster turnover, and the cross-cutting plans (UDP3, HAP,
 OKICON, Kinser Towers, ICG) all carry through. The thinking is
-that this becomes the project charter going forward, so we are
+that this becomes the project charter so we are
 all working from one document instead of bouncing between
 attachments.
 

@@ -18,9 +18,9 @@ for a couple of weeks. He frames it as a primer for the larger 3d MLG deep-dive
 assessment that follows.
 
 The substance: the existing installation assessment (Tab C, dated Aug 2025)
-was scoped to Bravo Surgical Company at **Camp Foster**. That is now stale.
-The CG 3d MLG-signed letter dated **2 Feb 2026** moves the entire 3d Medical
-Battalion (711 personnel including Bravo Surg Co's 180) to **Camp Kinser**.
+was scoped to Bravo Surgical Company at Camp Foster. That is now stale.
+The CG 3d MLG-signed letter dated 2 Feb 2026 moves the entire 3d Medical
+Battalion (711 personnel including Bravo Surg Co's 180) to Camp Kinser.
 Keith Simon (G-5 Plans) noted in the chain that the unit has in fact already
 relocated to Kinser; the endorsement paperwork is catching up.
 
@@ -46,7 +46,7 @@ Foster-leaning analysis because:
    than Bravo Surg Co alone.
 2. MEDLOG (CLR-35) is already on Kinser and houses the deployable medical
    gear. Kinser cuts the equipment-to-unit response time.
-3. Tab C's own DOTMLPF-C row marks Facilities **R** (red) for any solution
+3. Tab C's own DOTMLPF-C row marks Facilities R (red) for any solution
    beyond five years on Camp Foster because DPRI OKICON does not retain 3d
    MLG on Foster.
 
@@ -68,10 +68,10 @@ walk-through and condition note.
 
 ## Personnel and footprint at a glance
 
-- **711** total personnel, consolidated 3d Med Bn (CG ltr para 5a)
-- Bravo Surg Co contribution: **180 BICs** (41 Off / 164 Enl per Tab A p13)
-- Bravo Surg Co dependents (Tab C): **153** (110 spouse / 43 children)
-- Bravo Surg Co UH calc (Tab C): **71 unaccompanied** (61 Enl / 10 Off)
+- 711 total personnel, consolidated 3d Med Bn (CG ltr para 5a)
+- Bravo Surg Co contribution: 180 BICs (41 Off / 164 Enl per Tab A p13)
+- Bravo Surg Co dependents (Tab C): 153 (110 spouse / 43 children)
+- Bravo Surg Co UH calc (Tab C): 71 unaccompanied (61 Enl / 10 Off)
 
 Functional space (Bravo Surg Co only - Tab C slide 20):
 
@@ -93,8 +93,8 @@ assessment has to physically locate:
   pistol, 99 5.56 carbine, 15 5.56 rifle, 2 .50 cal, 2 7.62 MG, 2 grenade
   MG, 2 sight units
 - Vehicles: 4 MTVR cargo SWB (D00037K), 6 MTVR cargo SWB (D01987K),
-  2 MTVR trailers (D08627K), **18 JLTV ambulances** (D00267K), 6 JLTV
-  general purpose, 15 JLTV utility, 8 JLTV trailers, **18 M997 ambulances**
+  2 MTVR trailers (D08627K), 18 JLTV ambulances (D00267K), 6 JLTV
+  general purpose, 15 JLTV utility, 8 JLTV trailers, 18 M997 ambulances
   (D10017K), 6 M149 water bowls, 2 M353 generator trailers, 1 special tool
   kit
 - The 36 ambulances are the dominant line item by laydown footprint.
@@ -104,7 +104,7 @@ assessment has to physically locate:
 Per the Phase diagram on Tab B page 2:
 
 - Phase 1 Validation - DONE (proponent request validated)
-- Phase 2 Review and Assessment - **in progress, this is where we are**
+- Phase 2 Review and Assessment - in progress, this is where we are
 - Phase 3 Selection - pending
 - Phase 4 Decision (DC I&L) - pending
 - Phase 5 Execution / Reporting - paperwork is catching up to a unit that
@@ -137,22 +137,22 @@ unit profile.
 
 What we can do now in this repo:
 
-1. **Unit profile**: draft `samples/3dmedbn_profile.json` mirroring
+1. Unit profile: draft `samples/3dmedbn_profile.json` mirroring
    `samples/clb4_profile.json`. `unit_type` = `medical_bn` (new). Personnel
    = 711 once consolidated; or 180 if scoped to Bravo Surg Co only as a
    first worked example.
-2. **CCN list**: draft `samples/3dmedbn_ccns.json` from the table above.
+2. CCN list: draft `samples/3dmedbn_ccns.json` from the table above.
    The 8 facility categories from Tab C plus 53010 (dispensary / Role 2)
    and 61074 (garrison aid station) are the starting set.
-3. **Layer 3 classifier**: add `unit_type: medical_bn` defaults to
+3. Layer 3 classifier: add `unit_type: medical_bn` defaults to
    `audit/UNIT_TYPE_DEFAULTS.yaml`. The medical and Navy-NEC corpsman
    BMOS rules are already at `confidence=high` from the recent rule
    lift; no doctrine work needed.
-4. **Layer 5 TAMCN map**: 18 D00267K JLTV ambulances and 18 D10017K M997
+4. Layer 5 TAMCN map: 18 D00267K JLTV ambulances and 18 D10017K M997
    ambulances need ground-maint mapping. JLTV variants in `samples/clb4_ccns.json`
    already route through the existing JLTV map; M997 specifically
    needs verification.
-5. **Apex Omega rule 4 holds**: the Tab C "AUTO ORG SHOP" maps to 21410
+5. Apex Omega rule 4 holds: the Tab C "AUTO ORG SHOP" maps to 21410
    in vocabulary, but 21410's name is "Combat Vehicle Maintenance Shop"
    and a medical battalion is not a combat-vehicle unit. A 214xx variant
    for non-combat-vehicle organic maintenance may be the correct fit.
@@ -166,7 +166,7 @@ That is gate D19 work and stays user-driven.
 
 The signed CG letter writes "MCBB" and the MCIPAC endorsement docx writes
 "MCBCB" / "MCBB". Per `audit/STYLE_GUIDE.md` and `CLAUDE.md`, those are
-legacy. Our work product uses **MCIPAC** and **MCB Camp Butler**. Source
+legacy. Our work product uses MCIPAC and MCB Camp Butler. Source
 spellings are preserved verbatim only when quoting; in our analysis we
 use the current terms.
 
@@ -175,7 +175,7 @@ use the current terms.
 - TFSMS export for 3d Med Bn (or specifically for Bravo Surg Co as a first
   worked example).
 - Site walk of Bldgs 107, 300, 613, 400, 1225, 508 on Camp Kinser to
-  capture current condition / utilization / shortfalls.
+  capture current condition / use / shortfalls.
 - Confirmation of the right Auto Org Shop CCN for medical battalion
   ground equipment (FC 2-000-05N Series 200 narrative review).
 - Engineer assigned (per Kenji's "(1) Planner and (1) Engineer" sizing).

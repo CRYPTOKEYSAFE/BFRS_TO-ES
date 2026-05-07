@@ -15,7 +15,7 @@ What a BFR is
 A Basic Facility Requirements document is a forward-looking
 requirements artifact. It says, for a given USMC unit, how much
 square footage of each Category Code (CCN) of facility the unit
-needs in order to perform its mission. It is sized from the unit's
+needs to perform its mission. It is sized from the unit's
 table of organization and equipment, against planning factors
 published in FC 2-000-05N (formerly NAVFAC P-80, "Facility
 Planning for Navy and Marine Corps Shore Installations"). It is

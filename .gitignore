@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+
+# Ruflo runtime state (logs, metrics, daemon pid, learning data)
+.claude-flow/

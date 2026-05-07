@@ -261,21 +261,89 @@ GR-12 DO NOT LUMP-SUM BILLETS AT 162.5 GSF/PN ADMIN RATE.
   (Storage of Air or Ground Organic Units) per FC 44112-1, sized
   by stored equipment volume not by per-billet rate.
 
-GR-13 CLB-4 FOUR CLEAN CCN SHEETS ARE THE STRUCTURAL REFERENCE.
-  When a 3d MED BN (or any unit) CCN sheet needs computation,
-  the binding move is: read the corresponding CLB-4 clean
-  rebuilt CCN sheet (14345 Armory, 21451 Auto Org Shop, 21455
-  Vehicle Wash Platform, 61072 BN HQ Admin) cell by cell,
-  extract its row-by-row formula structure, and reproduce that
-  structure with the new unit's inputs. Do NOT compute from a
-  per-billet rate guess. Do NOT invent a category split (e.g.,
-  "25% of officers in private office"). If CLB-4 has no parallel
-  structure for the CCN, mark TBD pending unit-supplied basing
-  data.
-  User direction received 2026-05-07 verbatim: "I gave you a
-  long time ago example of what CLB-4 BFRL looks like and how
-  it adds up. I think we've came a long way from that."
-  This guardrail returns the work to that reference.
+GR-13 CLB-4 IS A TEACHING EXAMPLE, NOT A STENCIL.
+  CLB-4's CCN tabs show how a BFR adds up: each CCN tab pulls
+  its planning factor from FC 2-000-05N (the "200-in"), shows
+  the math in-tab, produces a CCN total GSF, and the per-CCN
+  totals roll up to the unit total in `UNIT_ROLLUP`. That layout
+  pattern is the binding lesson. CLB-4 is "not 100% functionally
+  correct" (user direction); it is the format / methodology-in-tab
+  reference and the cosmetic reference, nothing more.
+  CLB-4 is a Combat Logistics Battalion. 3d Medical Battalion
+  is a medical battalion. The CCN mix is different. CCN structure
+  for any unit comes from FC 2-000-05N for that unit type, not
+  from CLB-4. Series 500 medical CCNs come from FC 2-000-05N
+  Series 500 directly; only where FC explicitly defers (e.g.,
+  "see BUMED HCRA"), mark TBD pending the source FC names.
+  Binding moves:
+    - Pull billet inventory from TO&E (most authoritative) +
+      ASR (reconciliation gate, mandatory).
+    - Map each billet to its CCN per FC 2-000-05N classification
+      rules (admin to 610xx, clinical to 5xxxx, training to 17xxx,
+      etc.).
+    - Compute each CCN's GSF in-tab using FC factors; show the
+      math; produce a CCN total.
+    - Roll up by CCN to unit total in `UNIT_ROLLUP`.
+    - Sanity-check the head-count total against the CG-signed
+      strategic basing letter (3d Med Bn: 711 PN target).
+  Anti-patterns:
+    - Compute from per-billet rate guess. NO.
+    - Invent category split ("25% officers in private office"). NO.
+    - Treat CLB-4 row-level structure as gospel. NO.
+    - Treat the CG letter as doctrine. NO; it is a sanity-check
+      data point on head count, not a square-footage driver.
+    - Pretend the unit lives in one building. NO; the BFR is
+      unit-level rated space, the planner overlays buildings later.
+  User direction received 2026-05-07 verbatim: "I'm trying to
+  give that to you as a way of understanding how a BFR works."
+  And: "the most authoritative documents...the TO&E, the master
+  list, the ASR reports, and the BFR that we currently have. The
+  stuff from the commanding general is a data point but it doesn't
+  direct us on how to develop a BFR."
+  Ratified 2026-05-07 corrective handoff session.
+
+GR-14 BFR IS UNIT-LEVEL RATED SPACE, NOT A BUILDING PLAN.
+  A BFR shows total rated square footage per CCN for the unit,
+  rolled up to a unit total. It does NOT assign billets to
+  specific buildings. Some billets work in base medical clinics,
+  some in admin, some in field positions, some are deployable.
+  The placeholder "Area A / B / C / B&D" bucketing in earlier
+  3d Med Bn artifacts was a stand-in because actual sit-locations
+  are unknown. Building allocation is a downstream planner
+  activity that consumes the BFR; it is not the BFR's job.
+  User direction 2026-05-07 verbatim: "they rate a certain
+  amount of space but some of them work in medical clinics
+  some of them work in other areas...I don't have 90,000 ft.²
+  for people because they don't all work in the same building."
+  Implication: the BFR's CCN totals must represent rated space
+  the unit is entitled to under FC 2-000-05N for its TO&E.
+  Whether that space lives in one building or seven is not
+  this document's question.
+
+GR-15 CG-SIGNED LETTER IS A SANITY CHECK, NOT DOCTRINE.
+  The strategic basing action and the CG-signed letter for
+  3d Medical Battalion (relocate from Camp Foster to Camp
+  Kinser; absorb returning Surgical Co B from Hawaii) state
+  the unit head count (711 PN). That number is a cross-check
+  on our derived ASR + TO&E totals; if our math comes out
+  materially different from 711, something is wrong on our
+  side, not on the CG's side. The letter does NOT dictate
+  CCN structure, square-footage factors, or facility layout.
+  Doctrine for those is FC 2-000-05N.
+  Authority hierarchy when generating BFR output:
+    1. FC 2-000-05N (planning factors, CCN classifications,
+       Series 100/500 sub-codes).
+    2. TO&E (unit's authoritative billet + equipment roster).
+    3. ASR (reconciliation gate against TO&E; required green
+       before BFR releases per Apex Omega Sec.5.6).
+    4. Existing BFR (where one exists; check, don't trust).
+    5. CG-signed strategic basing letter (head-count sanity
+       check only).
+    6. CLB-4 BFR (cosmetic + methodology-in-tab format reference).
+  User direction 2026-05-07 verbatim: "the general is not
+  lying...he's not in charge" of facility doctrine; "we should
+  send it and check our numbers off that."
+  Ratified 2026-05-07 corrective handoff session.
 
 ## Hard rules (Apex Omega override defaults)
 

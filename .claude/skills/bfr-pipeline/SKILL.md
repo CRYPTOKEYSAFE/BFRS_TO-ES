@@ -186,6 +186,45 @@ GR-11 SETTINGS.JSON HOOK REGISTRATION IS REQUIRED.
   .mcp.json's ruflo entry loads without per-session approval.
   See settings.json fix at commit 3407bdf.
 
+GR-12 DO NOT LUMP-SUM BILLETS AT 162.5 GSF/PN ADMIN RATE.
+  The 162.5 GSF/PN factor in FC 61010-1.1 is the MAXIMUM admin
+  allowance, not a per-billet entitlement. It assumes each
+  billet has dedicated admin workspace (private office or
+  workstation type 1). Most clinical, technical, and field-
+  deployable billets do not work in admin space; their primary
+  workspace is in another CCN (clinical, lab, surgical, vehicle
+  shop, or in deployable equipment). Lumping all 547 clinical
+  billets in a medical battalion at 162.5 GSF each produces a
+  number (93,275 SF) that overstates required garrison
+  administrative space by an order of magnitude.
+  Correct treatment: weight billets by primary workspace type:
+    Category A (full private office, ~120 NSF): CO, XO, S-shop
+      chiefs, billet leaders. Typically 10-20 billets BN-wide.
+    Category B (workstation type 1, ~64 NSF): SNCOs, section
+      heads, primary admin staff.
+    Category C (workstation type 2, ~36-48 NSF): junior admin
+      clerks who actually work at a desk daily.
+    Category D (clinical / lab / surgical workspace, NOT admin):
+      surgeons, anesthesiologists, surg techs, lab techs,
+      radiology, pharmacy, holding ward staff. Their primary
+      workspace is in a Series 500 clinical CCN, not 61073.
+    Category E (field-deployable, minimal garrison): Surg Plt,
+      FRSS, STP, ERCS, Ambulance Plt clinical staff. Their
+      primary workspace is deployable equipment stored under
+      CCN 44112; minimal garrison admin desk.
+    Category F (shared / shift workspace): rotating clinical
+      staff, watchstanders. One workstation per N billets.
+  User direction received 2026-05-07 verbatim: "these people
+  they don't work in the building they work in the clinic they
+  work in the area so lump them all together it makes it look
+  big too big. We have to weight some of these guys some work
+  like basement clinics having them we're actually in the
+  actual clinical spaces."
+  Apex Omega rule 1: do not invent the per-billet rate. Either
+  read the actual workspace allocation from the unit's basing
+  document (which the BFR is producing), OR mark TBD pending
+  workspace allocation methodology.
+
 ## Hard rules (Apex Omega override defaults)
 
 - Facts only. No assumptions, speculation, AI jargon. Ask if unclear.

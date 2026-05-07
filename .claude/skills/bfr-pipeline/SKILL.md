@@ -225,6 +225,42 @@ GR-12 DO NOT LUMP-SUM BILLETS AT 162.5 GSF/PN ADMIN RATE.
   document (which the BFR is producing), OR mark TBD pending
   workspace allocation methodology.
 
+  AUTHORITATIVE FC 2-000-05N Series 600 v.600.20230203 numbers
+  (Table 61010-5.1, p.4 + Table 61010-7.1, p.6 + Note 5):
+
+    Private Office  120 NSF/PN (range 100-120) supervisory
+    WST1             64 NSF/PN (range 48-64)   general admin
+    WST2             48 NSF/PN (range 36-48)   hoteling/telework
+    Admin support     8 NSF/PN
+    Break room        2 NSF/PN (without kitchen)
+    Conf/training NSF/PN per Table 61010-7.1A band:
+      band 1-25 PN     25 NSF/PN
+      band 26-50 PN    18 NSF/PN
+      band 51-150 PN   15 NSF/PN
+    NTG factor       1.40 if loading <50 PN; calculated otherwise.
+    Ceiling          162.5 GSF/PN per FC 61010-7.1.1 verbatim
+                     "shall not exceed".
+
+  Compute pattern: NSF_workspace = sum over Cat A/B/C of (count
+  x per-billet NSF). Add BAG additives (admin support + break +
+  conf/training band-by-band). Apply NTG. Compare to ceiling
+  (PN x 162.5); take the lesser.
+
+  Worked example, 3d MED BN BN HQ 39 PN: 6 Cat A x 120 + 33 Cat B
+  x 64 = 720 + 2112 = 2832 NSF workspace + 39 x 28 BAG = 1092 NSF
+  = 3924 NSF total x 1.40 NTG = 5494 GSF. Ceiling 39 x 162.5
+  = 6338 GSF. Take 5494 (within ceiling).
+
+  Clinical billets (Category D) flow to Series 500 CCNs, NOT 610
+  admin: per FC 51016-1 verbatim ("This category does not serve
+  as headquarters space for command level units"), within-clinic
+  admin stays in the clinic CCN. Each billet is loaded once at
+  the planning area / category code where its work occurs.
+
+  Field-deployable equipment (Category E) flows to CCN 44112
+  (Storage of Air or Ground Organic Units) per FC 44112-1, sized
+  by stored equipment volume not by per-billet rate.
+
 ## Hard rules (Apex Omega override defaults)
 
 - Facts only. No assumptions, speculation, AI jargon. Ask if unclear.

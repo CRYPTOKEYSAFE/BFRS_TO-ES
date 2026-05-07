@@ -261,6 +261,22 @@ GR-12 DO NOT LUMP-SUM BILLETS AT 162.5 GSF/PN ADMIN RATE.
   (Storage of Air or Ground Organic Units) per FC 44112-1, sized
   by stored equipment volume not by per-billet rate.
 
+GR-13 CLB-4 FOUR CLEAN CCN SHEETS ARE THE STRUCTURAL REFERENCE.
+  When a 3d MED BN (or any unit) CCN sheet needs computation,
+  the binding move is: read the corresponding CLB-4 clean
+  rebuilt CCN sheet (14345 Armory, 21451 Auto Org Shop, 21455
+  Vehicle Wash Platform, 61072 BN HQ Admin) cell by cell,
+  extract its row-by-row formula structure, and reproduce that
+  structure with the new unit's inputs. Do NOT compute from a
+  per-billet rate guess. Do NOT invent a category split (e.g.,
+  "25% of officers in private office"). If CLB-4 has no parallel
+  structure for the CCN, mark TBD pending unit-supplied basing
+  data.
+  User direction received 2026-05-07 verbatim: "I gave you a
+  long time ago example of what CLB-4 BFRL looks like and how
+  it adds up. I think we've came a long way from that."
+  This guardrail returns the work to that reference.
+
 ## Hard rules (Apex Omega override defaults)
 
 - Facts only. No assumptions, speculation, AI jargon. Ask if unclear.

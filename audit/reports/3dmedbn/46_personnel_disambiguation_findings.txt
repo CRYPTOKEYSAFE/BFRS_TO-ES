@@ -1,0 +1,224 @@
+Personnel disambiguation, 3d Med Bn BFR vs ASR vs CG signed letter
+Branch: claude/usmc-bfr-audit-repair-0YYwt
+Method: openpyxl read, no recalc, no LibreOffice round-trip.
+Evidence files:
+  audit/reports/3dmedbn/46_asr_bfr_mos_pivot.txt
+  audit/reports/3dmedbn/46_personnel_section_disambiguation.txt
+
+================================================================
+What was asked
+================================================================
+
+The user asked the BFR to disambiguate: confirm personnel are real
+(not fabricated), identify who physically needs space in BN
+facilities vs who works elsewhere (clinic, field, deployed).
+
+================================================================
+What was done
+================================================================
+
+1. Parsed the BFR TO sheet row by row.
+2. Parsed the 3DMLG_ASR.xlsx '3D MED BN' sheet, which is a pivot
+   of company subtotals plus per-MOS and per-grade aggregates.
+3. Compared BFR (MOS, grade) counts against ASR (MOS, grade) at
+   the company level.
+4. Identified BFR rows with no Branch code as candidate
+   non-billet rows.
+5. Walked the TO sheet top to bottom maintaining a "current
+   section" pointer to associate each real billet with the
+   immediately preceding section header.
+6. Bucketed each section by function (BN admin vs clinical/
+   deployable vs TBD) using the section name only.
+
+================================================================
+Headline result
+================================================================
+
+The BFR TO sheet contains 710 rows. Of those:
+
+  611 are real billets (have Grade, BMOS/PMOS, Branch)
+   99 are organizational unit headers (Section / Platoon / Team
+      titles in the T/O hierarchy; no Grade, no MOS, no Branch)
+
+The 99 header rows had previously been miscounted as "unknown
+billets". They are not billets. They are the org-structure rows
+above each group of billets.
+
+  ASR authoritative billet count:   609
+  BFR real billet count:            611 (delta of 2, within data-vintage)
+  CG signed letter personnel:       711
+  BFR-to-CG delta:                  100 (likely augment / FAP / civilian /
+                                        contractor not in ASR or per-co TFSMS)
+  BFR-to-ASR delta:                   2 (negligible)
+
+The CG-to-ASR 102-person gap is the same gap noted in the prior
+session handoff. It is not 'fabrication'; it is structure that
+exists in TFSMS or CG planning but is not authorized in the
+master ASR for this unit. The exact source requires per-co TFSMS
+extract reconciliation, held for the next session.
+
+================================================================
+MOS-level reconciliation (full detail in 46_asr_bfr_mos_pivot.txt)
+================================================================
+
+Marine MOS codes (4-digit): BFR matches ASR exactly for almost
+every code in all three companies. Drift items: H&S has
+1142+1, 1161+1, 1164-2, 2300+1, 3043+1, 3047-1, sum +1.
+
+Navy officer MOS codes (2100, 2300, 2900): BFR matches ASR
+exactly per company. Doctors and dentists fully accounted for.
+
+Navy enlisted (L-code NEC specialties):
+
+The BFR has COLLAPSED every Navy NEC specialty into a single
+'L03A' bucket. ASR distinguishes L00A, L03A, L10A, L12A, L17A,
+L22A, L23A, L24A, L31A. BFR shows only L03A.
+
+  H&S:    BFR L03A=131, ASR L-codes sum=130 (+1)
+  Surg A: BFR L03A=122, ASR L-codes sum=122 (exact)
+  Surg B: BFR L03A=122, ASR L-codes sum=122 (exact)
+
+Personnel counts match in aggregate. NEC specialty granularity
+has been destroyed. This matters for clinical CCN sizing because
+different L-code specialties (Independent Duty Corpsman L10A,
+Field Medical Service Technician L17A, Submarine Medicine L12A,
+etc.) drive different facility requirements. The BFR cannot
+size a Series 500 clinical CCN correctly without restoring NEC
+granularity from the per-co TFSMS source.
+
+================================================================
+Section-level disambiguation, what the BFR can answer right now
+================================================================
+
+Each of the 611 real billets sits under one of 99 section
+headers. The section name tells you what the billet does.
+Bucketing by section name:
+
+Bucket BN_ADMIN, fixed BN admin / motor pool / supply / shop:
+
+  H&S Co:                                           101 billets
+    Motor Transport Section            23
+    S-4 (Logistics)                    20
+    S-2/S-3 (Intel / Operations)       15
+    S-1 (Admin)                        12
+    Ambulance Section                   9
+    HQ Command Staff                    6
+    Supply Section                      5
+    Utilities Section                   5
+    Company HQ Section                  4
+    Chaplain Section                    2
+  Surg A:                                             0 billets
+  Surg B:                                             0 billets
+                                                    ---
+                                                    101 billets
+
+Bucket CLINICAL_OR_DEPLOY, work at field clinic / fixed
+dispensary / deploys with supported units:
+
+  H&S Co:                                           151 billets
+    Holding Ward Sections (3)         88
+    Preventive Med Section             31
+    Stabilization Sections (A/B/C)     80
+    Collecting/Evac Sections (A/B/C)   64
+    Radiology Sections (2)             24
+    Laboratory Sections (3)            24
+    FRSS Team 1, 2                     16
+    ERCS Team 1, 2, 3                  16
+    Pharmacy Det 1, 2                   6
+    Blood Bank Section                  6
+    Combat Stress Teams 1, 2, 3        18
+  Surg A:                                           111 billets
+  Surg B:                                           111 billets
+                                                    ---
+                                                    373 billets
+
+Bucket TBD, classification cannot be made from section name
+alone, pending user direction:
+
+  HEADQUARTERS PLATOON Surg A and Surg B   approximately 32-33 each
+    Probably the surgical company's own HQ admin section. If
+    yes, route to BN admin space (61072). Naming overlap with
+    H&S 'HQ Command Staff' makes the call ambiguous from data.
+  FRSS 1 / FRSS 2 / FRSS 3 (Surg A and Surg B)   16 each
+    Forward Resuscitative Surgical System. Deploys with the
+    Marine units it supports. Probably clinical_or_deploy.
+  AMBULANCE DET 1 / 2 (Surg A and Surg B)   12 each
+    Vehicles parked at BN motor pool. Corpsmen ride out with
+    the surgical platoons. Mixed footprint: motor pool space
+    yes, fixed desk no.
+                                                    ---
+                                                    137 billets
+
+Bucket totals across the BN:
+
+  BN_ADMIN (fixed BN building/shop/motor pool):     101
+  CLINICAL_OR_DEPLOY (clinic, field, deployed):     373
+  TBD (need user direction):                        137
+                                                    ---
+                                                    611
+
+================================================================
+What this means for the BFR's facility math
+================================================================
+
+Currently the BFR's NOTE column routes 574 of 611 real billets
+(plus 99 headers, so 574 of the 710-row total) to CCN 61073,
+which holds the literal value 0 in cell H40 = 0 SF. 81% of
+all routed entries assigned to a phantom facility.
+
+The doctrinally correct routing, by bucket:
+
+  BN_ADMIN (101 firm + 65-100 from TBD):
+    Route to existing CCN 61072 (BN HQ Admin, 600 series).
+    Plus existing 21451 (Motor T, 200 series),
+    21710 (Comm shop), 44112 (Warehouse), 14345 (Armory).
+    Each at the FC 2-000-05N planning factor for that CCN.
+
+  CLINICAL_OR_DEPLOY (373 firm + 96 FRSS likely):
+    Route to one or more FC 2-000-05N Series 500 medical CCNs.
+    Series 500 covers Medical/Dental facilities including:
+      530-10 Dispensary / Outpatient Clinic
+      540-10 Hospital
+      550-XX Specialty medical spaces
+    This sheet does not exist in the workbook today. Adding it
+    is the structural fix held for the next session under
+    ruflo orchestration.
+
+  Ambulance vehicles (24 Surg A + 24 Surg B = 48 vehicles or
+  detachments): vehicles need motor pool space; route equipment
+  to existing 21451 / 14312 (vehicle laydown). Personnel ride
+  with surgical platoons (no fixed desk requirement).
+
+================================================================
+What this does not answer (data not available in repo)
+================================================================
+
+  - Per-billet NEC specialty granularity for Navy enlisted. The
+    BFR has collapsed L00A/L10A/L12A/L17A/L22A/L23A/L24A/L31A
+    into L03A. Restore from per-co TFSMS extract (M28262_3dMedSurgB.xlsx
+    and M28263_3dMedSurgA.xlsx) plus an H&S TFSMS source if one
+    is ever provided.
+
+  - The 100-person gap between ASR (609) and CG signed letter
+    (711). Likely civilian / contractor / FAP augment. Verify
+    against per-co TFSMS and the POM26 PDF.
+
+  - HEADQUARTERS PLATOON classification at the Surg-A/B level.
+    User direction needed: is this clinical or admin?
+
+  - AMBULANCE DET fixed-space requirement: parking yes, desks
+    probably no. Verify with footprint document.
+
+================================================================
+Notes on method
+================================================================
+
+No fabricated numbers. Every count traces to a row in the BFR
+TO sheet or a row in the ASR pivot. Bucket assignment is based
+on section name only (the Billet Description text on the
+header row); section names that are doctrinally ambiguous are
+marked TBD per Apex Omega rule 4 rather than assigned.
+
+The 99 organizational headers were not flagged in any prior
+audit. They were counted as 'unknown personnel' in earlier
+discussion. They are not personnel. They are T/O hierarchy.

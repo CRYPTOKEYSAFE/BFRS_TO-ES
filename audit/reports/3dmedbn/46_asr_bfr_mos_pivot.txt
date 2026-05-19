@@ -1,0 +1,76 @@
+=== Totals ===
+  H&S CO 3D MED BN 3D MLG             ASR=250   BFR=289 delta=39
+  SURG CO A 3D MED BN 3D MLG          ASR=179   BFR=210 delta=31
+  SURG CO B 3D MED BN 3D MLG          ASR=180   BFR=211 delta=31
+  GRAND TOTAL                       ASR=609 BFR=710 delta=101
+
+=== H&S CO 3D MED BN 3D MLG ===
+  MOS 0000  : ASR=  4 BFR=  4 MATCH
+  MOS 0111  : ASR=  2 BFR=  2 MATCH
+  MOS 0402  : ASR=  2 BFR=  2 MATCH
+  MOS 0411  : ASR=  2 BFR=  2 MATCH
+  MOS 0441  : ASR=  4 BFR=  4 MATCH
+  MOS 1141  : ASR=  2 BFR=  2 MATCH
+  MOS 1142  : ASR=  0 BFR=  1 <-- in BFR only
+  MOS 1161  : ASR=  0 BFR=  1 <-- in BFR only
+  MOS 1164  : ASR=  2 BFR=  0 <-- in ASR only
+  MOS 1169  : ASR=  1 BFR=  1 MATCH
+  MOS 2100  : ASR= 17 BFR= 17 MATCH
+  MOS 2111  : ASR=  2 BFR=  2 MATCH
+  MOS 2300  : ASR= 25 BFR= 26
+  MOS 2841  : ASR=  2 BFR=  2 MATCH
+  MOS 2847  : ASR=  2 BFR=  2 MATCH
+  MOS 2900  : ASR= 12 BFR= 12 MATCH
+  MOS 3002  : ASR=  1 BFR=  1 MATCH
+  MOS 3043  : ASR=  2 BFR=  3
+  MOS 3047  : ASR=  1 BFR=  0 <-- in ASR only
+  MOS 3051  : ASR=  2 BFR=  2 MATCH
+  MOS 3521  : ASR=  1 BFR=  1 MATCH
+  MOS 3529  : ASR=  1 BFR=  1 MATCH
+  MOS 3531  : ASR= 29 BFR= 29 MATCH
+  MOS 3537  : ASR=  1 BFR=  1 MATCH
+  MOS 4100  : ASR=  1 BFR=  1 MATCH
+  MOS 8CMC  : ASR=  1 BFR=  1 MATCH
+  MOS A17A  : ASR=  1 BFR=  1 MATCH
+  MOS L00A  : ASR=  2 BFR=  0 <-- in ASR only
+  MOS L03A  : ASR= 69 BFR=131
+  MOS L10A  : ASR=  4 BFR=  0 <-- in ASR only
+  MOS L12A  : ASR= 21 BFR=  0 <-- in ASR only
+  MOS L17A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L22A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L23A  : ASR=  4 BFR=  0 <-- in ASR only
+  MOS L24A  : ASR=  9 BFR=  0 <-- in ASR only
+  MOS L31A  : ASR=  9 BFR=  0 <-- in ASR only
+
+=== SURG CO A 3D MED BN 3D MLG ===
+  MOS 0000  : ASR=  1 BFR=  1 MATCH
+  MOS 1141  : ASR=  2 BFR=  2 MATCH
+  MOS 1171  : ASR=  4 BFR=  4 MATCH
+  MOS 2100  : ASR= 19 BFR= 19 MATCH
+  MOS 2300  : ASR=  7 BFR=  7 MATCH
+  MOS 2900  : ASR= 15 BFR= 15 MATCH
+  MOS 3043  : ASR=  1 BFR=  1 MATCH
+  MOS 3531  : ASR=  8 BFR=  8 MATCH
+  MOS L00A  : ASR=  3 BFR=  0 <-- in ASR only
+  MOS L03A  : ASR= 89 BFR=122
+  MOS L10A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L17A  : ASR=  9 BFR=  0 <-- in ASR only
+  MOS L23A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L31A  : ASR=  9 BFR=  0 <-- in ASR only
+
+=== SURG CO B 3D MED BN 3D MLG ===
+  MOS 0000  : ASR=  1 BFR=  1 MATCH
+  MOS 1141  : ASR=  2 BFR=  2 MATCH
+  MOS 1171  : ASR=  4 BFR=  4 MATCH
+  MOS 2100  : ASR= 19 BFR= 19 MATCH
+  MOS 2300  : ASR=  7 BFR=  7 MATCH
+  MOS 2900  : ASR= 15 BFR= 15 MATCH
+  MOS 3043  : ASR=  1 BFR=  1 MATCH
+  MOS 3531  : ASR=  9 BFR=  9 MATCH
+  MOS L00A  : ASR=  3 BFR=  0 <-- in ASR only
+  MOS L03A  : ASR= 89 BFR=122
+  MOS L10A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L17A  : ASR=  9 BFR=  0 <-- in ASR only
+  MOS L23A  : ASR=  6 BFR=  0 <-- in ASR only
+  MOS L31A  : ASR=  9 BFR=  0 <-- in ASR only
+
